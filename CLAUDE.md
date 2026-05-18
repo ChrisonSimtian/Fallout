@@ -62,11 +62,9 @@ Validation workflows (`ubuntu-latest`, `windows-latest`, `macos-latest`) run on 
 
 **Versioning:** [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) — configured in `version.json` at the repo root. Major+minor is hand-bumped; patch comes from git-height. `main` is the public-release ref (stable versions); everything else gets prerelease tags. GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
 
-**Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs `./build.cmd Test Pack Publish`. Uses the repo secret `NUGET_API_KEY` (you must set this in repo settings before the first release fires).
+**Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs `./build.cmd Test Pack Publish`. **Publishes to GitHub Packages** (`https://nuget.pkg.github.com/<owner>/index.json`) using the auto-provided `GITHUB_TOKEN` — no separate NuGet API key is needed.
 
-Alpha packages flow to the Feedz feed (`https://f.feedz.io/nuke/alpha/nuget`) from `develop` via the GitHub Actions `AlphaDeployment` workflow. Public NuGet publishes happen from `master`/`release/*` via AppVeyor.
-
-Versioning is driven by GitVersion (`GitVersion.yml`).
+**Why not nuget.org?** Per Matt's wish, the "Nuke" name cannot be carried over to a successor project. Until the hard fork picks a new name, packages stay on this fork's GitHub Packages feed. Switching the target to nuget.org becomes a follow-up once the rename ceremony happens.
 
 ## Conventions worth respecting
 

@@ -130,7 +130,13 @@ partial class Build
 
     [Parameter] [Secret] readonly string NuGetApiKey;
 
-    string IPublish.NuGetSource => "https://api.nuget.org/v3/index.json";
+    // Publishing to GitHub Packages on this fork until the post-hard-fork
+    // project rename lands. nuget.org would require the new name and can't
+    // be done under "Nuke.*" — see project_nuke_strategy memory note.
+    // Repository owner comes from GITHUB_REPOSITORY_OWNER, automatically set
+    // by GitHub Actions runners. ChrisonSimtian is the local-dev fallback.
+    string IPublish.NuGetSource =>
+        $"https://nuget.pkg.github.com/{EnvironmentInfo.GetVariable("GITHUB_REPOSITORY_OWNER") ?? "ChrisonSimtian"}/index.json";
     string IPublish.NuGetApiKey => NuGetApiKey;
 
     Target IPublish.Publish => _ => _

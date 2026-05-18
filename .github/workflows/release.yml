@@ -31,5 +31,8 @@ jobs:
       - name: 'Run: Test, Pack, Publish'
         run: ./build.cmd Test Pack Publish
         env:
-          NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
+          # Publish target is GitHub Packages on this fork, not nuget.org.
+          # GITHUB_TOKEN has packages:write per the permissions block above —
+          # no separate NuGet API key needed until the project rename.
+          NuGetApiKey: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
