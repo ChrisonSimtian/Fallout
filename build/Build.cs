@@ -162,16 +162,101 @@ partial class Build
     string ICreateGitHubRelease.Name => MajorMinorPatchVersion;
     IEnumerable<AbsolutePath> ICreateGitHubRelease.AssetFiles => NuGetPackageFiles;
 
+    // Rewritten override (not inheriting the base) so we can build a rich
+    // release body that lists the milestone contents. The base implementation
+    // reads CHANGELOG.md's [vNext] section, which we don't maintain on this
+    // fork. We rely on milestones + GitHub's auto-generated PR list instead.
     Target ICreateGitHubRelease.CreateGitHubRelease => _ => _
-        .Inherit<ICreateGitHubRelease>()
         .TriggeredBy<IPublish>()
         .ProceedAfterFailure()
+        .Requires(() => From<ICreateGitHubRelease>().GitHubToken)
         .OnlyWhenStatic(() => GitRepository.IsOnMainBranch())
         .Executes(async () =>
         {
-            var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);
-            foreach (var issue in issues)
-                await GitHubActions.Instance.CreateComment(issue.Number, $"Released in {MilestoneTitle}! 🎉");
+            var client = GitHubTasks.GitHubClient;
+            client.Credentials = new global::Octokit.Credentials(From<ICreateGitHubRelease>().GitHubToken.NotNull());
+            var owner = GitRepository.GetGitHubOwner();
+            var name = GitRepository.GetGitHubName();
+            var version = MajorMinorPatchVersion;
+
+            // Find a milestone whose title starts with this release's version
+            // (matches both our "10.2.0 - <desc>" convention and the legacy
+            // "v10.2.0" form). First match wins.
+            var milestones = await client.Issue.Milestone.GetAllForRepository(
+                owner, name,
+                new global::Octokit.MilestoneRequest { State = global::Octokit.ItemStateFilter.All });
+            var milestone = milestones.FirstOrDefault(m =>
+                m.Title.StartsWith(version, StringComparison.Ordinal) ||
+                m.Title.StartsWith($"v{version}", StringComparison.Ordinal));
+
+            var milestoneItems = milestone == null
+                ? Array.Empty<global::Octokit.Issue>()
+                : (await client.Issue.GetAllForRepository(owner, name, new global::Octokit.RepositoryIssueRequest
+                {
+                    Milestone = milestone.Number.ToString(),
+                    State = global::Octokit.ItemStateFilter.Closed
+                })).ToArray();
+
+            // Build the release body. GitHub will append its auto-generated
+            // PR-since-last-tag list because GenerateReleaseNotes=true.
+            var body = new System.Text.StringBuilder();
+            if (milestone != null)
+            {
+                body.AppendLine($"**Milestone:** [{milestone.Title}]({milestone.HtmlUrl})");
+                body.AppendLine();
+
+                var pulls = milestoneItems.Where(i => i.PullRequest != null).OrderBy(i => i.Number).ToArray();
+                var issues = milestoneItems.Where(i => i.PullRequest == null).OrderBy(i => i.Number).ToArray();
+
+                if (pulls.Length > 0)
+                {
+                    body.AppendLine("### Pull requests in this milestone");
+                    foreach (var pr in pulls)
+                        body.AppendLine($"- {pr.Title} (#{pr.Number}) — @{pr.User.Login}");
+                    body.AppendLine();
+                }
+
+                if (issues.Length > 0)
+                {
+                    body.AppendLine("### Issues closed in this milestone");
+                    foreach (var issue in issues)
+                        body.AppendLine($"- {issue.Title} (#{issue.Number})");
+                    body.AppendLine();
+                }
+            }
+
+            global::Octokit.Release release;
+            try
+            {
+                release = await client.Repository.Release.Create(owner, name,
+                    new global::Octokit.NewRelease(version)
+                    {
+                        Name = version,
+                        Body = body.ToString(),
+                        Prerelease = false,
+                        Draft = false,
+                        GenerateReleaseNotes = true
+                    });
+            }
+            catch
+            {
+                release = await client.Repository.Release.Get(owner, name, version);
+            }
+
+            foreach (var assetPath in NuGetPackageFiles)
+            {
+                await using var assetStream = System.IO.File.OpenRead(assetPath);
+                await client.Repository.Release.UploadAsset(release, new global::Octokit.ReleaseAssetUpload
+                {
+                    FileName = assetPath.Name,
+                    ContentType = "application/octet-stream",
+                    RawData = assetStream
+                });
+            }
+
+            // Notify each milestone item that it's shipped.
+            foreach (var item in milestoneItems)
+                await client.Issue.Comment.Create(owner, name, item.Number, $"Released in {version}! 🎉");
         });
 
     Target Install => _ => _
