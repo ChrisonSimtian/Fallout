@@ -60,7 +60,9 @@ CI providers in use: **GitHub Actions only** (the other providers were dropped �
 
 Validation workflows (`ubuntu-latest`, `windows-latest`, `macos-latest`) run on every push to non-main branches and every PR targeting `main`, with `paths-ignore` for `docs/**`, `images/**`, `**/*.md`.
 
-Release pipeline is being introduced in a follow-up PR alongside Nerdbank.GitVersioning. GitVersion is still in use until that lands.
+**Versioning:** [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) — configured in `version.json` at the repo root. Major+minor is hand-bumped; patch comes from git-height. `main` is the public-release ref (stable versions); everything else gets prerelease tags. GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
+
+**Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs `./build.cmd Test Pack Publish`. Uses the repo secret `NUGET_API_KEY` (you must set this in repo settings before the first release fires).
 
 Alpha packages flow to the Feedz feed (`https://f.feedz.io/nuke/alpha/nuget`) from `develop` via the GitHub Actions `AlphaDeployment` workflow. Public NuGet publishes happen from `master`/`release/*` via AppVeyor.
 

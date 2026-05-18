@@ -1,0 +1,35 @@
+# Hand-written (not auto-generated) — see Build.CI.GitHubActions.cs for the
+# rationale (lets us bridge GitHub's NUGET_API_KEY secret to NUKE's
+# NuGetApiKey parameter, which would otherwise have to share a name).
+
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write     # for ICreateGitHubRelease (tag + GitHub release)
+  packages: write     # in case we later push to GitHub Packages too
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0   # Nerdbank.GitVersioning needs full history
+      - name: 'Cache: .nuke/temp, ~/.nuget/packages'
+        uses: actions/cache@v4
+        with:
+          path: |
+            .nuke/temp
+            ~/.nuget/packages
+          key: ${{ runner.os }}-release-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props', 'version.json') }}
+      - name: 'Run: Test, Pack, Publish'
+        run: ./build.cmd Test Pack Publish
+        env:
+          NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

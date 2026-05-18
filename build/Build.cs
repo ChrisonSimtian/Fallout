@@ -103,7 +103,6 @@ partial class Build
 
     Target ITest.Test => _ => _
         .Inherit<ITest>()
-        .OnlyWhenStatic(() => Host is not GitHubActions { Workflow: AlphaDeployment })
         .Partition(2);
 
     bool IReportCoverage.CreateCoverageHtmlReport => true;
@@ -120,25 +119,24 @@ partial class Build
     IEnumerable<string> IReportIssues.InspectCodeFailOnIssues => new string[0];
     IEnumerable<string> IReportIssues.InspectCodeFailOnCategories => new string[0];
 
+    // Local Terminal runs use a placeholder version so packed nupkgs don't
+    // collide with real releases. CI runs let Nerdbank.GitVersioning inject the
+    // real version via MSBuild ($PackageVersion).
     Configure<DotNetPackSettings> IPack.PackSettings => _ => _
-        .When(Host is Terminal or GitHubActions { Workflow: AlphaDeployment }, _ => _
+        .When(Host is Terminal, _ => _
             .SetVersion(DefaultDeploymentVersion));
 
-    string PublicNuGetSource => "https://api.nuget.org/v3/index.json";
-    string FeedzNuGetSource => "https://f.feedz.io/nuke/alpha/nuget";
     string DefaultDeploymentVersion => "9999.0.0";
 
-    [Parameter] [Secret] readonly string PublicNuGetApiKey;
-    [Parameter] [Secret] readonly string FeedzNuGetApiKey;
+    [Parameter] [Secret] readonly string NuGetApiKey;
 
-    bool IsPublicRelease => GitRepository.IsOnMainBranch();
-    string IPublish.NuGetSource => IsPublicRelease ? PublicNuGetSource : FeedzNuGetSource;
-    string IPublish.NuGetApiKey => IsPublicRelease ? PublicNuGetApiKey : FeedzNuGetApiKey;
+    string IPublish.NuGetSource => "https://api.nuget.org/v3/index.json";
+    string IPublish.NuGetApiKey => NuGetApiKey;
 
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => GitRepository.IsOnMainBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment)
+        .Requires(() => GitRepository.IsOnMainBranch() && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow)
         .WhenSkipped(DependencyBehavior.Execute);
 
     IEnumerable<AbsolutePath> NuGetPackageFiles
@@ -147,26 +145,12 @@ partial class Build
     Target DeletePackages => _ => _
         .DependentFor<IPublish>()
         .After<IPack>()
-        .OnlyWhenStatic(() => Host is Terminal or GitHubActions { Workflow: AlphaDeployment })
+        .OnlyWhenStatic(() => Host is Terminal)
         .Executes(() =>
         {
-            if (Host is Terminal)
-            {
-                var packagesDirectory = NuGetPackageResolver.GetPackagesDirectory(packagesConfigFile: BuildProjectFile);
-                var packageDirectories = packagesDirectory.GlobDirectories($"nuke.*/{DefaultDeploymentVersion}");
-                packageDirectories.DeleteDirectories();
-            }
-            else if (Host is GitHubActions)
-            {
-                void DeletePackage(string id, string version)
-                    => DotNet(
-                        $"nuget delete {id} {version} --source {FeedzNuGetSource} --api-key {FeedzNuGetApiKey} --non-interactive",
-                        logOutput: false);
-
-                var packageIds = NuGetPackageFiles.Select(x => new PackageArchiveReader(x).NuspecReader.GetId());
-                foreach (var packageId in packageIds)
-                    SuppressErrors(() => DeletePackage(packageId, DefaultDeploymentVersion), logWarning: false);
-            }
+            var packagesDirectory = NuGetPackageResolver.GetPackagesDirectory(packagesConfigFile: BuildProjectFile);
+            var packageDirectories = packagesDirectory.GlobDirectories($"nuke.*/{DefaultDeploymentVersion}");
+            packageDirectories.DeleteDirectories();
         });
 
     string ICreateGitHubRelease.Name => MajorMinorPatchVersion;

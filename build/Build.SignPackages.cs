@@ -18,6 +18,6 @@ partial class Build : ISignPackages
 
     public Target SignPackages => _ => _
         .Inherit<ISignPackages>()
-        .OnlyWhenStatic(() => IsPublicRelease)
+        .OnlyWhenStatic(() => GitRepository.IsOnMainBranch())
         .OnlyWhenStatic(() => EnvironmentInfo.IsWin);
 }
