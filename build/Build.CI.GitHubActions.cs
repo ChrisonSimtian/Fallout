@@ -9,18 +9,17 @@ using Nuke.Components;
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MainBranch },
-    OnPullRequestBranches = new[] { MainBranch },
-    OnPullRequestExcludePaths = new[] { "docs/**", "images/**", "**/*.md" },
+    OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
+// macOS and Windows runs are reserved for main-branch validation (post-merge
+// and release pipelines). PRs and feature-branch pushes get Linux-only for
+// fast, cheap feedback.
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MainBranch },
-    OnPullRequestBranches = new[] { MainBranch },
-    OnPullRequestExcludePaths = new[] { "docs/**", "images/**", "**/*.md" },
+    OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 [GitHubActions(

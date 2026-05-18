@@ -18,15 +18,8 @@ name: windows-latest
 
 on:
   push:
-    branches-ignore:
-      - main
-  pull_request:
     branches:
       - main
-    paths-ignore:
-      - 'docs/**'
-      - 'images/**'
-      - '**/*.md'
 
 jobs:
   windows-latest:
