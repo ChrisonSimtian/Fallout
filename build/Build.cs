@@ -62,10 +62,13 @@ partial class Build
     AbsolutePath OutputDirectory => RootDirectory / "output";
     AbsolutePath SourceDirectory => RootDirectory / "source";
 
-    const string MasterBranch = "master";
-    const string DevelopBranch = "develop";
-    const string ReleaseBranchPrefix = "release";
-    const string HotfixBranchPrefix = "hotfix";
+    const string MainBranch = "main";
+
+    // Versioning constants moved from former Build.GitFlow.cs.
+    // Trunk-based; Nerdbank.GitVersioning will replace GitVersion in a follow-up PR.
+    [Parameter] readonly bool Major;
+    string MajorMinorPatchVersion => Major ? $"{GitVersion.Major + 1}.0.0" : GitVersion.MajorMinorPatch;
+    string MilestoneTitle => $"v{MajorMinorPatchVersion}";
 
     AbsolutePath IHazArtifacts.ArtifactsDirectory => RootDirectory / "output";
 
@@ -128,14 +131,14 @@ partial class Build
     [Parameter] [Secret] readonly string PublicNuGetApiKey;
     [Parameter] [Secret] readonly string FeedzNuGetApiKey;
 
-    bool IsPublicRelease => GitRepository.IsOnMasterBranch() || GitRepository.IsOnReleaseBranch();
+    bool IsPublicRelease => GitRepository.IsOnMainBranch();
     string IPublish.NuGetSource => IsPublicRelease ? PublicNuGetSource : FeedzNuGetSource;
     string IPublish.NuGetApiKey => IsPublicRelease ? PublicNuGetApiKey : FeedzNuGetApiKey;
 
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => GitRepository.IsOnDevelopBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment)
+        .Requires(() => GitRepository.IsOnMainBranch() && Host is GitHubActions && GitHubActions.Workflow == AlphaDeployment)
         .WhenSkipped(DependencyBehavior.Execute);
 
     IEnumerable<AbsolutePath> NuGetPackageFiles
@@ -173,7 +176,7 @@ partial class Build
         .Inherit<ICreateGitHubRelease>()
         .TriggeredBy<IPublish>()
         .ProceedAfterFailure()
-        .OnlyWhenStatic(() => GitRepository.IsOnMasterBranch())
+        .OnlyWhenStatic(() => GitRepository.IsOnMainBranch())
         .Executes(async () =>
         {
             var issues = await GitRepository.GetGitHubMilestoneIssues(MilestoneTitle);

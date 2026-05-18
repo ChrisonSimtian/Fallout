@@ -19,11 +19,14 @@ name: ubuntu-latest
 on:
   push:
     branches-ignore:
-      - master
-      - 'release/*'
+      - main
   pull_request:
     branches:
-      - develop
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - 'images/**'
+      - '**/*.md'
 
 jobs:
   ubuntu-latest:
