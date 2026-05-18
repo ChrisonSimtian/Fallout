@@ -22,11 +22,12 @@ using Nuke.Components;
     OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
+// pull_request only — same-repo branches would otherwise fire both push and
+// pull_request events on every push, double-running the validation.
 [GitHubActions(
     "ubuntu-latest",
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MainBranch },
     OnPullRequestBranches = new[] { MainBranch },
     OnPullRequestExcludePaths = new[] { "docs/**", "images/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
