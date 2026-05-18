@@ -54,9 +54,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="linqtotwitter" Version="6.15.0" />
-    <PackageReference Include="MQTTnet" Version="4.3.7.1207" />
-    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.7" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.6" />
     <PackageDownload Include="Codecov.Tool" Version="[1.13.0]" />
     <PackageDownload Include="GitVersion.Tool" Version="[5.12.0]" />

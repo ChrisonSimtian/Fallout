@@ -27,7 +27,6 @@ using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
 [ShutdownDotNetAfterServerBuild]
 partial class Build
     : NukeBuild,
-        IHazTwitterCredentials,
         IHazChangelog,
         IHazGitRepository,
         IHazGitVersion,
@@ -56,8 +55,6 @@ partial class Build
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
     Nuke.Common.ProjectModel.Solution IHazSolution.Solution => Solution;
-
-    IHazTwitterCredentials TwitterCredentials => From<IHazTwitterCredentials>();
 
     AbsolutePath OutputDirectory => RootDirectory / "output";
     AbsolutePath SourceDirectory => RootDirectory / "source";
