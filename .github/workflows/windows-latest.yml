@@ -18,12 +18,8 @@ name: windows-latest
 
 on:
   push:
-    branches-ignore:
-      - master
-      - 'release/*'
-  pull_request:
     branches:
-      - develop
+      - main
 
 jobs:
   windows-latest:

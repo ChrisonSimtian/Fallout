@@ -1,4 +1,4 @@
-﻿// Copyright 2023 Maintainers of NUKE.
+// Copyright 2023 Maintainers of NUKE.
 // Distributed under the MIT License.
 // https://github.com/nuke-build/nuke/blob/master/LICENSE
 
@@ -9,36 +9,35 @@ using Nuke.Components;
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
+    OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
+// macOS and Windows runs are reserved for main-branch validation (post-merge
+// and release pipelines). PRs and feature-branch pushes get Linux-only for
+// fast, cheap feedback.
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
+    OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 [GitHubActions(
     "ubuntu-latest",
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
-    OnPushBranchesIgnore = new[] { MasterBranch, $"{ReleaseBranchPrefix}/*" },
-    OnPullRequestBranches = new[] { DevelopBranch },
+    OnPushBranchesIgnore = new[] { MainBranch },
+    OnPullRequestBranches = new[] { MainBranch },
+    OnPullRequestExcludePaths = new[] { "docs/**", "images/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
-[GitHubActions(
-    AlphaDeployment,
-    GitHubActionsImage.UbuntuLatest,
-    FetchDepth = 0,
-    OnPushBranches = new[] { DevelopBranch },
-    InvokedTargets = new[] { nameof(IPublish.Publish) },
-    EnableGitHubToken = true,
-    PublishArtifacts = false,
-    ImportSecrets = new[] { nameof(FeedzNuGetApiKey) })]
 partial class Build
 {
+    // AlphaDeployment workflow removed in trunk migration. The release pipeline
+    // is reintroduced in the follow-up Nerdbank.GitVersioning PR with proper
+    // main-branch publish semantics. Code paths still referencing this constant
+    // (Test.OnlyWhenStatic, Pack.PackSettings, Publish.Requires, DeletePackages)
+    // are intentionally preserved — they evaluate to false until a workflow
+    // with this name exists again.
     const string AlphaDeployment = "alpha-deployment";
 }

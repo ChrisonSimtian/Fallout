@@ -56,3 +56,7 @@ _dotTrace*
 
 # Tests
 *.received.txt
+
+# Claude Code — local-only files (shared settings.json IS committed)
+.claude/settings.local.json
+.claude/.credentials*
