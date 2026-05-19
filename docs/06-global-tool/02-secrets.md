@@ -47,7 +47,7 @@ Afterwards, you can choose from a list of secret parameters, to either set or up
 
 When secrets are saved to a parameters file, they are prefixed with `v1:` to indicate the underlying encryption method:
 
-```json title=".nuke/parameters.json"
+```json title=".fallout/parameters.json"
 {
   "$schema": "./build.schema.json",
   "NuGetApiKey": "v1:4VDyDmFs4Pf6IX8UvosDdjOgb23g0IXs0aP/MBqOK+K6TB8JuthtPgRUrUsi9tLD"

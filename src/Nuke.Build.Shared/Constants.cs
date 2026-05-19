@@ -21,7 +21,11 @@ namespace Nuke.Common;
 internal static class Constants
 {
     internal const string NukeFileName = NukeDirectoryName;
-    internal const string NukeDirectoryName = ".nuke";
+    internal const string NukeDirectoryName = ".fallout";
+    // Legacy directory name from the pre-Fallout era. Read-only: lets existing
+    // consumer projects keep building until they migrate (manually or via the
+    // forthcoming Fallout.Migrate CLI). New setups always use .fallout/.
+    internal const string LegacyNukeDirectoryName = ".nuke";
     internal const string NukeCommonPackageId = nameof(Nuke) + "." + nameof(Common);
     internal const string BuildSchemaFileName = "build.schema.json";
     internal const string VisualStudioDebugFileName = $"{VisualStudioDebugParameterName}.log";
@@ -42,7 +46,7 @@ internal static class Constants
     internal const string InterceptorEnvironmentKey = "NUKE_INTERNAL_INTERCEPTOR";
 
     internal static AbsolutePath GlobalTemporaryDirectory => Path.GetTempPath();
-    internal static AbsolutePath GlobalNukeDirectory =>  EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".nuke";
+    internal static AbsolutePath GlobalNukeDirectory =>  EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".fallout";
 
     [CanBeNull]
     internal static AbsolutePath TryGetRootDirectoryFrom(AbsolutePath startDirectory, bool includeLegacy = true)
@@ -50,6 +54,7 @@ internal static class Constants
         var rootDirectory = new DirectoryInfo(startDirectory)
             .DescendantsAndSelf(x => x.Parent)
             .FirstOrDefault(x => x.GetDirectories(NukeDirectoryName).Any() ||
+                                 x.GetDirectories(LegacyNukeDirectoryName).Any() ||
                                  includeLegacy && x.GetFiles(NukeFileName).Any())
             ?.FullName;
         return rootDirectory != GlobalNukeDirectory.Parent ? (AbsolutePath) rootDirectory : null;
@@ -62,7 +67,11 @@ internal static class Constants
 
     internal static AbsolutePath GetNukeDirectory(AbsolutePath rootDirectory)
     {
-        return rootDirectory / NukeDirectoryName;
+        var newDir = rootDirectory / NukeDirectoryName;
+        if (Directory.Exists(newDir))
+            return newDir;
+        var legacyDir = rootDirectory / LegacyNukeDirectoryName;
+        return Directory.Exists(legacyDir) ? legacyDir : newDir;
     }
 
     internal static AbsolutePath GetTemporaryDirectory(AbsolutePath rootDirectory)

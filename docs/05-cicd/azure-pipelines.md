@@ -229,7 +229,7 @@ By default, the generated pipeline file will include [caching tasks](https://doc
   inputs:
     key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj
     restoreKeys: $(Agent.OS) | nuke-temp
-    path: .nuke/temp
+    path: .fallout/temp
 - task: Cache@2
   displayName: Cache (nuget-packages)
   inputs:

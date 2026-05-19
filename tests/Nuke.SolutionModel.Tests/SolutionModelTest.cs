@@ -17,7 +17,7 @@ public class SolutionModelTest
 {
     private static AbsolutePath RootDirectory => Constants.TryGetRootDirectoryFrom(EnvironmentInfo.WorkingDirectory).NotNull();
 
-    private static AbsolutePath SolutionFile => RootDirectory / "nuke-common.slnx";
+    private static AbsolutePath SolutionFile => RootDirectory / "fallout.slnx";
 
     [Fact]
     public void SolutionTest()

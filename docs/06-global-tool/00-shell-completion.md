@@ -7,7 +7,7 @@ import AsciinemaPlayer from '@site/src/components/AsciinemaPlayer';
 Typing long target names or parameters can be tedious and error-prone. The global tool helps you to invoke commands more quickly and without any typos, similar to [tab completion for the .NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete).
 
 :::info
-The shell completion feature relies on the presence of an up-to-date `.nuke/build.schema.json` file. This file is updated with every execution of your build project.
+The shell completion feature relies on the presence of an up-to-date `.fallout/build.schema.json` file. This file is updated with every execution of your build project.
 
 Whenever you add or change one of your targets or parameters, it is recommended to trigger your build once, for instance by calling `nuke --help`.
 :::

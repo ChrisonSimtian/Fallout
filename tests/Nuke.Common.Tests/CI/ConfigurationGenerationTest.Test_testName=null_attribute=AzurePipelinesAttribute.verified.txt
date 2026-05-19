@@ -52,11 +52,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -85,11 +85,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -120,11 +120,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -153,11 +153,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -192,11 +192,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -225,11 +225,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -260,11 +260,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:
@@ -293,11 +293,11 @@ stages:
             fetchDepth: 1
             clean: true
           - task: Cache@2
-            displayName: 'Cache: nuke-temp'
+            displayName: 'Cache: fallout-temp'
             inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
+              key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
+              restoreKeys: $(Agent.OS) | fallout-temp
+              path: .fallout/temp
           - task: Cache@2
             displayName: 'Cache: nuget-packages'
             inputs:

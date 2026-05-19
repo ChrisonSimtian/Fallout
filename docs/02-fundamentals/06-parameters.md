@@ -45,7 +45,7 @@ With the global tool installed and [shell completion](../06-global-tool/00-shell
 
 Instead of providing default values in your `Build` class or repeatedly specifying them through the command-line, you can also define them in so-called parameter files (JSON). These files are located under the `.nuke` directory:
 
-```json title=".nuke/parameters.json"
+```json title=".fallout/parameters.json"
 {
     "$schema": "./build.schema.json",
     "MyParameter": "value"

@@ -28,11 +28,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 'Cache: .nuke/temp, ~/.nuget/packages'
+      - name: 'Cache: .fallout/temp, ~/.nuget/packages'
         uses: actions/cache@v4
         with:
           path: |
-            .nuke/temp
+            .fallout/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
       - name: 'Run: Test'
@@ -60,11 +60,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 'Cache: .nuke/temp, ~/.nuget/packages'
+      - name: 'Cache: .fallout/temp, ~/.nuget/packages'
         uses: actions/cache@v4
         with:
           path: |
-            .nuke/temp
+            .fallout/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
       - name: 'Run: Test'
@@ -92,11 +92,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v6
-      - name: 'Cache: .nuke/temp, ~/.nuget/packages'
+      - name: 'Cache: .fallout/temp, ~/.nuget/packages'
         uses: actions/cache@v4
         with:
           path: |
-            .nuke/temp
+            .fallout/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
       - name: 'Run: Test'

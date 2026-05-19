@@ -23,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeConfig)' != 'True'">
-    <None Include="$(NukeRootDirectory)\.nuke\parameters.json" LinkBase="config" />
-    <None Include="$(NukeRootDirectory)\.nuke\parameters.*.json" LinkBase="config" />
+    <None Include="$(NukeRootDirectory)\.fallout\parameters.json" LinkBase="config" />
+    <None Include="$(NukeRootDirectory)\.fallout\parameters.*.json" LinkBase="config" />
+    <!-- Legacy: pick up pre-Fallout .nuke/parameters.json if a consumer hasn't migrated yet. -->
+    <None Include="$(NukeRootDirectory)\.nuke\parameters.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\.nuke\parameters.json')" />
+    <None Include="$(NukeRootDirectory)\.nuke\parameters.*.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\.nuke')" />
     <None Include="$(NukeRootDirectory)\global.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\global.json')" />
     <None Include="$(NukeRootDirectory)\nuget.config" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\nuget.config')" />
     <None Include="$(NukeRootDirectory)\GitVersion.yml" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\GitVersion.yml')" />
@@ -33,7 +36,9 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeLogs)' != 'True'">
-    <None Include="$(NukeRootDirectory)\.nuke\temp\build*.log" Exclude="$(NukeRootDirectory)\.nuke\temp\build-attempt.log" LinkBase="logs" />
+    <None Include="$(NukeRootDirectory)\.fallout\temp\build*.log" Exclude="$(NukeRootDirectory)\.fallout\temp\build-attempt.log" LinkBase="logs" />
+    <!-- Legacy: pick up logs from pre-Fallout .nuke/temp if present. -->
+    <None Include="$(NukeRootDirectory)\.nuke\temp\build*.log" Exclude="$(NukeRootDirectory)\.nuke\temp\build-attempt.log" LinkBase="logs" Condition="Exists('$(NukeRootDirectory)\.nuke\temp')" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeDirectoryBuild)' != 'True'">

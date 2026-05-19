@@ -28,7 +28,7 @@ Read more about scope, data points, and opt-out: https://nuke.build/telemetry
 
 Once you confirm the notice, NUKE will either:
 
-- Create an awareness cookie under `~/.nuke/telemetry-awareness/v1` for the respective global tool, or
+- Create an awareness cookie under `~/.fallout/telemetry-awareness/v1` for the respective global tool, or
 - Add the `NukeTelemetryVersion` property to the project file.
 
 ## Scope

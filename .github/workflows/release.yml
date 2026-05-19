@@ -21,11 +21,11 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0   # Nerdbank.GitVersioning needs full history
-      - name: 'Cache: .nuke/temp, ~/.nuget/packages'
+      - name: 'Cache: .fallout/temp, ~/.nuget/packages'
         uses: actions/cache@v4
         with:
           path: |
-            .nuke/temp
+            .fallout/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-release-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props', 'version.json') }}
       - name: 'Run: Test, Pack, Publish'

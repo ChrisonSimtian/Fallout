@@ -42,7 +42,7 @@ public abstract partial class NukeBuild
     public static AbsolutePath RootDirectory { get; }
 
     /// <summary>
-    /// Gets the full path to the temporary directory <c>/.nuke/temp</c>.
+    /// Gets the full path to the temporary directory <c>/.fallout/temp</c>.
     /// </summary>
     public static AbsolutePath TemporaryDirectory { get; }
 

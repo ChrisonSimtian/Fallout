@@ -197,11 +197,11 @@ By default, the generated workflow file will include a [caching step](https://gi
 <summary>Generated output</summary>
 
 ```yaml title=".github/workflows/continuous.yml"
-- name: Cache .nuke/temp, ~/.nuget/packages
+- name: Cache .fallout/temp, ~/.nuget/packages
   uses: actions/cache@v2
   with:
     path: |
-      .nuke/temp
+      .fallout/temp
       ~/.nuget/packages
     key: ${{ runner.os }}-${{ hashFiles('global.json', 'source/**/*.csproj') }}
 ```
@@ -214,7 +214,7 @@ You can customize the caching step by overwriting the following properties:
 [GitHubActions(
     // ...
     CacheKeyFiles = new[] { "**/global.json", "**/*.csproj" },
-    CacheIncludePatterns = new[] { ".nuke/temp", "~/.nuget/packages" },
+    CacheIncludePatterns = new[] { ".fallout/temp", "~/.nuget/packages" },
     CacheExcludePatterns = new string[0])]
 class Build : NukeBuild { /* ... */ }
 ```

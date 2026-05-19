@@ -121,7 +121,7 @@ For each build, a new log file is written to the temporary directory. The Serilo
 
 With the sample logging from above, the file would like roughly like this:
 
-```log title=".nuke/temp/build.log"
+```log title=".fallout/temp/build.log"
 03:57:38.208 | V | Compile | This is a verbose message
 03:57:38.208 | D | Compile | This is a debug message
 03:57:38.208 | I | Compile | This is an information message
@@ -154,7 +154,7 @@ Only the last 5 build logs are kept.
 
 With the same sample logging from above, the file now looks like this:
 
-<CodeBlock title={".nuke/temp/build." + new Date().toISOString().substring(0,19).replace("T", "_").replace(":", "-").replace(":", "-") + ".log"}>
+<CodeBlock title={".fallout/temp/build." + new Date().toISOString().substring(0,19).replace("T", "_").replace(":", "-").replace(":", "-") + ".log"}>
 {`
 V | Compile | This is a verbose message
 D | Compile | This is a debug message

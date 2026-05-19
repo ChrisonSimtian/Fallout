@@ -10,7 +10,7 @@ Canonical reference for how the Fallout repo is laid out and how the pieces fit 
 │   ├── icon.png              Package icon (referenced by Directory.Build.props)
 │   └── images/               README / marketing imagery
 ├── .github/                  GitHub Actions workflows
-├── .nuke/                    Build orchestrator runtime state (committed: schema, parameters)
+├── .fallout/                 Build orchestrator runtime state (committed: schema, parameters)
 ├── build/                    The build orchestrator project (consumes Fallout itself — dogfooding)
 │   ├── _build.csproj
 │   └── Build.*.cs            Partial classes split by concern (CI, Licenses, etc.)
@@ -23,7 +23,7 @@ Canonical reference for how the Fallout repo is laid out and how the pieces fit 
 ├── Directory.Build.props     Shared MSBuild properties + ItemGroups applied to every project
 ├── Directory.Build.targets   Smart PackageReference → ProjectReference logic
 ├── Directory.Packages.props  Central package version management — never put Version= inline
-├── nuke-common.slnx          Solution file (new XML format, not .sln)
+├── fallout.slnx              Solution file (new XML format, not .sln)
 ├── global.json               Pinned .NET SDK
 ├── version.json              Nerdbank.GitVersioning config
 ├── nuget.config              Restricts package sources to nuget.org with explicit mapping

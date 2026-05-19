@@ -69,7 +69,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public GitHubActionsPermissions[] WritePermissions { get; set; } = new GitHubActionsPermissions[0];
     public GitHubActionsPermissions[] ReadPermissions { get; set; } = new GitHubActionsPermissions[0];
 
-    public string[] CacheIncludePatterns { get; set; } = { ".nuke/temp", "~/.nuget/packages" };
+    public string[] CacheIncludePatterns { get; set; } = { ".fallout/temp", "~/.nuget/packages" };
     public string[] CacheExcludePatterns { get; set; } = new string[0];
     public string[] CacheKeyFiles { get; set; } = { "**/global.json", "**/*.csproj", "**/Directory.Packages.props" };
 

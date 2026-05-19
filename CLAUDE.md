@@ -15,7 +15,7 @@ Originally NUKE by [matkoch](https://github.com/matkoch); under new maintenance 
 - .NET SDK pinned in `global.json` (currently `10.0.100`, `rollForward: latestMinor`).
 - Central package versions in `Directory.Packages.props` — never add a `Version=` to an individual `PackageReference`.
 - xUnit + FluentAssertions + Verify.Xunit for tests.
-- Solution file is `nuke-common.slnx` (new XML solution format, not `.sln`).
+- Solution file is `fallout.slnx` (new XML solution format, not `.sln`).
 
 ## Repository layout
 
@@ -28,7 +28,7 @@ Canonical top-level structure (see [docs/architecture.md](docs/architecture.md) 
 | `build/` | The build orchestrator (`_build.csproj` + `Build.*.cs` partial files). |
 | `docs/` | Documentation site content. Architecture notes also live here. |
 | `.assets/` | Images, icons, logos — anything binary and non-code. |
-| Root | Solution file (`nuke-common.slnx`), shared MSBuild plumbing (`Directory.Build.props/targets`, `Directory.Packages.props`), `AssemblyInfo.cs`, project conventions (README/CONTRIBUTING/CODE_OF_CONDUCT/LICENSE/CHANGELOG/CLAUDE.md). |
+| Root | Solution file (`fallout.slnx`), shared MSBuild plumbing (`Directory.Build.props/targets`, `Directory.Packages.props`), `AssemblyInfo.cs`, project conventions (README/CONTRIBUTING/CODE_OF_CONDUCT/LICENSE/CHANGELOG/CLAUDE.md). |
 
 Production project groupings under `src/`:
 
@@ -53,7 +53,7 @@ Tool wrappers (the `.json` schemas Claude is most likely asked to extend) live u
 ./build.ps1 --help                   # list all targets and parameters
 
 # Or via dotnet directly when iterating on a single project
-dotnet build nuke-common.slnx
+dotnet build fallout.slnx
 dotnet test tests/Nuke.Common.Tests/Nuke.Common.Tests.csproj
 ```
 
