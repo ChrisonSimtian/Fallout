@@ -35,14 +35,24 @@ public partial class Host
     protected internal void WriteLogo()
     {
         Debug();
+        // True-color ANSI for Fallout yellow (#F5C800). Modern terminals
+        // (Windows Terminal, VS Code, macOS Terminal.app, GitHub Actions logs)
+        // render this directly; older sinks ignore the escape bytes.
+        const string Y = "[38;2;245;200;0m";
+        const string D = "[2m";
+        const string R = "[0m";
+
         new[]
         {
-            "███████╗ █████╗ ██╗     ██╗      ██████╗ ██╗   ██╗████████╗",
-            "██╔════╝██╔══██╗██║     ██║     ██╔═══██╗██║   ██║╚══██╔══╝",
-            "█████╗  ███████║██║     ██║     ██║   ██║██║   ██║   ██║   ",
-            "██╔══╝  ██╔══██║██║     ██║     ██║   ██║██║   ██║   ██║   ",
-            "██║     ██║  ██║███████╗███████╗╚██████╔╝╚██████╔╝   ██║   ",
-            "╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝    ╚═╝   "
+            $"{Y}███████╗ █████╗ ██╗     ██╗      ██████╗ ██╗   ██╗████████╗{R}",
+            $"{Y}██╔════╝██╔══██╗██║     ██║     ██╔═══██╗██║   ██║╚══██╔══╝{R}",
+            $"{Y}█████╗  ███████║██║     ██║     ██║   ██║██║   ██║   ██║   {R}",
+            $"{Y}██╔══╝  ██╔══██║██║     ██║     ██║   ██║██║   ██║   ██║   {R}",
+            $"{Y}██║     ██║  ██║███████╗███████╗╚██████╔╝╚██████╔╝   ██║   {R}",
+            $"{Y}╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝    ╚═╝   {R}",
+            string.Empty,
+            $"                       {D}.NET build system{R}",
+            $"                     {Y}☢{R} {D}survived the fallout{R}"
         }.ForEach(x => Debug(x.Replace(" ", " ")));
         Debug();
     }

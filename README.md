@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="320" src=".assets/fallout-logo.svg" alt="Fallout — .NET build system" />
+</p>
+
 # Fallout
 
 > Build automation for C#/.NET — the hard-fork successor to NUKE.
@@ -40,7 +44,5 @@ Multi-provider CI support (Azure Pipelines, GitLab, TeamCity, AppVeyor) was remo
 ## Credits
 
 - [Matthias Koch](https://github.com/matkoch) and the [NUKE contributors](https://github.com/nuke-build/nuke/graphs/contributors) — for creating and maintaining NUKE through version 10.x.
-- [JetBrains](https://jetbrains.com) — for [Rider](https://jetbrains.com/rider) and TeamCity Cloud during NUKE's development.
-- [SignPath](https://signpath.io) and the SignPath Foundation — historical code signing support for NUKE.
 
 If you maintained or contributed to NUKE and want to be credited differently here, please open an issue.

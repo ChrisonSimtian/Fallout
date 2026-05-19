@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- **Visual assets**: added `.assets/fallout-logo.svg` (radioactive trefoil + wordmark, yellow #F5C800 on black). Startup banner in `Host.WriteLogo` now colours the FALLOUT wordmark yellow and adds a tagline + "☢ survived the fallout" footer via true-color ANSI escapes (modern terminals render directly, older sinks ignore the escape bytes). Dropped all Matt-era visual assets — partner/sponsor logos (JetBrains, AWS, Datadog, Octopus, etc.) and NUKE-branded icons/logos/screenshots. NuGet `PackageIcon` temporarily disabled with TODO — needs a 256×256 PNG export of the new logo.
 - **Repo restructure**: `source/` → `src/`. Test projects moved to `tests/`. `images/` + root `icon.png` → `.assets/`. `Directory.Build.props` and `AssemblyInfo.cs` hoisted to root. See `docs/architecture.md` for the canonical layout.
 - **Removed Matt-era files** that no longer fit our workflow: `.editorconfig`, all `*.DotSettings` (ReSharper), `.run/` (Rider run configs), `GitVersion.yml` (we're on Nerdbank.GitVersioning), `external/` (orphan submodule placeholder), `Dockerfile` (referenced .NET 8, not wired to CI).
 - **TFS leftover stripped** from `nuget.config` and `src/Nuke.GlobalTool/templates/nuget.config` — the `<solution><add key="disableSourceControlIntegration"/></solution>` block is only relevant under TFVC, useless on git.
