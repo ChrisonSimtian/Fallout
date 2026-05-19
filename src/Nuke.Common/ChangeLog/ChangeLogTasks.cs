@@ -23,12 +23,16 @@ public static class ChangelogTasks
 {
     public static string GetNuGetReleaseNotes(string changelogFile, GitRepository repository = null)
     {
+        // URL-encode characters MSBuild treats as command-line/property metacharacters.
+        // Without this, MSBuild's property parser splits on ; (turning a long release note
+        // into multiple bogus arguments) and chokes on stray " in the value.
         var changelogSectionNotes = ExtractChangelogSectionNotes(changelogFile)
             .Select(x => x.Replace("- ", "\u2022 ")
                 .Replace("* ", "\u2022 ")
                 .Replace("+ ", "\u2022 ")
                 .Replace("`", string.Empty)
-                .Replace(",", "%2C")).ToList();
+                .Replace(",", "%2C")
+                .Replace(";", "%3B")).ToList();
 
         if (repository.IsGitHubRepository())
         {

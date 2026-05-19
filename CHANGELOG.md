@@ -5,9 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
-- **Repo restructure**: `source/` → `src/`; test projects moved to `tests/`; `images/` + root `icon.png` → `.assets/`. `Directory.Build.props` and `AssemblyInfo.cs` hoisted to root. See `docs/architecture.md` for the canonical layout.
+- **Repo restructure**: `source/` → `src/`. Test projects moved to `tests/`. `images/` + root `icon.png` → `.assets/`. `Directory.Build.props` and `AssemblyInfo.cs` hoisted to root. See `docs/architecture.md` for the canonical layout.
 - **Removed Matt-era files** that no longer fit our workflow: `.editorconfig`, all `*.DotSettings` (ReSharper), `.run/` (Rider run configs), `GitVersion.yml` (we're on Nerdbank.GitVersioning), `external/` (orphan submodule placeholder), `Dockerfile` (referenced .NET 8, not wired to CI).
-- **TFS leftover stripped** from `nuget.config` and `src/Nuke.GlobalTool/templates/nuget.config` (`<solution><add key="disableSourceControlIntegration"/></solution>` — only relevant under TFVC, useless on git).
+- **TFS leftover stripped** from `nuget.config` and `src/Nuke.GlobalTool/templates/nuget.config` — the `<solution><add key="disableSourceControlIntegration"/></solution>` block is only relevant under TFVC, useless on git.
+- **Fixed `GetNuGetReleaseNotes` escaping** — now also URL-encodes `;` (was only escaping `,`). Without this, semicolons in changelog bullets split the MSBuild `-p:PackageReleaseNotes=` value into multiple arguments and crashed Pack.
 - **Rebrand in progress: NUKE → Fallout.** License headers, LICENSE, package metadata, README, CONTRIBUTING, CODE_OF_CONDUCT and the startup logo carry the Fallout identity. Originally NUKE by [@matkoch](https://github.com/matkoch) and contributors. Namespaces, package IDs, and the global tool name still use `Nuke.*` and will rename in later phases — see the Fallout rebrand milestone.
 
 ## [10.1.0] / 2025-12-02
