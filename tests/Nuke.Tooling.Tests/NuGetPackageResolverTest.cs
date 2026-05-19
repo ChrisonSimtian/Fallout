@@ -15,7 +15,7 @@ public class NuGetPackageResolverTest
 {
     private static AbsolutePath RootDirectory => Constants.TryGetRootDirectoryFrom(EnvironmentInfo.WorkingDirectory).NotNull();
 
-    private static AbsolutePath ProjectFile => RootDirectory / "source" / "Nuke.Tooling.Tests" / "Nuke.Tooling.Tests.csproj";
+    private static AbsolutePath ProjectFile => RootDirectory / "tests" / "Nuke.Tooling.Tests" / "Nuke.Tooling.Tests.csproj";
     private static AbsolutePath AssetsFile => ProjectFile.Parent / "obj" / "project.assets.json";
 
     private const string XunitConsolePackageVersion = "2.6.1";

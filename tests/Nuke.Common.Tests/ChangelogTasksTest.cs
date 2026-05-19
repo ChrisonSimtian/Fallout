@@ -22,7 +22,7 @@ public class ChangelogTasksTest
 {
     private static AbsolutePath RootDirectory => Constants.TryGetRootDirectoryFrom(EnvironmentInfo.WorkingDirectory).NotNull();
 
-    private static AbsolutePath PathToChangelogReferenceFiles => RootDirectory / "source" / "Nuke.Common.Tests" / "ChangelogReferenceFiles";
+    private static AbsolutePath PathToChangelogReferenceFiles => RootDirectory / "tests" / "Nuke.Common.Tests" / "ChangelogReferenceFiles";
 
     [Theory]
     [MemberData(nameof(AllChangelogReference_1_0_0_Files))]

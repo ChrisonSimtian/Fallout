@@ -21,7 +21,7 @@ public class CompletionUtilityTest
 {
     private readonly VerifySettings _verifySettings;
     private static AbsolutePath RootDirectory => Constants.TryGetRootDirectoryFrom(EnvironmentInfo.WorkingDirectory).NotNull();
-    private static AbsolutePath TestDirectory => RootDirectory / "source" / "Nuke.Build.Tests";
+    private static AbsolutePath TestDirectory => RootDirectory / "tests" / "Nuke.Build.Tests";
 
     public CompletionUtilityTest()
     {

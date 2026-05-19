@@ -42,7 +42,7 @@ public class CakeConversionTests
         packages.Should().NotContain(x => x.Id.Contains("Cake"));
     }
 
-    private static AbsolutePath CakeScriptsDirectory => RootDirectory / "source" / "Nuke.GlobalTool.Tests" / "cake-scripts";
+    private static AbsolutePath CakeScriptsDirectory => RootDirectory / "tests" / "Nuke.GlobalTool.Tests" / "cake-scripts";
 
     public static IEnumerable<object[]> CakeFileNames
         => CakeScriptsDirectory.GlobFiles(Program.CAKE_FILE_PATTERN).Select(x => new object[] { x });
