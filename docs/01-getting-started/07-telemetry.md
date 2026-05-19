@@ -2,7 +2,11 @@
 title: Telemetry
 ---
 
-As an effort to improve NUKE and to provide you with a better, more tailored experience, we include a telemetry feature that collects anonymous usage data and enables us to make more informed decisions for the future.
+:::warning
+**Telemetry is currently a no-op in Fallout.** The previous NUKE telemetry endpoint (Azure Application Insights, owned by the original maintainer) is no longer used. The plumbing on this page describes the framework hooks that *would* fire if a Fallout-controlled endpoint were configured. Today, none is — telemetry short-circuits in the static constructor when no `InstrumentationKey` is set.
+:::
+
+As an effort to improve Fallout and to provide you with a better, more tailored experience, we include a telemetry feature that collects anonymous usage data and enables us to make more informed decisions for the future.
 
 We want you to be fully aware about telemetry, which is why the global tool will show a disclosure notice on first start. In addition, every build project requires to define a `NukeTelemetryVersion` property:
 
@@ -16,24 +20,23 @@ We will increase the telemetry version whenever we add or change significant dat
 
 ## Disclosure
 
-NUKE will display a prompt similar to the following when executing a build project without the `NukeTelemetryVersion` property being set or when executing the global tool for the first time.
+Fallout will display a prompt similar to the following when executing a build project without the `NukeTelemetryVersion` property being set or when executing the global tool for the first time — *once a telemetry endpoint is configured*.
 
 ```text
-Telemetry
----------
-NUKE collects anonymous usage data in order to help us improve your experience.
-
-Read more about scope, data points, and opt-out: https://nuke.build/telemetry
+Telemetry v1
+------------
+Fallout collects anonymous usage data in order to help us improve your experience.
+Read more about scope, data points, and opt-out: https://github.com/ChrisonSimtian/Fallout#telemetry
 ```
 
-Once you confirm the notice, NUKE will either:
+Once you confirm the notice, Fallout will either:
 
 - Create an awareness cookie under `~/.fallout/telemetry-awareness/v1` for the respective global tool, or
 - Add the `NukeTelemetryVersion` property to the project file.
 
 ## Scope
 
-As a global tool and library, NUKE has [multiple events](https://github.com/nuke-build/nuke/blob/master/source/Nuke.Build/Telemetry/Telemetry.Events.cs) where telemetry is collected:
+As a global tool and library, Fallout has [multiple events](https://github.com/ChrisonSimtian/Fallout/blob/main/src/Nuke.Build/Telemetry/Telemetry.Events.cs) where telemetry is collected:
 
 - `BuildStarted` – when a build was started
 - `TargetSucceeded` – when a target succeeded (only `Restore`, `Compile`, `Test`)
@@ -46,9 +49,9 @@ Data for `BuildStarted` and `TargetSucceeded` is only collected when `IsServerBu
 
 ## Data Points
 
-The [telemetry data points](https://github.com/nuke-build/nuke/blob/master/source/Nuke.Build/Telemetry/Telemetry.Properties.cs) do not collect personal data, such as usernames or email addresses. The data is sent securely to Microsoft servers using [Azure Monitor](https://azure.microsoft.com/services/monitor/) technology, held under restricted access, and published under strict security controls from secure [Azure Storage](https://azure.microsoft.com/services/storage/) systems.
+The [telemetry data points](https://github.com/ChrisonSimtian/Fallout/blob/main/src/Nuke.Build/Telemetry/Telemetry.Properties.cs) do not collect personal data, such as usernames or email addresses. If we wire up an endpoint, the data will be sent securely to whichever back-end Fallout's maintainers configure — documented here when that happens.
 
-Protecting your privacy is important to us. If you suspect the telemetry is collecting sensitive data or the data is being insecurely or inappropriately handled, file an issue in the [nuke-build/nuke](https://github.com/nuke-build/nuke) repository or [email us](mailto:info@nuke.build?subject=Telemetry) for investigation.
+Protecting your privacy is important to us. If you suspect the telemetry plumbing has been re-enabled incorrectly or could collect sensitive data, file an issue on the [Fallout repository](https://github.com/ChrisonSimtian/Fallout/issues).
 
 The telemetry feature collects the following data:
 

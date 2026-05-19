@@ -126,9 +126,13 @@ internal partial class Telemetry
 
     private static bool IsCommonType(Type type)
     {
+        // Recognize both the new Fallout repository and the legacy NUKE repository — types compiled
+        // from older NUKE versions still embed the upstream RepositoryUrl in their assembly metadata.
         return type.Assembly
             .GetCustomAttributes<AssemblyMetadataAttribute>()
-            .Any(x => x is { Key: "RepositoryUrl", Value: "https://github.com/nuke-build/nuke.git" });
+            .Any(x => x is { Key: "RepositoryUrl" } &&
+                      (x.Value == Constants.FalloutRepositoryGit ||
+                       x.Value == Constants.UpstreamNukeRepositoryGit));
     }
 
     private static bool IsCustomType(Type type)

@@ -1,4 +1,4 @@
-// Generated from https://github.com/nuke-build/nuke/blob/master/source/Nuke.Common/Tools/SignTool/SignTool.json
+// Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Nuke.Common/Tools/SignTool/SignTool.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;

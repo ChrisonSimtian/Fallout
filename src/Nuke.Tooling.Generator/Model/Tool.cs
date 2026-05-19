@@ -20,7 +20,7 @@ namespace Nuke.CodeGeneration.Model;
 public class Tool : IDeprecatable
 {
     [JsonProperty("$schema")]
-    public string Schema => "https://raw.githubusercontent.com/nuke-build/nuke/master/source/Nuke.Tooling.Generator/schema.json";
+    public string Schema => "https://raw.githubusercontent.com/ChrisonSimtian/Fallout/main/src/Nuke.Tooling.Generator/schema.json";
 
     [JsonIgnore] public string SpecificationFile { get; set; }
     [JsonIgnore] public string DefaultOutputFile => Path.ChangeExtension(SpecificationFile, "Generated.cs");
