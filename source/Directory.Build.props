@@ -11,12 +11,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>The AKEless Build System for C#/.NET</Description>
-    <Authors>Matthias Koch and contributors</Authors>
-    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of NUKE</Copyright>
+    <Description>Build automation for C#/.NET — the hard-fork successor to NUKE.</Description>
+    <Authors>Maintainers of Fallout (originally Matthias Koch and contributors)</Authors>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of Fallout</Copyright>
     <PackageTags>build automation continuous-integration tools orchestration</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://nuke.build</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/ChrisonSimtian/Fallout</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
 <!--    <PackageReadmeFile>README.md</PackageReadmeFile>-->
   </PropertyGroup>

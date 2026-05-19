@@ -1,6 +1,7 @@
-﻿// Copyright 2023 Maintainers of NUKE.
+﻿// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
 // Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
 using System.Linq;
@@ -19,7 +20,7 @@ partial class NukeBuild
         if (IsOutputEnabled(DefaultOutput.Logo))
             Host.WriteLogo();
 
-        Host.Information($"NUKE Execution Engine {typeof(NukeBuild).Assembly.GetInformationalText()}");
+        Host.Information($"Fallout Execution Engine {typeof(NukeBuild).Assembly.GetInformationalText()}");
         Host.Information();
     }
 

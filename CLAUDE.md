@@ -4,9 +4,11 @@ Guidance for Claude Code (and other AI assistants) when working in this repo.
 
 ## What this project is
 
-[NUKE](https://nuke.build) — a build automation system for C#/.NET. The build is itself a C# console app (`build/_build.csproj`), so any change to the framework can be dogfooded by running `./build.ps1` (Windows) or `./build.sh`.
+**Fallout** — a build automation system for C#/.NET, hard-fork successor to [NUKE](https://github.com/nuke-build/nuke). The build is itself a C# console app (`build/_build.csproj`), so any change to the framework can be dogfooded by running `./build.ps1` (Windows) or `./build.sh`.
 
-Originally a single-maintainer project ([matkoch](https://github.com/matkoch)); now under new maintenance. The codebase is mature, large, and has long-standing conventions — prefer matching existing patterns over introducing new ones.
+Originally NUKE by [matkoch](https://github.com/matkoch); under new maintenance as of 2026 and being renamed to Fallout. The codebase is mature, large, and has long-standing conventions — prefer matching existing patterns over introducing new ones.
+
+**Rebrand status:** rename is in progress. License headers and docs already say "Fallout"; namespaces (`Nuke.*`), package IDs (`Nuke.Common`), project filenames (`source/Nuke.*`), and the global tool name (`dotnet nuke`) still carry the old name and migrate in later phases. Track the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/nuke/milestone/1) for status.
 
 ## Stack
 
@@ -73,7 +75,7 @@ Validation workflows (`ubuntu-latest`, `windows-latest`, `macos-latest`) run on 
 - **Tests next to code**: every `Foo` project has a `Foo.Tests` project. Mirror the namespace.
 - **Coding style**: enforced via `.editorconfig` + ReSharper settings (`*.DotSettings`). Don't fight the formatter.
 - **Telemetry opt-out is set in test runs** (`NUKE_TELEMETRY_OPTOUT=true`). Keep it that way.
-- **License header**: every source file starts with the `// Copyright … Maintainers of NUKE.` block — copy from a neighbouring file when adding new ones.
+- **License header**: every source file starts with the 4-line `// Copyright … Maintainers of Fallout. // Originally based on NUKE …` block — copy from a neighbouring file when adding new ones.
 
 ## What not to do
 
