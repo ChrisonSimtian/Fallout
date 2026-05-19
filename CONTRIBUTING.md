@@ -1,127 +1,77 @@
 # Contribution Guidelines
 
-As a community, we want to help each other, provide constructive feedback, and make a better product. Of course, our [code of conduct](CODE_OF_CONDUCT.md) must be followed at any time.
+Fallout welcomes contributions. As a community, we want to help each other, provide constructive feedback, and make a better product. Our [code of conduct](CODE_OF_CONDUCT.md) applies at all times.
 
-## Consumer Expectations
+> **About the project.** Fallout is the hard-fork successor to [NUKE](https://github.com/nuke-build/nuke) (originally by [Matthias Koch](https://github.com/matkoch) and contributors). Maintenance moved to a new team in 2026; the codebase is in active rebrand. See the [README](README.md) for the full backstory.
 
-NUKE is a personal project that was made open-source to let the whole community benefit from it **free of charge** but also ["as is"](https://github.com/nuke-build/nuke/blob/develop/LICENSE). Like many open-source projects, it is primarily maintained and developed by a [single person](https://github.com/matkoch). Some of the **most time-consuming tasks** around the project are:
+## Where to start
 
-- Development of the NuGet package itself (C#, .NET, MSBuild)
-- Collecting CLI metadata (.NET ClI, MSBuild, Docker, +30 others)
-- Integration with CI/CD services (Azure Pipelines, GitHub Actions, TeamCity, ...)
-- IDE extensions (VSSDK, ReSharper SDK, IntelliJ SDK, Kotlin, JVM, Gradle)
-- Website (JavaScript, TypeScript, React, Docusaurus)
-- Hosting (Azure, Cloudflare, Algolia, Fathom)
-- Documentation, presentation slides, and blog posts
-- Helping in GitHub issues/discussions, Slack, and Discord
-- Talking at conferences and meetups, including travel
-- Promotion on Twitter and Mastodon
+- Discuss non-trivial changes in an [issue](https://github.com/ChrisonSimtian/nuke/issues) first.
+- Small fixes (typos, broken links, tool wrapper additions) can go straight to a PR against `main`.
+- We're trunk-based: branch from `main`, open a PR against `main`. No `develop` or `release/*` branches.
 
-This list should give you an impression of what it took to make NUKE what it is today and what it continuously takes to move it forward. Obviously, though, there's only a limited amount of time a single person can dedicate besides their personal life and real job [without burning out](https://www.jeffgeerling.com/blog/2022/burden-open-source-maintainer).
+## Baseline contributions
 
-Therefore, **everything that benefits a larger audience is prioritized** over digging into issues that only affect a single or few individuals. Please don't take offense when your issue or pull request is not getting the attention you were hoping for. It is simply a time management decision.
-
-## Baseline Contributions
-
-There are several minimal to zero efforts you can make to show your support for the project:
-
-- Give the [GitHub project](https://github.com/nuke-build/nuke/stargazers) a star (and tell your team)
-- Follow [@nukebuildnet](https://twitter.com/nukebuildnet) and [@nuke@dotnet.social](https://dotnet.social/@nuke)
-- Upvote, share and comment on our content (see [#mentions](https://app.slack.com/client/T9QUKHC4A/CDJD8CGQ5) on Slack)
-- Talk about NUKE on social media and let others know where it can help (tag us!)
-
-The above points are considered somewhat of the norm in exchange for using the project free of charge.
-
-## Sustainability Contributions
-
-There are plenty of ways to show your commitment to the project and strengthen its longevity. These are typically tied to contributing time or money but also allow for prioritizing your own issues in return:
-
-- [Convince your company to sponsor](https://humanwhocodes.com/blog/2021/05/talk-to-your-company-sponsoring-open-source/)
-- Sponsor personally (e.g., when the project improves your work performance reviews)
-- Take ownership of a tool wrapper or CI/CD service (.NET CLI, GitHub Actions, etc.)
-- Write a blog post or give a meetup talk (let us know!)
-- Help others in GitHub issues/discussions or on Slack and Discord
-
-**If you need help with any of the above suggestions, don't hesitate to ask!**
+- Star the [GitHub project](https://github.com/ChrisonSimtian/nuke/stargazers) to help others find it.
+- File issues with concrete reproduction steps, version info, and logs.
+- Help triage existing issues — confirming bugs or pointing to fixes counts.
 
 ## Issues
 
 ### Before creating an issue
 
-Evaluate whether your topic is going to be a valid issue:
-
-- Have you read and searched the [documentation](https://nuke.build/docs/introduction/)?
-- Have you checked the [FAQ](https://nuke.build/faq/)?
-- Is your issue more of a question? Ask on [GitHub discussions](https://github.com/nuke-build/nuke/discussions), [Slack](https://nuke.build/slack), or [Discord](https://nuke.build/discord)!
-- Have you checked existing/closed issues? Is your version behind?
-- Have you read the relevant [changelog notes](https://github.com/nuke-build/nuke/blob/develop/CHANGELOG.md)?
-- Have you verified it's not an external tool issue? Invoke the command manually!
-- Don't file issues for tool wrappers. Send a pull request instead!
-- Refrain from debating the governance or state of the project out of your own interests (see [consumer expectations](#consumer-expectations) & [sustainability contributions](#sustainability-contributions))
+- Search existing/closed issues — your problem may already have an answer.
+- Check the [CHANGELOG](CHANGELOG.md) for recent changes that affect your scenario.
+- For tool wrappers, send a PR instead of an issue — they're mechanical to add.
 
 ### When creating an issue
 
-Choose one of the [issue templates](https://github.com/nuke-build/nuke/issues/new/choose) and fill it out as well as possible. This includes, but is not limited to:
+- State the issue as concisely as possible.
+- Use [markdown](https://docs.github.com/en/get-started/writing-on-github) for code, logs, and special text fragments.
+- Avoid pasting screenshots of text — paste the text itself in a code block.
 
-- State the issue as short as possible (more likely there's time to comprehend it)
-- Use [markdown](https://docs.github.com/en/get-started/writing-on-github) for code, logs, and other special text fragments
-- Don't paste images when they're showing log output or exception messages
-- [Refrain from making demands or expressing disappointment](https://mikemcquaid.com/2018/03/19/open-source-maintainers-owe-you-nothing) (see [consumer expectations](#consumer-expectations) & [sustainability contributions](#sustainability-contributions))
+### What gets triaged first
 
-**When an issue is of poor quality, or it is evident that the guidelines haven't been read, it will be closed without any further response.**
+- Bugs blocking active enterprise CI/CD usage.
+- Regressions versus the last NUKE 10.x release.
+- Rebrand-track work (see the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/nuke/milestone/1)).
+- Demand-driven items where multiple users have weighed in.
 
-### After creating an issue
+## Pull requests
 
-Once the `triage` label is removed from your issue, you will know how it is seen from the project's perspective:
+### Before opening a PR
 
-- Issues labeled as `area:cicd` or `area:tools` usually can be fixed in user code
-  - [Custom arguments](https://nuke.build/docs/common/cli-tools/#custom-arguments) can be wrapped in local extension methods
-  - Additional steps in CI/CD configuration generation can be added through inheritance
-- If your issue is labeled as `good first issue`, consider sending a pull-request
+- Branch from `main`. Name your branch `feature/<slug>`, `bugfix/<slug>`, or `chore/<slug>`.
+- Make sure your employer allows the contribution.
+- Read [CLAUDE.md](CLAUDE.md) for the codebase conventions — package versions go in `Directory.Packages.props`, license headers are mechanical, tests live next to code.
+- Run `./build.ps1 Test` (or `./build.sh Test`) locally first.
 
-The issue will be addressed sooner or later depending on the priority, available time, and your commitment to the project. In rare cases, it might also be closed due to missing resources.
+### When writing the PR
 
-## Pull-Requests
+- Aim for qualitative, readable code that matches the surrounding style.
+- Don't fight `.editorconfig` or the ReSharper settings.
+- Add tests when meaningful — every `Foo` project has a sibling `Foo.Tests`.
+- Don't commit code generated by `./build.ps1 GenerateTools` — generated `.cs` files are regenerated manually once per release.
 
-### Before creating a pull-request
+### Tool wrappers
 
-In your own interest of getting a pull-request merged (timely):
+Tool wrapper JSON lives under `source/Nuke.Common/Tools/<Tool>/<Tool>.json`. When adding or extending one:
 
-- Discuss non-trivial changes in an [issue](https://github.com/nuke-build/nuke/issues/new/choose)
-- Make sure your employer allows contributions
-- Branch your work off from the `develop` branch
-- Get familiar with the coding conventions
-
-### When working on a pull-request
-
-- Aim for qualitative and readable code
-- Follow the coding style of the existing codebase
-- Make sure the project builds, and all tests pass
-- Don't copy/paste chunks of code, even when it's meant as a draft
-- Drafting APIs is okay as long as you're ready to finish it later
-- Add tests when meaningful, particularly when there is a related test class already
-
-### When creating a pull-request
-
-- [Link the issue it relates to](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) (unless it's trivial)
-- Check all the applicable boxes
-
-For tool wrappers (e.g. [.NET CLI](https://github.com/nuke-build/nuke/blob/develop/source/Nuke.Common/Tools/DotNet/DotNet.json)), also note the following remarks:
-
-- Copy/paste as much as possible
-- Cover at least a full command with all its arguments
-- Use tags for formatting in `help`
+- Copy the shape from a neighbouring tool.
+- Cover at least a full command with all its arguments.
+- Use formatting tags in `help`:
   - `<c>` for inline code
   - `<a>` for links
-  - `<ul>`/`<ol>` for lists
+  - `<ul>` / `<ol>` for lists
   - `<em>` for emphasized text
-  - `<para/>` in between paragraphs (as opposed to `<p>...</p>`)
-- Don't explicitly define `secret: false` (it's the default)
-- Don't provide `default: xxx` (it's obsolete)
-- Test your changes by calling the `GenerateTools` target
-- Don't commit generated code; it will be done manually once per release
+  - `<para/>` between paragraphs (not `<p>...</p>`)
+- Don't write `secret: false` (it's the default).
+- Don't write `default: xxx` (obsolete).
+- Run `./build.ps1 GenerateTools` to verify it generates cleanly.
+- Don't commit the generated `.cs` output.
 
-### After creating a pull-request
+### After opening a PR
 
-- Don't bother to rebase your pull-request if commits have been force-pushed
-- [Don't "push" your pull-request](https://www.igvita.com/2011/12/19/dont-push-your-pull-requests/) (see [sustainability contributions](#sustainability-contributions))
+- CI runs `ubuntu-latest`, `windows-latest`, and `macos-latest` matrices.
+- Address review feedback in additional commits rather than force-pushing — easier to review the changes.
+- If CI fails on something unrelated to your change, ping a maintainer.

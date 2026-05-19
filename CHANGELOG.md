@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
+- **Rebrand in progress: NUKE → Fallout.** License headers, LICENSE, package metadata, README, CONTRIBUTING, CODE_OF_CONDUCT and the startup logo now carry the Fallout identity. Originally NUKE by [@matkoch](https://github.com/matkoch) and contributors. Namespaces, package IDs, and the global tool name still use `Nuke.*` and will rename in later phases — see the Fallout rebrand milestone.
 
 ## [10.1.0] / 2025-12-02
 - Fixed solution folders in `StronglyTypedSolutionGenerator`
