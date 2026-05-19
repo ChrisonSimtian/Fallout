@@ -30,11 +30,12 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(_IsPacking)' == 'True'">
-    <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
-<!--    <None Include="..\..\README.md" Pack="true" PackagePath="\" />-->
+    <None Include="$(MSBuildThisFileDirectory).assets\icon.png" Pack="true" PackagePath="\" />
+<!--    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />-->
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- Central package management is off for build/_build.csproj; skip these refs there since they'd require explicit versions. -->
+  <ItemGroup Condition="'$(ManagePackageVersionsCentrally)' != 'false'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
     <PackageReference Include="Nerdbank.GitVersioning" PrivateAssets="All" />
   </ItemGroup>
@@ -52,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>

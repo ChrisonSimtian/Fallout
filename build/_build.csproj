@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\source\Nuke.Common\Nuke.Common.props" />
+  <Import Project="..\src\Nuke.Common\Nuke.Common.props" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -17,7 +17,7 @@
   <!-- Test properties for MSBuild integration -->
   <PropertyGroup>
     <NukeTasksEnabled Condition="'$(NukeTasksEnabled)' == ''">False</NukeTasksEnabled>
-    <NukeTasksDirectory>$(MSBuildThisFileDirectory)\..\source\Nuke.MSBuildTasks\bin\Debug\net8.0\publish</NukeTasksDirectory>
+    <NukeTasksDirectory>$(MSBuildThisFileDirectory)\..\src\Nuke.MSBuildTasks\bin\Debug\net8.0\publish</NukeTasksDirectory>
 
 <!--    <PackAsTool>True</PackAsTool>-->
 <!--    <ToolCommandName>build</ToolCommandName>-->
@@ -63,11 +63,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\source\Nuke.Components\Nuke.Components.csproj" />
-    <ProjectReference Include="..\source\Nuke.Tooling.Generator\Nuke.Tooling.Generator.csproj" />
-    <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\src\Nuke.Components\Nuke.Components.csproj" />
+    <ProjectReference Include="..\src\Nuke.Tooling.Generator\Nuke.Tooling.Generator.csproj" />
+    <ProjectReference Include="..\src\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
 
-  <Import Project="..\source\Nuke.Common\Nuke.Common.targets" />
+  <Import Project="..\src\Nuke.Common\Nuke.Common.targets" />
 
 </Project>

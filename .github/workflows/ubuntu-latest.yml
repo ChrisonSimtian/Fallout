@@ -22,7 +22,7 @@ on:
       - main
     paths-ignore:
       - 'docs/**'
-      - 'images/**'
+      - '.assets/**'
       - '**/*.md'
 
 jobs:

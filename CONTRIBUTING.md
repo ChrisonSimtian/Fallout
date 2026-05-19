@@ -55,7 +55,7 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 
 ### Tool wrappers
 
-Tool wrapper JSON lives under `source/Nuke.Common/Tools/<Tool>/<Tool>.json`. When adding or extending one:
+Tool wrapper JSON lives under `src/Nuke.Common/Tools/<Tool>/<Tool>.json`. When adding or extending one:
 
 - Copy the shape from a neighbouring tool.
 - Cover at least a full command with all its arguments.

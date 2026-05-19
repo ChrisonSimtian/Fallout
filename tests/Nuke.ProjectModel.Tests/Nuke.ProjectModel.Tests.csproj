@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nuke.Build.Shared\Nuke.Build.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Nuke.ProjectModel\Nuke.ProjectModel.csproj" />
+  </ItemGroup>
+
+</Project>

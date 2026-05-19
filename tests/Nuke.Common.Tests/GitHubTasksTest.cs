@@ -31,11 +31,11 @@ public class GitHubTasksTest
         repository.GetGitHubDownloadUrl(RootDirectory / "LICENSE").Should().Be($"{rawUrl}/LICENSE");
 
         repository.GetGitHubBrowseUrl("LICENSE").Should().Be($"{blobUrl}/LICENSE");
-        repository.GetGitHubBrowseUrl("source").Should().Be($"{treeUrl}/source");
+        repository.GetGitHubBrowseUrl("src").Should().Be($"{treeUrl}/src");
 
         repository.GetGitHubBrowseUrl(RootDirectory / "LICENSE").Should().Be($"{blobUrl}/LICENSE");
-        repository.GetGitHubBrowseUrl(RootDirectory / "source").Should().Be($"{treeUrl}/source");
-        repository.GetGitHubBrowseUrl(RootDirectory / "source" / "Directory.Build.props").Should().Be($"{blobUrl}/source/Directory.Build.props");
+        repository.GetGitHubBrowseUrl(RootDirectory / "src").Should().Be($"{treeUrl}/src");
+        repository.GetGitHubBrowseUrl(RootDirectory / "Directory.Build.props").Should().Be($"{blobUrl}/Directory.Build.props");
 
         repository.GetGitHubBrowseUrl("directory", itemType: GitHubItemType.Directory).Should().Be($"{treeUrl}/directory");
         repository.GetGitHubBrowseUrl("dir/file", itemType: GitHubItemType.File).Should().Be($"{blobUrl}/dir/file");

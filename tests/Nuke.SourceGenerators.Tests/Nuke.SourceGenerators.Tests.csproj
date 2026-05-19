@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Nuke.Common\Nuke.Common.csproj" />
-    <ProjectReference Include="..\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" />
+    <ProjectReference Include="..\..\src\Nuke.Common\Nuke.Common.csproj" />
+    <ProjectReference Include="..\..\src\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" />
   </ItemGroup>
 
   <ItemGroup>

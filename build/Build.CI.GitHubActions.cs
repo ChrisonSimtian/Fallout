@@ -30,7 +30,7 @@ using Nuke.Components;
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
     OnPullRequestBranches = new[] { MainBranch },
-    OnPullRequestExcludePaths = new[] { "docs/**", "images/**", "**/*.md" },
+    OnPullRequestExcludePaths = new[] { "docs/**", ".assets/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 partial class Build
