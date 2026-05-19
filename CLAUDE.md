@@ -8,7 +8,7 @@ Guidance for Claude Code (and other AI assistants) when working in this repo.
 
 Originally NUKE by [matkoch](https://github.com/matkoch); under new maintenance as of 2026 and being renamed to Fallout. The codebase is mature, large, and has long-standing conventions — prefer matching existing patterns over introducing new ones.
 
-**Rebrand status:** rename is in progress. License headers, docs, repo layout, and assets already say "Fallout"; namespaces (`Nuke.*`), package IDs (`Nuke.Common`), project filenames (`src/Nuke.*`), and the global tool name (`dotnet nuke`) still carry the old name and migrate in later phases. Track the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/Fallout/milestone/1) for status.
+**Rebrand status:** rename is in progress. License headers, docs, repo layout, and assets already say "Fallout"; namespaces (`Nuke.*`), package IDs (`Nuke.Common`), project filenames (`src/Nuke.*`), and the global tool name (`dotnet nuke`) still carry the old name and migrate in later phases. Track the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/Fallout/milestone/1) for status; see [docs/rebrand-plan.md](docs/rebrand-plan.md) for the locked namespace mapping and the consumer bridge strategy.
 
 ## Stack
 
