@@ -1,0 +1,51 @@
+// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
+// Distributed under the MIT License.
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
+
+using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
+using Fallout.Common.IO;
+using Fallout.Common.Tooling;
+using Fallout.Common.Utilities;
+
+namespace Fallout.Common.Tools.OctoVersion;
+
+partial class OctoVersionTasks
+{
+    protected override object GetResult<T>(ToolOptions options, IReadOnlyCollection<Output> output)
+    {
+        if (options is OctoVersionGetVersionSettings getVersion)
+        {
+            Assert.FileExists(getVersion.OutputJsonFile);
+            try
+            {
+                var file = (AbsolutePath) getVersion.OutputJsonFile;
+                return file.ReadJson<OctoVersionInfo>(new JsonSerializerSettings { ContractResolver = new AllWritableContractResolver() });
+            }
+            catch (Exception exception)
+            {
+                throw new Exception($"Cannot parse {nameof(OctoVersion)} output from {getVersion.OutputJsonFile.SingleQuote()}.", exception);
+            }
+        }
+
+        return null;
+    }
+}
+
+[PublicAPI]
+public record OctoVersionInfo(
+    int? Major,
+    int? Minor,
+    int? Patch,
+    string PreReleaseTag,
+    string PreReleaseTagWithDash,
+    string BuildMetaData,
+    string BuildMetadataWithPlus,
+    string MajorMinorPatch,
+    string NuGetCompatiblePreReleaseWithDash,
+    string FullSemVer,
+    string InformationalVersion,
+    string NuGetVersion);

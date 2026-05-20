@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\src\Nuke.Common\Nuke.Common.props" />
+  <Import Project="..\src\Fallout.Common\Fallout.Common.props" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -17,7 +17,7 @@
   <!-- Test properties for MSBuild integration -->
   <PropertyGroup>
     <NukeTasksEnabled Condition="'$(NukeTasksEnabled)' == ''">False</NukeTasksEnabled>
-    <NukeTasksDirectory>$(MSBuildThisFileDirectory)\..\src\Nuke.MSBuildTasks\bin\Debug\net8.0\publish</NukeTasksDirectory>
+    <NukeTasksDirectory>$(MSBuildThisFileDirectory)\..\src\Fallout.MSBuildTasks\bin\Debug\net8.0\publish</NukeTasksDirectory>
 
 <!--    <PackAsTool>True</PackAsTool>-->
 <!--    <ToolCommandName>build</ToolCommandName>-->
@@ -44,7 +44,7 @@
 <!--    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>-->
 <!--  </PropertyGroup>-->
 <!--  <ItemGroup>-->
-<!--    <PackageReference Include="Nuke.SourceGenerators" Version="1.0.0-beta01" OutputItemType="Analyzer" />-->
+<!--    <PackageReference Include="Fallout.SourceGenerators" Version="1.0.0-beta01" OutputItemType="Analyzer" />-->
 <!--  </ItemGroup>-->
 
   <PropertyGroup>
@@ -63,11 +63,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Nuke.Components\Nuke.Components.csproj" />
-    <ProjectReference Include="..\src\Nuke.Tooling.Generator\Nuke.Tooling.Generator.csproj" />
-    <ProjectReference Include="..\src\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\src\Fallout.Components\Fallout.Components.csproj" />
+    <ProjectReference Include="..\src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
+    <ProjectReference Include="..\src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
 
-  <Import Project="..\src\Nuke.Common\Nuke.Common.targets" />
+  <Import Project="..\src\Fallout.Common\Fallout.Common.targets" />
 
 </Project>

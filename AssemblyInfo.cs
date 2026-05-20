@@ -5,27 +5,27 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Nuke.Build")]
-[assembly: InternalsVisibleTo("Nuke.Build.Shared")]
-[assembly: InternalsVisibleTo("Nuke.Build.Tests")]
-[assembly: InternalsVisibleTo("Nuke.Common")]
-[assembly: InternalsVisibleTo("Nuke.Common.Tests")]
-[assembly: InternalsVisibleTo("Nuke.GlobalTool")]
-[assembly: InternalsVisibleTo("Nuke.GlobalTool.Tests")]
-[assembly: InternalsVisibleTo("Nuke.ProjectModel.Tests")]
-[assembly: InternalsVisibleTo("Nuke.SourceGenerators")]
-[assembly: InternalsVisibleTo("Nuke.SolutionModel")]
-[assembly: InternalsVisibleTo("Nuke.SolutionModel.Tests")]
-[assembly: InternalsVisibleTo("Nuke.Tooling")]
-[assembly: InternalsVisibleTo("Nuke.Tooling.Tests")]
-[assembly: InternalsVisibleTo("Nuke.Utilities.IO.Globbing")]
-[assembly: InternalsVisibleTo("Nuke.Utilities.Tests")]
+[assembly: InternalsVisibleTo("Fallout.Build")]
+[assembly: InternalsVisibleTo("Fallout.Build.Shared")]
+[assembly: InternalsVisibleTo("Fallout.Build.Tests")]
+[assembly: InternalsVisibleTo("Fallout.Common")]
+[assembly: InternalsVisibleTo("Fallout.Common.Tests")]
+[assembly: InternalsVisibleTo("Fallout.GlobalTool")]
+[assembly: InternalsVisibleTo("Fallout.GlobalTool.Tests")]
+[assembly: InternalsVisibleTo("Fallout.ProjectModel.Tests")]
+[assembly: InternalsVisibleTo("Fallout.SourceGenerators")]
+[assembly: InternalsVisibleTo("Fallout.SolutionModel")]
+[assembly: InternalsVisibleTo("Fallout.SolutionModel.Tests")]
+[assembly: InternalsVisibleTo("Fallout.Tooling")]
+[assembly: InternalsVisibleTo("Fallout.Tooling.Tests")]
+[assembly: InternalsVisibleTo("Fallout.Utilities.IO.Globbing")]
+[assembly: InternalsVisibleTo("Fallout.Utilities.Tests")]
 
-// Extensions
+// External extensions — kept as Nuke.* until those projects rebrand independently.
 [assembly: InternalsVisibleTo("Nuke.VisualStudio")]
 [assembly: InternalsVisibleTo("ReSharper.Nuke")]
 [assembly: InternalsVisibleTo("ReSharper.Nuke.Rider")]
 
-// Functions
+// External functions — same: outside this repo's rebrand scope.
 [assembly: InternalsVisibleTo("Nuke.Remote.Functions")]
 [assembly: InternalsVisibleTo("Nuke.Website.Functions")]

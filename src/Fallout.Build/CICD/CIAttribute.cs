@@ -1,0 +1,27 @@
+﻿// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
+// Distributed under the MIT License.
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
+
+using System;
+using System.Linq;
+using System.Reflection;
+using JetBrains.Annotations;
+using Fallout.Common.Utilities;
+using Fallout.Common.ValueInjection;
+
+namespace Fallout.Common.CI;
+
+[MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
+public class CIAttribute : ValueInjectionAttributeBase
+{
+    public override object GetValue(MemberInfo member, object instance)
+    {
+        // TODO: allow with conversion?
+        var memberType = member.GetMemberType();
+        var instanceProperty = memberType.GetProperty(nameof(Host.Instance), ReflectionUtility.Static);
+        Assert.True(instanceProperty != null, $"Type '{memberType}' is not compatible for injection via '{nameof(CIAttribute)}'");
+        return instanceProperty.GetValue(obj: null);
+    }
+}

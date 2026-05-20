@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities\Fallout.Utilities.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.IO.Compression\Fallout.Utilities.IO.Compression.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
+  </ItemGroup>
+
+</Project>

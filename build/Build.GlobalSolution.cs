@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.Git;
-using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tools.GitHub;
-using Nuke.Common.Utilities;
-using Nuke.Utilities.Text.Yaml;
-using static Nuke.Common.ControlFlow;
-using static Nuke.Common.Tools.Git.GitTasks;
+using Fallout.Common;
+using Fallout.Common.Git;
+using Fallout.Common.IO;
+using Fallout.Common.ProjectModel;
+using Fallout.Common.Tools.GitHub;
+using Fallout.Common.Utilities;
+using Fallout.Utilities.Text.Yaml;
+using static Fallout.Common.ControlFlow;
+using static Fallout.Common.Tools.Git.GitTasks;
 
 partial class Build
 {
@@ -26,7 +26,7 @@ partial class Build
     AbsolutePath ExternalRepositoriesDirectory => RootDirectory / "external";
     AbsolutePath ExternalRepositoriesFile => ExternalRepositoriesDirectory / "repositories.yml";
 
-    IEnumerable<Nuke.Common.ProjectModel.Solution> ExternalSolutions
+    IEnumerable<Fallout.Common.ProjectModel.Solution> ExternalSolutions
         => ExternalRepositories
             .Select(x => ExternalRepositoriesDirectory / x.GetGitHubName())
             .Select(x => x.GlobFiles("*.sln").Single())

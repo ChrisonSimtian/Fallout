@@ -6,11 +6,11 @@
 using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.IO;
-using Nuke.Common.Utilities;
-using Nuke.Common.Utilities.Collections;
-using static Nuke.Common.Tools.Git.GitTasks;
+using Fallout.Common;
+using Fallout.Common.IO;
+using Fallout.Common.Utilities;
+using Fallout.Common.Utilities.Collections;
+using static Fallout.Common.Tools.Git.GitTasks;
 
 partial class Build
 {

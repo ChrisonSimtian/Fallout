@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup Condition="'$(NukeTasksDirectory)' == ''">
+    <NukeTasksDirectory Condition="'$(MSBuildRuntimeType)' == 'Core'">$(MSBuildThisFileDirectory)\netcore</NukeTasksDirectory>
+    <NukeTasksDirectory Condition="'$(MSBuildRuntimeType)' != 'Core'">$(MSBuildThisFileDirectory)\netfx</NukeTasksDirectory>
+  </PropertyGroup>
+
+  <Import Project="$(NukeTasksDirectory)\Fallout.MSBuildTasks.targets" Condition="'$(NukeTasksEnabled)' != 'False'" />
+
+  <PropertyGroup>
+    <NukeScriptDirectory Condition="'$(NukeScriptDirectory)' == ''">$(NukeRootDirectory)</NukeScriptDirectory>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(NukeDefaultExcludes)' != 'False'">
+    <None Remove="*.csproj.DotSettings;.editorconfig;Directory.Build.props;Directory.Build.targets" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NukeScriptDirectory)' != '' And '$(NukeExcludeBoot)' != 'True'">
+    <None Include="$(NukeScriptDirectory)\build.cmd" LinkBase="boot" Condition="Exists('$(NukeScriptDirectory)\build.cmd')" />
+    <None Include="$(NukeScriptDirectory)\build.ps1" LinkBase="boot" Condition="Exists('$(NukeScriptDirectory)\build.ps1')" />
+    <None Include="$(NukeScriptDirectory)\build.sh" LinkBase="boot" Condition="Exists('$(NukeScriptDirectory)\build.sh')" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeConfig)' != 'True'">
+    <None Include="$(NukeRootDirectory)\.fallout\parameters.json" LinkBase="config" />
+    <None Include="$(NukeRootDirectory)\.fallout\parameters.*.json" LinkBase="config" />
+    <!-- Legacy: pick up pre-Fallout .nuke/parameters.json if a consumer hasn't migrated yet. -->
+    <None Include="$(NukeRootDirectory)\.nuke\parameters.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\.nuke\parameters.json')" />
+    <None Include="$(NukeRootDirectory)\.nuke\parameters.*.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\.nuke')" />
+    <None Include="$(NukeRootDirectory)\global.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\global.json')" />
+    <None Include="$(NukeRootDirectory)\nuget.config" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\nuget.config')" />
+    <None Include="$(NukeRootDirectory)\GitVersion.yml" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\GitVersion.yml')" />
+    <None Include="$(NukeRootDirectory)\version.json" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\version.json')" />
+    <None Include="$(NukeRootDirectory)\qodana.yml" LinkBase="config" Condition="Exists('$(NukeRootDirectory)\qodana.yml')" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeLogs)' != 'True'">
+    <None Include="$(NukeRootDirectory)\.fallout\temp\build*.log" Exclude="$(NukeRootDirectory)\.fallout\temp\build-attempt.log" LinkBase="logs" />
+    <!-- Legacy: pick up logs from pre-Fallout .nuke/temp if present. -->
+    <None Include="$(NukeRootDirectory)\.nuke\temp\build*.log" Exclude="$(NukeRootDirectory)\.nuke\temp\build-attempt.log" LinkBase="logs" Condition="Exists('$(NukeRootDirectory)\.nuke\temp')" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeDirectoryBuild)' != 'True'">
+    <None Include="$(NukeRootDirectory)\**\Directory.Build.*"
+          Link="Directory.Build\$([MSBuild]::MakeRelative($(MSBuildProjectDirectory)\$(NukeRootDirectory), %(FullPath)))"
+          LinkBase="Directory.Build" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NukeRootDirectory)' != '' And '$(NukeExcludeCi)' != 'True'">
+    <None Include="$(NukeRootDirectory)\.teamcity\settings.kts" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\.teamcity\settings.kts')" />
+    <None Include="$(NukeRootDirectory)\.github\workflows\*.yml" LinkBase="ci" />
+    <None Include="$(NukeRootDirectory)\azure-pipelines*.yml" LinkBase="ci" />
+    <None Include="$(NukeRootDirectory)\Jenkinsfile" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\Jenkinsfile')" />
+    <None Include="$(NukeRootDirectory)\appveyor*.yml" LinkBase="ci" />
+    <None Include="$(NukeRootDirectory)\.travis.yml" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\.travis.yml')" />
+    <None Include="$(NukeRootDirectory)\bamboo-specs\bamboo.yml" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\bamboo-specs\bamboo.yml')" />
+    <None Include="$(NukeRootDirectory)\bamboo-specs\bamboo.yaml" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\bamboo-specs\bamboo.yaml')" />
+    <None Include="$(NukeRootDirectory)\.gitlab-ci.yml" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\.gitlab-ci.yml')" />
+    <None Include="$(NukeRootDirectory)\.space.kts" LinkBase="ci" Condition="Exists('$(NukeRootDirectory)\.space.kts')" />
+  </ItemGroup>
+
+</Project>

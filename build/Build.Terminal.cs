@@ -5,8 +5,8 @@
 
 using System;
 using System.Linq;
-using Nuke.Common;
-using Nuke.Common.Execution;
+using Fallout.Common;
+using Fallout.Common.Execution;
 
 [DisableDefaultOutput<Terminal>(
     DefaultOutput.Logo,

@@ -1,0 +1,31 @@
+// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
+// Distributed under the MIT License.
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
+
+using System;
+using System.Linq;
+using JetBrains.Annotations;
+
+namespace Fallout.Common.Utilities;
+
+public static partial class StringExtensions
+{
+    /// <summary>
+    /// Prepends a string to another string.
+    /// </summary>
+    [Pure]
+    public static string Prepend(this string str, string prependText)
+    {
+        return prependText + str;
+    }
+
+    /// <summary>
+    /// Appends a string to another string.
+    /// </summary>
+    [Pure]
+    public static string Append(this string str, string appendText)
+    {
+        return str + appendText;
+    }
+}

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RollForward>LatestMajor</RollForward>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>nuke</ToolCommandName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\Fallout.Common\Fallout.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="matkoch.spectre.console" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="templates\*.cs" />
+    <EmbeddedResource Include="templates\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\.fallout\temp\licenses\*.txt" PackagePath="licenses" Pack="true" Visible="false" />
+  </ItemGroup>
+
+</Project>

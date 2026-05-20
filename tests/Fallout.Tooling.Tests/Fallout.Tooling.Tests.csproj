@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Tooling\Fallout.Tooling.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageDownload Include="xunit.runner.console" Version="[2.6.1]" />
+  </ItemGroup>
+
+</Project>

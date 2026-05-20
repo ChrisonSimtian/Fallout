@@ -5,17 +5,17 @@
 
 using System;
 using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.IO;
-using Nuke.Common.Tools.GitHub;
-using Nuke.Common.Utilities.Collections;
-using static Nuke.CodeGeneration.CodeGenerator;
-using static Nuke.CodeGeneration.ReferenceUpdater;
-using static Nuke.Common.Tools.Git.GitTasks;
+using Fallout.Common;
+using Fallout.Common.IO;
+using Fallout.Common.Tools.GitHub;
+using Fallout.Common.Utilities.Collections;
+using static Fallout.CodeGeneration.CodeGenerator;
+using static Fallout.CodeGeneration.ReferenceUpdater;
+using static Fallout.Common.Tools.Git.GitTasks;
 
 partial class Build
 {
-    AbsolutePath SpecificationsDirectory => RootDirectory / "source" / "Nuke.Common" / "Tools";
+    AbsolutePath SpecificationsDirectory => RootDirectory / "source" / "Fallout.Common" / "Tools";
     AbsolutePath ReferencesDirectory => BuildProjectDirectory / "references";
 
     Target References => _ => _
@@ -34,7 +34,7 @@ partial class Build
             SpecificationsDirectory.GlobFiles("*/*.json").ForEach(x =>
                 GenerateCode(
                     x,
-                    namespaceProvider: x => $"Nuke.Common.Tools.{x.Name}",
+                    namespaceProvider: x => $"Fallout.Common.Tools.{x.Name}",
                     sourceFileProvider: x => GitRepository.SetBranch(MainBranch).GetGitHubBrowseUrl(x.SpecificationFile)));
         });
 }

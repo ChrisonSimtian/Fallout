@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Fallout.CodeGeneration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Humanizer" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="System.ComponentModel.Annotations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Nuke Include="..\..\build\Build.CodeGeneration.cs" />
+  </ItemGroup>
+
+</Project>

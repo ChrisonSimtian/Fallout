@@ -1,0 +1,30 @@
+// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
+// Distributed under the MIT License.
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
+
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+namespace Fallout.Common.Utilities.Collections;
+
+public static partial class DictionaryExtensions
+{
+    public static Dictionary<TKey, TValue> AddDictionary<TKey, TValue>(
+        this Dictionary<TKey, TValue> dictionary,
+        Dictionary<TKey, TValue> otherDictionary)
+    {
+        foreach (var (key, value) in otherDictionary)
+            dictionary.AddPair(key, value);
+        return dictionary;
+    }
+
+    public static Dictionary<TKey, TValue> AddDictionary<TKey, TValue>(
+        this Dictionary<TKey, TValue> dictionary,
+        ReadOnlyDictionary<TKey, TValue> otherDictionary)
+    {
+        foreach (var (key, value) in otherDictionary)
+            dictionary.AddPair(key, value);
+        return dictionary;
+    }
+}

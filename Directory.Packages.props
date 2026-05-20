@@ -48,7 +48,7 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
   </ItemGroup>
-  <!-- Roslyn (Nuke.SourceGenerator + Nuke.GlobalTool) -->
+  <!-- Roslyn (Fallout.SourceGenerator + Fallout.GlobalTool) -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
@@ -61,7 +61,7 @@
     <PackageVersion Include="matkoch.Microsoft.VisualStudio.SolutionPersistence" Version="1.0.61" />
     <PackageVersion Include="Scriban" Version="7.1.0" />
   </ItemGroup>
-  <!-- MSBuild (Nuke.ProjectModel + Nuke.MSBuildTasks) -->
+  <!-- MSBuild (Fallout.ProjectModel + Fallout.MSBuildTasks) -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.Build.Locator" Version="1.7.8" />
     <PackageVersion Include="Microsoft.Build" Version="18.0.2" />

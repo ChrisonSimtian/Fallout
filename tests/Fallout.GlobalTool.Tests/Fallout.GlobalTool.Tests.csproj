@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.GlobalTool\Fallout.GlobalTool.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="cake-scripts\*" />
+    <None Include="cake-scripts\*" />
+  </ItemGroup>
+
+</Project>

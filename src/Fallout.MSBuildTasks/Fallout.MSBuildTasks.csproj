@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <TargetFrameworks>net10.0;net472</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Packaging" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- MSBuild and dependencies only acquired through MSBuild shall not make it into the final package -->
+    <PackageReference Include="Microsoft.Build.Utilities.Core" CopyLocal="false" Publish="false" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Build.Framework" CopyLocal="false" Publish="false" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fallout.MSBuildTasks.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="RemoveMicrosoftBuildDllsFromOutput" AfterTargets="ResolveReferences">
+    <!--
+    Don't place build dlls in the output dir or else the ContextAwareTask will resolve them
+    and may not be able to cast the TaskHost to IBuildEngine
+    -->
+    <PropertyGroup>
+      <NonCopyLocalPackageReferences Condition="'%(PackageReference.CopyLocal)' == 'false'">;@(PackageReference);</NonCopyLocalPackageReferences>
+    </PropertyGroup>
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="$(NonCopyLocalPackageReferences.Contains(';%(ReferenceCopyLocalPaths.NuGetPackageId);'))" />
+    </ItemGroup>
+  </Target>
+
+</Project>

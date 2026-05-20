@@ -1,0 +1,343 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ChrisonSimtian/Fallout/main/src/Fallout.Tooling.Generator/schema.json",
+  "references": [
+    "https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+MSBuild",
+    "https://docs.sonarqube.org/latest/analysis/analysis-parameters/"
+  ],
+  "name": "SonarScanner",
+  "officialUrl": "https://www.sonarqube.org/",
+  "help": "The SonarScanner for MSBuild is the recommended way to launch a SonarQube or SonarCloud analysis for projects/solutions using MSBuild or dotnet command as build tool.",
+  "nugetPackageId": "dotnet-sonarscanner",
+  "nugetFramework": true,
+  "packageExecutable": "SonarScanner.MSBuild.dll|SonarScanner.MSBuild.exe",
+  "tasks": [
+    {
+      "postfix": "Begin",
+      "definiteArgument": "begin",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "ProjectKey",
+            "type": "string",
+            "format": "/k:{value}",
+            "secret": false,
+            "help": "Specifies the key of the analyzed project in SonarQube."
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "format": "/n:{value}",
+            "help": "Specifies the name of the analyzed project in SonarQube. Adding this argument will overwrite the project name in SonarQube if it already exists."
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "/v:{value}",
+            "help": "Specifies the version of your project."
+          },
+          {
+            "name": "Organization",
+            "type": "string",
+            "format": "/o:{value}",
+            "help": "Specifies the Organization of your project."
+          },
+          {
+            "name": "Description",
+            "type": "string",
+            "format": "/d:sonar.projectDescription={value}",
+            "help": "The project description."
+          },
+          {
+            "name": "Server",
+            "type": "string",
+            "format": "/d:sonar.host.url={value}",
+            "help": "The server URL. Default is <c>http://localhost:9000</c>"
+          },
+          {
+            "name": "Login",
+            "type": "string",
+            "format": "/d:sonar.login={value}",
+            "secret": true,
+            "help": "Specifies the username or access token to authenticate with to SonarQube. If this argument is added to the begin step, it must also be added on the end step."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "/d:sonar.password={value}",
+            "secret": true,
+            "help": "Specifies the password for the SonarQube username in the <c>sonar.login</c> argument. This argument is not needed if you use authentication token. If this argument is added to the begin step, it must also be added on the end step."
+          },
+          {
+            "name": "Token",
+            "type": "string",
+            "format": "/d:sonar.token={value}",
+            "secret": true,
+            "help": "Specifies the authentication token used to authenticate with to SonarQube. If this argument is added to the begin step, it must also be added to the end step."
+          },
+          {
+            "name": "Verbose",
+            "type": "bool",
+            "format": "/d:sonar.verbose={value}",
+            "customValue": true,
+            "help": "Sets the logging verbosity to detailed. Add this argument before sending logs for troubleshooting."
+          },
+          {
+            "name": "VSTestReports",
+            "type": "List<string>",
+            "format": "/d:sonar.cs.vstest.reportsPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of VSTest report files to include."
+          },
+          {
+            "name": "NUnitTestReports",
+            "type": "List<string>",
+            "format": "/d:sonar.cs.nunit.reportsPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of NUnit report files to include."
+          },
+          {
+            "name": "XUnitTestReports",
+            "type": "List<string>",
+            "format": "/d:sonar.cs.xunit.reportsPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of xUnit report files to include."
+          },
+          {
+            "name": "SourceExclusions",
+            "type": "List<string>",
+            "format": "/d:sonar.exclusions={value}",
+            "separator": ",",
+            "help": "Comma separated list of source files to exclude from analysis scope. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "SourceInclusions",
+            "type": "List<string>",
+            "format": "/d:sonar.inclusions={value}",
+            "separator": ",",
+            "help": "Comma separated list of source files to include in analysis scope. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "TestFileExclusions",
+            "type": "List<string>",
+            "format": "/d:sonar.test.exclusions={value}",
+            "separator": ",",
+            "help": "Comma separated list of test files to exclude from analysis scope. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "TestFileInclusions",
+            "type": "List<string>",
+            "format": "/d:sonar.test.inclusions={value}",
+            "separator": ",",
+            "help": "Comma separated list of test files to include in analysis scope. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "CoverageExclusions",
+            "type": "List<string>",
+            "format": "/d:sonar.coverage.exclusions={value}",
+            "separator": ",",
+            "help": "Comma separated list of files to exclude from coverage calculations. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "GenericCoveragePaths",
+            "type": "List<string>",
+            "format": "/d:sonar.coverageReportPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of coverage reports in the <a href=\"https://docs.sonarqube.org/latest/analysis/generic-test/\">Generic Test Data</a> format. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "VisualStudioCoveragePaths",
+            "type": "List<string>",
+            "format": "/d:sonar.cs.vscoveragexml.reportsPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of Visual Studio Code Coverage reports to include. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "DotCoverPaths",
+            "type": "List<string>",
+            "format": "/d:sonar.cs.dotcover.reportsPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of dotCover HTML-reports to include. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "OpenCoverPaths",
+            "type": "List<string>",
+            "format": "/d:sonar.cs.opencover.reportsPaths={value}",
+            "separator": ",",
+            "help": "Comma separated list of OpenCover reports to include. Supports wildcards (<c>*</c>, <c>**</c>, <c>?</c>)."
+          },
+          {
+            "name": "WebServiceTimeout",
+            "type": "int",
+            "format": "/d:sonar.ws.timeout={value}",
+            "help": "Maximum time to wait for the response of a Web Service call (in seconds). Modifying this value from the default is useful only when you're experiencing timeouts during analysis while waiting for the server to respond to Web Service calls."
+          },
+          {
+            "name": "Homepage",
+            "type": "string",
+            "format": "/d:sonar.links.homepage={value}",
+            "help": "Project home page."
+          },
+          {
+            "name": "ContinuousIntegrationUrl",
+            "type": "string",
+            "format": "/d:sonar.links.ci={value}",
+            "help": "Link to Continuous integration"
+          },
+          {
+            "name": "IssueTrackerUrl",
+            "type": "string",
+            "format": "/d:sonar.links.issue={value}",
+            "help": "Link to Issue tracker."
+          },
+          {
+            "name": "SCMUrl",
+            "type": "string",
+            "format": "/d:sonar.links.scm={value}",
+            "help": "Link to project source repository"
+          },
+          {
+            "name": "SourceEncoding",
+            "type": "string",
+            "format": "/d:sonar.sourceEncoding={value}",
+            "help": "Encoding of the source files. Ex: <c>UTF-8</c> , <c>MacRoman</c> , <c>Shift_JIS</c>. This property can be replaced by the standard property <c>project.build.sourceEncoding</c> in Maven projects. The list of available encodings depends on your JVM."
+          },
+          {
+            "name": "DuplicationExclusions",
+            "type": "List<string>",
+            "format": "/d:sonar.cpd.exclusions={value}",
+            "separator": ",",
+            "help": "Comma-delimited list of file path patterns to be excluded from duplication detection."
+          },
+          {
+            "name": "BranchName",
+            "type": "string",
+            "format": "/d:sonar.branch.name={value}",
+            "help": "Name of the branch (visible in the UI)"
+          },
+          {
+            "name": "PullRequestKey",
+            "type": "string",
+            "format": "/d:sonar.pullrequest.key={value}",
+            "secret": false,
+            "help": "Unique identifier of your Pull Request. Must correspond to the key of the Pull Request in your ALM. e.g.: <c>sonar.pullrequest.key=5</c>"
+          },
+          {
+            "name": "PullRequestBranch",
+            "type": "string",
+            "format": "/d:sonar.pullrequest.branch={value}",
+            "help": "The name of the branch that contains the changes to be merged. e.g.: <c>sonar.pullrequest.branch=feature/my-new-feature</c>"
+          },
+          {
+            "name": "PullRequestBase",
+            "type": "string",
+            "format": "/d:sonar.pullrequest.base={value}",
+            "help": "The branch into which the Pull Request will be merged. Default: <c>master</c>. e.g.: <c>sonar.pullrequest.base=master</c>"
+          },
+          {
+            "name": "ExcludeTestProjects",
+            "type": "bool",
+            "format": "/d:sonar.dotnet.excludeTestProjects={value}",
+            "help": "Excludes Test Projects from analysis. Add this argument to improve build performance when issues should not be detected in Test Projects."
+          },
+          {
+            "name": "ScmProvider",
+            "type": "string",
+            "format": "/d:sonar.scm.provider={value}",
+            "help": "This property can be used to explicitly tell SonarQube which SCM you're using on the project (in case auto-detection doesn't work). The value of this property is always lowercase and depends on the SCM (ex. \"git\" if you're using Git)."
+          },
+          {
+            "name": "ScmForceReloadAll",
+            "type": "bool",
+            "format": "/d:sonar.scm.forceReloadAll={value}",
+            "help": "By default, blame information is only retrieved for changed files. Set this property to true to load blame information for all files. This can be useful is you feel that some SCM data is outdated but SonarQube does not get the latest information from the SCM engine."
+          },
+          {
+            "name": "ScmExclusionsDisabled",
+            "type": "bool",
+            "format": "/d:sonar.scm.exclusions.disabled={value}",
+            "help": "For supported engines, files ignored by the SCM, i.e. files listed in .gitignore, will automatically be ignored by analysis too. Set this property to true to disable that feature. SCM exclusions are always disabled if sonar.scm.disabled is set to true."
+          },
+          {
+            "name": "ScmRevision",
+            "type": "string",
+            "format": "/d:sonar.scm.revision={value}",
+            "help": "Overrides the revision, for instance the Git sha1, displayed in analysis results. By default value is provided by the CI environment or guessed by the checked-out sources."
+          },
+          {
+            "name": "QualityGateWait",
+            "type": "bool",
+            "format": "/d:sonar.qualitygate.wait={value}",
+            "help": "Forces the analysis step to poll the SonarQube instance and wait for the Quality Gate status. If there are no other options, you can use this to fail a pipeline build when the Quality Gate is failing."
+          },
+          {
+            "name": "QualityGateTimeout",
+            "type": "int",
+            "format": "/d:sonar.qualitygate.timeout={value}",
+            "help": "Sets the number of seconds that the scanner should wait for a report to be processed. Default: <c>300</c>. e.g.: <c>sonar.qualitygate.timeout=300</c>"
+          },
+          {
+            "name": "AdditionalAnalysisParameters",
+            "type": "Dictionary<string, string>",
+            "format": "/d:sonar.analysis.{key}={value}",
+            "help": "This property stub allows you to insert custom key/value pairs into the analysis context, which will also be passed forward to webhooks."
+          },
+          {
+            "name": "AdditionalParameters",
+            "type": "Dictionary<string, string>",
+            "format": "/d:{key}={value}",
+            "help": "Specifies an additional SonarQube analysis parameter, you can add this argument multiple times."
+          },
+          {
+            "name": "ClientCertificatePath",
+            "type": "string",
+            "format": "/d:sonar.clientcert.path={value}",
+            "help": "Specifies the path to a client certificate used to access SonarQube. The certificate must be password protected."
+          },
+          {
+            "name": "ClientCertificatePassword",
+            "type": "string",
+            "format": "/d:sonar.clientcert.password={value}",
+            "secret": true,
+            "help": "Specifies the password for the client certificate used to access SonarQube. Required if a client certificate is used."
+          }
+        ]
+      }
+    },
+    {
+      "postfix": "End",
+      "definiteArgument": "end",
+      "settingsClass": {
+        "properties": [
+          {
+            "name": "Login",
+            "type": "string",
+            "format": "/d:sonar.login={value}",
+            "secret": true,
+            "help": "Specifies the username or access token to authenticate with to SonarQube. If this argument is added to the begin step, it must also be added on the end step."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "/d:sonar.password={value}",
+            "secret": true,
+            "help": "Specifies the password for the SonarQube username in the <c>sonar.login</c> argument. This argument is not needed if you use authentication token. If this argument is added to the begin step, it must also be added on the end step."
+          },
+          {
+            "name": "Token",
+            "type": "string",
+            "format": "/d:sonar.token={value}",
+            "secret": true,
+            "help": "Specifies the authentication token used to authenticate with to SonarQube. If this argument is added to the begin step, it must also be added to the end step."
+          },
+          {
+            "name": "ClientCertificatePassword",
+            "type": "string",
+            "format": "/d:sonar.clientcert.password={value}",
+            "secret": true,
+            "help": "Specifies the password for the client certificate used to access SonarQube. Required if a client certificate is used."
+          }
+        ]
+      }
+    }
+  ]
+}

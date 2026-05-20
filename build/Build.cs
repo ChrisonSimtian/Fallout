@@ -7,22 +7,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
-using Nuke.Common;
-using Nuke.Common.CI;
-using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.Execution;
-using Nuke.Common.Git;
-using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
-using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.GitHub;
-using Nuke.Common.Tools.GitVersion;
-using Nuke.Common.Utilities;
-using Nuke.Components;
-using static Nuke.Common.ControlFlow;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
+using Fallout.Common;
+using Fallout.Common.CI;
+using Fallout.Common.CI.GitHubActions;
+using Fallout.Common.Execution;
+using Fallout.Common.Git;
+using Fallout.Common.IO;
+using Fallout.Common.ProjectModel;
+using Fallout.Common.Tooling;
+using Fallout.Common.Tools.DotNet;
+using Fallout.Common.Tools.GitHub;
+using Fallout.Common.Tools.GitVersion;
+using Fallout.Common.Utilities;
+using Fallout.Components;
+using static Fallout.Common.ControlFlow;
+using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Common.Tools.ReSharper.ReSharperTasks;
 
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]
@@ -50,7 +50,7 @@ partial class Build
     GitRepository GitRepository => From<IHazGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
-    Nuke.Common.ProjectModel.Solution IHazSolution.Solution => Solution;
+    Fallout.Common.ProjectModel.Solution IHazSolution.Solution => Solution;
 
     AbsolutePath OutputDirectory => RootDirectory / "output";
     AbsolutePath SourceDirectory => RootDirectory / "source";
@@ -81,12 +81,12 @@ partial class Build
         .When(!ScheduledTargets.Contains(((IPublish)this).Publish) && !ScheduledTargets.Contains(Install), _ => _
             .ClearProperties());
 
-    IEnumerable<(Nuke.Common.ProjectModel.Project Project, string Framework)> ICompile.PublishConfigurations =>
-        from project in new[] { Solution.Nuke_GlobalTool, Solution.Nuke_MSBuildTasks }
+    IEnumerable<(Fallout.Common.ProjectModel.Project Project, string Framework)> ICompile.PublishConfigurations =>
+        from project in new[] { Solution.Fallout_GlobalTool, Solution.Fallout_MSBuildTasks }
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Nuke.Common.ProjectModel.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
+    IEnumerable<Fallout.Common.ProjectModel.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;
@@ -125,7 +125,7 @@ partial class Build
 
     // Publishing to GitHub Packages on this fork until the post-hard-fork
     // project rename lands. nuget.org would require the new name and can't
-    // be done under "Nuke.*" — see project_nuke_strategy memory note.
+    // be done under "Fallout.*" — see project_nuke_strategy memory note.
     // Repository owner comes from GITHUB_REPOSITORY_OWNER, automatically set
     // by GitHub Actions runners. ChrisonSimtian is the local-dev fallback.
     string IPublish.NuGetSource =>
@@ -256,8 +256,8 @@ partial class Build
         .DependsOn<IPack>()
         .Executes(() =>
         {
-            SuppressErrors(() => DotNet($"tool uninstall -g {Solution.Nuke_GlobalTool.Name}"), logWarning: false);
-            DotNet($"tool install -g {Solution.Nuke_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
+            SuppressErrors(() => DotNet($"tool uninstall -g {Solution.Fallout_GlobalTool.Name}"), logWarning: false);
+            DotNet($"tool install -g {Solution.Fallout_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
         });
 
     T From<T>()

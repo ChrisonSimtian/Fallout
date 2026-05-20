@@ -1,0 +1,32 @@
+﻿// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
+// Distributed under the MIT License.
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
+
+using System;
+using System.Linq;
+using JetBrains.Annotations;
+using Fallout.Common.Utilities;
+
+namespace Fallout.Common.CI.SpaceAutomation.Configuration;
+
+[PublicAPI]
+public class SpaceAutomationResources : ConfigurationEntity
+{
+    public string Cpu { get; set; }
+    public string Memory { get; set; }
+
+    public override void Write(CustomFileWriter writer)
+    {
+        if (Cpu != null || Memory != null)
+        {
+            using (writer.WriteBlock($"resources"))
+            {
+                if (Cpu != null)
+                    writer.WriteLine($"cpu = {Cpu}");
+                if (Memory != null)
+                    writer.WriteLine($"memory = {Memory}");
+            }
+        }
+    }
+}

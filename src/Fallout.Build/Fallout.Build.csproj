@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+    <ProjectReference Include="..\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
+    <ProjectReference Include="..\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
+    <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
+    <ProjectReference Include="..\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" />
+    <PackageReference Include="NJsonSchema" />
+    <PackageReference Include="NJsonSchema.NewtonsoftJson" />
+    <PackageReference Include="Serilog.Formatting.Compact" />
+    <PackageReference Include="Serilog.Formatting.Compact.Reader" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Sinks.File" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Execution\Extensions\execution-plan.html" />
+  </ItemGroup>
+
+</Project>

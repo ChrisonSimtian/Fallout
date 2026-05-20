@@ -3,8 +3,8 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using Nuke.Common.CI.GitHubActions;
-using Nuke.Components;
+using Fallout.Common.CI.GitHubActions;
+using Fallout.Components;
 
 // macOS and Windows runs are reserved for main-branch validation (post-merge
 // and release pipelines). PRs and feature-branch pushes get Linux-only for

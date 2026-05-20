@@ -5,9 +5,9 @@
 
 using System;
 using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.Tools.Docker;
-using Nuke.Common.Utilities;
+using Fallout.Common;
+using Fallout.Common.Tools.Docker;
+using Fallout.Common.Utilities;
 using Serilog;
 
 partial class Build

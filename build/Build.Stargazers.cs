@@ -6,10 +6,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.IO;
-using Nuke.Common.Tools.GitHub;
-using Nuke.Common.Utilities;
+using Fallout.Common;
+using Fallout.Common.IO;
+using Fallout.Common.Tools.GitHub;
+using Fallout.Common.Utilities;
 
 partial class Build
 {

@@ -3,14 +3,14 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using Nuke.Common;
+using Fallout.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Nuke.Common.IO;
-using Nuke.Components;
+using Fallout.Common.IO;
+using Fallout.Components;
 using Serilog;
-using static Nuke.Common.IO.HttpTasks;
+using static Fallout.Common.IO.HttpTasks;
 
 partial class Build
 {

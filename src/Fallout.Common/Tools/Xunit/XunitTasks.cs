@@ -1,0 +1,34 @@
+// Copyright 2026 Maintainers of Fallout.
+// Originally based on NUKE by Matthias Koch and contributors.
+// Distributed under the MIT License.
+// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
+
+using System;
+using System.Linq;
+using Fallout.Common.Tooling;
+
+namespace Fallout.Common.Tools.Xunit;
+
+partial class XunitTasks
+{
+    protected override string GetToolPath(ToolOptions options = null)
+    {
+        return NuGetToolPathResolver.GetPackageExecutable(
+            packageId: PackageId,
+            packageExecutable: EnvironmentInfo.Is64Bit ? "xunit.console.exe" : "xunit.console.x86.exe",
+            framework: (options as IToolOptionsWithFramework)?.Framework);
+    }
+
+    protected override Func<ToolOptions, IProcess, object> GetExitHandler(ToolOptions options)
+    {
+        return (_, p) => p.ExitCode switch
+        {
+            0 => default,
+            1 => throw new Exception("One or more of the tests failed"),
+            2 => throw new Exception("The help page was shown, either because it was requested, or because the user did not provide any command line arguments"),
+            3 => throw new Exception("There was a problem with one of the command line options passed to the runner"),
+            4 => throw new Exception("There was a problem loading one or more of the test assemblies (for example, if a 64-bit only assembly is run with the 32-bit test runner)"),
+            _ => throw new NotSupportedException()
+        };
+    }
+}
