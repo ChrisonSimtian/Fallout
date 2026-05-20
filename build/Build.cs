@@ -123,13 +123,9 @@ partial class Build
 
     [Parameter] [Secret] readonly string NuGetApiKey;
 
-    // Publishing to GitHub Packages on this fork until the post-hard-fork
-    // project rename lands. nuget.org would require the new name and can't
-    // be done under "Fallout.*" — see project_nuke_strategy memory note.
-    // Repository owner comes from GITHUB_REPOSITORY_OWNER, automatically set
-    // by GitHub Actions runners. ChrisonSimtian is the local-dev fallback.
-    string IPublish.NuGetSource =>
-        $"https://nuget.pkg.github.com/{EnvironmentInfo.GetVariable("GITHUB_REPOSITORY_OWNER") ?? "ChrisonSimtian"}/index.json";
+    // Publishing to nuget.org now that the Fallout.* rename has landed (#54).
+    // Requires NUGET_API_KEY in repo secrets — see release.yml.
+    string IPublish.NuGetSource => "https://api.nuget.org/v3/index.json";
     string IPublish.NuGetApiKey => NuGetApiKey;
 
     Target IPublish.Publish => _ => _
@@ -148,7 +144,7 @@ partial class Build
         .Executes(() =>
         {
             var packagesDirectory = NuGetPackageResolver.GetPackagesDirectory(packagesConfigFile: BuildProjectFile);
-            var packageDirectories = packagesDirectory.GlobDirectories($"nuke.*/{DefaultDeploymentVersion}");
+            var packageDirectories = packagesDirectory.GlobDirectories($"fallout.*/{DefaultDeploymentVersion}");
             packageDirectories.DeleteDirectories();
         });
 

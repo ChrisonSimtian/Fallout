@@ -72,9 +72,7 @@ Validation workflows: **`ubuntu-latest`** runs on every PR targeting `main` (wit
 
 **Versioning:** [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) — configured in `version.json` at the repo root. Major+minor is hand-bumped; patch comes from git-height. `main` is the public-release ref (stable versions); everything else gets prerelease tags. GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
 
-**Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs `./build.cmd Test Pack Publish`. **Publishes to GitHub Packages** (`https://nuget.pkg.github.com/<owner>/index.json`) using the auto-provided `GITHUB_TOKEN` — no separate NuGet API key is needed.
-
-**Why not nuget.org?** Per Matt's wish, the "Nuke" name cannot be carried over to a successor project. The successor brand is Fallout. Until the breaking-rename phases land (#32, #34), packages stay on this fork's GitHub Packages feed.
+**Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs `./build.cmd Test Pack Publish`. **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` repo secret (a nuget.org API key scoped to push `Fallout.*`). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
 ## Conventions worth respecting
 

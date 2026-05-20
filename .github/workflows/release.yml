@@ -1,5 +1,5 @@
 # Hand-written (not auto-generated) — see Build.CI.GitHubActions.cs for the
-# rationale (lets us bridge GitHub's NUGET_API_KEY secret to NUKE's
+# rationale (lets us bridge GitHub's NUGET_API_KEY secret to Fallout's
 # NuGetApiKey parameter, which would otherwise have to share a name).
 
 name: release
@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: write     # for ICreateGitHubRelease (tag + GitHub release)
-  packages: write     # in case we later push to GitHub Packages too
 
 jobs:
   release:
@@ -31,8 +30,8 @@ jobs:
       - name: 'Run: Test, Pack, Publish'
         run: ./build.cmd Test Pack Publish
         env:
-          # Publish target is GitHub Packages on this fork, not nuget.org.
-          # GITHUB_TOKEN has packages:write per the permissions block above —
-          # no separate NuGet API key needed until the project rename.
-          NuGetApiKey: ${{ secrets.GITHUB_TOKEN }}
+          # Publish target is nuget.org now that Fallout.* rename has landed (#54).
+          # NUGET_API_KEY is an API key scoped to push Fallout.* packages, set in
+          # repo Settings → Secrets and variables → Actions.
+          NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
