@@ -104,7 +104,7 @@ public abstract partial class FalloutBuild
         return TryGetRootDirectoryFrom(EnvironmentInfo.WorkingDirectory)
             .NotNull(new[]
                      {
-                         $"Could not locate '{NukeDirectoryName}' directory/file while walking up from '{EnvironmentInfo.WorkingDirectory}'.",
+                         $"Could not locate '{FalloutDirectoryName}' directory/file while walking up from '{EnvironmentInfo.WorkingDirectory}'.",
                          "Either create a directory/file to mark the root directory, or add '--root [path]' to the invocation."
                      }.JoinNewLine());
     }

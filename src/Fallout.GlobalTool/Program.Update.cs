@@ -64,7 +64,7 @@ partial class Program
 
     private static void UpdateConfigurationFile(AbsolutePath rootDirectory)
     {
-        var configurationFile = rootDirectory / NukeDirectoryName;
+        var configurationFile = rootDirectory / FalloutDirectoryName;
         if (!configurationFile.Exists())
             return;
 
@@ -72,8 +72,8 @@ partial class Program
         configurationFile.DeleteFile();
 
         WriteConfigurationFile(rootDirectory, solutionFile);
-        Host.Warning($"The previous {NukeFileName} file was transformed to a {NukeDirectoryName} directory.");
-        Host.Warning($"The .tmp directory can be cleared, as it is moved to {NukeDirectoryName}/temp as well.");
+        Host.Warning($"The previous {FalloutFileName} file was transformed to a {FalloutDirectoryName} directory.");
+        Host.Warning($"The .tmp directory can be cleared, as it is moved to {FalloutDirectoryName}/temp as well.");
         if (solutionFile != null)
             Host.Warning($"Verify the property referencing the solution has the same name as the member with the {nameof(SolutionAttribute)}.");
     }

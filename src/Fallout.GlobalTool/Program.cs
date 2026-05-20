@@ -86,7 +86,7 @@ public partial class Program
         if (rootDirectory == null || buildScript == null)
         {
             var missingItem = rootDirectory == null
-                ? $"{Constants.NukeDirectoryName} directory/file"
+                ? $"{Constants.FalloutDirectoryName} directory/file"
                 : "build.ps1/sh files";
 
             return PromptForConfirmation($"Could not find {missingItem}. Do you want to setup a build?")

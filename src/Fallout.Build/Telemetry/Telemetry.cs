@@ -63,7 +63,7 @@ internal static partial class Telemetry
     private static int? CheckAwareness()
     {
         AbsolutePath GetCookieFile(string name, int version)
-            => Constants.GlobalNukeDirectory / "telemetry-awareness" / $"v{version}" / name;
+            => Constants.GlobalFalloutDirectory / "telemetry-awareness" / $"v{version}" / name;
 
         // Check for calls from Fallout.GlobalTool and custom global tools
         if (SuppressErrors(() => FalloutBuild.BuildProjectFile, logWarning: false) == null)

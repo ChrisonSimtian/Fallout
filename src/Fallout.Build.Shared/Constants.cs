@@ -20,13 +20,13 @@ namespace Fallout.Common;
 [UsedImplicitly]
 internal static class Constants
 {
-    internal const string NukeFileName = NukeDirectoryName;
-    internal const string NukeDirectoryName = ".fallout";
+    internal const string FalloutFileName = FalloutDirectoryName;
+    internal const string FalloutDirectoryName = ".fallout";
     // Legacy directory name from the pre-Fallout era. Read-only: lets existing
     // consumer projects keep building until they migrate (manually or via the
     // forthcoming Fallout.Migrate CLI). New setups always use .fallout/.
     internal const string LegacyNukeDirectoryName = ".nuke";
-    internal const string NukeCommonPackageId = "Fallout.Common";
+    internal const string FalloutCommonPackageId = "Fallout.Common";
     internal const string BuildSchemaFileName = "build.schema.json";
     internal const string VisualStudioDebugFileName = $"{VisualStudioDebugParameterName}.log";
 
@@ -62,28 +62,28 @@ internal static class Constants
     internal const string UpstreamNukeRepositoryGit = UpstreamNukeRepository + ".git";
 
     internal static AbsolutePath GlobalTemporaryDirectory => Path.GetTempPath();
-    internal static AbsolutePath GlobalNukeDirectory =>  EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".fallout";
+    internal static AbsolutePath GlobalFalloutDirectory =>  EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".fallout";
 
     [CanBeNull]
     internal static AbsolutePath TryGetRootDirectoryFrom(AbsolutePath startDirectory, bool includeLegacy = true)
     {
         var rootDirectory = new DirectoryInfo(startDirectory)
             .DescendantsAndSelf(x => x.Parent)
-            .FirstOrDefault(x => x.GetDirectories(NukeDirectoryName).Any() ||
+            .FirstOrDefault(x => x.GetDirectories(FalloutDirectoryName).Any() ||
                                  x.GetDirectories(LegacyNukeDirectoryName).Any() ||
-                                 includeLegacy && x.GetFiles(NukeFileName).Any())
+                                 includeLegacy && x.GetFiles(FalloutFileName).Any())
             ?.FullName;
-        return rootDirectory != GlobalNukeDirectory.Parent ? (AbsolutePath) rootDirectory : null;
+        return rootDirectory != GlobalFalloutDirectory.Parent ? (AbsolutePath) rootDirectory : null;
     }
 
     internal static bool IsLegacy(AbsolutePath rootDirectory)
     {
-        return File.Exists(rootDirectory / NukeFileName);
+        return File.Exists(rootDirectory / FalloutFileName);
     }
 
-    internal static AbsolutePath GetNukeDirectory(AbsolutePath rootDirectory)
+    internal static AbsolutePath GetFalloutDirectory(AbsolutePath rootDirectory)
     {
-        var newDir = rootDirectory / NukeDirectoryName;
+        var newDir = rootDirectory / FalloutDirectoryName;
         if (Directory.Exists(newDir))
             return newDir;
         var legacyDir = rootDirectory / LegacyNukeDirectoryName;
@@ -93,7 +93,7 @@ internal static class Constants
     internal static AbsolutePath GetTemporaryDirectory(AbsolutePath rootDirectory)
     {
         return !IsLegacy(rootDirectory)
-            ? GetNukeDirectory(rootDirectory) / "temp"
+            ? GetFalloutDirectory(rootDirectory) / "temp"
             : rootDirectory / ".tmp";
     }
 
@@ -122,23 +122,23 @@ internal static class Constants
 
     internal static AbsolutePath GetBuildSchemaFile(AbsolutePath rootDirectory)
     {
-        return GetNukeDirectory(rootDirectory) / BuildSchemaFileName;
+        return GetFalloutDirectory(rootDirectory) / BuildSchemaFileName;
     }
 
     internal static AbsolutePath GetDefaultParametersFile(AbsolutePath rootDirectory)
     {
-        return GetNukeDirectory(rootDirectory) / GetParametersFileName(DefaultProfileName);
+        return GetFalloutDirectory(rootDirectory) / GetParametersFileName(DefaultProfileName);
     }
 
     internal static IEnumerable<AbsolutePath> GetParametersProfileFiles(AbsolutePath rootDirectory)
     {
-        return new DirectoryInfo(GetNukeDirectory(rootDirectory)).GetFiles($"{ParametersFilePrefix}.*.json", SearchOption.TopDirectoryOnly)
+        return new DirectoryInfo(GetFalloutDirectory(rootDirectory)).GetFiles($"{ParametersFilePrefix}.*.json", SearchOption.TopDirectoryOnly)
             .Select(x => (AbsolutePath)x.FullName);
     }
 
     internal static AbsolutePath GetParametersProfileFile(AbsolutePath rootDirectory, string profile)
     {
-        return GetNukeDirectory(rootDirectory) / GetParametersFileName(profile);
+        return GetFalloutDirectory(rootDirectory) / GetParametersFileName(profile);
     }
 
     internal static string GetParametersFileName(string profile)

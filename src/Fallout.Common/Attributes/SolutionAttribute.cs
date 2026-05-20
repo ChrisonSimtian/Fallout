@@ -67,16 +67,16 @@ public class SolutionAttribute(string relativePath)
 
     private AbsolutePath TryGetSolutionFileFromNukeFile()
     {
-        var nukeFile = Build.RootDirectory / Constants.NukeFileName;
+        var nukeFile = Build.RootDirectory / Constants.FalloutFileName;
         if (!nukeFile.Exists())
             return null;
 
         var solutionFileRelative = nukeFile.ReadAllLines().ElementAtOrDefault(0);
         Assert.True(solutionFileRelative != null && !solutionFileRelative.Contains(value: '\\'),
-            $"First line of {Constants.NukeFileName} must provide solution path using UNIX separators");
+            $"First line of {Constants.FalloutFileName} must provide solution path using UNIX separators");
 
         var solutionFile = Build.RootDirectory / solutionFileRelative;
-        Assert.FileExists(solutionFile, $"Solution file '{solutionFile}' provided via {Constants.NukeFileName} does not exist");
+        Assert.FileExists(solutionFile, $"Solution file '{solutionFile}' provided via {Constants.FalloutFileName} does not exist");
 
         return solutionFile;
     }

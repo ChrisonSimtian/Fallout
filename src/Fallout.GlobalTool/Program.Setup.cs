@@ -45,9 +45,9 @@ partial class Program
 
         #region Basic
 
-        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(NukeCommonPackageId, includePrereleases: false);
-        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestVersion(NukeCommonPackageId, includePrereleases: true);
-        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(NukeCommonPackageId, version: null, packagesConfigFile: null)
+        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutCommonPackageId, includePrereleases: false);
+        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutCommonPackageId, includePrereleases: true);
+        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(FalloutCommonPackageId, version: null, packagesConfigFile: null)
             ?.Version.ToString();
 
         if (rootDirectory == null)
@@ -99,7 +99,7 @@ partial class Program
         var buildProjectFile = rootDirectory / buildProjectRelativeDirectory / buildProjectName + ".csproj";
         var buildProjectGuid = Guid.NewGuid().ToString().ToUpper();
 
-        (rootDirectory / NukeDirectoryName).CreateDirectory();
+        (rootDirectory / FalloutDirectoryName).CreateDirectory();
 
         WriteBuildScripts(
             scriptDirectory: WorkingDirectory,

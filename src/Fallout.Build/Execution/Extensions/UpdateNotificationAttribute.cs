@@ -30,7 +30,7 @@ internal class UpdateNotificationAttribute : BuildExtensionAttributeBase, IOnBui
             Notify();
     }
 
-    private bool ShouldNotify => !Directory.Exists(GetNukeDirectory(Build.RootDirectory)) &&
+    private bool ShouldNotify => !Directory.Exists(GetFalloutDirectory(Build.RootDirectory)) &&
                                  !Build.IsInterceptorExecution;
 
     private static void Notify()

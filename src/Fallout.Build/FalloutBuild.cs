@@ -179,7 +179,7 @@ public abstract partial class FalloutBuild : IFalloutBuild
         BuildProjectFile == null
             ? Assembly.GetEntryAssembly().NotNull().Location != string.Empty
                 ? BuildAssemblyDirectory
-                : GlobalNukeDirectory / "packages"
+                : GlobalFalloutDirectory / "packages"
             : null;
 
     internal IEnumerable<string> TargetNames => ExecutableTargetFactory.GetTargetProperties(GetType()).Select(x => x.GetDisplayShortName());

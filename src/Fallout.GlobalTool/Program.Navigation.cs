@@ -82,8 +82,8 @@ partial class Program
     {
         return PushAndSetNext(() =>
         {
-            var directories = EnvironmentInfo.WorkingDirectory.GlobDirectories($"**/{NukeDirectoryName}")
-                .Concat(EnvironmentInfo.WorkingDirectory.GlobFiles($"**/{NukeDirectoryName}"))
+            var directories = EnvironmentInfo.WorkingDirectory.GlobDirectories($"**/{FalloutDirectoryName}")
+                .Concat(EnvironmentInfo.WorkingDirectory.GlobFiles($"**/{FalloutDirectoryName}"))
                 .Where(x => !x.Equals(EnvironmentInfo.WorkingDirectory))
                 .Select(x => x.Parent)
                 .Select(x => (x, EnvironmentInfo.WorkingDirectory.GetRelativePathTo(x).ToString()))

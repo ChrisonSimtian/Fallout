@@ -37,7 +37,7 @@ internal class NotificationFetcher
     private const string NotificationEndpoint = Constants.FalloutNotificationsUrl;
     private const string UtmMedium = "development";
 
-    private readonly AbsolutePath _notificationDirectory = Constants.GlobalNukeDirectory / "received-notifications";
+    private readonly AbsolutePath _notificationDirectory = Constants.GlobalFalloutDirectory / "received-notifications";
     private readonly string _utmSource;
 
     public NotificationFetcher(string utmSource)

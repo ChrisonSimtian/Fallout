@@ -23,7 +23,7 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
     {
         // TODO: probably remove
-        if (!Constants.GetNukeDirectory(FalloutBuild.RootDirectory).DirectoryExists())
+        if (!Constants.GetFalloutDirectory(FalloutBuild.RootDirectory).DirectoryExists())
             return;
 
 
