@@ -6,8 +6,16 @@
 
 > Build automation for C#/.NET — the hard-fork successor to NUKE.
 
-[![Build](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/nuke/ubuntu-latest.yml?branch=main&label=build&style=for-the-badge&logo=github&logoColor=white)](https://github.com/ChrisonSimtian/nuke/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![CI](https://github.com/ChrisonSimtian/Fallout/actions/workflows/ubuntu-latest.yml/badge.svg)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/ubuntu-latest.yml)
+[![NuGet](https://img.shields.io/nuget/v/Fallout.Common?label=Fallout.Common)](https://www.nuget.org/packages/Fallout.Common)
+[![NuGet downloads](https://img.shields.io/nuget/dt/Fallout.Common?label=downloads)](https://www.nuget.org/packages/Fallout.Common)
+[![Latest release](https://img.shields.io/github/v/release/ChrisonSimtian/Fallout?label=release)](https://github.com/ChrisonSimtian/Fallout/releases/latest)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ChrisonSimtian/Fallout)](https://github.com/ChrisonSimtian/Fallout/commits/main)
+[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)](https://dot.net)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Open issues](https://img.shields.io/github/issues/ChrisonSimtian/Fallout)](https://github.com/ChrisonSimtian/Fallout/issues)
+[![Open PRs](https://img.shields.io/github/issues-pr/ChrisonSimtian/Fallout)](https://github.com/ChrisonSimtian/Fallout/pulls)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/ChrisonSimtian?label=sponsor&logo=githubsponsors&color=EA4AAA)](https://github.com/sponsors/ChrisonSimtian)
 
 > [!IMPORTANT]
 > **Rebrand in progress.** This repository is in the middle of being renamed from **NUKE** to **Fallout** as part of a hard fork. URLs, package names, and namespaces are migrating in stages — see the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/nuke/milestone/1) for status. The legacy `Nuke.*` namespaces are still in use; the `Fallout.*` rename is tracked in issue [#32](https://github.com/ChrisonSimtian/nuke/issues/32).
