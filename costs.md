@@ -4,9 +4,9 @@ This file lists the running costs of the Fallout project for transparency.
 
 If you'd like to help offset any of these, see the [Sponsorship](README.md#sponsorship) section in the README.
 
-| Position | Cost (NZD) | Frequency | Notes |
+| Position | Cost (USD) | Frequency | Notes |
 |---|---|---|---|
-| Domain `fallout.build` (Cloudflare Registrar) | _TBD — see Cloudflare invoice_ | Yearly | Cloudflare bills at-cost in USD; the NZD figure is the converted amount on the day the invoice was charged. |
+| Domain `fallout.build` (Cloudflare Registrar) | _TBD — see Cloudflare invoice_ | Yearly | Cloudflare Registrar charges at-cost. |
 
 Everything else the project relies on is currently free at our usage tier:
 
