@@ -6,7 +6,7 @@ If you'd like to help offset any of these, see the [Sponsorship](README.md#spons
 
 | Position | Cost (USD) | Frequency | Notes |
 |---|---|---|---|
-| Domain `fallout.build` (Cloudflare Registrar) | _TBD — see Cloudflare invoice_ | Yearly | Cloudflare Registrar charges at-cost. |
+| Domain `fallout.build` (Cloudflare Registrar) | $25.20 | Yearly | Cloudflare Registrar charges at-cost. |
 
 Everything else the project relies on is currently free at our usage tier:
 
