@@ -24,6 +24,7 @@ The original NUKE code is preserved here under the MIT License with attribution.
 
 - [Elevator Pitch](#elevator-pitch)
 - [Build Status](#build-status)
+- [Sponsorship](#sponsorship)
 
 ## Elevator Pitch
 
@@ -40,6 +41,10 @@ CI runs on every push to non-`main` branches and every PR targeting `main`, acro
 | GitHub Actions | [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/nuke/ubuntu-latest.yml?branch=main&label=build&style=flat-square&logo=github&logoColor=white)](https://github.com/ChrisonSimtian/nuke/actions)        | Win / Ubuntu / macOS | [`.github/workflows/`](https://github.com/ChrisonSimtian/nuke/tree/main/.github/workflows)     |
 
 Multi-provider CI support (Azure Pipelines, GitLab, TeamCity, AppVeyor) was removed during the takeover and is being revived demand-driven — see [#8](https://github.com/ChrisonSimtian/nuke/issues/8).
+
+## Sponsorship
+
+Fallout is volunteer-run. There's no donation channel yet, but we want to be transparent about what running the project costs — see [`costs.md`](costs.md) for the full list. If you or your organisation would like to help offset those costs, open an issue and we'll work out the details.
 
 ## Credits
 
