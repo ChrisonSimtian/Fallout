@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fallout — build automation for .NET</title>
+<meta name="description" content="Fallout is a build automation framework for C#/.NET. It's the hard-fork successor to NUKE.">
+<link rel="icon" type="image/svg+xml" href="/fallout-logo.svg">
+<style>
+  :root {
+    color-scheme: light dark;
+    --fg: #1a1a1a;
+    --bg: #ffffff;
+    --muted: #585858;
+    --link: #1a73e8;
+    --border: #e0e0e0;
+    --notice-bg: #fff8e1;
+    --notice-border: #ffd866;
+    --notice-fg: #5c3d00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #f0f0f0;
+      --bg: #1a1a1a;
+      --muted: #a0a0a0;
+      --link: #8ab4f8;
+      --border: #2a2a2a;
+      --notice-bg: #2a2410;
+      --notice-border: #6a5a20;
+      --notice-fg: #f0d890;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+  .logo {
+    width: 200px;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .notice {
+    background: var(--notice-bg);
+    border: 1px solid var(--notice-border);
+    color: var(--notice-fg);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 2rem 0;
+  }
+  .notice strong { font-weight: 600; }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  li:last-child { border-bottom: none; }
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+  code {
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+    background: var(--border);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/fallout-logo.svg" alt="Fallout logo">
+
+  <h1>Fallout</h1>
+  <p class="tagline">Build automation for C#/.NET — the hard-fork successor to NUKE.</p>
+
+  <div class="notice">
+    <strong>Site under construction.</strong> The original <code>nuke.build</code> site is offline. Fallout continues NUKE's mission under new maintenance — full documentation is being rebuilt at this domain. For now, everything lives on GitHub.
+  </div>
+
+  <h2>Where to find things</h2>
+  <ul>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout">Source code &amp; issues</a> — <code>github.com/ChrisonSimtian/Fallout</code></li>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout#readme">README</a> — what Fallout is, how to get started</li>
+    <li><a href="https://www.nuget.org/packages?q=Fallout">NuGet packages</a> — published under the <code>Fallout.*</code> prefix</li>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout/blob/main/CHANGELOG.md">Changelog</a> — what's shipped</li>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout/releases">Releases</a> — version history</li>
+  </ul>
+
+  <h2>Migrating from NUKE</h2>
+  <p>If you're an existing NUKE user, a migration guide is in progress (tracked in <a href="https://github.com/ChrisonSimtian/Fallout/issues/37">#37</a>). The short version: <code>Nuke.*</code> namespaces and packages are being renamed to <code>Fallout.*</code>, with shim packages and tooling planned to make the transition non-disruptive.</p>
+
+  <h2>What's coming here</h2>
+  <p>Full documentation, guides, and the rest of what <code>nuke.build</code> used to host is being ported in <a href="https://github.com/ChrisonSimtian/Fallout/issues/41">#41</a>. Watch the repo for updates.</p>
+
+  <footer>
+    Fallout is MIT-licensed and continues the work of Matthias Koch (<a href="https://github.com/matkoch">@matkoch</a>) and the original <a href="https://github.com/nuke-build/nuke">NUKE</a> contributors.
+  </footer>
+</main>
+</body>
+</html>
