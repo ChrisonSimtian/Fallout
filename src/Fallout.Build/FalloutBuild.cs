@@ -28,7 +28,7 @@ namespace Fallout.Common;
 /// </summary>
 /// <example>
 /// <code>
-/// class DefaultBuild : NukeBuild
+/// class DefaultBuild : FalloutBuild
 /// {
 ///     public static int Main () => Execute&lt;DefaultBuild&gt;(x => x.Compile);
 ///
@@ -67,14 +67,14 @@ namespace Fallout.Common;
 // After finish
 [UpdateNotification(Priority = 10)]
 [SerializeBuildServerState]
-public abstract partial class NukeBuild : INukeBuild
+public abstract partial class FalloutBuild : IFalloutBuild
 {
     /// <summary>
     /// Executes the build. The provided expression defines the <em>default</em> target that is invoked,
     /// if no targets have been specified via command-line arguments.
     /// </summary>
     protected static int Execute<T>(params Expression<Func<T, Target>>[] defaultTargetExpressions)
-        where T : NukeBuild, new()
+        where T : FalloutBuild, new()
     {
         return BuildManager.Execute(defaultTargetExpressions);
     }

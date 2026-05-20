@@ -70,7 +70,7 @@ You can generate [workflow files](https://docs.github.com/en/actions/reference/w
     GitHubActionsImage.UbuntuLatest,
     On = new[] { GitHubActionsTrigger.Push },
     InvokedTargets = new[] { nameof(Compile) })]
-class Build : NukeBuild { /* ... */ }
+class Build : FalloutBuild { /* ... */ }
 ``` 
 
 <details>
@@ -135,7 +135,7 @@ If you want to use [encrypted secrets](https://docs.github.com/en/actions/securi
 [GitHubActions(
     // ...
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     [Parameter] [Secret] readonly string NuGetApiKey;
 }
@@ -165,7 +165,7 @@ For every workflow run, GitHub generates a [one-time token](https://docs.github.
 [GitHubActions(
     // ...
     EnableGitHubToken = true)]
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     GitHubActions GitHubActions => GitHubActions.Instance;
 
@@ -216,5 +216,5 @@ You can customize the caching step by overwriting the following properties:
     CacheKeyFiles = new[] { "**/global.json", "**/*.csproj" },
     CacheIncludePatterns = new[] { ".fallout/temp", "~/.nuget/packages" },
     CacheExcludePatterns = new string[0])]
-class Build : NukeBuild { /* ... */ }
+class Build : FalloutBuild { /* ... */ }
 ```

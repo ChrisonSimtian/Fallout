@@ -12,7 +12,7 @@ using Fallout.Common.Tools.GitVersion;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IHazGitVersion : INukeBuild
+public interface IHazGitVersion : IFalloutBuild
 {
     [GitVersion(NoFetch = true, Framework = "net8.0")]
     [Required]

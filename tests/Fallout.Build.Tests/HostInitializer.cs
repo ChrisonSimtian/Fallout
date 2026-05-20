@@ -15,7 +15,7 @@ public static class HostInitializer
     [ModuleInitializer]
     public static void Initialize()
     {
-        NukeBuild.Host = new SilentHost();
+        FalloutBuild.Host = new SilentHost();
     }
 
     private class SilentHost : Host

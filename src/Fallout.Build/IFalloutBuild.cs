@@ -16,7 +16,7 @@ using Fallout.Common.Tooling;
 namespace Fallout.Common;
 
 [PublicAPI]
-public interface INukeBuild
+public interface IFalloutBuild
 {
     void ReportSummary(Configure<Dictionary<string, string>> configurator = null);
 

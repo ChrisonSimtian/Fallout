@@ -20,38 +20,38 @@ internal class EventInvoker : BuildExtensionAttributeBase,
 {
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
     {
-        ((NukeBuild)Build).OnBuildCreated();
+        ((FalloutBuild)Build).OnBuildCreated();
     }
 
     public void OnBuildInitialized(
         IReadOnlyCollection<ExecutableTarget> executableTargets,
         IReadOnlyCollection<ExecutableTarget> executionPlan)
     {
-        ((NukeBuild)Build).OnBuildInitialized();
+        ((FalloutBuild)Build).OnBuildInitialized();
     }
 
     public void OnTargetRunning(ExecutableTarget target)
     {
-        ((NukeBuild)Build).OnTargetRunning(target.Name);
+        ((FalloutBuild)Build).OnTargetRunning(target.Name);
     }
 
     public void OnTargetSkipped(ExecutableTarget target)
     {
-        ((NukeBuild)Build).OnTargetSkipped(target.Name);
+        ((FalloutBuild)Build).OnTargetSkipped(target.Name);
     }
 
     public void OnTargetSucceeded(ExecutableTarget target)
     {
-        ((NukeBuild)Build).OnTargetSucceeded(target.Name);
+        ((FalloutBuild)Build).OnTargetSucceeded(target.Name);
     }
 
     public void OnTargetFailed(ExecutableTarget target)
     {
-        ((NukeBuild)Build).OnTargetFailed(target.Name);
+        ((FalloutBuild)Build).OnTargetFailed(target.Name);
     }
 
     public void OnBuildFinished()
     {
-        ((NukeBuild)Build).OnBuildFinished();
+        ((FalloutBuild)Build).OnBuildFinished();
     }
 }

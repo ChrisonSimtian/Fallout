@@ -138,7 +138,7 @@ public class OctoVersionAttribute : ValueInjectionAttributeBase
             $"Branch must either be provided via {nameof(Branch)} or {nameof(BranchMember)} properties, or {nameof(AutoDetectBranch)} must be enabled");
         branch ??= GitRepository.FromLocalDirectory(Build.RootDirectory).Branch;
 
-        var outputFile = NukeBuild.TemporaryDirectory / $"octoversion.{Guid.NewGuid()}.json";
+        var outputFile = FalloutBuild.TemporaryDirectory / $"octoversion.{Guid.NewGuid()}.json";
         var version = OctoVersionTasks.OctoVersionGetVersion(_ => _
                 .SetFramework(Framework)
                 .SetOutputJsonFile(outputFile)

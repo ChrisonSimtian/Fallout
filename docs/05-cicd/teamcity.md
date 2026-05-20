@@ -66,7 +66,7 @@ You can generate [build configuration files](https://www.jetbrains.com/help/team
 ```csharp title="Build.cs"
 [TeamCity(
     VcsTriggeredTargets = new[] { nameof(Compile) })]
-class Build : NukeBuild { /* ... */ }
+class Build : FalloutBuild { /* ... */ }
 ``` 
 
 <details>
@@ -152,7 +152,7 @@ If you want to use [secret variables](https://www.jetbrains.com/help/teamcity/st
     // ...
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
 [TeamCityToken(nameof(NuGetApiKey), "<guid>")]
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     [Parameter] [Secret] readonly string NuGetApiKey;
 }
@@ -184,7 +184,7 @@ If you're facing any issues, make sure that the name in the TeamCity settings is
 For every build run, TeamCity generates a pair of [one-time credentials](https://www.jetbrains.com/help/teamcity/rest/teamcity-rest-api-documentation.html#REST+Authentication) that you can use to authenticate with the [TeamCity API](https://www.jetbrains.com/help/teamcity/rest/teamcity-rest-api-documentation.html):
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     TeamCity TeamCity => TeamCity.Instance;
 

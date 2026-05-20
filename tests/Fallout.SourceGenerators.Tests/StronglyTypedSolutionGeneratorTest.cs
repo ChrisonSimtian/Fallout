@@ -24,7 +24,7 @@ public class StronglyTypedSolutionGeneratorTest
         var inputCompilation = CreateCompilation("""
                 using Fallout.Common;
                 using Fallout.Common.ProjectModel;
-                partial class Build : NukeBuild
+                partial class Build : FalloutBuild
                 {
                     [Solution(GenerateProjects = true)]
                     readonly Solution Solution;
@@ -45,7 +45,7 @@ public class StronglyTypedSolutionGeneratorTest
                 using Fallout.Common;
                 using Fallout.Common.ProjectModel;
 
-                partial class Build : NukeBuild
+                partial class Build : FalloutBuild
                 {
                     [Solution(GenerateProjects = false)]
                     readonly Solution Solution;
@@ -69,7 +69,7 @@ public class StronglyTypedSolutionGeneratorTest
                 using Fallout.Common;
                 using Fallout.Common.ProjectModel;
 
-                partial class Build : NukeBuild
+                partial class Build : FalloutBuild
                 {
                     [Solution]
                     readonly Solution Solution;
@@ -90,7 +90,7 @@ public class StronglyTypedSolutionGeneratorTest
         return CSharpCompilation.Create("compilation",
             new[] { CSharpSyntaxTree.ParseText(source) },
             Basic.Reference.Assemblies.NetStandard20.References.All
-                .Concat(new[] { typeof(NukeBuild), typeof(SolutionAttribute) }
+                .Concat(new[] { typeof(FalloutBuild), typeof(SolutionAttribute) }
                     .Select(x => MetadataReference.CreateFromFile(x.Assembly.Location))),
             new CSharpCompilationOptions(OutputKind.ConsoleApplication));
     }

@@ -22,7 +22,7 @@ public class DisableDefaultOutputAttribute : Attribute
 
     public DefaultOutput[] DisabledOutputs { get; }
 
-    public virtual bool IsApplicable(INukeBuild build)
+    public virtual bool IsApplicable(IFalloutBuild build)
     {
         return true;
     }

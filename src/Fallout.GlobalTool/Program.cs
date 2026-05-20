@@ -53,7 +53,7 @@ public partial class Program
     [CanBeNull]
     private static AbsolutePath TryGetRootDirectory()
     {
-        // TODO: copied in NukeBuild.GetRootDirectory
+        // TODO: copied in FalloutBuild.GetRootDirectory
         var parameterValue = EnvironmentInfo.GetNamedArgument<AbsolutePath>(Constants.RootDirectoryParameterName);
         if (parameterValue != null)
             return parameterValue;

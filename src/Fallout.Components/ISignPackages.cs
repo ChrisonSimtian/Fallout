@@ -48,7 +48,7 @@ namespace Fallout.Components;
 /// </remarks>
 [PublicAPI]
 [ParameterPrefix(SignPath)]
-public interface ISignPackages : INukeBuild
+public interface ISignPackages : IFalloutBuild
 {
     public const string SignPath = nameof(SignPath);
 

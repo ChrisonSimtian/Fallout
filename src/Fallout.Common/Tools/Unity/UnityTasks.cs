@@ -64,7 +64,7 @@ partial class UnityTasks
     protected override T PreProcess<T>(T options)
     {
         var unityOptions = (options as UnityOptionsBase).NotNull();
-        var logFile = (AbsolutePath)unityOptions.LogFile ?? NukeBuild.TemporaryDirectory / "unity.log";
+        var logFile = (AbsolutePath)unityOptions.LogFile ?? FalloutBuild.TemporaryDirectory / "unity.log";
         logFile.DeleteFile();
 
         s_minimalOutput = unityOptions.MinimalOutput ?? false;

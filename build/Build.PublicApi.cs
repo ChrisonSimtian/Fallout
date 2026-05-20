@@ -21,7 +21,7 @@ partial class Build
     Target GeneratePublicApi => _ => _
         .Executes(() =>
         {
-            var types = typeof(NukeBuild).Assembly
+            var types = typeof(FalloutBuild).Assembly
                 .GetTypes()
                 .SelectMany(x => x.DescendantsAndSelf(y => y.GetNestedTypes()))
                 .Where(x => x.IsPublic || x.IsNestedPublic)

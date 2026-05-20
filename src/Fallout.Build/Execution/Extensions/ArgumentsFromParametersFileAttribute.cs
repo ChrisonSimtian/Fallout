@@ -23,7 +23,7 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
     {
         // TODO: probably remove
-        if (!Constants.GetNukeDirectory(NukeBuild.RootDirectory).DirectoryExists())
+        if (!Constants.GetNukeDirectory(FalloutBuild.RootDirectory).DirectoryExists())
             return;
 
 
@@ -47,13 +47,13 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
         //     => scalarType == typeof(AbsolutePath) ||
         //        typeof(Solution).IsAssignableFrom(scalarType) ||
         //        scalarType == typeof(Project)
-        //         ? EnvironmentInfo.WorkingDirectory.GetUnixRelativePathTo(NukeBuild.RootDirectory / value)
+        //         ? EnvironmentInfo.WorkingDirectory.GetUnixRelativePathTo(FalloutBuild.RootDirectory / value)
         //         : value;
 
         var parameterMembers = ValueInjectionUtility.GetParameterMembers(Build.GetType(), includeUnlisted: true);
-        var jobjectsAndProfiles = new[] { (File: Constants.GetDefaultParametersFile(NukeBuild.RootDirectory), Profile: Constants.DefaultProfileName) }
+        var jobjectsAndProfiles = new[] { (File: Constants.GetDefaultParametersFile(FalloutBuild.RootDirectory), Profile: Constants.DefaultProfileName) }
             .Where(x => File.Exists(x.File))
-            .Concat(NukeBuild.LoadedLocalProfiles.Select(x => (File: Constants.GetParametersProfileFile(NukeBuild.RootDirectory, x), Profile: x)))
+            .Concat(FalloutBuild.LoadedLocalProfiles.Select(x => (File: Constants.GetParametersProfileFile(FalloutBuild.RootDirectory, x), Profile: x)))
             .ForEachLazy(x => Assert.FileExists(x.File))
             .Select(x => (JObject: JObject.Parse(File.ReadAllText(x.File)), x.Profile))
             .Reverse();
@@ -77,7 +77,7 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
             var member = parameterMembers.SingleOrDefault(x => ParameterService.GetParameterMemberName(x).EqualsOrdinalIgnoreCase(parameter));
             var scalarType = member?.GetMemberType().GetScalarType();
             if (typeof(IAbsolutePathHolder).IsAssignableFrom(scalarType))
-                return property.Value.ToObject<string>().Apply(x => !PathConstruction.HasPathRoot(x) ? NukeBuild.RootDirectory / x : (AbsolutePath)x);
+                return property.Value.ToObject<string>().Apply(x => !PathConstruction.HasPathRoot(x) ? FalloutBuild.RootDirectory / x : (AbsolutePath)x);
 
             if ((member?.HasCustomAttribute<SecretAttribute>() ?? false) &&
                 !BuildServerConfigurationGeneration.IsActive)

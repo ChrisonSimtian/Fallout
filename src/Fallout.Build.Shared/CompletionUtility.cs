@@ -33,7 +33,7 @@ public static class CompletionUtility
         var rootElement = schema.RootElement;
         var definitions = rootElement.GetProperty("definitions").EnumerateObject().ToDictionary(x => x.Name, x => x);
 
-        var parameterProperties = rootElement.GetProperty("definitions").TryGetProperty("NukeBuild", out var baseSchema)
+        var parameterProperties = rootElement.GetProperty("definitions").TryGetProperty("FalloutBuild", out var baseSchema)
             ? baseSchema.GetProperty("properties").EnumerateObject()
                 .Concat(rootElement.GetProperty("allOf")[0].TryGetProperty("properties", out var properties) ? properties.EnumerateObject() : [])
             : definitions["build"].Value.GetProperty("properties").EnumerateObject();

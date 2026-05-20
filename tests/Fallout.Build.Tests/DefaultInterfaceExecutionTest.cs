@@ -138,7 +138,7 @@ public class DefaultInterfaceExecutionTest
     }
 
     private interface IParameterInterface
-        : INukeBuild
+        : IFalloutBuild
     {
         [Parameter] string StringParameter => TryGetValue(() => StringParameter);
 
@@ -149,40 +149,40 @@ public class DefaultInterfaceExecutionTest
             });
     }
 
-    private class ParameterBuild : NukeBuild, IParameterInterface { }
+    private class ParameterBuild : FalloutBuild, IParameterInterface { }
 
-    private class TestBuild : NukeBuild, ITestBuild
+    private class TestBuild : FalloutBuild, ITestBuild
     {
         public Target E => _ => _
             .DependsOn<ITestBuild>(x => x.A)
             .Executes(() => { });
     }
 
-    private class MultipleInheritanceTestBuild : NukeBuild, IInheritedTestBuild
+    private class MultipleInheritanceTestBuild : FalloutBuild, IInheritedTestBuild
     {
         public Target Default => _ => _
             .DependsOn<ITestBuild>(x => x.A)
             .Executes(() => { });
     }
 
-    private class InvalidDependencyTypeTestBuild : NukeBuild
+    private class InvalidDependencyTypeTestBuild : FalloutBuild
     {
         public Target E => _ => _
             .DependsOn<ITestBuild>(x => x.A)
             .Executes(() => { });
     }
 
-    private class NonPublicTargetTestBuild : NukeBuild, ITestBuild
+    private class NonPublicTargetTestBuild : FalloutBuild, ITestBuild
     {
         private Target D => _ => _
             .Executes(() => { });
     }
 
-    private class DuplicatedTargetTestBuild : NukeBuild, ITestBuild, IDuplicatedTargetBuild
+    private class DuplicatedTargetTestBuild : FalloutBuild, ITestBuild, IDuplicatedTargetBuild
     {
     }
 
-    private class OverriddenDuplicatedTargetTestBuild : NukeBuild, ITestBuild, IDuplicatedTargetBuild
+    private class OverriddenDuplicatedTargetTestBuild : FalloutBuild, ITestBuild, IDuplicatedTargetBuild
     {
         public Target D => _ => _
             .Executes(() => { });
@@ -230,11 +230,11 @@ public class DefaultInterfaceExecutionTest
             .Executes(() => { });
     }
 
-    private class TestBuildWithDeclaringAndImplementingComponent : NukeBuild, IImplementingComponent
+    private class TestBuildWithDeclaringAndImplementingComponent : FalloutBuild, IImplementingComponent
     {
     }
 
-    private interface IDeclaringComponent : INukeBuild
+    private interface IDeclaringComponent : IFalloutBuild
     {
         Target Foo { get; }
     }

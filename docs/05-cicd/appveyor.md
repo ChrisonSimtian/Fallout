@@ -78,7 +78,7 @@ You can generate [build pipeline files](https://appveyor.com/docs/appveyor-yml/)
 [AppVeyor(
     AppVeyorImage.VisualStudio2022,
     InvokedTargets = new[] { nameof(Compile) })]
-class Build : NukeBuild { /* ... */ }
+class Build : FalloutBuild { /* ... */ }
 ``` 
 
 <details>

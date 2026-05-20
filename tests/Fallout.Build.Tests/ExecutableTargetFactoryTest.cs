@@ -52,7 +52,7 @@ public class ExecutableTargetFactoryTest
         d.AllDependencies.Should().NotBeEmpty();
     }
 
-    private class TestBuild : NukeBuild
+    private class TestBuild : FalloutBuild
     {
         public string Description = "description";
         public Action Action = () => { };
@@ -110,7 +110,7 @@ public class ExecutableTargetFactoryTest
     }
 
     private interface ITestSharedBuild
-        : INukeBuild
+        : IFalloutBuild
     {
         Target SharedTarget => _ => _
             .Executes(() => { });
@@ -119,7 +119,7 @@ public class ExecutableTargetFactoryTest
         Target ExplicitSharedTarget => _ => _.Description("WRONG");
     }
 
-    private class TestBaseBuild : NukeBuild
+    private class TestBaseBuild : FalloutBuild
     {
         public virtual Target SpecificTarget => _ => _
             .Executes(() => { });
@@ -140,7 +140,7 @@ public class ExecutableTargetFactoryTest
     }
 
     private interface IAnotherSharedBuild
-        : INukeBuild
+        : IFalloutBuild
     {
         Target ExplicitTargetWithDefault => _ => _.Description("WRONG");
         Target ExplicitTargetWithoutDefault { get; }

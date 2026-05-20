@@ -25,7 +25,7 @@ partial class ReSharperTasks
             return options;
 
         var wave = GetWave().NotNull("wave != null");
-        var shadowDirectory = NukeBuild.TemporaryDirectory / $"ReSharper-{wave}-{GetHash()}";
+        var shadowDirectory = FalloutBuild.TemporaryDirectory / $"ReSharper-{wave}-{GetHash()}";
 
         ((AbsolutePath)options.ProcessToolPath).Parent.Copy(
             target: shadowDirectory,

@@ -21,10 +21,10 @@ namespace Fallout.Common.Execution;
 /// </summary>
 internal static class BuildExecutor
 {
-    // NOTE: no INukeBuild because of BuildAttemptFile + WriteTarget
-    private static AbsolutePath BuildAttemptFile => Constants.GetBuildAttemptFile(NukeBuild.RootDirectory);
+    // NOTE: no IFalloutBuild because of BuildAttemptFile + WriteTarget
+    private static AbsolutePath BuildAttemptFile => Constants.GetBuildAttemptFile(FalloutBuild.RootDirectory);
 
-    public static void Execute(NukeBuild build, [CanBeNull] IReadOnlyCollection<string> skippedTargets)
+    public static void Execute(FalloutBuild build, [CanBeNull] IReadOnlyCollection<string> skippedTargets)
     {
         if (skippedTargets != null)
         {
@@ -60,7 +60,7 @@ internal static class BuildExecutor
         }
     }
 
-    private static IReadOnlyCollection<string> UpdateInvocationHash(NukeBuild build)
+    private static IReadOnlyCollection<string> UpdateInvocationHash(FalloutBuild build)
     {
         var continueParameterName = ParameterService.GetParameterMemberName(() => build.Continue);
         var invocation = EnvironmentInfo.CommandLineArguments
@@ -89,7 +89,7 @@ internal static class BuildExecutor
     }
 
     private static void Execute(
-        NukeBuild build,
+        FalloutBuild build,
         ExecutableTarget target,
         IReadOnlyCollection<string> previouslyExecutedTargets,
         bool failureMode = false)
@@ -148,7 +148,7 @@ internal static class BuildExecutor
         }
     }
 
-    private static bool CheckConditions(INukeBuild build, ExecutableTarget target, IEnumerable<(string Text, Func<bool> Delegate)> conditions)
+    private static bool CheckConditions(IFalloutBuild build, ExecutableTarget target, IEnumerable<(string Text, Func<bool> Delegate)> conditions)
     {
         string Format(string condition)
             => condition
@@ -180,7 +180,7 @@ internal static class BuildExecutor
         return target.OnlyWhen != null;
     }
 
-    private static void MarkTargetSkipped(INukeBuild build, ExecutableTarget target, string reason = null)
+    private static void MarkTargetSkipped(IFalloutBuild build, ExecutableTarget target, string reason = null)
     {
         if (target.Status != ExecutionStatus.Scheduled)
             return;

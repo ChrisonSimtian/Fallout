@@ -8,14 +8,14 @@ With build components you can implement your build infrastructure once, and comp
 classDiagram
     direction BT
 
-    INukeBuild <|.. IPack
-    INukeBuild <|.. ICompile
-    INukeBuild <|.. ITest
+    IFalloutBuild <|.. IPack
+    IFalloutBuild <|.. ICompile
+    IFalloutBuild <|.. ITest
     IPack <|.. Build
     ICompile <|.. Build
     ITest <|.. Build
 
-    <<interface>> INukeBuild
+    <<interface>> IFalloutBuild
 
     <<interface>> IPack
     IPack : + Target Pack
@@ -27,22 +27,22 @@ classDiagram
     ITest : + Target Test
 ```
 
-The component stubs from above can be translated into code as follows, whereas the `INukeBuild` base interface allows the components to use [build base properties](../02-fundamentals/04-builds.md#base-properties):
+The component stubs from above can be translated into code as follows, whereas the `IFalloutBuild` base interface allows the components to use [build base properties](../02-fundamentals/04-builds.md#base-properties):
 
 ```csharp
-interface ICompile : INukeBuild
+interface ICompile : IFalloutBuild
 {
     Target Compile => _ => _
         .Executes(() => { /* Implementation */ });
 }
 
-interface IPack : INukeBuild
+interface IPack : IFalloutBuild
 {
     Target Pack => _ => _
         .Executes(() => { /* Implementation */ });
 }
 
-interface ITest : INukeBuild
+interface ITest : IFalloutBuild
 {
     Target Test => _ => _
         .Executes(() => { /* Implementation */ });
@@ -52,7 +52,7 @@ interface ITest : INukeBuild
 In the actual `Build` class, all you have to do is to inherit the components:
 
 ```csharp
-class Build : NukeBuild, ICompile, IPack, ITest
+class Build : FalloutBuild, ICompile, IPack, ITest
 {
     // Targets are inherited
 }
@@ -60,10 +60,10 @@ class Build : NukeBuild, ICompile, IPack, ITest
 
 ## Parameters
 
-In build components, you can use [parameters](../02-fundamentals/06-parameters.md) and other auto-injection attributes, like [`GitRepositoryAttribute`](../03-common/05-repository.md) or [`SolutionAttribute`](../03-common/07-solution-project-model.md), similar as in regular build classes. Though, since interfaces can't define instance fields or properties, the `INukeBuild` base interface provides a helper method that caches and returns resolved values for you:
+In build components, you can use [parameters](../02-fundamentals/06-parameters.md) and other auto-injection attributes, like [`GitRepositoryAttribute`](../03-common/05-repository.md) or [`SolutionAttribute`](../03-common/07-solution-project-model.md), similar as in regular build classes. Though, since interfaces can't define instance fields or properties, the `IFalloutBuild` base interface provides a helper method that caches and returns resolved values for you:
 
 ```csharp
-interface IComponent : INukeBuild
+interface IComponent : IFalloutBuild
 {
     [Parameter]
     string Parameter => TryGetValue(() => Parameter);
@@ -77,7 +77,7 @@ interface IComponent : INukeBuild
 The `TryGetValue` method can return `null`, for instance, when a parameter is not available. If you want to provide a default value, you can use the [null-coalescing operator](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator):
 
 ```csharp
-interface IComponent : INukeBuild
+interface IComponent : IFalloutBuild
 {
     [Parameter]
     string Parameter => TryGetValue(() => Parameter) ?? "default";
@@ -93,14 +93,14 @@ For better distinction of similarly named component parameters and to avoid [smu
 
 ```csharp
 [ParameterPrefix(nameof(IComponent1))]
-interface IComponent1 : INukeBuild
+interface IComponent1 : IFalloutBuild
 {
     // Resolved as IComponent1Value
     [Parameter] string Value => TryGetValue(() => Value);
 }
 
 [ParameterPrefix(nameof(IComponent2))]
-interface IComponent2 : INukeBuild
+interface IComponent2 : IFalloutBuild
 {
     // Resolved as IComponent2Value
     [Parameter] string Value => TryGetValue(() => Value);
@@ -112,7 +112,7 @@ interface IComponent2 : INukeBuild
 You can define [dependencies](../02-fundamentals/05-targets.md#dependencies) between targets similar as in regular build classes. Since targets from components cannot easily be referenced from their inheritors[^1], you must pass the component type as a generic parameter and provide the target through a lambda expression:
 
 ```csharp
-class Build : NukeBuild, IComponent
+class Build : FalloutBuild, IComponent
 {
     Target MyTarget => _ => _
         .DependsOn<IComponent>(x => x.Target)
@@ -127,7 +127,7 @@ When a build component only defines a single target, you can use the shorthand s
 
 
 ```csharp
-class Build : NukeBuild, IComponent
+class Build : FalloutBuild, IComponent
 {
     Target MyTarget => _ => _
         .DependsOn<IComponent>()
@@ -146,7 +146,7 @@ Apart from [regular dependencies](../02-fundamentals/05-targets.md#dependencies)
   <TabItem value="execution" label="Execution Dependencies">
 
 ```csharp title="Build.cs"
-interface IComponent1 : INukeBuild
+interface IComponent1 : IFalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -155,7 +155,7 @@ interface IComponent1 : INukeBuild
         .Executes(() => { });
 }
 
-interface IComponent2 : INukeBuild
+interface IComponent2 : IFalloutBuild
 {
     Target B => _ => _
         // highlight-start
@@ -169,7 +169,7 @@ interface IComponent2 : INukeBuild
   <TabItem value="ordering" label="Ordering Dependencies">
 
 ```csharp title="Build.cs"
-interface IComponent1 : INukeBuild
+interface IComponent1 : IFalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -178,7 +178,7 @@ interface IComponent1 : INukeBuild
         .Executes(() => { });
 }
 
-interface IComponent2 : INukeBuild
+interface IComponent2 : IFalloutBuild
 {
     Target B => _ => _
         // highlight-start
@@ -192,7 +192,7 @@ interface IComponent2 : INukeBuild
   <TabItem value="triggers" label="Trigger Dependencies">
 
 ```csharp title="Build.cs"
-interface IComponent1 : INukeBuild
+interface IComponent1 : IFalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -201,7 +201,7 @@ interface IComponent1 : INukeBuild
         .Executes(() => { });
 }
 
-interface IComponent2 : INukeBuild
+interface IComponent2 : IFalloutBuild
 {
     Target B => _ => _
         // highlight-start
@@ -222,7 +222,7 @@ Another SOLID design principle that can be applied to build components is the [o
   <TabItem value="extensions" label="Extending Targets" default>
 
 ```csharp
-class Build : NukeBuild, IComponent
+class Build : FalloutBuild, IComponent
 {
     Target IComponent.Target => _ => _
         .Inherit<IComponent>()
@@ -234,7 +234,7 @@ class Build : NukeBuild, IComponent
   <TabItem value="overrides" label="Overriding Targets">
 
 ```csharp
-class Build : NukeBuild, IComponent
+class Build : FalloutBuild, IComponent
 {
     Target IComponent.Target => _ => _
         .Executes(() => { });
@@ -269,13 +269,13 @@ classDiagram
 ```
 
 ```csharp
-interface IRestore : INukeBuild
+interface IRestore : IFalloutBuild
 {
     Target Restore => _ => _
         .Executes(() => { /* Implementation */ });
 }
 
-interface ICompile : INukeBuild
+interface ICompile : IFalloutBuild
 {
     Target Compile => _ => _
         .TryDependsOn<IRestore>();
@@ -299,7 +299,7 @@ interface ICompileWithMSBuild : ICompile
 Targets that follow later in the execution plan can now reference the implementation-agnostic definition:
 
 ```csharp
-class Build : NukeBuild, ICompileWithDotNet
+class Build : FalloutBuild, ICompileWithDotNet
 {
     Target Pack => _ => _
         .DependsOn<ICompile>()

@@ -16,7 +16,7 @@ namespace Fallout.Common.Execution;
 
 internal static class ToolRequirementService
 {
-    public static void EnsureToolRequirements(INukeBuild build, IReadOnlyCollection<ExecutableTarget> executionPlan)
+    public static void EnsureToolRequirements(IFalloutBuild build, IReadOnlyCollection<ExecutableTarget> executionPlan)
     {
         var requirements = build.GetType().GetCustomAttributes<RequiresAttribute>().Select(x => x.GetRequirement())
             .Concat(executionPlan.SelectMany(x => x.ToolRequirements)).ToList();
@@ -26,7 +26,7 @@ internal static class ToolRequirementService
         InstallAptGetPackages(requirements.OfType<AptGetPackageRequirement>().ToList(), build);
     }
 
-    private static void InstallNuGetPackages(IReadOnlyCollection<NuGetPackageRequirement> requirements, INukeBuild build)
+    private static void InstallNuGetPackages(IReadOnlyCollection<NuGetPackageRequirement> requirements, IFalloutBuild build)
     {
         if (requirements.Count == 0)
             return;
@@ -65,7 +65,7 @@ internal static class ToolRequirementService
         dotnet.Invoke($"restore", workingDirectory: projectFile.Parent, logInvocation: false, logOutput: false);
     }
 
-    private static void InstallNpmPackages(IReadOnlyCollection<NpmPackageRequirement> requirements, INukeBuild build)
+    private static void InstallNpmPackages(IReadOnlyCollection<NpmPackageRequirement> requirements, IFalloutBuild build)
     {
         if (requirements.Count == 0)
             return;
@@ -94,7 +94,7 @@ internal static class ToolRequirementService
         npm.Invoke("install", workingDirectory: packageJsonFile.Parent, logInvocation: false, logOutput: false);
     }
 
-    private static void InstallAptGetPackages(IReadOnlyCollection<AptGetPackageRequirement> requirements, INukeBuild build)
+    private static void InstallAptGetPackages(IReadOnlyCollection<AptGetPackageRequirement> requirements, IFalloutBuild build)
     {
         if (requirements.Count == 0)
             return;

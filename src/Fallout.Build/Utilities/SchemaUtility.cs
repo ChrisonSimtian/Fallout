@@ -36,7 +36,7 @@ public class SchemaUtility
             }
         }
 
-        public static JsonSchema Generate<T>(T build) where T : INukeBuild
+        public static JsonSchema Generate<T>(T build) where T : IFalloutBuild
         {
             return new SchemaGenerator(
                 build,
@@ -52,9 +52,9 @@ public class SchemaUtility
                 }).Generate();
         }
 
-        private readonly INukeBuild _build;
+        private readonly IFalloutBuild _build;
 
-        private SchemaGenerator(INukeBuild build, JsonSchemaGeneratorSettings settings)
+        private SchemaGenerator(IFalloutBuild build, JsonSchemaGeneratorSettings settings)
             : base(settings)
         {
             _build = build;
@@ -70,7 +70,7 @@ public class SchemaUtility
             var parameterMembers = ValueInjectionUtility.GetParameterMembers(_build.GetType(), includeUnlisted: true);
             foreach (var parameterMember in parameterMembers)
             {
-                var schema = parameterMember.DeclaringType == typeof(NukeBuild) ? baseSchema : userSchema;
+                var schema = parameterMember.DeclaringType == typeof(FalloutBuild) ? baseSchema : userSchema;
                 var name = ParameterService.GetParameterMemberName(parameterMember);
                 var property = CreateProperty(parameterMember, schemaResolver);
                 schema.Properties[name] = property;
@@ -78,9 +78,9 @@ public class SchemaUtility
 
             // ValueInjectionUtility.GetParameterMembers(_build.GetType(), includeUnlisted: true)
             //     // .Where(x => x.Name.EqualsAnyOrdinalIgnoreCase(
-            //     //     nameof(NukeBuild.SkippedTargets),
-            //     //     nameof(NukeBuild.InvokedTargets),
-            //     //     nameof(NukeBuild.Verbosity)
+            //     //     nameof(FalloutBuild.SkippedTargets),
+            //     //     nameof(FalloutBuild.InvokedTargets),
+            //     //     nameof(FalloutBuild.Verbosity)
             //     // ))
             //     .ToDictionary(ParameterService.GetParameterMemberName, x => CreateProperty(x, schemaResolver))
             //     .ForEach(x =>
@@ -95,14 +95,14 @@ public class SchemaUtility
                 baseSchema.Properties[SkippedTargetsParameterName].Item = new JsonSchema { Reference = executableTargetSchema };
 
             var hostNames = Host.AvailableTypes.Select(x => x.Name).OrderBy(x => x);
-            var hostSchema = UpdatePropertySchema(nameof(NukeBuild.Host), hostNames);
-            baseSchema.Properties[nameof(NukeBuild.Host)].Reference = hostSchema;
+            var hostSchema = UpdatePropertySchema(nameof(FalloutBuild.Host), hostNames);
+            baseSchema.Properties[nameof(FalloutBuild.Host)].Reference = hostSchema;
 
             RemoveXEnumValues();
 
             topLevelSchema.AllOf.Add(userSchema);
             topLevelSchema.AllOf.Add(new JsonSchema { Reference = baseSchema });
-            topLevelSchema.Definitions[nameof(NukeBuild)] = baseSchema;
+            topLevelSchema.Definitions[nameof(FalloutBuild)] = baseSchema;
             return topLevelSchema;
 
             JsonSchema UpdatePropertySchema(string name, IEnumerable<string> values)
@@ -158,12 +158,12 @@ public class SchemaUtility
         }
     }
 
-    public static string GetJsonString(INukeBuild build)
+    public static string GetJsonString(IFalloutBuild build)
     {
         return SchemaGenerator.Generate(build).ToJson();
     }
 
-    public static JsonDocument GetJsonDocument(INukeBuild build)
+    public static JsonDocument GetJsonDocument(IFalloutBuild build)
     {
         return JsonDocument.Parse(GetJsonString(build));
     }

@@ -115,7 +115,7 @@ public class ParameterServiceTest
             (nameof(Verbosity.Quiet), Verbosity.Quiet),
             (nameof(Verbosity.Verbose), Verbosity.Verbose),
         };
-        ParameterService.GetParameterValueSet(GetMemberInfo(() => NukeBuild.Verbosity), instance: null)
+        ParameterService.GetParameterValueSet(GetMemberInfo(() => FalloutBuild.Verbosity), instance: null)
             .Should().BeEquivalentTo(verbosities);
         ParameterService.GetParameterValueSet(GetMemberInfo(() => build.Verbosities), instance: null)
             .Should().BeEquivalentTo(verbosities);
@@ -153,7 +153,7 @@ public class ParameterServiceTest
     }
 
 #pragma warning disable CS0649
-    private class TestBuild : NukeBuild, ITestComponent
+    private class TestBuild : FalloutBuild, ITestComponent
     {
         [Parameter] public string String;
         [Parameter] public int[] Set;
@@ -161,7 +161,7 @@ public class ParameterServiceTest
     }
 
     [ParameterPrefix("Interface")]
-    private interface ITestComponent : INukeBuild
+    private interface ITestComponent : IFalloutBuild
     {
         [Parameter] bool Param => TryGetValue<bool?>(() => Param) ?? false;
     }

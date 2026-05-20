@@ -16,12 +16,12 @@ using Serilog;
 namespace Fallout.Common;
 
 [EventInvoker(Priority = float.MinValue)]
-public abstract partial class NukeBuild
+public abstract partial class FalloutBuild
 {
     private IReadOnlyCollection<IBuildExtension> BuildExtensions { get; }
-    IReadOnlyCollection<IBuildExtension> INukeBuild.BuildExtensions => BuildExtensions;
+    IReadOnlyCollection<IBuildExtension> IFalloutBuild.BuildExtensions => BuildExtensions;
 
-    protected NukeBuild()
+    protected FalloutBuild()
     {
         BuildExtensions ??= GetType()
             .GetCustomAttributes<BuildExtensionAttributeBase>()

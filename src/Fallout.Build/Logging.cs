@@ -57,7 +57,7 @@ public static class Logging
         };
     }
 
-    public static void Configure(INukeBuild build = null)
+    public static void Configure(IFalloutBuild build = null)
     {
         if (build != null)
         {
@@ -93,7 +93,7 @@ public static class Logging
         return configuration.MinimumLevel.Verbose();
     }
 
-    public static LoggerConfiguration ConfigureFilter(this LoggerConfiguration configuration, [CanBeNull] INukeBuild build)
+    public static LoggerConfiguration ConfigureFilter(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
     {
         if (build == null)
             return configuration;
@@ -101,7 +101,7 @@ public static class Logging
         return configuration.Filter.ByExcluding(x => build.Host.FilterMessage(x.MessageTemplate.Text));
     }
 
-    public static LoggerConfiguration ConfigureConsole(this LoggerConfiguration configuration, [CanBeNull] INukeBuild build)
+    public static LoggerConfiguration ConfigureConsole(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
     {
         return configuration
             .WriteTo.Console(outputTemplate: build != null && build.IsOutputEnabled(DefaultOutput.Timestamps)
@@ -112,7 +112,7 @@ public static class Logging
                 levelSwitch: LevelSwitch);
     }
 
-    public static LoggerConfiguration ConfigureHost(this LoggerConfiguration configuration, [CanBeNull] INukeBuild build)
+    public static LoggerConfiguration ConfigureHost(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
     {
         if (build == null)
             return configuration;
@@ -121,7 +121,7 @@ public static class Logging
             .WriteTo.Sink(new Host.LogEventSink(build.Host), restrictedToMinimumLevel: LogEventLevel.Warning);
     }
 
-    public static LoggerConfiguration ConfigureInMemory(this LoggerConfiguration configuration, [CanBeNull] INukeBuild build)
+    public static LoggerConfiguration ConfigureInMemory(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
     {
         if (build == null)
             return configuration;
@@ -130,7 +130,7 @@ public static class Logging
             .WriteTo.Sink(InMemorySink.Instance, LogEventLevel.Warning);
     }
 
-    public static LoggerConfiguration ConfigureFiles(this LoggerConfiguration configuration, [CanBeNull] INukeBuild build)
+    public static LoggerConfiguration ConfigureFiles(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
     {
         if (build == null || build.Host is IBuildServer)
             return configuration;
@@ -145,7 +145,7 @@ public static class Logging
                 outputTemplate: $"{{Level:u1}} | {{ExecutingTarget,-{TargetNameLength}}} | {{Message:l}}{{NewLine}}{{Exception}}");
     }
 
-    private static void DeleteOldLogFiles(INukeBuild build)
+    private static void DeleteOldLogFiles(IFalloutBuild build)
     {
         if (BuildServerConfigurationGeneration.IsActive)
             return;

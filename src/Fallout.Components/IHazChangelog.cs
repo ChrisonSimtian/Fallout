@@ -12,7 +12,7 @@ using static Fallout.Common.ChangeLog.ChangelogTasks;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IHazChangelog : INukeBuild
+public interface IHazChangelog : IFalloutBuild
 {
     // TODO: assert file exists
     string ChangelogFile => RootDirectory / "CHANGELOG.md";

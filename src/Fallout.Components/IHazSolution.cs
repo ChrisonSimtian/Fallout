@@ -12,7 +12,7 @@ using Fallout.Common.ProjectModel;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IHazSolution : INukeBuild
+public interface IHazSolution : IFalloutBuild
 {
     [Solution] [Required] Solution Solution => TryGetValue(() => Solution);
 }

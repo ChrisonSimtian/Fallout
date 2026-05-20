@@ -62,7 +62,7 @@ internal static class VerbosityMapping
             var mappings = Mappings[property.PropertyType];
             foreach (var (verbosity, mappedVerbosity) in mappings)
             {
-                if (verbosity == NukeBuild.Verbosity)
+                if (verbosity == FalloutBuild.Verbosity)
                     options.Set(property.Name, mappedVerbosity);
             }
         }

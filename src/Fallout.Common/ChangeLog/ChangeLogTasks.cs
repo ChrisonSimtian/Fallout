@@ -102,7 +102,7 @@ public static class ChangelogTasks
     /// <seealso cref="FinalizeChangelog(ChangeLog,NuGetVersion,GitRepository)"/>
     public static void FinalizeChangelog(ChangeLog changelogFile, NuGetVersion tag, [CanBeNull] GitRepository repository = null)
     {
-        Log.Information("Finalizing {File} for {Tag} ...", PathConstruction.GetRelativePath(NukeBuild.RootDirectory, changelogFile.Path), tag);
+        Log.Information("Finalizing {File} for {Tag} ...", PathConstruction.GetRelativePath(FalloutBuild.RootDirectory, changelogFile.Path), tag);
 
         var unreleasedNotes = changelogFile.Unreleased;
         var releaseNotes = changelogFile.ReleaseNotes;
@@ -135,7 +135,7 @@ public static class ChangelogTasks
     /// <seealso cref="FinalizeChangelog(ChangeLog,NuGetVersion,GitRepository)"/>
     public static void FinalizeChangelog(AbsolutePath changelogFile, string tag, [CanBeNull] GitRepository repository = null)
     {
-        Log.Information("Finalizing {File} for {Tag} ...", PathConstruction.GetRelativePath(NukeBuild.RootDirectory, changelogFile), tag);
+        Log.Information("Finalizing {File} for {Tag} ...", PathConstruction.GetRelativePath(FalloutBuild.RootDirectory, changelogFile), tag);
 
         var content = changelogFile.ReadAllLines().ToList();
         var sections = GetReleaseSections(content).ToList();

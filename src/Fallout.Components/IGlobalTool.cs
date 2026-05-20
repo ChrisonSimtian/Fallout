@@ -14,7 +14,7 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IGlobalTool : INukeBuild
+public interface IGlobalTool : IFalloutBuild
 {
     string GlobalToolPackageName => Path.GetFileNameWithoutExtension(BuildProjectFile);
     string GlobalToolVersion => "1.0.0";

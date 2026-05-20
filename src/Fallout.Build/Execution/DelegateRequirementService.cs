@@ -18,7 +18,7 @@ namespace Fallout.Common.Execution;
 /// </summary>
 internal static class DelegateRequirementService
 {
-    public static void ValidateRequirements(INukeBuild build, IReadOnlyCollection<ExecutableTarget> scheduledTargets)
+    public static void ValidateRequirements(IFalloutBuild build, IReadOnlyCollection<ExecutableTarget> scheduledTargets)
     {
         foreach (var target in scheduledTargets)
         foreach (var requirement in target.DelegateRequirements)
@@ -40,7 +40,7 @@ internal static class DelegateRequirementService
         }
     }
 
-    private static bool IsMemberNullOrEmpty(MemberInfo member, INukeBuild build, ExecutableTarget target = null)
+    private static bool IsMemberNullOrEmpty(MemberInfo member, IFalloutBuild build, ExecutableTarget target = null)
     {
         member = member.DeclaringType != build.GetType()
             ? build.GetType().GetMember(member.Name).SingleOrDefault() ?? member
@@ -58,7 +58,7 @@ internal static class DelegateRequirementService
             : member.GetValue<string>(build).IsNullOrWhiteSpace();
     }
 
-    private static void TryInjectValueInteractive(MemberInfo member, INukeBuild build)
+    private static void TryInjectValueInteractive(MemberInfo member, IFalloutBuild build)
     {
         if (!member.HasCustomAttribute<ParameterAttribute>())
             return;

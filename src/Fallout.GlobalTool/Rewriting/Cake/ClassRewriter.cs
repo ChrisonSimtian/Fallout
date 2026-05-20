@@ -79,7 +79,7 @@ internal class ClassRewriter : SafeSyntaxRewriter
             node = node.WithMembers(List(new[] { mainMethodDeclaration }.Concat(node.Members)));
         }
 
-        var baseTypes = SeparatedList(new BaseTypeSyntax[] { SimpleBaseType(ParseTypeName(nameof(NukeBuild))) });
+        var baseTypes = SeparatedList(new BaseTypeSyntax[] { SimpleBaseType(ParseTypeName(nameof(FalloutBuild))) });
         var classDeclaration = ClassDeclaration("Build")
             .WithBaseList(BaseList(baseTypes))
             .WithMembers(List(node.Members.Where(x => x != defaultTargetField)));

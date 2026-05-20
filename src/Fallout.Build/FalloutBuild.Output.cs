@@ -10,7 +10,7 @@ using Fallout.Common.Utilities;
 
 namespace Fallout.Common;
 
-partial class NukeBuild
+partial class FalloutBuild
 {
     internal void WriteLogo()
     {
@@ -20,7 +20,7 @@ partial class NukeBuild
         if (IsOutputEnabled(DefaultOutput.Logo))
             Host.WriteLogo();
 
-        Host.Information($"Fallout Execution Engine {typeof(NukeBuild).Assembly.GetInformationalText()}");
+        Host.Information($"Fallout Execution Engine {typeof(FalloutBuild).Assembly.GetInformationalText()}");
         Host.Information();
     }
 

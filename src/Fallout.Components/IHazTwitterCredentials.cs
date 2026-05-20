@@ -12,7 +12,7 @@ namespace Fallout.Components;
 
 [PublicAPI]
 [ParameterPrefix(Twitter)]
-public interface IHazTwitterCredentials : INukeBuild
+public interface IHazTwitterCredentials : IFalloutBuild
 {
     public const string Twitter = nameof(Twitter);
 

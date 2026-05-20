@@ -215,7 +215,7 @@ public class BuildExecutorTest
         // targets.ForEach(x => x.Skipped.Should().NotBeNull());
     }
 
-    private class TestBuild : NukeBuild
+    private class TestBuild : FalloutBuild
     {
     }
 }

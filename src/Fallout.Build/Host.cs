@@ -107,7 +107,7 @@ public partial class Host
         }
     }
 
-    protected internal virtual void WriteTargetOutcome(INukeBuild build)
+    protected internal virtual void WriteTargetOutcome(IFalloutBuild build)
     {
         var firstColumn = Math.Max(build.ExecutionPlan.Max(x => x.Name.Length) + 4, val2: 19);
         var secondColumn = 10;
@@ -171,7 +171,7 @@ public partial class Host
         Debug('═'.Repeat(allColumns));
     }
 
-    protected internal virtual void WriteBuildOutcome(INukeBuild build)
+    protected internal virtual void WriteBuildOutcome(IFalloutBuild build)
     {
         Debug();
         if (build.IsSucceeding)

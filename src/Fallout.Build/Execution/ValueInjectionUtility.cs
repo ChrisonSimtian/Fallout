@@ -39,7 +39,7 @@ internal static class ValueInjectionUtility
         {
             var attribute = parameter.GetCustomAttribute<ValueInjectionAttributeBase>().NotNull();
             var instance = lambdaExpression.GetTarget();
-            attribute.Build = instance as INukeBuild;
+            attribute.Build = instance as IFalloutBuild;
             return attribute.TryGetValue(parameter, instance);
         }
 
@@ -62,22 +62,22 @@ internal static class ValueInjectionUtility
 
         foreach (var (member, attribute) in tuples)
         {
-            if (member.DeclaringType == typeof(NukeBuild) &&
+            if (member.DeclaringType == typeof(FalloutBuild) &&
                 !new[]
                  {
-                     nameof(NukeBuild.Plan),
-                     nameof(NukeBuild.Help),
-                     nameof(NukeBuild.Continue),
-                     nameof(NukeBuild.NoLogo),
-                     nameof(NukeBuild.Verbosity),
-                     nameof(NukeBuild.Partition)
+                     nameof(FalloutBuild.Plan),
+                     nameof(FalloutBuild.Help),
+                     nameof(FalloutBuild.Continue),
+                     nameof(FalloutBuild.NoLogo),
+                     nameof(FalloutBuild.Verbosity),
+                     nameof(FalloutBuild.Partition)
                  }.Contains(member.Name))
                 continue;
 
             if (member.ReflectedType.NotNull().IsInterface)
                 continue;
 
-            attribute.Build = instance as INukeBuild;
+            attribute.Build = instance as IFalloutBuild;
             var value = attribute.TryGetValue(member, instance);
             if (value == null)
                 continue;

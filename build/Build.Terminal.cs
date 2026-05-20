@@ -27,5 +27,5 @@ public class DisableDefaultOutputAttribute<T> : DisableDefaultOutputAttribute
     {
     }
 
-    public override bool IsApplicable(INukeBuild build) => build.Host is T;
+    public override bool IsApplicable(IFalloutBuild build) => build.Host is T;
 }

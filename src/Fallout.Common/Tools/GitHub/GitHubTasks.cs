@@ -26,7 +26,7 @@ public enum GitHubItemType
 [PublicAPI]
 public static class GitHubTasks
 {
-    public static GitHubClient GitHubClient = new(new ProductHeaderValue(nameof(NukeBuild)));
+    public static GitHubClient GitHubClient = new(new ProductHeaderValue(nameof(FalloutBuild)));
 
     static GitHubTasks()
     {

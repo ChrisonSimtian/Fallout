@@ -20,7 +20,7 @@ public interface IBuildExtension
 [AttributeUsage(AttributeTargets.Class)]
 public abstract class BuildExtensionAttributeBase : Attribute, IBuildExtension
 {
-    public INukeBuild Build { get; internal set; }
+    public IFalloutBuild Build { get; internal set; }
     public virtual float Priority { get; set; }
 }
 
@@ -41,7 +41,7 @@ public interface IOnBuildInitialized : IBuildExtension
 [PublicAPI]
 public interface IOnTargetSummaryUpdated : IBuildExtension
 {
-    void OnTargetSummaryUpdated(INukeBuild build, ExecutableTarget target);
+    void OnTargetSummaryUpdated(IFalloutBuild build, ExecutableTarget target);
 }
 
 [PublicAPI]

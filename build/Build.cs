@@ -27,7 +27,7 @@ using static Fallout.Common.Tools.ReSharper.ReSharperTasks;
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]
 partial class Build
-    : NukeBuild,
+    : FalloutBuild,
         IHazChangelog,
         IHazGitRepository,
         IHazGitVersion,
@@ -257,6 +257,6 @@ partial class Build
         });
 
     T From<T>()
-        where T : INukeBuild
+        where T : IFalloutBuild
         => (T)(object)this;
 }

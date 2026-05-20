@@ -11,7 +11,7 @@ using Fallout.Common;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IHazConfiguration : INukeBuild
+public interface IHazConfiguration : IFalloutBuild
 {
     [Parameter] Configuration Configuration => TryGetValue(() => Configuration) ??
                                                (IsLocalBuild ? Configuration.Debug : Configuration.Release);

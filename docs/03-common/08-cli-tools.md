@@ -270,7 +270,7 @@ Using the `VerbosityMappingAttribute`, it is possible to automatically map the v
     Minimal = nameof(MSBuildVerbosity.Minimal),
     Normal = nameof(MSBuildVerbosity.Normal),
     Verbose = nameof(MSBuildVerbosity.Detailed))]
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     // ...
 }

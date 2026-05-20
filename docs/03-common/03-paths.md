@@ -4,7 +4,7 @@ title: Constructing Paths
 
 Referencing files and directories seems like a trivial task. Nevertheless, developers often run into problems where relative paths no longer match the current working directory, or find themselves fixing path separator issues that stem from [historical design decisions](https://www.youtube.com/watch?v=5T3IJfBfBmI). NUKE follows the approach to use absolute paths whenever possible, which ensures explicitness and allows copying [tool invocations](08-cli-tools.md) from the log and executing them from anywhere you are.
 
-Central to the idea of absolute paths is the `AbsolutePath` type and the `NukeBuild.RootDirectory` property. From there on, you can easily construct paths through the [overloaded division operator](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading):
+Central to the idea of absolute paths is the `AbsolutePath` type and the `FalloutBuild.RootDirectory` property. From there on, you can easily construct paths through the [overloaded division operator](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading):
 
 <!-- snippet: path-construction-basic -->
 ```cs

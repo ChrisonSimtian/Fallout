@@ -51,25 +51,25 @@ public class SchemaUtilityTest
     // ReSharper disable All
 #pragma warning disable CS0414 // Field is assigned but its value is never used
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
-    private class EmptyBuild : NukeBuild
+    private class EmptyBuild : FalloutBuild
     {
     }
 
-    private class TargetBuild : NukeBuild, ITargetComponent
+    private class TargetBuild : FalloutBuild, ITargetComponent
     {
         Target RegularTarget => _ => _;
         public Target ImplementedTarget => _ => _;
         Target ITargetComponent.ExplicitTarget => _ => _;
     }
 
-    private interface ITargetComponent : INukeBuild
+    private interface ITargetComponent : IFalloutBuild
     {
         Target InheritedTarget => _ => _;
         Target ImplementedTarget => _ => _;
         Target ExplicitTarget => _ => _;
     }
 
-    private class ParameterBuild : NukeBuild, IParameterComponent
+    private class ParameterBuild : FalloutBuild, IParameterComponent
     {
         [Parameter] readonly string RegularParam;
         [Parameter] [Secret] readonly string SecretParam;
@@ -88,7 +88,7 @@ public class SchemaUtilityTest
     }
 
     [ParameterPrefix("Component")]
-    private interface IParameterComponent : INukeBuild
+    private interface IParameterComponent : IFalloutBuild
     {
         [Parameter] string InheritedParam => TryGetValue(() => InheritedParam);
     }
@@ -118,7 +118,7 @@ public class SchemaUtilityTest
         }
     }
 
-    private class CustomParameterAttributeBuild : NukeBuild
+    private class CustomParameterAttributeBuild : FalloutBuild
     {
         [CustomParameter] readonly ComplexType ComplexTypeParamWithAttribute;
     }

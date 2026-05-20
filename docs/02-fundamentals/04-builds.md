@@ -2,13 +2,13 @@
 title: Build Anatomy
 ---
 
-A build project is a regular .NET console application. However, unlike regular console applications, NUKE chooses to name the main class `Build` instead of `Program`. This establishes a convention and allows easier navigation in your solution. The `Build` class must inherit from the `NukeBuild` base class and define a `Main` method to invoke the build execution and define any number of default targets:
+A build project is a regular .NET console application. However, unlike regular console applications, NUKE chooses to name the main class `Build` instead of `Program`. This establishes a convention and allows easier navigation in your solution. The `Build` class must inherit from the `FalloutBuild` base class and define a `Main` method to invoke the build execution and define any number of default targets:
 
 <Tabs>
   <TabItem value="single" label="Single Default&nbsp;Target">
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     public static int Main() => Execute<Build>(x => x.Compile);
 
@@ -20,7 +20,7 @@ class Build : NukeBuild
   <TabItem value="multiple" label="Multiple Default&nbsp;Targets">
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     public static int Main() => Execute<Build>(x => x.Test, x => x.Pack);
 
@@ -32,7 +32,7 @@ class Build : NukeBuild
   <TabItem value="none" label="No Default&nbsp;Target">
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     public static int Main() => Execute<Build>();
 
@@ -49,14 +49,14 @@ You will learn how to [write target definitions](05-targets.md) in the next chap
 
 ## Base Properties
 
-The `NukeBuild` base class offers great insight into your build through various properties.
+The `FalloutBuild` base class offers great insight into your build through various properties.
 
 ### Build Environment
 
 Properties related to the build environment provide information about where the build is running and where various files are located:
 
-```csharp title="NukeBuild.cs"
-abstract class NukeBuild
+```csharp title="FalloutBuild.cs"
+abstract class FalloutBuild
 {
     static Host Host { get; }
     static bool IsLocalBuild { get; }
@@ -88,8 +88,8 @@ Learn more about the `AbsolutePath` class and how it's used for [path constructi
 
 Properties related to the build status allow you to examine the status of your targets and the overall build:
 
-```csharp title="NukeBuild.cs"
-abstract class NukeBuild
+```csharp title="FalloutBuild.cs"
+abstract class FalloutBuild
 {
     IReadOnlyCollection<ExecutableTarget> InvokedTargets { get; }
     IReadOnlyCollection<ExecutableTarget> SkippedTargets { get; }
@@ -118,8 +118,8 @@ You can examine the status of targets by using any of the appropriate `ICollecti
 
 For implementing cross-cutting concerns, like telemetry and similar, you can hook into various build events:
 
-```csharp title="NukeBuild.cs"
-abstract class NukeBuild
+```csharp title="FalloutBuild.cs"
+abstract class FalloutBuild
 {
     virtual void OnBuildCreated();
     virtual void OnBuildInitialized();

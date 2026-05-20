@@ -21,7 +21,7 @@ using static Fallout.Common.Tools.NuGet.NuGetTasks;                             
 
 [CheckBuildProjectConfigurations]                                                               // SOLUTION_FILE
 [ShutdownDotNetAfterServerBuild]                                                                // DOTNET
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     public static int Main () => Execute<Build>(x => x.Compile);
 

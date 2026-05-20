@@ -89,14 +89,14 @@ internal class HandleHelpRequestsAttribute : BuildExtensionAttributeBase, IOnBui
 
         builder.AppendLine("Parameters:");
 
-        var customParameters = parameters.Where(x => x.DeclaringType != typeof(NukeBuild)).ToList();
+        var customParameters = parameters.Where(x => x.DeclaringType != typeof(FalloutBuild)).ToList();
         if (customParameters.Count > 0)
             builder.AppendLine();
         customParameters.ForEach(PrintParameter);
 
         builder.AppendLine();
 
-        var inheritedParameters = parameters.Where(x => x.DeclaringType == typeof(NukeBuild)).ToList();
+        var inheritedParameters = parameters.Where(x => x.DeclaringType == typeof(FalloutBuild)).ToList();
         inheritedParameters.ForEach(PrintParameter);
 
         return builder.ToString();

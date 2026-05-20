@@ -17,7 +17,7 @@ namespace Fallout.Common.ValueInjection;
 [MeansImplicitUse(ImplicitUseKindFlags.Assign)]
 public abstract class ValueInjectionAttributeBase : Attribute
 {
-    public INukeBuild Build { get; internal set; }
+    public IFalloutBuild Build { get; internal set; }
 
     [CanBeNull]
     public object TryGetValue(MemberInfo member, object instance)

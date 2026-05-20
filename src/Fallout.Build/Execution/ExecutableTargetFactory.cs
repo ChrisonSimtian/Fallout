@@ -21,7 +21,7 @@ internal static class ExecutableTargetFactory
     public static IReadOnlyCollection<ExecutableTarget> CreateAll<T>(
         T build,
         params Expression<Func<T, Target>>[] defaultTargetExpressions)
-        where T : INukeBuild
+        where T : IFalloutBuild
     {
         var buildType = build.GetType();
         var targetProperties = GetTargetProperties(build.GetType()).ToList();

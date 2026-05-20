@@ -239,7 +239,7 @@ public interface ITargetDefinition
     ITargetDefinition Consumes<T>(params string[] artifacts);
 
     ITargetDefinition DependsOnContext<T>()
-        where T : INukeBuild;
+        where T : IFalloutBuild;
 
     /// <summary>
     ///   Defines the partition size. Default is <c>1</c>.

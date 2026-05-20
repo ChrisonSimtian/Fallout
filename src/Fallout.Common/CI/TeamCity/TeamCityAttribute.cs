@@ -79,9 +79,9 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
     {
         // serialize difference to start object
 
-        // var stateFile = NukeBuild.TemporaryDirectory / $"{TeamCity.Instance.BuildTypeId}.xml";
+        // var stateFile = FalloutBuild.TemporaryDirectory / $"{TeamCity.Instance.BuildTypeId}.xml";
         // FileSystemTasks.Touch(stateFile);
-        // FileSystemTasks.CopyFile(NukeBuild.TemporaryDirectory / "state.xml", stateFile, FileExistsPolicy.Overwrite);
+        // FileSystemTasks.CopyFile(FalloutBuild.TemporaryDirectory / "state.xml", stateFile, FileExistsPolicy.Overwrite);
         // TeamCity.Instance.PublishArtifacts($"+:{stateFile} => .teamcity/states");
     }
 
@@ -246,7 +246,7 @@ public class TeamCityAttribute : ChainedConfigurationAttributeBase
                 .Where(y => y is not Expression<Func<bool>>)
                 .Select(y => y.GetMemberInfo())))
             .Where(x => !x.HasCustomAttribute<SecretAttribute>())
-            .Where(x => x.DeclaringType != typeof(NukeBuild) || x.Name == nameof(NukeBuild.Verbosity))
+            .Where(x => x.DeclaringType != typeof(FalloutBuild) || x.Name == nameof(FalloutBuild.Verbosity))
             .Select(x => GetParameter(x, required: false))
             .Concat(GetSecretParameters())
             .Concat(GetDefaultParameters());

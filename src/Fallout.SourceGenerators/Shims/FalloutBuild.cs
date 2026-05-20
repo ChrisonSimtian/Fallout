@@ -8,6 +8,6 @@ using System.Linq;
 
 namespace Fallout.Common;
 
-internal static class NukeBuild
+internal static class FalloutBuild
 {
 }

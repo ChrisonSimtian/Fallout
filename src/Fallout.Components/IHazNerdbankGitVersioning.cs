@@ -12,7 +12,7 @@ using Fallout.Common.Tools.NerdbankGitVersioning;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IHazNerdbankGitVersioning : INukeBuild
+public interface IHazNerdbankGitVersioning : IFalloutBuild
 {
     [NerdbankGitVersioning] [Required] NerdbankGitVersioning Versioning => TryGetValue(() => Versioning);
 }

@@ -8,7 +8,7 @@ Inside a `Build` class, you can define your build steps as `Target` properties. 
   <TabItem value="regular" label="Regular Targets">
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     public static int Main() => Execute<Build>();
 
@@ -25,7 +25,7 @@ class Build : NukeBuild
   <TabItem value="async" label="Async Targets">
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     public static int Main() => Execute<Build>();
 
@@ -56,7 +56,7 @@ Specifying dependencies is essential to let targets run in a meaningful and pred
 Define that target `A` must run before target `B` unless `A` is skipped:
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -80,7 +80,7 @@ class Build : NukeBuild
 Define that target `A` runs before target `B` if both are scheduled:
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -105,7 +105,7 @@ Define that target `A` invokes target `B` once it completes:
 
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -139,7 +139,7 @@ Dependencies between targets are ONLY defined between the individual targets and
 The execution is nondeterministic between `A->B->C` and `B->A->C`. This isn't necessarily problematic, but something to be aware of. In particular, it allows different targets to run in parallel (currently only in compatible CI/CD environments).
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         .Executes(() => { });
@@ -161,7 +161,7 @@ class Build : NukeBuild
 The execution is always deterministic with `A->B->C`.
 
 ```csharp title="Build.cs"
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         .Executes(() => { });
@@ -195,7 +195,7 @@ Apart from [skipping targets manually](../01-getting-started/03-execution.md#ski
 Define a condition that is checked right before target `B` executes:
 
 ```csharp
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     readonly List<string> Data = new();
 
@@ -217,7 +217,7 @@ class Build : NukeBuild
 Define a condition that is checked before target `A` and `B` execute:
 
 ```csharp
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         .Executes(() => { });
@@ -245,7 +245,7 @@ When a condition is not met, the skip reason is created from the boolean express
 You can define target requirements that are checked right at the beginning of the build execution before any other targets are executed:
 
 ```csharp
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -273,7 +273,7 @@ Not every failing target should completely stop the build. Targets that are not 
 Define that execution continues after target `A` throws:
 
 ```csharp
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         // highlight-start
@@ -296,7 +296,7 @@ class Build : NukeBuild
 Define that target `B` executes even if another target fails:
 
 ```csharp
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         .Executes(() =>
@@ -321,7 +321,7 @@ class Build : NukeBuild
 It is good practice to follow the [single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) when implementing targets. However, you may not want to expose every target through the [build help text](../01-getting-started/03-execution.md#help-text). For cases like this, you can un-list a target:
 
 ```csharp
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     Target A => _ => _
         // highlight-start

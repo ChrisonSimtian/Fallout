@@ -14,7 +14,7 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IRestore : IHazSolution, INukeBuild
+public interface IRestore : IHazSolution, IFalloutBuild
 {
     Target Restore => _ => _
         .Executes(() =>

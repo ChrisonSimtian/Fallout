@@ -53,7 +53,7 @@ public class ConfigurationGenerationTest
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [AppVeyorSecret("GitHubToken", "encrypted-yaml")]
     [TeamCityToken("GitHubToken", "74928d76-46e8-45cc-ad22-6438915ac070")]
-    public class TestBuild : NukeBuild
+    public class TestBuild : FalloutBuild
     {
         public static IEnumerable<(string TestName, IConfigurationGenerator Generator)> GetAttributes()
         {

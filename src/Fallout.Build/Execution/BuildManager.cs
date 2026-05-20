@@ -39,7 +39,7 @@ internal static class BuildManager
     }
 
     public static int Execute<T>(Expression<Func<T, Target>>[] defaultTargetExpressions)
-        where T : NukeBuild, new()
+        where T : FalloutBuild, new()
     {
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.UTF8;

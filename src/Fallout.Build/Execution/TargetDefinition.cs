@@ -19,7 +19,7 @@ internal class TargetDefinition : ITargetDefinition
 {
     private readonly Stack<PropertyInfo> _baseMembers;
 
-    public TargetDefinition(PropertyInfo target, INukeBuild build, Stack<PropertyInfo> baseMembers)
+    public TargetDefinition(PropertyInfo target, IFalloutBuild build, Stack<PropertyInfo> baseMembers)
     {
         Target = target;
         Build = build;
@@ -28,7 +28,7 @@ internal class TargetDefinition : ITargetDefinition
 
     public PropertyInfo Target { get; }
     public string Name => Target.GetDisplayShortName();
-    public INukeBuild Build { get; }
+    public IFalloutBuild Build { get; }
 
     internal Func<bool> Intercept { get; set; }
 
@@ -308,7 +308,7 @@ internal class TargetDefinition : ITargetDefinition
     }
 
     public ITargetDefinition DependsOnContext<T>()
-        where T : INukeBuild
+        where T : IFalloutBuild
     {
         Assert.True(Build is T, $"'{Build.GetType().Name}' must implement context '{typeof(T).Name}'");
         var setup = (Setup) GetSingleTargetProperty<T>("context dependency (missing setup)", targetType: typeof(Setup)).GetValue(Build);

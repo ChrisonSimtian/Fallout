@@ -66,7 +66,7 @@ internal static partial class Telemetry
             => Constants.GlobalNukeDirectory / "telemetry-awareness" / $"v{version}" / name;
 
         // Check for calls from Fallout.GlobalTool and custom global tools
-        if (SuppressErrors(() => NukeBuild.BuildProjectFile, logWarning: false) == null)
+        if (SuppressErrors(() => FalloutBuild.BuildProjectFile, logWarning: false) == null)
         {
             var cookieName = Assembly.GetEntryAssembly().NotNull().GetName().Name;
             var cookieFile = GetCookieFile(cookieName, CurrentVersion);
@@ -79,11 +79,11 @@ internal static partial class Telemetry
             return CurrentVersion;
         }
 
-        var project = ProjectModelTasks.ParseProject(NukeBuild.BuildProjectFile);
+        var project = ProjectModelTasks.ParseProject(FalloutBuild.BuildProjectFile);
         var property = project.Properties.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(VersionPropertyName));
         if (property?.EvaluatedValue != CurrentVersion.ToString())
         {
-            if (NukeBuild.IsServerBuild)
+            if (FalloutBuild.IsServerBuild)
             {
                 PrintDisclosure(action: null);
                 return null;
@@ -101,7 +101,7 @@ internal static partial class Telemetry
                 return version;
         }
 
-        return NukeBuild.IsServerBuild ? CurrentVersion : null;
+        return FalloutBuild.IsServerBuild ? CurrentVersion : null;
     }
 
     private static void PrintDisclosure(string action)

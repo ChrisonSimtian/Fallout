@@ -94,7 +94,7 @@ You can generate [build pipeline files](https://docs.microsoft.com/en-us/azure/d
 [AzurePipelines(
     AzurePipelinesImage.UbuntuLatest,
     InvokedTargets = new[] { nameof(Compile) })]
-class Build : NukeBuild { /* ... */ }
+class Build : FalloutBuild { /* ... */ }
 ``` 
 
 <details>
@@ -159,7 +159,7 @@ If you want to use [secret variables](https://docs.microsoft.com/en-us/azure/dev
 [AzurePipelines(
     // ...
     ImportSecrets = new[] { nameof(NuGetApiKey) })]
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     [Parameter] [Secret] readonly string NuGetApiKey;
 }
@@ -190,7 +190,7 @@ For every pipeline run, Azure Pipelines generates a [one-time token](https://doc
 [AzurePipelines(
     // ...
     EnableAccessToken = true)]
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     AzurePipelines AzurePipelines => AzurePipelines.Instance;
 
@@ -251,5 +251,5 @@ You can customize the caching tasks by overwriting the following properties:
         AzurePipelinesCachePaths.Nuke,
         AzurePipelinesCachePaths.NuGet
     })]
-class Build : NukeBuild { /* ... */ }
+class Build : FalloutBuild { /* ... */ }
 ```

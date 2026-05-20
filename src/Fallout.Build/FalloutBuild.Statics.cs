@@ -17,9 +17,9 @@ using static Fallout.Common.Constants;
 
 namespace Fallout.Common;
 
-public abstract partial class NukeBuild
+public abstract partial class FalloutBuild
 {
-    static NukeBuild()
+    static FalloutBuild()
     {
         RootDirectory = GetRootDirectory();
         TemporaryDirectory = GetTemporaryDirectory(RootDirectory).CreateDirectory();
@@ -113,7 +113,7 @@ public abstract partial class NukeBuild
     private static AbsolutePath GetBuildAssemblyFile()
     {
         var entryAssembly = Assembly.GetEntryAssembly();
-        if (entryAssembly == null || entryAssembly.GetTypes().All(x => !x.IsSubclassOf(typeof(NukeBuild))))
+        if (entryAssembly == null || entryAssembly.GetTypes().All(x => !x.IsSubclassOf(typeof(FalloutBuild))))
         {
             var assemblyName = entryAssembly?.GetName().Name;
             Assert.True(assemblyName == null ||

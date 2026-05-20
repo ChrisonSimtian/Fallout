@@ -19,7 +19,7 @@ namespace Fallout.Common.CI;
 [AttributeUsage(AttributeTargets.Class)]
 public abstract class ConfigurationAttributeBase : Attribute, IConfigurationGenerator
 {
-    public INukeBuild Build { get; internal set; }
+    public IFalloutBuild Build { get; internal set; }
 
     public string DisplayName => HostType.Name + (string.IsNullOrEmpty(IdPostfix) ? string.Empty : $" ({IdPostfix})");
     public string HostName => HostType.Name;

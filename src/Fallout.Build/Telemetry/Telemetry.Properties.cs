@@ -22,7 +22,7 @@ internal partial class Telemetry
 {
     private static readonly string[] s_knownTargets = { "Restore", "Compile", "Test" };
 
-    private static Dictionary<string, string> GetCommonProperties(INukeBuild build = null)
+    private static Dictionary<string, string> GetCommonProperties(IFalloutBuild build = null)
     {
         var version = ControlFlow.SuppressErrors(
             () =>
@@ -37,7 +37,7 @@ internal partial class Telemetry
                    ["os_platform"] = EnvironmentInfo.Platform.ToString(),
                    ["os_architecture"] = RuntimeInformation.OSArchitecture.ToString(),
                    ["version_dotnet_sdk"] = version,
-                   ["version_nuke_common"] = build != null ? typeof(NukeBuild).Assembly.GetVersionText() : null,
+                   ["version_nuke_common"] = build != null ? typeof(FalloutBuild).Assembly.GetVersionText() : null,
                    ["version_nuke_global_tool"] = build != null
                        ? EnvironmentInfo.Variables.GetValueOrDefault(Constants.GlobalToolVersionEnvironmentKey)
                        : Assembly.GetEntryAssembly().GetVersionText()
@@ -78,7 +78,7 @@ internal partial class Telemetry
                };
     }
 
-    private static ReadOnlyDictionary<string, string> GetBuildProperties(INukeBuild build)
+    private static ReadOnlyDictionary<string, string> GetBuildProperties(IFalloutBuild build)
     {
         var startTimeString = EnvironmentInfo.Variables.GetValueOrDefault(Constants.GlobalToolStartTimeEnvironmentKey);
         var compileTime = startTimeString != null
@@ -99,12 +99,12 @@ internal partial class Telemetry
                        .Count(x => x.HasCustomAttribute<SecretAttribute>()).ToString(),
                    ["config_generators"] = build.GetType().GetCustomAttributes<ConfigurationAttributeBase>()
                        .Select(GetTypeName).Distinct().OrderBy(x => x).JoinCommaSpace(),
-                   ["build_components"] = build.GetType().GetInterfaces().Where(x => IsCommonType(x) && x != typeof(INukeBuild))
+                   ["build_components"] = build.GetType().GetInterfaces().Where(x => IsCommonType(x) && x != typeof(IFalloutBuild))
                        .Select(GetTypeName).Distinct().OrderBy(x => x).JoinCommaSpace()
                }.AsReadOnly();
     }
 
-    private static Dictionary<string, string> GetTargetProperties(INukeBuild build, ExecutableTarget target)
+    private static Dictionary<string, string> GetTargetProperties(IFalloutBuild build, ExecutableTarget target)
     {
         return new Dictionary<string, string>
                {

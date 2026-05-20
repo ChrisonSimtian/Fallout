@@ -12,7 +12,7 @@ using Fallout.Common.IO;
 namespace Fallout.Components;
 
 [PublicAPI]
-public interface IHazArtifacts : INukeBuild
+public interface IHazArtifacts : IFalloutBuild
 {
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 }

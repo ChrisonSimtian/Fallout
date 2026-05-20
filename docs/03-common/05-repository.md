@@ -104,7 +104,7 @@ For certain operations, you may initialize an **authorized client**:
 // Set credentials for authorized actions
 var credentials = new Credentials(GitHubActions.Instance.Token);
 GitHubTasks.GitHubClient = new GitHubClient(
-    new ProductHeaderValue(nameof(NukeBuild)),
+    new ProductHeaderValue(nameof(FalloutBuild)),
     new InMemoryCredentialStore(credentials));
 
 // Create and close a milestone

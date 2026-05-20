@@ -14,7 +14,7 @@ namespace Fallout.Common.Execution;
 
 internal partial class Telemetry
 {
-    public static void BuildStarted(INukeBuild build)
+    public static void BuildStarted(IFalloutBuild build)
     {
         TrackEvent(
             eventName: nameof(BuildStarted),
@@ -24,7 +24,7 @@ internal partial class Telemetry
                     .AddDictionary(GetRepositoryProperties(build.RootDirectory)));
     }
 
-    public static void TargetSucceeded(ExecutableTarget target, INukeBuild build)
+    public static void TargetSucceeded(ExecutableTarget target, IFalloutBuild build)
     {
         if (!target.Name.EqualsAnyOrdinalIgnoreCase(s_knownTargets) ||
             target.Status != ExecutionStatus.Succeeded)
@@ -39,7 +39,7 @@ internal partial class Telemetry
                     .AddDictionary(GetRepositoryProperties(build.RootDirectory)));
     }
 
-    public static void ConfigurationGenerated(Type hostType, string generatorId, INukeBuild build)
+    public static void ConfigurationGenerated(Type hostType, string generatorId, IFalloutBuild build)
     {
         TrackEvent(
             eventName: nameof(ConfigurationGenerated),

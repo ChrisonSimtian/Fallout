@@ -31,7 +31,7 @@ using static Fallout.Common.IO.TextTasks;
 using static Fallout.Common.IO.XmlTasks;
 using static Fallout.Common.EnvironmentInfo;
 
-class Build : NukeBuild
+class Build : FalloutBuild
 {
     [Parameter] readonly string Target = "Default";
     [Parameter] readonly bool Boolean;
