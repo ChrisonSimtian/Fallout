@@ -49,7 +49,8 @@ public static class WriterExtensions
         where T : IWriterWrapper
     {
         var lines = new List<string>();
-        lines.Add(("This is a <a href=\"https://www.nuke.build/docs/common/cli-tools/#fluent-api\">"
+        // TODO: point at the Fallout docs site once #41 lands; until then, the README is the authoritative source.
+        lines.Add(("This is a <a href=\"https://github.com/ChrisonSimtian/Fallout\">"
                    + "CLI wrapper with fluent API</a> that allows to modify the following arguments:").Paragraph());
         lines.AddRange(GetArgumentsList(task.SettingsClass));
 

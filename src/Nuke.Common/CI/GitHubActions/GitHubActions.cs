@@ -49,7 +49,7 @@ public partial class GitHubActions : Host, IBuildServer
 
             var client = new HttpClient();
             client.BaseAddress = new Uri("https://api.github.com");
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("nuke-build");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("fallout-build");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64Auth);
             return client;
         });

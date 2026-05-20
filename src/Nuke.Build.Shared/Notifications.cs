@@ -33,7 +33,8 @@ internal record Link(string Text, string Url)
 [PublicAPI]
 internal class NotificationFetcher
 {
-    private const string NotificationEndpoint = "https://nuke.build/notifications.json";
+    // TODO: host this file. Until then GetNotificationAsync catches the 404 and returns null.
+    private const string NotificationEndpoint = Constants.FalloutNotificationsUrl;
     private const string UtmMedium = "development";
 
     private readonly AbsolutePath _notificationDirectory = Constants.GlobalNukeDirectory / "received-notifications";

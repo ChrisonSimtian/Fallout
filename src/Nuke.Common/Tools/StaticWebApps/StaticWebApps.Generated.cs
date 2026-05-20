@@ -1,4 +1,4 @@
-// Generated from https://github.com/nuke-build/nuke/blob/master/source/Nuke.Common/Tools/StaticWebApps/StaticWebApps.json
+// Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Nuke.Common/Tools/StaticWebApps/StaticWebApps.json
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;

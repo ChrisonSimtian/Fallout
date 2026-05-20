@@ -7,13 +7,13 @@ body:
       value: |
         _Hi there :wave: and thanks for taking the time to report a bug!_
         
-        _Before you continue, please check our updated [contribution guidelines](https://github.com/nuke-build/nuke/blob/develop/CONTRIBUTING.md) ([history](https://github.com/nuke-build/nuke/commits/develop/CONTRIBUTING.md))._
+        _Before you continue, please check the [contribution guidelines](https://github.com/ChrisonSimtian/Fallout/blob/main/CONTRIBUTING.md)._
 
   - type: input
     id: usage-information
     attributes:
       label: Usage Information
-      description: NUKE Version / SDK Version / Target Framework / Operating System
+      description: Fallout (or legacy NUKE) Version / SDK Version / Target Framework / Operating System
     validations:
       required: true
 
@@ -61,7 +61,7 @@ body:
     attributes:
       label: Regression?
       description: |
-        Did this work in a previous build or release of NUKE? If you can try a previous release, which would help us narrow down the problem. If you don't know, that's OK.
+        Did this work in a previous build or release (Fallout or upstream NUKE)? If you can try a previous release, which would help us narrow down the problem. If you don't know, that's OK.
       placeholder: Regression?
     validations:
       required: false
@@ -80,7 +80,7 @@ body:
     id: pull-request
     attributes:
       label: Could you help with a pull-request?
-      description: Make sure you have read the sections about [consumer expectations](https://github.com/nuke-build/nuke/blob/develop/CONTRIBUTING.md#consumer-expectations), [baseline contributions](https://github.com/nuke-build/nuke/blob/develop/CONTRIBUTING.md#baseline-contributions), [sustainability contributions](https://github.com/nuke-build/nuke/blob/develop/CONTRIBUTING.md#sustainability-contributions).
+      description: See the [contribution guidelines](https://github.com/ChrisonSimtian/Fallout/blob/main/CONTRIBUTING.md).
       options:
         - "No"
         - "Yes"
