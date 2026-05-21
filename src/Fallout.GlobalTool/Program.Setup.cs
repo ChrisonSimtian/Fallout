@@ -132,8 +132,6 @@ partial class Program
 
         (buildDirectory / "Directory.Build.props").WriteAllLines(GetTemplate("Directory.Build.props"));
         (buildDirectory / "Directory.Build.targets").WriteAllLines(GetTemplate("Directory.Build.targets"));
-        (buildProjectFile + ".DotSettings").WriteAllLines(GetTemplate("_build.csproj.DotSettings"));
-        (buildDirectory / ".editorconfig").WriteAllLines(GetTemplate(".editorconfig"));
         (buildDirectory / "Build.cs").WriteAllLines(FillTemplate(GetTemplate("Build.cs")));
         (buildDirectory / "Configuration.cs").WriteAllLines(GetTemplate("Configuration.cs"));
 

@@ -16,7 +16,7 @@ using static Fallout.Common.Tools.Git.GitTasks;
 partial class Build
 {
     AbsolutePath SpecificationsDirectory => RootDirectory / "src" / "Fallout.Common" / "Tools";
-    AbsolutePath ReferencesDirectory => BuildProjectDirectory / "references";
+    AbsolutePath ReferencesDirectory => RootDirectory / "docs" / "cli-tools";
 
     Target References => _ => _
         .Requires(() => GitHasCleanWorkingCopy())
