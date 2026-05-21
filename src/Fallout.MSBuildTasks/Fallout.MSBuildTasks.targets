@@ -1,29 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+    Backwards-compatible legacy-name lift.
+
+    All consumer-facing MSBuild properties have been renamed from `Nuke*` to `Fallout*` as part of
+    the rebrand. We read the new name first, fall back to the legacy name if only the legacy is
+    set, and emit FALLOUT001 warnings (in WarnLegacyFalloutProperties below) so consumers know to
+    rename their `.csproj` entries. Both names will keep working through the 10.x line; legacy
+    names will be removed in 11.0.
+  -->
   <PropertyGroup>
-    <NukeTasksAssembly>$(MSBuildThisFileDirectory)\$(MSBuildThisFileName).dll</NukeTasksAssembly>
+    <FalloutTasksAssembly Condition="'$(FalloutTasksAssembly)' == '' AND '$(NukeTasksAssembly)' != ''">$(NukeTasksAssembly)</FalloutTasksAssembly>
+    <FalloutTasksAssembly Condition="'$(FalloutTasksAssembly)' == ''">$(MSBuildThisFileDirectory)\$(MSBuildThisFileName).dll</FalloutTasksAssembly>
+
+    <FalloutContinueOnError Condition="'$(FalloutContinueOnError)' == '' AND '$(NukeContinueOnError)' != ''">$(NukeContinueOnError)</FalloutContinueOnError>
+    <FalloutContinueOnError Condition="'$(FalloutContinueOnError)' == ''">False</FalloutContinueOnError>
+
+    <FalloutTaskTimeout Condition="'$(FalloutTaskTimeout)' == '' AND '$(NukeTaskTimeout)' != ''">$(NukeTaskTimeout)</FalloutTaskTimeout>
+    <FalloutTaskTimeout Condition="'$(FalloutTaskTimeout)' == '' AND '$(NukeTimeout)' != ''">$(NukeTimeout)</FalloutTaskTimeout>
+    <FalloutTaskTimeout Condition="'$(FalloutTaskTimeout)' == ''">5000</FalloutTaskTimeout>
+
+    <FalloutBaseDirectory Condition="'$(FalloutBaseDirectory)' == '' AND '$(NukeBaseDirectory)' != ''">$(NukeBaseDirectory)</FalloutBaseDirectory>
+    <FalloutBaseDirectory Condition="'$(FalloutBaseDirectory)' == ''">$(MSBuildProjectDirectory)</FalloutBaseDirectory>
+
+    <FalloutUseNestedNamespaces Condition="'$(FalloutUseNestedNamespaces)' == '' AND '$(NukeUseNestedNamespaces)' != ''">$(NukeUseNestedNamespaces)</FalloutUseNestedNamespaces>
+    <FalloutUseNestedNamespaces Condition="'$(FalloutUseNestedNamespaces)' == ''">False</FalloutUseNestedNamespaces>
+
+    <FalloutRepositoryUrl Condition="'$(FalloutRepositoryUrl)' == '' AND '$(NukeRepositoryUrl)' != ''">$(NukeRepositoryUrl)</FalloutRepositoryUrl>
+    <FalloutRepositoryUrl Condition="'$(FalloutRepositoryUrl)' == ''">$(RepositoryUrl)</FalloutRepositoryUrl>
+
+    <FalloutUpdateReferences Condition="'$(FalloutUpdateReferences)' == '' AND '$(NukeUpdateReferences)' != ''">$(NukeUpdateReferences)</FalloutUpdateReferences>
+    <FalloutUpdateReferences Condition="'$(FalloutUpdateReferences)' == ''">True</FalloutUpdateReferences>
+
+    <FalloutBaseNamespace Condition="'$(FalloutBaseNamespace)' == '' AND '$(NukeBaseNamespace)' != ''">$(NukeBaseNamespace)</FalloutBaseNamespace>
   </PropertyGroup>
 
-  <UsingTask TaskName="$(MSBuildThisFileName).CodeGenerationTask" AssemblyFile="$(NukeTasksAssembly)" />
-  <UsingTask TaskName="$(MSBuildThisFileName).ExternalFilesTask" AssemblyFile="$(NukeTasksAssembly)" />
-  <UsingTask TaskName="$(MSBuildThisFileName).PackPackageToolsTask" AssemblyFile="$(NukeTasksAssembly)" />
-  <UsingTask TaskName="$(MSBuildThisFileName).EmbedPackagesForSelfContainedTask" AssemblyFile="$(NukeTasksAssembly)" />
+  <ItemGroup Condition="'@(FalloutSpecificationFiles)' == '' AND '@(NukeSpecificationFiles)' != ''">
+    <FalloutSpecificationFiles Include="@(NukeSpecificationFiles)" />
+  </ItemGroup>
 
-  <PropertyGroup>
-    <NukeContinueOnError Condition="'$(NukeContinueOnError)' == ''">False</NukeContinueOnError>
-    <NukeTaskTimeout Condition="'$(NukeTimeout)' == ''">5000</NukeTaskTimeout>
+  <ItemGroup Condition="'@(FalloutExternalFiles)' == '' AND '@(NukeExternalFiles)' != ''">
+    <FalloutExternalFiles Include="@(NukeExternalFiles)" />
+  </ItemGroup>
 
-    <NukeBaseDirectory Condition="'$(NukeBaseDirectory)' == ''">$(MSBuildProjectDirectory)</NukeBaseDirectory>
-    <NukeUseNestedNamespaces Condition="'$(NukeUseNestedNamespaces)' == ''">False</NukeUseNestedNamespaces>
-    <NukeRepositoryUrl Condition="'$(NukeRepositoryUrl)' == ''">$(RepositoryUrl)</NukeRepositoryUrl>
-    <NukeUpdateReferences Condition="'$(NukeUpdateReferences)' == ''">True</NukeUpdateReferences>
-  </PropertyGroup>
+  <UsingTask TaskName="$(MSBuildThisFileName).CodeGenerationTask" AssemblyFile="$(FalloutTasksAssembly)" />
+  <UsingTask TaskName="$(MSBuildThisFileName).ExternalFilesTask" AssemblyFile="$(FalloutTasksAssembly)" />
+  <UsingTask TaskName="$(MSBuildThisFileName).PackPackageToolsTask" AssemblyFile="$(FalloutTasksAssembly)" />
+  <UsingTask TaskName="$(MSBuildThisFileName).EmbedPackagesForSelfContainedTask" AssemblyFile="$(FalloutTasksAssembly)" />
 
-  <Target Name="NukeExternalFiles" BeforeTargets="Restore" Condition="'@(NukeExternalFiles)' != ''">
+  <Target Name="FalloutExternalFiles" BeforeTargets="Restore" Condition="'@(FalloutExternalFiles)' != ''">
     <Error Text="External files are no longer supported. Let us know if you're depending on this feature at https://github.com/ChrisonSimtian/Fallout/issues" />
   </Target>
 
-  <Target Name="NukePackPackageTools" BeforeTargets="GenerateNuspec" Condition="'$(PackAsTool)' == 'True'">
+  <Target Name="FalloutPackPackageTools" BeforeTargets="GenerateNuspec" Condition="'$(PackAsTool)' == 'True'">
     <PackPackageToolsTask
       TargetFramework="$(TargetFramework)"
       ProjectAssetsFile="$(ProjectAssetsFile)"
@@ -35,7 +65,7 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="NukeEmbedPackagesForSelfContained" BeforeTargets="PrepareForBuild" Condition="'$(SelfContained)' == 'True' AND '$(PublishSingleFile)' == 'True'">
+  <Target Name="FalloutEmbedPackagesForSelfContained" BeforeTargets="PrepareForBuild" Condition="'$(SelfContained)' == 'True' AND '$(PublishSingleFile)' == 'True'">
     <EmbedPackagesForSelfContainedTask
       TargetFramework="$(TargetFramework)"
       ProjectAssetsFile="$(ProjectAssetsFile)">
@@ -46,13 +76,22 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="NukeCodeGeneration" BeforeTargets="CoreCompile" Condition="'@(NukeSpecificationFiles)' != ''">
+  <Target Name="FalloutCodeGeneration" BeforeTargets="CoreCompile" Condition="'@(FalloutSpecificationFiles)' != ''">
     <CodeGenerationTask
-      SpecificationFiles="@(NukeSpecificationFiles)"
-      BaseDirectory="$(NukeBaseDirectory)"
-      UseNestedNamespaces="$(NukeUseNestedNamespaces)"
-      BaseNamespace="$(NukeBaseNamespace)"
-      UpdateReferences="$(NukeUpdateReferences)"/>
+      SpecificationFiles="@(FalloutSpecificationFiles)"
+      BaseDirectory="$(FalloutBaseDirectory)"
+      UseNestedNamespaces="$(FalloutUseNestedNamespaces)"
+      BaseNamespace="$(FalloutBaseNamespace)"
+      UpdateReferences="$(FalloutUpdateReferences)"/>
   </Target>
+
+  <!--
+    Legacy target aliases. Anyone wiring `BeforeTargets="NukeCodeGeneration"` etc. keeps working.
+    These run after the renamed Fallout* targets so dependencies are preserved transparently.
+  -->
+  <Target Name="NukeExternalFiles" DependsOnTargets="FalloutExternalFiles" />
+  <Target Name="NukePackPackageTools" DependsOnTargets="FalloutPackPackageTools" />
+  <Target Name="NukeEmbedPackagesForSelfContained" DependsOnTargets="FalloutEmbedPackagesForSelfContained" />
+  <Target Name="NukeCodeGeneration" DependsOnTargets="FalloutCodeGeneration" />
 
 </Project>
