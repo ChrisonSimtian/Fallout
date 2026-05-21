@@ -75,10 +75,27 @@ public static class CredentialStore
         }
 
         var credentialStoreName = Constants.GetCredentialStoreName(rootDirectory, profile);
+        var legacyCredentialStoreName = Constants.GetLegacyCredentialStoreName(rootDirectory, profile);
         var passwordParameterName = Constants.GetProfilePasswordParameterName(profile);
+
         return TryGetPassword(credentialStoreName) ??
+               TryGetLegacyPasswordWithWarning(legacyCredentialStoreName, credentialStoreName) ??
                ParameterService.GetParameter<string>(passwordParameterName) ??
                PromptForPassword();
+    }
+
+    [CanBeNull]
+    private static string TryGetLegacyPasswordWithWarning(string legacyName, string newName)
+    {
+        var password = TryGetPassword(legacyName);
+        if (password == null)
+            return null;
+
+        Console.Error.WriteLine(
+            $"warning FALLOUT003: Found credentials under legacy keychain entry '{legacyName}'. " +
+            $"Falling back to legacy entry for this run. Re-run `dotnet fallout :secrets` to migrate to '{newName}'. " +
+            "The legacy entry will no longer be read in 11.0.");
+        return password;
     }
 
     public static string CreateNewPassword(out bool generated)

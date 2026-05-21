@@ -41,9 +41,15 @@ internal static class Constants
     internal const string ParametersFilePrefix = "parameters";
     internal const string DefaultProfileName = "$default";
 
-    internal const string GlobalToolVersionEnvironmentKey = "NUKE_GLOBAL_TOOL_VERSION";
-    internal const string GlobalToolStartTimeEnvironmentKey = "NUKE_GLOBAL_TOOL_START_TIME";
-    internal const string InterceptorEnvironmentKey = "NUKE_INTERNAL_INTERCEPTOR";
+    internal const string GlobalToolVersionEnvironmentKey = "FALLOUT_GLOBAL_TOOL_VERSION";
+    internal const string GlobalToolStartTimeEnvironmentKey = "FALLOUT_GLOBAL_TOOL_START_TIME";
+    internal const string InterceptorEnvironmentKey = "FALLOUT_INTERNAL_INTERCEPTOR";
+
+    // Legacy NUKE_* env var names — readers fall back to these via LegacyEnvironment.Read.
+    // Writers (e.g. global tool spawning the build) only emit the FALLOUT_* form above.
+    internal const string LegacyGlobalToolVersionEnvironmentKey = "NUKE_GLOBAL_TOOL_VERSION";
+    internal const string LegacyGlobalToolStartTimeEnvironmentKey = "NUKE_GLOBAL_TOOL_START_TIME";
+    internal const string LegacyInterceptorEnvironmentKey = "NUKE_INTERNAL_INTERCEPTOR";
 
     // Canonical project URLs. Until P7 (domain registration) lands, these all point at the GitHub fork.
     // To migrate to fallout.<tld>, edit FalloutWebsite / FalloutRepository here — call sites already use the constants.
@@ -155,6 +161,13 @@ internal static class Constants
     }
 
     internal static string GetCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
+    {
+        return $"Fallout: {rootDirectory} ({profile ?? DefaultProfileName})";
+    }
+
+    // Pre-rename name. Readers fall back to this when the canonical entry is missing.
+    // Writers (SavePassword / Secrets command) only emit the canonical form above.
+    internal static string GetLegacyCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
     {
         return $"NUKE: {rootDirectory} ({profile ?? DefaultProfileName})";
     }

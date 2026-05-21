@@ -92,7 +92,7 @@ partial class Build
     public int TestDegreeOfParallelism { get; } = 1;
 
     Configure<DotNetTestSettings> ITest.TestSettings => _ => _
-        .SetProcessEnvironmentVariable("NUKE_TELEMETRY_OPTOUT", bool.TrueString);
+        .SetProcessEnvironmentVariable("FALLOUT_TELEMETRY_OPTOUT", bool.TrueString);
 
     Target ITest.Test => _ => _
         .Inherit<ITest>()

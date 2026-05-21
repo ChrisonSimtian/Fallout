@@ -48,7 +48,21 @@ partial class Program
 
         var generatedPassword = false;
         var credentialStoreName = GetCredentialStoreName(rootDirectory, profile);
+        var legacyCredentialStoreName = GetLegacyCredentialStoreName(rootDirectory, profile);
         var password = CredentialStore.TryGetPassword(credentialStoreName);
+        var fromLegacyCredentialStore = false;
+        if (password == null)
+        {
+            password = CredentialStore.TryGetPassword(legacyCredentialStoreName);
+            fromLegacyCredentialStore = password != null;
+            if (fromLegacyCredentialStore)
+            {
+                Host.Warning(
+                    $"Found credentials under legacy keychain entry '{legacyCredentialStoreName}'. " +
+                    $"Migrating to '{credentialStoreName}'. The legacy entry will no longer be read in 11.0.");
+            }
+        }
+
         var fromCredentialStore = password != null;
         password ??= CredentialStore.CreateNewPassword(out generatedPassword);
         var existingSecrets = LoadSecrets(secretParameters, password, parametersFile);
@@ -57,6 +71,11 @@ partial class Program
         {
             if (generatedPassword || PromptForConfirmation($"Save password to keychain? (associated with '{rootDirectory}')"))
                 CredentialStore.SavePassword(credentialStoreName, password);
+        }
+        else if (fromLegacyCredentialStore)
+        {
+            // Forward the legacy password to the canonical entry so future loads find it directly.
+            CredentialStore.SavePassword(credentialStoreName, password);
         }
 
         var options = secretParameters

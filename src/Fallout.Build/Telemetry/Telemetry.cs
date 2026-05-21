@@ -23,7 +23,8 @@ internal static partial class Telemetry
     // https://docs.microsoft.com/en-us/azure/azure-monitor/app/console
     // https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-collection
 
-    public const string OptOutEnvironmentKey = "NUKE_TELEMETRY_OPTOUT";
+    public const string OptOutEnvironmentKey = "FALLOUT_TELEMETRY_OPTOUT";
+    public const string LegacyOptOutEnvironmentKey = "NUKE_TELEMETRY_OPTOUT";
     public const int CurrentVersion = 1;
 
     // Telemetry is currently a no-op for Fallout: the previous InstrumentationKey routed data
@@ -31,14 +32,17 @@ internal static partial class Telemetry
     // populate. When/if we stand up a Fallout-controlled endpoint, fill in the key here.
     // Original NUKE key (do NOT reuse): "4b987be9-f807-4846-b777-4291f3a5ad8b"
     private const string InstrumentationKey = "";
-    private const string VersionPropertyName = "NukeTelemetryVersion";
+    private const string VersionPropertyName = "FalloutTelemetryVersion";
+    private const string LegacyVersionPropertyName = "NukeTelemetryVersion";
 
     private static readonly TelemetryClient s_client;
     private static readonly int? s_confirmedVersion;
 
     static Telemetry()
     {
-        var optoutParameter = ParameterService.GetParameter<string>(OptOutEnvironmentKey) ?? string.Empty;
+        var optoutParameter = ParameterService.GetParameter<string>(OptOutEnvironmentKey)
+                              ?? ParameterService.GetParameter<string>(LegacyOptOutEnvironmentKey)
+                              ?? string.Empty;
         if (optoutParameter == "1" || optoutParameter.EqualsOrdinalIgnoreCase(bool.TrueString))
             return;
 
@@ -80,7 +84,8 @@ internal static partial class Telemetry
         }
 
         var project = ProjectModelTasks.ParseProject(FalloutBuild.BuildProjectFile);
-        var property = project.Properties.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(VersionPropertyName));
+        var property = project.Properties.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(VersionPropertyName))
+                       ?? project.Properties.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(LegacyVersionPropertyName));
         if (property?.EvaluatedValue != CurrentVersion.ToString())
         {
             if (FalloutBuild.IsServerBuild)

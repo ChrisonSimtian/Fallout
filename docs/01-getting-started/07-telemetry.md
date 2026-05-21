@@ -81,4 +81,4 @@ Whenever a type does not originate from the `Nuke` namespace, it is replaced wit
 
 ## How to opt out
 
-The telemetry feature is enabled by default. To opt out, set the `NUKE_TELEMETRY_OPTOUT` environment variable to `1` or `true`.
+The telemetry feature is enabled by default. To opt out, set the `FALLOUT_TELEMETRY_OPTOUT` environment variable to `1` or `true`. The legacy `NUKE_TELEMETRY_OPTOUT` name is still honoured during the 10.x line for backwards compatibility, but will be removed in 11.0.

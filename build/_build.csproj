@@ -8,16 +8,16 @@
     <LangVersion>preview</LangVersion>
     <RootNamespace></RootNamespace>
     <NoWarn>CS0649;CS0169</NoWarn>
-    <NukeRootDirectory>.\..</NukeRootDirectory>
-    <NukeTelemetryVersion>1</NukeTelemetryVersion>
+    <FalloutRootDirectory>.\..</FalloutRootDirectory>
+    <FalloutTelemetryVersion>1</FalloutTelemetryVersion>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <!-- Test properties for MSBuild integration -->
   <PropertyGroup>
-    <NukeTasksEnabled Condition="'$(NukeTasksEnabled)' == ''">False</NukeTasksEnabled>
-    <NukeTasksDirectory>$(MSBuildThisFileDirectory)\..\src\Fallout.MSBuildTasks\bin\Debug\net8.0\publish</NukeTasksDirectory>
+    <FalloutTasksEnabled Condition="'$(FalloutTasksEnabled)' == ''">False</FalloutTasksEnabled>
+    <FalloutTasksDirectory>$(MSBuildThisFileDirectory)\..\src\Fallout.MSBuildTasks\bin\Debug\net8.0\publish</FalloutTasksDirectory>
 
 <!--    <PackAsTool>True</PackAsTool>-->
 <!--    <ToolCommandName>build</ToolCommandName>-->

@@ -80,7 +80,7 @@ Validation workflows: **`ubuntu-latest`** runs on every PR targeting `main` (wit
 - **Tool wrappers**: copy/paste from neighbours; cover full commands; use `<c>`, `<a>`, `<ul>`/`<ol>`, `<em>`, `<para/>` in `help`; don't write `secret: false` or `default: xxx`.
 - **Tests next to code, separate folder**: every `Foo` project under `src/` has a sibling `Foo.Tests` project under `tests/`. Mirror the namespace.
 - **No IDE-specific style files committed.** `.editorconfig` and `*.DotSettings` were removed during the takeover — relying on `dotnet format` defaults and review.
-- **Telemetry opt-out is set in test runs** (`NUKE_TELEMETRY_OPTOUT=true`). Keep it that way.
+- **Telemetry opt-out is set in test runs** (`FALLOUT_TELEMETRY_OPTOUT=true`). Keep it that way.
 - **License header**: every source file starts with the 4-line `// Copyright … Maintainers of Fallout. // Originally based on NUKE …` block — copy from a neighbouring file when adding new ones.
 
 ## What not to do

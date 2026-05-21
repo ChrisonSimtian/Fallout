@@ -37,9 +37,12 @@ internal partial class Telemetry
                    ["os_platform"] = EnvironmentInfo.Platform.ToString(),
                    ["os_architecture"] = RuntimeInformation.OSArchitecture.ToString(),
                    ["version_dotnet_sdk"] = version,
-                   ["version_nuke_common"] = build != null ? typeof(FalloutBuild).Assembly.GetVersionText() : null,
-                   ["version_nuke_global_tool"] = build != null
-                       ? EnvironmentInfo.Variables.GetValueOrDefault(Constants.GlobalToolVersionEnvironmentKey)
+                   ["version_fallout_common"] = build != null ? typeof(FalloutBuild).Assembly.GetVersionText() : null,
+                   ["version_fallout_global_tool"] = build != null
+                       ? LegacyEnvironment.ReadFromVariables(
+                           EnvironmentInfo.Variables,
+                           Constants.GlobalToolVersionEnvironmentKey,
+                           Constants.LegacyGlobalToolVersionEnvironmentKey)
                        : Assembly.GetEntryAssembly().GetVersionText()
                };
     }
@@ -80,7 +83,10 @@ internal partial class Telemetry
 
     private static ReadOnlyDictionary<string, string> GetBuildProperties(IFalloutBuild build)
     {
-        var startTimeString = EnvironmentInfo.Variables.GetValueOrDefault(Constants.GlobalToolStartTimeEnvironmentKey);
+        var startTimeString = LegacyEnvironment.ReadFromVariables(
+            EnvironmentInfo.Variables,
+            Constants.GlobalToolStartTimeEnvironmentKey,
+            Constants.LegacyGlobalToolStartTimeEnvironmentKey);
         var compileTime = startTimeString != null
             ? DateTime.Now.Subtract(DateTime.Parse(startTimeString))
             : default(TimeSpan?);
