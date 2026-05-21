@@ -16,6 +16,7 @@
   <Project Path="src\Fallout.Components\Fallout.Components.csproj" />
   <Project Path="src\Fallout.GlobalTool\Fallout.GlobalTool.csproj" />
   <Project Path="src\Fallout.Migrate\Fallout.Migrate.csproj" />
+  <Project Path="src\Shims\Nuke.Common\Nuke.Common.csproj" />
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
   <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
   <Project Path="src\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
@@ -32,6 +33,7 @@
   <Project Path="tests\Fallout.Common.Tests\Fallout.Common.Tests.csproj" />
   <Project Path="tests\Fallout.GlobalTool.Tests\Fallout.GlobalTool.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Tests\Fallout.Migrate.Tests.csproj" />
+  <Project Path="tests\Nuke.Common.Shim.Tests\Nuke.Common.Shim.Tests.csproj" />
   <Project Path="tests\Fallout.ProjectModel.Tests\Fallout.ProjectModel.Tests.csproj" />
   <Project Path="tests\Fallout.SolutionModel.Tests\Fallout.SolutionModel.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />

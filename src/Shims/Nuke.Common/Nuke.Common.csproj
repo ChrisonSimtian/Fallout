@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Nuke.Common</AssemblyName>
+    <RootNamespace>Nuke.Common</RootNamespace>
+    <PackageId>Nuke.Common</PackageId>
+    <Title>Nuke.Common (Fallout transition shim)</Title>
+    <!--
+      Skipped by the default Pack target so the release pipeline doesn't try to push
+      this to nuget.org (the `Nuke.Common` ID there is owned by the original NUKE
+      maintainer). Set -p:PackShims=true to opt in for the GH-Packages-only publish.
+    -->
+    <IsPackable Condition="'$(PackShims)' != 'true'">false</IsPackable>
+    <Description>Transition shim that re-exports the most common Nuke.* types as subclasses/wrappers of the canonical Fallout.* types. For projects mid-migration from NUKE to Fallout. Published only to GitHub Packages (nuget.org's Nuke.Common is owned by the original NUKE maintainer).</Description>
+    <PackageTags>build automation continuous-integration tools orchestration nuke shim transition</PackageTags>
+    <!-- Disable XML doc generation here; Directory.Build.props turns it on for packable projects,
+         but the shim types' XML docs are intentionally minimal (point at the canonical type). -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\Fallout.Build\Fallout.Build.csproj" />
+  </ItemGroup>
+
+</Project>

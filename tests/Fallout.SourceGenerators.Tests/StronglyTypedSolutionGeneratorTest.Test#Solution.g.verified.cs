@@ -36,6 +36,8 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Common
     public Fallout.Common.ProjectModel.Project Fallout_Utilities_Tests => this.GetProject("Fallout.Utilities.Tests");
     public Fallout.Common.ProjectModel.Project Fallout_Utilities_Text_Json => this.GetProject("Fallout.Utilities.Text.Json");
     public Fallout.Common.ProjectModel.Project Fallout_Utilities_Text_Yaml => this.GetProject("Fallout.Utilities.Text.Yaml");
+    public Fallout.Common.ProjectModel.Project Nuke_Common => this.GetProject("Nuke.Common");
+    public Fallout.Common.ProjectModel.Project Nuke_Common_Shim_Tests => this.GetProject("Nuke.Common.Shim.Tests");
 
     public _misc misc => Unsafe.As<_misc>(this.GetSolutionFolder("misc"));
 

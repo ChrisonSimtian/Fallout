@@ -1,0 +1,47 @@
+# Nuke.Common transition shim
+
+This package is a **partial transition shim** for projects mid-migration from NUKE to Fallout. Published only to GitHub Packages — `Nuke.Common` on nuget.org is owned by the original NUKE maintainer.
+
+## What's covered
+
+| Old (`Nuke.Common`) | New (`Fallout.Common`) | Shim mechanism |
+|---|---|---|
+| `NukeBuild` | `FalloutBuild` | Subclass |
+| `INukeBuild` | `IFalloutBuild` | Sub-interface |
+| `[Parameter]` | `Fallout.Common.ParameterAttribute` | Subclass |
+| `[Secret]` | `Fallout.Common.SecretAttribute` | Subclass |
+| `[Solution]` | `Fallout.Common.ProjectModel.SolutionAttribute` | Subclass |
+| `[GitRepository]` | `Fallout.Common.Git.GitRepositoryAttribute` | Subclass |
+
+The MVP unblocks a `class Build : NukeBuild` declaration with parameter/secret/solution/git injection — the entry-point surface of most consumer Build.cs files.
+
+## What's NOT covered (yet)
+
+- **CI attributes** (`[GitHubActions]`, `[AzurePipelines]`, `[TeamCity]`, `[AppVeyor]`, ...) — these take enum parameters (`GitHubActionsImage`, etc.) that the shim doesn't re-export. C# can't subclass enums; bridging them needs a source generator. Tracked in the follow-up issue.
+- **The `Target` delegate** — delegates can't be implicitly converted across types in C#, so the shim can't bridge `Nuke.Common.Target Compile => _ => _` cleanly. Use `fallout-migrate` for the source-level rename.
+- **Static helper classes** — `DotNetTasks`, `MSBuildTasks`, etc. require method-by-method delegation. Tracked for the source-generator follow-up.
+- **IO types** — `AbsolutePath`, file globbing helpers — also need wrapper classes with mirrored members.
+
+## Migration path
+
+For projects that just want their `class Build : NukeBuild { ... }` to compile against our framework:
+
+1. Add `https://nuget.pkg.github.com/ChrisonSimtian/index.json` as a NuGet source (`nuget.config`).
+2. Bump the `Nuke.Common` package version to the latest published here.
+3. Build. If the shim covers what you use, you're done. Otherwise:
+4. Run `fallout-migrate` to rewrite the remaining references.
+
+## What this shim is NOT
+
+- Not a permanent dependency — designed for a transition window.
+- Not a replacement for the migration story — most consumers should run `fallout-migrate` and target `Fallout.Common` directly.
+- Not on nuget.org — only on this fork's GitHub Packages feed.
+
+## Future work
+
+Source-generator-based expansion to cover the full public API is tracked in the issue tracker. The architectural decision is between:
+
+1. **Per-package shims** with hand-written wrappers (this approach, doesn't scale to all 158 public types in Common alone).
+2. **Generated wrappers** from a Roslyn source generator that reflects the canonical assembly metadata — single source of truth, mechanical regeneration.
+
+(2) is the long-term answer. (1) is what shipped first.
