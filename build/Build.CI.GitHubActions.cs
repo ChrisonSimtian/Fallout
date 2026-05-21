@@ -13,6 +13,7 @@ using Fallout.Components;
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
+    Submodules = GitHubActionsSubmodules.Recursive,
     OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
@@ -20,6 +21,7 @@ using Fallout.Components;
     "windows-latest",
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
+    Submodules = GitHubActionsSubmodules.Recursive,
     OnPushBranches = new[] { MainBranch },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
@@ -29,6 +31,7 @@ using Fallout.Components;
     "ubuntu-latest",
     GitHubActionsImage.UbuntuLatest,
     FetchDepth = 0,
+    Submodules = GitHubActionsSubmodules.Recursive,
     OnPullRequestBranches = new[] { MainBranch },
     OnPullRequestExcludePaths = new[] { "docs/**", ".assets/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
