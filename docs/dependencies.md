@@ -70,14 +70,19 @@ Central package versions are pinned in `Directory.Packages.props`; this page lin
 |---|---|---|
 | `Microsoft.ApplicationInsights` | Telemetry client | **Dead weight today.** `Telemetry.cs` short-circuits because `InstrumentationKey = ""` (the original NUKE key was matkoch-owned, we don't reuse). Removal tracked in [#79](https://github.com/ChrisonSimtian/Fallout/issues/79). Re-introduce when we stand up a Fallout-owned endpoint. |
 
+## Vendored source
+
+| Package | Source | Why vendored |
+|---|---|---|
+| `Microsoft.VisualStudio.SolutionPersistence` (assembly identity preserved) | Submodule at `vendor/vs-solutionpersistence/` tracking [`ChrisonSimtian/vs-solutionpersistence`](https://github.com/ChrisonSimtian/vs-solutionpersistence) — our fork of [`matkoch/vs-solutionpersistence`](https://github.com/matkoch/vs-solutionpersistence), which itself forked from [`microsoft/vs-solutionpersistence`](https://github.com/microsoft/vs-solutionpersistence). MIT-licensed; full attribution chain preserved. | Upstream Microsoft package ships only `net472` + `net8.0`, no `netstandard2.0`. Our source generator must target `netstandard2.0` (Roslyn requirement). Matt added netstandard2.0 patches that we now own forward. Compiled into the wrapper project `src/Fallout.VisualStudio.SolutionPersistence/` so we control the build infra without touching the submodule. |
+
 ## ⚠️ Matt-era personal forks — to replace
 
-We currently depend on two packages republished on Matt's personal NuGet account. Supply-chain SPOF — high-priority to replace with the upstream equivalents.
+Still on Matt's personal NuGet account; supply-chain SPOF, high-priority to replace.
 
 | Package | Upstream equivalent | Tracked in |
 |---|---|---|
-| `matkoch.Microsoft.VisualStudio.SolutionPersistence` | `Microsoft.VisualStudio.SolutionPersistence` | [#77](https://github.com/ChrisonSimtian/Fallout/issues/77) |
-| `matkoch.spectre.console` | `Spectre.Console` | [#78](https://github.com/ChrisonSimtian/Fallout/issues/78) |
+| `matkoch.spectre.console` | `Spectre.Console` | [#78](https://github.com/ChrisonSimtian/Fallout/issues/78) — confirmed clean swap, just needs the PR |
 
 ## Testing
 
