@@ -76,7 +76,7 @@ Validation workflows: **`ubuntu-latest`** runs on every PR targeting `main` (wit
 
 ## Conventions worth respecting
 
-- **Centralized package versions** — add new packages to `Directory.Packages.props`, never inline.
+- **Centralized package versions** — add new packages to `Directory.Packages.props`, never inline. Adding a *meaningful* library (not a tiny transitive helper)? Add a row to [docs/dependencies.md](docs/dependencies.md) in the same PR — reviewers will ask.
 - **Tool wrappers**: copy/paste from neighbours; cover full commands; use `<c>`, `<a>`, `<ul>`/`<ol>`, `<em>`, `<para/>` in `help`; don't write `secret: false` or `default: xxx`.
 - **Tests next to code, separate folder**: every `Foo` project under `src/` has a sibling `Foo.Tests` project under `tests/`. Mirror the namespace.
 - **No IDE-specific style files committed.** `.editorconfig` and `*.DotSettings` were removed during the takeover — relying on `dotnet format` defaults and review.
