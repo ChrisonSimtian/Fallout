@@ -1,11 +1,11 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/Discord/Discord.json
 
-using JetBrains.Annotations;
-using Newtonsoft.Json;
 using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

@@ -9,7 +9,7 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration AppVeyor --host AppVeyor
+#         fallout --generate-configuration AppVeyor --host AppVeyor
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------

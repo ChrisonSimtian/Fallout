@@ -63,7 +63,7 @@ public abstract class ConfigurationAttributeBase : Attribute, IConfigurationGene
         writer.WriteComment();
         writer.WriteComment("    - To trigger manual generation invoke:");
         writer.WriteComment();
-        writer.WriteComment($"        nuke --{ConfigurationParameterName} {Id} --host {HostName}");
+        writer.WriteComment($"        fallout --{ConfigurationParameterName} {Id} --host {HostName}");
         writer.WriteComment();
         writer.WriteComment("</auto-generated>");
         writer.WriteComment("------------------------------------------------------------------------------");

@@ -9,7 +9,7 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration GitHubActions_ubuntu-latest --host GitHubActions
+#         fallout --generate-configuration GitHubActions_ubuntu-latest --host GitHubActions
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------
@@ -20,10 +20,10 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - 'docs/**'
-      - '.assets/**'
-      - '**/*.md'
+    paths:
+      - '!docs/**'
+      - '!.assets/**'
+      - '!**/*.md'
 
 jobs:
   ubuntu-latest:

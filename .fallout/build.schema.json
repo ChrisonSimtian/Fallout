@@ -21,38 +21,9 @@
         "VSCode"
       ]
     },
-    "SignPathSettings": {
-      "type": "object",
-      "properties": {
-        "OrganizationId": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "ProjectSlug": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "PolicySlug": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
-    },
     "ExecutableTarget": {
       "type": "string",
       "enum": [
-        "Announce",
-        "AnnounceDiscord",
-        "AnnounceMastodon",
-        "AnnounceSlack",
-        "AnnounceTwitter",
-        "Changelog",
         "CheckoutExternalRepositories",
         "Clean",
         "Compile",
@@ -61,21 +32,15 @@
         "DownloadLicenses",
         "GeneratePublicApi",
         "GenerateTools",
-        "Hotfix",
         "Install",
-        "InstallFonts",
-        "Milestone",
         "Pack",
         "Publish",
         "References",
-        "Release",
-        "ReleaseImage",
         "ReportCoverage",
         "ReportDuplicates",
         "ReportIssues",
         "Restore",
         "RunTargetInDockerImageTest",
-        "SignPackages",
         "Test",
         "UpdateContributors",
         "UpdateStargazers"
@@ -91,7 +56,7 @@
         "Quiet"
       ]
     },
-    "NukeBuild": {
+    "FalloutBuild": {
       "properties": {
         "Continue": {
           "type": "boolean",
@@ -152,9 +117,6 @@
   "allOf": [
     {
       "properties": {
-        "AutoStash": {
-          "type": "boolean"
-        },
         "CodecovToken": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
@@ -165,14 +127,6 @@
             "Debug",
             "Release"
           ]
-        },
-        "DiscordWebhook": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "FeedzNuGetApiKey": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "GitHubReleaseGitHubToken": {
           "type": "string",
@@ -185,22 +139,7 @@
         "Major": {
           "type": "boolean"
         },
-        "MastodonAccessToken": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "PublicNuGetApiKey": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "SignPathApiToken": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "SignPathSettings": {
-          "$ref": "#/definitions/SignPathSettings"
-        },
-        "SlackWebhook": {
+        "NuGetApiKey": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
@@ -212,29 +151,13 @@
           "type": "integer",
           "format": "int32"
         },
-        "TwitterAccessToken": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "TwitterAccessTokenSecret": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "TwitterConsumerKey": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "TwitterConsumerSecret": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
         "UseHttps": {
           "type": "boolean"
         }
       }
     },
     {
-      "$ref": "#/definitions/NukeBuild"
+      "$ref": "#/definitions/FalloutBuild"
     }
   ]
 }
