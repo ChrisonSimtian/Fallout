@@ -162,6 +162,13 @@ internal static class Constants
 
     internal static string GetCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
     {
+        return $"Fallout: {rootDirectory} ({profile ?? DefaultProfileName})";
+    }
+
+    // Pre-rename name. Readers fall back to this when the canonical entry is missing.
+    // Writers (SavePassword / Secrets command) only emit the canonical form above.
+    internal static string GetLegacyCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
+    {
         return $"NUKE: {rootDirectory} ({profile ?? DefaultProfileName})";
     }
 
