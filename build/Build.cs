@@ -134,6 +134,13 @@ partial class Build
         .Requires(() => GitRepository.IsOnMainBranch() && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow)
         .WhenSkipped(DependencyBehavior.Execute);
 
+    // Filter `Nuke.*` shim packages out of the nuget.org push — that ID is owned by
+    // the original NUKE maintainer. The shims still build and pack as artifacts; they
+    // get pushed to GitHub Packages via a separate (manual / future-automated) step.
+    IEnumerable<AbsolutePath> IPublish.PushPackageFiles
+        => From<IPack>().PackagesDirectory.GlobFiles("*.nupkg")
+            .Where(x => !x.NameWithoutExtension.StartsWith("Nuke.", StringComparison.OrdinalIgnoreCase));
+
     IEnumerable<AbsolutePath> NuGetPackageFiles
         => From<IPack>().PackagesDirectory.GlobFiles("*.nupkg");
 

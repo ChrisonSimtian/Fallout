@@ -22,6 +22,19 @@ The MVP unblocks a `class Build : NukeBuild` declaration with parameter/secret/s
 - **Static helper classes** — `DotNetTasks`, `MSBuildTasks`, etc. require method-by-method delegation. Tracked for the source-generator follow-up.
 - **IO types** — `AbsolutePath`, file globbing helpers — also need wrapper classes with mirrored members.
 
+## Packaging
+
+The shim packs normally as a build artifact (`Nuke.Common.<version>.nupkg`). The release pipeline's `Publish` target filters `Nuke.*` packages out of the nuget.org push — that ID is owned by the original NUKE maintainer. The produced nupkg can be uploaded to GitHub Packages or attached to a GitHub release.
+
+Until automated dual-publish lands (tracked in [#69](https://github.com/ChrisonSimtian/Fallout/issues/69)), the manual GH Packages push is:
+
+```pwsh
+dotnet pack src/Shims/Nuke.Common/Nuke.Common.csproj -c Release
+dotnet nuget push **/Nuke.Common.*.nupkg `
+    --api-key $env:GITHUB_TOKEN `
+    --source https://nuget.pkg.github.com/ChrisonSimtian/index.json
+```
+
 ## Migration path
 
 For projects that just want their `class Build : NukeBuild { ... }` to compile against our framework:

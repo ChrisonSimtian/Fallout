@@ -7,11 +7,12 @@
     <PackageId>Nuke.Common</PackageId>
     <Title>Nuke.Common (Fallout transition shim)</Title>
     <!--
-      Skipped by the default Pack target so the release pipeline doesn't try to push
-      this to nuget.org (the `Nuke.Common` ID there is owned by the original NUKE
-      maintainer). Set -p:PackShims=true to opt in for the GH-Packages-only publish.
+      Packs as a normal build artifact. The release pipeline's Publish target filters
+      `Nuke.*` packages out of the nuget.org push (see Build.cs PushPackageFiles
+      override) since that package ID belongs to the original NUKE maintainer. The
+      produced nupkg can be uploaded to GitHub Packages or attached to a GH release.
     -->
-    <IsPackable Condition="'$(PackShims)' != 'true'">false</IsPackable>
+    <IsPackable>true</IsPackable>
     <Description>Transition shim that re-exports the most common Nuke.* types as subclasses/wrappers of the canonical Fallout.* types. For projects mid-migration from NUKE to Fallout. Published only to GitHub Packages (nuget.org's Nuke.Common is owned by the original NUKE maintainer).</Description>
     <PackageTags>build automation continuous-integration tools orchestration nuke shim transition</PackageTags>
     <!-- Disable XML doc generation here; Directory.Build.props turns it on for packable projects,
