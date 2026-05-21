@@ -201,7 +201,7 @@ public abstract partial class FalloutBuild : IFalloutBuild
     /// </summary>
     public int? ExitCode { get; set; }
 
-    private bool IsInterceptorExecution => Environment.GetEnvironmentVariable(InterceptorEnvironmentKey) == "1";
+    private bool IsInterceptorExecution => LegacyEnvironment.Read(InterceptorEnvironmentKey, LegacyInterceptorEnvironmentKey) == "1";
 
     public void ReportSummary(Configure<Dictionary<string, string>> configurator = null)
     {

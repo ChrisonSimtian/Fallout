@@ -23,7 +23,8 @@ internal static partial class Telemetry
     // https://docs.microsoft.com/en-us/azure/azure-monitor/app/console
     // https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-collection
 
-    public const string OptOutEnvironmentKey = "NUKE_TELEMETRY_OPTOUT";
+    public const string OptOutEnvironmentKey = "FALLOUT_TELEMETRY_OPTOUT";
+    public const string LegacyOptOutEnvironmentKey = "NUKE_TELEMETRY_OPTOUT";
     public const int CurrentVersion = 1;
 
     // Telemetry is currently a no-op for Fallout: the previous InstrumentationKey routed data
@@ -38,7 +39,9 @@ internal static partial class Telemetry
 
     static Telemetry()
     {
-        var optoutParameter = ParameterService.GetParameter<string>(OptOutEnvironmentKey) ?? string.Empty;
+        var optoutParameter = ParameterService.GetParameter<string>(OptOutEnvironmentKey)
+                              ?? ParameterService.GetParameter<string>(LegacyOptOutEnvironmentKey)
+                              ?? string.Empty;
         if (optoutParameter == "1" || optoutParameter.EqualsOrdinalIgnoreCase(bool.TrueString))
             return;
 
