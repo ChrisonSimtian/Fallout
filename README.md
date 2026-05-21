@@ -45,13 +45,13 @@ Fallout (NUKE's successor) brings your build automation to an even level with ev
 
 ## Build Status
 
-CI runs on every push to non-`main` branches and every PR targeting `main`, across `ubuntu-latest`, `windows-latest`, and `macos-latest`. Releases publish from `main` to GitHub Packages via `.github/workflows/release.yml`.
+CI runs on every push to non-`main` branches and every PR targeting `main` across `ubuntu-latest` (with `windows-latest` and `macos-latest` as post-merge validation). Releases publish from `main` to **nuget.org** under the reserved `Fallout.*` prefix, via `.github/workflows/release.yml`. Docs-only pushes (`docs/**`, `.assets/**`, `**/*.md`) skip the release workflow.
 
-| Build Server   | Status                                                                                                                                                                                                                                       |       Platform       | Configuration                                                                                  |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------:|------------------------------------------------------------------------------------------------|
-| GitHub Actions | [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/nuke/ubuntu-latest.yml?branch=main&label=build&style=flat-square&logo=github&logoColor=white)](https://github.com/ChrisonSimtian/nuke/actions)        | Win / Ubuntu / macOS | [`.github/workflows/`](https://github.com/ChrisonSimtian/nuke/tree/main/.github/workflows)     |
+| Build Server   | Status                                                                                                                                                                                                                                                  |       Platform       | Configuration                                                                                       |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------:|-----------------------------------------------------------------------------------------------------|
+| GitHub Actions | [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/Fallout/ubuntu-latest.yml?branch=main&label=build&style=flat-square&logo=github&logoColor=white)](https://github.com/ChrisonSimtian/Fallout/actions)             | Win / Ubuntu / macOS | [`.github/workflows/`](https://github.com/ChrisonSimtian/Fallout/tree/main/.github/workflows)       |
 
-Multi-provider CI support (Azure Pipelines, GitLab, TeamCity, AppVeyor) was removed during the takeover and is being revived demand-driven — see [#8](https://github.com/ChrisonSimtian/nuke/issues/8).
+Multi-provider CI support (Azure Pipelines, GitLab, TeamCity, AppVeyor) was removed during the takeover and is being revived demand-driven — see [#8](https://github.com/ChrisonSimtian/Fallout/issues/8).
 
 ## Activity
 
