@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Git;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazGitRepository : IFalloutBuild
 {
     [GitRepository] [Required] GitRepository GitRepository => TryGetValue(() => GitRepository);

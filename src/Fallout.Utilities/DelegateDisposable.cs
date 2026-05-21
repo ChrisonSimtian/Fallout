@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
@@ -18,7 +17,7 @@ public class DelegateDisposable : IDisposable
     /// <summary>
     /// Creates an <see cref="IDisposable"/> from a setup and cleanup delegate.
     /// </summary>
-    public static IDisposable CreateBracket([InstantHandle] Action setup = null, [InstantHandle] Action cleanup = null)
+    public static IDisposable CreateBracket(Action setup = null, Action cleanup = null)
     {
         setup?.Invoke();
         return new DelegateDisposable(cleanup);
@@ -27,7 +26,7 @@ public class DelegateDisposable : IDisposable
     /// <summary>
     /// Creates an <see cref="IDisposable"/> from a setup and cleanup delegate.
     /// </summary>
-    public static IDisposable CreateBracket<T>([InstantHandle] Func<T> setup, [InstantHandle] Action<T> cleanup)
+    public static IDisposable CreateBracket<T>(Func<T> setup, Action<T> cleanup)
     {
         T obj = default;
         return CreateBracket(() => obj = setup.Invoke(), () => cleanup.Invoke(obj));
@@ -42,9 +41,9 @@ public class DelegateDisposable : IDisposable
         return new DelegateDisposable(() => member.SetValue(target, previousValue));
     }
 
-    [CanBeNull] private readonly Action _cleanup;
+    private readonly Action _cleanup;
 
-    private DelegateDisposable([CanBeNull] Action cleanup)
+    private DelegateDisposable(Action cleanup)
     {
         _cleanup = cleanup;
     }

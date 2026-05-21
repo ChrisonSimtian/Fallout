@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using static Fallout.Common.IO.PathConstruction;
 
 namespace Fallout.Common.IO;
@@ -13,7 +12,6 @@ namespace Fallout.Common.IO;
 /// <summary>
 /// Represents a relative path with the Windows separator (backward slash).
 /// </summary>
-[PublicAPI]
 [Serializable]
 public class WinRelativePath : RelativePath
 {
@@ -22,7 +20,7 @@ public class WinRelativePath : RelativePath
     {
     }
 
-    public static explicit operator WinRelativePath([CanBeNull] string path)
+    public static explicit operator WinRelativePath(string path)
     {
         return new WinRelativePath(NormalizePath(path, WinSeparator), WinSeparator);
     }

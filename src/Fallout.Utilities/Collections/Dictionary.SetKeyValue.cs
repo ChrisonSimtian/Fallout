@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
@@ -15,7 +14,7 @@ public static partial class DictionaryExtensions
     public static IDictionary<TKey, TValue> SetKeyValue<TKey, TValue>(
         this IDictionary<TKey, TValue> dictionary,
         TKey key,
-        [CanBeNull] TValue value = default)
+        TValue value = default)
     {
         dictionary[key] = value;
         return dictionary;

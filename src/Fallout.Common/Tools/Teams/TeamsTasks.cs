@@ -7,13 +7,11 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
 
 namespace Fallout.Common.Tools.Teams;
 
-[PublicAPI]
 public static class TeamsTasks
 {
     public static void SendTeamsMessage(Configure<TeamsMessage> configurator, string webhook)

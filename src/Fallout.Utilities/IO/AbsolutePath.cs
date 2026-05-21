@@ -10,7 +10,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using static Fallout.Common.IO.PathConstruction;
 
@@ -19,7 +18,6 @@ namespace Fallout.Common.IO;
 /// <summary>
 /// Represents an absolute path without distinction between files and directories.
 /// </summary>
-[PublicAPI]
 [Serializable]
 [TypeConverter(typeof(TypeConverter))]
 [DebuggerDisplay("{" + nameof(_path) + "}")]
@@ -68,8 +66,7 @@ public class AbsolutePath : IAbsolutePathHolder, IFormattable
 
     AbsolutePath IAbsolutePathHolder.Path => this;
 
-    [ContractAnnotation("null => null")]
-    public static implicit operator AbsolutePath([CanBeNull] string path)
+    public static implicit operator AbsolutePath(string path)
     {
         if (path is null)
             return null;
@@ -78,7 +75,7 @@ public class AbsolutePath : IAbsolutePathHolder, IFormattable
         return new AbsolutePath(path);
     }
 
-    public static implicit operator string([CanBeNull] AbsolutePath path)
+    public static implicit operator string(AbsolutePath path)
     {
         return path?.ToString();
     }
@@ -101,7 +98,6 @@ public class AbsolutePath : IAbsolutePathHolder, IFormattable
     /// <summary>
     /// Returns the parent path (directory).
     /// </summary>
-    [CanBeNull]
     public AbsolutePath Parent =>
         !IsWinRoot(_path.TrimEnd(WinSeparator)) && !IsUncRoot(_path) && !IsUnixRoot(_path)
             ? this / ".."
@@ -109,7 +105,7 @@ public class AbsolutePath : IAbsolutePathHolder, IFormattable
 
 #if NET6_0_OR_GREATER
 
-    public static AbsolutePath operator /(AbsolutePath left, [CanBeNull] Range range)
+    public static AbsolutePath operator /(AbsolutePath left, Range range)
     {
         Assert.True(range.Equals(Range.All));
         return left.Parent;
@@ -117,12 +113,12 @@ public class AbsolutePath : IAbsolutePathHolder, IFormattable
 
 #endif
 
-    public static AbsolutePath operator /(AbsolutePath left, [CanBeNull] string right)
+    public static AbsolutePath operator /(AbsolutePath left, string right)
     {
         return new AbsolutePath(Combine(left.NotNull(), right));
     }
 
-    public static AbsolutePath operator +(AbsolutePath left, [CanBeNull] string right)
+    public static AbsolutePath operator +(AbsolutePath left, string right)
     {
         return new AbsolutePath(left.ToString() + right);
     }

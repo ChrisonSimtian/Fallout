@@ -8,7 +8,6 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Fallout.CodeGeneration.Model;
@@ -53,7 +52,7 @@ public static class ToolSerializer
     private class CustomContractResolver : CamelCasePropertyNamesContractResolver
     {
         // ReSharper disable once CognitiveComplexity
-        protected override JsonProperty CreateProperty([NotNull] MemberInfo member, MemberSerialization memberSerialization)
+        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             var property = base.CreateProperty(member, memberSerialization);
             property.ShouldSerialize = x =>

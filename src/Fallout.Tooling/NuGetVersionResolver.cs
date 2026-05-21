@@ -7,18 +7,15 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class NuGetVersionResolver
 {
     private static readonly HttpClient s_client = new();
 
-    [ItemCanBeNull]
     public static async Task<string> GetLatestVersion(string packageId, bool includePrereleases, bool includeUnlisted = false)
     {
         try

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using Fallout.Common.Tooling;
@@ -15,7 +14,6 @@ using static Fallout.Common.IO.PathConstruction;
 
 namespace Fallout.MSBuildTasks;
 
-[UsedImplicitly]
 public class PackPackageToolsTask : ContextAwareTask
 {
     [Required]

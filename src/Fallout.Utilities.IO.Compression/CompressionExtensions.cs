@@ -12,12 +12,10 @@ using ICSharpCode.SharpZipLib.BZip2;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 using ICSharpCode.SharpZipLib.Zip;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.IO;
 
-[PublicAPI]
 public static class CompressionExtensions
 {
     public static void CompressTo(this AbsolutePath directory, AbsolutePath archiveFile, Func<AbsolutePath, bool> filter = null)

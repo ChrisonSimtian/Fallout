@@ -11,7 +11,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using JetBrains.Annotations;
 using Fallout.CodeGeneration.Model;
 using Fallout.Common;
 using Fallout.Common.Utilities.Net;
@@ -19,7 +18,6 @@ using Serilog;
 
 namespace Fallout.CodeGeneration;
 
-[PublicAPI]
 public static class ReferenceUpdater
 {
     private static HttpClient s_client = new();
@@ -36,7 +34,7 @@ public static class ReferenceUpdater
         System.Threading.Tasks.Task.WaitAll(updateTasks.ToArray());
     }
 
-    private static async System.Threading.Tasks.Task Update(string reference, Tool tool, [CanBeNull] string referencesDirectory)
+    private static async System.Threading.Tasks.Task Update(string reference, Tool tool, string referencesDirectory)
     {
         var index = tool.References.IndexOf(reference);
         try
@@ -78,7 +76,7 @@ public static class ReferenceUpdater
 
     // private class AutomaticDecompressingWebClient : WebClient
     // {
-    //     [CanBeNull]
+    //     
     //     protected override WebRequest GetWebRequest(Uri address)
     //     {
     //         var request = base.GetWebRequest(address) as HttpWebRequest;

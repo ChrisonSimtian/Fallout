@@ -4,7 +4,6 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System.Threading;
-using JetBrains.Annotations;
 using Microsoft.VisualStudio.SolutionPersistence.Serializer;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -13,12 +12,12 @@ namespace Fallout.Common.ProjectModel;
 
 public static class SolutionModelExtensions
 {
-    public static Solution ReadSolution([NotNull] this AbsolutePath path)
+    public static Solution ReadSolution(this AbsolutePath path)
     {
         return path.ReadSolution<Solution>();
     }
 
-    public static Solution ReadSolution<T>([NotNull] this AbsolutePath path)
+    public static Solution ReadSolution<T>(this AbsolutePath path)
         where T : Solution
     {
         var serializer = SolutionSerializers.GetSerializerByMoniker(path).NotNull();

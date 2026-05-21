@@ -5,21 +5,18 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.Bamboo;
 
 /// <summary>
 /// Interface according to the <a href="https://confluence.atlassian.com/bamboo/bamboo-variables-289277087.html">official website</a>.
 /// </summary>
-[PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
 public class Bamboo : Host, IBuildServer
 {
     public new static Bamboo Instance => Host.Instance as Bamboo;
 
-    [UsedImplicitly]
     internal static bool IsRunningBamboo => EnvironmentInfo.HasVariable("bamboo_planKey");
 
     internal Bamboo()

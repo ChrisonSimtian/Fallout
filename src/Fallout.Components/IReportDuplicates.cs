@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Common.IO;
@@ -14,7 +13,6 @@ using static Fallout.Common.Tools.ReSharper.ReSharperTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IReportDuplicates : IHazReports, IHazSolution
 {
     AbsolutePath DupFinderReportFile => ReportDirectory / "dupfinder.xml";

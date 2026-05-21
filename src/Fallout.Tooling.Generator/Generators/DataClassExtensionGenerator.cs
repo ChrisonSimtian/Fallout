@@ -22,7 +22,6 @@ public static class DataClassExtensionGenerator
         writer
             .WriteLine($"#region {dataClass.Name}Extensions")
             .WriteSummary(dataClass)
-            .WriteLine("[PublicAPI]")
             .WriteObsoleteAttributeWhenObsolete(dataClass)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine($"public static partial class {dataClass.Name}Extensions")
@@ -365,7 +364,7 @@ public static class DataClassExtensionGenerator
         return writer
             .WriteLineIfTrue(help == null, $"/// <inheritdoc cref=\"{writer.DataClass.Name}.{property.Name}\"/>")
             .WriteLineIfTrue(help != null, $"/// <summary>{help}</summary>")
-            .WriteLine($"[Pure] {builder}")
+            .WriteLine($"{builder}")
             .WriteObsoleteAttributeWhenObsolete(property)
             .WriteLine($"{signature} => {implementation};");
     }

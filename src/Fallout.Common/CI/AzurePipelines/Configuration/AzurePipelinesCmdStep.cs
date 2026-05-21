@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
-[PublicAPI]
 public class AzurePipelinesCmdStep : AzurePipelinesStep
 {
     public string[] InvokedTargets { get; set; }

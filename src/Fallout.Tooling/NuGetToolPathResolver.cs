@@ -9,13 +9,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Versioning;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class NuGetToolPathResolver
 {
     public static string EmbeddedPackagesDirectory;
@@ -79,7 +77,7 @@ public static class NuGetToolPathResolver
         return GetPackageExecutable(frameworks[sortedFrameworks.First()]);
     }
 
-    private static string GetPackageDirectory(string[] packageIds, [CanBeNull] string version)
+    private static string GetPackageDirectory(string[] packageIds, string version)
     {
         try
         {

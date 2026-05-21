@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -69,7 +68,6 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
 
                 continue;
 
-                [CanBeNull]
                 string GetDeclaration(IProjectContainer container)
                 {
                     var prefix = new string('_', container.Descendants(x => x.Parent).Count() + 1);

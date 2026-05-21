@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Fixie;
 
 /// <summary><p>Fixie is a .NET modern test framework similar to NUnit and xUnit, but with an emphasis on low-ceremony defaults and flexible customization.</p><p>For more details, visit the <a href="https://fixie.github.io/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class FixieTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class FixieTasks : ToolTasks, IRequireNuGetPackage
 }
 #region FixieSettings
 /// <inheritdoc cref="FixieTasks.Fixie(Fallout.Common.Tools.Fixie.FixieSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(FixieTasks), Command = nameof(FixieTasks.Fixie))]
 public partial class FixieSettings : ToolOptions
@@ -57,57 +54,56 @@ public partial class FixieSettings : ToolOptions
 #endregion
 #region FixieSettingsExtensions
 /// <inheritdoc cref="FixieTasks.Fixie(Fallout.Common.Tools.Fixie.FixieSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class FixieSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="FixieSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Configuration))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : FixieSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="FixieSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Configuration))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : FixieSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region NoBuild
     /// <inheritdoc cref="FixieSettings.NoBuild"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
     public static T SetNoBuild<T>(this T o, bool? v) where T : FixieSettings => o.Modify(b => b.Set(() => o.NoBuild, v));
     /// <inheritdoc cref="FixieSettings.NoBuild"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
     public static T ResetNoBuild<T>(this T o) where T : FixieSettings => o.Modify(b => b.Remove(() => o.NoBuild));
     /// <inheritdoc cref="FixieSettings.NoBuild"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
     public static T EnableNoBuild<T>(this T o) where T : FixieSettings => o.Modify(b => b.Set(() => o.NoBuild, true));
     /// <inheritdoc cref="FixieSettings.NoBuild"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
     public static T DisableNoBuild<T>(this T o) where T : FixieSettings => o.Modify(b => b.Set(() => o.NoBuild, false));
     /// <inheritdoc cref="FixieSettings.NoBuild"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.NoBuild))]
     public static T ToggleNoBuild<T>(this T o) where T : FixieSettings => o.Modify(b => b.Set(() => o.NoBuild, !o.NoBuild));
     #endregion
     #region Framework
     /// <inheritdoc cref="FixieSettings.Framework"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Framework))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Framework))]
     public static T SetFramework<T>(this T o, string v) where T : FixieSettings => o.Modify(b => b.Set(() => o.Framework, v));
     /// <inheritdoc cref="FixieSettings.Framework"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Framework))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Framework))]
     public static T ResetFramework<T>(this T o) where T : FixieSettings => o.Modify(b => b.Remove(() => o.Framework));
     #endregion
     #region Report
     /// <inheritdoc cref="FixieSettings.Report"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Report))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Report))]
     public static T SetReport<T>(this T o, string v) where T : FixieSettings => o.Modify(b => b.Set(() => o.Report, v));
     /// <inheritdoc cref="FixieSettings.Report"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Report))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.Report))]
     public static T ResetReport<T>(this T o) where T : FixieSettings => o.Modify(b => b.Remove(() => o.Report));
     #endregion
     #region CustomArguments
     /// <inheritdoc cref="FixieSettings.CustomArguments"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.CustomArguments))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.CustomArguments))]
     public static T SetCustomArguments<T>(this T o, string v) where T : FixieSettings => o.Modify(b => b.Set(() => o.CustomArguments, v));
     /// <inheritdoc cref="FixieSettings.CustomArguments"/>
-    [Pure] [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.CustomArguments))]
+    [Builder(Type = typeof(FixieSettings), Property = nameof(FixieSettings.CustomArguments))]
     public static T ResetCustomArguments<T>(this T o) where T : FixieSettings => o.Modify(b => b.Remove(() => o.CustomArguments));
     #endregion
 }

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.ValueInjection;
 
@@ -32,7 +31,6 @@ namespace Fallout.Common;
 /// [Parameter("Custom items")] readonly string[] Items;
 ///     </code>
 /// </example>
-[PublicAPI]
 public class ParameterAttribute : ValueInjectionAttributeBase
 {
     public ParameterAttribute(string description = null)
@@ -42,21 +40,16 @@ public class ParameterAttribute : ValueInjectionAttributeBase
 
     public virtual string Description { get; }
 
-    [CanBeNull]
     public string Name { get; set; }
 
-    [CanBeNull]
     public string Separator { get; set; }
 
     public virtual bool List { get; set; } = true;
 
-    [CanBeNull]
     public Type ValueProviderType { get; set; }
 
-    [CanBeNull]
     public string ValueProviderMember { get; set; }
 
-    [CanBeNull]
     public override object GetValue(MemberInfo member, object instance)
     {
         return ParameterService.GetParameter<object>(member, member.GetMemberType().GetNullableType());

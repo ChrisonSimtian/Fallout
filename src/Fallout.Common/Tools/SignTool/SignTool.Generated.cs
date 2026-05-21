@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.SignTool;
 
 /// <summary><p>Sign Tool is a command-line tool that digitally signs files, verifies signatures in files, and time-stamps files.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class SignToolTasks : ToolTasks
 {
@@ -35,7 +33,6 @@ public partial class SignToolTasks : ToolTasks
 }
 #region SignToolSettings
 /// <inheritdoc cref="SignToolTasks.SignTool(Fallout.Common.Tools.SignTool.SignToolSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SignToolTasks), Command = nameof(SignToolTasks.SignTool), Arguments = "sign")]
 public partial class SignToolSettings : ToolOptions
@@ -132,535 +129,533 @@ public partial class SignToolSettings : ToolOptions
 #endregion
 #region SignToolSettingsExtensions
 /// <inheritdoc cref="SignToolTasks.SignTool(Fallout.Common.Tools.SignTool.SignToolSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class SignToolSettingsExtensions
 {
     #region AutomaticSelection
     /// <inheritdoc cref="SignToolSettings.AutomaticSelection"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
     public static T SetAutomaticSelection<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AutomaticSelection, v));
     /// <inheritdoc cref="SignToolSettings.AutomaticSelection"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
     public static T ResetAutomaticSelection<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.AutomaticSelection));
     /// <inheritdoc cref="SignToolSettings.AutomaticSelection"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
     public static T EnableAutomaticSelection<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AutomaticSelection, true));
     /// <inheritdoc cref="SignToolSettings.AutomaticSelection"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
     public static T DisableAutomaticSelection<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AutomaticSelection, false));
     /// <inheritdoc cref="SignToolSettings.AutomaticSelection"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AutomaticSelection))]
     public static T ToggleAutomaticSelection<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AutomaticSelection, !o.AutomaticSelection));
     #endregion
     #region AdditionalCertificate
     /// <inheritdoc cref="SignToolSettings.AdditionalCertificate"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AdditionalCertificate))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AdditionalCertificate))]
     public static T SetAdditionalCertificate<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AdditionalCertificate, v));
     /// <inheritdoc cref="SignToolSettings.AdditionalCertificate"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AdditionalCertificate))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AdditionalCertificate))]
     public static T ResetAdditionalCertificate<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.AdditionalCertificate));
     #endregion
     #region CertificateTemplateName
     /// <inheritdoc cref="SignToolSettings.CertificateTemplateName"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.CertificateTemplateName))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.CertificateTemplateName))]
     public static T SetCertificateTemplateName<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.CertificateTemplateName, v));
     /// <inheritdoc cref="SignToolSettings.CertificateTemplateName"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.CertificateTemplateName))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.CertificateTemplateName))]
     public static T ResetCertificateTemplateName<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.CertificateTemplateName));
     #endregion
     #region File
     /// <inheritdoc cref="SignToolSettings.File"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.File))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.File))]
     public static T SetFile<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.File, v));
     /// <inheritdoc cref="SignToolSettings.File"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.File))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.File))]
     public static T ResetFile<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.File));
     #endregion
     #region Issuer
     /// <inheritdoc cref="SignToolSettings.Issuer"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Issuer))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Issuer))]
     public static T SetIssuer<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Issuer, v));
     /// <inheritdoc cref="SignToolSettings.Issuer"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Issuer))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Issuer))]
     public static T ResetIssuer<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Issuer));
     #endregion
     #region SigningSubjectName
     /// <inheritdoc cref="SignToolSettings.SigningSubjectName"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SigningSubjectName))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SigningSubjectName))]
     public static T SetSigningSubjectName<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SigningSubjectName, v));
     /// <inheritdoc cref="SignToolSettings.SigningSubjectName"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SigningSubjectName))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SigningSubjectName))]
     public static T ResetSigningSubjectName<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SigningSubjectName));
     #endregion
     #region Password
     /// <inheritdoc cref="SignToolSettings.Password"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Password))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="SignToolSettings.Password"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Password))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RootSubjectName
     /// <inheritdoc cref="SignToolSettings.RootSubjectName"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RootSubjectName))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RootSubjectName))]
     public static T SetRootSubjectName<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.RootSubjectName, v));
     /// <inheritdoc cref="SignToolSettings.RootSubjectName"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RootSubjectName))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RootSubjectName))]
     public static T ResetRootSubjectName<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.RootSubjectName));
     #endregion
     #region Store
     /// <inheritdoc cref="SignToolSettings.Store"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Store))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Store))]
     public static T SetStore<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Store, v));
     /// <inheritdoc cref="SignToolSettings.Store"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Store))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Store))]
     public static T ResetStore<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Store));
     #endregion
     #region MachineStore
     /// <inheritdoc cref="SignToolSettings.MachineStore"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
     public static T SetMachineStore<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.MachineStore, v));
     /// <inheritdoc cref="SignToolSettings.MachineStore"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
     public static T ResetMachineStore<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.MachineStore));
     /// <inheritdoc cref="SignToolSettings.MachineStore"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
     public static T EnableMachineStore<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.MachineStore, true));
     /// <inheritdoc cref="SignToolSettings.MachineStore"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
     public static T DisableMachineStore<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.MachineStore, false));
     /// <inheritdoc cref="SignToolSettings.MachineStore"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.MachineStore))]
     public static T ToggleMachineStore<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.MachineStore, !o.MachineStore));
     #endregion
     #region Sha1Thumbprint
     /// <inheritdoc cref="SignToolSettings.Sha1Thumbprint"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Sha1Thumbprint))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Sha1Thumbprint))]
     public static T SetSha1Thumbprint<T>(this T o, [Secret] string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Sha1Thumbprint, v));
     /// <inheritdoc cref="SignToolSettings.Sha1Thumbprint"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Sha1Thumbprint))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Sha1Thumbprint))]
     public static T ResetSha1Thumbprint<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Sha1Thumbprint));
     #endregion
     #region FileDigestAlgorithm
     /// <inheritdoc cref="SignToolSettings.FileDigestAlgorithm"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.FileDigestAlgorithm))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.FileDigestAlgorithm))]
     public static T SetFileDigestAlgorithm<T>(this T o, SignToolDigestAlgorithm v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.FileDigestAlgorithm, v));
     /// <inheritdoc cref="SignToolSettings.FileDigestAlgorithm"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.FileDigestAlgorithm))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.FileDigestAlgorithm))]
     public static T ResetFileDigestAlgorithm<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.FileDigestAlgorithm));
     #endregion
     #region EnhancedKeyUsage
     /// <inheritdoc cref="SignToolSettings.EnhancedKeyUsage"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.EnhancedKeyUsage))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.EnhancedKeyUsage))]
     public static T SetEnhancedKeyUsage<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.EnhancedKeyUsage, v));
     /// <inheritdoc cref="SignToolSettings.EnhancedKeyUsage"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.EnhancedKeyUsage))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.EnhancedKeyUsage))]
     public static T ResetEnhancedKeyUsage<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.EnhancedKeyUsage));
     #endregion
     #region WindowsSystemComponentVerification
     /// <inheritdoc cref="SignToolSettings.WindowsSystemComponentVerification"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
     public static T SetWindowsSystemComponentVerification<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.WindowsSystemComponentVerification, v));
     /// <inheritdoc cref="SignToolSettings.WindowsSystemComponentVerification"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
     public static T ResetWindowsSystemComponentVerification<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.WindowsSystemComponentVerification));
     /// <inheritdoc cref="SignToolSettings.WindowsSystemComponentVerification"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
     public static T EnableWindowsSystemComponentVerification<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.WindowsSystemComponentVerification, true));
     /// <inheritdoc cref="SignToolSettings.WindowsSystemComponentVerification"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
     public static T DisableWindowsSystemComponentVerification<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.WindowsSystemComponentVerification, false));
     /// <inheritdoc cref="SignToolSettings.WindowsSystemComponentVerification"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.WindowsSystemComponentVerification))]
     public static T ToggleWindowsSystemComponentVerification<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.WindowsSystemComponentVerification, !o.WindowsSystemComponentVerification));
     #endregion
     #region Csp
     /// <inheritdoc cref="SignToolSettings.Csp"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Csp))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Csp))]
     public static T SetCsp<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Csp, v));
     /// <inheritdoc cref="SignToolSettings.Csp"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Csp))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Csp))]
     public static T ResetCsp<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Csp));
     #endregion
     #region KeyContainer
     /// <inheritdoc cref="SignToolSettings.KeyContainer"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.KeyContainer))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.KeyContainer))]
     public static T SetKeyContainer<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.KeyContainer, v));
     /// <inheritdoc cref="SignToolSettings.KeyContainer"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.KeyContainer))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.KeyContainer))]
     public static T ResetKeyContainer<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.KeyContainer));
     #endregion
     #region AppendSignature
     /// <inheritdoc cref="SignToolSettings.AppendSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
     public static T SetAppendSignature<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AppendSignature, v));
     /// <inheritdoc cref="SignToolSettings.AppendSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
     public static T ResetAppendSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.AppendSignature));
     /// <inheritdoc cref="SignToolSettings.AppendSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
     public static T EnableAppendSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AppendSignature, true));
     /// <inheritdoc cref="SignToolSettings.AppendSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
     public static T DisableAppendSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AppendSignature, false));
     /// <inheritdoc cref="SignToolSettings.AppendSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AppendSignature))]
     public static T ToggleAppendSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AppendSignature, !o.AppendSignature));
     #endregion
     #region Description
     /// <inheritdoc cref="SignToolSettings.Description"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Description))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="SignToolSettings.Description"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Description))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region Url
     /// <inheritdoc cref="SignToolSettings.Url"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Url))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Url))]
     public static T SetUrl<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Url, v));
     /// <inheritdoc cref="SignToolSettings.Url"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Url))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Url))]
     public static T ResetUrl<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Url));
     #endregion
     #region TimestampServerUrl
     /// <inheritdoc cref="SignToolSettings.TimestampServerUrl"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerUrl))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerUrl))]
     public static T SetTimestampServerUrl<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.TimestampServerUrl, v));
     /// <inheritdoc cref="SignToolSettings.TimestampServerUrl"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerUrl))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerUrl))]
     public static T ResetTimestampServerUrl<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.TimestampServerUrl));
     #endregion
     #region Rfc3161TimestampServerUrl
     /// <inheritdoc cref="SignToolSettings.Rfc3161TimestampServerUrl"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrl))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrl))]
     public static T SetRfc3161TimestampServerUrl<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Rfc3161TimestampServerUrl, v));
     /// <inheritdoc cref="SignToolSettings.Rfc3161TimestampServerUrl"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrl))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrl))]
     public static T ResetRfc3161TimestampServerUrl<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Rfc3161TimestampServerUrl));
     #endregion
     #region Rfc3161TimestampServerUrlSealed
     /// <inheritdoc cref="SignToolSettings.Rfc3161TimestampServerUrlSealed"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrlSealed))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrlSealed))]
     public static T SetRfc3161TimestampServerUrlSealed<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Rfc3161TimestampServerUrlSealed, v));
     /// <inheritdoc cref="SignToolSettings.Rfc3161TimestampServerUrlSealed"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrlSealed))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Rfc3161TimestampServerUrlSealed))]
     public static T ResetRfc3161TimestampServerUrlSealed<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Rfc3161TimestampServerUrlSealed));
     #endregion
     #region TimestampServerDigestAlgorithm
     /// <inheritdoc cref="SignToolSettings.TimestampServerDigestAlgorithm"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerDigestAlgorithm))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerDigestAlgorithm))]
     public static T SetTimestampServerDigestAlgorithm<T>(this T o, SignToolDigestAlgorithm v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.TimestampServerDigestAlgorithm, v));
     /// <inheritdoc cref="SignToolSettings.TimestampServerDigestAlgorithm"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerDigestAlgorithm))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.TimestampServerDigestAlgorithm))]
     public static T ResetTimestampServerDigestAlgorithm<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.TimestampServerDigestAlgorithm));
     #endregion
     #region AuthenticatedAttributes
     /// <inheritdoc cref="SignToolSettings.AuthenticatedAttributes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
     public static T SetAuthenticatedAttributes<T>(this T o, IDictionary<string, string> v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AuthenticatedAttributes, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="SignToolSettings.AuthenticatedAttributes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
     public static T SetAuthenticatedAttribute<T>(this T o, string k, string v) where T : SignToolSettings => o.Modify(b => b.SetDictionary(() => o.AuthenticatedAttributes, k, v));
     /// <inheritdoc cref="SignToolSettings.AuthenticatedAttributes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
     public static T AddAuthenticatedAttribute<T>(this T o, string k, string v) where T : SignToolSettings => o.Modify(b => b.AddDictionary(() => o.AuthenticatedAttributes, k, v));
     /// <inheritdoc cref="SignToolSettings.AuthenticatedAttributes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
     public static T RemoveAuthenticatedAttribute<T>(this T o, string k) where T : SignToolSettings => o.Modify(b => b.RemoveDictionary(() => o.AuthenticatedAttributes, k));
     /// <inheritdoc cref="SignToolSettings.AuthenticatedAttributes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticatedAttributes))]
     public static T ClearAuthenticatedAttributes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.ClearDictionary(() => o.AuthenticatedAttributes));
     #endregion
     #region SealingSignature
     /// <inheritdoc cref="SignToolSettings.SealingSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
     public static T SetSealingSignature<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SealingSignature, v));
     /// <inheritdoc cref="SignToolSettings.SealingSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
     public static T ResetSealingSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SealingSignature));
     /// <inheritdoc cref="SignToolSettings.SealingSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
     public static T EnableSealingSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SealingSignature, true));
     /// <inheritdoc cref="SignToolSettings.SealingSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
     public static T DisableSealingSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SealingSignature, false));
     /// <inheritdoc cref="SignToolSettings.SealingSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SealingSignature))]
     public static T ToggleSealingSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SealingSignature, !o.SealingSignature));
     #endregion
     #region IntentToSealAttribute
     /// <inheritdoc cref="SignToolSettings.IntentToSealAttribute"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
     public static T SetIntentToSealAttribute<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.IntentToSealAttribute, v));
     /// <inheritdoc cref="SignToolSettings.IntentToSealAttribute"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
     public static T ResetIntentToSealAttribute<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.IntentToSealAttribute));
     /// <inheritdoc cref="SignToolSettings.IntentToSealAttribute"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
     public static T EnableIntentToSealAttribute<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.IntentToSealAttribute, true));
     /// <inheritdoc cref="SignToolSettings.IntentToSealAttribute"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
     public static T DisableIntentToSealAttribute<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.IntentToSealAttribute, false));
     /// <inheritdoc cref="SignToolSettings.IntentToSealAttribute"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.IntentToSealAttribute))]
     public static T ToggleIntentToSealAttribute<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.IntentToSealAttribute, !o.IntentToSealAttribute));
     #endregion
     #region Force
     /// <inheritdoc cref="SignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="SignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
     public static T ResetForce<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="SignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
     public static T EnableForce<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="SignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
     public static T DisableForce<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="SignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region NoSealWarn
     /// <inheritdoc cref="SignToolSettings.NoSealWarn"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
     public static T SetNoSealWarn<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.NoSealWarn, v));
     /// <inheritdoc cref="SignToolSettings.NoSealWarn"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
     public static T ResetNoSealWarn<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.NoSealWarn));
     /// <inheritdoc cref="SignToolSettings.NoSealWarn"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
     public static T EnableNoSealWarn<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.NoSealWarn, true));
     /// <inheritdoc cref="SignToolSettings.NoSealWarn"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
     public static T DisableNoSealWarn<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.NoSealWarn, false));
     /// <inheritdoc cref="SignToolSettings.NoSealWarn"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.NoSealWarn))]
     public static T ToggleNoSealWarn<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.NoSealWarn, !o.NoSealWarn));
     #endregion
     #region SignedDigestAndUnsignedPkcs7Path
     /// <inheritdoc cref="SignToolSettings.SignedDigestAndUnsignedPkcs7Path"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedDigestAndUnsignedPkcs7Path))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedDigestAndUnsignedPkcs7Path))]
     public static T SetSignedDigestAndUnsignedPkcs7Path<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignedDigestAndUnsignedPkcs7Path, v));
     /// <inheritdoc cref="SignToolSettings.SignedDigestAndUnsignedPkcs7Path"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedDigestAndUnsignedPkcs7Path))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedDigestAndUnsignedPkcs7Path))]
     public static T ResetSignedDigestAndUnsignedPkcs7Path<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SignedDigestAndUnsignedPkcs7Path));
     #endregion
     #region SignDigestOnly
     /// <inheritdoc cref="SignToolSettings.SignDigestOnly"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
     public static T SetSignDigestOnly<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignDigestOnly, v));
     /// <inheritdoc cref="SignToolSettings.SignDigestOnly"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
     public static T ResetSignDigestOnly<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SignDigestOnly));
     /// <inheritdoc cref="SignToolSettings.SignDigestOnly"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
     public static T EnableSignDigestOnly<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignDigestOnly, true));
     /// <inheritdoc cref="SignToolSettings.SignDigestOnly"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
     public static T DisableSignDigestOnly<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignDigestOnly, false));
     /// <inheritdoc cref="SignToolSettings.SignDigestOnly"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignDigestOnly))]
     public static T ToggleSignDigestOnly<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignDigestOnly, !o.SignDigestOnly));
     #endregion
     #region GenerateSignature
     /// <inheritdoc cref="SignToolSettings.GenerateSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.GenerateSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.GenerateSignature))]
     public static T SetGenerateSignature<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.GenerateSignature, v));
     /// <inheritdoc cref="SignToolSettings.GenerateSignature"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.GenerateSignature))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.GenerateSignature))]
     public static T ResetGenerateSignature<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.GenerateSignature));
     #endregion
     #region XmlFile
     /// <inheritdoc cref="SignToolSettings.XmlFile"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
     public static T SetXmlFile<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.XmlFile, v));
     /// <inheritdoc cref="SignToolSettings.XmlFile"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
     public static T ResetXmlFile<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.XmlFile));
     /// <inheritdoc cref="SignToolSettings.XmlFile"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
     public static T EnableXmlFile<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.XmlFile, true));
     /// <inheritdoc cref="SignToolSettings.XmlFile"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
     public static T DisableXmlFile<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.XmlFile, false));
     /// <inheritdoc cref="SignToolSettings.XmlFile"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.XmlFile))]
     public static T ToggleXmlFile<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.XmlFile, !o.XmlFile));
     #endregion
     #region AuthenticodeDigestSignLibDll
     /// <inheritdoc cref="SignToolSettings.AuthenticodeDigestSignLibDll"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignLibDll))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignLibDll))]
     public static T SetAuthenticodeDigestSignLibDll<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AuthenticodeDigestSignLibDll, v));
     /// <inheritdoc cref="SignToolSettings.AuthenticodeDigestSignLibDll"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignLibDll))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignLibDll))]
     public static T ResetAuthenticodeDigestSignLibDll<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.AuthenticodeDigestSignLibDll));
     #endregion
     #region AuthenticodeDigestSignPassUnmodified
     /// <inheritdoc cref="SignToolSettings.AuthenticodeDigestSignPassUnmodified"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignPassUnmodified))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignPassUnmodified))]
     public static T SetAuthenticodeDigestSignPassUnmodified<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.AuthenticodeDigestSignPassUnmodified, v));
     /// <inheritdoc cref="SignToolSettings.AuthenticodeDigestSignPassUnmodified"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignPassUnmodified))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.AuthenticodeDigestSignPassUnmodified))]
     public static T ResetAuthenticodeDigestSignPassUnmodified<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.AuthenticodeDigestSignPassUnmodified));
     #endregion
     #region ContentFileToPkcs7
     /// <inheritdoc cref="SignToolSettings.ContentFileToPkcs7"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.ContentFileToPkcs7))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.ContentFileToPkcs7))]
     public static T SetContentFileToPkcs7<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.ContentFileToPkcs7, v));
     /// <inheritdoc cref="SignToolSettings.ContentFileToPkcs7"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.ContentFileToPkcs7))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.ContentFileToPkcs7))]
     public static T ResetContentFileToPkcs7<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.ContentFileToPkcs7));
     #endregion
     #region SignedContentIdentifier
     /// <inheritdoc cref="SignToolSettings.SignedContentIdentifier"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentIdentifier))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentIdentifier))]
     public static T SetSignedContentIdentifier<T>(this T o, string v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignedContentIdentifier, v));
     /// <inheritdoc cref="SignToolSettings.SignedContentIdentifier"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentIdentifier))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentIdentifier))]
     public static T ResetSignedContentIdentifier<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SignedContentIdentifier));
     #endregion
     #region SignedContentMethod
     /// <inheritdoc cref="SignToolSettings.SignedContentMethod"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentMethod))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentMethod))]
     public static T SetSignedContentMethod<T>(this T o, SignToolContentMethod v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SignedContentMethod, v));
     /// <inheritdoc cref="SignToolSettings.SignedContentMethod"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentMethod))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SignedContentMethod))]
     public static T ResetSignedContentMethod<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SignedContentMethod));
     #endregion
     #region PageHashes
     /// <inheritdoc cref="SignToolSettings.PageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
     public static T SetPageHashes<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.PageHashes, v));
     /// <inheritdoc cref="SignToolSettings.PageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
     public static T ResetPageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.PageHashes));
     /// <inheritdoc cref="SignToolSettings.PageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
     public static T EnablePageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.PageHashes, true));
     /// <inheritdoc cref="SignToolSettings.PageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
     public static T DisablePageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.PageHashes, false));
     /// <inheritdoc cref="SignToolSettings.PageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.PageHashes))]
     public static T TogglePageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.PageHashes, !o.PageHashes));
     #endregion
     #region SuppressPageHashes
     /// <inheritdoc cref="SignToolSettings.SuppressPageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
     public static T SetSuppressPageHashes<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SuppressPageHashes, v));
     /// <inheritdoc cref="SignToolSettings.SuppressPageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
     public static T ResetSuppressPageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.SuppressPageHashes));
     /// <inheritdoc cref="SignToolSettings.SuppressPageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
     public static T EnableSuppressPageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SuppressPageHashes, true));
     /// <inheritdoc cref="SignToolSettings.SuppressPageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
     public static T DisableSuppressPageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SuppressPageHashes, false));
     /// <inheritdoc cref="SignToolSettings.SuppressPageHashes"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.SuppressPageHashes))]
     public static T ToggleSuppressPageHashes<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.SuppressPageHashes, !o.SuppressPageHashes));
     #endregion
     #region RelaxedMarkerCheck
     /// <inheritdoc cref="SignToolSettings.RelaxedMarkerCheck"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
     public static T SetRelaxedMarkerCheck<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.RelaxedMarkerCheck, v));
     /// <inheritdoc cref="SignToolSettings.RelaxedMarkerCheck"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
     public static T ResetRelaxedMarkerCheck<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.RelaxedMarkerCheck));
     /// <inheritdoc cref="SignToolSettings.RelaxedMarkerCheck"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
     public static T EnableRelaxedMarkerCheck<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.RelaxedMarkerCheck, true));
     /// <inheritdoc cref="SignToolSettings.RelaxedMarkerCheck"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
     public static T DisableRelaxedMarkerCheck<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.RelaxedMarkerCheck, false));
     /// <inheritdoc cref="SignToolSettings.RelaxedMarkerCheck"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.RelaxedMarkerCheck))]
     public static T ToggleRelaxedMarkerCheck<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.RelaxedMarkerCheck, !o.RelaxedMarkerCheck));
     #endregion
     #region Quiet
     /// <inheritdoc cref="SignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="SignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="SignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="SignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="SignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
     #region Verbose
     /// <inheritdoc cref="SignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
     public static T SetVerbose<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Verbose, v));
     /// <inheritdoc cref="SignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
     public static T ResetVerbose<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Verbose));
     /// <inheritdoc cref="SignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
     public static T EnableVerbose<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Verbose, true));
     /// <inheritdoc cref="SignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
     public static T DisableVerbose<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Verbose, false));
     /// <inheritdoc cref="SignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Verbose))]
     public static T ToggleVerbose<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Verbose, !o.Verbose));
     #endregion
     #region Debug
     /// <inheritdoc cref="SignToolSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="SignToolSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="SignToolSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="SignToolSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="SignToolSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region Files
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T SetFiles<T>(this T o, params string[] v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Files, v));
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T SetFiles<T>(this T o, IEnumerable<string> v) where T : SignToolSettings => o.Modify(b => b.Set(() => o.Files, v));
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T AddFiles<T>(this T o, params string[] v) where T : SignToolSettings => o.Modify(b => b.AddCollection(() => o.Files, v));
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T AddFiles<T>(this T o, IEnumerable<string> v) where T : SignToolSettings => o.Modify(b => b.AddCollection(() => o.Files, v));
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T RemoveFiles<T>(this T o, params string[] v) where T : SignToolSettings => o.Modify(b => b.RemoveCollection(() => o.Files, v));
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T RemoveFiles<T>(this T o, IEnumerable<string> v) where T : SignToolSettings => o.Modify(b => b.RemoveCollection(() => o.Files, v));
     /// <inheritdoc cref="SignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
+    [Builder(Type = typeof(SignToolSettings), Property = nameof(SignToolSettings.Files))]
     public static T ClearFiles<T>(this T o) where T : SignToolSettings => o.Modify(b => b.ClearCollection(() => o.Files));
     #endregion
 }
 #endregion
 #region SignToolContentMethod
 /// <summary>Used within <see cref="SignToolTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<SignToolContentMethod>))]
@@ -676,7 +671,6 @@ public partial class SignToolContentMethod : Enumeration
 #endregion
 #region SignToolDigestAlgorithm
 /// <summary>Used within <see cref="SignToolTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<SignToolDigestAlgorithm>))]

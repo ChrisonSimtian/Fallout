@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Git;
 using Fallout.Common.IO;

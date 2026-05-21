@@ -5,7 +5,6 @@
 
 using System;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
@@ -59,7 +58,6 @@ public abstract partial class ToolTasks
     }
 }
 
-[BaseTypeRequired(typeof(IRequirePathTool))]
 public class PathToolAttribute : ToolAttribute
 {
     public string Executable { get; set; }
@@ -75,7 +73,6 @@ public class PathToolAttribute : ToolAttribute
     }
 }
 
-[BaseTypeRequired(typeof(IRequireNpmPackage))]
 public class NpmToolAttribute : ToolAttribute
 {
     public string Id { get; set; }
@@ -92,7 +89,6 @@ public class NpmToolAttribute : ToolAttribute
     }
 }
 
-[BaseTypeRequired(typeof(IRequireAptGetPackage))]
 public class AptGetToolAttribute : ToolAttribute
 {
     public string Id { get; set; }
@@ -108,7 +104,6 @@ public class AptGetToolAttribute : ToolAttribute
     }
 }
 
-[BaseTypeRequired(typeof(IRequireNuGetPackage))]
 public class NuGetToolAttribute : ToolAttribute
 {
     public string Id { get; set; }
@@ -138,6 +133,6 @@ public interface IToolOptionsWithFramework
 
 public static class ToolOptionsWithFrameworkExtensions
 {
-    [Pure] [Builder(Type = typeof(IToolOptionsWithFramework), Property = nameof(IToolOptionsWithFramework.Framework))]
+    [Builder(Type = typeof(IToolOptionsWithFramework), Property = nameof(IToolOptionsWithFramework.Framework))]
     public static T SetFramework<T>(this T o, string v) where T : Options, IToolOptionsWithFramework => o.Modify(b => b.Set(() => o.Framework, v));
 }

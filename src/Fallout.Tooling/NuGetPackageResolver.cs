@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using NuGet.Packaging;
 using NuGet.Versioning;
@@ -18,10 +17,8 @@ using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class NuGetPackageResolver
 {
-    [CanBeNull]
     public static InstalledPackage GetLocalInstalledPackage(
         string packageId,
         AbsolutePath packagesConfigFile,
@@ -90,7 +87,6 @@ public static class NuGetPackageResolver
         return packageDownloads.Concat(packageReferences);
     }
 
-    [ItemNotNull]
     private static IEnumerable<InstalledPackage> GetLocalInstalledPackagesFromAssetsFile(
         AbsolutePath packagesConfigFile,
         bool resolveDependencies = true,
@@ -103,7 +99,6 @@ public static class NuGetPackageResolver
     }
 
     // ReSharper disable once CognitiveComplexity
-    [ItemNotNull]
     private static IEnumerable<InstalledPackage> GetLocalInstalledPackagesFromConfigFile(
         AbsolutePath packagesConfigFile,
         bool resolveDependencies = true)
@@ -167,11 +162,10 @@ public static class NuGetPackageResolver
             .Distinct(x => new { x.Id, x.Version });
     }
 
-    [CanBeNull]
     public static InstalledPackage GetGlobalInstalledPackage(
         string packageId,
-        [CanBeNull] string version,
-        [CanBeNull] AbsolutePath packagesConfigFile)
+        string version,
+        AbsolutePath packagesConfigFile)
     {
         if (version != null &&
             !version.Contains("*") &&
@@ -185,11 +179,10 @@ public static class NuGetPackageResolver
 
     // TODO: add parameter for auto download?
     // TODO: add parameter for highest/lowest?
-    [CanBeNull]
     public static InstalledPackage GetGlobalInstalledPackage(
         string packageId,
-        [CanBeNull] VersionRange versionRange,
-        [CanBeNull] AbsolutePath packagesConfigFile,
+        VersionRange versionRange,
+        AbsolutePath packagesConfigFile,
         bool? includePrereleases = null)
     {
         packageId = packageId.ToLowerInvariant();
@@ -221,7 +214,6 @@ public static class NuGetPackageResolver
             : candidatePackages.SingleOrDefault(x => x.Version == versionRange.FindBestMatch(candidatePackages.Select(y => y.Version)));
     }
 
-    [CanBeNull]
     public static string GetPackagesConfigFile(string projectDirectory)
     {
         var projectDirectoryInfo = new DirectoryInfo(projectDirectory);
@@ -232,8 +224,7 @@ public static class NuGetPackageResolver
     }
 
     // TODO: check for config ( repositoryPath / globalPackagesFolder )
-    [CanBeNull]
-    public static AbsolutePath GetPackagesDirectory([CanBeNull] AbsolutePath packagesConfigFile)
+    public static AbsolutePath GetPackagesDirectory(AbsolutePath packagesConfigFile)
     {
         string TryGetFromEnvironmentVariable()
             => EnvironmentInfo.GetVariable("NUGET_PACKAGES");
@@ -287,7 +278,7 @@ public static class NuGetPackageResolver
         return IsLegacyFile(packagesConfigFile);
     }
 
-    private static IEnumerable<string> GetConfigFiles([CanBeNull] AbsolutePath packagesConfigFile)
+    private static IEnumerable<string> GetConfigFiles(AbsolutePath packagesConfigFile)
     {
         var directories = new List<AbsolutePath>();
 
@@ -329,7 +320,7 @@ public static class NuGetPackageResolver
         {
             public static readonly Comparer Instance = new();
 
-            public bool Equals([CanBeNull] InstalledPackage x, [CanBeNull] InstalledPackage y)
+            public bool Equals(InstalledPackage x, InstalledPackage y)
             {
                 if (ReferenceEquals(x, y))
                     return true;
@@ -342,7 +333,7 @@ public static class NuGetPackageResolver
                 return Equals(x.Id, y.Id) && Equals(x.Version, y.Version);
             }
 
-            public int GetHashCode([NotNull] InstalledPackage obj)
+            public int GetHashCode(InstalledPackage obj)
             {
                 return obj.Id.GetHashCode();
             }

@@ -3,21 +3,17 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
-[PublicAPI]
 public class AzurePipelinesConfiguration : ConfigurationEntity
 {
     public string[] VariableGroups { get; set; }
 
-    [CanBeNull]
     public AzurePipelinesVcsPushTrigger VcsPushTrigger { get; set; }
 
-    [CanBeNull]
     public AzurePipelinesVcsPushTrigger VcsPullRequestTrigger { get; set; }
 
     public AzurePipelinesStage[] Stages { get; set; }

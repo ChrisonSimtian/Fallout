@@ -5,14 +5,12 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
-[PublicAPI]
 public class AzurePipelinesJob : ConfigurationEntity
 {
     public string Name { get; set; }

@@ -4,13 +4,11 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.SpaceAutomation.Configuration;
 
-[PublicAPI]
 public class SpaceAutomationConfiguration : ConfigurationEntity
 {
     public string Name { get; set; }

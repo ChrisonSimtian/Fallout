@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
 public static partial class StringExtensions
 {
-    [Pure]
     public static IEnumerable<string> Split(this string str, Func<char, int, bool> predicate, bool includeSplitCharacter = false)
     {
         var next = 0;
@@ -33,7 +31,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Splits a given string by camel-humps while treating exclusions as single items.
     /// </summary>
-    [Pure]
     public static IEnumerable<string> SplitCamelHumps(this string str, params string[] exclusions)
     {
         var hadLower = false;
@@ -64,7 +61,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Splits a given string by new-lines with empty entries preserved.
     /// </summary>
-    [Pure]
     public static string[] SplitLineBreaks(this string str, StringSplitOptions options = StringSplitOptions.None)
     {
         return str.Split(new[] { "\r\n", "\n" }, options);
@@ -73,7 +69,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Splits a given string by paragraphs (double new-line) with empty entries preserved.
     /// </summary>
-    [Pure]
     public static string[] SplitParagraphs(this string str, StringSplitOptions options = StringSplitOptions.None)
     {
         return str.Split(new[] { "\r\n\r\n", "\n\n" }, options);
@@ -82,7 +77,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Splits a given string by spaces with empty entries removed.
     /// </summary>
-    [Pure]
     public static string[] SplitSpace(this string str)
     {
         return str.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -91,7 +85,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Splits a given string by camel-humps while treating known-words (e.g., <em>MSBuild</em> or <em>NuGet</em>) as single items.
     /// </summary>
-    [Pure]
     public static IEnumerable<string> SplitCamelHumpsWithKnownWords(this string str)
     {
         return str.SplitCamelHumps(KnownWords);

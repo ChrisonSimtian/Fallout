@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Serilog;
@@ -27,8 +26,6 @@ namespace Fallout.Common.ProjectModel;
 /// [Solution("common.sln")] readonly Solution Solution;
 ///     </code>
 /// </example>
-[PublicAPI]
-[UsedImplicitly(ImplicitUseKindFlags.Assign)]
 public class SolutionAttribute(string relativePath)
     : ParameterAttribute(GetDescription(relativePath))
 {

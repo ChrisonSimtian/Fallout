@@ -7,12 +7,10 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Text;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Fallout.Utilities.Text.Json;
 
-[PublicAPI]
 public class Base64JsonConverter<T> : TypeConverter
 {
     public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)

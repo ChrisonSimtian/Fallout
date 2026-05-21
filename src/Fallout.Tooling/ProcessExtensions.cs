@@ -7,20 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 [DebuggerStepThrough]
 [DebuggerNonUserCode]
 public static class ProcessExtensions
 {
-    [AssertionMethod]
     public static IProcess AssertWaitForExit(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)] [CanBeNull]
         this IProcess process)
     {
         Assert.True(process != null);
@@ -28,9 +24,7 @@ public static class ProcessExtensions
         return process;
     }
 
-    [AssertionMethod]
     public static IProcess AssertZeroExitCode(
-        [AssertionCondition(AssertionConditionType.IS_NOT_NULL)] [CanBeNull]
         this IProcess process)
     {
         process.AssertWaitForExit();

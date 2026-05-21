@@ -6,7 +6,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.GitLab;
@@ -14,14 +13,12 @@ namespace Fallout.Common.CI.GitLab;
 /// <summary>
 ///     Interface according to the <a href="https://docs.gitlab.com/ce/ci/variables/README.html">official website</a>.
 /// </summary>
-[PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
 public partial class GitLab : Host, IBuildServer
 {
     public new static GitLab Instance => Host.Instance as GitLab;
 
-    [UsedImplicitly]
     internal static bool IsRunningGitLab => EnvironmentInfo.HasVariable("GITLAB_CI");
 
     private const string SectionStartSequence = "\u001b[0K";
@@ -87,7 +84,7 @@ public partial class GitLab : Host, IBuildServer
     /// The commit tag name.
     /// Available only in pipelines for tags.
     /// </summary>
-    [CanBeNull] public string CommitTag => EnvironmentInfo.GetVariable("CI_COMMIT_TAG");
+    public string CommitTag => EnvironmentInfo.GetVariable("CI_COMMIT_TAG");
 
     /// <summary>
     /// The path to the CI/CD configuration file.
@@ -282,17 +279,17 @@ public partial class GitLab : Host, IBuildServer
     /// <summary>
     /// The Source chat channel that triggered the ChatOps command.
     /// </summary>
-    [CanBeNull] public string ChatChannel => EnvironmentInfo.GetVariable("CHAT_CHANNEL");
+    public string ChatChannel => EnvironmentInfo.GetVariable("CHAT_CHANNEL");
 
     /// <summary>
     /// The additional arguments passed with the ChatOps command.
     /// </summary>
-    [CanBeNull] public string ChatInput => EnvironmentInfo.GetVariable("CHAT_INPUT");
+    public string ChatInput => EnvironmentInfo.GetVariable("CHAT_INPUT");
 
     /// <summary>
     /// The chat service's user ID of the user who triggered the ChatOps command.
     /// </summary>
-    [CanBeNull] public string ChatUserId => EnvironmentInfo.GetVariable("CHAT_USER_ID");
+    public string ChatUserId => EnvironmentInfo.GetVariable("CHAT_USER_ID");
 
     /// <summary>
     /// The GitLab API v4 root URL.

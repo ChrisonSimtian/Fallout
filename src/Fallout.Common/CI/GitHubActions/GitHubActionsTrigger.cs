@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.CI.GitHubActions;
 
-[PublicAPI]
 public enum GitHubActionsTrigger
 {
     [EnumValue("push")] Push,

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.AzureSignTool;
 
 /// <summary><p>Azure Sign Tool is similar to <c>signtool</c> in the Windows SDK, with the major difference being that it uses Azure Key Vault for performing the signing process. The usage is like <c>signtool</c>, except with a limited set of options for signing and options for authenticating to Azure Key Vault.</p><p>For more details, visit the <a href="https://github.com/vcsjones/AzureSignTool">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class AzureSignToolTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class AzureSignToolTasks : ToolTasks, IRequireNuGetPackage
 }
 #region AzureSignToolSettings
 /// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Common.Tools.AzureSignTool.AzureSignToolSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(AzureSignToolTasks), Command = nameof(AzureSignToolTasks.AzureSignTool), Arguments = "sign")]
 public partial class AzureSignToolSettings : ToolOptions
@@ -93,292 +90,290 @@ public partial class AzureSignToolSettings : ToolOptions
 #endregion
 #region AzureSignToolSettingsExtensions
 /// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Common.Tools.AzureSignTool.AzureSignToolSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class AzureSignToolSettingsExtensions
 {
     #region KeyVaultUrl
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultUrl"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultUrl))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultUrl))]
     public static T SetKeyVaultUrl<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultUrl, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultUrl"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultUrl))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultUrl))]
     public static T ResetKeyVaultUrl<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultUrl));
     #endregion
     #region KeyVaultClientId
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultClientId"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientId))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientId))]
     public static T SetKeyVaultClientId<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultClientId, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultClientId"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientId))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientId))]
     public static T ResetKeyVaultClientId<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultClientId));
     #endregion
     #region KeyVaultClientSecret
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultClientSecret"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientSecret))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientSecret))]
     public static T SetKeyVaultClientSecret<T>(this T o, [Secret] string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultClientSecret, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultClientSecret"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientSecret))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultClientSecret))]
     public static T ResetKeyVaultClientSecret<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultClientSecret));
     #endregion
     #region KeyVaultTenantId
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultTenantId"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultTenantId))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultTenantId))]
     public static T SetKeyVaultTenantId<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultTenantId, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultTenantId"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultTenantId))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultTenantId))]
     public static T ResetKeyVaultTenantId<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultTenantId));
     #endregion
     #region KeyVaultCertificateName
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultCertificateName"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultCertificateName))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultCertificateName))]
     public static T SetKeyVaultCertificateName<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultCertificateName, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultCertificateName"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultCertificateName))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultCertificateName))]
     public static T ResetKeyVaultCertificateName<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultCertificateName));
     #endregion
     #region KeyVaultAccessToken
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultAccessToken"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultAccessToken))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultAccessToken))]
     public static T SetKeyVaultAccessToken<T>(this T o, [Secret] string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultAccessToken, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultAccessToken"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultAccessToken))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultAccessToken))]
     public static T ResetKeyVaultAccessToken<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultAccessToken));
     #endregion
     #region KeyVaultManagedIdentity
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
     public static T SetKeyVaultManagedIdentity<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, v));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
     public static T ResetKeyVaultManagedIdentity<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultManagedIdentity));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
     public static T EnableKeyVaultManagedIdentity<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, true));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
     public static T DisableKeyVaultManagedIdentity<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, false));
     /// <inheritdoc cref="AzureSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.KeyVaultManagedIdentity))]
     public static T ToggleKeyVaultManagedIdentity<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, !o.KeyVaultManagedIdentity));
     #endregion
     #region Description
     /// <inheritdoc cref="AzureSignToolSettings.Description"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Description))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="AzureSignToolSettings.Description"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Description))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region DescriptionUrl
     /// <inheritdoc cref="AzureSignToolSettings.DescriptionUrl"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.DescriptionUrl))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.DescriptionUrl))]
     public static T SetDescriptionUrl<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.DescriptionUrl, v));
     /// <inheritdoc cref="AzureSignToolSettings.DescriptionUrl"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.DescriptionUrl))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.DescriptionUrl))]
     public static T ResetDescriptionUrl<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.DescriptionUrl));
     #endregion
     #region TimestampRfc3161Url
     /// <inheritdoc cref="AzureSignToolSettings.TimestampRfc3161Url"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampRfc3161Url))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampRfc3161Url))]
     public static T SetTimestampRfc3161Url<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.TimestampRfc3161Url, v));
     /// <inheritdoc cref="AzureSignToolSettings.TimestampRfc3161Url"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampRfc3161Url))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampRfc3161Url))]
     public static T ResetTimestampRfc3161Url<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.TimestampRfc3161Url));
     #endregion
     #region TimestampAuthenticodeUrl
     /// <inheritdoc cref="AzureSignToolSettings.TimestampAuthenticodeUrl"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampAuthenticodeUrl))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampAuthenticodeUrl))]
     public static T SetTimestampAuthenticodeUrl<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.TimestampAuthenticodeUrl, v));
     /// <inheritdoc cref="AzureSignToolSettings.TimestampAuthenticodeUrl"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampAuthenticodeUrl))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampAuthenticodeUrl))]
     public static T ResetTimestampAuthenticodeUrl<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.TimestampAuthenticodeUrl));
     #endregion
     #region TimestampDigest
     /// <inheritdoc cref="AzureSignToolSettings.TimestampDigest"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampDigest))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampDigest))]
     public static T SetTimestampDigest<T>(this T o, AzureSignToolDigestAlgorithm v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.TimestampDigest, v));
     /// <inheritdoc cref="AzureSignToolSettings.TimestampDigest"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampDigest))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.TimestampDigest))]
     public static T ResetTimestampDigest<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.TimestampDigest));
     #endregion
     #region FileDigest
     /// <inheritdoc cref="AzureSignToolSettings.FileDigest"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.FileDigest))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.FileDigest))]
     public static T SetFileDigest<T>(this T o, AzureSignToolDigestAlgorithm v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.FileDigest, v));
     /// <inheritdoc cref="AzureSignToolSettings.FileDigest"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.FileDigest))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.FileDigest))]
     public static T ResetFileDigest<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.FileDigest));
     #endregion
     #region AdditionalCertificates
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T SetAdditionalCertificates<T>(this T o, params string[] v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.AdditionalCertificates, v));
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T SetAdditionalCertificates<T>(this T o, IEnumerable<string> v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.AdditionalCertificates, v));
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T AddAdditionalCertificates<T>(this T o, params string[] v) where T : AzureSignToolSettings => o.Modify(b => b.AddCollection(() => o.AdditionalCertificates, v));
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T AddAdditionalCertificates<T>(this T o, IEnumerable<string> v) where T : AzureSignToolSettings => o.Modify(b => b.AddCollection(() => o.AdditionalCertificates, v));
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T RemoveAdditionalCertificates<T>(this T o, params string[] v) where T : AzureSignToolSettings => o.Modify(b => b.RemoveCollection(() => o.AdditionalCertificates, v));
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T RemoveAdditionalCertificates<T>(this T o, IEnumerable<string> v) where T : AzureSignToolSettings => o.Modify(b => b.RemoveCollection(() => o.AdditionalCertificates, v));
     /// <inheritdoc cref="AzureSignToolSettings.AdditionalCertificates"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.AdditionalCertificates))]
     public static T ClearAdditionalCertificates<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.ClearCollection(() => o.AdditionalCertificates));
     #endregion
     #region Verbose
     /// <inheritdoc cref="AzureSignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
     public static T SetVerbose<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Verbose, v));
     /// <inheritdoc cref="AzureSignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
     public static T ResetVerbose<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.Verbose));
     /// <inheritdoc cref="AzureSignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
     public static T EnableVerbose<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Verbose, true));
     /// <inheritdoc cref="AzureSignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
     public static T DisableVerbose<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Verbose, false));
     /// <inheritdoc cref="AzureSignToolSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Verbose))]
     public static T ToggleVerbose<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Verbose, !o.Verbose));
     #endregion
     #region Quiet
     /// <inheritdoc cref="AzureSignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="AzureSignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="AzureSignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="AzureSignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="AzureSignToolSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
     #region ContinueOnError
     /// <inheritdoc cref="AzureSignToolSettings.ContinueOnError"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
     public static T SetContinueOnError<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.ContinueOnError, v));
     /// <inheritdoc cref="AzureSignToolSettings.ContinueOnError"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
     public static T ResetContinueOnError<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.ContinueOnError));
     /// <inheritdoc cref="AzureSignToolSettings.ContinueOnError"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
     public static T EnableContinueOnError<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.ContinueOnError, true));
     /// <inheritdoc cref="AzureSignToolSettings.ContinueOnError"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
     public static T DisableContinueOnError<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.ContinueOnError, false));
     /// <inheritdoc cref="AzureSignToolSettings.ContinueOnError"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.ContinueOnError))]
     public static T ToggleContinueOnError<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.ContinueOnError, !o.ContinueOnError));
     #endregion
     #region InputFileList
     /// <inheritdoc cref="AzureSignToolSettings.InputFileList"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.InputFileList))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.InputFileList))]
     public static T SetInputFileList<T>(this T o, string v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.InputFileList, v));
     /// <inheritdoc cref="AzureSignToolSettings.InputFileList"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.InputFileList))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.InputFileList))]
     public static T ResetInputFileList<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.InputFileList));
     #endregion
     #region SkipSigned
     /// <inheritdoc cref="AzureSignToolSettings.SkipSigned"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
     public static T SetSkipSigned<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.SkipSigned, v));
     /// <inheritdoc cref="AzureSignToolSettings.SkipSigned"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
     public static T ResetSkipSigned<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.SkipSigned));
     /// <inheritdoc cref="AzureSignToolSettings.SkipSigned"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
     public static T EnableSkipSigned<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.SkipSigned, true));
     /// <inheritdoc cref="AzureSignToolSettings.SkipSigned"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
     public static T DisableSkipSigned<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.SkipSigned, false));
     /// <inheritdoc cref="AzureSignToolSettings.SkipSigned"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.SkipSigned))]
     public static T ToggleSkipSigned<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.SkipSigned, !o.SkipSigned));
     #endregion
     #region PageHashing
     /// <inheritdoc cref="AzureSignToolSettings.PageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
     public static T SetPageHashing<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.PageHashing, v));
     /// <inheritdoc cref="AzureSignToolSettings.PageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
     public static T ResetPageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.PageHashing));
     /// <inheritdoc cref="AzureSignToolSettings.PageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
     public static T EnablePageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.PageHashing, true));
     /// <inheritdoc cref="AzureSignToolSettings.PageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
     public static T DisablePageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.PageHashing, false));
     /// <inheritdoc cref="AzureSignToolSettings.PageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.PageHashing))]
     public static T TogglePageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.PageHashing, !o.PageHashing));
     #endregion
     #region NoPageHashing
     /// <inheritdoc cref="AzureSignToolSettings.NoPageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
     public static T SetNoPageHashing<T>(this T o, bool? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.NoPageHashing, v));
     /// <inheritdoc cref="AzureSignToolSettings.NoPageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
     public static T ResetNoPageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.NoPageHashing));
     /// <inheritdoc cref="AzureSignToolSettings.NoPageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
     public static T EnableNoPageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.NoPageHashing, true));
     /// <inheritdoc cref="AzureSignToolSettings.NoPageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
     public static T DisableNoPageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.NoPageHashing, false));
     /// <inheritdoc cref="AzureSignToolSettings.NoPageHashing"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.NoPageHashing))]
     public static T ToggleNoPageHashing<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.NoPageHashing, !o.NoPageHashing));
     #endregion
     #region MaxDegreeOfParallelism
     /// <inheritdoc cref="AzureSignToolSettings.MaxDegreeOfParallelism"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.MaxDegreeOfParallelism))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.MaxDegreeOfParallelism))]
     public static T SetMaxDegreeOfParallelism<T>(this T o, int? v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.MaxDegreeOfParallelism, v));
     /// <inheritdoc cref="AzureSignToolSettings.MaxDegreeOfParallelism"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.MaxDegreeOfParallelism))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.MaxDegreeOfParallelism))]
     public static T ResetMaxDegreeOfParallelism<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.Remove(() => o.MaxDegreeOfParallelism));
     #endregion
     #region Files
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T SetFiles<T>(this T o, params string[] v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Files, v));
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T SetFiles<T>(this T o, IEnumerable<string> v) where T : AzureSignToolSettings => o.Modify(b => b.Set(() => o.Files, v));
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T AddFiles<T>(this T o, params string[] v) where T : AzureSignToolSettings => o.Modify(b => b.AddCollection(() => o.Files, v));
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T AddFiles<T>(this T o, IEnumerable<string> v) where T : AzureSignToolSettings => o.Modify(b => b.AddCollection(() => o.Files, v));
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T RemoveFiles<T>(this T o, params string[] v) where T : AzureSignToolSettings => o.Modify(b => b.RemoveCollection(() => o.Files, v));
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T RemoveFiles<T>(this T o, IEnumerable<string> v) where T : AzureSignToolSettings => o.Modify(b => b.RemoveCollection(() => o.Files, v));
     /// <inheritdoc cref="AzureSignToolSettings.Files"/>
-    [Pure] [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
+    [Builder(Type = typeof(AzureSignToolSettings), Property = nameof(AzureSignToolSettings.Files))]
     public static T ClearFiles<T>(this T o) where T : AzureSignToolSettings => o.Modify(b => b.ClearCollection(() => o.Files));
     #endregion
 }
 #endregion
 #region AzureSignToolDigestAlgorithm
 /// <summary>Used within <see cref="AzureSignToolTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<AzureSignToolDigestAlgorithm>))]

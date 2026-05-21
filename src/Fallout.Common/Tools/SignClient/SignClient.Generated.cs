@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.SignClient;
 
 /// <summary><p>Code Signing client for Authenticode, NuGet, VSIX, and more</p><p>For more details, visit the <a href="https://discoverdot.net/projects/sign-service">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class SignClientTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class SignClientTasks : ToolTasks, IRequireNuGetPackage
 }
 #region SignClientSignSettings
 /// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Common.Tools.SignClient.SignClientSignSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SignClientTasks), Command = nameof(SignClientTasks.SignClientSign), Arguments = "sign")]
 public partial class SignClientSignSettings : ToolOptions
@@ -69,96 +66,95 @@ public partial class SignClientSignSettings : ToolOptions
 #endregion
 #region SignClientSignSettingsExtensions
 /// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Common.Tools.SignClient.SignClientSignSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class SignClientSignSettingsExtensions
 {
     #region Config
     /// <inheritdoc cref="SignClientSignSettings.Config"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Config))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Config))]
     public static T SetConfig<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Config, v));
     /// <inheritdoc cref="SignClientSignSettings.Config"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Config))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Config))]
     public static T ResetConfig<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Config));
     #endregion
     #region Input
     /// <inheritdoc cref="SignClientSignSettings.Input"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Input))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Input))]
     public static T SetInput<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Input, v));
     /// <inheritdoc cref="SignClientSignSettings.Input"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Input))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Input))]
     public static T ResetInput<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Input));
     #endregion
     #region BaseDirectory
     /// <inheritdoc cref="SignClientSignSettings.BaseDirectory"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.BaseDirectory))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.BaseDirectory))]
     public static T SetBaseDirectory<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.BaseDirectory, v));
     /// <inheritdoc cref="SignClientSignSettings.BaseDirectory"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.BaseDirectory))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.BaseDirectory))]
     public static T ResetBaseDirectory<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.BaseDirectory));
     #endregion
     #region Output
     /// <inheritdoc cref="SignClientSignSettings.Output"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Output))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="SignClientSignSettings.Output"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Output))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region FileList
     /// <inheritdoc cref="SignClientSignSettings.FileList"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.FileList))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.FileList))]
     public static T SetFileList<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.FileList, v));
     /// <inheritdoc cref="SignClientSignSettings.FileList"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.FileList))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.FileList))]
     public static T ResetFileList<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.FileList));
     #endregion
     #region Secret
     /// <inheritdoc cref="SignClientSignSettings.Secret"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Secret))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Secret))]
     public static T SetSecret<T>(this T o, [Secret] string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Secret, v));
     /// <inheritdoc cref="SignClientSignSettings.Secret"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Secret))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Secret))]
     public static T ResetSecret<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Secret));
     #endregion
     #region Username
     /// <inheritdoc cref="SignClientSignSettings.Username"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Username))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="SignClientSignSettings.Username"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Username))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Name
     /// <inheritdoc cref="SignClientSignSettings.Name"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Name))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="SignClientSignSettings.Name"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Name))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Name))]
     public static T ResetName<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region Description
     /// <inheritdoc cref="SignClientSignSettings.Description"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Description))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="SignClientSignSettings.Description"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Description))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region DescriptionUrl
     /// <inheritdoc cref="SignClientSignSettings.DescriptionUrl"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.DescriptionUrl))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.DescriptionUrl))]
     public static T SetDescriptionUrl<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.DescriptionUrl, v));
     /// <inheritdoc cref="SignClientSignSettings.DescriptionUrl"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.DescriptionUrl))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.DescriptionUrl))]
     public static T ResetDescriptionUrl<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.DescriptionUrl));
     #endregion
     #region MaxConcurrency
     /// <inheritdoc cref="SignClientSignSettings.MaxConcurrency"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.MaxConcurrency))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.MaxConcurrency))]
     public static T SetMaxConcurrency<T>(this T o, string v) where T : SignClientSignSettings => o.Modify(b => b.Set(() => o.MaxConcurrency, v));
     /// <inheritdoc cref="SignClientSignSettings.MaxConcurrency"/>
-    [Pure] [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.MaxConcurrency))]
+    [Builder(Type = typeof(SignClientSignSettings), Property = nameof(SignClientSignSettings.MaxConcurrency))]
     public static T ResetMaxConcurrency<T>(this T o) where T : SignClientSignSettings => o.Modify(b => b.Remove(() => o.MaxConcurrency));
     #endregion
 }

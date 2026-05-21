@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using JetBrains.Annotations;
 using Fallout.Common.ChangeLog;
 using Fallout.Common.IO;
 using VerifyXunit;
@@ -88,13 +87,11 @@ public class ChangelogTasksTest
         act.Should().Throw<Exception>().WithMessage("Changelog should have at least one release note section");
     }
 
-    [UsedImplicitly]
     public static IEnumerable<object[]> AllChangelogReference_1_0_0_Files
     {
         get => PathToChangelogReferenceFiles.GlobFiles("changelog_reference_1.0.0*.md").Select(x => new object[] { x });
     }
 
-    [UsedImplicitly]
     public static IEnumerable<object[]> AllChangelogReference_NUKE_Files
         => PathToChangelogReferenceFiles.GlobFiles("changelog_reference_NUKE*.md").Select(x => new object[] { x });
 }

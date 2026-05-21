@@ -12,7 +12,6 @@
     <PackageVersion Include="Glob" Version="1.1.9" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.71" />
     <PackageVersion Include="Humanizer" Version="3.0.1" />
-    <PackageVersion Include="JetBrains.Annotations" Version="2025.2.2" />
     <PackageVersion Include="Microsoft.ApplicationInsights" Version="2.23.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="10.0.0" />
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.7.115" />

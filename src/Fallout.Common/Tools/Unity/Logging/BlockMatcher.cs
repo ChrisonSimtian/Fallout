@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tools.Unity.Logging;
 
@@ -38,7 +37,6 @@ internal class BlockMatcher
         return matches.Count != 0 ? EndMatchType : MatchType.None;
     }
 
-    [CanBeNull]
     public MatchedBlock MatchesBeginning(string message)
     {
         var matches = Regex.Matches(message, Beginning);

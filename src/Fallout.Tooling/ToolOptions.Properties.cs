@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using JetBrains.Annotations;
 using Serilog.Events;
 // ReSharper disable ArrangeMethodOrOperatorBody
 
@@ -42,7 +41,6 @@ partial class ToolOptions
     public IReadOnlyList<string> ProcessAdditionalArguments => Get<List<string>>(() => ProcessAdditionalArguments);
 }
 
-[PublicAPI]
 public static partial class ToolOptionsExtensions
 {
     #region ToolOptions.ProcessToolPath
@@ -196,25 +194,25 @@ public static partial class ToolOptionsExtensions
     #region ToolOptions.ProcessRedactedSecrets
 
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T SetProcessRedactedSecrets<T>(this T o, params string[] v) where T : ToolOptions => o.Modify(b => b.Set(() => o.ProcessRedactedSecrets, v));
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T SetProcessRedactedSecrets<T>(this T o, IEnumerable<string> v) where T : ToolOptions => o.Modify(b => b.Set(() => o.ProcessRedactedSecrets, v));
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T AddProcessRedactedSecrets<T>(this T o, params string[] v) where T : ToolOptions => o.Modify(b => b.AddCollection(() => o.ProcessRedactedSecrets, v));
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T AddProcessRedactedSecrets<T>(this T o, IEnumerable<string> v) where T : ToolOptions => o.Modify(b => b.AddCollection(() => o.ProcessRedactedSecrets, v));
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T RemoveProcessRedactedSecrets<T>(this T o, params string[] v) where T : ToolOptions => o.Modify(b => b.RemoveCollection(() => o.ProcessRedactedSecrets, v));
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T RemoveProcessRedactedSecrets<T>(this T o, IEnumerable<string> v) where T : ToolOptions => o.Modify(b => b.RemoveCollection(() => o.ProcessRedactedSecrets, v));
     /// <inheritdoc cref="ToolOptions.ProcessRedactedSecrets"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessRedactedSecrets))]
     public static T ClearProcessRedactedSecrets<T>(this T o) where T : ToolOptions => o.Modify(b => b.ClearCollection(() => o.ProcessRedactedSecrets));
 
     #endregion
@@ -222,25 +220,25 @@ public static partial class ToolOptionsExtensions
     #region ToolOptions.ProcessAdditionalArguments
 
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T SetProcessAdditionalArguments<T>(this T o, params string[] v) where T : ToolOptions => o.Modify(b => b.Set(() => o.ProcessAdditionalArguments, v));
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T SetProcessAdditionalArguments<T>(this T o, IEnumerable<string> v) where T : ToolOptions => o.Modify(b => b.Set(() => o.ProcessAdditionalArguments, v));
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T AddProcessAdditionalArguments<T>(this T o, params string[] v) where T : ToolOptions => o.Modify(b => b.AddCollection(() => o.ProcessAdditionalArguments, v));
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T AddProcessAdditionalArguments<T>(this T o, IEnumerable<string> v) where T : ToolOptions => o.Modify(b => b.AddCollection(() => o.ProcessAdditionalArguments, v));
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T RemoveProcessAdditionalArguments<T>(this T o, params string[] v) where T : ToolOptions => o.Modify(b => b.RemoveCollection(() => o.ProcessAdditionalArguments, v));
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T RemoveProcessAdditionalArguments<T>(this T o, IEnumerable<string> v) where T : ToolOptions => o.Modify(b => b.RemoveCollection(() => o.ProcessAdditionalArguments, v));
     /// <inheritdoc cref="ToolOptions.ProcessAdditionalArguments"/>
-    [Pure] [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
+    [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessAdditionalArguments))]
     public static T ClearProcessAdditionalArguments<T>(this T o) where T : ToolOptions => o.Modify(b => b.ClearCollection(() => o.ProcessAdditionalArguments));
 
     #endregion

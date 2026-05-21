@@ -6,14 +6,12 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using NuGet.Versioning;
 using Fallout.Common.Utilities;
 using Fallout.Common.ValueInjection;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public class LatestNpmVersionAttribute : ValueInjectionAttributeBase
 {
     private readonly string _packageId;

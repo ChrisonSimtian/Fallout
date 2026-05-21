@@ -3,7 +3,6 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.ProjectModel;
@@ -15,7 +14,6 @@ public static partial class ProjectExtensions
     /// common MSBuild project properties</a> and custom properties defined in
     /// <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/propertygroup-element-msbuild"><c>PropertyGroup</c> elements</a>.
     /// </summary>
-    [CanBeNull]
     public static string GetProperty(this Project project, string propertyName)
     {
         var property = project.GetMSBuildProject().GetProperty(propertyName);
@@ -27,7 +25,6 @@ public static partial class ProjectExtensions
     /// common MSBuild project properties</a> and custom properties defined in
     /// <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/propertygroup-element-msbuild"><c>PropertyGroup</c> elements</a>.
     /// </summary>
-    [CanBeNull]
     public static T GetProperty<T>(this Project project, string propertyName)
     {
         return ReflectionUtility.Convert<T>(project.GetProperty(propertyName));

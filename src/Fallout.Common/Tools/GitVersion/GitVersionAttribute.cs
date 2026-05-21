@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
@@ -22,8 +21,6 @@ namespace Fallout.Common.Tools.GitVersion;
 /// <summary>
 /// Injects an instance of <see cref="GitVersion"/> based on the local repository.
 /// </summary>
-[PublicAPI]
-[UsedImplicitly(ImplicitUseKindFlags.Default)]
 public class GitVersionAttribute : ValueInjectionAttributeBase
 {
     public string Framework { get; set; }

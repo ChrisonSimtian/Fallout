@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.CI.GitHubActions;
@@ -13,7 +12,6 @@ namespace Fallout.Common.CI.GitHubActions;
 /// <summary>
 /// See <a href="https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners">Virtual environments for GitHub Actions</a>
 /// </summary>
-[PublicAPI]
 public enum GitHubActionsImage
 {
     [EnumValue("windows-2022")] WindowsServer2022,

@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Git;
 using Fallout.Common.Utilities;
 using Octokit;
@@ -23,7 +22,6 @@ public enum GitHubItemType
     Directory
 }
 
-[PublicAPI]
 public static class GitHubTasks
 {
     public static GitHubClient GitHubClient = new(new ProductHeaderValue(nameof(FalloutBuild)));
@@ -74,7 +72,6 @@ public static class GitHubTasks
         return releases.First(x => !x.Prerelease || includePrerelease).TagName.TrimStart(trimPrefix ? "v" : string.Empty);
     }
 
-    [ItemCanBeNull]
     public static async Task<Milestone> GetGitHubMilestone(this GitRepository repository, string name)
     {
         Assert.True(repository.IsGitHubRepository());
@@ -205,8 +202,7 @@ public static class GitHubTasks
         return $"https://github.com/{repository.Identifier}/{method}/{branch}/{relativePath}".TrimEnd("/");
     }
 
-    [CanBeNull]
-    private static string GetMethod([CanBeNull] string relativePath, GitHubItemType itemType, GitRepository repository)
+    private static string GetMethod(string relativePath, GitHubItemType itemType, GitRepository repository)
     {
         var absolutePath = repository.LocalDirectory != null && relativePath != null
             ? NormalizePath(Path.Combine(repository.LocalDirectory, relativePath))
@@ -221,8 +217,7 @@ public static class GitHubTasks
         return null;
     }
 
-    [ContractAnnotation("path: null => null; path: notnull => notnull")]
-    private static string GetRepositoryRelativePath([CanBeNull] string path, GitRepository repository)
+    private static string GetRepositoryRelativePath(string path, GitRepository repository)
     {
         if (path == null)
             return null;

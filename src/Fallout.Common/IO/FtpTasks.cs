@@ -7,16 +7,13 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
-using JetBrains.Annotations;
 using Serilog;
 #pragma warning disable SYSLIB0014
 
 namespace Fallout.Common.IO;
 
-[PublicAPI]
 public static class FtpTasks
 {
-    [CanBeNull]
     public static NetworkCredential FtpCredentials { get; set; }
 
     public static void FtpUploadDirectoryRecursively(string directory, string hostRoot)

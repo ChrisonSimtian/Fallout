@@ -4,7 +4,6 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Tools.Docker;
 using Fallout.Common.Utilities;
@@ -12,7 +11,6 @@ using Serilog;
 
 partial class Build
 {
-    [UsedImplicitly]
     Target RunTargetInDockerImageTest => _ => _
         .DockerRun(_ => _
             .EnableBuildCaching()

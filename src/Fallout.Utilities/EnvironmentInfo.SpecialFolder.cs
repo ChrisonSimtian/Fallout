@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common;
 
-[PublicAPI]
 public enum SpecialFolders
 {
     ProgramFiles = Environment.SpecialFolder.ProgramFiles,
@@ -26,7 +24,6 @@ public enum SpecialFolders
 
 partial class EnvironmentInfo
 {
-    [CanBeNull]
     public static AbsolutePath SpecialFolder(SpecialFolders folder)
     {
         var path = Environment.GetFolderPath((Environment.SpecialFolder)folder);

@@ -5,11 +5,9 @@
 
 using System.Diagnostics;
 using System.Globalization;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
 public static partial class StringExtensions
@@ -17,7 +15,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Converts the first character of a given string to upper-case.
     /// </summary>
-    [Pure]
     public static string Capitalize(this string text)
     {
         return !text.IsNullOrEmpty()

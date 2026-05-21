@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.CI.AzurePipelines.Configuration;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -18,7 +17,6 @@ using static Fallout.Common.IO.PathConstruction;
 
 namespace Fallout.Common.CI.AzurePipelines;
 
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
 {
@@ -40,7 +38,7 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
     }
 
     public AzurePipelinesAttribute(
-        [CanBeNull] string suffix,
+        string suffix,
         AzurePipelinesImage image,
         params AzurePipelinesImage[] images)
     {
@@ -135,7 +133,6 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
                };
     }
 
-    [CanBeNull]
     protected AzurePipelinesVcsPushTrigger GetVcsPushTrigger()
     {
         if (!TriggerDisabled &&
@@ -161,7 +158,6 @@ public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase
                };
     }
 
-    [CanBeNull]
     protected AzurePipelinesVcsPushTrigger GetVcsPullRequestTrigger()
     {
         if (!PullRequestsDisabled &&

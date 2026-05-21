@@ -6,20 +6,16 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Serilog;
 
 namespace Fallout.Common.ValueInjection;
 
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-[MeansImplicitUse(ImplicitUseKindFlags.Assign)]
 public abstract class ValueInjectionAttributeBase : Attribute
 {
     public IFalloutBuild Build { get; internal set; }
 
-    [CanBeNull]
     public object TryGetValue(MemberInfo member, object instance)
     {
         try
@@ -35,13 +31,11 @@ public abstract class ValueInjectionAttributeBase : Attribute
         }
     }
 
-    [CanBeNull]
     public abstract object GetValue(MemberInfo member, object instance);
 
     public virtual int Priority => 0;
     public virtual bool SuppressWarnings => false;
 
-    [CanBeNull]
     protected T GetMemberValue<T>(string memberName, object instance)
     {
         var type = instance.GetType();
@@ -57,8 +51,7 @@ public abstract class ValueInjectionAttributeBase : Attribute
         return member.GetValue<T>(instance);
     }
 
-    [CanBeNull]
-    protected T GetMemberValueOrNull<T>([CanBeNull] string memberName, object instance)
+    protected T GetMemberValueOrNull<T>(string memberName, object instance)
     {
         return memberName != null ? GetMemberValue<T>(memberName, instance) : default;
     }

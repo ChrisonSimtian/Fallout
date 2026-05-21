@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.IO;
@@ -20,7 +19,6 @@ using static Fallout.Common.Tools.ReportGenerator.ReportGeneratorTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
 {
     bool CreateCoverageHtmlReport { get; }

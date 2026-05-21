@@ -7,7 +7,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Tooling;
@@ -22,7 +21,7 @@ public delegate IEnumerable<T> CombinatorialConfigure<T>(T options)
 
 public static class ConfigureExtensions
 {
-    public static T InvokeSafe<T>([CanBeNull] this Configure<T> configurator, T obj)
+    public static T InvokeSafe<T>(this Configure<T> configurator, T obj)
     {
         return (configurator ?? (x => x)).Invoke(obj);
     }

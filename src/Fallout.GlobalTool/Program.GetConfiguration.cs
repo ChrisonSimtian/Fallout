@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -23,8 +22,7 @@ partial class Program
     private const string DOTNET_INSTALL_URL = nameof(DOTNET_INSTALL_URL);
     private const string DOTNET_CHANNEL = nameof(DOTNET_CHANNEL);
 
-    [UsedImplicitly]
-    public static int GetConfiguration(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int GetConfiguration(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var configuration = GetConfiguration(buildScript.NotNull(), evaluate: false);
 

@@ -7,7 +7,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 using NuGet.Versioning;
 using Fallout.Common.Git;
 using Fallout.Common.Tools.GitHub;
@@ -16,7 +15,6 @@ using Fallout.Common.ValueInjection;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public class LatestGitHubReleaseAttribute : ValueInjectionAttributeBase
 {
     private readonly string _identifier;
@@ -29,7 +27,6 @@ public class LatestGitHubReleaseAttribute : ValueInjectionAttributeBase
     public bool IncludePrerelease { get; set; }
     public bool UseTagName { get; set; }
 
-    [RegexPattern]
     public string Pattern { get; set; } = @"v?(?<version>\d+\.\d+(?:\.\d+)?(?:\.\d+)?(?:-\w+)?)";
 
     public override object GetValue(MemberInfo member, object instance)

@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -18,14 +17,12 @@ internal static class ValueInjectionUtility
 {
     private static readonly Dictionary<MemberInfo, object> s_valueCache = new();
 
-    [CanBeNull]
     public static T TryGetValue<T>(Expression<Func<T>> parameterExpression)
         where T : class
     {
         return TryGetValueWithCache<T>(parameterExpression);
     }
 
-    [CanBeNull]
     public static T TryGetValue<T>(Expression<Func<object>> parameterExpression)
     {
         return TryGetValueWithCache<T>(parameterExpression);
@@ -53,7 +50,7 @@ internal static class ValueInjectionUtility
     }
 
     private static void InjectValuesInternal<T>(
-        [CanBeNull] T instance,
+        T instance,
         IEnumerable<(MemberInfo Member, ValueInjectionAttributeBase Attribute)> tuples)
     {
         tuples = tuples

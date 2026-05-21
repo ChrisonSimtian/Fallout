@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Fallout.Common;
 using Fallout.Common.Execution;
@@ -20,8 +19,7 @@ namespace Fallout.GlobalTool;
 
 partial class Program
 {
-    [UsedImplicitly]
-    public static int Update(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int Update(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         PrintInfo();
         Logging.Configure();

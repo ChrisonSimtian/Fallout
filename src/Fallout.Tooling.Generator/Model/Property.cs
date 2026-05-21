@@ -8,13 +8,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Fallout.CodeGeneration.Model;
 
 [Serializable]
-[UsedImplicitly(ImplicitUseKindFlags.Assign, ImplicitUseTargetFlags.WithMembers)]
 public class Property : IDeprecatable
 {
     [NonSerialized] private DataClass _dataClass;
@@ -27,7 +25,6 @@ public class Property : IDeprecatable
     }
 
     [JsonIgnore]
-    [NotNull]
     public IDeprecatable Parent => DataClass;
 
     [JsonProperty(Required = Required.Always)]

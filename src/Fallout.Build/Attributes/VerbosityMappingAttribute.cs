@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public class VerbosityMappingAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {
     private readonly Type _targetType;

@@ -9,13 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 [InterpolatedStringHandler]
 public ref struct ArgumentStringHandler
 {

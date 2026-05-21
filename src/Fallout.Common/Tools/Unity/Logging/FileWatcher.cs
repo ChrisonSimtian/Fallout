@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tools.Unity.Logging;
 
@@ -22,7 +21,7 @@ internal class FileWatcher
     private CancellationTokenSource _cancellationTokenSource;
     private readonly Encoding _encoding;
 
-    public FileWatcher([NotNull] string file, Action<string> processLineAction, Encoding encoding = null)
+    public FileWatcher(string file, Action<string> processLineAction, Encoding encoding = null)
     {
         _encoding = encoding ?? Encoding.UTF8;
         _file = file;

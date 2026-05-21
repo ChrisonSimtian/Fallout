@@ -4,14 +4,12 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.GitHubActions.Configuration;
 
-[PublicAPI]
 public class GitHubActionsConfiguration : ConfigurationEntity
 {
     public string Name { get; set; }

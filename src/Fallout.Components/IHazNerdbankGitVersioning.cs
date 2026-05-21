@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Tools.NerdbankGitVersioning;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazNerdbankGitVersioning : IFalloutBuild
 {
     [NerdbankGitVersioning] [Required] NerdbankGitVersioning Versioning => TryGetValue(() => Versioning);

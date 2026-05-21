@@ -4,7 +4,6 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tools.GitHub;
@@ -27,7 +26,6 @@ partial class Build
             UpdateReferences(SpecificationsDirectory, ReferencesDirectory);
         });
 
-    [UsedImplicitly]
     Target GenerateTools => _ => _
         .Executes(() =>
         {

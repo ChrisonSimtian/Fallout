@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.TestCloud;
 
 /// <summary><p>Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.</p><p>For more details, visit the <a href="https://developer.xamarin.com/guides/testcloud/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class TestCloudTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class TestCloudTasks : ToolTasks, IRequireNuGetPackage
 }
 #region TestCloudSettings
 /// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Common.Tools.TestCloud.TestCloudSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(TestCloudTasks), Command = nameof(TestCloudTasks.TestCloud), Arguments = "submit")]
 public partial class TestCloudSettings : ToolOptions
@@ -71,182 +68,181 @@ public partial class TestCloudSettings : ToolOptions
 #endregion
 #region TestCloudSettingsExtensions
 /// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Common.Tools.TestCloud.TestCloudSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class TestCloudSettingsExtensions
 {
     #region AssemblyDirectory
     /// <inheritdoc cref="TestCloudSettings.AssemblyDirectory"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.AssemblyDirectory))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.AssemblyDirectory))]
     public static T SetAssemblyDirectory<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.AssemblyDirectory, v));
     /// <inheritdoc cref="TestCloudSettings.AssemblyDirectory"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.AssemblyDirectory))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.AssemblyDirectory))]
     public static T ResetAssemblyDirectory<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.AssemblyDirectory));
     #endregion
     #region Devices
     /// <inheritdoc cref="TestCloudSettings.Devices"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Devices))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Devices))]
     public static T SetDevices<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.Devices, v));
     /// <inheritdoc cref="TestCloudSettings.Devices"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Devices))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Devices))]
     public static T ResetDevices<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.Devices));
     #endregion
     #region UserEmail
     /// <inheritdoc cref="TestCloudSettings.UserEmail"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.UserEmail))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.UserEmail))]
     public static T SetUserEmail<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.UserEmail, v));
     /// <inheritdoc cref="TestCloudSettings.UserEmail"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.UserEmail))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.UserEmail))]
     public static T ResetUserEmail<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.UserEmail));
     #endregion
     #region NunitResultsFile
     /// <inheritdoc cref="TestCloudSettings.NunitResultsFile"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.NunitResultsFile))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.NunitResultsFile))]
     public static T SetNunitResultsFile<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.NunitResultsFile, v));
     /// <inheritdoc cref="TestCloudSettings.NunitResultsFile"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.NunitResultsFile))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.NunitResultsFile))]
     public static T ResetNunitResultsFile<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.NunitResultsFile));
     #endregion
     #region SignInfoFile
     /// <inheritdoc cref="TestCloudSettings.SignInfoFile"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.SignInfoFile))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.SignInfoFile))]
     public static T SetSignInfoFile<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.SignInfoFile, v));
     /// <inheritdoc cref="TestCloudSettings.SignInfoFile"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.SignInfoFile))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.SignInfoFile))]
     public static T ResetSignInfoFile<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.SignInfoFile));
     #endregion
     #region DsymFile
     /// <inheritdoc cref="TestCloudSettings.DsymFile"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DsymFile))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DsymFile))]
     public static T SetDsymFile<T>(this T o, string v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.DsymFile, v));
     /// <inheritdoc cref="TestCloudSettings.DsymFile"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DsymFile))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DsymFile))]
     public static T ResetDsymFile<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.DsymFile));
     #endregion
     #region Fixtures
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T SetFixtures<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T SetFixtures<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T AddFixtures<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T AddFixtures<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T RemoveFixtures<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T RemoveFixtures<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.Fixtures, v));
     /// <inheritdoc cref="TestCloudSettings.Fixtures"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.Fixtures))]
     public static T ClearFixtures<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.Fixtures));
     #endregion
     #region IncludeCategories
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T SetIncludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T SetIncludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T AddIncludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T AddIncludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T RemoveIncludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T RemoveIncludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.IncludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.IncludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.IncludeCategories))]
     public static T ClearIncludeCategories<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.IncludeCategories));
     #endregion
     #region ExcludeCategories
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T SetExcludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T SetExcludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T AddExcludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T AddExcludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T RemoveExcludeCategories<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T RemoveExcludeCategories<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeCategories, v));
     /// <inheritdoc cref="TestCloudSettings.ExcludeCategories"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.ExcludeCategories))]
     public static T ClearExcludeCategories<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeCategories));
     #endregion
     #region TestChunk
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
     public static T SetTestChunk<T>(this T o, bool? v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, v));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
     public static T ResetTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.TestChunk));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
     public static T EnableTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, true));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
     public static T DisableTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, false));
     /// <inheritdoc cref="TestCloudSettings.TestChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.TestChunk))]
     public static T ToggleTestChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.TestChunk, !o.TestChunk));
     #endregion
     #region FixtureChunk
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
     public static T SetFixtureChunk<T>(this T o, bool? v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, v));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
     public static T ResetFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Remove(() => o.FixtureChunk));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
     public static T EnableFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, true));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
     public static T DisableFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, false));
     /// <inheritdoc cref="TestCloudSettings.FixtureChunk"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.FixtureChunk))]
     public static T ToggleFixtureChunk<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.FixtureChunk, !o.FixtureChunk));
     #endregion
     #region DataPaths
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T SetDataPaths<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T SetDataPaths<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.Set(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T AddDataPaths<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T AddDataPaths<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.AddCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T RemoveDataPaths<T>(this T o, params string[] v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T RemoveDataPaths<T>(this T o, IEnumerable<string> v) where T : TestCloudSettings => o.Modify(b => b.RemoveCollection(() => o.DataPaths, v));
     /// <inheritdoc cref="TestCloudSettings.DataPaths"/>
-    [Pure] [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
+    [Builder(Type = typeof(TestCloudSettings), Property = nameof(TestCloudSettings.DataPaths))]
     public static T ClearDataPaths<T>(this T o) where T : TestCloudSettings => o.Modify(b => b.ClearCollection(() => o.DataPaths));
     #endregion
 }

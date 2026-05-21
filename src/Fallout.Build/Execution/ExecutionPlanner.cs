@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using NuGet.Packaging;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -20,7 +19,7 @@ internal static class ExecutionPlanner
 {
     public static IReadOnlyCollection<ExecutableTarget> GetExecutionPlan(
         IReadOnlyCollection<ExecutableTarget> executableTargets,
-        [CanBeNull] IReadOnlyCollection<string> invokedTargetNames)
+        IReadOnlyCollection<string> invokedTargetNames)
     {
         var invokedTargets = invokedTargetNames?.Select(x => GetExecutableTarget(x, executableTargets)).ToList();
         invokedTargets?.ForEach(x => x.Invoked = true);

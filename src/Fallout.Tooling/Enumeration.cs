@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
@@ -40,12 +39,11 @@ public static class EnumerationExtensions
 }
 
 [Serializable]
-[PublicAPI]
 public abstract class Enumeration
 {
     protected string Value { get; set; }
 
-    public static implicit operator string([CanBeNull] Enumeration value)
+    public static implicit operator string(Enumeration value)
     {
         return value?.Value;
     }
@@ -65,7 +63,7 @@ public abstract class Enumeration
         return string.Equals(Value, other.Value);
     }
 
-    public override bool Equals([CanBeNull] object obj)
+    public override bool Equals(object obj)
     {
         if (ReferenceEquals(objA: null, objB: obj))
             return false;

@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -32,8 +31,7 @@ partial class Program
     private const string PROJECT_KIND = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
 
     // ReSharper disable once CognitiveComplexity
-    [UsedImplicitly]
-    public static int Setup(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int Setup(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         PrintInfo();
         Logging.Configure();
@@ -241,7 +239,7 @@ partial class Program
         }
     }
 
-    private static void WriteConfigurationFile(AbsolutePath rootDirectory, [CanBeNull] AbsolutePath solutionFile)
+    private static void WriteConfigurationFile(AbsolutePath rootDirectory, AbsolutePath solutionFile)
     {
         var parametersFile = GetDefaultParametersFile(rootDirectory);
         var dictionary = new Dictionary<string, string> { ["$schema"] = BuildSchemaFileName };

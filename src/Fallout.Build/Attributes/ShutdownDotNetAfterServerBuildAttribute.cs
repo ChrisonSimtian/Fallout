@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 using Fallout.Common.Tooling;
 
@@ -14,7 +13,6 @@ namespace Fallout.Common.CI;
 /// <summary>
 ///   See <a href="https://github.com/dotnet/cli/issues/11424">dotnet/cli#11424</a>.
 /// </summary>
-[PublicAPI]
 public class ShutdownDotNetAfterServerBuildAttribute : BuildExtensionAttributeBase, IOnBuildFinished
 {
     public override float Priority => -50;

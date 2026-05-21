@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI.AppVeyor.Configuration;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -20,7 +19,6 @@ namespace Fallout.Common.CI.AppVeyor;
 /// <summary>
 /// Interface according to the <a href="https://www.appveyor.com/docs/">official website</a>.
 /// </summary>
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class AppVeyorAttribute : ConfigurationAttributeBase
 {
@@ -35,7 +33,7 @@ public class AppVeyorAttribute : ConfigurationAttributeBase
     }
 
     public AppVeyorAttribute(
-        [CanBeNull] string suffix,
+        string suffix,
         AppVeyorImage image,
         params AppVeyorImage[] images)
     {

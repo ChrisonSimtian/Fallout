@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
@@ -16,7 +15,6 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IPack : ICompile, IHazArtifacts
 {
     AbsolutePath PackagesDirectory => ArtifactsDirectory / "packages";

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.CorFlags;
 
 /// <summary><p>The CorFlags Conversion tool allows you to configure the CorFlags section of the header of a portable executable image.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/framework/tools/corflags-exe-corflags-conversion-tool">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class CorFlagsTasks : ToolTasks, IRequirePathTool
@@ -37,7 +35,6 @@ public partial class CorFlagsTasks : ToolTasks, IRequirePathTool
 }
 #region CorFlagsSettings
 /// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Common.Tools.CorFlags.CorFlagsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CorFlagsTasks), Command = nameof(CorFlagsTasks.CorFlags))]
 public partial class CorFlagsSettings : ToolOptions
@@ -62,135 +59,134 @@ public partial class CorFlagsSettings : ToolOptions
 #endregion
 #region CorFlagsSettingsExtensions
 /// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Common.Tools.CorFlags.CorFlagsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class CorFlagsSettingsExtensions
 {
     #region NoLogo
     /// <inheritdoc cref="CorFlagsSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
     public static T SetNoLogo<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.NoLogo, v));
     /// <inheritdoc cref="CorFlagsSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
     public static T ResetNoLogo<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.NoLogo));
     /// <inheritdoc cref="CorFlagsSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
     public static T EnableNoLogo<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.NoLogo, true));
     /// <inheritdoc cref="CorFlagsSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
     public static T DisableNoLogo<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.NoLogo, false));
     /// <inheritdoc cref="CorFlagsSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.NoLogo))]
     public static T ToggleNoLogo<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.NoLogo, !o.NoLogo));
     #endregion
     #region UpgradeCLRHeader
     /// <inheritdoc cref="CorFlagsSettings.UpgradeCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
     public static T SetUpgradeCLRHeader<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.UpgradeCLRHeader, v));
     /// <inheritdoc cref="CorFlagsSettings.UpgradeCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
     public static T ResetUpgradeCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.UpgradeCLRHeader));
     /// <inheritdoc cref="CorFlagsSettings.UpgradeCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
     public static T EnableUpgradeCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.UpgradeCLRHeader, true));
     /// <inheritdoc cref="CorFlagsSettings.UpgradeCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
     public static T DisableUpgradeCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.UpgradeCLRHeader, false));
     /// <inheritdoc cref="CorFlagsSettings.UpgradeCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.UpgradeCLRHeader))]
     public static T ToggleUpgradeCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.UpgradeCLRHeader, !o.UpgradeCLRHeader));
     #endregion
     #region RevertCLRHeader
     /// <inheritdoc cref="CorFlagsSettings.RevertCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
     public static T SetRevertCLRHeader<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.RevertCLRHeader, v));
     /// <inheritdoc cref="CorFlagsSettings.RevertCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
     public static T ResetRevertCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.RevertCLRHeader));
     /// <inheritdoc cref="CorFlagsSettings.RevertCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
     public static T EnableRevertCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.RevertCLRHeader, true));
     /// <inheritdoc cref="CorFlagsSettings.RevertCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
     public static T DisableRevertCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.RevertCLRHeader, false));
     /// <inheritdoc cref="CorFlagsSettings.RevertCLRHeader"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.RevertCLRHeader))]
     public static T ToggleRevertCLRHeader<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.RevertCLRHeader, !o.RevertCLRHeader));
     #endregion
     #region Force
     /// <inheritdoc cref="CorFlagsSettings.Force"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="CorFlagsSettings.Force"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
     public static T ResetForce<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="CorFlagsSettings.Force"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
     public static T EnableForce<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="CorFlagsSettings.Force"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
     public static T DisableForce<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="CorFlagsSettings.Force"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Assembly
     /// <inheritdoc cref="CorFlagsSettings.Assembly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Assembly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Assembly))]
     public static T SetAssembly<T>(this T o, string v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Assembly, v));
     /// <inheritdoc cref="CorFlagsSettings.Assembly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Assembly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Assembly))]
     public static T ResetAssembly<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.Assembly));
     #endregion
     #region ILOnly
     /// <inheritdoc cref="CorFlagsSettings.ILOnly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
     public static T SetILOnly<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.ILOnly, v));
     /// <inheritdoc cref="CorFlagsSettings.ILOnly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
     public static T ResetILOnly<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.ILOnly));
     /// <inheritdoc cref="CorFlagsSettings.ILOnly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
     public static T EnableILOnly<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.ILOnly, true));
     /// <inheritdoc cref="CorFlagsSettings.ILOnly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
     public static T DisableILOnly<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.ILOnly, false));
     /// <inheritdoc cref="CorFlagsSettings.ILOnly"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.ILOnly))]
     public static T ToggleILOnly<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.ILOnly, !o.ILOnly));
     #endregion
     #region Require32Bit
     /// <inheritdoc cref="CorFlagsSettings.Require32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
     public static T SetRequire32Bit<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Require32Bit, v));
     /// <inheritdoc cref="CorFlagsSettings.Require32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
     public static T ResetRequire32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.Require32Bit));
     /// <inheritdoc cref="CorFlagsSettings.Require32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
     public static T EnableRequire32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Require32Bit, true));
     /// <inheritdoc cref="CorFlagsSettings.Require32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
     public static T DisableRequire32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Require32Bit, false));
     /// <inheritdoc cref="CorFlagsSettings.Require32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Require32Bit))]
     public static T ToggleRequire32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Require32Bit, !o.Require32Bit));
     #endregion
     #region Prefer32Bit
     /// <inheritdoc cref="CorFlagsSettings.Prefer32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
     public static T SetPrefer32Bit<T>(this T o, bool? v) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Prefer32Bit, v));
     /// <inheritdoc cref="CorFlagsSettings.Prefer32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
     public static T ResetPrefer32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Remove(() => o.Prefer32Bit));
     /// <inheritdoc cref="CorFlagsSettings.Prefer32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
     public static T EnablePrefer32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Prefer32Bit, true));
     /// <inheritdoc cref="CorFlagsSettings.Prefer32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
     public static T DisablePrefer32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Prefer32Bit, false));
     /// <inheritdoc cref="CorFlagsSettings.Prefer32Bit"/>
-    [Pure] [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
+    [Builder(Type = typeof(CorFlagsSettings), Property = nameof(CorFlagsSettings.Prefer32Bit))]
     public static T TogglePrefer32Bit<T>(this T o) where T : CorFlagsSettings => o.Modify(b => b.Set(() => o.Prefer32Bit, !o.Prefer32Bit));
     #endregion
 }

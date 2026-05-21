@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.Utilities;
@@ -44,7 +43,6 @@ public static class CredentialStore
         }
     }
 
-    [CanBeNull]
     public static string TryGetPassword(string name)
     {
         switch (EnvironmentInfo.Platform)
@@ -84,7 +82,6 @@ public static class CredentialStore
                PromptForPassword();
     }
 
-    [CanBeNull]
     private static string TryGetLegacyPasswordWithWarning(string legacyName, string newName)
     {
         var password = TryGetPassword(legacyName);

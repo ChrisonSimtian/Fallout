@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -20,8 +19,7 @@ partial class Program
     public const string PACKAGE_TYPE_DOWNLOAD = "PackageDownload";
     public const string PACKAGE_TYPE_REFERENCE = "PackageReference";
 
-    [UsedImplicitly]
-    public static int AddPackage(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int AddPackage(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         PrintInfo();
         Logging.Configure();

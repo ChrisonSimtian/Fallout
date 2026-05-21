@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
@@ -15,7 +14,7 @@ public static partial class DictionaryExtensions
     public static Dictionary<TKey, TValue> AddPair<TKey, TValue>(
         this Dictionary<TKey, TValue> dictionary,
         TKey key,
-        [CanBeNull] TValue value = default)
+        TValue value = default)
     {
         dictionary.Add(key, value);
         return dictionary;
@@ -24,7 +23,7 @@ public static partial class DictionaryExtensions
     public static Dictionary<TKey, string> AddPair<TKey, TValue>(
         this Dictionary<TKey, string> dictionary,
         TKey key,
-        [CanBeNull] TValue value = default)
+        TValue value = default)
     {
         dictionary.Add(key, value.ToString());
         return dictionary;
@@ -32,8 +31,8 @@ public static partial class DictionaryExtensions
 
     public static Dictionary<TKey, TValue> AddPairWhenKeyNotNull<TKey, TValue>(
         this Dictionary<TKey, TValue> dictionary,
-        [CanBeNull] TKey key,
-        [CanBeNull] TValue value = default)
+        TKey key,
+        TValue value = default)
         where TKey : class
     {
         return key != null
@@ -43,8 +42,8 @@ public static partial class DictionaryExtensions
 
     public static Dictionary<TKey, TValue> AddPairWhenValueNotNull<TKey, TValue>(
         this Dictionary<TKey, TValue> dictionary,
-        [CanBeNull] TKey key,
-        [CanBeNull] TValue value)
+        TKey key,
+        TValue value)
         where TValue : class
     {
         return value != null

@@ -6,11 +6,9 @@
 using System;
 using System.Diagnostics;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
 public static class ExceptionExtensions

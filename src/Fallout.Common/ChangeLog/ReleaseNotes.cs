@@ -6,12 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using NuGet.Versioning;
 
 namespace Fallout.Common.ChangeLog;
 
-[PublicAPI]
 public class ReleaseNotes
 {
     /// <summary>
@@ -27,7 +25,7 @@ public class ReleaseNotes
     /// <summary>
     /// The version of the release notes. Null if unreleased (vNext).
     /// </summary>
-    [CanBeNull] public NuGetVersion Version { get; }
+    public NuGetVersion Version { get; }
 
     /// <summary>
     /// The release notes in this release notes section.

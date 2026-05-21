@@ -11,11 +11,9 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.IO;
 
-[PublicAPI]
 public static class XmlTasks
 {
     public static IEnumerable<string> XmlPeek(string path, string xpath, params (string prefix, string uri)[] namespaces)
@@ -38,13 +36,11 @@ public static class XmlTasks
         return XmlPeekElements(XDocument.Load(content), xpath, namespaces);
     }
 
-    [CanBeNull]
     public static string XmlPeekSingle(string path, string xpath, params (string prefix, string uri)[] namespaces)
     {
         return XmlPeekSingle(() => XmlPeek(path, xpath, namespaces));
     }
 
-    [CanBeNull]
     public static string XmlPeekSingleFromString(string content, string xpath, params (string prefix, string uri)[] namespaces)
     {
         return XmlPeekSingle(() => XmlPeekFromString(content, xpath, namespaces));

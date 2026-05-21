@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.PowerShell;
 
 /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class PowerShellTasks : ToolTasks
 {
@@ -35,7 +33,6 @@ public partial class PowerShellTasks : ToolTasks
 }
 #region PowerShellSettings
 /// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Common.Tools.PowerShell.PowerShellSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PowerShellTasks), Command = nameof(PowerShellTasks.PowerShell))]
 public partial class PowerShellSettings : ToolOptions
@@ -80,237 +77,235 @@ public partial class PowerShellSettings : ToolOptions
 #endregion
 #region PowerShellSettingsExtensions
 /// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Common.Tools.PowerShell.PowerShellSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class PowerShellSettingsExtensions
 {
     #region ConsoleFile
     /// <inheritdoc cref="PowerShellSettings.ConsoleFile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConsoleFile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConsoleFile))]
     public static T SetConsoleFile<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.ConsoleFile, v));
     /// <inheritdoc cref="PowerShellSettings.ConsoleFile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConsoleFile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConsoleFile))]
     public static T ResetConsoleFile<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.ConsoleFile));
     #endregion
     #region Version
     /// <inheritdoc cref="PowerShellSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Version))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="PowerShellSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Version))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region NoLogo
     /// <inheritdoc cref="PowerShellSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
     public static T SetNoLogo<T>(this T o, bool? v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoLogo, v));
     /// <inheritdoc cref="PowerShellSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
     public static T ResetNoLogo<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.NoLogo));
     /// <inheritdoc cref="PowerShellSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
     public static T EnableNoLogo<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoLogo, true));
     /// <inheritdoc cref="PowerShellSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
     public static T DisableNoLogo<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoLogo, false));
     /// <inheritdoc cref="PowerShellSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoLogo))]
     public static T ToggleNoLogo<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoLogo, !o.NoLogo));
     #endregion
     #region NoExit
     /// <inheritdoc cref="PowerShellSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
     public static T SetNoExit<T>(this T o, bool? v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoExit, v));
     /// <inheritdoc cref="PowerShellSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
     public static T ResetNoExit<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.NoExit));
     /// <inheritdoc cref="PowerShellSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
     public static T EnableNoExit<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoExit, true));
     /// <inheritdoc cref="PowerShellSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
     public static T DisableNoExit<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoExit, false));
     /// <inheritdoc cref="PowerShellSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoExit))]
     public static T ToggleNoExit<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoExit, !o.NoExit));
     #endregion
     #region StartUsingASingleThreadedApartment
     /// <inheritdoc cref="PowerShellSettings.StartUsingASingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
     public static T SetStartUsingASingleThreadedApartment<T>(this T o, bool? v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingASingleThreadedApartment, v));
     /// <inheritdoc cref="PowerShellSettings.StartUsingASingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
     public static T ResetStartUsingASingleThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.StartUsingASingleThreadedApartment));
     /// <inheritdoc cref="PowerShellSettings.StartUsingASingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
     public static T EnableStartUsingASingleThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingASingleThreadedApartment, true));
     /// <inheritdoc cref="PowerShellSettings.StartUsingASingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
     public static T DisableStartUsingASingleThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingASingleThreadedApartment, false));
     /// <inheritdoc cref="PowerShellSettings.StartUsingASingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingASingleThreadedApartment))]
     public static T ToggleStartUsingASingleThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingASingleThreadedApartment, !o.StartUsingASingleThreadedApartment));
     #endregion
     #region StartUsingAMultiThreadedApartment
     /// <inheritdoc cref="PowerShellSettings.StartUsingAMultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
     public static T SetStartUsingAMultiThreadedApartment<T>(this T o, bool? v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingAMultiThreadedApartment, v));
     /// <inheritdoc cref="PowerShellSettings.StartUsingAMultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
     public static T ResetStartUsingAMultiThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.StartUsingAMultiThreadedApartment));
     /// <inheritdoc cref="PowerShellSettings.StartUsingAMultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
     public static T EnableStartUsingAMultiThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingAMultiThreadedApartment, true));
     /// <inheritdoc cref="PowerShellSettings.StartUsingAMultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
     public static T DisableStartUsingAMultiThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingAMultiThreadedApartment, false));
     /// <inheritdoc cref="PowerShellSettings.StartUsingAMultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.StartUsingAMultiThreadedApartment))]
     public static T ToggleStartUsingAMultiThreadedApartment<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.StartUsingAMultiThreadedApartment, !o.StartUsingAMultiThreadedApartment));
     #endregion
     #region NoProfile
     /// <inheritdoc cref="PowerShellSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
     public static T SetNoProfile<T>(this T o, bool? v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoProfile, v));
     /// <inheritdoc cref="PowerShellSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
     public static T ResetNoProfile<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.NoProfile));
     /// <inheritdoc cref="PowerShellSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
     public static T EnableNoProfile<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoProfile, true));
     /// <inheritdoc cref="PowerShellSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
     public static T DisableNoProfile<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoProfile, false));
     /// <inheritdoc cref="PowerShellSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NoProfile))]
     public static T ToggleNoProfile<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NoProfile, !o.NoProfile));
     #endregion
     #region NonInteractive
     /// <inheritdoc cref="PowerShellSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
     public static T SetNonInteractive<T>(this T o, bool? v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NonInteractive, v));
     /// <inheritdoc cref="PowerShellSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
     public static T ResetNonInteractive<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.NonInteractive));
     /// <inheritdoc cref="PowerShellSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
     public static T EnableNonInteractive<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NonInteractive, true));
     /// <inheritdoc cref="PowerShellSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
     public static T DisableNonInteractive<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NonInteractive, false));
     /// <inheritdoc cref="PowerShellSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.NonInteractive))]
     public static T ToggleNonInteractive<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.NonInteractive, !o.NonInteractive));
     #endregion
     #region InputFormat
     /// <inheritdoc cref="PowerShellSettings.InputFormat"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.InputFormat))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.InputFormat))]
     public static T SetInputFormat<T>(this T o, PowerShellFormat v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.InputFormat, v));
     /// <inheritdoc cref="PowerShellSettings.InputFormat"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.InputFormat))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.InputFormat))]
     public static T ResetInputFormat<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.InputFormat));
     #endregion
     #region OutputFormat
     /// <inheritdoc cref="PowerShellSettings.OutputFormat"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.OutputFormat))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.OutputFormat))]
     public static T SetOutputFormat<T>(this T o, PowerShellFormat v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.OutputFormat, v));
     /// <inheritdoc cref="PowerShellSettings.OutputFormat"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.OutputFormat))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.OutputFormat))]
     public static T ResetOutputFormat<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.OutputFormat));
     #endregion
     #region WindowStyle
     /// <inheritdoc cref="PowerShellSettings.WindowStyle"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.WindowStyle))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.WindowStyle))]
     public static T SetWindowStyle<T>(this T o, PowerShellWindowStyle v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.WindowStyle, v));
     /// <inheritdoc cref="PowerShellSettings.WindowStyle"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.WindowStyle))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.WindowStyle))]
     public static T ResetWindowStyle<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.WindowStyle));
     #endregion
     #region EncodedCommand
     /// <inheritdoc cref="PowerShellSettings.EncodedCommand"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.EncodedCommand))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.EncodedCommand))]
     public static T SetEncodedCommand<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.EncodedCommand, v));
     /// <inheritdoc cref="PowerShellSettings.EncodedCommand"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.EncodedCommand))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.EncodedCommand))]
     public static T ResetEncodedCommand<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.EncodedCommand));
     #endregion
     #region ConfigurationName
     /// <inheritdoc cref="PowerShellSettings.ConfigurationName"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConfigurationName))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConfigurationName))]
     public static T SetConfigurationName<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.ConfigurationName, v));
     /// <inheritdoc cref="PowerShellSettings.ConfigurationName"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConfigurationName))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ConfigurationName))]
     public static T ResetConfigurationName<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.ConfigurationName));
     #endregion
     #region ExecutionPolicy
     /// <inheritdoc cref="PowerShellSettings.ExecutionPolicy"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ExecutionPolicy))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ExecutionPolicy))]
     public static T SetExecutionPolicy<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.ExecutionPolicy, v));
     /// <inheritdoc cref="PowerShellSettings.ExecutionPolicy"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ExecutionPolicy))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.ExecutionPolicy))]
     public static T ResetExecutionPolicy<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.ExecutionPolicy));
     #endregion
     #region File
     /// <inheritdoc cref="PowerShellSettings.File"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.File))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.File))]
     public static T SetFile<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.File, v));
     /// <inheritdoc cref="PowerShellSettings.File"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.File))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.File))]
     public static T ResetFile<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.File));
     #endregion
     #region FileArguments
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T SetFileArguments<T>(this T o, params string[] v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.FileArguments, v));
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T SetFileArguments<T>(this T o, IEnumerable<string> v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.FileArguments, v));
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T AddFileArguments<T>(this T o, params string[] v) where T : PowerShellSettings => o.Modify(b => b.AddCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T AddFileArguments<T>(this T o, IEnumerable<string> v) where T : PowerShellSettings => o.Modify(b => b.AddCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T RemoveFileArguments<T>(this T o, params string[] v) where T : PowerShellSettings => o.Modify(b => b.RemoveCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T RemoveFileArguments<T>(this T o, IEnumerable<string> v) where T : PowerShellSettings => o.Modify(b => b.RemoveCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PowerShellSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileArguments))]
     public static T ClearFileArguments<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.ClearCollection(() => o.FileArguments));
     #endregion
     #region FileKeyValueParameters
     /// <inheritdoc cref="PowerShellSettings.FileKeyValueParameters"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
     public static T SetFileKeyValueParameters<T>(this T o, IDictionary<string, string> v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.FileKeyValueParameters, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="PowerShellSettings.FileKeyValueParameters"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
     public static T SetFileKeyValueParameter<T>(this T o, string k, string v) where T : PowerShellSettings => o.Modify(b => b.SetDictionary(() => o.FileKeyValueParameters, k, v));
     /// <inheritdoc cref="PowerShellSettings.FileKeyValueParameters"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
     public static T AddFileKeyValueParameter<T>(this T o, string k, string v) where T : PowerShellSettings => o.Modify(b => b.AddDictionary(() => o.FileKeyValueParameters, k, v));
     /// <inheritdoc cref="PowerShellSettings.FileKeyValueParameters"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
     public static T RemoveFileKeyValueParameter<T>(this T o, string k) where T : PowerShellSettings => o.Modify(b => b.RemoveDictionary(() => o.FileKeyValueParameters, k));
     /// <inheritdoc cref="PowerShellSettings.FileKeyValueParameters"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.FileKeyValueParameters))]
     public static T ClearFileKeyValueParameters<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.ClearDictionary(() => o.FileKeyValueParameters));
     #endregion
     #region Command
     /// <inheritdoc cref="PowerShellSettings.Command"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Command))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Command))]
     public static T SetCommand<T>(this T o, string v) where T : PowerShellSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="PowerShellSettings.Command"/>
-    [Pure] [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Command))]
+    [Builder(Type = typeof(PowerShellSettings), Property = nameof(PowerShellSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : PowerShellSettings => o.Modify(b => b.Remove(() => o.Command));
     #endregion
 }
 #endregion
 #region PowerShellFormat
 /// <summary>Used within <see cref="PowerShellTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<PowerShellFormat>))]
@@ -326,7 +321,6 @@ public partial class PowerShellFormat : Enumeration
 #endregion
 #region PowerShellWindowStyle
 /// <summary>Used within <see cref="PowerShellTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<PowerShellWindowStyle>))]

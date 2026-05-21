@@ -7,7 +7,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 
 namespace Fallout.Common.Tooling;
@@ -25,7 +24,6 @@ namespace Fallout.Common.Tooling;
 ///     });
 ///     </code>
 /// </example>
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class LocalPathAttribute : ToolInjectionAttributeBase
 {

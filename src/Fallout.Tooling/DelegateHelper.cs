@@ -6,12 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class DelegateHelper
 {
     public static IDictionary<string, object> Toggle(IReadOnlyDictionary<string, object> dictionary, string key)

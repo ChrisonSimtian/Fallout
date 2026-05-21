@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -74,14 +73,12 @@ internal static class CodeAnalysisExtensions
         return invocationExpression.Expression is GenericNameSyntax genericName ? genericName.TypeArgumentList.Arguments.Single() : null;
     }
 
-    [CanBeNull]
     public static T GetSingleArgument<T>(this InvocationExpressionSyntax invocationExpression)
         where T : ExpressionSyntax
     {
         return invocationExpression.Arguments().Single() as T;
     }
 
-    [CanBeNull]
     public static T GetArgumentAt<T>(this InvocationExpressionSyntax invocationExpression, int index)
         where T : ExpressionSyntax
     {

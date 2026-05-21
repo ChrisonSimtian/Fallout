@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -19,8 +18,7 @@ partial class Program
 {
     private const string CommandName = "fallout";
 
-    [UsedImplicitly]
-    public static int Complete(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int Complete(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         if (rootDirectory == null)
             return 0;

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.Execution.Theming;
 using Fallout.Common.IO;
@@ -21,7 +20,6 @@ using Serilog.Sinks.SystemConsole.Themes;
 
 namespace Fallout.Common.Execution;
 
-[PublicAPI]
 public static class Logging
 {
     public static readonly LoggingLevelSwitch LevelSwitch = new();
@@ -93,7 +91,7 @@ public static class Logging
         return configuration.MinimumLevel.Verbose();
     }
 
-    public static LoggerConfiguration ConfigureFilter(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
+    public static LoggerConfiguration ConfigureFilter(this LoggerConfiguration configuration, IFalloutBuild build)
     {
         if (build == null)
             return configuration;
@@ -101,7 +99,7 @@ public static class Logging
         return configuration.Filter.ByExcluding(x => build.Host.FilterMessage(x.MessageTemplate.Text));
     }
 
-    public static LoggerConfiguration ConfigureConsole(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
+    public static LoggerConfiguration ConfigureConsole(this LoggerConfiguration configuration, IFalloutBuild build)
     {
         return configuration
             .WriteTo.Console(outputTemplate: build != null && build.IsOutputEnabled(DefaultOutput.Timestamps)
@@ -112,7 +110,7 @@ public static class Logging
                 levelSwitch: LevelSwitch);
     }
 
-    public static LoggerConfiguration ConfigureHost(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
+    public static LoggerConfiguration ConfigureHost(this LoggerConfiguration configuration, IFalloutBuild build)
     {
         if (build == null)
             return configuration;
@@ -121,7 +119,7 @@ public static class Logging
             .WriteTo.Sink(new Host.LogEventSink(build.Host), restrictedToMinimumLevel: LogEventLevel.Warning);
     }
 
-    public static LoggerConfiguration ConfigureInMemory(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
+    public static LoggerConfiguration ConfigureInMemory(this LoggerConfiguration configuration, IFalloutBuild build)
     {
         if (build == null)
             return configuration;
@@ -130,7 +128,7 @@ public static class Logging
             .WriteTo.Sink(InMemorySink.Instance, LogEventLevel.Warning);
     }
 
-    public static LoggerConfiguration ConfigureFiles(this LoggerConfiguration configuration, [CanBeNull] IFalloutBuild build)
+    public static LoggerConfiguration ConfigureFiles(this LoggerConfiguration configuration, IFalloutBuild build)
     {
         if (build == null || build.Host is IBuildServer)
             return configuration;

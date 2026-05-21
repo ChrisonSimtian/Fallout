@@ -3,13 +3,11 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
 // https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/pipeline-options-for-git?view=azure-devops&tabs=yaml#checkout-submodules
-[PublicAPI]
 public class AzurePipelineCheckoutStep : AzurePipelinesStep
 {
     public bool? InclueSubmodules { get; set; }

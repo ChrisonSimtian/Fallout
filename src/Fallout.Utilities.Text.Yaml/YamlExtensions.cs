@@ -4,14 +4,12 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
 namespace Fallout.Utilities.Text.Yaml;
 
-[PublicAPI]
 public static class YamlExtensions
 {
     public static SerializerBuilder DefaultSerializerBuilder = new SerializerBuilder()
@@ -23,7 +21,6 @@ public static class YamlExtensions
     /// <summary>
     /// Serializes an object as YAML string.
     /// </summary>
-    [Pure]
     public static string ToYaml<T>(this T obj, SerializerBuilder serializerBuilder = null)
     {
         var serializer = (serializerBuilder ?? DefaultSerializerBuilder).Build();
@@ -33,7 +30,6 @@ public static class YamlExtensions
     /// <summary>
     /// Deserializes an object from a YAML string.
     /// </summary>
-    [Pure]
     public static T GetYaml<T>(this string content, DeserializerBuilder deserializerBuilder = null)
     {
         var deserializer = (deserializerBuilder ?? DefaultDeserializerBuilder).Build();
@@ -52,7 +48,6 @@ public static class YamlExtensions
     /// <summary>
     /// Deserializes an object as YAML from a file.
     /// </summary>
-    [Pure]
     public static T ReadYaml<T>(this AbsolutePath path, DeserializerBuilder deserializerBuilder = null)
     {
         var content = path.ReadAllText();

@@ -6,20 +6,17 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.TravisCI;
 
 /// <summary>
 /// Interface according to the <a href="https://docs.travis-ci.com/user/environment-variables/">official website</a>.
 /// </summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class TravisCI : Host, IBuildServer
 {
     public new static TravisCI Instance => Host.Instance as TravisCI;
 
-    [UsedImplicitly]
     internal static bool IsRunningTravisCI => EnvironmentInfo.HasVariable("TRAVIS");
 
     internal TravisCI()
@@ -130,29 +127,29 @@ public partial class TravisCI : Host, IBuildServer
     /// <summary>
     /// Is set to <em>0</em> if the build is successful and <em>1</em> if the build is broken.
     /// </summary>
-    [CanBeNull] public string TestResult => EnvironmentInfo.GetVariable("TRAVIS_TEST_RESULT");
+    public string TestResult => EnvironmentInfo.GetVariable("TRAVIS_TEST_RESULT");
 
     /// <summary>
     /// If the current build is for a git tag, this variable is set to the tag’s name.
     /// </summary>
     public string Tag => EnvironmentInfo.GetVariable("TRAVIS_TAG");
 
-    [CanBeNull] public string DartVersion => EnvironmentInfo.GetVariable("TRAVIS_DARTVersion");
-    [CanBeNull] public string GoVersion => EnvironmentInfo.GetVariable("TRAVIS_GOVersion");
-    [CanBeNull] public string HaxeVersion => EnvironmentInfo.GetVariable("TRAVIS_HAXEVersion");
-    [CanBeNull] public string JdkVersion => EnvironmentInfo.GetVariable("TRAVIS_JDKVersion");
-    [CanBeNull] public string JuliaVersion => EnvironmentInfo.GetVariable("TRAVIS_JULIAVersion");
-    [CanBeNull] public string NodeVersion => EnvironmentInfo.GetVariable("TRAVIS_NODEVersion");
-    [CanBeNull] public string OtpRelease => EnvironmentInfo.GetVariable("TRAVIS_OTP_RELEASE");
-    [CanBeNull] public string PerlVersion => EnvironmentInfo.GetVariable("TRAVIS_PERLVersion");
-    [CanBeNull] public string PhpVersion => EnvironmentInfo.GetVariable("TRAVIS_PHPVersion");
-    [CanBeNull] public string PythonVersion => EnvironmentInfo.GetVariable("TRAVIS_PYTHONVersion");
-    [CanBeNull] public string RVersion => EnvironmentInfo.GetVariable("TRAVIS_RVersion");
-    [CanBeNull] public string RubyVersion => EnvironmentInfo.GetVariable("TRAVIS_RUBYVersion");
-    [CanBeNull] public string RustVersion => EnvironmentInfo.GetVariable("TRAVIS_RUSTVersion");
-    [CanBeNull] public string ScalaVersion => EnvironmentInfo.GetVariable("TRAVIS_SCALAVersion");
-    [CanBeNull] public string XCodeSdk => EnvironmentInfo.GetVariable("TRAVIS_XCODE_SDK");
-    [CanBeNull] public string XCodeScheme => EnvironmentInfo.GetVariable("TRAVIS_XCODE_SCHEME");
-    [CanBeNull] public string XCodeProject => EnvironmentInfo.GetVariable("TRAVIS_XCODE_PROJECT");
-    [CanBeNull] public string XCodeWorkspace => EnvironmentInfo.GetVariable("TRAVIS_XCODE_WORKSPACE");
+    public string DartVersion => EnvironmentInfo.GetVariable("TRAVIS_DARTVersion");
+    public string GoVersion => EnvironmentInfo.GetVariable("TRAVIS_GOVersion");
+    public string HaxeVersion => EnvironmentInfo.GetVariable("TRAVIS_HAXEVersion");
+    public string JdkVersion => EnvironmentInfo.GetVariable("TRAVIS_JDKVersion");
+    public string JuliaVersion => EnvironmentInfo.GetVariable("TRAVIS_JULIAVersion");
+    public string NodeVersion => EnvironmentInfo.GetVariable("TRAVIS_NODEVersion");
+    public string OtpRelease => EnvironmentInfo.GetVariable("TRAVIS_OTP_RELEASE");
+    public string PerlVersion => EnvironmentInfo.GetVariable("TRAVIS_PERLVersion");
+    public string PhpVersion => EnvironmentInfo.GetVariable("TRAVIS_PHPVersion");
+    public string PythonVersion => EnvironmentInfo.GetVariable("TRAVIS_PYTHONVersion");
+    public string RVersion => EnvironmentInfo.GetVariable("TRAVIS_RVersion");
+    public string RubyVersion => EnvironmentInfo.GetVariable("TRAVIS_RUBYVersion");
+    public string RustVersion => EnvironmentInfo.GetVariable("TRAVIS_RUSTVersion");
+    public string ScalaVersion => EnvironmentInfo.GetVariable("TRAVIS_SCALAVersion");
+    public string XCodeSdk => EnvironmentInfo.GetVariable("TRAVIS_XCODE_SDK");
+    public string XCodeScheme => EnvironmentInfo.GetVariable("TRAVIS_XCODE_SCHEME");
+    public string XCodeProject => EnvironmentInfo.GetVariable("TRAVIS_XCODE_PROJECT");
+    public string XCodeWorkspace => EnvironmentInfo.GetVariable("TRAVIS_XCODE_WORKSPACE");
 }

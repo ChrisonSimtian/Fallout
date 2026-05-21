@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 // ReSharper disable InconsistentNaming
 
 namespace Fallout.Common.CI.TravisCI;
 
-[PublicAPI]
 public enum TravisCIEventType
 {
     push,

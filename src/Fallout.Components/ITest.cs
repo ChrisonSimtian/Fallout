@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.GitHubActions;
@@ -23,7 +22,6 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface ITest : ICompile, IHazArtifacts
 {
     AbsolutePath TestResultDirectory => ArtifactsDirectory / "test-results";

@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.IO;
 
@@ -18,7 +17,6 @@ partial class AbsolutePathExtensions
     /// <summary>
     /// Calculates the MD5 hash of a file.
     /// </summary>
-    [Pure]
     public static string GetFileHash(this AbsolutePath path)
     {
         Assert.True(path.FileExists());
@@ -32,7 +30,6 @@ partial class AbsolutePathExtensions
     /// <summary>
     /// Calculates the MD5 hash of a directory using <see cref="SearchOption.AllDirectories"/>.
     /// </summary>
-    [Pure]
     public static string GetDirectoryHash(this AbsolutePath path, Func<AbsolutePath, bool> includeFile = null)
     {
         Assert.DirectoryExists(path);
@@ -47,7 +44,6 @@ partial class AbsolutePathExtensions
     /// <summary>
     /// Calculates the MD5 hash for a set of files in relation to a base directory.
     /// </summary>
-    [Pure]
     public static string GetFileSetHash(this IEnumerable<AbsolutePath> paths, string baseDirectory)
     {
         using var md5 = MD5.Create();

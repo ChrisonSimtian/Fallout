@@ -7,11 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tools.MSBuild;
 
-[PublicAPI]
 public class MSBuildProject : DynamicObject
 {
     internal MSBuildProject(

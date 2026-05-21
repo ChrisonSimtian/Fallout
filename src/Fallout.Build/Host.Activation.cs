@@ -8,13 +8,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common;
 
-[UsedImplicitly(ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature)]
 public partial class Host
 {
     internal static Host Instance { get; private set; }

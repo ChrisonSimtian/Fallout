@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
@@ -13,7 +12,6 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IRestore : IHazSolution, IFalloutBuild
 {
     Target Restore => _ => _

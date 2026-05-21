@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.CI.GitHubActions.Configuration;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -20,7 +19,6 @@ namespace Fallout.Common.CI.GitHubActions;
 /// <summary>
 /// Interface according to the <a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions">official website</a>.
 /// </summary>
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class GitHubActionsAttribute : ConfigurationAttributeBase
 {

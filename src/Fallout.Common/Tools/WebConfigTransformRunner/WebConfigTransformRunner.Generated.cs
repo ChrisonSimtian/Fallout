@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.WebConfigTransformRunner;
 
 /// <summary><p>This is a commandline tool to run an ASP.Net web.config tranformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class WebConfigTransformRunnerTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class WebConfigTransformRunnerTasks : ToolTasks, IRequireNuGetPac
 }
 #region WebConfigTransformRunnerSettings
 /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(WebConfigTransformRunnerTasks), Command = nameof(WebConfigTransformRunnerTasks.WebConfigTransformRunner))]
 public partial class WebConfigTransformRunnerSettings : ToolOptions
@@ -53,32 +50,31 @@ public partial class WebConfigTransformRunnerSettings : ToolOptions
 #endregion
 #region WebConfigTransformRunnerSettingsExtensions
 /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class WebConfigTransformRunnerSettingsExtensions
 {
     #region WebConfigFilename
     /// <inheritdoc cref="WebConfigTransformRunnerSettings.WebConfigFilename"/>
-    [Pure] [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.WebConfigFilename))]
+    [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.WebConfigFilename))]
     public static T SetWebConfigFilename<T>(this T o, string v) where T : WebConfigTransformRunnerSettings => o.Modify(b => b.Set(() => o.WebConfigFilename, v));
     /// <inheritdoc cref="WebConfigTransformRunnerSettings.WebConfigFilename"/>
-    [Pure] [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.WebConfigFilename))]
+    [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.WebConfigFilename))]
     public static T ResetWebConfigFilename<T>(this T o) where T : WebConfigTransformRunnerSettings => o.Modify(b => b.Remove(() => o.WebConfigFilename));
     #endregion
     #region TransformFilename
     /// <inheritdoc cref="WebConfigTransformRunnerSettings.TransformFilename"/>
-    [Pure] [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.TransformFilename))]
+    [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.TransformFilename))]
     public static T SetTransformFilename<T>(this T o, string v) where T : WebConfigTransformRunnerSettings => o.Modify(b => b.Set(() => o.TransformFilename, v));
     /// <inheritdoc cref="WebConfigTransformRunnerSettings.TransformFilename"/>
-    [Pure] [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.TransformFilename))]
+    [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.TransformFilename))]
     public static T ResetTransformFilename<T>(this T o) where T : WebConfigTransformRunnerSettings => o.Modify(b => b.Remove(() => o.TransformFilename));
     #endregion
     #region OutputFilename
     /// <inheritdoc cref="WebConfigTransformRunnerSettings.OutputFilename"/>
-    [Pure] [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.OutputFilename))]
+    [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.OutputFilename))]
     public static T SetOutputFilename<T>(this T o, string v) where T : WebConfigTransformRunnerSettings => o.Modify(b => b.Set(() => o.OutputFilename, v));
     /// <inheritdoc cref="WebConfigTransformRunnerSettings.OutputFilename"/>
-    [Pure] [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.OutputFilename))]
+    [Builder(Type = typeof(WebConfigTransformRunnerSettings), Property = nameof(WebConfigTransformRunnerSettings.OutputFilename))]
     public static T ResetOutputFilename<T>(this T o) where T : WebConfigTransformRunnerSettings => o.Modify(b => b.Remove(() => o.OutputFilename));
     #endregion
 }

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using JetBrains.Annotations;
 using NuGet.Versioning;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
@@ -18,7 +17,6 @@ using Serilog;
 // ReSharper disable ArgumentsStyleLiteral
 namespace Fallout.Common.ChangeLog;
 
-[PublicAPI]
 public static class ChangelogTasks
 {
     public static string GetNuGetReleaseNotes(string changelogFile, GitRepository repository = null)
@@ -48,7 +46,6 @@ public static class ChangelogTasks
     /// </summary>
     /// <param name="changelogFile">The path to the changelog file.</param>
     /// <returns>A readonly list of the release sections contained in the changelog.</returns>
-    [Pure]
     public static IReadOnlyList<ReleaseNotes> ReadReleaseNotes(AbsolutePath changelogFile)
     {
         var lines = changelogFile.ReadAllLines().ToList();
@@ -76,7 +73,6 @@ public static class ChangelogTasks
     /// </summary>
     /// <param name="changelogFile">The path to the changelog file.</param>
     /// <returns>A <see cref="ChangeLog"/> object to work with the changelog.</returns>
-    [Pure]
     public static ChangeLog ReadChangelog(string changelogFile)
     {
         var releaseNotes = ReadReleaseNotes(changelogFile);
@@ -100,7 +96,7 @@ public static class ChangelogTasks
     /// <param name="tag">The <see cref="NuGetVersion"/> to finalize the changelog.</param>
     /// <param name="repository">The repository to create the version overview for.</param>
     /// <seealso cref="FinalizeChangelog(ChangeLog,NuGetVersion,GitRepository)"/>
-    public static void FinalizeChangelog(ChangeLog changelogFile, NuGetVersion tag, [CanBeNull] GitRepository repository = null)
+    public static void FinalizeChangelog(ChangeLog changelogFile, NuGetVersion tag, GitRepository repository = null)
     {
         Log.Information("Finalizing {File} for {Tag} ...", PathConstruction.GetRelativePath(FalloutBuild.RootDirectory, changelogFile.Path), tag);
 
@@ -133,7 +129,7 @@ public static class ChangelogTasks
     /// <param name="tag">The version to finalize the changelog.</param>
     /// <param name="repository">The repository to create the version overview for.</param>
     /// <seealso cref="FinalizeChangelog(ChangeLog,NuGetVersion,GitRepository)"/>
-    public static void FinalizeChangelog(AbsolutePath changelogFile, string tag, [CanBeNull] GitRepository repository = null)
+    public static void FinalizeChangelog(AbsolutePath changelogFile, string tag, GitRepository repository = null)
     {
         Log.Information("Finalizing {File} for {Tag} ...", PathConstruction.GetRelativePath(FalloutBuild.RootDirectory, changelogFile), tag);
 
@@ -164,7 +160,6 @@ public static class ChangelogTasks
     /// <param name="changelogFile">The path to the changelog file.</param>
     /// <param name="tag">The tag which release notes should get extracted.</param>
     /// <returns>A collection of the release notes.</returns>
-    [Pure]
     public static IEnumerable<string> ExtractChangelogSectionNotes(AbsolutePath changelogFile, string tag = null)
     {
         var content = changelogFile.ReadAllLines().Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
@@ -229,7 +224,7 @@ public static class ChangelogTasks
         }
     }
 
-    private static void UpdateVersionSummary(string tag, List<string> content, [CanBeNull] GitRepository repository)
+    private static void UpdateVersionSummary(string tag, List<string> content, GitRepository repository)
     {
         if (repository != null && repository.IsGitHubRepository())
         {

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common;
@@ -16,7 +15,6 @@ namespace Fallout.Common;
 /// <summary>
 ///   Public API for defining targets.
 /// </summary>
-[PublicAPI]
 public interface ITargetDefinition
 {
     /// <summary>

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Npm;
 
 /// <summary><p>npm is the package manager for the Node JavaScript platform. It puts modules in place so that node can find them, and manages dependency conflicts intelligently.<para/>It is extremely configurable to support a wide variety of use cases. Most commonly, it is used to publish, discover, install, and develop node programs.</p><p>For more details, visit the <a href="https://www.npmjs.com/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class NpmTasks : ToolTasks, IRequirePathTool
@@ -51,7 +49,6 @@ public partial class NpmTasks : ToolTasks, IRequirePathTool
 }
 #region NpmCiSettings
 /// <inheritdoc cref="NpmTasks.NpmCi(Fallout.Common.Tools.Npm.NpmCiSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NpmTasks), Command = nameof(NpmTasks.NpmCi), Arguments = "ci")]
 public partial class NpmCiSettings : ToolOptions
@@ -60,7 +57,6 @@ public partial class NpmCiSettings : ToolOptions
 #endregion
 #region NpmInstallSettings
 /// <inheritdoc cref="NpmTasks.NpmInstall(Fallout.Common.Tools.Npm.NpmInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NpmTasks), Command = nameof(NpmTasks.NpmInstall), Arguments = "install")]
 public partial class NpmInstallSettings : ToolOptions
@@ -95,7 +91,6 @@ public partial class NpmInstallSettings : ToolOptions
 #endregion
 #region NpmRunSettings
 /// <inheritdoc cref="NpmTasks.NpmRun(Fallout.Common.Tools.Npm.NpmRunSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NpmTasks), Command = nameof(NpmTasks.NpmRun), Arguments = "run")]
 public partial class NpmRunSettings : ToolOptions
@@ -108,7 +103,6 @@ public partial class NpmRunSettings : ToolOptions
 #endregion
 #region NpmCiSettingsExtensions
 /// <inheritdoc cref="NpmTasks.NpmCi(Fallout.Common.Tools.Npm.NpmCiSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NpmCiSettingsExtensions
 {
@@ -116,263 +110,260 @@ public static partial class NpmCiSettingsExtensions
 #endregion
 #region NpmInstallSettingsExtensions
 /// <inheritdoc cref="NpmTasks.NpmInstall(Fallout.Common.Tools.Npm.NpmInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NpmInstallSettingsExtensions
 {
     #region Packages
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T SetPackages<T>(this T o, params string[] v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Packages, v));
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T SetPackages<T>(this T o, IEnumerable<string> v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Packages, v));
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T AddPackages<T>(this T o, params string[] v) where T : NpmInstallSettings => o.Modify(b => b.AddCollection(() => o.Packages, v));
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T AddPackages<T>(this T o, IEnumerable<string> v) where T : NpmInstallSettings => o.Modify(b => b.AddCollection(() => o.Packages, v));
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T RemovePackages<T>(this T o, params string[] v) where T : NpmInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Packages, v));
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T RemovePackages<T>(this T o, IEnumerable<string> v) where T : NpmInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Packages, v));
     /// <inheritdoc cref="NpmInstallSettings.Packages"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Packages))]
     public static T ClearPackages<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.ClearCollection(() => o.Packages));
     #endregion
     #region Production
     /// <inheritdoc cref="NpmInstallSettings.Production"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
     public static T SetProduction<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Production, v));
     /// <inheritdoc cref="NpmInstallSettings.Production"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
     public static T ResetProduction<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.Production));
     /// <inheritdoc cref="NpmInstallSettings.Production"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
     public static T EnableProduction<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Production, true));
     /// <inheritdoc cref="NpmInstallSettings.Production"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
     public static T DisableProduction<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Production, false));
     /// <inheritdoc cref="NpmInstallSettings.Production"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Production))]
     public static T ToggleProduction<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Production, !o.Production));
     #endregion
     #region Force
     /// <inheritdoc cref="NpmInstallSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="NpmInstallSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
     public static T ResetForce<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="NpmInstallSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
     public static T EnableForce<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="NpmInstallSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
     public static T DisableForce<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="NpmInstallSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Global
     /// <inheritdoc cref="NpmInstallSettings.Global"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
     public static T SetGlobal<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Global, v));
     /// <inheritdoc cref="NpmInstallSettings.Global"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
     public static T ResetGlobal<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.Global));
     /// <inheritdoc cref="NpmInstallSettings.Global"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
     public static T EnableGlobal<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Global, true));
     /// <inheritdoc cref="NpmInstallSettings.Global"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
     public static T DisableGlobal<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Global, false));
     /// <inheritdoc cref="NpmInstallSettings.Global"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Global))]
     public static T ToggleGlobal<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Global, !o.Global));
     #endregion
     #region GlobalStyle
     /// <inheritdoc cref="NpmInstallSettings.GlobalStyle"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
     public static T SetGlobalStyle<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.GlobalStyle, v));
     /// <inheritdoc cref="NpmInstallSettings.GlobalStyle"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
     public static T ResetGlobalStyle<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.GlobalStyle));
     /// <inheritdoc cref="NpmInstallSettings.GlobalStyle"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
     public static T EnableGlobalStyle<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.GlobalStyle, true));
     /// <inheritdoc cref="NpmInstallSettings.GlobalStyle"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
     public static T DisableGlobalStyle<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.GlobalStyle, false));
     /// <inheritdoc cref="NpmInstallSettings.GlobalStyle"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.GlobalStyle))]
     public static T ToggleGlobalStyle<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.GlobalStyle, !o.GlobalStyle));
     #endregion
     #region IgnoreScripts
     /// <inheritdoc cref="NpmInstallSettings.IgnoreScripts"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
     public static T SetIgnoreScripts<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.IgnoreScripts, v));
     /// <inheritdoc cref="NpmInstallSettings.IgnoreScripts"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
     public static T ResetIgnoreScripts<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.IgnoreScripts));
     /// <inheritdoc cref="NpmInstallSettings.IgnoreScripts"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
     public static T EnableIgnoreScripts<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.IgnoreScripts, true));
     /// <inheritdoc cref="NpmInstallSettings.IgnoreScripts"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
     public static T DisableIgnoreScripts<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.IgnoreScripts, false));
     /// <inheritdoc cref="NpmInstallSettings.IgnoreScripts"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.IgnoreScripts))]
     public static T ToggleIgnoreScripts<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.IgnoreScripts, !o.IgnoreScripts));
     #endregion
     #region LegacyBundling
     /// <inheritdoc cref="NpmInstallSettings.LegacyBundling"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
     public static T SetLegacyBundling<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.LegacyBundling, v));
     /// <inheritdoc cref="NpmInstallSettings.LegacyBundling"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
     public static T ResetLegacyBundling<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.LegacyBundling));
     /// <inheritdoc cref="NpmInstallSettings.LegacyBundling"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
     public static T EnableLegacyBundling<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.LegacyBundling, true));
     /// <inheritdoc cref="NpmInstallSettings.LegacyBundling"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
     public static T DisableLegacyBundling<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.LegacyBundling, false));
     /// <inheritdoc cref="NpmInstallSettings.LegacyBundling"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.LegacyBundling))]
     public static T ToggleLegacyBundling<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.LegacyBundling, !o.LegacyBundling));
     #endregion
     #region Link
     /// <inheritdoc cref="NpmInstallSettings.Link"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
     public static T SetLink<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Link, v));
     /// <inheritdoc cref="NpmInstallSettings.Link"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
     public static T ResetLink<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.Link));
     /// <inheritdoc cref="NpmInstallSettings.Link"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
     public static T EnableLink<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Link, true));
     /// <inheritdoc cref="NpmInstallSettings.Link"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
     public static T DisableLink<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Link, false));
     /// <inheritdoc cref="NpmInstallSettings.Link"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Link))]
     public static T ToggleLink<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Link, !o.Link));
     #endregion
     #region NoBinLinks
     /// <inheritdoc cref="NpmInstallSettings.NoBinLinks"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
     public static T SetNoBinLinks<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoBinLinks, v));
     /// <inheritdoc cref="NpmInstallSettings.NoBinLinks"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
     public static T ResetNoBinLinks<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.NoBinLinks));
     /// <inheritdoc cref="NpmInstallSettings.NoBinLinks"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
     public static T EnableNoBinLinks<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoBinLinks, true));
     /// <inheritdoc cref="NpmInstallSettings.NoBinLinks"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
     public static T DisableNoBinLinks<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoBinLinks, false));
     /// <inheritdoc cref="NpmInstallSettings.NoBinLinks"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoBinLinks))]
     public static T ToggleNoBinLinks<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoBinLinks, !o.NoBinLinks));
     #endregion
     #region NoOptional
     /// <inheritdoc cref="NpmInstallSettings.NoOptional"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
     public static T SetNoOptional<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoOptional, v));
     /// <inheritdoc cref="NpmInstallSettings.NoOptional"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
     public static T ResetNoOptional<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.NoOptional));
     /// <inheritdoc cref="NpmInstallSettings.NoOptional"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
     public static T EnableNoOptional<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoOptional, true));
     /// <inheritdoc cref="NpmInstallSettings.NoOptional"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
     public static T DisableNoOptional<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoOptional, false));
     /// <inheritdoc cref="NpmInstallSettings.NoOptional"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoOptional))]
     public static T ToggleNoOptional<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoOptional, !o.NoOptional));
     #endregion
     #region NoShrinkWrap
     /// <inheritdoc cref="NpmInstallSettings.NoShrinkWrap"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
     public static T SetNoShrinkWrap<T>(this T o, bool? v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoShrinkWrap, v));
     /// <inheritdoc cref="NpmInstallSettings.NoShrinkWrap"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
     public static T ResetNoShrinkWrap<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.NoShrinkWrap));
     /// <inheritdoc cref="NpmInstallSettings.NoShrinkWrap"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
     public static T EnableNoShrinkWrap<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoShrinkWrap, true));
     /// <inheritdoc cref="NpmInstallSettings.NoShrinkWrap"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
     public static T DisableNoShrinkWrap<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoShrinkWrap, false));
     /// <inheritdoc cref="NpmInstallSettings.NoShrinkWrap"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NoShrinkWrap))]
     public static T ToggleNoShrinkWrap<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NoShrinkWrap, !o.NoShrinkWrap));
     #endregion
     #region NodeDir
     /// <inheritdoc cref="NpmInstallSettings.NodeDir"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NodeDir))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NodeDir))]
     public static T SetNodeDir<T>(this T o, string v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.NodeDir, v));
     /// <inheritdoc cref="NpmInstallSettings.NodeDir"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NodeDir))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.NodeDir))]
     public static T ResetNodeDir<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.NodeDir));
     #endregion
     #region Only
     /// <inheritdoc cref="NpmInstallSettings.Only"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Only))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Only))]
     public static T SetOnly<T>(this T o, NpmOnlyMode v) where T : NpmInstallSettings => o.Modify(b => b.Set(() => o.Only, v));
     /// <inheritdoc cref="NpmInstallSettings.Only"/>
-    [Pure] [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Only))]
+    [Builder(Type = typeof(NpmInstallSettings), Property = nameof(NpmInstallSettings.Only))]
     public static T ResetOnly<T>(this T o) where T : NpmInstallSettings => o.Modify(b => b.Remove(() => o.Only));
     #endregion
 }
 #endregion
 #region NpmRunSettingsExtensions
 /// <inheritdoc cref="NpmTasks.NpmRun(Fallout.Common.Tools.Npm.NpmRunSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NpmRunSettingsExtensions
 {
     #region Command
     /// <inheritdoc cref="NpmRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Command))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Command))]
     public static T SetCommand<T>(this T o, string v) where T : NpmRunSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="NpmRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Command))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : NpmRunSettings => o.Modify(b => b.Remove(() => o.Command));
     #endregion
     #region Arguments
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T SetArguments<T>(this T o, params string[] v) where T : NpmRunSettings => o.Modify(b => b.Set(() => o.Arguments, v));
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T SetArguments<T>(this T o, IEnumerable<string> v) where T : NpmRunSettings => o.Modify(b => b.Set(() => o.Arguments, v));
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T AddArguments<T>(this T o, params string[] v) where T : NpmRunSettings => o.Modify(b => b.AddCollection(() => o.Arguments, v));
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T AddArguments<T>(this T o, IEnumerable<string> v) where T : NpmRunSettings => o.Modify(b => b.AddCollection(() => o.Arguments, v));
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T RemoveArguments<T>(this T o, params string[] v) where T : NpmRunSettings => o.Modify(b => b.RemoveCollection(() => o.Arguments, v));
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T RemoveArguments<T>(this T o, IEnumerable<string> v) where T : NpmRunSettings => o.Modify(b => b.RemoveCollection(() => o.Arguments, v));
     /// <inheritdoc cref="NpmRunSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
+    [Builder(Type = typeof(NpmRunSettings), Property = nameof(NpmRunSettings.Arguments))]
     public static T ClearArguments<T>(this T o) where T : NpmRunSettings => o.Modify(b => b.ClearCollection(() => o.Arguments));
     #endregion
 }
 #endregion
 #region NpmOnlyMode
 /// <summary>Used within <see cref="NpmTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<NpmOnlyMode>))]

@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using Fallout.Common.Tooling;
@@ -14,7 +13,6 @@ using Fallout.Common.Utilities;
 
 namespace Fallout.MSBuildTasks;
 
-[UsedImplicitly]
 public class EmbedPackagesForSelfContainedTask : ContextAwareTask
 {
     [Required]

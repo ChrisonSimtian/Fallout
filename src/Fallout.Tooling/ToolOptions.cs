@@ -7,13 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
 
 // TODO: rename to TaskOptions / CommandOptions ?
-[PublicAPI]
 public abstract partial class ToolOptions : Options
 {
     internal static event EventHandler Created;

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Xunit;
 
 /// <summary><p>xUnit.net is a free, open source, community-focused unit testing tool for the .NET Framework. Written by the original inventor of NUnit v2, xUnit.net is the latest technology for unit testing C#, F#, VB.NET and other .NET languages. xUnit.net works with ReSharper, CodeRush, TestDriven.NET and Xamarin. It is part of the <a href="https://www.dotnetfoundation.org/">.NET Foundation</a>, and operates under their <a href="https://www.dotnetfoundation.org/code-of-conduct">code of conduct</a>. It is licensed under <a href="https://opensource.org/licenses/Apache-2.0">Apache 2</a> (an OSI approved license).</p><p>For more details, visit the <a href="https://xunit.github.io">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId)]
 public partial class XunitTasks : ToolTasks, IRequireNuGetPackage
@@ -37,7 +35,6 @@ public partial class XunitTasks : ToolTasks, IRequireNuGetPackage
 }
 #region Xunit2Settings
 /// <inheritdoc cref="XunitTasks.Xunit2(Fallout.Common.Tools.Xunit.Xunit2Settings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(XunitTasks), Command = nameof(XunitTasks.Xunit2))]
 public partial class Xunit2Settings : ToolOptions, IToolOptionsWithFramework
@@ -90,389 +87,387 @@ public partial class Xunit2Settings : ToolOptions, IToolOptionsWithFramework
 #endregion
 #region Xunit2SettingsExtensions
 /// <inheritdoc cref="XunitTasks.Xunit2(Fallout.Common.Tools.Xunit.Xunit2Settings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class Xunit2SettingsExtensions
 {
     #region TargetAssemblyWithConfigs
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T SetTargetAssemblyWithConfigs<T>(this T o, string k, params string[] v) where T : Xunit2Settings => o.Modify(b => b.SetLookup(() => o.TargetAssemblyWithConfigs, k, v));
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T SetTargetAssemblyWithConfigs<T>(this T o, string k, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.SetLookup(() => o.TargetAssemblyWithConfigs, k, v));
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T AddTargetAssemblyWithConfigs<T>(this T o, string k, params string[] v) where T : Xunit2Settings => o.Modify(b => b.AddLookup(() => o.TargetAssemblyWithConfigs, k, v));
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T AddTargetAssemblyWithConfigs<T>(this T o, string k, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.AddLookup(() => o.TargetAssemblyWithConfigs, k, v));
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T RemoveTargetAssemblyWithConfigs<T>(this T o, string k) where T : Xunit2Settings => o.Modify(b => b.RemoveLookup(() => o.TargetAssemblyWithConfigs, k));
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T RemoveTargetAssemblyWithConfigs<T>(this T o, string k, string v) where T : Xunit2Settings => o.Modify(b => b.RemoveLookup(() => o.TargetAssemblyWithConfigs, k, v));
     /// <summary>Assemblies to test, and their related related configuration files (ending with .json or .config).</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.TargetAssemblyWithConfigs))]
     public static T ResetTargetAssemblyWithConfigs<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearLookup(() => o.TargetAssemblyWithConfigs));
     #endregion
     #region NoLogo
     /// <inheritdoc cref="Xunit2Settings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
     public static T SetNoLogo<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoLogo, v));
     /// <inheritdoc cref="Xunit2Settings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
     public static T ResetNoLogo<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.NoLogo));
     /// <inheritdoc cref="Xunit2Settings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
     public static T EnableNoLogo<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoLogo, true));
     /// <inheritdoc cref="Xunit2Settings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
     public static T DisableNoLogo<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoLogo, false));
     /// <inheritdoc cref="Xunit2Settings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoLogo))]
     public static T ToggleNoLogo<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoLogo, !o.NoLogo));
     #endregion
     #region NoColor
     /// <inheritdoc cref="Xunit2Settings.NoColor"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
     public static T SetNoColor<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoColor, v));
     /// <inheritdoc cref="Xunit2Settings.NoColor"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
     public static T ResetNoColor<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.NoColor));
     /// <inheritdoc cref="Xunit2Settings.NoColor"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
     public static T EnableNoColor<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoColor, true));
     /// <inheritdoc cref="Xunit2Settings.NoColor"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
     public static T DisableNoColor<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoColor, false));
     /// <inheritdoc cref="Xunit2Settings.NoColor"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoColor))]
     public static T ToggleNoColor<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoColor, !o.NoColor));
     #endregion
     #region FailSkips
     /// <inheritdoc cref="Xunit2Settings.FailSkips"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
     public static T SetFailSkips<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.FailSkips, v));
     /// <inheritdoc cref="Xunit2Settings.FailSkips"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
     public static T ResetFailSkips<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.FailSkips));
     /// <inheritdoc cref="Xunit2Settings.FailSkips"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
     public static T EnableFailSkips<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.FailSkips, true));
     /// <inheritdoc cref="Xunit2Settings.FailSkips"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
     public static T DisableFailSkips<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.FailSkips, false));
     /// <inheritdoc cref="Xunit2Settings.FailSkips"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.FailSkips))]
     public static T ToggleFailSkips<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.FailSkips, !o.FailSkips));
     #endregion
     #region StopOnFail
     /// <inheritdoc cref="Xunit2Settings.StopOnFail"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
     public static T SetStopOnFail<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.StopOnFail, v));
     /// <inheritdoc cref="Xunit2Settings.StopOnFail"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
     public static T ResetStopOnFail<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.StopOnFail));
     /// <inheritdoc cref="Xunit2Settings.StopOnFail"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
     public static T EnableStopOnFail<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.StopOnFail, true));
     /// <inheritdoc cref="Xunit2Settings.StopOnFail"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
     public static T DisableStopOnFail<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.StopOnFail, false));
     /// <inheritdoc cref="Xunit2Settings.StopOnFail"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.StopOnFail))]
     public static T ToggleStopOnFail<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.StopOnFail, !o.StopOnFail));
     #endregion
     #region Parallel
     /// <inheritdoc cref="Xunit2Settings.Parallel"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Parallel))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Parallel))]
     public static T SetParallel<T>(this T o, Xunit2ParallelOption v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Parallel, v));
     /// <inheritdoc cref="Xunit2Settings.Parallel"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Parallel))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Parallel))]
     public static T ResetParallel<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Parallel));
     #endregion
     #region MaxThreads
     /// <inheritdoc cref="Xunit2Settings.MaxThreads"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.MaxThreads))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.MaxThreads))]
     public static T SetMaxThreads<T>(this T o, int? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.MaxThreads, v));
     /// <inheritdoc cref="Xunit2Settings.MaxThreads"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.MaxThreads))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.MaxThreads))]
     public static T ResetMaxThreads<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.MaxThreads));
     #endregion
     #region AppDomainMode
     /// <inheritdoc cref="Xunit2Settings.AppDomainMode"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.AppDomainMode))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.AppDomainMode))]
     public static T SetAppDomainMode<T>(this T o, Xunit2AppDomainMode v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.AppDomainMode, v));
     /// <inheritdoc cref="Xunit2Settings.AppDomainMode"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.AppDomainMode))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.AppDomainMode))]
     public static T ResetAppDomainMode<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.AppDomainMode));
     #endregion
     #region NoShadowCopying
     /// <inheritdoc cref="Xunit2Settings.NoShadowCopying"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
     public static T SetNoShadowCopying<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoShadowCopying, v));
     /// <inheritdoc cref="Xunit2Settings.NoShadowCopying"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
     public static T ResetNoShadowCopying<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.NoShadowCopying));
     /// <inheritdoc cref="Xunit2Settings.NoShadowCopying"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
     public static T EnableNoShadowCopying<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoShadowCopying, true));
     /// <inheritdoc cref="Xunit2Settings.NoShadowCopying"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
     public static T DisableNoShadowCopying<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoShadowCopying, false));
     /// <inheritdoc cref="Xunit2Settings.NoShadowCopying"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoShadowCopying))]
     public static T ToggleNoShadowCopying<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoShadowCopying, !o.NoShadowCopying));
     #endregion
     #region Wait
     /// <inheritdoc cref="Xunit2Settings.Wait"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="Xunit2Settings.Wait"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
     public static T ResetWait<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="Xunit2Settings.Wait"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
     public static T EnableWait<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="Xunit2Settings.Wait"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
     public static T DisableWait<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="Xunit2Settings.Wait"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Wait))]
     public static T ToggleWait<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
     #region Diagnostics
     /// <inheritdoc cref="Xunit2Settings.Diagnostics"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
     public static T SetDiagnostics<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Diagnostics, v));
     /// <inheritdoc cref="Xunit2Settings.Diagnostics"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
     public static T ResetDiagnostics<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Diagnostics));
     /// <inheritdoc cref="Xunit2Settings.Diagnostics"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
     public static T EnableDiagnostics<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Diagnostics, true));
     /// <inheritdoc cref="Xunit2Settings.Diagnostics"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
     public static T DisableDiagnostics<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Diagnostics, false));
     /// <inheritdoc cref="Xunit2Settings.Diagnostics"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Diagnostics))]
     public static T ToggleDiagnostics<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Diagnostics, !o.Diagnostics));
     #endregion
     #region Pause
     /// <inheritdoc cref="Xunit2Settings.Pause"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
     public static T SetPause<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Pause, v));
     /// <inheritdoc cref="Xunit2Settings.Pause"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
     public static T ResetPause<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Pause));
     /// <inheritdoc cref="Xunit2Settings.Pause"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
     public static T EnablePause<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Pause, true));
     /// <inheritdoc cref="Xunit2Settings.Pause"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
     public static T DisablePause<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Pause, false));
     /// <inheritdoc cref="Xunit2Settings.Pause"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Pause))]
     public static T TogglePause<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Pause, !o.Pause));
     #endregion
     #region Debug
     /// <inheritdoc cref="Xunit2Settings.Debug"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="Xunit2Settings.Debug"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
     public static T ResetDebug<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="Xunit2Settings.Debug"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
     public static T EnableDebug<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="Xunit2Settings.Debug"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
     public static T DisableDebug<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="Xunit2Settings.Debug"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region Serialization
     /// <inheritdoc cref="Xunit2Settings.Serialization"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
     public static T SetSerialization<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Serialization, v));
     /// <inheritdoc cref="Xunit2Settings.Serialization"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
     public static T ResetSerialization<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Serialization));
     /// <inheritdoc cref="Xunit2Settings.Serialization"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
     public static T EnableSerialization<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Serialization, true));
     /// <inheritdoc cref="Xunit2Settings.Serialization"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
     public static T DisableSerialization<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Serialization, false));
     /// <inheritdoc cref="Xunit2Settings.Serialization"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Serialization))]
     public static T ToggleSerialization<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Serialization, !o.Serialization));
     #endregion
     #region Traits
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T SetTraits<T>(this T o, string k, params string[] v) where T : Xunit2Settings => o.Modify(b => b.SetLookup(() => o.Traits, k, v));
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T SetTraits<T>(this T o, string k, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.SetLookup(() => o.Traits, k, v));
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T AddTraits<T>(this T o, string k, params string[] v) where T : Xunit2Settings => o.Modify(b => b.AddLookup(() => o.Traits, k, v));
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T AddTraits<T>(this T o, string k, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.AddLookup(() => o.Traits, k, v));
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T RemoveTraits<T>(this T o, string k) where T : Xunit2Settings => o.Modify(b => b.RemoveLookup(() => o.Traits, k));
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T RemoveTraits<T>(this T o, string k, string v) where T : Xunit2Settings => o.Modify(b => b.RemoveLookup(() => o.Traits, k, v));
     /// <summary>Only run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Traits))]
     public static T ResetTraits<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearLookup(() => o.Traits));
     #endregion
     #region ExcludedTraits
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T SetExcludedTraits<T>(this T o, string k, params string[] v) where T : Xunit2Settings => o.Modify(b => b.SetLookup(() => o.ExcludedTraits, k, v));
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T SetExcludedTraits<T>(this T o, string k, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.SetLookup(() => o.ExcludedTraits, k, v));
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T AddExcludedTraits<T>(this T o, string k, params string[] v) where T : Xunit2Settings => o.Modify(b => b.AddLookup(() => o.ExcludedTraits, k, v));
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T AddExcludedTraits<T>(this T o, string k, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.AddLookup(() => o.ExcludedTraits, k, v));
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T RemoveExcludedTraits<T>(this T o, string k) where T : Xunit2Settings => o.Modify(b => b.RemoveLookup(() => o.ExcludedTraits, k));
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T RemoveExcludedTraits<T>(this T o, string k, string v) where T : Xunit2Settings => o.Modify(b => b.RemoveLookup(() => o.ExcludedTraits, k, v));
     /// <summary>Do not run tests with matching name/value traits.</summary>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ExcludedTraits))]
     public static T ResetExcludedTraits<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearLookup(() => o.ExcludedTraits));
     #endregion
     #region Methods
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T SetMethods<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Methods, v));
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T SetMethods<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Methods, v));
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T AddMethods<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.AddCollection(() => o.Methods, v));
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T AddMethods<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.AddCollection(() => o.Methods, v));
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T RemoveMethods<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.RemoveCollection(() => o.Methods, v));
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T RemoveMethods<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.RemoveCollection(() => o.Methods, v));
     /// <inheritdoc cref="Xunit2Settings.Methods"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Methods))]
     public static T ClearMethods<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearCollection(() => o.Methods));
     #endregion
     #region Classes
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T SetClasses<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Classes, v));
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T SetClasses<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Classes, v));
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T AddClasses<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.AddCollection(() => o.Classes, v));
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T AddClasses<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.AddCollection(() => o.Classes, v));
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T RemoveClasses<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.RemoveCollection(() => o.Classes, v));
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T RemoveClasses<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.RemoveCollection(() => o.Classes, v));
     /// <inheritdoc cref="Xunit2Settings.Classes"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Classes))]
     public static T ClearClasses<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearCollection(() => o.Classes));
     #endregion
     #region Namespaces
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T SetNamespaces<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Namespaces, v));
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T SetNamespaces<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Namespaces, v));
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T AddNamespaces<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.AddCollection(() => o.Namespaces, v));
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T AddNamespaces<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.AddCollection(() => o.Namespaces, v));
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T RemoveNamespaces<T>(this T o, params string[] v) where T : Xunit2Settings => o.Modify(b => b.RemoveCollection(() => o.Namespaces, v));
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T RemoveNamespaces<T>(this T o, IEnumerable<string> v) where T : Xunit2Settings => o.Modify(b => b.RemoveCollection(() => o.Namespaces, v));
     /// <inheritdoc cref="Xunit2Settings.Namespaces"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Namespaces))]
     public static T ClearNamespaces<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearCollection(() => o.Namespaces));
     #endregion
     #region NoAutoReporters
     /// <inheritdoc cref="Xunit2Settings.NoAutoReporters"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
     public static T SetNoAutoReporters<T>(this T o, bool? v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoAutoReporters, v));
     /// <inheritdoc cref="Xunit2Settings.NoAutoReporters"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
     public static T ResetNoAutoReporters<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.NoAutoReporters));
     /// <inheritdoc cref="Xunit2Settings.NoAutoReporters"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
     public static T EnableNoAutoReporters<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoAutoReporters, true));
     /// <inheritdoc cref="Xunit2Settings.NoAutoReporters"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
     public static T DisableNoAutoReporters<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoAutoReporters, false));
     /// <inheritdoc cref="Xunit2Settings.NoAutoReporters"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.NoAutoReporters))]
     public static T ToggleNoAutoReporters<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.NoAutoReporters, !o.NoAutoReporters));
     #endregion
     #region Reporter
     /// <inheritdoc cref="Xunit2Settings.Reporter"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Reporter))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Reporter))]
     public static T SetReporter<T>(this T o, Xunit2ReporterType v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.Reporter, v));
     /// <inheritdoc cref="Xunit2Settings.Reporter"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Reporter))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.Reporter))]
     public static T ResetReporter<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.Remove(() => o.Reporter));
     #endregion
     #region ResultReports
     /// <inheritdoc cref="Xunit2Settings.ResultReports"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
     public static T SetResultReports<T>(this T o, IDictionary<Xunit2ResultFormat, string> v) where T : Xunit2Settings => o.Modify(b => b.Set(() => o.ResultReports, v.ToDictionary(x => x.Key, x => x.Value, EqualityComparer<Xunit2ResultFormat>.Default)));
     /// <inheritdoc cref="Xunit2Settings.ResultReports"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
     public static T SetResultReport<T>(this T o, Xunit2ResultFormat k, string v) where T : Xunit2Settings => o.Modify(b => b.SetDictionary(() => o.ResultReports, k, v));
     /// <inheritdoc cref="Xunit2Settings.ResultReports"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
     public static T AddResultReport<T>(this T o, Xunit2ResultFormat k, string v) where T : Xunit2Settings => o.Modify(b => b.AddDictionary(() => o.ResultReports, k, v));
     /// <inheritdoc cref="Xunit2Settings.ResultReports"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
     public static T RemoveResultReport<T>(this T o, Xunit2ResultFormat k) where T : Xunit2Settings => o.Modify(b => b.RemoveDictionary(() => o.ResultReports, k));
     /// <inheritdoc cref="Xunit2Settings.ResultReports"/>
-    [Pure] [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
+    [Builder(Type = typeof(Xunit2Settings), Property = nameof(Xunit2Settings.ResultReports))]
     public static T ClearResultReports<T>(this T o) where T : Xunit2Settings => o.Modify(b => b.ClearDictionary(() => o.ResultReports));
     #endregion
 }
 #endregion
 #region Xunit2ReporterType
 /// <summary>Used within <see cref="XunitTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<Xunit2ReporterType>))]
@@ -491,7 +486,6 @@ public partial class Xunit2ReporterType : Enumeration
 #endregion
 #region Xunit2ResultFormat
 /// <summary>Used within <see cref="XunitTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<Xunit2ResultFormat>))]
@@ -509,7 +503,6 @@ public partial class Xunit2ResultFormat : Enumeration
 #endregion
 #region Xunit2ParallelOption
 /// <summary>Used within <see cref="XunitTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<Xunit2ParallelOption>))]
@@ -527,7 +520,6 @@ public partial class Xunit2ParallelOption : Enumeration
 #endregion
 #region Xunit2AppDomainMode
 /// <summary>Used within <see cref="XunitTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<Xunit2AppDomainMode>))]

@@ -11,7 +11,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.IO;
@@ -21,7 +20,6 @@ using static Fallout.Common.ControlFlow;
 
 namespace Fallout.Common.Tools.SignPath;
 
-[PublicAPI]
 public static class SignPathTasks
 {
     private class SigningRequestStatus
@@ -211,12 +209,12 @@ public static class SignPathTasks
     private static string SubmitVia(
         HttpClient httpClient,
         string url,
-        [CanBeNull] string projectSlug,
-        [CanBeNull] string signingPolicySlug,
-        [CanBeNull] string signingPolicyId,
+        string projectSlug,
+        string signingPolicySlug,
+        string signingPolicyId,
         string description,
-        [CanBeNull] string artifactConfigurationId,
-        [CanBeNull] string artifactConfigurationSlug,
+        string artifactConfigurationId,
+        string artifactConfigurationSlug,
         string artifactFile)
     {
         StreamContent GetStreamContent()

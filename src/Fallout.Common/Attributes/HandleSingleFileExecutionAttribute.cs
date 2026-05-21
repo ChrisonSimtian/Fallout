@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using ICSharpCode.SharpZipLib.Zip;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using NuGet.Packaging;
 using Fallout.Common.IO;
@@ -19,7 +18,6 @@ using Serilog;
 
 namespace Fallout.Common.Execution;
 
-[PublicAPI]
 public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
     private const string ScriptUrl = "https://dot.net/v1/dotnet-install.sh";
@@ -106,7 +104,6 @@ public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, I
     private string ScriptFileName => EnvironmentInfo.IsWin ? "dotnet-install.ps1" : "dotnet-install.sh";
     private AbsolutePath ScriptFile => Constants.GlobalFalloutDirectory / ScriptFileName;
 
-    [CanBeNull]
     private string GetDotNetRuntimeVersion()
     {
         var globalJsonFile = Build.RootDirectory / "global.json";

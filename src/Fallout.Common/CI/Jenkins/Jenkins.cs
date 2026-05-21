@@ -6,21 +6,18 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.Jenkins;
 
 /// <summary>
 /// Interface according to the <a href="https://wiki.jenkins.io/display/JENKINS/Building+a+software+project">official website</a>.
 /// </summary>
-[PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
 public class Jenkins : Host, IBuildServer
 {
     public new static Jenkins Instance => Host.Instance as Jenkins;
 
-    [UsedImplicitly]
     internal static bool IsRunningJenkins => EnvironmentInfo.HasVariable("JENKINS_HOME");
 
     internal Jenkins()
@@ -68,22 +65,22 @@ public class Jenkins : Host, IBuildServer
     /// <summary>
     ///  For Git-based projects, this variable contains the Git hash of the commit checked out for the build (like ce9a3c1404e8c91be604088670e93434c4253f03) ﻿(all the Git* properties require git plugin).
     /// </summary>
-    [CanBeNull] public string GitCommit => EnvironmentInfo.GetVariable("GIT_COMMIT");
+    public string GitCommit => EnvironmentInfo.GetVariable("GIT_COMMIT");
 
     /// <summary>
     ///  For Git-based projects, this variable contains the Git hash of the previous build commit (like ce9a3c1404e8c91be604088670e93434c4253f03) ﻿(all the Git* properties require git plugin).
     /// </summary>
-    [CanBeNull] public string GitPreviousCommit => EnvironmentInfo.GetVariable("GIT_PREVIOUS_COMMIT");
+    public string GitPreviousCommit => EnvironmentInfo.GetVariable("GIT_PREVIOUS_COMMIT");
 
     /// <summary>
     ///  For Git-based projects, this variable contains the Git hash of the last successful build (like ce9a3c1404e8c91be604088670e93434c4253f03) ﻿(all the Git* properties require git plugin).
     /// </summary>
-    [CanBeNull] public string GitPreviousSuccessfulCommit => EnvironmentInfo.GetVariable("GIT_PREVIOUS_SUCCESSFUL_COMMIT");
+    public string GitPreviousSuccessfulCommit => EnvironmentInfo.GetVariable("GIT_PREVIOUS_SUCCESSFUL_COMMIT");
 
     /// <summary>
     ///  For Git-based projects, this variable contains the Git url (like git@github.com:user/repo.git or [https://github.com/user/repo.git])  (all the Git* properties require git plugin).
     /// </summary>
-    [CanBeNull] public string GitUrl => EnvironmentInfo.GetVariable("GIT_URL");
+    public string GitUrl => EnvironmentInfo.GetVariable("GIT_URL");
 
     /// <summary>
     /// The path to the jenkins home directory.

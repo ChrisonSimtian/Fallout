@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.TeamCity.Configuration;
 
-[PublicAPI]
 public abstract class TeamCityTrigger : ConfigurationEntity
 {
 }

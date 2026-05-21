@@ -4,13 +4,11 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
-[PublicAPI]
 public class AzurePipelinesVcsPushTrigger : ConfigurationEntity
 {
     public bool Disabled { get; set; }

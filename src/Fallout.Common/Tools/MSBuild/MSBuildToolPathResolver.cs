@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tools.MSBuild;
@@ -125,7 +124,6 @@ public static class MSBuildToolPathResolver
         public string ToolPath { get; }
     }
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private enum VisualStudioEdition
     {
         Enterprise,

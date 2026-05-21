@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Locator;
 using Fallout.Common.IO;
@@ -18,7 +17,6 @@ using Serilog;
 
 namespace Fallout.Common.ProjectModel;
 
-[PublicAPI]
 public static class ProjectModelTasks
 {
     // TODO: Remove usages
@@ -126,7 +124,7 @@ public static class ProjectModelTasks
         return msbuildProject;
     }
 
-    private static Dictionary<string, string> GetProperties([CanBeNull] string configuration, [CanBeNull] string targetFramework)
+    private static Dictionary<string, string> GetProperties(string configuration, string targetFramework)
     {
         var properties = new Dictionary<string, string>();
         if (configuration != null)

@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
@@ -50,7 +49,6 @@ public class ConfigurationGenerationTest
         return TestBuild.GetAttributes().Select(x => new object[] { x.TestName, x.Generator });
     }
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [AppVeyorSecret("GitHubToken", "encrypted-yaml")]
     [TeamCityToken("GitHubToken", "74928d76-46e8-45cc-ad22-6438915ac070")]
     public class TestBuild : FalloutBuild

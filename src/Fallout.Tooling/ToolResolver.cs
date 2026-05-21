@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class ToolResolver
 {
     public static Tool GetTool(string toolPath)
@@ -30,7 +28,6 @@ public static class ToolResolver
         return GetTool(toolPath);
     }
 
-    [CanBeNull]
     public static Tool TryGetEnvironmentTool(string name)
     {
         var toolPath = ToolPathResolver.TryGetEnvironmentExecutable($"{name.ToUpperInvariant()}_EXE");

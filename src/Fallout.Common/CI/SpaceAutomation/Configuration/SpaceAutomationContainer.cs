@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.SpaceAutomation.Configuration;
 
-[PublicAPI]
 public class SpaceAutomationContainer : ConfigurationEntity
 {
     public string Image { get; set; }

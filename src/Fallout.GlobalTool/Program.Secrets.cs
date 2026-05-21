@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Fallout.Common;
 using Fallout.Common.IO;
@@ -28,8 +27,7 @@ partial class Program
     private const string DeletePasswordAndExit = "<Delete Password & Exit>";
 
     // ReSharper disable once CognitiveComplexity
-    [UsedImplicitly]
-    public static int Secrets(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int Secrets(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var secretParameters = CompletionUtility.GetItemsFromSchema(
                 GetBuildSchemaFile(rootDirectory.NotNull("No root directory")),

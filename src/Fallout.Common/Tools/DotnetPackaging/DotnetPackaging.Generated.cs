@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.DotnetPackaging;
 
 /// <summary><p>DotnetPackaging is able to package your application into various formats, including Deb and AppImage.</p><p>For more details, visit the <a href="https://github.com/superjmn/dotnetpackaging">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class DotnetPackagingTasks : ToolTasks, IRequireNuGetPackage
@@ -45,7 +43,6 @@ public partial class DotnetPackagingTasks : ToolTasks, IRequireNuGetPackage
 }
 #region DotnetPackagingDebSettings
 /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingDebSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotnetPackagingTasks), Command = nameof(DotnetPackagingTasks.DotnetPackagingDeb), Arguments = "deb")]
 public partial class DotnetPackagingDebSettings : ToolOptions
@@ -60,7 +57,6 @@ public partial class DotnetPackagingDebSettings : ToolOptions
 #endregion
 #region DotnetPackagingAppImageSettings
 /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotnetPackagingTasks), Command = nameof(DotnetPackagingTasks.DotnetPackagingAppImage), Arguments = "appimage")]
 public partial class DotnetPackagingAppImageSettings : ToolOptions
@@ -93,173 +89,170 @@ public partial class DotnetPackagingAppImageSettings : ToolOptions
 #endregion
 #region DotnetPackagingDebSettingsExtensions
 /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingDebSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotnetPackagingDebSettingsExtensions
 {
     #region Directory
     /// <inheritdoc cref="DotnetPackagingDebSettings.Directory"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Directory))]
+    [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Directory))]
     public static T SetDirectory<T>(this T o, string v) where T : DotnetPackagingDebSettings => o.Modify(b => b.Set(() => o.Directory, v));
     /// <inheritdoc cref="DotnetPackagingDebSettings.Directory"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Directory))]
+    [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Directory))]
     public static T ResetDirectory<T>(this T o) where T : DotnetPackagingDebSettings => o.Modify(b => b.Remove(() => o.Directory));
     #endregion
     #region Metadata
     /// <inheritdoc cref="DotnetPackagingDebSettings.Metadata"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Metadata))]
+    [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Metadata))]
     public static T SetMetadata<T>(this T o, string v) where T : DotnetPackagingDebSettings => o.Modify(b => b.Set(() => o.Metadata, v));
     /// <inheritdoc cref="DotnetPackagingDebSettings.Metadata"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Metadata))]
+    [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Metadata))]
     public static T ResetMetadata<T>(this T o) where T : DotnetPackagingDebSettings => o.Modify(b => b.Remove(() => o.Metadata));
     #endregion
     #region Output
     /// <inheritdoc cref="DotnetPackagingDebSettings.Output"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Output))]
+    [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : DotnetPackagingDebSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="DotnetPackagingDebSettings.Output"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Output))]
+    [Builder(Type = typeof(DotnetPackagingDebSettings), Property = nameof(DotnetPackagingDebSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : DotnetPackagingDebSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
 }
 #endregion
 #region DotnetPackagingAppImageSettingsExtensions
 /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotnetPackagingAppImageSettingsExtensions
 {
     #region Directory
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Directory"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Directory))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Directory))]
     public static T SetDirectory<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.Directory, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Directory"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Directory))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Directory))]
     public static T ResetDirectory<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.Directory));
     #endregion
     #region Output
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Output"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Output))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Output"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Output))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region ApplicationName
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ApplicationName"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ApplicationName))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ApplicationName))]
     public static T SetApplicationName<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.ApplicationName, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ApplicationName"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ApplicationName))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ApplicationName))]
     public static T ResetApplicationName<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.ApplicationName));
     #endregion
     #region MainCategory
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.MainCategory"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.MainCategory))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.MainCategory))]
     public static T SetMainCategory<T>(this T o, DotnetPackagingMainCategory v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.MainCategory, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.MainCategory"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.MainCategory))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.MainCategory))]
     public static T ResetMainCategory<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.MainCategory));
     #endregion
     #region AdditionalCategories
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T SetAdditionalCategories<T>(this T o, params DotnetPackagingAdditionalCategory[] v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.AdditionalCategories, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T SetAdditionalCategories<T>(this T o, IEnumerable<DotnetPackagingAdditionalCategory> v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.AdditionalCategories, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T AddAdditionalCategories<T>(this T o, params DotnetPackagingAdditionalCategory[] v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.AddCollection(() => o.AdditionalCategories, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T AddAdditionalCategories<T>(this T o, IEnumerable<DotnetPackagingAdditionalCategory> v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.AddCollection(() => o.AdditionalCategories, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T RemoveAdditionalCategories<T>(this T o, params DotnetPackagingAdditionalCategory[] v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.RemoveCollection(() => o.AdditionalCategories, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T RemoveAdditionalCategories<T>(this T o, IEnumerable<DotnetPackagingAdditionalCategory> v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.RemoveCollection(() => o.AdditionalCategories, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AdditionalCategories"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AdditionalCategories))]
     public static T ClearAdditionalCategories<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.ClearCollection(() => o.AdditionalCategories));
     #endregion
     #region Icon
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Icon"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Icon))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Icon))]
     public static T SetIcon<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.Icon, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Icon"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Icon))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Icon))]
     public static T ResetIcon<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.Icon));
     #endregion
     #region Homepage
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Homepage"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Homepage))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Homepage))]
     public static T SetHomepage<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.Homepage, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Homepage"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Homepage))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Homepage))]
     public static T ResetHomepage<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.Homepage));
     #endregion
     #region License
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.License"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.License))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.License))]
     public static T SetLicense<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.License, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.License"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.License))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.License))]
     public static T ResetLicense<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.License));
     #endregion
     #region Version
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Version"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Version))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Version"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Version))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region ScreenshotUrls
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T SetScreenshotUrls<T>(this T o, params string[] v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.ScreenshotUrls, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T SetScreenshotUrls<T>(this T o, IEnumerable<string> v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.ScreenshotUrls, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T AddScreenshotUrls<T>(this T o, params string[] v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.AddCollection(() => o.ScreenshotUrls, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T AddScreenshotUrls<T>(this T o, IEnumerable<string> v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.AddCollection(() => o.ScreenshotUrls, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T RemoveScreenshotUrls<T>(this T o, params string[] v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.RemoveCollection(() => o.ScreenshotUrls, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T RemoveScreenshotUrls<T>(this T o, IEnumerable<string> v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.RemoveCollection(() => o.ScreenshotUrls, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.ScreenshotUrls))]
     public static T ClearScreenshotUrls<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.ClearCollection(() => o.ScreenshotUrls));
     #endregion
     #region Summary
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Summary"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Summary))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Summary))]
     public static T SetSummary<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.Summary, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.Summary"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Summary))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.Summary))]
     public static T ResetSummary<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.Summary));
     #endregion
     #region AppId
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AppId"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AppId))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AppId))]
     public static T SetAppId<T>(this T o, string v) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Set(() => o.AppId, v));
     /// <inheritdoc cref="DotnetPackagingAppImageSettings.AppId"/>
-    [Pure] [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AppId))]
+    [Builder(Type = typeof(DotnetPackagingAppImageSettings), Property = nameof(DotnetPackagingAppImageSettings.AppId))]
     public static T ResetAppId<T>(this T o) where T : DotnetPackagingAppImageSettings => o.Modify(b => b.Remove(() => o.AppId));
     #endregion
 }
 #endregion
 #region DotnetPackagingMainCategory
 /// <summary>Used within <see cref="DotnetPackagingTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<DotnetPackagingMainCategory>))]
@@ -284,7 +277,6 @@ public partial class DotnetPackagingMainCategory : Enumeration
 #endregion
 #region DotnetPackagingAdditionalCategory
 /// <summary>Used within <see cref="DotnetPackagingTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<DotnetPackagingAdditionalCategory>))]

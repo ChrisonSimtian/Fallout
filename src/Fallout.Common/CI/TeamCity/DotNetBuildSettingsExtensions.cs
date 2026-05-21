@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
 
 namespace Fallout.Common.CI.TeamCity;
 
-[PublicAPI]
 public static class DotNetBuildSettingsExtensions
 {
     public static DotNetBuildSettings AddTeamCityLogger(this DotNetBuildSettings toolSettings)

@@ -9,7 +9,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
@@ -17,7 +16,6 @@ using Fallout.Common.Utilities.Net;
 
 namespace Fallout.Common.Tools.Slack;
 
-[PublicAPI]
 public static class SlackTasks
 {
     private static HttpClient s_client = new();
@@ -61,7 +59,6 @@ public static class SlackTasks
     }
 }
 
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Serializable]
 public class SlackMessageActionButton : SlackMessageAction

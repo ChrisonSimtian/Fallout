@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.IO;
@@ -19,7 +18,6 @@ public static partial class AbsolutePathExtensions
     /// Indicates whether a file or directory exists. The variable or member should indicate whether it is a file (<c>*file</c>,
     /// <c>*executable</c>, <c>*exe</c>, <c>*script</c>), or a directory (<c>*directory</c>, <c>*dir</c>, <c>*folder</c>).
     /// </summary>
-    [Pure]
     public static bool Exists(this AbsolutePath path, [CallerArgumentExpression("path")] string expression = null)
     {
         if (expression.EndsWithAnyOrdinalIgnoreCase("file", "executable", "exe", "script", "archive"))
@@ -33,7 +31,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Indicates whether the file exists.
     /// </summary>
-    [Pure]
     public static bool FileExists(this AbsolutePath path)
     {
         return File.Exists(path);
@@ -42,7 +39,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Indicates whether the directory exists.
     /// </summary>
-    [Pure]
     public static bool DirectoryExists(this AbsolutePath path)
     {
         return Directory.Exists(path);
@@ -51,7 +47,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Indicates whether the directory contains a file (<c>*</c> as wildcard) using <see cref="SearchOption.TopDirectoryOnly"/>.
     /// </summary>
-    [Pure]
     public static bool ContainsFile(this AbsolutePath path, string pattern, SearchOption options = SearchOption.TopDirectoryOnly)
     {
         Assert.DirectoryExists(path);
@@ -61,7 +56,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Indicates whether the directory contains a directory (<c>*</c> as wildcard) using <see cref="SearchOption.TopDirectoryOnly"/>.
     /// </summary>
-    [Pure]
     public static bool ContainsDirectory(this AbsolutePath path, string pattern, SearchOption options = SearchOption.TopDirectoryOnly)
     {
         Assert.DirectoryExists(path);
@@ -72,8 +66,6 @@ public static partial class AbsolutePathExtensions
     /// Returns the path if a file or directory exists. The variable or member should indicate whether it is a file (<c>*file</c>,
     /// <c>*executable</c>, <c>*exe</c>, <c>*script</c>), or a directory (<c>*directory</c>, <c>*dir</c>, <c>*folder</c>).
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static AbsolutePath Existing(this AbsolutePath path, [CallerArgumentExpression("path")] string expression = null)
     {
         return path.Exists(expression) ? path : null;
@@ -82,8 +74,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Returns the path if the file exists.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static AbsolutePath ExistingFile(this AbsolutePath path)
     {
         return path.FileExists() ? path : null;
@@ -92,8 +82,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Returns the path if the directory exists.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static AbsolutePath ExistingDirectory(this AbsolutePath path)
     {
         return path.DirectoryExists() ? path : null;
@@ -102,7 +90,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Returns all existing files.
     /// </summary>
-    [Pure]
     public static IEnumerable<AbsolutePath> WhereFileExists(this IEnumerable<AbsolutePath> paths)
     {
         return paths.Where(x => x.FileExists());
@@ -111,7 +98,6 @@ public static partial class AbsolutePathExtensions
     /// <summary>
     /// Returns all existing directories.
     /// </summary>
-    [Pure]
     public static IEnumerable<AbsolutePath> WhereDirectoryExists(this IEnumerable<AbsolutePath> paths)
     {
         return paths.Where(x => x.DirectoryExists());

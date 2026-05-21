@@ -9,17 +9,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.IO;
 
-[PublicAPI]
 public static class HttpTasks
 {
     public static TimeSpan DefaultTimeout = TimeSpan.FromSeconds(5);
 
-    [Pure]
     public static string HttpDownloadString(
         string uri,
         Configure<HttpClient> clientConfigurator = null,
@@ -28,7 +25,6 @@ public static class HttpTasks
         return HttpDownloadStringAsync(uri, clientConfigurator, headerConfigurator).GetAwaiter().GetResult();
     }
 
-    [Pure]
     public static async Task<string> HttpDownloadStringAsync(
         string uri,
         Configure<HttpClient> clientConfigurator = null,

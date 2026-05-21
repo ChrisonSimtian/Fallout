@@ -6,12 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.TeamCity.Configuration;
 
-[PublicAPI]
 public class TeamCityConfigurationParameter : TeamCityParameter
 {
     public TeamCityParameterType Type { get; set; }

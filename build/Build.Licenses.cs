@@ -21,7 +21,6 @@ partial class Build
            {
                ("Glob", "https://raw.githubusercontent.com/kthompson/glob/develop/LICENSE"),
                ("ICSharpCode.SharpZipLib", "https://raw.githubusercontent.com/icsharpcode/SharpZipLib/master/LICENSE.txt"),
-               ("JetBrains.Annotations", "https://raw.githubusercontent.com/JetBrains/JetBrains.Annotations/main/license.md"),
                ("Microsoft.ApplicationInsights", "https://raw.githubusercontent.com/microsoft/ApplicationInsights-dotnet/main/LICENSE"),
                ("Microsoft.Build", "https://raw.githubusercontent.com/dotnet/msbuild/main/LICENSE"),
                ("Microsoft.CodeAnalysis", "https://raw.githubusercontent.com/dotnet/roslyn/main/License.txt"),

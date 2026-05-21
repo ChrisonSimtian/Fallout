@@ -9,13 +9,11 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common;
 
-[PublicAPI]
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
 public static partial class EnvironmentInfo
@@ -48,7 +46,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the value from an environment variable.
     /// </summary>
-    [CanBeNull]
     public static string GetVariable(string name)
     {
         return Environment.GetEnvironmentVariable(name);
@@ -57,7 +54,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the converted value from an environment variable.
     /// </summary>
-    [CanBeNull]
     public static T GetVariable<T>(string name, char? separator = null)
     {
         var value = GetVariable(name);

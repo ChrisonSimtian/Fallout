@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.NerdbankGitVersioning;
 
 /// <summary><p>For more details, visit the <a href="https://github.com/AArnott/Nerdbank.GitVersioning">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class NerdbankGitVersioningTasks : ToolTasks, IRequireNuGetPackage
@@ -80,7 +78,6 @@ public partial class NerdbankGitVersioningTasks : ToolTasks, IRequireNuGetPackag
 }
 #region NerdbankGitVersioningInstallSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningInstall(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningInstall), Arguments = "install")]
 public partial class NerdbankGitVersioningInstallSettings : ToolOptions
@@ -95,7 +92,6 @@ public partial class NerdbankGitVersioningInstallSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningGetVersionSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningGetVersion(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningGetVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningGetVersion), Arguments = "get-version")]
 public partial class NerdbankGitVersioningGetVersionSettings : ToolOptions
@@ -114,7 +110,6 @@ public partial class NerdbankGitVersioningGetVersionSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningSetVersionSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningSetVersion(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningSetVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningSetVersion), Arguments = "set-version")]
 public partial class NerdbankGitVersioningSetVersionSettings : ToolOptions
@@ -127,7 +122,6 @@ public partial class NerdbankGitVersioningSetVersionSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningTagSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningTag(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningTagSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningTag), Arguments = "tag")]
 public partial class NerdbankGitVersioningTagSettings : ToolOptions
@@ -140,7 +134,6 @@ public partial class NerdbankGitVersioningTagSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningGetCommitsSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningGetCommits(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningGetCommitsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningGetCommits), Arguments = "get-commits")]
 public partial class NerdbankGitVersioningGetCommitsSettings : ToolOptions
@@ -155,7 +148,6 @@ public partial class NerdbankGitVersioningGetCommitsSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningCloudSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningCloud(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningCloudSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningCloud), Arguments = "cloud")]
 public partial class NerdbankGitVersioningCloudSettings : ToolOptions
@@ -178,7 +170,6 @@ public partial class NerdbankGitVersioningCloudSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningPrepareReleaseSettings
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningPrepareRelease(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningPrepareReleaseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NerdbankGitVersioningTasks), Command = nameof(NerdbankGitVersioningTasks.NerdbankGitVersioningPrepareRelease), Arguments = "prepare-release")]
 public partial class NerdbankGitVersioningPrepareReleaseSettings : ToolOptions
@@ -195,322 +186,314 @@ public partial class NerdbankGitVersioningPrepareReleaseSettings : ToolOptions
 #endregion
 #region NerdbankGitVersioningInstallSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningInstall(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningInstallSettingsExtensions
 {
     #region Path
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Path"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Path))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Path))]
     public static T SetPath<T>(this T o, string v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.Set(() => o.Path, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Path"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Path))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Path))]
     public static T ResetPath<T>(this T o) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.Remove(() => o.Path));
     #endregion
     #region Version
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Sources
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T SetSources<T>(this T o, params string[] v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.Set(() => o.Sources, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T SetSources<T>(this T o, IEnumerable<string> v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.Set(() => o.Sources, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T AddSources<T>(this T o, params string[] v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.AddCollection(() => o.Sources, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T AddSources<T>(this T o, IEnumerable<string> v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.AddCollection(() => o.Sources, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T RemoveSources<T>(this T o, params string[] v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Sources, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T RemoveSources<T>(this T o, IEnumerable<string> v) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Sources, v));
     /// <inheritdoc cref="NerdbankGitVersioningInstallSettings.Sources"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
+    [Builder(Type = typeof(NerdbankGitVersioningInstallSettings), Property = nameof(NerdbankGitVersioningInstallSettings.Sources))]
     public static T ClearSources<T>(this T o) where T : NerdbankGitVersioningInstallSettings => o.Modify(b => b.ClearCollection(() => o.Sources));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningGetVersionSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningGetVersion(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningGetVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningGetVersionSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Project))]
     public static T ResetProject<T>(this T o) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region Metadata
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Metadata"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Metadata))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Metadata))]
     public static T SetMetadata<T>(this T o, string v) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Set(() => o.Metadata, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Metadata"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Metadata))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Metadata))]
     public static T ResetMetadata<T>(this T o) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Remove(() => o.Metadata));
     #endregion
     #region Format
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Format"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Format))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Format))]
     public static T SetFormat<T>(this T o, NerdbankGitVersioningFormat v) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Set(() => o.Format, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Format"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Format))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Format))]
     public static T ResetFormat<T>(this T o) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Remove(() => o.Format));
     #endregion
     #region Variable
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Variable"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Variable))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Variable))]
     public static T SetVariable<T>(this T o, string v) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Set(() => o.Variable, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.Variable"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Variable))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.Variable))]
     public static T ResetVariable<T>(this T o) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Remove(() => o.Variable));
     #endregion
     #region CommitIsh
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.CommitIsh"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.CommitIsh))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.CommitIsh))]
     public static T SetCommitIsh<T>(this T o, string v) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Set(() => o.CommitIsh, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetVersionSettings.CommitIsh"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.CommitIsh))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetVersionSettings), Property = nameof(NerdbankGitVersioningGetVersionSettings.CommitIsh))]
     public static T ResetCommitIsh<T>(this T o) where T : NerdbankGitVersioningGetVersionSettings => o.Modify(b => b.Remove(() => o.CommitIsh));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningSetVersionSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningSetVersion(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningSetVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningSetVersionSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="NerdbankGitVersioningSetVersionSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : NerdbankGitVersioningSetVersionSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="NerdbankGitVersioningSetVersionSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Project))]
     public static T ResetProject<T>(this T o) where T : NerdbankGitVersioningSetVersionSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region Version
     /// <inheritdoc cref="NerdbankGitVersioningSetVersionSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : NerdbankGitVersioningSetVersionSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="NerdbankGitVersioningSetVersionSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningSetVersionSettings), Property = nameof(NerdbankGitVersioningSetVersionSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : NerdbankGitVersioningSetVersionSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningTagSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningTag(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningTagSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningTagSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="NerdbankGitVersioningTagSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : NerdbankGitVersioningTagSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="NerdbankGitVersioningTagSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.Project))]
     public static T ResetProject<T>(this T o) where T : NerdbankGitVersioningTagSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region VersionOrRef
     /// <inheritdoc cref="NerdbankGitVersioningTagSettings.VersionOrRef"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.VersionOrRef))]
+    [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.VersionOrRef))]
     public static T SetVersionOrRef<T>(this T o, string v) where T : NerdbankGitVersioningTagSettings => o.Modify(b => b.Set(() => o.VersionOrRef, v));
     /// <inheritdoc cref="NerdbankGitVersioningTagSettings.VersionOrRef"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.VersionOrRef))]
+    [Builder(Type = typeof(NerdbankGitVersioningTagSettings), Property = nameof(NerdbankGitVersioningTagSettings.VersionOrRef))]
     public static T ResetVersionOrRef<T>(this T o) where T : NerdbankGitVersioningTagSettings => o.Modify(b => b.Remove(() => o.VersionOrRef));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningGetCommitsSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningGetCommits(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningGetCommitsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningGetCommitsSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Project))]
     public static T ResetProject<T>(this T o) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region Quiet
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
     #region Version
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="NerdbankGitVersioningGetCommitsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningGetCommitsSettings), Property = nameof(NerdbankGitVersioningGetCommitsSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : NerdbankGitVersioningGetCommitsSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningCloudSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningCloud(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningCloudSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningCloudSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Project))]
     public static T ResetProject<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region Metadata
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Metadata"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Metadata))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Metadata))]
     public static T SetMetadata<T>(this T o, string v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.Metadata, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Metadata"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Metadata))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Metadata))]
     public static T ResetMetadata<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Remove(() => o.Metadata));
     #endregion
     #region Version
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Version"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Version))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region CISystem
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CISystem"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CISystem))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CISystem))]
     public static T SetCISystem<T>(this T o, NerdbankGitVersioningCISystem v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.CISystem, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CISystem"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CISystem))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CISystem))]
     public static T ResetCISystem<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Remove(() => o.CISystem));
     #endregion
     #region AllVars
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.AllVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
     public static T SetAllVars<T>(this T o, bool? v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.AllVars, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.AllVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
     public static T ResetAllVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Remove(() => o.AllVars));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.AllVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
     public static T EnableAllVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.AllVars, true));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.AllVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
     public static T DisableAllVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.AllVars, false));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.AllVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.AllVars))]
     public static T ToggleAllVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.AllVars, !o.AllVars));
     #endregion
     #region CommonVars
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CommonVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
     public static T SetCommonVars<T>(this T o, bool? v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.CommonVars, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CommonVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
     public static T ResetCommonVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Remove(() => o.CommonVars));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CommonVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
     public static T EnableCommonVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.CommonVars, true));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CommonVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
     public static T DisableCommonVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.CommonVars, false));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.CommonVars"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.CommonVars))]
     public static T ToggleCommonVars<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.CommonVars, !o.CommonVars));
     #endregion
     #region Variables
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
     public static T SetVariables<T>(this T o, IDictionary<string, string> v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.Set(() => o.Variables, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
     public static T SetVariable<T>(this T o, string k, string v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.SetDictionary(() => o.Variables, k, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
     public static T AddVariable<T>(this T o, string k, string v) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.AddDictionary(() => o.Variables, k, v));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
     public static T RemoveVariable<T>(this T o, string k) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.RemoveDictionary(() => o.Variables, k));
     /// <inheritdoc cref="NerdbankGitVersioningCloudSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
+    [Builder(Type = typeof(NerdbankGitVersioningCloudSettings), Property = nameof(NerdbankGitVersioningCloudSettings.Variables))]
     public static T ClearVariables<T>(this T o) where T : NerdbankGitVersioningCloudSettings => o.Modify(b => b.ClearDictionary(() => o.Variables));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningPrepareReleaseSettingsExtensions
 /// <inheritdoc cref="NerdbankGitVersioningTasks.NerdbankGitVersioningPrepareRelease(Fallout.Common.Tools.NerdbankGitVersioning.NerdbankGitVersioningPrepareReleaseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NerdbankGitVersioningPrepareReleaseSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.Project"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Project))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Project))]
     public static T ResetProject<T>(this T o) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region NextVersion
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.NextVersion"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.NextVersion))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.NextVersion))]
     public static T SetNextVersion<T>(this T o, string v) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Set(() => o.NextVersion, v));
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.NextVersion"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.NextVersion))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.NextVersion))]
     public static T ResetNextVersion<T>(this T o) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Remove(() => o.NextVersion));
     #endregion
     #region VersionIncrement
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.VersionIncrement"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.VersionIncrement))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.VersionIncrement))]
     public static T SetVersionIncrement<T>(this T o, string v) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Set(() => o.VersionIncrement, v));
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.VersionIncrement"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.VersionIncrement))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.VersionIncrement))]
     public static T ResetVersionIncrement<T>(this T o) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Remove(() => o.VersionIncrement));
     #endregion
     #region Tag
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.Tag"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Tag))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Tag))]
     public static T SetTag<T>(this T o, string v) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Set(() => o.Tag, v));
     /// <inheritdoc cref="NerdbankGitVersioningPrepareReleaseSettings.Tag"/>
-    [Pure] [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Tag))]
+    [Builder(Type = typeof(NerdbankGitVersioningPrepareReleaseSettings), Property = nameof(NerdbankGitVersioningPrepareReleaseSettings.Tag))]
     public static T ResetTag<T>(this T o) where T : NerdbankGitVersioningPrepareReleaseSettings => o.Modify(b => b.Remove(() => o.Tag));
     #endregion
 }
 #endregion
 #region NerdbankGitVersioningFormat
 /// <summary>Used within <see cref="NerdbankGitVersioningTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<NerdbankGitVersioningFormat>))]
@@ -526,7 +509,6 @@ public partial class NerdbankGitVersioningFormat : Enumeration
 #endregion
 #region NerdbankGitVersioningCISystem
 /// <summary>Used within <see cref="NerdbankGitVersioningTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<NerdbankGitVersioningCISystem>))]

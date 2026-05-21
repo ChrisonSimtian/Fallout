@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.TeamCity;
 
-[PublicAPI]
 public enum TeamCityImportTool
 {
     /// <summary>dotCover reports</summary>

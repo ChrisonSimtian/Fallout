@@ -6,7 +6,6 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using JetBrains.Annotations;
 using static Fallout.Common.IO.PathConstruction;
 
 namespace Fallout.Common.IO;
@@ -14,7 +13,6 @@ namespace Fallout.Common.IO;
 /// <summary>
 /// Represents a relative path with the separator of the current operating system.
 /// </summary>
-[PublicAPI]
 [Serializable]
 [DebuggerDisplay("{" + nameof(_path) + "}")]
 public class RelativePath
@@ -28,7 +26,7 @@ public class RelativePath
         _separator = separator;
     }
 
-    public static explicit operator RelativePath([CanBeNull] string path)
+    public static explicit operator RelativePath(string path)
     {
         if (path is null)
             return null;
@@ -36,14 +34,14 @@ public class RelativePath
         return new RelativePath(NormalizePath(path));
     }
 
-    public static implicit operator string([CanBeNull] RelativePath path)
+    public static implicit operator string(RelativePath path)
     {
         return path?._path;
     }
 
 #if NET6_0_OR_GREATER
 
-    public static RelativePath operator /(RelativePath left, [CanBeNull] Range range)
+    public static RelativePath operator /(RelativePath left, Range range)
     {
         Assert.True(range.Equals(Range.All));
         return left / "..";
@@ -51,13 +49,13 @@ public class RelativePath
 
 #endif
 
-    public static RelativePath operator /(RelativePath left, [CanBeNull] string right)
+    public static RelativePath operator /(RelativePath left, string right)
     {
         var separator = left.NotNull()._separator;
         return new RelativePath(NormalizePath(Combine(left, (RelativePath) right, separator), separator), separator);
     }
 
-    public static RelativePath operator +(RelativePath left, [CanBeNull] string right)
+    public static RelativePath operator +(RelativePath left, string right)
     {
         return new RelativePath(left.ToString() + right);
     }

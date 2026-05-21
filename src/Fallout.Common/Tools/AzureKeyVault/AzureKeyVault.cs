@@ -10,7 +10,6 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Secrets;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tools.AzureKeyVault
@@ -23,7 +22,6 @@ namespace Fallout.Common.Tools.AzureKeyVault
         public virtual string BaseUrl { get; internal set; }
     }
 
-    [PublicAPI]
     public class AzureKeyVault
     {
         private readonly Lazy<CertificateClient> _certificateClient;

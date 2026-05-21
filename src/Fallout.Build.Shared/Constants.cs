@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -17,7 +16,6 @@ namespace Fallout.Common;
 /// <summary>
 /// Set of constants shared between libraries and IDE extensions.
 /// </summary>
-[UsedImplicitly]
 internal static class Constants
 {
     internal const string FalloutFileName = FalloutDirectoryName;
@@ -70,7 +68,6 @@ internal static class Constants
     internal static AbsolutePath GlobalTemporaryDirectory => Path.GetTempPath();
     internal static AbsolutePath GlobalFalloutDirectory =>  EnvironmentInfo.SpecialFolder(SpecialFolders.UserProfile) / ".fallout";
 
-    [CanBeNull]
     internal static AbsolutePath TryGetRootDirectoryFrom(AbsolutePath startDirectory, bool includeLegacy = true)
     {
         var rootDirectory = new DirectoryInfo(startDirectory)
@@ -160,14 +157,14 @@ internal static class Constants
             .Select(x => x.TrimStart(ParametersFilePrefix).TrimStart("."));
     }
 
-    internal static string GetCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
+    internal static string GetCredentialStoreName(AbsolutePath rootDirectory, string profile)
     {
         return $"Fallout: {rootDirectory} ({profile ?? DefaultProfileName})";
     }
 
     // Pre-rename name. Readers fall back to this when the canonical entry is missing.
     // Writers (SavePassword / Secrets command) only emit the canonical form above.
-    internal static string GetLegacyCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
+    internal static string GetLegacyCredentialStoreName(AbsolutePath rootDirectory, string profile)
     {
         return $"NUKE: {rootDirectory} ({profile ?? DefaultProfileName})";
     }

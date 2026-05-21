@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Kubernetes;
 
 /// <summary><p>For more details, visit the <a href="https://kubernetes.io/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class KubernetesTasks : ToolTasks, IRequirePathTool
@@ -345,7 +343,6 @@ public partial class KubernetesTasks : ToolTasks, IRequirePathTool
 }
 #region KubernetesApiResourcesSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesApiResources(Fallout.Common.Tools.Kubernetes.KubernetesApiResourcesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesApiResources), Arguments = "api-resources")]
 public partial class KubernetesApiResourcesSettings : KubernetesOptionsBase
@@ -366,7 +363,6 @@ public partial class KubernetesApiResourcesSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesDrainSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesDrain(Fallout.Common.Tools.Kubernetes.KubernetesDrainSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesDrain), Arguments = "drain")]
 public partial class KubernetesDrainSettings : KubernetesOptionsBase
@@ -391,7 +387,6 @@ public partial class KubernetesDrainSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesRunSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesRun(Fallout.Common.Tools.Kubernetes.KubernetesRunSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesRun), Arguments = "run")]
 public partial class KubernetesRunSettings : KubernetesOptionsBase
@@ -478,7 +473,6 @@ public partial class KubernetesRunSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesGetSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesGet(Fallout.Common.Tools.Kubernetes.KubernetesGetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesGet), Arguments = "get")]
 public partial class KubernetesGetSettings : KubernetesOptionsBase
@@ -535,7 +529,6 @@ public partial class KubernetesGetSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesVersionSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesVersion(Fallout.Common.Tools.Kubernetes.KubernetesVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesVersion), Arguments = "version")]
 public partial class KubernetesVersionSettings : KubernetesOptionsBase
@@ -550,7 +543,6 @@ public partial class KubernetesVersionSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesTopSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesTop(Fallout.Common.Tools.Kubernetes.KubernetesTopSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesTop), Arguments = "top")]
 public partial class KubernetesTopSettings : KubernetesOptionsBase
@@ -559,7 +551,6 @@ public partial class KubernetesTopSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesConfigSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesConfig(Fallout.Common.Tools.Kubernetes.KubernetesConfigSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesConfig), Arguments = "config")]
 public partial class KubernetesConfigSettings : KubernetesOptionsBase
@@ -568,7 +559,6 @@ public partial class KubernetesConfigSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesExecSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesExec(Fallout.Common.Tools.Kubernetes.KubernetesExecSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesExec), Arguments = "exec")]
 public partial class KubernetesExecSettings : KubernetesOptionsBase
@@ -591,7 +581,6 @@ public partial class KubernetesExecSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesRollingUpdateSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesRollingUpdate(Fallout.Common.Tools.Kubernetes.KubernetesRollingUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesRollingUpdate), Arguments = "rolling-update")]
 public partial class KubernetesRollingUpdateSettings : KubernetesOptionsBase
@@ -628,7 +617,6 @@ public partial class KubernetesRollingUpdateSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesLabelSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesLabel(Fallout.Common.Tools.Kubernetes.KubernetesLabelSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesLabel), Arguments = "label")]
 public partial class KubernetesLabelSettings : KubernetesOptionsBase
@@ -671,7 +659,6 @@ public partial class KubernetesLabelSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesAnnotateSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesAnnotate(Fallout.Common.Tools.Kubernetes.KubernetesAnnotateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesAnnotate), Arguments = "annotate")]
 public partial class KubernetesAnnotateSettings : KubernetesOptionsBase
@@ -712,7 +699,6 @@ public partial class KubernetesAnnotateSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesDeleteSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesDelete(Fallout.Common.Tools.Kubernetes.KubernetesDeleteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesDelete), Arguments = "delete")]
 public partial class KubernetesDeleteSettings : KubernetesOptionsBase
@@ -751,7 +737,6 @@ public partial class KubernetesDeleteSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesExposeSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesExpose(Fallout.Common.Tools.Kubernetes.KubernetesExposeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesExpose), Arguments = "expose")]
 public partial class KubernetesExposeSettings : KubernetesOptionsBase
@@ -804,7 +789,6 @@ public partial class KubernetesExposeSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesOptionsSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesOptions(Fallout.Common.Tools.Kubernetes.KubernetesOptionsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesOptions), Arguments = "options")]
 public partial class KubernetesOptionsSettings : KubernetesOptionsBase
@@ -813,7 +797,6 @@ public partial class KubernetesOptionsSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesAttachSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesAttach(Fallout.Common.Tools.Kubernetes.KubernetesAttachSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesAttach), Arguments = "attach")]
 public partial class KubernetesAttachSettings : KubernetesOptionsBase
@@ -832,7 +815,6 @@ public partial class KubernetesAttachSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesProxySettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesProxy(Fallout.Common.Tools.Kubernetes.KubernetesProxySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesProxy), Arguments = "proxy")]
 public partial class KubernetesProxySettings : KubernetesOptionsBase
@@ -863,7 +845,6 @@ public partial class KubernetesProxySettings : KubernetesOptionsBase
 #endregion
 #region KubernetesAlphaSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesAlpha(Fallout.Common.Tools.Kubernetes.KubernetesAlphaSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesAlpha), Arguments = "alpha")]
 public partial class KubernetesAlphaSettings : KubernetesOptionsBase
@@ -872,7 +853,6 @@ public partial class KubernetesAlphaSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesSettings
 /// <inheritdoc cref="KubernetesTasks.Kubernetes(Fallout.Common.Tools.Kubernetes.KubernetesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.Kubernetes), Arguments = "kubectl")]
 public partial class KubernetesSettings : KubernetesOptionsBase
@@ -881,7 +861,6 @@ public partial class KubernetesSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesCompletionSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesCompletion(Fallout.Common.Tools.Kubernetes.KubernetesCompletionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesCompletion), Arguments = "completion")]
 public partial class KubernetesCompletionSettings : KubernetesOptionsBase
@@ -890,7 +869,6 @@ public partial class KubernetesCompletionSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesPatchSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesPatch(Fallout.Common.Tools.Kubernetes.KubernetesPatchSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesPatch), Arguments = "patch")]
 public partial class KubernetesPatchSettings : KubernetesOptionsBase
@@ -921,7 +899,6 @@ public partial class KubernetesPatchSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesReplaceSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesReplace(Fallout.Common.Tools.Kubernetes.KubernetesReplaceSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesReplace), Arguments = "replace")]
 public partial class KubernetesReplaceSettings : KubernetesOptionsBase
@@ -954,7 +931,6 @@ public partial class KubernetesReplaceSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesTaintSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesTaint(Fallout.Common.Tools.Kubernetes.KubernetesTaintSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesTaint), Arguments = "taint")]
 public partial class KubernetesTaintSettings : KubernetesOptionsBase
@@ -981,7 +957,6 @@ public partial class KubernetesTaintSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesDescribeSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesDescribe(Fallout.Common.Tools.Kubernetes.KubernetesDescribeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesDescribe), Arguments = "describe")]
 public partial class KubernetesDescribeSettings : KubernetesOptionsBase
@@ -1004,7 +979,6 @@ public partial class KubernetesDescribeSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesSetSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesSet(Fallout.Common.Tools.Kubernetes.KubernetesSetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesSet), Arguments = "set")]
 public partial class KubernetesSetSettings : KubernetesOptionsBase
@@ -1015,7 +989,6 @@ public partial class KubernetesSetSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesAuthSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesAuth(Fallout.Common.Tools.Kubernetes.KubernetesAuthSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesAuth), Arguments = "auth")]
 public partial class KubernetesAuthSettings : KubernetesOptionsBase
@@ -1026,7 +999,6 @@ public partial class KubernetesAuthSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesCertificateSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesCertificate(Fallout.Common.Tools.Kubernetes.KubernetesCertificateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesCertificate), Arguments = "certificate")]
 public partial class KubernetesCertificateSettings : KubernetesOptionsBase
@@ -1037,7 +1009,6 @@ public partial class KubernetesCertificateSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesRolloutSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesRollout(Fallout.Common.Tools.Kubernetes.KubernetesRolloutSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesRollout), Arguments = "rollout")]
 public partial class KubernetesRolloutSettings : KubernetesOptionsBase
@@ -1048,7 +1019,6 @@ public partial class KubernetesRolloutSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesApplySettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesApply(Fallout.Common.Tools.Kubernetes.KubernetesApplySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesApply), Arguments = "apply")]
 public partial class KubernetesApplySettings : KubernetesOptionsBase
@@ -1097,7 +1067,6 @@ public partial class KubernetesApplySettings : KubernetesOptionsBase
 #endregion
 #region KubernetesApplyKustomizeSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesApplyKustomize(Fallout.Common.Tools.Kubernetes.KubernetesApplyKustomizeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesApplyKustomize), Arguments = "apply -k")]
 public partial class KubernetesApplyKustomizeSettings : KubernetesOptionsBase
@@ -1148,7 +1117,6 @@ public partial class KubernetesApplyKustomizeSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesCordonSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesCordon(Fallout.Common.Tools.Kubernetes.KubernetesCordonSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesCordon), Arguments = "cordon")]
 public partial class KubernetesCordonSettings : KubernetesOptionsBase
@@ -1163,7 +1131,6 @@ public partial class KubernetesCordonSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesCpSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesCp(Fallout.Common.Tools.Kubernetes.KubernetesCpSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesCp), Arguments = "cp")]
 public partial class KubernetesCpSettings : KubernetesOptionsBase
@@ -1178,7 +1145,6 @@ public partial class KubernetesCpSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesApiVersionsSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesApiVersions(Fallout.Common.Tools.Kubernetes.KubernetesApiVersionsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesApiVersions), Arguments = "api-versions")]
 public partial class KubernetesApiVersionsSettings : KubernetesOptionsBase
@@ -1187,7 +1153,6 @@ public partial class KubernetesApiVersionsSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesUncordonSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesUncordon(Fallout.Common.Tools.Kubernetes.KubernetesUncordonSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesUncordon), Arguments = "uncordon")]
 public partial class KubernetesUncordonSettings : KubernetesOptionsBase
@@ -1202,7 +1167,6 @@ public partial class KubernetesUncordonSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesAutoscaleSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesAutoscale(Fallout.Common.Tools.Kubernetes.KubernetesAutoscaleSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesAutoscale), Arguments = "autoscale")]
 public partial class KubernetesAutoscaleSettings : KubernetesOptionsBase
@@ -1237,7 +1201,6 @@ public partial class KubernetesAutoscaleSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesPluginSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesPlugin(Fallout.Common.Tools.Kubernetes.KubernetesPluginSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesPlugin), Arguments = "plugin")]
 public partial class KubernetesPluginSettings : KubernetesOptionsBase
@@ -1248,7 +1211,6 @@ public partial class KubernetesPluginSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesClusterInfoSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesClusterInfo(Fallout.Common.Tools.Kubernetes.KubernetesClusterInfoSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesClusterInfo), Arguments = "cluster-info")]
 public partial class KubernetesClusterInfoSettings : KubernetesOptionsBase
@@ -1257,7 +1219,6 @@ public partial class KubernetesClusterInfoSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesWaitSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesWait(Fallout.Common.Tools.Kubernetes.KubernetesWaitSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesWait), Arguments = "wait")]
 public partial class KubernetesWaitSettings : KubernetesOptionsBase
@@ -1284,7 +1245,6 @@ public partial class KubernetesWaitSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesConvertSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesConvert(Fallout.Common.Tools.Kubernetes.KubernetesConvertSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesConvert), Arguments = "convert")]
 public partial class KubernetesConvertSettings : KubernetesOptionsBase
@@ -1309,7 +1269,6 @@ public partial class KubernetesConvertSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesCreateSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesCreate(Fallout.Common.Tools.Kubernetes.KubernetesCreateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesCreate), Arguments = "create")]
 public partial class KubernetesCreateSettings : KubernetesOptionsBase
@@ -1346,7 +1305,6 @@ public partial class KubernetesCreateSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesPortForwardSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesPortForward(Fallout.Common.Tools.Kubernetes.KubernetesPortForwardSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesPortForward), Arguments = "port-forward")]
 public partial class KubernetesPortForwardSettings : KubernetesOptionsBase
@@ -1361,7 +1319,6 @@ public partial class KubernetesPortForwardSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesRunContainerSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesRunContainer(Fallout.Common.Tools.Kubernetes.KubernetesRunContainerSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesRunContainer), Arguments = "run-container")]
 public partial class KubernetesRunContainerSettings : KubernetesOptionsBase
@@ -1446,7 +1403,6 @@ public partial class KubernetesRunContainerSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesEditSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesEdit(Fallout.Common.Tools.Kubernetes.KubernetesEditSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesEdit), Arguments = "edit")]
 public partial class KubernetesEditSettings : KubernetesOptionsBase
@@ -1479,7 +1435,6 @@ public partial class KubernetesEditSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesScaleSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesScale(Fallout.Common.Tools.Kubernetes.KubernetesScaleSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesScale), Arguments = "scale")]
 public partial class KubernetesScaleSettings : KubernetesOptionsBase
@@ -1512,7 +1467,6 @@ public partial class KubernetesScaleSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesExplainSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesExplain(Fallout.Common.Tools.Kubernetes.KubernetesExplainSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesExplain), Arguments = "explain")]
 public partial class KubernetesExplainSettings : KubernetesOptionsBase
@@ -1527,7 +1481,6 @@ public partial class KubernetesExplainSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesLogsSettings
 /// <inheritdoc cref="KubernetesTasks.KubernetesLogs(Fallout.Common.Tools.Kubernetes.KubernetesLogsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(KubernetesTasks), Command = nameof(KubernetesTasks.KubernetesLogs), Arguments = "logs")]
 public partial class KubernetesLogsSettings : KubernetesOptionsBase
@@ -1562,7 +1515,6 @@ public partial class KubernetesLogsSettings : KubernetesOptionsBase
 #endregion
 #region KubernetesOptionsBase
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class KubernetesOptionsBase : ToolOptions
 {
@@ -1616,1128 +1568,1122 @@ public partial class KubernetesOptionsBase : ToolOptions
 #endregion
 #region KubernetesApiResourcesSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesApiResources(Fallout.Common.Tools.Kubernetes.KubernetesApiResourcesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesApiResourcesSettingsExtensions
 {
     #region ApiGroup
     /// <inheritdoc cref="KubernetesApiResourcesSettings.ApiGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.ApiGroup))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.ApiGroup))]
     public static T SetApiGroup<T>(this T o, string v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.ApiGroup, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.ApiGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.ApiGroup))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.ApiGroup))]
     public static T ResetApiGroup<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Remove(() => o.ApiGroup));
     #endregion
     #region Cached
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Cached"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
     public static T SetCached<T>(this T o, bool? v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Cached, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Cached"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
     public static T ResetCached<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Remove(() => o.Cached));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Cached"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
     public static T EnableCached<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Cached, true));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Cached"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
     public static T DisableCached<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Cached, false));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Cached"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Cached))]
     public static T ToggleCached<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Cached, !o.Cached));
     #endregion
     #region Namespaced
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Namespaced"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
     public static T SetNamespaced<T>(this T o, bool? v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Namespaced, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Namespaced"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
     public static T ResetNamespaced<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Remove(() => o.Namespaced));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Namespaced"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
     public static T EnableNamespaced<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Namespaced, true));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Namespaced"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
     public static T DisableNamespaced<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Namespaced, false));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Namespaced"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Namespaced))]
     public static T ToggleNamespaced<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Namespaced, !o.Namespaced));
     #endregion
     #region NoHeaders
     /// <inheritdoc cref="KubernetesApiResourcesSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
     public static T SetNoHeaders<T>(this T o, bool? v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.NoHeaders, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
     public static T ResetNoHeaders<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Remove(() => o.NoHeaders));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
     public static T EnableNoHeaders<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.NoHeaders, true));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
     public static T DisableNoHeaders<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.NoHeaders, false));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.NoHeaders))]
     public static T ToggleNoHeaders<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.NoHeaders, !o.NoHeaders));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Output))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesApiResourcesOutput v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Output))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Verbs
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T SetVerbs<T>(this T o, params string[] v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Verbs, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T SetVerbs<T>(this T o, IEnumerable<string> v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.Set(() => o.Verbs, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T AddVerbs<T>(this T o, params string[] v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.AddCollection(() => o.Verbs, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T AddVerbs<T>(this T o, IEnumerable<string> v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.AddCollection(() => o.Verbs, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T RemoveVerbs<T>(this T o, params string[] v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.RemoveCollection(() => o.Verbs, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T RemoveVerbs<T>(this T o, IEnumerable<string> v) where T : KubernetesApiResourcesSettings => o.Modify(b => b.RemoveCollection(() => o.Verbs, v));
     /// <inheritdoc cref="KubernetesApiResourcesSettings.Verbs"/>
-    [Pure] [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
+    [Builder(Type = typeof(KubernetesApiResourcesSettings), Property = nameof(KubernetesApiResourcesSettings.Verbs))]
     public static T ClearVerbs<T>(this T o) where T : KubernetesApiResourcesSettings => o.Modify(b => b.ClearCollection(() => o.Verbs));
     #endregion
 }
 #endregion
 #region KubernetesDrainSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesDrain(Fallout.Common.Tools.Kubernetes.KubernetesDrainSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesDrainSettingsExtensions
 {
     #region DeleteLocalData
     /// <inheritdoc cref="KubernetesDrainSettings.DeleteLocalData"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
     public static T SetDeleteLocalData<T>(this T o, bool? v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DeleteLocalData, v));
     /// <inheritdoc cref="KubernetesDrainSettings.DeleteLocalData"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
     public static T ResetDeleteLocalData<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.DeleteLocalData));
     /// <inheritdoc cref="KubernetesDrainSettings.DeleteLocalData"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
     public static T EnableDeleteLocalData<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DeleteLocalData, true));
     /// <inheritdoc cref="KubernetesDrainSettings.DeleteLocalData"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
     public static T DisableDeleteLocalData<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DeleteLocalData, false));
     /// <inheritdoc cref="KubernetesDrainSettings.DeleteLocalData"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DeleteLocalData))]
     public static T ToggleDeleteLocalData<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DeleteLocalData, !o.DeleteLocalData));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesDrainSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesDrainSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesDrainSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesDrainSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesDrainSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesDrainSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesDrainSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesDrainSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesDrainSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesDrainSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesDrainSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesDrainSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region IgnoreDaemonsets
     /// <inheritdoc cref="KubernetesDrainSettings.IgnoreDaemonsets"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
     public static T SetIgnoreDaemonsets<T>(this T o, bool? v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.IgnoreDaemonsets, v));
     /// <inheritdoc cref="KubernetesDrainSettings.IgnoreDaemonsets"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
     public static T ResetIgnoreDaemonsets<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.IgnoreDaemonsets));
     /// <inheritdoc cref="KubernetesDrainSettings.IgnoreDaemonsets"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
     public static T EnableIgnoreDaemonsets<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.IgnoreDaemonsets, true));
     /// <inheritdoc cref="KubernetesDrainSettings.IgnoreDaemonsets"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
     public static T DisableIgnoreDaemonsets<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.IgnoreDaemonsets, false));
     /// <inheritdoc cref="KubernetesDrainSettings.IgnoreDaemonsets"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.IgnoreDaemonsets))]
     public static T ToggleIgnoreDaemonsets<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.IgnoreDaemonsets, !o.IgnoreDaemonsets));
     #endregion
     #region PodSelector
     /// <inheritdoc cref="KubernetesDrainSettings.PodSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.PodSelector))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.PodSelector))]
     public static T SetPodSelector<T>(this T o, string v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.PodSelector, v));
     /// <inheritdoc cref="KubernetesDrainSettings.PodSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.PodSelector))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.PodSelector))]
     public static T ResetPodSelector<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.PodSelector));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesDrainSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Selector))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesDrainSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Selector))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesDrainSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesDrainSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesDrainSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesDrainSettings), Property = nameof(KubernetesDrainSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesDrainSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
 }
 #endregion
 #region KubernetesRunSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesRun(Fallout.Common.Tools.Kubernetes.KubernetesRunSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesRunSettingsExtensions
 {
     #region Name
     /// <inheritdoc cref="KubernetesRunSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Name))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="KubernetesRunSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Name))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Name))]
     public static T ResetName<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesRunSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesRunSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesRunSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesRunSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesRunSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Attach
     /// <inheritdoc cref="KubernetesRunSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
     public static T SetAttach<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Attach, v));
     /// <inheritdoc cref="KubernetesRunSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
     public static T ResetAttach<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Attach));
     /// <inheritdoc cref="KubernetesRunSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
     public static T EnableAttach<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Attach, true));
     /// <inheritdoc cref="KubernetesRunSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
     public static T DisableAttach<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Attach, false));
     /// <inheritdoc cref="KubernetesRunSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Attach))]
     public static T ToggleAttach<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Attach, !o.Attach));
     #endregion
     #region Cascade
     /// <inheritdoc cref="KubernetesRunSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
     public static T SetCascade<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Cascade, v));
     /// <inheritdoc cref="KubernetesRunSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
     public static T ResetCascade<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Cascade));
     /// <inheritdoc cref="KubernetesRunSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
     public static T EnableCascade<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Cascade, true));
     /// <inheritdoc cref="KubernetesRunSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
     public static T DisableCascade<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Cascade, false));
     /// <inheritdoc cref="KubernetesRunSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Cascade))]
     public static T ToggleCascade<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Cascade, !o.Cascade));
     #endregion
     #region Command
     /// <inheritdoc cref="KubernetesRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
     public static T SetCommand<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="KubernetesRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Command));
     /// <inheritdoc cref="KubernetesRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
     public static T EnableCommand<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Command, true));
     /// <inheritdoc cref="KubernetesRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
     public static T DisableCommand<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Command, false));
     /// <inheritdoc cref="KubernetesRunSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Command))]
     public static T ToggleCommand<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Command, !o.Command));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesRunSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesRunSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesRunSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesRunSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesRunSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Env
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T SetEnv<T>(this T o, params string[] v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T SetEnv<T>(this T o, IEnumerable<string> v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T AddEnv<T>(this T o, params string[] v) where T : KubernetesRunSettings => o.Modify(b => b.AddCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T AddEnv<T>(this T o, IEnumerable<string> v) where T : KubernetesRunSettings => o.Modify(b => b.AddCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T RemoveEnv<T>(this T o, params string[] v) where T : KubernetesRunSettings => o.Modify(b => b.RemoveCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T RemoveEnv<T>(this T o, IEnumerable<string> v) where T : KubernetesRunSettings => o.Modify(b => b.RemoveCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Env))]
     public static T ClearEnv<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.ClearCollection(() => o.Env));
     #endregion
     #region Expose
     /// <inheritdoc cref="KubernetesRunSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
     public static T SetExpose<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Expose, v));
     /// <inheritdoc cref="KubernetesRunSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
     public static T ResetExpose<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Expose));
     /// <inheritdoc cref="KubernetesRunSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
     public static T EnableExpose<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Expose, true));
     /// <inheritdoc cref="KubernetesRunSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
     public static T DisableExpose<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Expose, false));
     /// <inheritdoc cref="KubernetesRunSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Expose))]
     public static T ToggleExpose<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Expose, !o.Expose));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesRunSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRunSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesRunSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRunSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesRunSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesRunSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesRunSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesRunSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesRunSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Generator
     /// <inheritdoc cref="KubernetesRunSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Generator))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Generator))]
     public static T SetGenerator<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Generator, v));
     /// <inheritdoc cref="KubernetesRunSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Generator))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Generator))]
     public static T ResetGenerator<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Generator));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesRunSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesRunSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region Hostport
     /// <inheritdoc cref="KubernetesRunSettings.Hostport"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Hostport))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Hostport))]
     public static T SetHostport<T>(this T o, int? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Hostport, v));
     /// <inheritdoc cref="KubernetesRunSettings.Hostport"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Hostport))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Hostport))]
     public static T ResetHostport<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Hostport));
     #endregion
     #region Image
     /// <inheritdoc cref="KubernetesRunSettings.Image"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Image))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Image))]
     public static T SetImage<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Image, v));
     /// <inheritdoc cref="KubernetesRunSettings.Image"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Image))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Image))]
     public static T ResetImage<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Image));
     #endregion
     #region ImagePullPolicy
     /// <inheritdoc cref="KubernetesRunSettings.ImagePullPolicy"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ImagePullPolicy))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ImagePullPolicy))]
     public static T SetImagePullPolicy<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.ImagePullPolicy, v));
     /// <inheritdoc cref="KubernetesRunSettings.ImagePullPolicy"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ImagePullPolicy))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ImagePullPolicy))]
     public static T ResetImagePullPolicy<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.ImagePullPolicy));
     #endregion
     #region Labels
     /// <inheritdoc cref="KubernetesRunSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Labels))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Labels))]
     public static T SetLabels<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Labels, v));
     /// <inheritdoc cref="KubernetesRunSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Labels))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Labels))]
     public static T ResetLabels<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Labels));
     #endregion
     #region LeaveStdinOpen
     /// <inheritdoc cref="KubernetesRunSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
     public static T SetLeaveStdinOpen<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, v));
     /// <inheritdoc cref="KubernetesRunSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
     public static T ResetLeaveStdinOpen<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.LeaveStdinOpen));
     /// <inheritdoc cref="KubernetesRunSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
     public static T EnableLeaveStdinOpen<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, true));
     /// <inheritdoc cref="KubernetesRunSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
     public static T DisableLeaveStdinOpen<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, false));
     /// <inheritdoc cref="KubernetesRunSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.LeaveStdinOpen))]
     public static T ToggleLeaveStdinOpen<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, !o.LeaveStdinOpen));
     #endregion
     #region Limits
     /// <inheritdoc cref="KubernetesRunSettings.Limits"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Limits))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Limits))]
     public static T SetLimits<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Limits, v));
     /// <inheritdoc cref="KubernetesRunSettings.Limits"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Limits))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Limits))]
     public static T ResetLimits<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Limits));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesRunSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Output))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesRunOutput v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesRunSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Output))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overrides
     /// <inheritdoc cref="KubernetesRunSettings.Overrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Overrides))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Overrides))]
     public static T SetOverrides<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Overrides, v));
     /// <inheritdoc cref="KubernetesRunSettings.Overrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Overrides))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Overrides))]
     public static T ResetOverrides<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Overrides));
     #endregion
     #region PodRunningTimeout
     /// <inheritdoc cref="KubernetesRunSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.PodRunningTimeout))]
     public static T SetPodRunningTimeout<T>(this T o, TimeSpan? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.PodRunningTimeout, v));
     /// <inheritdoc cref="KubernetesRunSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.PodRunningTimeout))]
     public static T ResetPodRunningTimeout<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.PodRunningTimeout));
     #endregion
     #region Port
     /// <inheritdoc cref="KubernetesRunSettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Port))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Port))]
     public static T SetPort<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="KubernetesRunSettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Port))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Port))]
     public static T ResetPort<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region Quiet
     /// <inheritdoc cref="KubernetesRunSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="KubernetesRunSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="KubernetesRunSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="KubernetesRunSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="KubernetesRunSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesRunSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesRunSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesRunSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesRunSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesRunSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesRunSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesRunSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesRunSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesRunSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesRunSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Replicas
     /// <inheritdoc cref="KubernetesRunSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Replicas))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Replicas))]
     public static T SetReplicas<T>(this T o, int? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Replicas, v));
     /// <inheritdoc cref="KubernetesRunSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Replicas))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Replicas))]
     public static T ResetReplicas<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Replicas));
     #endregion
     #region Requests
     /// <inheritdoc cref="KubernetesRunSettings.Requests"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Requests))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Requests))]
     public static T SetRequests<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Requests, v));
     /// <inheritdoc cref="KubernetesRunSettings.Requests"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Requests))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Requests))]
     public static T ResetRequests<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Requests));
     #endregion
     #region Restart
     /// <inheritdoc cref="KubernetesRunSettings.Restart"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Restart))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Restart))]
     public static T SetRestart<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Restart, v));
     /// <inheritdoc cref="KubernetesRunSettings.Restart"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Restart))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Restart))]
     public static T ResetRestart<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Restart));
     #endregion
     #region Rm
     /// <inheritdoc cref="KubernetesRunSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
     public static T SetRm<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Rm, v));
     /// <inheritdoc cref="KubernetesRunSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
     public static T ResetRm<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Rm));
     /// <inheritdoc cref="KubernetesRunSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
     public static T EnableRm<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Rm, true));
     /// <inheritdoc cref="KubernetesRunSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
     public static T DisableRm<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Rm, false));
     /// <inheritdoc cref="KubernetesRunSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Rm))]
     public static T ToggleRm<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Rm, !o.Rm));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesRunSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesRunSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesRunSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesRunSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesRunSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Schedule
     /// <inheritdoc cref="KubernetesRunSettings.Schedule"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Schedule))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Schedule))]
     public static T SetSchedule<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Schedule, v));
     /// <inheritdoc cref="KubernetesRunSettings.Schedule"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Schedule))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Schedule))]
     public static T ResetSchedule<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Schedule));
     #endregion
     #region ServiceGenerator
     /// <inheritdoc cref="KubernetesRunSettings.ServiceGenerator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceGenerator))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceGenerator))]
     public static T SetServiceGenerator<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.ServiceGenerator, v));
     /// <inheritdoc cref="KubernetesRunSettings.ServiceGenerator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceGenerator))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceGenerator))]
     public static T ResetServiceGenerator<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.ServiceGenerator));
     #endregion
     #region ServiceOverrides
     /// <inheritdoc cref="KubernetesRunSettings.ServiceOverrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceOverrides))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceOverrides))]
     public static T SetServiceOverrides<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.ServiceOverrides, v));
     /// <inheritdoc cref="KubernetesRunSettings.ServiceOverrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceOverrides))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.ServiceOverrides))]
     public static T ResetServiceOverrides<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.ServiceOverrides));
     #endregion
     #region Serviceaccount
     /// <inheritdoc cref="KubernetesRunSettings.Serviceaccount"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Serviceaccount))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Serviceaccount))]
     public static T SetServiceaccount<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Serviceaccount, v));
     /// <inheritdoc cref="KubernetesRunSettings.Serviceaccount"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Serviceaccount))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Serviceaccount))]
     public static T ResetServiceaccount<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Serviceaccount));
     #endregion
     #region Stdin
     /// <inheritdoc cref="KubernetesRunSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
     public static T SetStdin<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Stdin, v));
     /// <inheritdoc cref="KubernetesRunSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
     public static T ResetStdin<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Stdin));
     /// <inheritdoc cref="KubernetesRunSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
     public static T EnableStdin<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Stdin, true));
     /// <inheritdoc cref="KubernetesRunSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
     public static T DisableStdin<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Stdin, false));
     /// <inheritdoc cref="KubernetesRunSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Stdin))]
     public static T ToggleStdin<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Stdin, !o.Stdin));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesRunSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Template))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesRunSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Template))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesRunSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesRunSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tty
     /// <inheritdoc cref="KubernetesRunSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
     public static T SetTty<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Tty, v));
     /// <inheritdoc cref="KubernetesRunSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
     public static T ResetTty<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Tty));
     /// <inheritdoc cref="KubernetesRunSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
     public static T EnableTty<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Tty, true));
     /// <inheritdoc cref="KubernetesRunSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
     public static T DisableTty<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Tty, false));
     /// <inheritdoc cref="KubernetesRunSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Tty))]
     public static T ToggleTty<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Tty, !o.Tty));
     #endregion
     #region Wait
     /// <inheritdoc cref="KubernetesRunSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="KubernetesRunSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="KubernetesRunSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="KubernetesRunSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="KubernetesRunSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunSettings), Property = nameof(KubernetesRunSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : KubernetesRunSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region KubernetesGetSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesGet(Fallout.Common.Tools.Kubernetes.KubernetesGetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesGetSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesGetSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region AllNamespaces
     /// <inheritdoc cref="KubernetesGetSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
     public static T SetAllNamespaces<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllNamespaces, v));
     /// <inheritdoc cref="KubernetesGetSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
     public static T ResetAllNamespaces<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.AllNamespaces));
     /// <inheritdoc cref="KubernetesGetSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
     public static T EnableAllNamespaces<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllNamespaces, true));
     /// <inheritdoc cref="KubernetesGetSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
     public static T DisableAllNamespaces<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllNamespaces, false));
     /// <inheritdoc cref="KubernetesGetSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllNamespaces))]
     public static T ToggleAllNamespaces<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllNamespaces, !o.AllNamespaces));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesGetSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesGetSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesGetSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesGetSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesGetSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region ChunkSize
     /// <inheritdoc cref="KubernetesGetSettings.ChunkSize"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ChunkSize))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ChunkSize))]
     public static T SetChunkSize<T>(this T o, long? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ChunkSize, v));
     /// <inheritdoc cref="KubernetesGetSettings.ChunkSize"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ChunkSize))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ChunkSize))]
     public static T ResetChunkSize<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.ChunkSize));
     #endregion
     #region Export
     /// <inheritdoc cref="KubernetesGetSettings.Export"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
     public static T SetExport<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Export, v));
     /// <inheritdoc cref="KubernetesGetSettings.Export"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
     public static T ResetExport<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Export));
     /// <inheritdoc cref="KubernetesGetSettings.Export"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
     public static T EnableExport<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Export, true));
     /// <inheritdoc cref="KubernetesGetSettings.Export"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
     public static T DisableExport<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Export, false));
     /// <inheritdoc cref="KubernetesGetSettings.Export"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Export))]
     public static T ToggleExport<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Export, !o.Export));
     #endregion
     #region FieldSelector
     /// <inheritdoc cref="KubernetesGetSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.FieldSelector))]
     public static T SetFieldSelector<T>(this T o, string v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.FieldSelector, v));
     /// <inheritdoc cref="KubernetesGetSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.FieldSelector))]
     public static T ResetFieldSelector<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.FieldSelector));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesGetSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region IgnoreNotFound
     /// <inheritdoc cref="KubernetesGetSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
     public static T SetIgnoreNotFound<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, v));
     /// <inheritdoc cref="KubernetesGetSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
     public static T ResetIgnoreNotFound<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.IgnoreNotFound));
     /// <inheritdoc cref="KubernetesGetSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
     public static T EnableIgnoreNotFound<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, true));
     /// <inheritdoc cref="KubernetesGetSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
     public static T DisableIgnoreNotFound<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, false));
     /// <inheritdoc cref="KubernetesGetSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IgnoreNotFound))]
     public static T ToggleIgnoreNotFound<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, !o.IgnoreNotFound));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesGetSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesGetSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesGetSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesGetSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesGetSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region LabelColumns
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T SetLabelColumns<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.LabelColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T SetLabelColumns<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.LabelColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T AddLabelColumns<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.AddCollection(() => o.LabelColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T AddLabelColumns<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.AddCollection(() => o.LabelColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T RemoveLabelColumns<T>(this T o, params string[] v) where T : KubernetesGetSettings => o.Modify(b => b.RemoveCollection(() => o.LabelColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T RemoveLabelColumns<T>(this T o, IEnumerable<string> v) where T : KubernetesGetSettings => o.Modify(b => b.RemoveCollection(() => o.LabelColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.LabelColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.LabelColumns))]
     public static T ClearLabelColumns<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.ClearCollection(() => o.LabelColumns));
     #endregion
     #region NoHeaders
     /// <inheritdoc cref="KubernetesGetSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
     public static T SetNoHeaders<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.NoHeaders, v));
     /// <inheritdoc cref="KubernetesGetSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
     public static T ResetNoHeaders<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.NoHeaders));
     /// <inheritdoc cref="KubernetesGetSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
     public static T EnableNoHeaders<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.NoHeaders, true));
     /// <inheritdoc cref="KubernetesGetSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
     public static T DisableNoHeaders<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.NoHeaders, false));
     /// <inheritdoc cref="KubernetesGetSettings.NoHeaders"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.NoHeaders))]
     public static T ToggleNoHeaders<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.NoHeaders, !o.NoHeaders));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesGetSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Output))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesGetOutput v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesGetSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Output))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Raw
     /// <inheritdoc cref="KubernetesGetSettings.Raw"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Raw))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Raw))]
     public static T SetRaw<T>(this T o, string v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Raw, v));
     /// <inheritdoc cref="KubernetesGetSettings.Raw"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Raw))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Raw))]
     public static T ResetRaw<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Raw));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesGetSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesGetSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesGetSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesGetSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesGetSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesGetSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Selector))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesGetSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Selector))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region ServerPrint
     /// <inheritdoc cref="KubernetesGetSettings.ServerPrint"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
     public static T SetServerPrint<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ServerPrint, v));
     /// <inheritdoc cref="KubernetesGetSettings.ServerPrint"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
     public static T ResetServerPrint<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.ServerPrint));
     /// <inheritdoc cref="KubernetesGetSettings.ServerPrint"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
     public static T EnableServerPrint<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ServerPrint, true));
     /// <inheritdoc cref="KubernetesGetSettings.ServerPrint"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
     public static T DisableServerPrint<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ServerPrint, false));
     /// <inheritdoc cref="KubernetesGetSettings.ServerPrint"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ServerPrint))]
     public static T ToggleServerPrint<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ServerPrint, !o.ServerPrint));
     #endregion
     #region ShowAll
     /// <inheritdoc cref="KubernetesGetSettings.ShowAll"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
     public static T SetShowAll<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowAll, v));
     /// <inheritdoc cref="KubernetesGetSettings.ShowAll"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
     public static T ResetShowAll<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.ShowAll));
     /// <inheritdoc cref="KubernetesGetSettings.ShowAll"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
     public static T EnableShowAll<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowAll, true));
     /// <inheritdoc cref="KubernetesGetSettings.ShowAll"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
     public static T DisableShowAll<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowAll, false));
     /// <inheritdoc cref="KubernetesGetSettings.ShowAll"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowAll))]
     public static T ToggleShowAll<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowAll, !o.ShowAll));
     #endregion
     #region ShowKind
     /// <inheritdoc cref="KubernetesGetSettings.ShowKind"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
     public static T SetShowKind<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowKind, v));
     /// <inheritdoc cref="KubernetesGetSettings.ShowKind"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
     public static T ResetShowKind<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.ShowKind));
     /// <inheritdoc cref="KubernetesGetSettings.ShowKind"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
     public static T EnableShowKind<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowKind, true));
     /// <inheritdoc cref="KubernetesGetSettings.ShowKind"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
     public static T DisableShowKind<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowKind, false));
     /// <inheritdoc cref="KubernetesGetSettings.ShowKind"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowKind))]
     public static T ToggleShowKind<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowKind, !o.ShowKind));
     #endregion
     #region ShowLabels
     /// <inheritdoc cref="KubernetesGetSettings.ShowLabels"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
     public static T SetShowLabels<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowLabels, v));
     /// <inheritdoc cref="KubernetesGetSettings.ShowLabels"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
     public static T ResetShowLabels<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.ShowLabels));
     /// <inheritdoc cref="KubernetesGetSettings.ShowLabels"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
     public static T EnableShowLabels<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowLabels, true));
     /// <inheritdoc cref="KubernetesGetSettings.ShowLabels"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
     public static T DisableShowLabels<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowLabels, false));
     /// <inheritdoc cref="KubernetesGetSettings.ShowLabels"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.ShowLabels))]
     public static T ToggleShowLabels<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.ShowLabels, !o.ShowLabels));
     #endregion
     #region SortBy
     /// <inheritdoc cref="KubernetesGetSettings.SortBy"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.SortBy))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.SortBy))]
     public static T SetSortBy<T>(this T o, string v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.SortBy, v));
     /// <inheritdoc cref="KubernetesGetSettings.SortBy"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.SortBy))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.SortBy))]
     public static T ResetSortBy<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.SortBy));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesGetSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Template))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesGetSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Template))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region UseOpenapiPrintColumns
     /// <inheritdoc cref="KubernetesGetSettings.UseOpenapiPrintColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
     public static T SetUseOpenapiPrintColumns<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.UseOpenapiPrintColumns, v));
     /// <inheritdoc cref="KubernetesGetSettings.UseOpenapiPrintColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
     public static T ResetUseOpenapiPrintColumns<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.UseOpenapiPrintColumns));
     /// <inheritdoc cref="KubernetesGetSettings.UseOpenapiPrintColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
     public static T EnableUseOpenapiPrintColumns<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.UseOpenapiPrintColumns, true));
     /// <inheritdoc cref="KubernetesGetSettings.UseOpenapiPrintColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
     public static T DisableUseOpenapiPrintColumns<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.UseOpenapiPrintColumns, false));
     /// <inheritdoc cref="KubernetesGetSettings.UseOpenapiPrintColumns"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.UseOpenapiPrintColumns))]
     public static T ToggleUseOpenapiPrintColumns<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.UseOpenapiPrintColumns, !o.UseOpenapiPrintColumns));
     #endregion
     #region Watch
     /// <inheritdoc cref="KubernetesGetSettings.Watch"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
     public static T SetWatch<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Watch, v));
     /// <inheritdoc cref="KubernetesGetSettings.Watch"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
     public static T ResetWatch<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.Watch));
     /// <inheritdoc cref="KubernetesGetSettings.Watch"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
     public static T EnableWatch<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Watch, true));
     /// <inheritdoc cref="KubernetesGetSettings.Watch"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
     public static T DisableWatch<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Watch, false));
     /// <inheritdoc cref="KubernetesGetSettings.Watch"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.Watch))]
     public static T ToggleWatch<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.Watch, !o.Watch));
     #endregion
     #region WatchOnly
     /// <inheritdoc cref="KubernetesGetSettings.WatchOnly"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
     public static T SetWatchOnly<T>(this T o, bool? v) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.WatchOnly, v));
     /// <inheritdoc cref="KubernetesGetSettings.WatchOnly"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
     public static T ResetWatchOnly<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Remove(() => o.WatchOnly));
     /// <inheritdoc cref="KubernetesGetSettings.WatchOnly"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
     public static T EnableWatchOnly<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.WatchOnly, true));
     /// <inheritdoc cref="KubernetesGetSettings.WatchOnly"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
     public static T DisableWatchOnly<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.WatchOnly, false));
     /// <inheritdoc cref="KubernetesGetSettings.WatchOnly"/>
-    [Pure] [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
+    [Builder(Type = typeof(KubernetesGetSettings), Property = nameof(KubernetesGetSettings.WatchOnly))]
     public static T ToggleWatchOnly<T>(this T o) where T : KubernetesGetSettings => o.Modify(b => b.Set(() => o.WatchOnly, !o.WatchOnly));
     #endregion
 }
 #endregion
 #region KubernetesVersionSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesVersion(Fallout.Common.Tools.Kubernetes.KubernetesVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesVersionSettingsExtensions
 {
     #region Client
     /// <inheritdoc cref="KubernetesVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
     public static T SetClient<T>(this T o, bool? v) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Client, v));
     /// <inheritdoc cref="KubernetesVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
     public static T ResetClient<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Remove(() => o.Client));
     /// <inheritdoc cref="KubernetesVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
     public static T EnableClient<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Client, true));
     /// <inheritdoc cref="KubernetesVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
     public static T DisableClient<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Client, false));
     /// <inheritdoc cref="KubernetesVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Client))]
     public static T ToggleClient<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Client, !o.Client));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesVersionSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Output))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesVersionSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Output))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Short
     /// <inheritdoc cref="KubernetesVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
     public static T SetShort<T>(this T o, bool? v) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Short, v));
     /// <inheritdoc cref="KubernetesVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
     public static T ResetShort<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Remove(() => o.Short));
     /// <inheritdoc cref="KubernetesVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
     public static T EnableShort<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Short, true));
     /// <inheritdoc cref="KubernetesVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
     public static T DisableShort<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Short, false));
     /// <inheritdoc cref="KubernetesVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
+    [Builder(Type = typeof(KubernetesVersionSettings), Property = nameof(KubernetesVersionSettings.Short))]
     public static T ToggleShort<T>(this T o) where T : KubernetesVersionSettings => o.Modify(b => b.Set(() => o.Short, !o.Short));
     #endregion
 }
 #endregion
 #region KubernetesTopSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesTop(Fallout.Common.Tools.Kubernetes.KubernetesTopSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesTopSettingsExtensions
 {
@@ -2745,7 +2691,6 @@ public static partial class KubernetesTopSettingsExtensions
 #endregion
 #region KubernetesConfigSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesConfig(Fallout.Common.Tools.Kubernetes.KubernetesConfigSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesConfigSettingsExtensions
 {
@@ -2753,1260 +2698,1253 @@ public static partial class KubernetesConfigSettingsExtensions
 #endregion
 #region KubernetesExecSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesExec(Fallout.Common.Tools.Kubernetes.KubernetesExecSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesExecSettingsExtensions
 {
     #region PodName
     /// <inheritdoc cref="KubernetesExecSettings.PodName"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.PodName))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.PodName))]
     public static T SetPodName<T>(this T o, string v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.PodName, v));
     /// <inheritdoc cref="KubernetesExecSettings.PodName"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.PodName))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.PodName))]
     public static T ResetPodName<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Remove(() => o.PodName));
     #endregion
     #region Container
     /// <inheritdoc cref="KubernetesExecSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Container))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Container))]
     public static T SetContainer<T>(this T o, string v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Container, v));
     /// <inheritdoc cref="KubernetesExecSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Container))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Container))]
     public static T ResetContainer<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Remove(() => o.Container));
     #endregion
     #region Pod
     /// <inheritdoc cref="KubernetesExecSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Pod))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Pod))]
     public static T SetPod<T>(this T o, string v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesExecSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Pod))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Pod))]
     public static T ResetPod<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Remove(() => o.Pod));
     #endregion
     #region Stdin
     /// <inheritdoc cref="KubernetesExecSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
     public static T SetStdin<T>(this T o, bool? v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Stdin, v));
     /// <inheritdoc cref="KubernetesExecSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
     public static T ResetStdin<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Remove(() => o.Stdin));
     /// <inheritdoc cref="KubernetesExecSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
     public static T EnableStdin<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Stdin, true));
     /// <inheritdoc cref="KubernetesExecSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
     public static T DisableStdin<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Stdin, false));
     /// <inheritdoc cref="KubernetesExecSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Stdin))]
     public static T ToggleStdin<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Stdin, !o.Stdin));
     #endregion
     #region Tty
     /// <inheritdoc cref="KubernetesExecSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
     public static T SetTty<T>(this T o, bool? v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Tty, v));
     /// <inheritdoc cref="KubernetesExecSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
     public static T ResetTty<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Remove(() => o.Tty));
     /// <inheritdoc cref="KubernetesExecSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
     public static T EnableTty<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Tty, true));
     /// <inheritdoc cref="KubernetesExecSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
     public static T DisableTty<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Tty, false));
     /// <inheritdoc cref="KubernetesExecSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Tty))]
     public static T ToggleTty<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Tty, !o.Tty));
     #endregion
     #region Command
     /// <inheritdoc cref="KubernetesExecSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Command))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Command))]
     public static T SetCommand<T>(this T o, string v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="KubernetesExecSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Command))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.Remove(() => o.Command));
     #endregion
     #region Arguments
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T SetArguments<T>(this T o, params string[] v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Arguments, v));
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T SetArguments<T>(this T o, IEnumerable<string> v) where T : KubernetesExecSettings => o.Modify(b => b.Set(() => o.Arguments, v));
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T AddArguments<T>(this T o, params string[] v) where T : KubernetesExecSettings => o.Modify(b => b.AddCollection(() => o.Arguments, v));
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T AddArguments<T>(this T o, IEnumerable<string> v) where T : KubernetesExecSettings => o.Modify(b => b.AddCollection(() => o.Arguments, v));
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T RemoveArguments<T>(this T o, params string[] v) where T : KubernetesExecSettings => o.Modify(b => b.RemoveCollection(() => o.Arguments, v));
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T RemoveArguments<T>(this T o, IEnumerable<string> v) where T : KubernetesExecSettings => o.Modify(b => b.RemoveCollection(() => o.Arguments, v));
     /// <inheritdoc cref="KubernetesExecSettings.Arguments"/>
-    [Pure] [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
+    [Builder(Type = typeof(KubernetesExecSettings), Property = nameof(KubernetesExecSettings.Arguments))]
     public static T ClearArguments<T>(this T o) where T : KubernetesExecSettings => o.Modify(b => b.ClearCollection(() => o.Arguments));
     #endregion
 }
 #endregion
 #region KubernetesRollingUpdateSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesRollingUpdate(Fallout.Common.Tools.Kubernetes.KubernetesRollingUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesRollingUpdateSettingsExtensions
 {
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Container
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Container))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Container))]
     public static T SetContainer<T>(this T o, string v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Container, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Container))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Container))]
     public static T ResetContainer<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Container));
     #endregion
     #region DeploymentLabelKey
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DeploymentLabelKey"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DeploymentLabelKey))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DeploymentLabelKey))]
     public static T SetDeploymentLabelKey<T>(this T o, string v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.DeploymentLabelKey, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DeploymentLabelKey"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DeploymentLabelKey))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DeploymentLabelKey))]
     public static T ResetDeploymentLabelKey<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.DeploymentLabelKey));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Image
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Image"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Image))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Image))]
     public static T SetImage<T>(this T o, string v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Image, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Image"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Image))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Image))]
     public static T ResetImage<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Image));
     #endregion
     #region ImagePullPolicy
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.ImagePullPolicy"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.ImagePullPolicy))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.ImagePullPolicy))]
     public static T SetImagePullPolicy<T>(this T o, string v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.ImagePullPolicy, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.ImagePullPolicy"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.ImagePullPolicy))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.ImagePullPolicy))]
     public static T ResetImagePullPolicy<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.ImagePullPolicy));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Output))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesRollingUpdateOutput v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Output))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region PollInterval
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.PollInterval"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.PollInterval))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.PollInterval))]
     public static T SetPollInterval<T>(this T o, TimeSpan? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.PollInterval, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.PollInterval"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.PollInterval))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.PollInterval))]
     public static T ResetPollInterval<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.PollInterval));
     #endregion
     #region Rollback
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Rollback"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
     public static T SetRollback<T>(this T o, bool? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Rollback, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Rollback"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
     public static T ResetRollback<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Rollback));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Rollback"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
     public static T EnableRollback<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Rollback, true));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Rollback"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
     public static T DisableRollback<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Rollback, false));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Rollback"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Rollback))]
     public static T ToggleRollback<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Rollback, !o.Rollback));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Template))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Template))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region UpdatePeriod
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.UpdatePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.UpdatePeriod))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.UpdatePeriod))]
     public static T SetUpdatePeriod<T>(this T o, TimeSpan? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.UpdatePeriod, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.UpdatePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.UpdatePeriod))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.UpdatePeriod))]
     public static T ResetUpdatePeriod<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.UpdatePeriod));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesRollingUpdateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesRollingUpdateSettings), Property = nameof(KubernetesRollingUpdateSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesRollingUpdateSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
 }
 #endregion
 #region KubernetesLabelSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesLabel(Fallout.Common.Tools.Kubernetes.KubernetesLabelSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesLabelSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesLabelSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesLabelSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesLabelSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesLabelSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLabelSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region Labels
     /// <inheritdoc cref="KubernetesLabelSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
     public static T SetLabels<T>(this T o, IDictionary<string, string> v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Labels, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="KubernetesLabelSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
     public static T SetLabel<T>(this T o, string k, string v) where T : KubernetesLabelSettings => o.Modify(b => b.SetDictionary(() => o.Labels, k, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
     public static T AddLabel<T>(this T o, string k, string v) where T : KubernetesLabelSettings => o.Modify(b => b.AddDictionary(() => o.Labels, k, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
     public static T RemoveLabel<T>(this T o, string k) where T : KubernetesLabelSettings => o.Modify(b => b.RemoveDictionary(() => o.Labels, k));
     /// <inheritdoc cref="KubernetesLabelSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Labels))]
     public static T ClearLabels<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.ClearDictionary(() => o.Labels));
     #endregion
     #region All
     /// <inheritdoc cref="KubernetesLabelSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesLabelSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesLabelSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesLabelSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesLabelSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesLabelSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesLabelSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesLabelSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesLabelSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesLabelSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesLabelSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesLabelSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesLabelSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesLabelSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesLabelSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region FieldSelector
     /// <inheritdoc cref="KubernetesLabelSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.FieldSelector))]
     public static T SetFieldSelector<T>(this T o, string v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.FieldSelector, v));
     /// <inheritdoc cref="KubernetesLabelSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.FieldSelector))]
     public static T ResetFieldSelector<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.FieldSelector));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesLabelSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesLabelSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesLabelSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesLabelSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesLabelSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesLabelSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesLabelSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesLabelSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesLabelSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region List
     /// <inheritdoc cref="KubernetesLabelSettings.List"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
     public static T SetList<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.List, v));
     /// <inheritdoc cref="KubernetesLabelSettings.List"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
     public static T ResetList<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.List));
     /// <inheritdoc cref="KubernetesLabelSettings.List"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
     public static T EnableList<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.List, true));
     /// <inheritdoc cref="KubernetesLabelSettings.List"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
     public static T DisableList<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.List, false));
     /// <inheritdoc cref="KubernetesLabelSettings.List"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.List))]
     public static T ToggleList<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.List, !o.List));
     #endregion
     #region Local
     /// <inheritdoc cref="KubernetesLabelSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
     public static T SetLocal<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Local, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
     public static T ResetLocal<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Local));
     /// <inheritdoc cref="KubernetesLabelSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
     public static T EnableLocal<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Local, true));
     /// <inheritdoc cref="KubernetesLabelSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
     public static T DisableLocal<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Local, false));
     /// <inheritdoc cref="KubernetesLabelSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Local))]
     public static T ToggleLocal<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Local, !o.Local));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesLabelSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Output))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesLabelOutput v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Output))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="KubernetesLabelSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="KubernetesLabelSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="KubernetesLabelSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="KubernetesLabelSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesLabelSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesLabelSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesLabelSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesLabelSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesLabelSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesLabelSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesLabelSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesLabelSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region ResourceVersion
     /// <inheritdoc cref="KubernetesLabelSettings.ResourceVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.ResourceVersion))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.ResourceVersion))]
     public static T SetResourceVersion<T>(this T o, string v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.ResourceVersion, v));
     /// <inheritdoc cref="KubernetesLabelSettings.ResourceVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.ResourceVersion))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.ResourceVersion))]
     public static T ResetResourceVersion<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.ResourceVersion));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesLabelSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Selector))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Selector))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesLabelSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Template))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesLabelSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesLabelSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Template))]
+    [Builder(Type = typeof(KubernetesLabelSettings), Property = nameof(KubernetesLabelSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesLabelSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
 }
 #endregion
 #region KubernetesAnnotateSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesAnnotate(Fallout.Common.Tools.Kubernetes.KubernetesAnnotateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesAnnotateSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesAnnotateSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesAnnotateSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region Annotations
     /// <inheritdoc cref="KubernetesAnnotateSettings.Annotations"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
     public static T SetAnnotations<T>(this T o, IDictionary<string, string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Annotations, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Annotations"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
     public static T SetAnnotation<T>(this T o, string k, string v) where T : KubernetesAnnotateSettings => o.Modify(b => b.SetDictionary(() => o.Annotations, k, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Annotations"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
     public static T AddAnnotation<T>(this T o, string k, string v) where T : KubernetesAnnotateSettings => o.Modify(b => b.AddDictionary(() => o.Annotations, k, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Annotations"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
     public static T RemoveAnnotation<T>(this T o, string k) where T : KubernetesAnnotateSettings => o.Modify(b => b.RemoveDictionary(() => o.Annotations, k));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Annotations"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Annotations))]
     public static T ClearAnnotations<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.ClearDictionary(() => o.Annotations));
     #endregion
     #region All
     /// <inheritdoc cref="KubernetesAnnotateSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesAnnotateSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesAnnotateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesAnnotateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesAnnotateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesAnnotateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region FieldSelector
     /// <inheritdoc cref="KubernetesAnnotateSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.FieldSelector))]
     public static T SetFieldSelector<T>(this T o, string v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.FieldSelector, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.FieldSelector))]
     public static T ResetFieldSelector<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.FieldSelector));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesAnnotateSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesAnnotateSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesAnnotateSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesAnnotateSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesAnnotateSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region Local
     /// <inheritdoc cref="KubernetesAnnotateSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
     public static T SetLocal<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Local, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
     public static T ResetLocal<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Local));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
     public static T EnableLocal<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Local, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
     public static T DisableLocal<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Local, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Local))]
     public static T ToggleLocal<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Local, !o.Local));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesAnnotateSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Output))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesAnnotateOutput v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Output))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="KubernetesAnnotateSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesAnnotateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesAnnotateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region ResourceVersion
     /// <inheritdoc cref="KubernetesAnnotateSettings.ResourceVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.ResourceVersion))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.ResourceVersion))]
     public static T SetResourceVersion<T>(this T o, string v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.ResourceVersion, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.ResourceVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.ResourceVersion))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.ResourceVersion))]
     public static T ResetResourceVersion<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.ResourceVersion));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesAnnotateSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Selector))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Selector))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesAnnotateSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Template))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesAnnotateSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesAnnotateSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Template))]
+    [Builder(Type = typeof(KubernetesAnnotateSettings), Property = nameof(KubernetesAnnotateSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesAnnotateSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
 }
 #endregion
 #region KubernetesDeleteSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesDelete(Fallout.Common.Tools.Kubernetes.KubernetesDeleteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesDeleteSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesDeleteSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesDeleteSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region All
     /// <inheritdoc cref="KubernetesDeleteSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesDeleteSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region Cascade
     /// <inheritdoc cref="KubernetesDeleteSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
     public static T SetCascade<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Cascade, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
     public static T ResetCascade<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Cascade));
     /// <inheritdoc cref="KubernetesDeleteSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
     public static T EnableCascade<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Cascade, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
     public static T DisableCascade<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Cascade, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Cascade))]
     public static T ToggleCascade<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Cascade, !o.Cascade));
     #endregion
     #region FieldSelector
     /// <inheritdoc cref="KubernetesDeleteSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.FieldSelector))]
     public static T SetFieldSelector<T>(this T o, string v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.FieldSelector, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.FieldSelector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.FieldSelector))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.FieldSelector))]
     public static T ResetFieldSelector<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.FieldSelector));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesDeleteSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesDeleteSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesDeleteSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesDeleteSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesDeleteSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region IgnoreNotFound
     /// <inheritdoc cref="KubernetesDeleteSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
     public static T SetIgnoreNotFound<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
     public static T ResetIgnoreNotFound<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.IgnoreNotFound));
     /// <inheritdoc cref="KubernetesDeleteSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
     public static T EnableIgnoreNotFound<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
     public static T DisableIgnoreNotFound<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.IgnoreNotFound"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IgnoreNotFound))]
     public static T ToggleIgnoreNotFound<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IgnoreNotFound, !o.IgnoreNotFound));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesDeleteSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesDeleteSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region Now
     /// <inheritdoc cref="KubernetesDeleteSettings.Now"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
     public static T SetNow<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Now, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Now"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
     public static T ResetNow<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Now));
     /// <inheritdoc cref="KubernetesDeleteSettings.Now"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
     public static T EnableNow<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Now, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.Now"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
     public static T DisableNow<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Now, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.Now"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Now))]
     public static T ToggleNow<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Now, !o.Now));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesDeleteSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Output))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Output))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesDeleteSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesDeleteSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesDeleteSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Selector))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Selector))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesDeleteSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Wait
     /// <inheritdoc cref="KubernetesDeleteSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="KubernetesDeleteSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="KubernetesDeleteSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="KubernetesDeleteSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="KubernetesDeleteSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
+    [Builder(Type = typeof(KubernetesDeleteSettings), Property = nameof(KubernetesDeleteSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : KubernetesDeleteSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region KubernetesExposeSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesExpose(Fallout.Common.Tools.Kubernetes.KubernetesExposeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesExposeSettingsExtensions
 {
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesExposeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesExposeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesExposeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesExposeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesExposeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region ClusterIp
     /// <inheritdoc cref="KubernetesExposeSettings.ClusterIp"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ClusterIp))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ClusterIp))]
     public static T SetClusterIp<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.ClusterIp, v));
     /// <inheritdoc cref="KubernetesExposeSettings.ClusterIp"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ClusterIp))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ClusterIp))]
     public static T ResetClusterIp<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.ClusterIp));
     #endregion
     #region ContainerPort
     /// <inheritdoc cref="KubernetesExposeSettings.ContainerPort"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ContainerPort))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ContainerPort))]
     public static T SetContainerPort<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.ContainerPort, v));
     /// <inheritdoc cref="KubernetesExposeSettings.ContainerPort"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ContainerPort))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ContainerPort))]
     public static T ResetContainerPort<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.ContainerPort));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesExposeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesExposeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesExposeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesExposeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesExposeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region ExternalIp
     /// <inheritdoc cref="KubernetesExposeSettings.ExternalIp"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ExternalIp))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ExternalIp))]
     public static T SetExternalIp<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.ExternalIp, v));
     /// <inheritdoc cref="KubernetesExposeSettings.ExternalIp"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ExternalIp))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.ExternalIp))]
     public static T ResetExternalIp<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.ExternalIp));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesExposeSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesExposeSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesExposeSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesExposeSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Generator
     /// <inheritdoc cref="KubernetesExposeSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Generator))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Generator))]
     public static T SetGenerator<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Generator, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Generator))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Generator))]
     public static T ResetGenerator<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Generator));
     #endregion
     #region Labels
     /// <inheritdoc cref="KubernetesExposeSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Labels))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Labels))]
     public static T SetLabels<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Labels, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Labels))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Labels))]
     public static T ResetLabels<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Labels));
     #endregion
     #region LoadBalancerIp
     /// <inheritdoc cref="KubernetesExposeSettings.LoadBalancerIp"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.LoadBalancerIp))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.LoadBalancerIp))]
     public static T SetLoadBalancerIp<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.LoadBalancerIp, v));
     /// <inheritdoc cref="KubernetesExposeSettings.LoadBalancerIp"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.LoadBalancerIp))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.LoadBalancerIp))]
     public static T ResetLoadBalancerIp<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.LoadBalancerIp));
     #endregion
     #region Name
     /// <inheritdoc cref="KubernetesExposeSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Name))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Name))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Name))]
     public static T ResetName<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesExposeSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Output))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesExposeOutput v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Output))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overrides
     /// <inheritdoc cref="KubernetesExposeSettings.Overrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Overrides))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Overrides))]
     public static T SetOverrides<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Overrides, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Overrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Overrides))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Overrides))]
     public static T ResetOverrides<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Overrides));
     #endregion
     #region Port
     /// <inheritdoc cref="KubernetesExposeSettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Port))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Port))]
     public static T SetPort<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Port))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Port))]
     public static T ResetPort<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region Protocol
     /// <inheritdoc cref="KubernetesExposeSettings.Protocol"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Protocol))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Protocol))]
     public static T SetProtocol<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Protocol, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Protocol"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Protocol))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Protocol))]
     public static T ResetProtocol<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Protocol));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesExposeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesExposeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesExposeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesExposeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesExposeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesExposeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesExposeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesExposeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesExposeSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesExposeSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesExposeSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesExposeSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesExposeSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesExposeSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Selector))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Selector))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region SessionAffinity
     /// <inheritdoc cref="KubernetesExposeSettings.SessionAffinity"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SessionAffinity))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SessionAffinity))]
     public static T SetSessionAffinity<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.SessionAffinity, v));
     /// <inheritdoc cref="KubernetesExposeSettings.SessionAffinity"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SessionAffinity))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.SessionAffinity))]
     public static T ResetSessionAffinity<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.SessionAffinity));
     #endregion
     #region TargetPort
     /// <inheritdoc cref="KubernetesExposeSettings.TargetPort"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.TargetPort))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.TargetPort))]
     public static T SetTargetPort<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.TargetPort, v));
     /// <inheritdoc cref="KubernetesExposeSettings.TargetPort"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.TargetPort))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.TargetPort))]
     public static T ResetTargetPort<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.TargetPort));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesExposeSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Template))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Template))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Type
     /// <inheritdoc cref="KubernetesExposeSettings.Type"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Type))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Type))]
     public static T SetType<T>(this T o, string v) where T : KubernetesExposeSettings => o.Modify(b => b.Set(() => o.Type, v));
     /// <inheritdoc cref="KubernetesExposeSettings.Type"/>
-    [Pure] [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Type))]
+    [Builder(Type = typeof(KubernetesExposeSettings), Property = nameof(KubernetesExposeSettings.Type))]
     public static T ResetType<T>(this T o) where T : KubernetesExposeSettings => o.Modify(b => b.Remove(() => o.Type));
     #endregion
 }
 #endregion
 #region KubernetesOptionsSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesOptions(Fallout.Common.Tools.Kubernetes.KubernetesOptionsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesOptionsSettingsExtensions
 {
@@ -4014,193 +3952,190 @@ public static partial class KubernetesOptionsSettingsExtensions
 #endregion
 #region KubernetesAttachSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesAttach(Fallout.Common.Tools.Kubernetes.KubernetesAttachSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesAttachSettingsExtensions
 {
     #region Pod
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T SetPod<T>(this T o, params string[] v) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T SetPod<T>(this T o, IEnumerable<string> v) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T AddPod<T>(this T o, params string[] v) where T : KubernetesAttachSettings => o.Modify(b => b.AddCollection(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T AddPod<T>(this T o, IEnumerable<string> v) where T : KubernetesAttachSettings => o.Modify(b => b.AddCollection(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T RemovePod<T>(this T o, params string[] v) where T : KubernetesAttachSettings => o.Modify(b => b.RemoveCollection(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T RemovePod<T>(this T o, IEnumerable<string> v) where T : KubernetesAttachSettings => o.Modify(b => b.RemoveCollection(() => o.Pod, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Pod"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Pod))]
     public static T ClearPod<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.ClearCollection(() => o.Pod));
     #endregion
     #region Container
     /// <inheritdoc cref="KubernetesAttachSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Container))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Container))]
     public static T SetContainer<T>(this T o, string v) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Container, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Container))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Container))]
     public static T ResetContainer<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Remove(() => o.Container));
     #endregion
     #region PodRunningTimeout
     /// <inheritdoc cref="KubernetesAttachSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.PodRunningTimeout))]
     public static T SetPodRunningTimeout<T>(this T o, TimeSpan? v) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.PodRunningTimeout, v));
     /// <inheritdoc cref="KubernetesAttachSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.PodRunningTimeout))]
     public static T ResetPodRunningTimeout<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Remove(() => o.PodRunningTimeout));
     #endregion
     #region Stdin
     /// <inheritdoc cref="KubernetesAttachSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
     public static T SetStdin<T>(this T o, bool? v) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Stdin, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
     public static T ResetStdin<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Remove(() => o.Stdin));
     /// <inheritdoc cref="KubernetesAttachSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
     public static T EnableStdin<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Stdin, true));
     /// <inheritdoc cref="KubernetesAttachSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
     public static T DisableStdin<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Stdin, false));
     /// <inheritdoc cref="KubernetesAttachSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Stdin))]
     public static T ToggleStdin<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Stdin, !o.Stdin));
     #endregion
     #region Tty
     /// <inheritdoc cref="KubernetesAttachSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
     public static T SetTty<T>(this T o, bool? v) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Tty, v));
     /// <inheritdoc cref="KubernetesAttachSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
     public static T ResetTty<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Remove(() => o.Tty));
     /// <inheritdoc cref="KubernetesAttachSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
     public static T EnableTty<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Tty, true));
     /// <inheritdoc cref="KubernetesAttachSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
     public static T DisableTty<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Tty, false));
     /// <inheritdoc cref="KubernetesAttachSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
+    [Builder(Type = typeof(KubernetesAttachSettings), Property = nameof(KubernetesAttachSettings.Tty))]
     public static T ToggleTty<T>(this T o) where T : KubernetesAttachSettings => o.Modify(b => b.Set(() => o.Tty, !o.Tty));
     #endregion
 }
 #endregion
 #region KubernetesProxySettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesProxy(Fallout.Common.Tools.Kubernetes.KubernetesProxySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesProxySettingsExtensions
 {
     #region AcceptHosts
     /// <inheritdoc cref="KubernetesProxySettings.AcceptHosts"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptHosts))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptHosts))]
     public static T SetAcceptHosts<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.AcceptHosts, v));
     /// <inheritdoc cref="KubernetesProxySettings.AcceptHosts"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptHosts))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptHosts))]
     public static T ResetAcceptHosts<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.AcceptHosts));
     #endregion
     #region AcceptPaths
     /// <inheritdoc cref="KubernetesProxySettings.AcceptPaths"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptPaths))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptPaths))]
     public static T SetAcceptPaths<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.AcceptPaths, v));
     /// <inheritdoc cref="KubernetesProxySettings.AcceptPaths"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptPaths))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.AcceptPaths))]
     public static T ResetAcceptPaths<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.AcceptPaths));
     #endregion
     #region Address
     /// <inheritdoc cref="KubernetesProxySettings.Address"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Address))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Address))]
     public static T SetAddress<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.Address, v));
     /// <inheritdoc cref="KubernetesProxySettings.Address"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Address))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Address))]
     public static T ResetAddress<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.Address));
     #endregion
     #region ApiPrefix
     /// <inheritdoc cref="KubernetesProxySettings.ApiPrefix"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.ApiPrefix))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.ApiPrefix))]
     public static T SetApiPrefix<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.ApiPrefix, v));
     /// <inheritdoc cref="KubernetesProxySettings.ApiPrefix"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.ApiPrefix))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.ApiPrefix))]
     public static T ResetApiPrefix<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.ApiPrefix));
     #endregion
     #region DisableFilter
     /// <inheritdoc cref="KubernetesProxySettings.DisableFilter"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
     public static T SetDisableFilter<T>(this T o, bool? v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.DisableFilter, v));
     /// <inheritdoc cref="KubernetesProxySettings.DisableFilter"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
     public static T ResetDisableFilter<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.DisableFilter));
     /// <inheritdoc cref="KubernetesProxySettings.DisableFilter"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
     public static T EnableDisableFilter<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.DisableFilter, true));
     /// <inheritdoc cref="KubernetesProxySettings.DisableFilter"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
     public static T DisableDisableFilter<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.DisableFilter, false));
     /// <inheritdoc cref="KubernetesProxySettings.DisableFilter"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.DisableFilter))]
     public static T ToggleDisableFilter<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.DisableFilter, !o.DisableFilter));
     #endregion
     #region Port
     /// <inheritdoc cref="KubernetesProxySettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Port))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Port))]
     public static T SetPort<T>(this T o, int? v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="KubernetesProxySettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Port))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Port))]
     public static T ResetPort<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region RejectMethods
     /// <inheritdoc cref="KubernetesProxySettings.RejectMethods"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectMethods))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectMethods))]
     public static T SetRejectMethods<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.RejectMethods, v));
     /// <inheritdoc cref="KubernetesProxySettings.RejectMethods"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectMethods))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectMethods))]
     public static T ResetRejectMethods<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.RejectMethods));
     #endregion
     #region RejectPaths
     /// <inheritdoc cref="KubernetesProxySettings.RejectPaths"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectPaths))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectPaths))]
     public static T SetRejectPaths<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.RejectPaths, v));
     /// <inheritdoc cref="KubernetesProxySettings.RejectPaths"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectPaths))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.RejectPaths))]
     public static T ResetRejectPaths<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.RejectPaths));
     #endregion
     #region UnixSocket
     /// <inheritdoc cref="KubernetesProxySettings.UnixSocket"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.UnixSocket))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.UnixSocket))]
     public static T SetUnixSocket<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.UnixSocket, v));
     /// <inheritdoc cref="KubernetesProxySettings.UnixSocket"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.UnixSocket))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.UnixSocket))]
     public static T ResetUnixSocket<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.UnixSocket));
     #endregion
     #region Www
     /// <inheritdoc cref="KubernetesProxySettings.Www"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Www))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Www))]
     public static T SetWww<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.Www, v));
     /// <inheritdoc cref="KubernetesProxySettings.Www"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Www))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.Www))]
     public static T ResetWww<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.Www));
     #endregion
     #region WwwPrefix
     /// <inheritdoc cref="KubernetesProxySettings.WwwPrefix"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.WwwPrefix))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.WwwPrefix))]
     public static T SetWwwPrefix<T>(this T o, string v) where T : KubernetesProxySettings => o.Modify(b => b.Set(() => o.WwwPrefix, v));
     /// <inheritdoc cref="KubernetesProxySettings.WwwPrefix"/>
-    [Pure] [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.WwwPrefix))]
+    [Builder(Type = typeof(KubernetesProxySettings), Property = nameof(KubernetesProxySettings.WwwPrefix))]
     public static T ResetWwwPrefix<T>(this T o) where T : KubernetesProxySettings => o.Modify(b => b.Remove(() => o.WwwPrefix));
     #endregion
 }
 #endregion
 #region KubernetesAlphaSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesAlpha(Fallout.Common.Tools.Kubernetes.KubernetesAlphaSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesAlphaSettingsExtensions
 {
@@ -4208,7 +4143,6 @@ public static partial class KubernetesAlphaSettingsExtensions
 #endregion
 #region KubernetesSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.Kubernetes(Fallout.Common.Tools.Kubernetes.KubernetesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesSettingsExtensions
 {
@@ -4216,7 +4150,6 @@ public static partial class KubernetesSettingsExtensions
 #endregion
 #region KubernetesCompletionSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesCompletion(Fallout.Common.Tools.Kubernetes.KubernetesCompletionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesCompletionSettingsExtensions
 {
@@ -4224,1450 +4157,1437 @@ public static partial class KubernetesCompletionSettingsExtensions
 #endregion
 #region KubernetesPatchSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesPatch(Fallout.Common.Tools.Kubernetes.KubernetesPatchSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesPatchSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesPatchSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesPatchSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesPatchSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesPatchSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPatchSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesPatchSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesPatchSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesPatchSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesPatchSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesPatchSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesPatchSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesPatchSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesPatchSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesPatchSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesPatchSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesPatchSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesPatchSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesPatchSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesPatchSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Local
     /// <inheritdoc cref="KubernetesPatchSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
     public static T SetLocal<T>(this T o, bool? v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Local, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
     public static T ResetLocal<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Local));
     /// <inheritdoc cref="KubernetesPatchSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
     public static T EnableLocal<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Local, true));
     /// <inheritdoc cref="KubernetesPatchSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
     public static T DisableLocal<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Local, false));
     /// <inheritdoc cref="KubernetesPatchSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Local))]
     public static T ToggleLocal<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Local, !o.Local));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesPatchSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Output))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesPatchOutput v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Output))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Patch
     /// <inheritdoc cref="KubernetesPatchSettings.Patch"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Patch))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Patch))]
     public static T SetPatch<T>(this T o, string v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Patch, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Patch"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Patch))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Patch))]
     public static T ResetPatch<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Patch));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesPatchSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesPatchSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesPatchSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesPatchSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesPatchSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesPatchSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesPatchSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesPatchSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesPatchSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Template))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Template))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Type
     /// <inheritdoc cref="KubernetesPatchSettings.Type"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Type))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Type))]
     public static T SetType<T>(this T o, KubernetesPatchType v) where T : KubernetesPatchSettings => o.Modify(b => b.Set(() => o.Type, v));
     /// <inheritdoc cref="KubernetesPatchSettings.Type"/>
-    [Pure] [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Type))]
+    [Builder(Type = typeof(KubernetesPatchSettings), Property = nameof(KubernetesPatchSettings.Type))]
     public static T ResetType<T>(this T o) where T : KubernetesPatchSettings => o.Modify(b => b.Remove(() => o.Type));
     #endregion
 }
 #endregion
 #region KubernetesReplaceSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesReplace(Fallout.Common.Tools.Kubernetes.KubernetesReplaceSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesReplaceSettingsExtensions
 {
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesReplaceSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesReplaceSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Cascade
     /// <inheritdoc cref="KubernetesReplaceSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
     public static T SetCascade<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Cascade, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
     public static T ResetCascade<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Cascade));
     /// <inheritdoc cref="KubernetesReplaceSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
     public static T EnableCascade<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Cascade, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
     public static T DisableCascade<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Cascade, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Cascade))]
     public static T ToggleCascade<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Cascade, !o.Cascade));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesReplaceSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesReplaceSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesReplaceSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesReplaceSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesReplaceSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesReplaceSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesReplaceSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesReplaceSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Output))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesReplaceOutput v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Output))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesReplaceSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesReplaceSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesReplaceSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesReplaceSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesReplaceSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Template))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Template))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesReplaceSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesReplaceSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesReplaceSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
     #region Wait
     /// <inheritdoc cref="KubernetesReplaceSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="KubernetesReplaceSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="KubernetesReplaceSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="KubernetesReplaceSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="KubernetesReplaceSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
+    [Builder(Type = typeof(KubernetesReplaceSettings), Property = nameof(KubernetesReplaceSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : KubernetesReplaceSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region KubernetesTaintSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesTaint(Fallout.Common.Tools.Kubernetes.KubernetesTaintSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesTaintSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesTaintSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesTaintSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesTaintSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesTaintSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region TaintEffects
     /// <inheritdoc cref="KubernetesTaintSettings.TaintEffects"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
     public static T SetTaintEffects<T>(this T o, IDictionary<string, string> v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.TaintEffects, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="KubernetesTaintSettings.TaintEffects"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
     public static T SetTaintEffect<T>(this T o, string k, string v) where T : KubernetesTaintSettings => o.Modify(b => b.SetDictionary(() => o.TaintEffects, k, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TaintEffects"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
     public static T AddTaintEffect<T>(this T o, string k, string v) where T : KubernetesTaintSettings => o.Modify(b => b.AddDictionary(() => o.TaintEffects, k, v));
     /// <inheritdoc cref="KubernetesTaintSettings.TaintEffects"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
     public static T RemoveTaintEffect<T>(this T o, string k) where T : KubernetesTaintSettings => o.Modify(b => b.RemoveDictionary(() => o.TaintEffects, k));
     /// <inheritdoc cref="KubernetesTaintSettings.TaintEffects"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.TaintEffects))]
     public static T ClearTaintEffects<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.ClearDictionary(() => o.TaintEffects));
     #endregion
     #region All
     /// <inheritdoc cref="KubernetesTaintSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesTaintSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesTaintSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesTaintSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesTaintSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesTaintSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesTaintSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesTaintSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesTaintSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesTaintSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesTaintSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Output))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesTaintOutput v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesTaintSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Output))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="KubernetesTaintSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="KubernetesTaintSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="KubernetesTaintSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="KubernetesTaintSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="KubernetesTaintSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesTaintSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Selector))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesTaintSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Selector))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesTaintSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Template))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesTaintSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Template))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesTaintSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesTaintSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesTaintSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesTaintSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesTaintSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
+    [Builder(Type = typeof(KubernetesTaintSettings), Property = nameof(KubernetesTaintSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesTaintSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
 }
 #endregion
 #region KubernetesDescribeSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesDescribe(Fallout.Common.Tools.Kubernetes.KubernetesDescribeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesDescribeSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesDescribeSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesDescribeSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesDescribeSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesDescribeSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region AllNamespaces
     /// <inheritdoc cref="KubernetesDescribeSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
     public static T SetAllNamespaces<T>(this T o, bool? v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.AllNamespaces, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
     public static T ResetAllNamespaces<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Remove(() => o.AllNamespaces));
     /// <inheritdoc cref="KubernetesDescribeSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
     public static T EnableAllNamespaces<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.AllNamespaces, true));
     /// <inheritdoc cref="KubernetesDescribeSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
     public static T DisableAllNamespaces<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.AllNamespaces, false));
     /// <inheritdoc cref="KubernetesDescribeSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.AllNamespaces))]
     public static T ToggleAllNamespaces<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.AllNamespaces, !o.AllNamespaces));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesDescribeSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesDescribeSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesDescribeSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesDescribeSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesDescribeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesDescribeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesDescribeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesDescribeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesDescribeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesDescribeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesDescribeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesDescribeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesDescribeSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Selector))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Selector))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region ShowEvents
     /// <inheritdoc cref="KubernetesDescribeSettings.ShowEvents"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
     public static T SetShowEvents<T>(this T o, bool? v) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.ShowEvents, v));
     /// <inheritdoc cref="KubernetesDescribeSettings.ShowEvents"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
     public static T ResetShowEvents<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Remove(() => o.ShowEvents));
     /// <inheritdoc cref="KubernetesDescribeSettings.ShowEvents"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
     public static T EnableShowEvents<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.ShowEvents, true));
     /// <inheritdoc cref="KubernetesDescribeSettings.ShowEvents"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
     public static T DisableShowEvents<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.ShowEvents, false));
     /// <inheritdoc cref="KubernetesDescribeSettings.ShowEvents"/>
-    [Pure] [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
+    [Builder(Type = typeof(KubernetesDescribeSettings), Property = nameof(KubernetesDescribeSettings.ShowEvents))]
     public static T ToggleShowEvents<T>(this T o) where T : KubernetesDescribeSettings => o.Modify(b => b.Set(() => o.ShowEvents, !o.ShowEvents));
     #endregion
 }
 #endregion
 #region KubernetesSetSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesSet(Fallout.Common.Tools.Kubernetes.KubernetesSetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesSetSettingsExtensions
 {
     #region Subcommand
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, params string[] v) where T : KubernetesSetSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesSetSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T AddSubcommand<T>(this T o, params string[] v) where T : KubernetesSetSettings => o.Modify(b => b.AddCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T AddSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesSetSettings => o.Modify(b => b.AddCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T RemoveSubcommand<T>(this T o, params string[] v) where T : KubernetesSetSettings => o.Modify(b => b.RemoveCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T RemoveSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesSetSettings => o.Modify(b => b.RemoveCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesSetSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesSetSettings), Property = nameof(KubernetesSetSettings.Subcommand))]
     public static T ClearSubcommand<T>(this T o) where T : KubernetesSetSettings => o.Modify(b => b.ClearCollection(() => o.Subcommand));
     #endregion
 }
 #endregion
 #region KubernetesAuthSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesAuth(Fallout.Common.Tools.Kubernetes.KubernetesAuthSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesAuthSettingsExtensions
 {
     #region Subcommand
     /// <inheritdoc cref="KubernetesAuthSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesAuthSettings), Property = nameof(KubernetesAuthSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesAuthSettings), Property = nameof(KubernetesAuthSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, string v) where T : KubernetesAuthSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesAuthSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesAuthSettings), Property = nameof(KubernetesAuthSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesAuthSettings), Property = nameof(KubernetesAuthSettings.Subcommand))]
     public static T ResetSubcommand<T>(this T o) where T : KubernetesAuthSettings => o.Modify(b => b.Remove(() => o.Subcommand));
     #endregion
 }
 #endregion
 #region KubernetesCertificateSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesCertificate(Fallout.Common.Tools.Kubernetes.KubernetesCertificateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesCertificateSettingsExtensions
 {
     #region Subcommand
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, params string[] v) where T : KubernetesCertificateSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesCertificateSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T AddSubcommand<T>(this T o, params string[] v) where T : KubernetesCertificateSettings => o.Modify(b => b.AddCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T AddSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesCertificateSettings => o.Modify(b => b.AddCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T RemoveSubcommand<T>(this T o, params string[] v) where T : KubernetesCertificateSettings => o.Modify(b => b.RemoveCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T RemoveSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesCertificateSettings => o.Modify(b => b.RemoveCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesCertificateSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesCertificateSettings), Property = nameof(KubernetesCertificateSettings.Subcommand))]
     public static T ClearSubcommand<T>(this T o) where T : KubernetesCertificateSettings => o.Modify(b => b.ClearCollection(() => o.Subcommand));
     #endregion
 }
 #endregion
 #region KubernetesRolloutSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesRollout(Fallout.Common.Tools.Kubernetes.KubernetesRolloutSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesRolloutSettingsExtensions
 {
     #region Subcommand
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, params string[] v) where T : KubernetesRolloutSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T SetSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesRolloutSettings => o.Modify(b => b.Set(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T AddSubcommand<T>(this T o, params string[] v) where T : KubernetesRolloutSettings => o.Modify(b => b.AddCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T AddSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesRolloutSettings => o.Modify(b => b.AddCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T RemoveSubcommand<T>(this T o, params string[] v) where T : KubernetesRolloutSettings => o.Modify(b => b.RemoveCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T RemoveSubcommand<T>(this T o, IEnumerable<string> v) where T : KubernetesRolloutSettings => o.Modify(b => b.RemoveCollection(() => o.Subcommand, v));
     /// <inheritdoc cref="KubernetesRolloutSettings.Subcommand"/>
-    [Pure] [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
+    [Builder(Type = typeof(KubernetesRolloutSettings), Property = nameof(KubernetesRolloutSettings.Subcommand))]
     public static T ClearSubcommand<T>(this T o) where T : KubernetesRolloutSettings => o.Modify(b => b.ClearCollection(() => o.Subcommand));
     #endregion
 }
 #endregion
 #region KubernetesApplySettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesApply(Fallout.Common.Tools.Kubernetes.KubernetesApplySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesApplySettingsExtensions
 {
     #region All
     /// <inheritdoc cref="KubernetesApplySettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesApplySettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesApplySettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesApplySettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesApplySettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesApplySettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesApplySettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesApplySettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesApplySettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesApplySettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Cascade
     /// <inheritdoc cref="KubernetesApplySettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
     public static T SetCascade<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Cascade, v));
     /// <inheritdoc cref="KubernetesApplySettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
     public static T ResetCascade<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Cascade));
     /// <inheritdoc cref="KubernetesApplySettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
     public static T EnableCascade<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Cascade, true));
     /// <inheritdoc cref="KubernetesApplySettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
     public static T DisableCascade<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Cascade, false));
     /// <inheritdoc cref="KubernetesApplySettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Cascade))]
     public static T ToggleCascade<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Cascade, !o.Cascade));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesApplySettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesApplySettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesApplySettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesApplySettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesApplySettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesApplySettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesApplySettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesApplySettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesApplySettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplySettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesApplySettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesApplySettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesApplySettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesApplySettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesApplySettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesApplySettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesApplySettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesApplySettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesApplySettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesApplySettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesApplySettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesApplySettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region OpenapiPatch
     /// <inheritdoc cref="KubernetesApplySettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
     public static T SetOpenapiPatch<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.OpenapiPatch, v));
     /// <inheritdoc cref="KubernetesApplySettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
     public static T ResetOpenapiPatch<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.OpenapiPatch));
     /// <inheritdoc cref="KubernetesApplySettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
     public static T EnableOpenapiPatch<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.OpenapiPatch, true));
     /// <inheritdoc cref="KubernetesApplySettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
     public static T DisableOpenapiPatch<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.OpenapiPatch, false));
     /// <inheritdoc cref="KubernetesApplySettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.OpenapiPatch))]
     public static T ToggleOpenapiPatch<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.OpenapiPatch, !o.OpenapiPatch));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesApplySettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Output))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesApplyOutput v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesApplySettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Output))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="KubernetesApplySettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="KubernetesApplySettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="KubernetesApplySettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="KubernetesApplySettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="KubernetesApplySettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region Prune
     /// <inheritdoc cref="KubernetesApplySettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
     public static T SetPrune<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Prune, v));
     /// <inheritdoc cref="KubernetesApplySettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
     public static T ResetPrune<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Prune));
     /// <inheritdoc cref="KubernetesApplySettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
     public static T EnablePrune<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Prune, true));
     /// <inheritdoc cref="KubernetesApplySettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
     public static T DisablePrune<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Prune, false));
     /// <inheritdoc cref="KubernetesApplySettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Prune))]
     public static T TogglePrune<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Prune, !o.Prune));
     #endregion
     #region PruneWhitelist
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T SetPruneWhitelist<T>(this T o, params string[] v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T SetPruneWhitelist<T>(this T o, IEnumerable<string> v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T AddPruneWhitelist<T>(this T o, params string[] v) where T : KubernetesApplySettings => o.Modify(b => b.AddCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T AddPruneWhitelist<T>(this T o, IEnumerable<string> v) where T : KubernetesApplySettings => o.Modify(b => b.AddCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T RemovePruneWhitelist<T>(this T o, params string[] v) where T : KubernetesApplySettings => o.Modify(b => b.RemoveCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T RemovePruneWhitelist<T>(this T o, IEnumerable<string> v) where T : KubernetesApplySettings => o.Modify(b => b.RemoveCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplySettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.PruneWhitelist))]
     public static T ClearPruneWhitelist<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.ClearCollection(() => o.PruneWhitelist));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesApplySettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesApplySettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesApplySettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesApplySettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesApplySettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesApplySettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesApplySettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesApplySettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesApplySettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesApplySettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesApplySettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Selector))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesApplySettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Selector))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesApplySettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Template))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesApplySettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Template))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesApplySettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Timeout))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesApplySettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Timeout))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesApplySettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesApplySettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesApplySettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesApplySettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesApplySettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
     #region Wait
     /// <inheritdoc cref="KubernetesApplySettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="KubernetesApplySettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
     public static T ResetWait<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="KubernetesApplySettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
     public static T EnableWait<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="KubernetesApplySettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
     public static T DisableWait<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="KubernetesApplySettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplySettings), Property = nameof(KubernetesApplySettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : KubernetesApplySettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region KubernetesApplyKustomizeSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesApplyKustomize(Fallout.Common.Tools.Kubernetes.KubernetesApplyKustomizeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesApplyKustomizeSettingsExtensions
 {
     #region Kustomize
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Kustomize"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Kustomize))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Kustomize))]
     public static T SetKustomize<T>(this T o, string v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Kustomize, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Kustomize"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Kustomize))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Kustomize))]
     public static T ResetKustomize<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Kustomize));
     #endregion
     #region All
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Cascade
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
     public static T SetCascade<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Cascade, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
     public static T ResetCascade<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Cascade));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
     public static T EnableCascade<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Cascade, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
     public static T DisableCascade<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Cascade, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Cascade))]
     public static T ToggleCascade<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Cascade, !o.Cascade));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region OpenapiPatch
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
     public static T SetOpenapiPatch<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.OpenapiPatch, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
     public static T ResetOpenapiPatch<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.OpenapiPatch));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
     public static T EnableOpenapiPatch<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.OpenapiPatch, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
     public static T DisableOpenapiPatch<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.OpenapiPatch, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.OpenapiPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.OpenapiPatch))]
     public static T ToggleOpenapiPatch<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.OpenapiPatch, !o.OpenapiPatch));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Output))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesApplyOutput v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Output))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region Prune
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
     public static T SetPrune<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Prune, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
     public static T ResetPrune<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Prune));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
     public static T EnablePrune<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Prune, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
     public static T DisablePrune<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Prune, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Prune"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Prune))]
     public static T TogglePrune<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Prune, !o.Prune));
     #endregion
     #region PruneWhitelist
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T SetPruneWhitelist<T>(this T o, params string[] v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T SetPruneWhitelist<T>(this T o, IEnumerable<string> v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T AddPruneWhitelist<T>(this T o, params string[] v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.AddCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T AddPruneWhitelist<T>(this T o, IEnumerable<string> v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.AddCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T RemovePruneWhitelist<T>(this T o, params string[] v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.RemoveCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T RemovePruneWhitelist<T>(this T o, IEnumerable<string> v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.RemoveCollection(() => o.PruneWhitelist, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.PruneWhitelist"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.PruneWhitelist))]
     public static T ClearPruneWhitelist<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.ClearCollection(() => o.PruneWhitelist));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Selector))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Selector))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Template))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Template))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
     #region Wait
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="KubernetesApplyKustomizeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
+    [Builder(Type = typeof(KubernetesApplyKustomizeSettings), Property = nameof(KubernetesApplyKustomizeSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : KubernetesApplyKustomizeSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region KubernetesCordonSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesCordon(Fallout.Common.Tools.Kubernetes.KubernetesCordonSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesCordonSettingsExtensions
 {
     #region Node
     /// <inheritdoc cref="KubernetesCordonSettings.Node"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Node))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Node))]
     public static T SetNode<T>(this T o, string v) where T : KubernetesCordonSettings => o.Modify(b => b.Set(() => o.Node, v));
     /// <inheritdoc cref="KubernetesCordonSettings.Node"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Node))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Node))]
     public static T ResetNode<T>(this T o) where T : KubernetesCordonSettings => o.Modify(b => b.Remove(() => o.Node));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesCordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesCordonSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesCordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesCordonSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesCordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesCordonSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesCordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesCordonSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesCordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesCordonSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesCordonSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Selector))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesCordonSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesCordonSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Selector))]
+    [Builder(Type = typeof(KubernetesCordonSettings), Property = nameof(KubernetesCordonSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesCordonSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
 }
 #endregion
 #region KubernetesCpSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesCp(Fallout.Common.Tools.Kubernetes.KubernetesCpSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesCpSettingsExtensions
 {
     #region SrcFileSpec
     /// <inheritdoc cref="KubernetesCpSettings.SrcFileSpec"/>
-    [Pure] [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.SrcFileSpec))]
+    [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.SrcFileSpec))]
     public static T SetSrcFileSpec<T>(this T o, string v) where T : KubernetesCpSettings => o.Modify(b => b.Set(() => o.SrcFileSpec, v));
     /// <inheritdoc cref="KubernetesCpSettings.SrcFileSpec"/>
-    [Pure] [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.SrcFileSpec))]
+    [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.SrcFileSpec))]
     public static T ResetSrcFileSpec<T>(this T o) where T : KubernetesCpSettings => o.Modify(b => b.Remove(() => o.SrcFileSpec));
     #endregion
     #region DestFileSpec
     /// <inheritdoc cref="KubernetesCpSettings.DestFileSpec"/>
-    [Pure] [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.DestFileSpec))]
+    [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.DestFileSpec))]
     public static T SetDestFileSpec<T>(this T o, string v) where T : KubernetesCpSettings => o.Modify(b => b.Set(() => o.DestFileSpec, v));
     /// <inheritdoc cref="KubernetesCpSettings.DestFileSpec"/>
-    [Pure] [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.DestFileSpec))]
+    [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.DestFileSpec))]
     public static T ResetDestFileSpec<T>(this T o) where T : KubernetesCpSettings => o.Modify(b => b.Remove(() => o.DestFileSpec));
     #endregion
     #region Container
     /// <inheritdoc cref="KubernetesCpSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.Container))]
+    [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.Container))]
     public static T SetContainer<T>(this T o, string v) where T : KubernetesCpSettings => o.Modify(b => b.Set(() => o.Container, v));
     /// <inheritdoc cref="KubernetesCpSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.Container))]
+    [Builder(Type = typeof(KubernetesCpSettings), Property = nameof(KubernetesCpSettings.Container))]
     public static T ResetContainer<T>(this T o) where T : KubernetesCpSettings => o.Modify(b => b.Remove(() => o.Container));
     #endregion
 }
 #endregion
 #region KubernetesApiVersionsSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesApiVersions(Fallout.Common.Tools.Kubernetes.KubernetesApiVersionsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesApiVersionsSettingsExtensions
 {
@@ -5675,236 +5595,232 @@ public static partial class KubernetesApiVersionsSettingsExtensions
 #endregion
 #region KubernetesUncordonSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesUncordon(Fallout.Common.Tools.Kubernetes.KubernetesUncordonSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesUncordonSettingsExtensions
 {
     #region Node
     /// <inheritdoc cref="KubernetesUncordonSettings.Node"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Node))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Node))]
     public static T SetNode<T>(this T o, string v) where T : KubernetesUncordonSettings => o.Modify(b => b.Set(() => o.Node, v));
     /// <inheritdoc cref="KubernetesUncordonSettings.Node"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Node))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Node))]
     public static T ResetNode<T>(this T o) where T : KubernetesUncordonSettings => o.Modify(b => b.Remove(() => o.Node));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesUncordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesUncordonSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesUncordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesUncordonSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesUncordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesUncordonSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesUncordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesUncordonSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesUncordonSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesUncordonSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesUncordonSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Selector))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesUncordonSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesUncordonSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Selector))]
+    [Builder(Type = typeof(KubernetesUncordonSettings), Property = nameof(KubernetesUncordonSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesUncordonSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
 }
 #endregion
 #region KubernetesAutoscaleSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesAutoscale(Fallout.Common.Tools.Kubernetes.KubernetesAutoscaleSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesAutoscaleSettingsExtensions
 {
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesAutoscaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region CpuPercent
     /// <inheritdoc cref="KubernetesAutoscaleSettings.CpuPercent"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.CpuPercent))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.CpuPercent))]
     public static T SetCpuPercent<T>(this T o, int? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.CpuPercent, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.CpuPercent"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.CpuPercent))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.CpuPercent))]
     public static T ResetCpuPercent<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.CpuPercent));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesAutoscaleSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Generator
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Generator))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Generator))]
     public static T SetGenerator<T>(this T o, string v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Generator, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Generator))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Generator))]
     public static T ResetGenerator<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Generator));
     #endregion
     #region Max
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Max"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Max))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Max))]
     public static T SetMax<T>(this T o, int? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Max, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Max"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Max))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Max))]
     public static T ResetMax<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Max));
     #endregion
     #region Min
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Min"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Min))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Min))]
     public static T SetMin<T>(this T o, int? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Min, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Min"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Min))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Min))]
     public static T ResetMin<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Min));
     #endregion
     #region Name
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Name))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Name))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Name))]
     public static T ResetName<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Output))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesAutoscaleOutput v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Output))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesAutoscaleSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Template))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesAutoscaleSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Template))]
+    [Builder(Type = typeof(KubernetesAutoscaleSettings), Property = nameof(KubernetesAutoscaleSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesAutoscaleSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
 }
 #endregion
 #region KubernetesPluginSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesPlugin(Fallout.Common.Tools.Kubernetes.KubernetesPluginSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesPluginSettingsExtensions
 {
     #region Name
     /// <inheritdoc cref="KubernetesPluginSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesPluginSettings), Property = nameof(KubernetesPluginSettings.Name))]
+    [Builder(Type = typeof(KubernetesPluginSettings), Property = nameof(KubernetesPluginSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : KubernetesPluginSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="KubernetesPluginSettings.Name"/>
-    [Pure] [Builder(Type = typeof(KubernetesPluginSettings), Property = nameof(KubernetesPluginSettings.Name))]
+    [Builder(Type = typeof(KubernetesPluginSettings), Property = nameof(KubernetesPluginSettings.Name))]
     public static T ResetName<T>(this T o) where T : KubernetesPluginSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
 }
 #endregion
 #region KubernetesClusterInfoSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesClusterInfo(Fallout.Common.Tools.Kubernetes.KubernetesClusterInfoSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesClusterInfoSettingsExtensions
 {
@@ -5912,1857 +5828,1846 @@ public static partial class KubernetesClusterInfoSettingsExtensions
 #endregion
 #region KubernetesWaitSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesWait(Fallout.Common.Tools.Kubernetes.KubernetesWaitSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesWaitSettingsExtensions
 {
     #region AllNamespaces
     /// <inheritdoc cref="KubernetesWaitSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
     public static T SetAllNamespaces<T>(this T o, bool? v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllNamespaces, v));
     /// <inheritdoc cref="KubernetesWaitSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
     public static T ResetAllNamespaces<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.AllNamespaces));
     /// <inheritdoc cref="KubernetesWaitSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
     public static T EnableAllNamespaces<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllNamespaces, true));
     /// <inheritdoc cref="KubernetesWaitSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
     public static T DisableAllNamespaces<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllNamespaces, false));
     /// <inheritdoc cref="KubernetesWaitSettings.AllNamespaces"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllNamespaces))]
     public static T ToggleAllNamespaces<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllNamespaces, !o.AllNamespaces));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesWaitSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesWaitSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesWaitSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesWaitSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesWaitSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesWaitSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesWaitSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesWaitSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesWaitSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region For
     /// <inheritdoc cref="KubernetesWaitSettings.For"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.For))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.For))]
     public static T SetFor<T>(this T o, string v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.For, v));
     /// <inheritdoc cref="KubernetesWaitSettings.For"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.For))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.For))]
     public static T ResetFor<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.For));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesWaitSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Output))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesWaitOutput v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Output))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesWaitSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesWaitSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesWaitSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesWaitSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesWaitSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Selector))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Selector))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesWaitSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Template))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Template))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesWaitSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesWaitSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesWaitSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesWaitSettings), Property = nameof(KubernetesWaitSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesWaitSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
 }
 #endregion
 #region KubernetesConvertSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesConvert(Fallout.Common.Tools.Kubernetes.KubernetesConvertSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesConvertSettingsExtensions
 {
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesConvertSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesConvertSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesConvertSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesConvertSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesConvertSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesConvertSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesConvertSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesConvertSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesConvertSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Local
     /// <inheritdoc cref="KubernetesConvertSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
     public static T SetLocal<T>(this T o, bool? v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Local, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
     public static T ResetLocal<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.Local));
     /// <inheritdoc cref="KubernetesConvertSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
     public static T EnableLocal<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Local, true));
     /// <inheritdoc cref="KubernetesConvertSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
     public static T DisableLocal<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Local, false));
     /// <inheritdoc cref="KubernetesConvertSettings.Local"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Local))]
     public static T ToggleLocal<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Local, !o.Local));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesConvertSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Output))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesConvertOutput v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Output))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region OutputVersion
     /// <inheritdoc cref="KubernetesConvertSettings.OutputVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.OutputVersion))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.OutputVersion))]
     public static T SetOutputVersion<T>(this T o, string v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.OutputVersion, v));
     /// <inheritdoc cref="KubernetesConvertSettings.OutputVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.OutputVersion))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.OutputVersion))]
     public static T ResetOutputVersion<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.OutputVersion));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesConvertSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesConvertSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesConvertSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesConvertSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesConvertSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Template))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Template))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesConvertSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesConvertSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesConvertSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesConvertSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesConvertSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
+    [Builder(Type = typeof(KubernetesConvertSettings), Property = nameof(KubernetesConvertSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesConvertSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
 }
 #endregion
 #region KubernetesCreateSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesCreate(Fallout.Common.Tools.Kubernetes.KubernetesCreateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesCreateSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesCreateSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesCreateSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesCreateSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesCreateSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesCreateSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesCreateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesCreateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesCreateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesCreateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesCreateSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesCreateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesCreateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesCreateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesCreateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesCreateSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Edit
     /// <inheritdoc cref="KubernetesCreateSettings.Edit"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
     public static T SetEdit<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Edit, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Edit"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
     public static T ResetEdit<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Edit));
     /// <inheritdoc cref="KubernetesCreateSettings.Edit"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
     public static T EnableEdit<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Edit, true));
     /// <inheritdoc cref="KubernetesCreateSettings.Edit"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
     public static T DisableEdit<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Edit, false));
     /// <inheritdoc cref="KubernetesCreateSettings.Edit"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Edit))]
     public static T ToggleEdit<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Edit, !o.Edit));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesCreateSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesCreateSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesCreateSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesCreateSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesCreateSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Output))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesCreateOutput v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Output))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Raw
     /// <inheritdoc cref="KubernetesCreateSettings.Raw"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Raw))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Raw))]
     public static T SetRaw<T>(this T o, string v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Raw, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Raw"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Raw))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Raw))]
     public static T ResetRaw<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Raw));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesCreateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesCreateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesCreateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesCreateSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesCreateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesCreateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesCreateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesCreateSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesCreateSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesCreateSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesCreateSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesCreateSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesCreateSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesCreateSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Selector))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Selector))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesCreateSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Template))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Template))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesCreateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesCreateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesCreateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesCreateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesCreateSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
     #region WindowsLineEndings
     /// <inheritdoc cref="KubernetesCreateSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
     public static T SetWindowsLineEndings<T>(this T o, bool? v) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, v));
     /// <inheritdoc cref="KubernetesCreateSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
     public static T ResetWindowsLineEndings<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Remove(() => o.WindowsLineEndings));
     /// <inheritdoc cref="KubernetesCreateSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
     public static T EnableWindowsLineEndings<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, true));
     /// <inheritdoc cref="KubernetesCreateSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
     public static T DisableWindowsLineEndings<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, false));
     /// <inheritdoc cref="KubernetesCreateSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesCreateSettings), Property = nameof(KubernetesCreateSettings.WindowsLineEndings))]
     public static T ToggleWindowsLineEndings<T>(this T o) where T : KubernetesCreateSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, !o.WindowsLineEndings));
     #endregion
 }
 #endregion
 #region KubernetesPortForwardSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesPortForward(Fallout.Common.Tools.Kubernetes.KubernetesPortForwardSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesPortForwardSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesPortForwardSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesPortForwardSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesPortForwardSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesPortForwardSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesPortForwardSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesPortForwardSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesPortForwardSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region Ports
     /// <inheritdoc cref="KubernetesPortForwardSettings.Ports"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
     public static T SetPorts<T>(this T o, IDictionary<int, int> v) where T : KubernetesPortForwardSettings => o.Modify(b => b.Set(() => o.Ports, v.ToDictionary(x => x.Key, x => x.Value, EqualityComparer<int>.Default)));
     /// <inheritdoc cref="KubernetesPortForwardSettings.Ports"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
     public static T SetPort<T>(this T o, int k, int v) where T : KubernetesPortForwardSettings => o.Modify(b => b.SetDictionary(() => o.Ports, k, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.Ports"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
     public static T AddPort<T>(this T o, int k, int v) where T : KubernetesPortForwardSettings => o.Modify(b => b.AddDictionary(() => o.Ports, k, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.Ports"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
     public static T RemovePort<T>(this T o, int k) where T : KubernetesPortForwardSettings => o.Modify(b => b.RemoveDictionary(() => o.Ports, k));
     /// <inheritdoc cref="KubernetesPortForwardSettings.Ports"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.Ports))]
     public static T ClearPorts<T>(this T o) where T : KubernetesPortForwardSettings => o.Modify(b => b.ClearDictionary(() => o.Ports));
     #endregion
     #region PodRunningTimeout
     /// <inheritdoc cref="KubernetesPortForwardSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.PodRunningTimeout))]
     public static T SetPodRunningTimeout<T>(this T o, TimeSpan? v) where T : KubernetesPortForwardSettings => o.Modify(b => b.Set(() => o.PodRunningTimeout, v));
     /// <inheritdoc cref="KubernetesPortForwardSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesPortForwardSettings), Property = nameof(KubernetesPortForwardSettings.PodRunningTimeout))]
     public static T ResetPodRunningTimeout<T>(this T o) where T : KubernetesPortForwardSettings => o.Modify(b => b.Remove(() => o.PodRunningTimeout));
     #endregion
 }
 #endregion
 #region KubernetesRunContainerSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesRunContainer(Fallout.Common.Tools.Kubernetes.KubernetesRunContainerSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesRunContainerSettingsExtensions
 {
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesRunContainerSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesRunContainerSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Attach
     /// <inheritdoc cref="KubernetesRunContainerSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
     public static T SetAttach<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Attach, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
     public static T ResetAttach<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Attach));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
     public static T EnableAttach<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Attach, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
     public static T DisableAttach<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Attach, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Attach"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Attach))]
     public static T ToggleAttach<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Attach, !o.Attach));
     #endregion
     #region Cascade
     /// <inheritdoc cref="KubernetesRunContainerSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
     public static T SetCascade<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Cascade, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
     public static T ResetCascade<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Cascade));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
     public static T EnableCascade<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Cascade, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
     public static T DisableCascade<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Cascade, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Cascade"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Cascade))]
     public static T ToggleCascade<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Cascade, !o.Cascade));
     #endregion
     #region Command
     /// <inheritdoc cref="KubernetesRunContainerSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
     public static T SetCommand<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Command));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
     public static T EnableCommand<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Command, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
     public static T DisableCommand<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Command, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Command"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Command))]
     public static T ToggleCommand<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Command, !o.Command));
     #endregion
     #region DryRun
     /// <inheritdoc cref="KubernetesRunContainerSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="KubernetesRunContainerSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Env
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T SetEnv<T>(this T o, params string[] v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T SetEnv<T>(this T o, IEnumerable<string> v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T AddEnv<T>(this T o, params string[] v) where T : KubernetesRunContainerSettings => o.Modify(b => b.AddCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T AddEnv<T>(this T o, IEnumerable<string> v) where T : KubernetesRunContainerSettings => o.Modify(b => b.AddCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T RemoveEnv<T>(this T o, params string[] v) where T : KubernetesRunContainerSettings => o.Modify(b => b.RemoveCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T RemoveEnv<T>(this T o, IEnumerable<string> v) where T : KubernetesRunContainerSettings => o.Modify(b => b.RemoveCollection(() => o.Env, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Env"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Env))]
     public static T ClearEnv<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.ClearCollection(() => o.Env));
     #endregion
     #region Expose
     /// <inheritdoc cref="KubernetesRunContainerSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
     public static T SetExpose<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Expose, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
     public static T ResetExpose<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Expose));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
     public static T EnableExpose<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Expose, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
     public static T DisableExpose<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Expose, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Expose"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Expose))]
     public static T ToggleExpose<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Expose, !o.Expose));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesRunContainerSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRunContainerSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesRunContainerSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesRunContainerSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Force
     /// <inheritdoc cref="KubernetesRunContainerSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
     public static T ResetForce<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
     public static T EnableForce<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
     public static T DisableForce<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Force"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Generator
     /// <inheritdoc cref="KubernetesRunContainerSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Generator))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Generator))]
     public static T SetGenerator<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Generator, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Generator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Generator))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Generator))]
     public static T ResetGenerator<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Generator));
     #endregion
     #region GracePeriod
     /// <inheritdoc cref="KubernetesRunContainerSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.GracePeriod))]
     public static T SetGracePeriod<T>(this T o, int? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.GracePeriod, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.GracePeriod"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.GracePeriod))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.GracePeriod))]
     public static T ResetGracePeriod<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.GracePeriod));
     #endregion
     #region Hostport
     /// <inheritdoc cref="KubernetesRunContainerSettings.Hostport"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Hostport))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Hostport))]
     public static T SetHostport<T>(this T o, int? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Hostport, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Hostport"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Hostport))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Hostport))]
     public static T ResetHostport<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Hostport));
     #endregion
     #region Image
     /// <inheritdoc cref="KubernetesRunContainerSettings.Image"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Image))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Image))]
     public static T SetImage<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Image, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Image"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Image))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Image))]
     public static T ResetImage<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Image));
     #endregion
     #region ImagePullPolicy
     /// <inheritdoc cref="KubernetesRunContainerSettings.ImagePullPolicy"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ImagePullPolicy))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ImagePullPolicy))]
     public static T SetImagePullPolicy<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.ImagePullPolicy, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.ImagePullPolicy"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ImagePullPolicy))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ImagePullPolicy))]
     public static T ResetImagePullPolicy<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.ImagePullPolicy));
     #endregion
     #region Labels
     /// <inheritdoc cref="KubernetesRunContainerSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Labels))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Labels))]
     public static T SetLabels<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Labels, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Labels"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Labels))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Labels))]
     public static T ResetLabels<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Labels));
     #endregion
     #region LeaveStdinOpen
     /// <inheritdoc cref="KubernetesRunContainerSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
     public static T SetLeaveStdinOpen<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
     public static T ResetLeaveStdinOpen<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.LeaveStdinOpen));
     /// <inheritdoc cref="KubernetesRunContainerSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
     public static T EnableLeaveStdinOpen<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
     public static T DisableLeaveStdinOpen<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.LeaveStdinOpen"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.LeaveStdinOpen))]
     public static T ToggleLeaveStdinOpen<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.LeaveStdinOpen, !o.LeaveStdinOpen));
     #endregion
     #region Limits
     /// <inheritdoc cref="KubernetesRunContainerSettings.Limits"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Limits))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Limits))]
     public static T SetLimits<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Limits, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Limits"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Limits))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Limits))]
     public static T ResetLimits<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Limits));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesRunContainerSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Output))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesRunContainerOutput v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Output))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Overrides
     /// <inheritdoc cref="KubernetesRunContainerSettings.Overrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Overrides))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Overrides))]
     public static T SetOverrides<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Overrides, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Overrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Overrides))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Overrides))]
     public static T ResetOverrides<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Overrides));
     #endregion
     #region PodRunningTimeout
     /// <inheritdoc cref="KubernetesRunContainerSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.PodRunningTimeout))]
     public static T SetPodRunningTimeout<T>(this T o, TimeSpan? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.PodRunningTimeout, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.PodRunningTimeout))]
     public static T ResetPodRunningTimeout<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.PodRunningTimeout));
     #endregion
     #region Port
     /// <inheritdoc cref="KubernetesRunContainerSettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Port))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Port))]
     public static T SetPort<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Port"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Port))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Port))]
     public static T ResetPort<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region Quiet
     /// <inheritdoc cref="KubernetesRunContainerSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesRunContainerSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesRunContainerSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Replicas
     /// <inheritdoc cref="KubernetesRunContainerSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Replicas))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Replicas))]
     public static T SetReplicas<T>(this T o, int? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Replicas, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Replicas))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Replicas))]
     public static T ResetReplicas<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Replicas));
     #endregion
     #region Requests
     /// <inheritdoc cref="KubernetesRunContainerSettings.Requests"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Requests))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Requests))]
     public static T SetRequests<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Requests, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Requests"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Requests))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Requests))]
     public static T ResetRequests<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Requests));
     #endregion
     #region Restart
     /// <inheritdoc cref="KubernetesRunContainerSettings.Restart"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Restart))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Restart))]
     public static T SetRestart<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Restart, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Restart"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Restart))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Restart))]
     public static T ResetRestart<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Restart));
     #endregion
     #region Rm
     /// <inheritdoc cref="KubernetesRunContainerSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
     public static T SetRm<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Rm, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
     public static T ResetRm<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Rm));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
     public static T EnableRm<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Rm, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
     public static T DisableRm<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Rm, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Rm"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Rm))]
     public static T ToggleRm<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Rm, !o.Rm));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesRunContainerSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesRunContainerSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Schedule
     /// <inheritdoc cref="KubernetesRunContainerSettings.Schedule"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Schedule))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Schedule))]
     public static T SetSchedule<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Schedule, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Schedule"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Schedule))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Schedule))]
     public static T ResetSchedule<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Schedule));
     #endregion
     #region ServiceGenerator
     /// <inheritdoc cref="KubernetesRunContainerSettings.ServiceGenerator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceGenerator))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceGenerator))]
     public static T SetServiceGenerator<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.ServiceGenerator, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.ServiceGenerator"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceGenerator))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceGenerator))]
     public static T ResetServiceGenerator<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.ServiceGenerator));
     #endregion
     #region ServiceOverrides
     /// <inheritdoc cref="KubernetesRunContainerSettings.ServiceOverrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceOverrides))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceOverrides))]
     public static T SetServiceOverrides<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.ServiceOverrides, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.ServiceOverrides"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceOverrides))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.ServiceOverrides))]
     public static T ResetServiceOverrides<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.ServiceOverrides));
     #endregion
     #region Serviceaccount
     /// <inheritdoc cref="KubernetesRunContainerSettings.Serviceaccount"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Serviceaccount))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Serviceaccount))]
     public static T SetServiceaccount<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Serviceaccount, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Serviceaccount"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Serviceaccount))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Serviceaccount))]
     public static T ResetServiceaccount<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Serviceaccount));
     #endregion
     #region Stdin
     /// <inheritdoc cref="KubernetesRunContainerSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
     public static T SetStdin<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Stdin, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
     public static T ResetStdin<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Stdin));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
     public static T EnableStdin<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Stdin, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
     public static T DisableStdin<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Stdin, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Stdin"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Stdin))]
     public static T ToggleStdin<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Stdin, !o.Stdin));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesRunContainerSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Template))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Template))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesRunContainerSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tty
     /// <inheritdoc cref="KubernetesRunContainerSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
     public static T SetTty<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Tty, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
     public static T ResetTty<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Tty));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
     public static T EnableTty<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Tty, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
     public static T DisableTty<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Tty, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Tty"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Tty))]
     public static T ToggleTty<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Tty, !o.Tty));
     #endregion
     #region Wait
     /// <inheritdoc cref="KubernetesRunContainerSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="KubernetesRunContainerSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
+    [Builder(Type = typeof(KubernetesRunContainerSettings), Property = nameof(KubernetesRunContainerSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : KubernetesRunContainerSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region KubernetesEditSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesEdit(Fallout.Common.Tools.Kubernetes.KubernetesEditSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesEditSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesEditSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesEditSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesEditSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesEditSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesEditSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesEditSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesEditSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesEditSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesEditSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesEditSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesEditSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesEditSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesEditSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesEditSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesEditSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region IncludeUninitialized
     /// <inheritdoc cref="KubernetesEditSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
     public static T SetIncludeUninitialized<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, v));
     /// <inheritdoc cref="KubernetesEditSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
     public static T ResetIncludeUninitialized<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.IncludeUninitialized));
     /// <inheritdoc cref="KubernetesEditSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
     public static T EnableIncludeUninitialized<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, true));
     /// <inheritdoc cref="KubernetesEditSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
     public static T DisableIncludeUninitialized<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, false));
     /// <inheritdoc cref="KubernetesEditSettings.IncludeUninitialized"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.IncludeUninitialized))]
     public static T ToggleIncludeUninitialized<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.IncludeUninitialized, !o.IncludeUninitialized));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesEditSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Output))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesEditOutput v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesEditSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Output))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region OutputPatch
     /// <inheritdoc cref="KubernetesEditSettings.OutputPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
     public static T SetOutputPatch<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.OutputPatch, v));
     /// <inheritdoc cref="KubernetesEditSettings.OutputPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
     public static T ResetOutputPatch<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.OutputPatch));
     /// <inheritdoc cref="KubernetesEditSettings.OutputPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
     public static T EnableOutputPatch<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.OutputPatch, true));
     /// <inheritdoc cref="KubernetesEditSettings.OutputPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
     public static T DisableOutputPatch<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.OutputPatch, false));
     /// <inheritdoc cref="KubernetesEditSettings.OutputPatch"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.OutputPatch))]
     public static T ToggleOutputPatch<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.OutputPatch, !o.OutputPatch));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesEditSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesEditSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesEditSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesEditSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesEditSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesEditSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesEditSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesEditSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesEditSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesEditSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region SaveConfig
     /// <inheritdoc cref="KubernetesEditSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
     public static T SetSaveConfig<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.SaveConfig, v));
     /// <inheritdoc cref="KubernetesEditSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
     public static T ResetSaveConfig<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.SaveConfig));
     /// <inheritdoc cref="KubernetesEditSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
     public static T EnableSaveConfig<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.SaveConfig, true));
     /// <inheritdoc cref="KubernetesEditSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
     public static T DisableSaveConfig<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.SaveConfig, false));
     /// <inheritdoc cref="KubernetesEditSettings.SaveConfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.SaveConfig))]
     public static T ToggleSaveConfig<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.SaveConfig, !o.SaveConfig));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesEditSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Template))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesEditSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Template))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Validate
     /// <inheritdoc cref="KubernetesEditSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
     public static T SetValidate<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Validate, v));
     /// <inheritdoc cref="KubernetesEditSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
     public static T ResetValidate<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.Validate));
     /// <inheritdoc cref="KubernetesEditSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
     public static T EnableValidate<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Validate, true));
     /// <inheritdoc cref="KubernetesEditSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
     public static T DisableValidate<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Validate, false));
     /// <inheritdoc cref="KubernetesEditSettings.Validate"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.Validate))]
     public static T ToggleValidate<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.Validate, !o.Validate));
     #endregion
     #region WindowsLineEndings
     /// <inheritdoc cref="KubernetesEditSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
     public static T SetWindowsLineEndings<T>(this T o, bool? v) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, v));
     /// <inheritdoc cref="KubernetesEditSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
     public static T ResetWindowsLineEndings<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Remove(() => o.WindowsLineEndings));
     /// <inheritdoc cref="KubernetesEditSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
     public static T EnableWindowsLineEndings<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, true));
     /// <inheritdoc cref="KubernetesEditSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
     public static T DisableWindowsLineEndings<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, false));
     /// <inheritdoc cref="KubernetesEditSettings.WindowsLineEndings"/>
-    [Pure] [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
+    [Builder(Type = typeof(KubernetesEditSettings), Property = nameof(KubernetesEditSettings.WindowsLineEndings))]
     public static T ToggleWindowsLineEndings<T>(this T o) where T : KubernetesEditSettings => o.Modify(b => b.Set(() => o.WindowsLineEndings, !o.WindowsLineEndings));
     #endregion
 }
 #endregion
 #region KubernetesScaleSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesScale(Fallout.Common.Tools.Kubernetes.KubernetesScaleSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesScaleSettingsExtensions
 {
     #region All
     /// <inheritdoc cref="KubernetesScaleSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="KubernetesScaleSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
     public static T ResetAll<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="KubernetesScaleSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
     public static T EnableAll<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="KubernetesScaleSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
     public static T DisableAll<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="KubernetesScaleSettings.All"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.All))]
     public static T ToggleAll<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region AllowMissingTemplateKeys
     /// <inheritdoc cref="KubernetesScaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
     public static T SetAllowMissingTemplateKeys<T>(this T o, bool? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, v));
     /// <inheritdoc cref="KubernetesScaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
     public static T ResetAllowMissingTemplateKeys<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.AllowMissingTemplateKeys));
     /// <inheritdoc cref="KubernetesScaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
     public static T EnableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, true));
     /// <inheritdoc cref="KubernetesScaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
     public static T DisableAllowMissingTemplateKeys<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, false));
     /// <inheritdoc cref="KubernetesScaleSettings.AllowMissingTemplateKeys"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.AllowMissingTemplateKeys))]
     public static T ToggleAllowMissingTemplateKeys<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.AllowMissingTemplateKeys, !o.AllowMissingTemplateKeys));
     #endregion
     #region CurrentReplicas
     /// <inheritdoc cref="KubernetesScaleSettings.CurrentReplicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.CurrentReplicas))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.CurrentReplicas))]
     public static T SetCurrentReplicas<T>(this T o, int? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.CurrentReplicas, v));
     /// <inheritdoc cref="KubernetesScaleSettings.CurrentReplicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.CurrentReplicas))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.CurrentReplicas))]
     public static T ResetCurrentReplicas<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.CurrentReplicas));
     #endregion
     #region Filename
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T SetFilename<T>(this T o, params string[] v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T SetFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T AddFilename<T>(this T o, params string[] v) where T : KubernetesScaleSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T AddFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesScaleSettings => o.Modify(b => b.AddCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T RemoveFilename<T>(this T o, params string[] v) where T : KubernetesScaleSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T RemoveFilename<T>(this T o, IEnumerable<string> v) where T : KubernetesScaleSettings => o.Modify(b => b.RemoveCollection(() => o.Filename, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Filename"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Filename))]
     public static T ClearFilename<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.ClearCollection(() => o.Filename));
     #endregion
     #region Output
     /// <inheritdoc cref="KubernetesScaleSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Output))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Output))]
     public static T SetOutput<T>(this T o, KubernetesScaleOutput v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Output"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Output))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Record
     /// <inheritdoc cref="KubernetesScaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
     public static T SetRecord<T>(this T o, bool? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Record, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
     public static T ResetRecord<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Record));
     /// <inheritdoc cref="KubernetesScaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
     public static T EnableRecord<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Record, true));
     /// <inheritdoc cref="KubernetesScaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
     public static T DisableRecord<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Record, false));
     /// <inheritdoc cref="KubernetesScaleSettings.Record"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Record))]
     public static T ToggleRecord<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Record, !o.Record));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesScaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesScaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesScaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesScaleSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Replicas
     /// <inheritdoc cref="KubernetesScaleSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Replicas))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Replicas))]
     public static T SetReplicas<T>(this T o, int? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Replicas, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Replicas))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Replicas))]
     public static T ResetReplicas<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Replicas));
     #endregion
     #region ResourceVersion
     /// <inheritdoc cref="KubernetesScaleSettings.ResourceVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.ResourceVersion))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.ResourceVersion))]
     public static T SetResourceVersion<T>(this T o, string v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.ResourceVersion, v));
     /// <inheritdoc cref="KubernetesScaleSettings.ResourceVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.ResourceVersion))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.ResourceVersion))]
     public static T ResetResourceVersion<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.ResourceVersion));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesScaleSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Selector))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Selector))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Template
     /// <inheritdoc cref="KubernetesScaleSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Template))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Template"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Template))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Timeout
     /// <inheritdoc cref="KubernetesScaleSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Timeout))]
     public static T SetTimeout<T>(this T o, TimeSpan? v) where T : KubernetesScaleSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="KubernetesScaleSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Timeout))]
+    [Builder(Type = typeof(KubernetesScaleSettings), Property = nameof(KubernetesScaleSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : KubernetesScaleSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
 }
 #endregion
 #region KubernetesExplainSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesExplain(Fallout.Common.Tools.Kubernetes.KubernetesExplainSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesExplainSettingsExtensions
 {
     #region ApiVersion
     /// <inheritdoc cref="KubernetesExplainSettings.ApiVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.ApiVersion))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.ApiVersion))]
     public static T SetApiVersion<T>(this T o, string v) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.ApiVersion, v));
     /// <inheritdoc cref="KubernetesExplainSettings.ApiVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.ApiVersion))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.ApiVersion))]
     public static T ResetApiVersion<T>(this T o) where T : KubernetesExplainSettings => o.Modify(b => b.Remove(() => o.ApiVersion));
     #endregion
     #region Recursive
     /// <inheritdoc cref="KubernetesExplainSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
     public static T SetRecursive<T>(this T o, bool? v) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.Recursive, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
     public static T ResetRecursive<T>(this T o) where T : KubernetesExplainSettings => o.Modify(b => b.Remove(() => o.Recursive));
     /// <inheritdoc cref="KubernetesExplainSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
     public static T EnableRecursive<T>(this T o) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.Recursive, true));
     /// <inheritdoc cref="KubernetesExplainSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
     public static T DisableRecursive<T>(this T o) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.Recursive, false));
     /// <inheritdoc cref="KubernetesExplainSettings.Recursive"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Recursive))]
     public static T ToggleRecursive<T>(this T o) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.Recursive, !o.Recursive));
     #endregion
     #region Resource
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T SetResource<T>(this T o, params string[] v) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.Resource, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T SetResource<T>(this T o, IEnumerable<string> v) where T : KubernetesExplainSettings => o.Modify(b => b.Set(() => o.Resource, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T AddResource<T>(this T o, params string[] v) where T : KubernetesExplainSettings => o.Modify(b => b.AddCollection(() => o.Resource, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T AddResource<T>(this T o, IEnumerable<string> v) where T : KubernetesExplainSettings => o.Modify(b => b.AddCollection(() => o.Resource, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T RemoveResource<T>(this T o, params string[] v) where T : KubernetesExplainSettings => o.Modify(b => b.RemoveCollection(() => o.Resource, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T RemoveResource<T>(this T o, IEnumerable<string> v) where T : KubernetesExplainSettings => o.Modify(b => b.RemoveCollection(() => o.Resource, v));
     /// <inheritdoc cref="KubernetesExplainSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
+    [Builder(Type = typeof(KubernetesExplainSettings), Property = nameof(KubernetesExplainSettings.Resource))]
     public static T ClearResource<T>(this T o) where T : KubernetesExplainSettings => o.Modify(b => b.ClearCollection(() => o.Resource));
     #endregion
 }
 #endregion
 #region KubernetesLogsSettingsExtensions
 /// <inheritdoc cref="KubernetesTasks.KubernetesLogs(Fallout.Common.Tools.Kubernetes.KubernetesLogsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesLogsSettingsExtensions
 {
     #region TypeName
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T SetTypeName<T>(this T o, params string[] v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T SetTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T AddTypeName<T>(this T o, params string[] v) where T : KubernetesLogsSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T AddTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesLogsSettings => o.Modify(b => b.AddCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, params string[] v) where T : KubernetesLogsSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T RemoveTypeName<T>(this T o, IEnumerable<string> v) where T : KubernetesLogsSettings => o.Modify(b => b.RemoveCollection(() => o.TypeName, v));
     /// <inheritdoc cref="KubernetesLogsSettings.TypeName"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.TypeName))]
     public static T ClearTypeName<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.ClearCollection(() => o.TypeName));
     #endregion
     #region AllContainers
     /// <inheritdoc cref="KubernetesLogsSettings.AllContainers"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
     public static T SetAllContainers<T>(this T o, bool? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.AllContainers, v));
     /// <inheritdoc cref="KubernetesLogsSettings.AllContainers"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
     public static T ResetAllContainers<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.AllContainers));
     /// <inheritdoc cref="KubernetesLogsSettings.AllContainers"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
     public static T EnableAllContainers<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.AllContainers, true));
     /// <inheritdoc cref="KubernetesLogsSettings.AllContainers"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
     public static T DisableAllContainers<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.AllContainers, false));
     /// <inheritdoc cref="KubernetesLogsSettings.AllContainers"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.AllContainers))]
     public static T ToggleAllContainers<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.AllContainers, !o.AllContainers));
     #endregion
     #region Container
     /// <inheritdoc cref="KubernetesLogsSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Container))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Container))]
     public static T SetContainer<T>(this T o, string v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Container, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Container"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Container))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Container))]
     public static T ResetContainer<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Container));
     #endregion
     #region Follow
     /// <inheritdoc cref="KubernetesLogsSettings.Follow"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
     public static T SetFollow<T>(this T o, bool? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Follow, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Follow"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
     public static T ResetFollow<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Follow));
     /// <inheritdoc cref="KubernetesLogsSettings.Follow"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
     public static T EnableFollow<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Follow, true));
     /// <inheritdoc cref="KubernetesLogsSettings.Follow"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
     public static T DisableFollow<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Follow, false));
     /// <inheritdoc cref="KubernetesLogsSettings.Follow"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Follow))]
     public static T ToggleFollow<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Follow, !o.Follow));
     #endregion
     #region Interactive
     /// <inheritdoc cref="KubernetesLogsSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
     public static T SetInteractive<T>(this T o, bool? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Interactive, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
     public static T ResetInteractive<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Interactive));
     /// <inheritdoc cref="KubernetesLogsSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
     public static T EnableInteractive<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Interactive, true));
     /// <inheritdoc cref="KubernetesLogsSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
     public static T DisableInteractive<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Interactive, false));
     /// <inheritdoc cref="KubernetesLogsSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Interactive))]
     public static T ToggleInteractive<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Interactive, !o.Interactive));
     #endregion
     #region LimitBytes
     /// <inheritdoc cref="KubernetesLogsSettings.LimitBytes"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.LimitBytes))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.LimitBytes))]
     public static T SetLimitBytes<T>(this T o, long? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.LimitBytes, v));
     /// <inheritdoc cref="KubernetesLogsSettings.LimitBytes"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.LimitBytes))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.LimitBytes))]
     public static T ResetLimitBytes<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.LimitBytes));
     #endregion
     #region PodRunningTimeout
     /// <inheritdoc cref="KubernetesLogsSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.PodRunningTimeout))]
     public static T SetPodRunningTimeout<T>(this T o, TimeSpan? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.PodRunningTimeout, v));
     /// <inheritdoc cref="KubernetesLogsSettings.PodRunningTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.PodRunningTimeout))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.PodRunningTimeout))]
     public static T ResetPodRunningTimeout<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.PodRunningTimeout));
     #endregion
     #region Previous
     /// <inheritdoc cref="KubernetesLogsSettings.Previous"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
     public static T SetPrevious<T>(this T o, bool? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Previous, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Previous"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
     public static T ResetPrevious<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Previous));
     /// <inheritdoc cref="KubernetesLogsSettings.Previous"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
     public static T EnablePrevious<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Previous, true));
     /// <inheritdoc cref="KubernetesLogsSettings.Previous"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
     public static T DisablePrevious<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Previous, false));
     /// <inheritdoc cref="KubernetesLogsSettings.Previous"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Previous))]
     public static T TogglePrevious<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Previous, !o.Previous));
     #endregion
     #region Selector
     /// <inheritdoc cref="KubernetesLogsSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Selector))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Selector))]
     public static T SetSelector<T>(this T o, string v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Selector, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Selector"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Selector))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Selector))]
     public static T ResetSelector<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Selector));
     #endregion
     #region Since
     /// <inheritdoc cref="KubernetesLogsSettings.Since"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Since))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Since))]
     public static T SetSince<T>(this T o, TimeSpan? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Since, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Since"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Since))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Since))]
     public static T ResetSince<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Since));
     #endregion
     #region SinceTime
     /// <inheritdoc cref="KubernetesLogsSettings.SinceTime"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.SinceTime))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.SinceTime))]
     public static T SetSinceTime<T>(this T o, string v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.SinceTime, v));
     /// <inheritdoc cref="KubernetesLogsSettings.SinceTime"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.SinceTime))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.SinceTime))]
     public static T ResetSinceTime<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.SinceTime));
     #endregion
     #region Tail
     /// <inheritdoc cref="KubernetesLogsSettings.Tail"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Tail))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Tail))]
     public static T SetTail<T>(this T o, long? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Tail, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Tail"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Tail))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Tail))]
     public static T ResetTail<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Tail));
     #endregion
     #region Timestamps
     /// <inheritdoc cref="KubernetesLogsSettings.Timestamps"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
     public static T SetTimestamps<T>(this T o, bool? v) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Timestamps, v));
     /// <inheritdoc cref="KubernetesLogsSettings.Timestamps"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
     public static T ResetTimestamps<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Remove(() => o.Timestamps));
     /// <inheritdoc cref="KubernetesLogsSettings.Timestamps"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
     public static T EnableTimestamps<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Timestamps, true));
     /// <inheritdoc cref="KubernetesLogsSettings.Timestamps"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
     public static T DisableTimestamps<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Timestamps, false));
     /// <inheritdoc cref="KubernetesLogsSettings.Timestamps"/>
-    [Pure] [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
+    [Builder(Type = typeof(KubernetesLogsSettings), Property = nameof(KubernetesLogsSettings.Timestamps))]
     public static T ToggleTimestamps<T>(this T o) where T : KubernetesLogsSettings => o.Modify(b => b.Set(() => o.Timestamps, !o.Timestamps));
     #endregion
 }
 #endregion
 #region KubernetesOptionsBaseExtensions
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class KubernetesOptionsBaseExtensions
 {
     #region Alsologtostderr
     /// <inheritdoc cref="KubernetesOptionsBase.Alsologtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
     public static T SetAlsologtostderr<T>(this T o, bool? v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Alsologtostderr, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Alsologtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
     public static T ResetAlsologtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Alsologtostderr));
     /// <inheritdoc cref="KubernetesOptionsBase.Alsologtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
     public static T EnableAlsologtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Alsologtostderr, true));
     /// <inheritdoc cref="KubernetesOptionsBase.Alsologtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
     public static T DisableAlsologtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Alsologtostderr, false));
     /// <inheritdoc cref="KubernetesOptionsBase.Alsologtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Alsologtostderr))]
     public static T ToggleAlsologtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Alsologtostderr, !o.Alsologtostderr));
     #endregion
     #region As
     /// <inheritdoc cref="KubernetesOptionsBase.As"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.As))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.As))]
     public static T SetAs<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.As, v));
     /// <inheritdoc cref="KubernetesOptionsBase.As"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.As))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.As))]
     public static T ResetAs<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.As));
     #endregion
     #region AsGroup
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T SetAsGroup<T>(this T o, params string[] v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.AsGroup, v));
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T SetAsGroup<T>(this T o, IEnumerable<string> v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.AsGroup, v));
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T AddAsGroup<T>(this T o, params string[] v) where T : KubernetesOptionsBase => o.Modify(b => b.AddCollection(() => o.AsGroup, v));
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T AddAsGroup<T>(this T o, IEnumerable<string> v) where T : KubernetesOptionsBase => o.Modify(b => b.AddCollection(() => o.AsGroup, v));
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T RemoveAsGroup<T>(this T o, params string[] v) where T : KubernetesOptionsBase => o.Modify(b => b.RemoveCollection(() => o.AsGroup, v));
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T RemoveAsGroup<T>(this T o, IEnumerable<string> v) where T : KubernetesOptionsBase => o.Modify(b => b.RemoveCollection(() => o.AsGroup, v));
     /// <inheritdoc cref="KubernetesOptionsBase.AsGroup"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.AsGroup))]
     public static T ClearAsGroup<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.ClearCollection(() => o.AsGroup));
     #endregion
     #region CacheDir
     /// <inheritdoc cref="KubernetesOptionsBase.CacheDir"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CacheDir))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CacheDir))]
     public static T SetCacheDir<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.CacheDir, v));
     /// <inheritdoc cref="KubernetesOptionsBase.CacheDir"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CacheDir))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CacheDir))]
     public static T ResetCacheDir<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.CacheDir));
     #endregion
     #region CertificateAuthority
     /// <inheritdoc cref="KubernetesOptionsBase.CertificateAuthority"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CertificateAuthority))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CertificateAuthority))]
     public static T SetCertificateAuthority<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.CertificateAuthority, v));
     /// <inheritdoc cref="KubernetesOptionsBase.CertificateAuthority"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CertificateAuthority))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.CertificateAuthority))]
     public static T ResetCertificateAuthority<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.CertificateAuthority));
     #endregion
     #region ClientCertificate
     /// <inheritdoc cref="KubernetesOptionsBase.ClientCertificate"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientCertificate))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientCertificate))]
     public static T SetClientCertificate<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.ClientCertificate, v));
     /// <inheritdoc cref="KubernetesOptionsBase.ClientCertificate"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientCertificate))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientCertificate))]
     public static T ResetClientCertificate<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.ClientCertificate));
     #endregion
     #region ClientKey
     /// <inheritdoc cref="KubernetesOptionsBase.ClientKey"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientKey))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientKey))]
     public static T SetClientKey<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.ClientKey, v));
     /// <inheritdoc cref="KubernetesOptionsBase.ClientKey"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientKey))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.ClientKey))]
     public static T ResetClientKey<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.ClientKey));
     #endregion
     #region Cluster
     /// <inheritdoc cref="KubernetesOptionsBase.Cluster"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Cluster))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Cluster))]
     public static T SetCluster<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Cluster, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Cluster"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Cluster))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Cluster))]
     public static T ResetCluster<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Cluster));
     #endregion
     #region Context
     /// <inheritdoc cref="KubernetesOptionsBase.Context"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Context))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Context))]
     public static T SetContext<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Context, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Context"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Context))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Context))]
     public static T ResetContext<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Context));
     #endregion
     #region InsecureSkipTlsVerify
     /// <inheritdoc cref="KubernetesOptionsBase.InsecureSkipTlsVerify"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
     public static T SetInsecureSkipTlsVerify<T>(this T o, bool? v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.InsecureSkipTlsVerify, v));
     /// <inheritdoc cref="KubernetesOptionsBase.InsecureSkipTlsVerify"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
     public static T ResetInsecureSkipTlsVerify<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.InsecureSkipTlsVerify));
     /// <inheritdoc cref="KubernetesOptionsBase.InsecureSkipTlsVerify"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
     public static T EnableInsecureSkipTlsVerify<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.InsecureSkipTlsVerify, true));
     /// <inheritdoc cref="KubernetesOptionsBase.InsecureSkipTlsVerify"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
     public static T DisableInsecureSkipTlsVerify<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.InsecureSkipTlsVerify, false));
     /// <inheritdoc cref="KubernetesOptionsBase.InsecureSkipTlsVerify"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.InsecureSkipTlsVerify))]
     public static T ToggleInsecureSkipTlsVerify<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.InsecureSkipTlsVerify, !o.InsecureSkipTlsVerify));
     #endregion
     #region Kubeconfig
     /// <inheritdoc cref="KubernetesOptionsBase.Kubeconfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Kubeconfig))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Kubeconfig))]
     public static T SetKubeconfig<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Kubeconfig, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Kubeconfig"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Kubeconfig))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Kubeconfig))]
     public static T ResetKubeconfig<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Kubeconfig));
     #endregion
     #region LogBacktraceAt
     /// <inheritdoc cref="KubernetesOptionsBase.LogBacktraceAt"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogBacktraceAt))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogBacktraceAt))]
     public static T SetLogBacktraceAt<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.LogBacktraceAt, v));
     /// <inheritdoc cref="KubernetesOptionsBase.LogBacktraceAt"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogBacktraceAt))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogBacktraceAt))]
     public static T ResetLogBacktraceAt<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.LogBacktraceAt));
     #endregion
     #region LogDir
     /// <inheritdoc cref="KubernetesOptionsBase.LogDir"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogDir))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogDir))]
     public static T SetLogDir<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.LogDir, v));
     /// <inheritdoc cref="KubernetesOptionsBase.LogDir"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogDir))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.LogDir))]
     public static T ResetLogDir<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.LogDir));
     #endregion
     #region Logtostderr
     /// <inheritdoc cref="KubernetesOptionsBase.Logtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
     public static T SetLogtostderr<T>(this T o, bool? v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Logtostderr, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Logtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
     public static T ResetLogtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Logtostderr));
     /// <inheritdoc cref="KubernetesOptionsBase.Logtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
     public static T EnableLogtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Logtostderr, true));
     /// <inheritdoc cref="KubernetesOptionsBase.Logtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
     public static T DisableLogtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Logtostderr, false));
     /// <inheritdoc cref="KubernetesOptionsBase.Logtostderr"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Logtostderr))]
     public static T ToggleLogtostderr<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Logtostderr, !o.Logtostderr));
     #endregion
     #region MatchServerVersion
     /// <inheritdoc cref="KubernetesOptionsBase.MatchServerVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
     public static T SetMatchServerVersion<T>(this T o, bool? v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.MatchServerVersion, v));
     /// <inheritdoc cref="KubernetesOptionsBase.MatchServerVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
     public static T ResetMatchServerVersion<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.MatchServerVersion));
     /// <inheritdoc cref="KubernetesOptionsBase.MatchServerVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
     public static T EnableMatchServerVersion<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.MatchServerVersion, true));
     /// <inheritdoc cref="KubernetesOptionsBase.MatchServerVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
     public static T DisableMatchServerVersion<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.MatchServerVersion, false));
     /// <inheritdoc cref="KubernetesOptionsBase.MatchServerVersion"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.MatchServerVersion))]
     public static T ToggleMatchServerVersion<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.MatchServerVersion, !o.MatchServerVersion));
     #endregion
     #region Namespace
     /// <inheritdoc cref="KubernetesOptionsBase.Namespace"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Namespace))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Namespace))]
     public static T SetNamespace<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Namespace, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Namespace"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Namespace))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Namespace))]
     public static T ResetNamespace<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Namespace));
     #endregion
     #region RequestTimeout
     /// <inheritdoc cref="KubernetesOptionsBase.RequestTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.RequestTimeout))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.RequestTimeout))]
     public static T SetRequestTimeout<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.RequestTimeout, v));
     /// <inheritdoc cref="KubernetesOptionsBase.RequestTimeout"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.RequestTimeout))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.RequestTimeout))]
     public static T ResetRequestTimeout<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.RequestTimeout));
     #endregion
     #region Server
     /// <inheritdoc cref="KubernetesOptionsBase.Server"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Server))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Server))]
     public static T SetServer<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Server, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Server"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Server))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Server))]
     public static T ResetServer<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Server));
     #endregion
     #region Stderrthreshold
     /// <inheritdoc cref="KubernetesOptionsBase.Stderrthreshold"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Stderrthreshold))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Stderrthreshold))]
     public static T SetStderrthreshold<T>(this T o, int? v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Stderrthreshold, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Stderrthreshold"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Stderrthreshold))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Stderrthreshold))]
     public static T ResetStderrthreshold<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Stderrthreshold));
     #endregion
     #region Token
     /// <inheritdoc cref="KubernetesOptionsBase.Token"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Token))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Token))]
     public static T SetToken<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Token"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Token))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Token))]
     public static T ResetToken<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.Token));
     #endregion
     #region User
     /// <inheritdoc cref="KubernetesOptionsBase.User"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.User))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.User))]
     public static T SetUser<T>(this T o, string v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.User, v));
     /// <inheritdoc cref="KubernetesOptionsBase.User"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.User))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.User))]
     public static T ResetUser<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.User));
     #endregion
     #region V
     /// <inheritdoc cref="KubernetesOptionsBase.V"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.V))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.V))]
     public static T SetV<T>(this T o, int? v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.V, v));
     /// <inheritdoc cref="KubernetesOptionsBase.V"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.V))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.V))]
     public static T ResetV<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.Remove(() => o.V));
     #endregion
     #region Vmodule
     /// <inheritdoc cref="KubernetesOptionsBase.Vmodule"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
     public static T SetVmodule<T>(this T o, IDictionary<string, string> v) where T : KubernetesOptionsBase => o.Modify(b => b.Set(() => o.Vmodule, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="KubernetesOptionsBase.Vmodule"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
     public static T SetVmodule<T>(this T o, string k, string v) where T : KubernetesOptionsBase => o.Modify(b => b.SetDictionary(() => o.Vmodule, k, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Vmodule"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
     public static T AddVmodule<T>(this T o, string k, string v) where T : KubernetesOptionsBase => o.Modify(b => b.AddDictionary(() => o.Vmodule, k, v));
     /// <inheritdoc cref="KubernetesOptionsBase.Vmodule"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
     public static T RemoveVmodule<T>(this T o, string k) where T : KubernetesOptionsBase => o.Modify(b => b.RemoveDictionary(() => o.Vmodule, k));
     /// <inheritdoc cref="KubernetesOptionsBase.Vmodule"/>
-    [Pure] [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
+    [Builder(Type = typeof(KubernetesOptionsBase), Property = nameof(KubernetesOptionsBase.Vmodule))]
     public static T ClearVmodule<T>(this T o) where T : KubernetesOptionsBase => o.Modify(b => b.ClearDictionary(() => o.Vmodule));
     #endregion
 }
 #endregion
 #region KubernetesApiResourcesOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesApiResourcesOutput>))]
@@ -7778,7 +7683,6 @@ public partial class KubernetesApiResourcesOutput : Enumeration
 #endregion
 #region KubernetesRunOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesRunOutput>))]
@@ -7801,7 +7705,6 @@ public partial class KubernetesRunOutput : Enumeration
 #endregion
 #region KubernetesGetOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesGetOutput>))]
@@ -7820,7 +7723,6 @@ public partial class KubernetesGetOutput : Enumeration
 #endregion
 #region KubernetesRollingUpdateOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesRollingUpdateOutput>))]
@@ -7843,7 +7745,6 @@ public partial class KubernetesRollingUpdateOutput : Enumeration
 #endregion
 #region KubernetesLabelOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesLabelOutput>))]
@@ -7866,7 +7767,6 @@ public partial class KubernetesLabelOutput : Enumeration
 #endregion
 #region KubernetesAnnotateOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesAnnotateOutput>))]
@@ -7889,7 +7789,6 @@ public partial class KubernetesAnnotateOutput : Enumeration
 #endregion
 #region KubernetesExposeOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesExposeOutput>))]
@@ -7912,7 +7811,6 @@ public partial class KubernetesExposeOutput : Enumeration
 #endregion
 #region KubernetesPatchOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesPatchOutput>))]
@@ -7935,7 +7833,6 @@ public partial class KubernetesPatchOutput : Enumeration
 #endregion
 #region KubernetesPatchType
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesPatchType>))]
@@ -7952,7 +7849,6 @@ public partial class KubernetesPatchType : Enumeration
 #endregion
 #region KubernetesReplaceOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesReplaceOutput>))]
@@ -7975,7 +7871,6 @@ public partial class KubernetesReplaceOutput : Enumeration
 #endregion
 #region KubernetesTaintOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesTaintOutput>))]
@@ -7998,7 +7893,6 @@ public partial class KubernetesTaintOutput : Enumeration
 #endregion
 #region KubernetesApplyOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesApplyOutput>))]
@@ -8021,7 +7915,6 @@ public partial class KubernetesApplyOutput : Enumeration
 #endregion
 #region KubernetesAutoscaleOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesAutoscaleOutput>))]
@@ -8044,7 +7937,6 @@ public partial class KubernetesAutoscaleOutput : Enumeration
 #endregion
 #region KubernetesWaitOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesWaitOutput>))]
@@ -8067,7 +7959,6 @@ public partial class KubernetesWaitOutput : Enumeration
 #endregion
 #region KubernetesConvertOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesConvertOutput>))]
@@ -8090,7 +7981,6 @@ public partial class KubernetesConvertOutput : Enumeration
 #endregion
 #region KubernetesCreateOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesCreateOutput>))]
@@ -8113,7 +8003,6 @@ public partial class KubernetesCreateOutput : Enumeration
 #endregion
 #region KubernetesRunContainerOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesRunContainerOutput>))]
@@ -8136,7 +8025,6 @@ public partial class KubernetesRunContainerOutput : Enumeration
 #endregion
 #region KubernetesEditOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesEditOutput>))]
@@ -8159,7 +8047,6 @@ public partial class KubernetesEditOutput : Enumeration
 #endregion
 #region KubernetesScaleOutput
 /// <summary>Used within <see cref="KubernetesTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<KubernetesScaleOutput>))]

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.DotCover;
 
 /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId)]
 public partial class DotCoverTasks : ToolTasks, IRequireNuGetPackage
@@ -79,7 +77,6 @@ public partial class DotCoverTasks : ToolTasks, IRequireNuGetPackage
 }
 #region DotCoverAnalyseSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Common.Tools.DotCover.DotCoverAnalyseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverAnalyse), Arguments = "analyse")]
 public partial class DotCoverAnalyseSettings : ToolOptions
@@ -126,7 +123,6 @@ public partial class DotCoverAnalyseSettings : ToolOptions
 #endregion
 #region DotCoverCoverSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Common.Tools.DotCover.DotCoverCoverSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverCover), Arguments = "cover")]
 public partial class DotCoverCoverSettings : ToolOptions
@@ -171,7 +167,6 @@ public partial class DotCoverCoverSettings : ToolOptions
 #endregion
 #region DotCoverCoverDotNetSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Common.Tools.DotCover.DotCoverCoverDotNetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverCoverDotNet), Arguments = "dotnet")]
 public partial class DotCoverCoverDotNetSettings : ToolOptions
@@ -214,7 +209,6 @@ public partial class DotCoverCoverDotNetSettings : ToolOptions
 #endregion
 #region DotCoverDeleteSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Common.Tools.DotCover.DotCoverDeleteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverDelete), Arguments = "delete")]
 public partial class DotCoverDeleteSettings : ToolOptions
@@ -229,7 +223,6 @@ public partial class DotCoverDeleteSettings : ToolOptions
 #endregion
 #region DotCoverMergeSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Common.Tools.DotCover.DotCoverMergeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverMerge), Arguments = "merge")]
 public partial class DotCoverMergeSettings : ToolOptions
@@ -248,7 +241,6 @@ public partial class DotCoverMergeSettings : ToolOptions
 #endregion
 #region DotCoverReportSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Common.Tools.DotCover.DotCoverReportSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverReport), Arguments = "report")]
 public partial class DotCoverReportSettings : ToolOptions
@@ -269,7 +261,6 @@ public partial class DotCoverReportSettings : ToolOptions
 #endregion
 #region DotCoverZipSettings
 /// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Common.Tools.DotCover.DotCoverZipSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverZip), Arguments = "zip")]
 public partial class DotCoverZipSettings : ToolOptions
@@ -286,1062 +277,1054 @@ public partial class DotCoverZipSettings : ToolOptions
 #endregion
 #region DotCoverAnalyseSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Common.Tools.DotCover.DotCoverAnalyseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverAnalyseSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverAnalyseSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region TargetExecutable
     /// <inheritdoc cref="DotCoverAnalyseSettings.TargetExecutable"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetExecutable))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetExecutable))]
     public static T SetTargetExecutable<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.TargetExecutable, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.TargetExecutable"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetExecutable))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetExecutable))]
     public static T ResetTargetExecutable<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.TargetExecutable));
     #endregion
     #region ReportType
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReportType))]
     public static T SetReportType<T>(this T o, DotCoverReportType v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ReportType, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReportType))]
     public static T ResetReportType<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.ReportType));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="DotCoverAnalyseSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region HideAutoProperties
     /// <inheritdoc cref="DotCoverAnalyseSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
     public static T SetHideAutoProperties<T>(this T o, bool? v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
     public static T ResetHideAutoProperties<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.HideAutoProperties));
     /// <inheritdoc cref="DotCoverAnalyseSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
     public static T EnableHideAutoProperties<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, true));
     /// <inheritdoc cref="DotCoverAnalyseSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
     public static T DisableHideAutoProperties<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, false));
     /// <inheritdoc cref="DotCoverAnalyseSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.HideAutoProperties))]
     public static T ToggleHideAutoProperties<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, !o.HideAutoProperties));
     #endregion
     #region TargetArguments
     /// <inheritdoc cref="DotCoverAnalyseSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetArguments))]
     public static T SetTargetArguments<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.TargetArguments, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetArguments))]
     public static T ResetTargetArguments<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.TargetArguments));
     #endregion
     #region TargetWorkingDirectory
     /// <inheritdoc cref="DotCoverAnalyseSettings.TargetWorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetWorkingDirectory))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetWorkingDirectory))]
     public static T SetTargetWorkingDirectory<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.TargetWorkingDirectory, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.TargetWorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetWorkingDirectory))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TargetWorkingDirectory))]
     public static T ResetTargetWorkingDirectory<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.TargetWorkingDirectory));
     #endregion
     #region TempDirectory
     /// <inheritdoc cref="DotCoverAnalyseSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TempDirectory))]
     public static T SetTempDirectory<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.TempDirectory, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.TempDirectory))]
     public static T ResetTempDirectory<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.TempDirectory));
     #endregion
     #region InheritConsole
     /// <inheritdoc cref="DotCoverAnalyseSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
     public static T SetInheritConsole<T>(this T o, bool? v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.InheritConsole, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
     public static T ResetInheritConsole<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.InheritConsole));
     /// <inheritdoc cref="DotCoverAnalyseSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
     public static T EnableInheritConsole<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.InheritConsole, true));
     /// <inheritdoc cref="DotCoverAnalyseSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
     public static T DisableInheritConsole<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.InheritConsole, false));
     /// <inheritdoc cref="DotCoverAnalyseSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.InheritConsole))]
     public static T ToggleInheritConsole<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.InheritConsole, !o.InheritConsole));
     #endregion
     #region AnalyseTargetArguments
     /// <inheritdoc cref="DotCoverAnalyseSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
     public static T SetAnalyseTargetArguments<T>(this T o, bool? v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
     public static T ResetAnalyseTargetArguments<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.AnalyseTargetArguments));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
     public static T EnableAnalyseTargetArguments<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, true));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
     public static T DisableAnalyseTargetArguments<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, false));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AnalyseTargetArguments))]
     public static T ToggleAnalyseTargetArguments<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, !o.AnalyseTargetArguments));
     #endregion
     #region Scope
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T SetScope<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T SetScope<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T AddScope<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T AddScope<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T RemoveScope<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T RemoveScope<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Scope))]
     public static T ClearScope<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.ClearCollection(() => o.Scope));
     #endregion
     #region Filters
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T SetFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T SetFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T AddFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T AddFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T RemoveFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T RemoveFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.Filters))]
     public static T ClearFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.ClearCollection(() => o.Filters));
     #endregion
     #region AttributeFilters
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T SetAttributeFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T SetAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T AddAttributeFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T AddAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T RemoveAttributeFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T RemoveAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AttributeFilters))]
     public static T ClearAttributeFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.ClearCollection(() => o.AttributeFilters));
     #endregion
     #region DisableDefaultFilters
     /// <inheritdoc cref="DotCoverAnalyseSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
     public static T SetDisableDefaultFilters<T>(this T o, bool? v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
     public static T ResetDisableDefaultFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.DisableDefaultFilters));
     /// <inheritdoc cref="DotCoverAnalyseSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
     public static T EnableDisableDefaultFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, true));
     /// <inheritdoc cref="DotCoverAnalyseSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
     public static T DisableDisableDefaultFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, false));
     /// <inheritdoc cref="DotCoverAnalyseSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.DisableDefaultFilters))]
     public static T ToggleDisableDefaultFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, !o.DisableDefaultFilters));
     #endregion
     #region SymbolSearchPaths
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T SetSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T SetSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T AddSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T AddSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T RemoveSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T RemoveSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.SymbolSearchPaths))]
     public static T ClearSymbolSearchPaths<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.ClearCollection(() => o.SymbolSearchPaths));
     #endregion
     #region AllowSymbolServerAccess
     /// <inheritdoc cref="DotCoverAnalyseSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
     public static T SetAllowSymbolServerAccess<T>(this T o, bool? v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
     public static T ResetAllowSymbolServerAccess<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.AllowSymbolServerAccess));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
     public static T EnableAllowSymbolServerAccess<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, true));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
     public static T DisableAllowSymbolServerAccess<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, false));
     /// <inheritdoc cref="DotCoverAnalyseSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.AllowSymbolServerAccess))]
     public static T ToggleAllowSymbolServerAccess<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, !o.AllowSymbolServerAccess));
     #endregion
     #region ReturnTargetExitCode
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
     public static T SetReturnTargetExitCode<T>(this T o, bool? v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
     public static T ResetReturnTargetExitCode<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.ReturnTargetExitCode));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
     public static T EnableReturnTargetExitCode<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, true));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
     public static T DisableReturnTargetExitCode<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, false));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ReturnTargetExitCode))]
     public static T ToggleReturnTargetExitCode<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, !o.ReturnTargetExitCode));
     #endregion
     #region ProcessFilters
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T SetProcessFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T SetProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T AddProcessFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T AddProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.AddCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T RemoveProcessFilters<T>(this T o, params string[] v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T RemoveProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverAnalyseSettings => o.Modify(b => b.RemoveCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.ProcessFilters))]
     public static T ClearProcessFilters<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.ClearCollection(() => o.ProcessFilters));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverAnalyseSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverAnalyseSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverAnalyseSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverAnalyseSettings), Property = nameof(DotCoverAnalyseSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverAnalyseSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverCoverSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Common.Tools.DotCover.DotCoverCoverSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverCoverSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverCoverSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region TargetExecutable
     /// <inheritdoc cref="DotCoverCoverSettings.TargetExecutable"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetExecutable))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetExecutable))]
     public static T SetTargetExecutable<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.TargetExecutable, v));
     /// <inheritdoc cref="DotCoverCoverSettings.TargetExecutable"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetExecutable))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetExecutable))]
     public static T ResetTargetExecutable<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.TargetExecutable));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="DotCoverCoverSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="DotCoverCoverSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region ReportType
     /// <inheritdoc cref="DotCoverCoverSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReportType))]
     public static T SetReportType<T>(this T o, DotCoverReportType v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ReportType, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReportType))]
     public static T ResetReportType<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.ReportType));
     #endregion
     #region TargetArguments
     /// <inheritdoc cref="DotCoverCoverSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetArguments))]
     public static T SetTargetArguments<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.TargetArguments, v));
     /// <inheritdoc cref="DotCoverCoverSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetArguments))]
     public static T ResetTargetArguments<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.TargetArguments));
     #endregion
     #region TargetWorkingDirectory
     /// <inheritdoc cref="DotCoverCoverSettings.TargetWorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetWorkingDirectory))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetWorkingDirectory))]
     public static T SetTargetWorkingDirectory<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.TargetWorkingDirectory, v));
     /// <inheritdoc cref="DotCoverCoverSettings.TargetWorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetWorkingDirectory))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TargetWorkingDirectory))]
     public static T ResetTargetWorkingDirectory<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.TargetWorkingDirectory));
     #endregion
     #region TempDirectory
     /// <inheritdoc cref="DotCoverCoverSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TempDirectory))]
     public static T SetTempDirectory<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.TempDirectory, v));
     /// <inheritdoc cref="DotCoverCoverSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.TempDirectory))]
     public static T ResetTempDirectory<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.TempDirectory));
     #endregion
     #region InheritConsole
     /// <inheritdoc cref="DotCoverCoverSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
     public static T SetInheritConsole<T>(this T o, bool? v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.InheritConsole, v));
     /// <inheritdoc cref="DotCoverCoverSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
     public static T ResetInheritConsole<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.InheritConsole));
     /// <inheritdoc cref="DotCoverCoverSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
     public static T EnableInheritConsole<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.InheritConsole, true));
     /// <inheritdoc cref="DotCoverCoverSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
     public static T DisableInheritConsole<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.InheritConsole, false));
     /// <inheritdoc cref="DotCoverCoverSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.InheritConsole))]
     public static T ToggleInheritConsole<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.InheritConsole, !o.InheritConsole));
     #endregion
     #region AnalyseTargetArguments
     /// <inheritdoc cref="DotCoverCoverSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
     public static T SetAnalyseTargetArguments<T>(this T o, bool? v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
     public static T ResetAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.AnalyseTargetArguments));
     /// <inheritdoc cref="DotCoverCoverSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
     public static T EnableAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, true));
     /// <inheritdoc cref="DotCoverCoverSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
     public static T DisableAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, false));
     /// <inheritdoc cref="DotCoverCoverSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AnalyseTargetArguments))]
     public static T ToggleAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, !o.AnalyseTargetArguments));
     #endregion
     #region Scope
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T SetScope<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T SetScope<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T AddScope<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T AddScope<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T RemoveScope<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T RemoveScope<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Scope))]
     public static T ClearScope<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.ClearCollection(() => o.Scope));
     #endregion
     #region Filters
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T SetFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T SetFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T AddFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T AddFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T RemoveFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T RemoveFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.Filters))]
     public static T ClearFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.ClearCollection(() => o.Filters));
     #endregion
     #region AttributeFilters
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T SetAttributeFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T SetAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T AddAttributeFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T AddAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T RemoveAttributeFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T RemoveAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AttributeFilters))]
     public static T ClearAttributeFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.ClearCollection(() => o.AttributeFilters));
     #endregion
     #region DisableDefaultFilters
     /// <inheritdoc cref="DotCoverCoverSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
     public static T SetDisableDefaultFilters<T>(this T o, bool? v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
     public static T ResetDisableDefaultFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.DisableDefaultFilters));
     /// <inheritdoc cref="DotCoverCoverSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
     public static T EnableDisableDefaultFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, true));
     /// <inheritdoc cref="DotCoverCoverSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
     public static T DisableDisableDefaultFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, false));
     /// <inheritdoc cref="DotCoverCoverSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.DisableDefaultFilters))]
     public static T ToggleDisableDefaultFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, !o.DisableDefaultFilters));
     #endregion
     #region SymbolSearchPaths
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T SetSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T SetSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T AddSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T AddSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T RemoveSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T RemoveSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.SymbolSearchPaths))]
     public static T ClearSymbolSearchPaths<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.ClearCollection(() => o.SymbolSearchPaths));
     #endregion
     #region AllowSymbolServerAccess
     /// <inheritdoc cref="DotCoverCoverSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
     public static T SetAllowSymbolServerAccess<T>(this T o, bool? v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, v));
     /// <inheritdoc cref="DotCoverCoverSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
     public static T ResetAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.AllowSymbolServerAccess));
     /// <inheritdoc cref="DotCoverCoverSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
     public static T EnableAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, true));
     /// <inheritdoc cref="DotCoverCoverSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
     public static T DisableAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, false));
     /// <inheritdoc cref="DotCoverCoverSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.AllowSymbolServerAccess))]
     public static T ToggleAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, !o.AllowSymbolServerAccess));
     #endregion
     #region ReturnTargetExitCode
     /// <inheritdoc cref="DotCoverCoverSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
     public static T SetReturnTargetExitCode<T>(this T o, bool? v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
     public static T ResetReturnTargetExitCode<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.ReturnTargetExitCode));
     /// <inheritdoc cref="DotCoverCoverSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
     public static T EnableReturnTargetExitCode<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, true));
     /// <inheritdoc cref="DotCoverCoverSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
     public static T DisableReturnTargetExitCode<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, false));
     /// <inheritdoc cref="DotCoverCoverSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ReturnTargetExitCode))]
     public static T ToggleReturnTargetExitCode<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, !o.ReturnTargetExitCode));
     #endregion
     #region ProcessFilters
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T SetProcessFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T SetProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T AddProcessFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T AddProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.AddCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T RemoveProcessFilters<T>(this T o, params string[] v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T RemoveProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.ProcessFilters))]
     public static T ClearProcessFilters<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.ClearCollection(() => o.ProcessFilters));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverCoverSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverCoverSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverCoverSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverCoverSettings), Property = nameof(DotCoverCoverSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverCoverSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverCoverDotNetSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Common.Tools.DotCover.DotCoverCoverDotNetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverCoverDotNetSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region ReportType
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReportType))]
     public static T SetReportType<T>(this T o, DotCoverReportType v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ReportType, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReportType))]
     public static T ResetReportType<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.ReportType));
     #endregion
     #region TargetArguments
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetArguments))]
     public static T SetTargetArguments<T>(this T o, string v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.TargetArguments, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetArguments))]
     public static T ResetTargetArguments<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.TargetArguments));
     #endregion
     #region TargetWorkingDirectory
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.TargetWorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetWorkingDirectory))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetWorkingDirectory))]
     public static T SetTargetWorkingDirectory<T>(this T o, string v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.TargetWorkingDirectory, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.TargetWorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetWorkingDirectory))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TargetWorkingDirectory))]
     public static T ResetTargetWorkingDirectory<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.TargetWorkingDirectory));
     #endregion
     #region TempDirectory
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TempDirectory))]
     public static T SetTempDirectory<T>(this T o, string v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.TempDirectory, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.TempDirectory))]
     public static T ResetTempDirectory<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.TempDirectory));
     #endregion
     #region InheritConsole
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
     public static T SetInheritConsole<T>(this T o, bool? v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.InheritConsole, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
     public static T ResetInheritConsole<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.InheritConsole));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
     public static T EnableInheritConsole<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.InheritConsole, true));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
     public static T DisableInheritConsole<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.InheritConsole, false));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.InheritConsole"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.InheritConsole))]
     public static T ToggleInheritConsole<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.InheritConsole, !o.InheritConsole));
     #endregion
     #region AnalyseTargetArguments
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
     public static T SetAnalyseTargetArguments<T>(this T o, bool? v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
     public static T ResetAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.AnalyseTargetArguments));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
     public static T EnableAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, true));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
     public static T DisableAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, false));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AnalyseTargetArguments"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AnalyseTargetArguments))]
     public static T ToggleAnalyseTargetArguments<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AnalyseTargetArguments, !o.AnalyseTargetArguments));
     #endregion
     #region Scope
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T SetScope<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T SetScope<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T AddScope<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T AddScope<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T RemoveScope<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T RemoveScope<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.Scope, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Scope"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Scope))]
     public static T ClearScope<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.ClearCollection(() => o.Scope));
     #endregion
     #region Filters
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T SetFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T SetFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T AddFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T AddFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T RemoveFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T RemoveFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.Filters))]
     public static T ClearFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.ClearCollection(() => o.Filters));
     #endregion
     #region AttributeFilters
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T SetAttributeFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T SetAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T AddAttributeFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T AddAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T RemoveAttributeFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T RemoveAttributeFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.AttributeFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AttributeFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AttributeFilters))]
     public static T ClearAttributeFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.ClearCollection(() => o.AttributeFilters));
     #endregion
     #region DisableDefaultFilters
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
     public static T SetDisableDefaultFilters<T>(this T o, bool? v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
     public static T ResetDisableDefaultFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.DisableDefaultFilters));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
     public static T EnableDisableDefaultFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, true));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
     public static T DisableDisableDefaultFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, false));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.DisableDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.DisableDefaultFilters))]
     public static T ToggleDisableDefaultFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilters, !o.DisableDefaultFilters));
     #endregion
     #region SymbolSearchPaths
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T SetSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T SetSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T AddSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T AddSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T RemoveSymbolSearchPaths<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T RemoveSymbolSearchPaths<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.SymbolSearchPaths, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.SymbolSearchPaths))]
     public static T ClearSymbolSearchPaths<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.ClearCollection(() => o.SymbolSearchPaths));
     #endregion
     #region AllowSymbolServerAccess
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
     public static T SetAllowSymbolServerAccess<T>(this T o, bool? v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
     public static T ResetAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.AllowSymbolServerAccess));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
     public static T EnableAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, true));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
     public static T DisableAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, false));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.AllowSymbolServerAccess"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.AllowSymbolServerAccess))]
     public static T ToggleAllowSymbolServerAccess<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.AllowSymbolServerAccess, !o.AllowSymbolServerAccess));
     #endregion
     #region ReturnTargetExitCode
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
     public static T SetReturnTargetExitCode<T>(this T o, bool? v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
     public static T ResetReturnTargetExitCode<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.ReturnTargetExitCode));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
     public static T EnableReturnTargetExitCode<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, true));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
     public static T DisableReturnTargetExitCode<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, false));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ReturnTargetExitCode"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ReturnTargetExitCode))]
     public static T ToggleReturnTargetExitCode<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ReturnTargetExitCode, !o.ReturnTargetExitCode));
     #endregion
     #region ProcessFilters
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T SetProcessFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T SetProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T AddProcessFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T AddProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.AddCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T RemoveProcessFilters<T>(this T o, params string[] v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T RemoveProcessFilters<T>(this T o, IEnumerable<string> v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.RemoveCollection(() => o.ProcessFilters, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.ProcessFilters"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.ProcessFilters))]
     public static T ClearProcessFilters<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.ClearCollection(() => o.ProcessFilters));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverCoverDotNetSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverCoverDotNetSettings), Property = nameof(DotCoverCoverDotNetSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverCoverDotNetSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverDeleteSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Common.Tools.DotCover.DotCoverDeleteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverDeleteSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverDeleteSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverDeleteSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverDeleteSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region Source
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T SetSource<T>(this T o, params string[] v) where T : DotCoverDeleteSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T SetSource<T>(this T o, IEnumerable<string> v) where T : DotCoverDeleteSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T AddSource<T>(this T o, params string[] v) where T : DotCoverDeleteSettings => o.Modify(b => b.AddCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T AddSource<T>(this T o, IEnumerable<string> v) where T : DotCoverDeleteSettings => o.Modify(b => b.AddCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T RemoveSource<T>(this T o, params string[] v) where T : DotCoverDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T RemoveSource<T>(this T o, IEnumerable<string> v) where T : DotCoverDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.Source))]
     public static T ClearSource<T>(this T o) where T : DotCoverDeleteSettings => o.Modify(b => b.ClearCollection(() => o.Source));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverDeleteSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverDeleteSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverDeleteSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverDeleteSettings), Property = nameof(DotCoverDeleteSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverDeleteSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverMergeSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Common.Tools.DotCover.DotCoverMergeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverMergeSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverMergeSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverMergeSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverMergeSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region Source
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T SetSource<T>(this T o, params string[] v) where T : DotCoverMergeSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T SetSource<T>(this T o, IEnumerable<string> v) where T : DotCoverMergeSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T AddSource<T>(this T o, params string[] v) where T : DotCoverMergeSettings => o.Modify(b => b.AddCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T AddSource<T>(this T o, IEnumerable<string> v) where T : DotCoverMergeSettings => o.Modify(b => b.AddCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T RemoveSource<T>(this T o, params string[] v) where T : DotCoverMergeSettings => o.Modify(b => b.RemoveCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T RemoveSource<T>(this T o, IEnumerable<string> v) where T : DotCoverMergeSettings => o.Modify(b => b.RemoveCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverMergeSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.Source))]
     public static T ClearSource<T>(this T o) where T : DotCoverMergeSettings => o.Modify(b => b.ClearCollection(() => o.Source));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="DotCoverMergeSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : DotCoverMergeSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="DotCoverMergeSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : DotCoverMergeSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region TempDirectory
     /// <inheritdoc cref="DotCoverMergeSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.TempDirectory))]
     public static T SetTempDirectory<T>(this T o, string v) where T : DotCoverMergeSettings => o.Modify(b => b.Set(() => o.TempDirectory, v));
     /// <inheritdoc cref="DotCoverMergeSettings.TempDirectory"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.TempDirectory))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.TempDirectory))]
     public static T ResetTempDirectory<T>(this T o) where T : DotCoverMergeSettings => o.Modify(b => b.Remove(() => o.TempDirectory));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverMergeSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverMergeSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverMergeSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverMergeSettings), Property = nameof(DotCoverMergeSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverMergeSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverReportSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Common.Tools.DotCover.DotCoverReportSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverReportSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverReportSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverReportSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region Source
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T SetSource<T>(this T o, params string[] v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T SetSource<T>(this T o, IEnumerable<string> v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T AddSource<T>(this T o, params string[] v) where T : DotCoverReportSettings => o.Modify(b => b.AddCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T AddSource<T>(this T o, IEnumerable<string> v) where T : DotCoverReportSettings => o.Modify(b => b.AddCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T RemoveSource<T>(this T o, params string[] v) where T : DotCoverReportSettings => o.Modify(b => b.RemoveCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T RemoveSource<T>(this T o, IEnumerable<string> v) where T : DotCoverReportSettings => o.Modify(b => b.RemoveCollection(() => o.Source, v));
     /// <inheritdoc cref="DotCoverReportSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.Source))]
     public static T ClearSource<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.ClearCollection(() => o.Source));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="DotCoverReportSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="DotCoverReportSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region ReportType
     /// <inheritdoc cref="DotCoverReportSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.ReportType))]
     public static T SetReportType<T>(this T o, DotCoverReportType v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.ReportType, v));
     /// <inheritdoc cref="DotCoverReportSettings.ReportType"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.ReportType))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.ReportType))]
     public static T ResetReportType<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Remove(() => o.ReportType));
     #endregion
     #region HideAutoProperties
     /// <inheritdoc cref="DotCoverReportSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
     public static T SetHideAutoProperties<T>(this T o, bool? v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, v));
     /// <inheritdoc cref="DotCoverReportSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
     public static T ResetHideAutoProperties<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Remove(() => o.HideAutoProperties));
     /// <inheritdoc cref="DotCoverReportSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
     public static T EnableHideAutoProperties<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, true));
     /// <inheritdoc cref="DotCoverReportSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
     public static T DisableHideAutoProperties<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, false));
     /// <inheritdoc cref="DotCoverReportSettings.HideAutoProperties"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.HideAutoProperties))]
     public static T ToggleHideAutoProperties<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.HideAutoProperties, !o.HideAutoProperties));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverReportSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverReportSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverReportSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverReportSettings), Property = nameof(DotCoverReportSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverReportSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverZipSettingsExtensions
 /// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Common.Tools.DotCover.DotCoverZipSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverZipSettingsExtensions
 {
     #region Configuration
     /// <inheritdoc cref="DotCoverZipSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Configuration))]
     public static T SetConfiguration<T>(this T o, string v) where T : DotCoverZipSettings => o.Modify(b => b.Set(() => o.Configuration, v));
     /// <inheritdoc cref="DotCoverZipSettings.Configuration"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Configuration))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Configuration))]
     public static T ResetConfiguration<T>(this T o) where T : DotCoverZipSettings => o.Modify(b => b.Remove(() => o.Configuration));
     #endregion
     #region Source
     /// <inheritdoc cref="DotCoverZipSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Source))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Source))]
     public static T SetSource<T>(this T o, string v) where T : DotCoverZipSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="DotCoverZipSettings.Source"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Source))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.Source))]
     public static T ResetSource<T>(this T o) where T : DotCoverZipSettings => o.Modify(b => b.Remove(() => o.Source));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="DotCoverZipSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : DotCoverZipSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="DotCoverZipSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.OutputFile))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : DotCoverZipSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region LogFile
     /// <inheritdoc cref="DotCoverZipSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.LogFile))]
     public static T SetLogFile<T>(this T o, string v) where T : DotCoverZipSettings => o.Modify(b => b.Set(() => o.LogFile, v));
     /// <inheritdoc cref="DotCoverZipSettings.LogFile"/>
-    [Pure] [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.LogFile))]
+    [Builder(Type = typeof(DotCoverZipSettings), Property = nameof(DotCoverZipSettings.LogFile))]
     public static T ResetLogFile<T>(this T o) where T : DotCoverZipSettings => o.Modify(b => b.Remove(() => o.LogFile));
     #endregion
 }
 #endregion
 #region DotCoverReportType
 /// <summary>Used within <see cref="DotCoverTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<DotCoverReportType>))]

@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.ProjectModel;
 using Fallout.Common.Tooling;
@@ -17,7 +16,6 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface ICompile : IRestore, IHazConfiguration
 {
     Target Compile => _ => _

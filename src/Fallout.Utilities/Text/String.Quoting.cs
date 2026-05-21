@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
@@ -14,8 +13,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Double-quotes a given string if it contains spaces. Empty and already quoted strings remain unchanged.
     /// </summary>
-    [Pure]
-    public static string DoubleQuoteIfNeeded([CanBeNull] this string str)
+    public static string DoubleQuoteIfNeeded(this string str)
     {
         return str.DoubleQuoteIfNeeded(' ');
     }
@@ -23,8 +21,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Double-quotes a given string if it contains disallowed characters. Empty and already quoted strings remain unchanged.
     /// </summary>
-    [Pure]
-    public static string DoubleQuoteIfNeeded([CanBeNull] this string str, params char?[] disallowed)
+    public static string DoubleQuoteIfNeeded(this string str, params char?[] disallowed)
     {
         if (string.IsNullOrWhiteSpace(str))
             return string.Empty;
@@ -41,8 +38,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Double-quotes a given string in double-quotes with existing double-quotes escaped.
     /// </summary>
-    [Pure]
-    public static string DoubleQuote([CanBeNull] this string str)
+    public static string DoubleQuote(this string str)
     {
         return $"\"{str?.Replace("\"", "\\\"")}\"";
     }
@@ -50,8 +46,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Single-quotes a given string if it contains spaces. Empty and already quoted strings remain unchanged.
     /// </summary>
-    [Pure]
-    public static string SingleQuoteIfNeeded([CanBeNull] this string str)
+    public static string SingleQuoteIfNeeded(this string str)
     {
         return str.SingleQuoteIfNeeded(' ');
     }
@@ -59,8 +54,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Single-quotes a given string if it contains disallowed characters. Empty and already quoted strings remain unchanged.
     /// </summary>
-    [Pure]
-    public static string SingleQuoteIfNeeded([CanBeNull] this string str, params char?[] disallowed)
+    public static string SingleQuoteIfNeeded(this string str, params char?[] disallowed)
     {
         if (string.IsNullOrWhiteSpace(str))
             return string.Empty;
@@ -77,8 +71,7 @@ public static partial class StringExtensions
     /// <summary>
     /// Single-quotes a given string with existing single-quotes escaped.
     /// </summary>
-    [Pure]
-    public static string SingleQuote([CanBeNull] this string str)
+    public static string SingleQuote(this string str)
     {
         return $"'{str?.Replace("'", "\\'")}'";
     }
@@ -86,7 +79,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a given string is double-quoted.
     /// </summary>
-    [Pure]
     public static bool IsDoubleQuoted(this string str)
     {
         return str.StartsWith("\"") && str.EndsWith("\"");
@@ -95,13 +87,11 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a given string is single-quoted.
     /// </summary>
-    [Pure]
     public static bool IsSingleQuoted(this string str)
     {
         return str.StartsWith("'") && str.EndsWith("'");
     }
 
-    [Pure]
     private static bool Contains(this string str, char?[] chars)
     {
         return chars.Any(x => x.HasValue && str.IndexOf(x.Value) != -1);

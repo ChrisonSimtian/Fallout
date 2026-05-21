@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Boots;
 
 /// <summary><p>boots is a .NET global tool for <c>bootstrapping</c> <c>vsix</c> and <c>pkg</c> files.</p><p>For more details, visit the <a href="https://github.com/jonathanpeppers/boots">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class BootsTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class BootsTasks : ToolTasks, IRequireNuGetPackage
 }
 #region BootsSettings
 /// <inheritdoc cref="BootsTasks.Boots(Fallout.Common.Tools.Boots.BootsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(BootsTasks), Command = nameof(BootsTasks.Boots))]
 public partial class BootsSettings : ToolOptions
@@ -63,88 +60,86 @@ public partial class BootsSettings : ToolOptions
 #endregion
 #region BootsSettingsExtensions
 /// <inheritdoc cref="BootsTasks.Boots(Fallout.Common.Tools.Boots.BootsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class BootsSettingsExtensions
 {
     #region Stable
     /// <inheritdoc cref="BootsSettings.Stable"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Stable))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Stable))]
     public static T SetStable<T>(this T o, BootsProductType v) where T : BootsSettings => o.Modify(b => b.Set(() => o.Stable, v));
     /// <inheritdoc cref="BootsSettings.Stable"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Stable))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Stable))]
     public static T ResetStable<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.Stable));
     #endregion
     #region Preview
     /// <inheritdoc cref="BootsSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Preview))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Preview))]
     public static T SetPreview<T>(this T o, BootsProductType v) where T : BootsSettings => o.Modify(b => b.Set(() => o.Preview, v));
     /// <inheritdoc cref="BootsSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Preview))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Preview))]
     public static T ResetPreview<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.Preview));
     #endregion
     #region Url
     /// <inheritdoc cref="BootsSettings.Url"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Url))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Url))]
     public static T SetUrl<T>(this T o, string v) where T : BootsSettings => o.Modify(b => b.Set(() => o.Url, v));
     /// <inheritdoc cref="BootsSettings.Url"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Url))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Url))]
     public static T ResetUrl<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.Url));
     #endregion
     #region FileType
     /// <inheritdoc cref="BootsSettings.FileType"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.FileType))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.FileType))]
     public static T SetFileType<T>(this T o, BootsFileType v) where T : BootsSettings => o.Modify(b => b.Set(() => o.FileType, v));
     /// <inheritdoc cref="BootsSettings.FileType"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.FileType))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.FileType))]
     public static T ResetFileType<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.FileType));
     #endregion
     #region Timeout
     /// <inheritdoc cref="BootsSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Timeout))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Timeout))]
     public static T SetTimeout<T>(this T o, int? v) where T : BootsSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="BootsSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Timeout))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region ReadWriteTimeout
     /// <inheritdoc cref="BootsSettings.ReadWriteTimeout"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.ReadWriteTimeout))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.ReadWriteTimeout))]
     public static T SetReadWriteTimeout<T>(this T o, int? v) where T : BootsSettings => o.Modify(b => b.Set(() => o.ReadWriteTimeout, v));
     /// <inheritdoc cref="BootsSettings.ReadWriteTimeout"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.ReadWriteTimeout))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.ReadWriteTimeout))]
     public static T ResetReadWriteTimeout<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.ReadWriteTimeout));
     #endregion
     #region Retries
     /// <inheritdoc cref="BootsSettings.Retries"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Retries))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Retries))]
     public static T SetRetries<T>(this T o, int? v) where T : BootsSettings => o.Modify(b => b.Set(() => o.Retries, v));
     /// <inheritdoc cref="BootsSettings.Retries"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Retries))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Retries))]
     public static T ResetRetries<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.Retries));
     #endregion
     #region Version
     /// <inheritdoc cref="BootsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
     public static T SetVersion<T>(this T o, bool? v) where T : BootsSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="BootsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : BootsSettings => o.Modify(b => b.Remove(() => o.Version));
     /// <inheritdoc cref="BootsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
     public static T EnableVersion<T>(this T o) where T : BootsSettings => o.Modify(b => b.Set(() => o.Version, true));
     /// <inheritdoc cref="BootsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
     public static T DisableVersion<T>(this T o) where T : BootsSettings => o.Modify(b => b.Set(() => o.Version, false));
     /// <inheritdoc cref="BootsSettings.Version"/>
-    [Pure] [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
+    [Builder(Type = typeof(BootsSettings), Property = nameof(BootsSettings.Version))]
     public static T ToggleVersion<T>(this T o) where T : BootsSettings => o.Modify(b => b.Set(() => o.Version, !o.Version));
     #endregion
 }
 #endregion
 #region BootsProductType
 /// <summary>Used within <see cref="BootsTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<BootsProductType>))]
@@ -162,7 +157,6 @@ public partial class BootsProductType : Enumeration
 #endregion
 #region BootsFileType
 /// <summary>Used within <see cref="BootsTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<BootsFileType>))]

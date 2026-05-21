@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazArtifacts : IFalloutBuild
 {
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";

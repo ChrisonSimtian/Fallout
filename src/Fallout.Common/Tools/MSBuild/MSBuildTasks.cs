@@ -6,13 +6,11 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tools.MSBuild;
 
-[PublicAPI]
 public class MSBuildVerbosityMappingAttribute : VerbosityMappingAttribute
 {
     public MSBuildVerbosityMappingAttribute()
@@ -49,7 +47,6 @@ partial class MSBuildTasks
 
 partial class MSBuildSettings
 {
-    [CanBeNull]
     private string FormatPlatform(MSBuildTargetPlatform value, PropertyInfo property)
     {
         if (value == null)

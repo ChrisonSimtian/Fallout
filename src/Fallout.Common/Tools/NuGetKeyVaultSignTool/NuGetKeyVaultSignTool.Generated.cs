@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.NuGetKeyVaultSignTool;
 
 /// <summary><p>NuGet Key Vault Sign Tool is similar to <c>nuget sign</c>, with the major difference being that it uses Azure Key Vault for performing the signing process. Similar usage configuration like <c>AzureSignTool</c>, except is used to sign nuget package.</p><p>For more details, visit the <a href="https://github.com/novotnyllc/NuGetKeyVaultSignTool">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class NuGetKeyVaultSignToolTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class NuGetKeyVaultSignToolTasks : ToolTasks, IRequireNuGetPackag
 }
 #region NuGetKeyVaultSignToolSettings
 /// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Common.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetKeyVaultSignToolTasks), Command = nameof(NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool), Arguments = "sign")]
 public partial class NuGetKeyVaultSignToolSettings : ToolOptions
@@ -73,137 +70,135 @@ public partial class NuGetKeyVaultSignToolSettings : ToolOptions
 #endregion
 #region NuGetKeyVaultSignToolSettingsExtensions
 /// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Common.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class NuGetKeyVaultSignToolSettingsExtensions
 {
     #region File
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.File"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.File))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.File))]
     public static T SetFile<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.File, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.File"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.File))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.File))]
     public static T ResetFile<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.File));
     #endregion
     #region KeyVaultUrl
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultUrl"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultUrl))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultUrl))]
     public static T SetKeyVaultUrl<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultUrl, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultUrl"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultUrl))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultUrl))]
     public static T ResetKeyVaultUrl<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultUrl));
     #endregion
     #region KeyVaultClientId
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultClientId"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientId))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientId))]
     public static T SetKeyVaultClientId<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultClientId, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultClientId"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientId))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientId))]
     public static T ResetKeyVaultClientId<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultClientId));
     #endregion
     #region KeyVaultClientSecret
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultClientSecret"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientSecret))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientSecret))]
     public static T SetKeyVaultClientSecret<T>(this T o, [Secret] string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultClientSecret, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultClientSecret"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientSecret))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultClientSecret))]
     public static T ResetKeyVaultClientSecret<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultClientSecret));
     #endregion
     #region KeyVaultTenantId
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultTenantId"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultTenantId))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultTenantId))]
     public static T SetKeyVaultTenantId<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultTenantId, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultTenantId"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultTenantId))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultTenantId))]
     public static T ResetKeyVaultTenantId<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultTenantId));
     #endregion
     #region KeyVaultCertificateName
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultCertificateName"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultCertificateName))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultCertificateName))]
     public static T SetKeyVaultCertificateName<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultCertificateName, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultCertificateName"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultCertificateName))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultCertificateName))]
     public static T ResetKeyVaultCertificateName<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultCertificateName));
     #endregion
     #region KeyVaultAccessToken
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultAccessToken"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultAccessToken))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultAccessToken))]
     public static T SetKeyVaultAccessToken<T>(this T o, [Secret] string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultAccessToken, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultAccessToken"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultAccessToken))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultAccessToken))]
     public static T ResetKeyVaultAccessToken<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultAccessToken));
     #endregion
     #region KeyVaultManagedIdentity
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
     public static T SetKeyVaultManagedIdentity<T>(this T o, bool? v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
     public static T ResetKeyVaultManagedIdentity<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.KeyVaultManagedIdentity));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
     public static T EnableKeyVaultManagedIdentity<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, true));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
     public static T DisableKeyVaultManagedIdentity<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, false));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity))]
     public static T ToggleKeyVaultManagedIdentity<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.KeyVaultManagedIdentity, !o.KeyVaultManagedIdentity));
     #endregion
     #region TimestampRfc3161Url
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.TimestampRfc3161Url"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampRfc3161Url))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampRfc3161Url))]
     public static T SetTimestampRfc3161Url<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.TimestampRfc3161Url, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.TimestampRfc3161Url"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampRfc3161Url))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampRfc3161Url))]
     public static T ResetTimestampRfc3161Url<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.TimestampRfc3161Url));
     #endregion
     #region TimestampDigest
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.TimestampDigest"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampDigest))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampDigest))]
     public static T SetTimestampDigest<T>(this T o, NuGetKeyVaultSignToolDigestAlgorithm v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.TimestampDigest, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.TimestampDigest"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampDigest))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.TimestampDigest))]
     public static T ResetTimestampDigest<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.TimestampDigest));
     #endregion
     #region FileDigest
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.FileDigest"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.FileDigest))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.FileDigest))]
     public static T SetFileDigest<T>(this T o, NuGetKeyVaultSignToolDigestAlgorithm v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.FileDigest, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.FileDigest"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.FileDigest))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.FileDigest))]
     public static T ResetFileDigest<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.FileDigest));
     #endregion
     #region Force
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
     public static T ResetForce<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
     public static T EnableForce<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
     public static T DisableForce<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Force"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Output
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Output"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Output))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="NuGetKeyVaultSignToolSettings.Output"/>
-    [Pure] [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Output))]
+    [Builder(Type = typeof(NuGetKeyVaultSignToolSettings), Property = nameof(NuGetKeyVaultSignToolSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : NuGetKeyVaultSignToolSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
 }
 #endregion
 #region NuGetKeyVaultSignToolDigestAlgorithm
 /// <summary>Used within <see cref="NuGetKeyVaultSignToolTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<NuGetKeyVaultSignToolDigestAlgorithm>))]

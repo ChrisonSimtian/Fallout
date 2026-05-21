@@ -6,14 +6,12 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.ValueInjection;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public class LatestMyGetVersionAttribute : ValueInjectionAttributeBase
 {
     private readonly string _feed;

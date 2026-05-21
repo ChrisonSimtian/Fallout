@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.ChangeLog;
 using Fallout.Common.CI.GitHubActions;
@@ -19,7 +18,6 @@ using Octokit;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 [ParameterPrefix(GitHubRelease)]
 public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
 {

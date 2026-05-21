@@ -8,17 +8,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
-[PublicAPI]
 [SuppressMessage("ReSharper", "MissingXmlDoc")]
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
 public static partial class EnumerableExtensions
 {
-    public static IEnumerable<T> Concat<T>([CanBeNull] this T obj, IEnumerable<T> enumerable)
+    public static IEnumerable<T> Concat<T>(this T obj, IEnumerable<T> enumerable)
     {
         yield return obj;
 

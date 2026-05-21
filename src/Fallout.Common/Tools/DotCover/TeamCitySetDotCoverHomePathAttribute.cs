@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Common.Execution;
 
 namespace Fallout.Common.Tools.DotCover;
 
-[PublicAPI]
 public class TeamCitySetDotCoverHomePathAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {
     public void OnBuildInitialized(

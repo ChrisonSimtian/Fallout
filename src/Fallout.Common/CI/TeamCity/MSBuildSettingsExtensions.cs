@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tools.MSBuild;
 
 namespace Fallout.Common.CI.TeamCity;
 
-[PublicAPI]
 public static class MSBuildSettingsExtensions
 {
     public static MSBuildSettings AddTeamCityLogger(this MSBuildSettings toolSettings)

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Utilities;
@@ -19,7 +18,6 @@ public static partial class ReflectionUtility
         return (T)Convert(value, typeof(T));
     }
 
-    [CanBeNull]
     public static object Convert(object value, Type destinationType)
     {
         if (destinationType.IsInstanceOfType(value))
@@ -42,7 +40,6 @@ public static partial class ReflectionUtility
     }
 
     // TODO: rename overloads?
-    [CanBeNull]
     public static object Convert(string value, Type destinationType, char? separator, bool booleanDefault)
     {
         var values = (separator.HasValue ? value.Split(separator.Value) : new[] { value })
@@ -50,7 +47,6 @@ public static partial class ReflectionUtility
         return Convert(values, destinationType, booleanDefault);
     }
 
-    [CanBeNull]
     public static object Convert(IReadOnlyCollection<string> values, Type destinationType, bool booleanDefault)
     {
         Assert.True(!destinationType.IsArray || destinationType.GetArrayRank() == 1, "Arrays must have a rank of 1");

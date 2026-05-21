@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.CodeGeneration.Generators;
 using Fallout.CodeGeneration.Model;
 using Fallout.Common;
@@ -17,7 +16,6 @@ using Serilog;
 
 namespace Fallout.CodeGeneration;
 
-[PublicAPI]
 public static class CodeGenerator
 {
     public const string SpecificationFilePattern = "*.json";
@@ -67,8 +65,8 @@ public static class CodeGenerator
     private static void ApplyRuntimeInformation(
         Tool tool,
         string specificationFile,
-        [CanBeNull] Func<Tool, string> sourceFileProvider,
-        [CanBeNull] Func<Tool, string> namespaceProvider)
+        Func<Tool, string> sourceFileProvider,
+        Func<Tool, string> namespaceProvider)
     {
         foreach (var task in tool.Tasks)
         {

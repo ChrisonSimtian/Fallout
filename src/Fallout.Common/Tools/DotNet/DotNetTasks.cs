@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Serilog.Events;
 
 namespace Fallout.Common.Tools.DotNet;
 
-[PublicAPI]
 public class DotNetVerbosityMappingAttribute : VerbosityMappingAttribute
 {
     public DotNetVerbosityMappingAttribute()

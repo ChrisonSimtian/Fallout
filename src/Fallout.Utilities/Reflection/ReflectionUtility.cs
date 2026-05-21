@@ -8,12 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 public static partial class ReflectionUtility
 {
     public const BindingFlags All = Static | Instance | BindingFlags.FlattenHierarchy;
@@ -21,7 +19,6 @@ public static partial class ReflectionUtility
     public const BindingFlags Instance = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
     public const BindingFlags Static = BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
 
-    [CanBeNull]
     public static object GetDefaultValue(this Type type)
     {
         return type.IsNullableType() ? null : Activator.CreateInstance(type);

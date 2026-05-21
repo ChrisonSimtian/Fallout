@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
@@ -16,8 +15,7 @@ namespace Fallout.GlobalTool;
 
 partial class Program
 {
-    [UsedImplicitly]
-    public static int Trigger(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int Trigger(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var repository = GitRepository.FromLocalDirectory(rootDirectory.NotNull()).NotNull("No Git repository");
         Assert.NotNull(repository.Branch, "Git repository must not be detached");

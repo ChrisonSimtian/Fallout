@@ -3,13 +3,11 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
 public static partial class StringExtensions
 {
-    [Pure]
     public static string Repeat(this char ch, int count)
     {
         return new string(ch, count);

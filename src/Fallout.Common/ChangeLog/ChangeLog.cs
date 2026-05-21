@@ -5,13 +5,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using NuGet.Versioning;
 using Fallout.Common.IO;
 
 namespace Fallout.Common.ChangeLog;
 
-[PublicAPI]
 public class ChangeLog
 {
     /// <summary>
@@ -22,7 +20,7 @@ public class ChangeLog
     /// <summary>
     /// The unreleased release notes section.
     /// </summary>
-    [CanBeNull] public ReleaseNotes Unreleased { get; }
+    public ReleaseNotes Unreleased { get; }
 
     /// <summary>
     /// Release notes sorted by version.
@@ -32,7 +30,7 @@ public class ChangeLog
     /// <summary>
     /// The latest release notes section. Returns null if the changelog does not contain a release section.
     /// </summary>
-    [CanBeNull] public NuGetVersion LatestVersion => ReleaseNotes.FirstOrDefault()?.Version;
+    public NuGetVersion LatestVersion => ReleaseNotes.FirstOrDefault()?.Version;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ChangeLog"/> class.
@@ -40,7 +38,7 @@ public class ChangeLog
     /// <param name="path">The path to the changelog file.</param>
     /// <param name="unreleased">The unreleased notes sectioon.</param>
     /// <param name="releaseNotes">The release notes of the changelog.</param>
-    public ChangeLog(string path, [CanBeNull] ReleaseNotes unreleased, IReadOnlyList<ReleaseNotes> releaseNotes)
+    public ChangeLog(string path, ReleaseNotes unreleased, IReadOnlyList<ReleaseNotes> releaseNotes)
     {
         Path = path;
         Unreleased = unreleased;

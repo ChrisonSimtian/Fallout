@@ -32,7 +32,6 @@ public static class TaskGenerator
 
         toolWriter
             .WriteSummary(tool)
-            .WriteLine("[PublicAPI]")
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLineIfTrue(tool.NuGetPackageId != null && tool.PackageExecutable == null, "[NuGetTool(Id = PackageId)]")
             .WriteLineIfTrue(tool.NuGetPackageId != null && tool.PackageExecutable != null, "[NuGetTool(Id = PackageId, Executable = PackageExecutable)]")

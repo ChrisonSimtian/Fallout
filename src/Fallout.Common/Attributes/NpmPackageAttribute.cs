@@ -6,11 +6,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public class NpmPackageAttribute : ToolInjectionAttributeBase
 {
     private readonly string _packageId;

@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -71,7 +70,6 @@ internal class ArgumentParser
         return GetArgumentIndex(argumentName) != -1;
     }
 
-    [CanBeNull]
     public object GetNamedArgument(string argumentName, Type destinationType, char? separator = null)
     {
         var index = GetArgumentIndex(argumentName);
@@ -82,7 +80,6 @@ internal class ArgumentParser
         return ConvertArgument(argumentName, values, destinationType, separator);
     }
 
-    [CanBeNull]
     public object GetPositionalArgument(int position, Type destinationType, char? separator = null)
     {
         var positionalArgumentsCount = _arguments.TakeUntil(IsArgument).Count();
@@ -99,7 +96,6 @@ internal class ArgumentParser
             separator);
     }
 
-    [CanBeNull]
     public object GetAllPositionalArguments(Type destinationType, char? separator = null)
     {
         var positionalArguments = Arguments.TakeUntil(IsArgument).ToArray();
@@ -119,7 +115,6 @@ internal class ArgumentParser
         return Array.FindLastIndex(_arguments, x => IsArgument(x) && GetArgumentMemberName(x).EqualsOrdinalIgnoreCase(argumentMemberName));
     }
 
-    [CanBeNull]
     private object ConvertArgument(
         string argumentName,
         string[] values,
@@ -147,7 +142,6 @@ internal class ArgumentParser
         }
     }
 
-    [CanBeNull]
     private object ConvertValues(string argumentName, IReadOnlyCollection<string> values, Type destinationType)
     {
         try

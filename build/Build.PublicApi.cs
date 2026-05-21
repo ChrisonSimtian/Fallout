@@ -7,7 +7,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -17,7 +16,6 @@ partial class Build
 {
     AbsolutePath PublicApiFile => RootDirectory / "PUBLIC_API.md";
 
-    [UsedImplicitly]
     Target GeneratePublicApi => _ => _
         .Executes(() =>
         {

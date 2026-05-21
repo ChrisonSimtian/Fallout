@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Octopus;
 
 /// <summary><p>Octopus Deploy is an automated deployment server, which you install yourself, much like you would install SQL Server, Team Foundation Server or JetBrains TeamCity. Octopus makes it easy to automate deployment of ASP.NET web applications and Windows Services into development, test and production environments.<para/>Along with the Octopus Deploy server, you'll also install a lightweight agent service on each of the machines that you plan to deploy to, for example your web and application servers. We call this the Tentacle agent; the idea being that one Octopus server controls many Tentacles, potentially a lot more than 8! With Octopus and Tentacle, you can easily deploy to your own servers, or cloud services from providers like Amazon Web Services or Microsoft Azure.</p><p>For more details, visit the <a href="https://octopus.com/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class OctopusTasks : ToolTasks, IRequireNuGetPackage
@@ -66,7 +64,6 @@ public partial class OctopusTasks : ToolTasks, IRequireNuGetPackage
 }
 #region OctopusPackSettings
 /// <inheritdoc cref="OctopusTasks.OctopusPack(Fallout.Common.Tools.Octopus.OctopusPackSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctopusTasks), Command = nameof(OctopusTasks.OctopusPack), Arguments = "pack")]
 public partial class OctopusPackSettings : ToolOptions, IToolOptionsWithFramework
@@ -103,7 +100,6 @@ public partial class OctopusPackSettings : ToolOptions, IToolOptionsWithFramewor
 #endregion
 #region OctopusPushSettings
 /// <inheritdoc cref="OctopusTasks.OctopusPush(Fallout.Common.Tools.Octopus.OctopusPushSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctopusTasks), Command = nameof(OctopusTasks.OctopusPush), Arguments = "push")]
 public partial class OctopusPushSettings : ToolOptions, IToolOptionsWithFramework
@@ -144,7 +140,6 @@ public partial class OctopusPushSettings : ToolOptions, IToolOptionsWithFramewor
 #endregion
 #region OctopusCreateReleaseSettings
 /// <inheritdoc cref="OctopusTasks.OctopusCreateRelease(Fallout.Common.Tools.Octopus.OctopusCreateReleaseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctopusTasks), Command = nameof(OctopusTasks.OctopusCreateRelease), Arguments = "create-release")]
 public partial class OctopusCreateReleaseSettings : ToolOptions, IToolOptionsWithFramework
@@ -243,7 +238,6 @@ public partial class OctopusCreateReleaseSettings : ToolOptions, IToolOptionsWit
 #endregion
 #region OctopusDeployReleaseSettings
 /// <inheritdoc cref="OctopusTasks.OctopusDeployRelease(Fallout.Common.Tools.Octopus.OctopusDeployReleaseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctopusTasks), Command = nameof(OctopusTasks.OctopusDeployRelease), Arguments = "deploy-release")]
 public partial class OctopusDeployReleaseSettings : ToolOptions, IToolOptionsWithFramework
@@ -322,7 +316,6 @@ public partial class OctopusDeployReleaseSettings : ToolOptions, IToolOptionsWit
 #endregion
 #region OctopusBuildInformationSettings
 /// <inheritdoc cref="OctopusTasks.OctopusBuildInformation(Fallout.Common.Tools.Octopus.OctopusBuildInformationSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctopusTasks), Command = nameof(OctopusTasks.OctopusBuildInformation), Arguments = "build-information")]
 public partial class OctopusBuildInformationSettings : ToolOptions, IToolOptionsWithFramework
@@ -367,1515 +360,1509 @@ public partial class OctopusBuildInformationSettings : ToolOptions, IToolOptions
 #endregion
 #region OctopusPackSettingsExtensions
 /// <inheritdoc cref="OctopusTasks.OctopusPack(Fallout.Common.Tools.Octopus.OctopusPackSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctopusPackSettingsExtensions
 {
     #region Id
     /// <inheritdoc cref="OctopusPackSettings.Id"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Id))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Id))]
     public static T SetId<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Id, v));
     /// <inheritdoc cref="OctopusPackSettings.Id"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Id))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Id))]
     public static T ResetId<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Id));
     #endregion
     #region Format
     /// <inheritdoc cref="OctopusPackSettings.Format"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Format))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Format))]
     public static T SetFormat<T>(this T o, OctopusPackFormat v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Format, v));
     /// <inheritdoc cref="OctopusPackSettings.Format"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Format))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Format))]
     public static T ResetFormat<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Format));
     #endregion
     #region Version
     /// <inheritdoc cref="OctopusPackSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Version))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="OctopusPackSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Version))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region OutputFolder
     /// <inheritdoc cref="OctopusPackSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.OutputFolder))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.OutputFolder))]
     public static T SetOutputFolder<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.OutputFolder, v));
     /// <inheritdoc cref="OctopusPackSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.OutputFolder))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.OutputFolder))]
     public static T ResetOutputFolder<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.OutputFolder));
     #endregion
     #region BasePath
     /// <inheritdoc cref="OctopusPackSettings.BasePath"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.BasePath))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.BasePath))]
     public static T SetBasePath<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.BasePath, v));
     /// <inheritdoc cref="OctopusPackSettings.BasePath"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.BasePath))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.BasePath))]
     public static T ResetBasePath<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.BasePath));
     #endregion
     #region Verbose
     /// <inheritdoc cref="OctopusPackSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
     public static T SetVerbose<T>(this T o, bool? v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Verbose, v));
     /// <inheritdoc cref="OctopusPackSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
     public static T ResetVerbose<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Verbose));
     /// <inheritdoc cref="OctopusPackSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
     public static T EnableVerbose<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Verbose, true));
     /// <inheritdoc cref="OctopusPackSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
     public static T DisableVerbose<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Verbose, false));
     /// <inheritdoc cref="OctopusPackSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Verbose))]
     public static T ToggleVerbose<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Verbose, !o.Verbose));
     #endregion
     #region Authors
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T SetAuthors<T>(this T o, params string[] v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Authors, v));
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T SetAuthors<T>(this T o, IEnumerable<string> v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Authors, v));
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T AddAuthors<T>(this T o, params string[] v) where T : OctopusPackSettings => o.Modify(b => b.AddCollection(() => o.Authors, v));
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T AddAuthors<T>(this T o, IEnumerable<string> v) where T : OctopusPackSettings => o.Modify(b => b.AddCollection(() => o.Authors, v));
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T RemoveAuthors<T>(this T o, params string[] v) where T : OctopusPackSettings => o.Modify(b => b.RemoveCollection(() => o.Authors, v));
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T RemoveAuthors<T>(this T o, IEnumerable<string> v) where T : OctopusPackSettings => o.Modify(b => b.RemoveCollection(() => o.Authors, v));
     /// <inheritdoc cref="OctopusPackSettings.Authors"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Authors))]
     public static T ClearAuthors<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.ClearCollection(() => o.Authors));
     #endregion
     #region Title
     /// <inheritdoc cref="OctopusPackSettings.Title"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Title))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Title))]
     public static T SetTitle<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Title, v));
     /// <inheritdoc cref="OctopusPackSettings.Title"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Title))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Title))]
     public static T ResetTitle<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Title));
     #endregion
     #region Description
     /// <inheritdoc cref="OctopusPackSettings.Description"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Description))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="OctopusPackSettings.Description"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Description))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region ReleaseNotes
     /// <inheritdoc cref="OctopusPackSettings.ReleaseNotes"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotes))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotes))]
     public static T SetReleaseNotes<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.ReleaseNotes, v));
     /// <inheritdoc cref="OctopusPackSettings.ReleaseNotes"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotes))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotes))]
     public static T ResetReleaseNotes<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.ReleaseNotes));
     #endregion
     #region ReleaseNotesFile
     /// <inheritdoc cref="OctopusPackSettings.ReleaseNotesFile"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotesFile))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotesFile))]
     public static T SetReleaseNotesFile<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.ReleaseNotesFile, v));
     /// <inheritdoc cref="OctopusPackSettings.ReleaseNotesFile"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotesFile))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.ReleaseNotesFile))]
     public static T ResetReleaseNotesFile<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.ReleaseNotesFile));
     #endregion
     #region Include
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T SetInclude<T>(this T o, params string[] v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Include, v));
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T SetInclude<T>(this T o, IEnumerable<string> v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Include, v));
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T AddInclude<T>(this T o, params string[] v) where T : OctopusPackSettings => o.Modify(b => b.AddCollection(() => o.Include, v));
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T AddInclude<T>(this T o, IEnumerable<string> v) where T : OctopusPackSettings => o.Modify(b => b.AddCollection(() => o.Include, v));
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T RemoveInclude<T>(this T o, params string[] v) where T : OctopusPackSettings => o.Modify(b => b.RemoveCollection(() => o.Include, v));
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T RemoveInclude<T>(this T o, IEnumerable<string> v) where T : OctopusPackSettings => o.Modify(b => b.RemoveCollection(() => o.Include, v));
     /// <inheritdoc cref="OctopusPackSettings.Include"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Include))]
     public static T ClearInclude<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.ClearCollection(() => o.Include));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="OctopusPackSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="OctopusPackSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="OctopusPackSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="OctopusPackSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="OctopusPackSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region Framework
     /// <inheritdoc cref="OctopusPackSettings.Framework"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Framework))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Framework))]
     public static T SetFramework<T>(this T o, string v) where T : OctopusPackSettings => o.Modify(b => b.Set(() => o.Framework, v));
     /// <inheritdoc cref="OctopusPackSettings.Framework"/>
-    [Pure] [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Framework))]
+    [Builder(Type = typeof(OctopusPackSettings), Property = nameof(OctopusPackSettings.Framework))]
     public static T ResetFramework<T>(this T o) where T : OctopusPackSettings => o.Modify(b => b.Remove(() => o.Framework));
     #endregion
 }
 #endregion
 #region OctopusPushSettingsExtensions
 /// <inheritdoc cref="OctopusTasks.OctopusPush(Fallout.Common.Tools.Octopus.OctopusPushSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctopusPushSettingsExtensions
 {
     #region Package
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T SetPackage<T>(this T o, params string[] v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Package, v));
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T SetPackage<T>(this T o, IEnumerable<string> v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Package, v));
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T AddPackage<T>(this T o, params string[] v) where T : OctopusPushSettings => o.Modify(b => b.AddCollection(() => o.Package, v));
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T AddPackage<T>(this T o, IEnumerable<string> v) where T : OctopusPushSettings => o.Modify(b => b.AddCollection(() => o.Package, v));
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T RemovePackage<T>(this T o, params string[] v) where T : OctopusPushSettings => o.Modify(b => b.RemoveCollection(() => o.Package, v));
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T RemovePackage<T>(this T o, IEnumerable<string> v) where T : OctopusPushSettings => o.Modify(b => b.RemoveCollection(() => o.Package, v));
     /// <inheritdoc cref="OctopusPushSettings.Package"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Package))]
     public static T ClearPackage<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.ClearCollection(() => o.Package));
     #endregion
     #region ReplaceExisting
     /// <inheritdoc cref="OctopusPushSettings.ReplaceExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
     public static T SetReplaceExisting<T>(this T o, bool? v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ReplaceExisting, v));
     /// <inheritdoc cref="OctopusPushSettings.ReplaceExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
     public static T ResetReplaceExisting<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.ReplaceExisting));
     /// <inheritdoc cref="OctopusPushSettings.ReplaceExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
     public static T EnableReplaceExisting<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ReplaceExisting, true));
     /// <inheritdoc cref="OctopusPushSettings.ReplaceExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
     public static T DisableReplaceExisting<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ReplaceExisting, false));
     /// <inheritdoc cref="OctopusPushSettings.ReplaceExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ReplaceExisting))]
     public static T ToggleReplaceExisting<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ReplaceExisting, !o.ReplaceExisting));
     #endregion
     #region Server
     /// <inheritdoc cref="OctopusPushSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Server))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Server))]
     public static T SetServer<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Server, v));
     /// <inheritdoc cref="OctopusPushSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Server))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Server))]
     public static T ResetServer<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Server));
     #endregion
     #region ApiKey
     /// <inheritdoc cref="OctopusPushSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ApiKey))]
     public static T SetApiKey<T>(this T o, [Secret] string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ApiKey, v));
     /// <inheritdoc cref="OctopusPushSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ApiKey))]
     public static T ResetApiKey<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.ApiKey));
     #endregion
     #region Username
     /// <inheritdoc cref="OctopusPushSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Username))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="OctopusPushSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Username))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Password
     /// <inheritdoc cref="OctopusPushSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Password))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="OctopusPushSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Password))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="OctopusPushSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="OctopusPushSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Debug
     /// <inheritdoc cref="OctopusPushSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="OctopusPushSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="OctopusPushSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="OctopusPushSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="OctopusPushSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region IgnoreSslErrors
     /// <inheritdoc cref="OctopusPushSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
     public static T SetIgnoreSslErrors<T>(this T o, bool? v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, v));
     /// <inheritdoc cref="OctopusPushSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
     public static T ResetIgnoreSslErrors<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.IgnoreSslErrors));
     /// <inheritdoc cref="OctopusPushSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
     public static T EnableIgnoreSslErrors<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, true));
     /// <inheritdoc cref="OctopusPushSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
     public static T DisableIgnoreSslErrors<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, false));
     /// <inheritdoc cref="OctopusPushSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.IgnoreSslErrors))]
     public static T ToggleIgnoreSslErrors<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, !o.IgnoreSslErrors));
     #endregion
     #region EnableServiceMessages
     /// <inheritdoc cref="OctopusPushSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
     public static T SetEnableServiceMessages<T>(this T o, bool? v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, v));
     /// <inheritdoc cref="OctopusPushSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
     public static T ResetEnableServiceMessages<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.EnableServiceMessages));
     /// <inheritdoc cref="OctopusPushSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
     public static T EnableEnableServiceMessages<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, true));
     /// <inheritdoc cref="OctopusPushSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
     public static T DisableEnableServiceMessages<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, false));
     /// <inheritdoc cref="OctopusPushSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.EnableServiceMessages))]
     public static T ToggleEnableServiceMessages<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, !o.EnableServiceMessages));
     #endregion
     #region Timeout
     /// <inheritdoc cref="OctopusPushSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Timeout))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Timeout))]
     public static T SetTimeout<T>(this T o, int? v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="OctopusPushSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Timeout))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Proxy
     /// <inheritdoc cref="OctopusPushSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Proxy))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Proxy))]
     public static T SetProxy<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Proxy, v));
     /// <inheritdoc cref="OctopusPushSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Proxy))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Proxy))]
     public static T ResetProxy<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Proxy));
     #endregion
     #region ProxyUsername
     /// <inheritdoc cref="OctopusPushSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyUsername))]
     public static T SetProxyUsername<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ProxyUsername, v));
     /// <inheritdoc cref="OctopusPushSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyUsername))]
     public static T ResetProxyUsername<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.ProxyUsername));
     #endregion
     #region ProxyPassword
     /// <inheritdoc cref="OctopusPushSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyPassword))]
     public static T SetProxyPassword<T>(this T o, [Secret] string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.ProxyPassword, v));
     /// <inheritdoc cref="OctopusPushSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.ProxyPassword))]
     public static T ResetProxyPassword<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.ProxyPassword));
     #endregion
     #region Space
     /// <inheritdoc cref="OctopusPushSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Space))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Space))]
     public static T SetSpace<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.Space, v));
     /// <inheritdoc cref="OctopusPushSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Space))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.Space))]
     public static T ResetSpace<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.Space));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="OctopusPushSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, string v) where T : OctopusPushSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="OctopusPushSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusPushSettings), Property = nameof(OctopusPushSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : OctopusPushSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
 }
 #endregion
 #region OctopusCreateReleaseSettingsExtensions
 /// <inheritdoc cref="OctopusTasks.OctopusCreateRelease(Fallout.Common.Tools.Octopus.OctopusCreateReleaseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctopusCreateReleaseSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Project"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Project))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Project"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Project))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Project))]
     public static T ResetProject<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region DefaultPackageVersion
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DefaultPackageVersion"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DefaultPackageVersion))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DefaultPackageVersion))]
     public static T SetDefaultPackageVersion<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.DefaultPackageVersion, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DefaultPackageVersion"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DefaultPackageVersion))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DefaultPackageVersion))]
     public static T ResetDefaultPackageVersion<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.DefaultPackageVersion));
     #endregion
     #region GitCommit
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GitCommit"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitCommit))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitCommit))]
     public static T SetGitCommit<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.GitCommit, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GitCommit"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitCommit))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitCommit))]
     public static T ResetGitCommit<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.GitCommit));
     #endregion
     #region GitRef
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GitRef"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitRef))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitRef))]
     public static T SetGitRef<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.GitRef, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GitRef"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitRef))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GitRef))]
     public static T ResetGitRef<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.GitRef));
     #endregion
     #region Version
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Version))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Version))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Channel
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Channel"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Channel))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Channel))]
     public static T SetChannel<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Channel, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Channel"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Channel))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Channel))]
     public static T ResetChannel<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Channel));
     #endregion
     #region PackageVersions
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackageVersions"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
     public static T SetPackageVersions<T>(this T o, IDictionary<string, string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.PackageVersions, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackageVersions"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
     public static T SetPackageVersion<T>(this T o, string k, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.SetDictionary(() => o.PackageVersions, k, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackageVersions"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
     public static T AddPackageVersion<T>(this T o, string k, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.AddDictionary(() => o.PackageVersions, k, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackageVersions"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
     public static T RemovePackageVersion<T>(this T o, string k) where T : OctopusCreateReleaseSettings => o.Modify(b => b.RemoveDictionary(() => o.PackageVersions, k));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackageVersions"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackageVersions))]
     public static T ClearPackageVersions<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.ClearDictionary(() => o.PackageVersions));
     #endregion
     #region PackagesFolder
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackagesFolder"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagesFolder))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagesFolder))]
     public static T SetPackagesFolder<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.PackagesFolder, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackagesFolder"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagesFolder))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagesFolder))]
     public static T ResetPackagesFolder<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.PackagesFolder));
     #endregion
     #region ReleaseNotes
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ReleaseNotes"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotes))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotes))]
     public static T SetReleaseNotes<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ReleaseNotes, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ReleaseNotes"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotes))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotes))]
     public static T ResetReleaseNotes<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ReleaseNotes));
     #endregion
     #region ReleaseNotesFile
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ReleaseNotesFile"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotesFile))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotesFile))]
     public static T SetReleaseNotesFile<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ReleaseNotesFile, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ReleaseNotesFile"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotesFile))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ReleaseNotesFile))]
     public static T ResetReleaseNotesFile<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ReleaseNotesFile));
     #endregion
     #region IgnoreExisting
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
     public static T SetIgnoreExisting<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreExisting, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
     public static T ResetIgnoreExisting<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.IgnoreExisting));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
     public static T EnableIgnoreExisting<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreExisting, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
     public static T DisableIgnoreExisting<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreExisting, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreExisting"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreExisting))]
     public static T ToggleIgnoreExisting<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreExisting, !o.IgnoreExisting));
     #endregion
     #region IgnoreChannelRules
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreChannelRules"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
     public static T SetIgnoreChannelRules<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreChannelRules, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreChannelRules"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
     public static T ResetIgnoreChannelRules<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.IgnoreChannelRules));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreChannelRules"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
     public static T EnableIgnoreChannelRules<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreChannelRules, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreChannelRules"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
     public static T DisableIgnoreChannelRules<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreChannelRules, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreChannelRules"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreChannelRules))]
     public static T ToggleIgnoreChannelRules<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreChannelRules, !o.IgnoreChannelRules));
     #endregion
     #region PackagePrerelease
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackagePrerelease"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagePrerelease))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagePrerelease))]
     public static T SetPackagePrerelease<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.PackagePrerelease, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.PackagePrerelease"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagePrerelease))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.PackagePrerelease))]
     public static T ResetPackagePrerelease<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.PackagePrerelease));
     #endregion
     #region WhatIf
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WhatIf"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
     public static T SetWhatIf<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WhatIf, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WhatIf"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
     public static T ResetWhatIf<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.WhatIf));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WhatIf"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
     public static T EnableWhatIf<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WhatIf, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WhatIf"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
     public static T DisableWhatIf<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WhatIf, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WhatIf"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WhatIf))]
     public static T ToggleWhatIf<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WhatIf, !o.WhatIf));
     #endregion
     #region Progress
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
     public static T SetProgress<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Progress, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
     public static T ResetProgress<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Progress));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
     public static T EnableProgress<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Progress, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
     public static T DisableProgress<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Progress, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Progress))]
     public static T ToggleProgress<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Progress, !o.Progress));
     #endregion
     #region ForcePackageDownload
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
     public static T SetForcePackageDownload<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
     public static T ResetForcePackageDownload<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ForcePackageDownload));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
     public static T EnableForcePackageDownload<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
     public static T DisableForcePackageDownload<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ForcePackageDownload))]
     public static T ToggleForcePackageDownload<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, !o.ForcePackageDownload));
     #endregion
     #region WaitForDeployment
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WaitForDeployment"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
     public static T SetWaitForDeployment<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDeployment, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WaitForDeployment"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
     public static T ResetWaitForDeployment<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.WaitForDeployment));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WaitForDeployment"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
     public static T EnableWaitForDeployment<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDeployment, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WaitForDeployment"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
     public static T DisableWaitForDeployment<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDeployment, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.WaitForDeployment"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.WaitForDeployment))]
     public static T ToggleWaitForDeployment<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDeployment, !o.WaitForDeployment));
     #endregion
     #region DeploymentTimeout
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeploymentTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentTimeout))]
     public static T SetDeploymentTimeout<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.DeploymentTimeout, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeploymentTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentTimeout))]
     public static T ResetDeploymentTimeout<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.DeploymentTimeout));
     #endregion
     #region CancelOnTimeout
     /// <inheritdoc cref="OctopusCreateReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
     public static T SetCancelOnTimeout<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
     public static T ResetCancelOnTimeout<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.CancelOnTimeout));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
     public static T EnableCancelOnTimeout<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
     public static T DisableCancelOnTimeout<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.CancelOnTimeout))]
     public static T ToggleCancelOnTimeout<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, !o.CancelOnTimeout));
     #endregion
     #region DeploymentCheckSleepCycle
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeploymentCheckSleepCycle"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentCheckSleepCycle))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentCheckSleepCycle))]
     public static T SetDeploymentCheckSleepCycle<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.DeploymentCheckSleepCycle, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeploymentCheckSleepCycle"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentCheckSleepCycle))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeploymentCheckSleepCycle))]
     public static T ResetDeploymentCheckSleepCycle<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.DeploymentCheckSleepCycle));
     #endregion
     #region GuidedFailure
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
     public static T SetGuidedFailure<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
     public static T ResetGuidedFailure<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.GuidedFailure));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
     public static T EnableGuidedFailure<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
     public static T DisableGuidedFailure<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.GuidedFailure))]
     public static T ToggleGuidedFailure<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, !o.GuidedFailure));
     #endregion
     #region SpecificMachines
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T SetSpecificMachines<T>(this T o, params string[] v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T SetSpecificMachines<T>(this T o, IEnumerable<string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T AddSpecificMachines<T>(this T o, params string[] v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.AddCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T AddSpecificMachines<T>(this T o, IEnumerable<string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.AddCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T RemoveSpecificMachines<T>(this T o, params string[] v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T RemoveSpecificMachines<T>(this T o, IEnumerable<string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.SpecificMachines))]
     public static T ClearSpecificMachines<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.ClearCollection(() => o.SpecificMachines));
     #endregion
     #region Force
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
     public static T ResetForce<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
     public static T EnableForce<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
     public static T DisableForce<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Skip
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T SetSkip<T>(this T o, params string[] v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Skip, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T SetSkip<T>(this T o, IEnumerable<string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Skip, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T AddSkip<T>(this T o, params string[] v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.AddCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T AddSkip<T>(this T o, IEnumerable<string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.AddCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T RemoveSkip<T>(this T o, params string[] v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T RemoveSkip<T>(this T o, IEnumerable<string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Skip))]
     public static T ClearSkip<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.ClearCollection(() => o.Skip));
     #endregion
     #region NoRawLog
     /// <inheritdoc cref="OctopusCreateReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
     public static T SetNoRawLog<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
     public static T ResetNoRawLog<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.NoRawLog));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
     public static T EnableNoRawLog<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
     public static T DisableNoRawLog<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.NoRawLog))]
     public static T ToggleNoRawLog<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, !o.NoRawLog));
     #endregion
     #region RawLogFile
     /// <inheritdoc cref="OctopusCreateReleaseSettings.RawLogFile"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.RawLogFile))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.RawLogFile))]
     public static T SetRawLogFile<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.RawLogFile, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.RawLogFile"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.RawLogFile))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.RawLogFile))]
     public static T ResetRawLogFile<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.RawLogFile));
     #endregion
     #region Variables
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
     public static T SetVariables<T>(this T o, IDictionary<string, string> v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Variables, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
     public static T SetVariable<T>(this T o, string k, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.SetDictionary(() => o.Variables, k, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
     public static T AddVariable<T>(this T o, string k, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.AddDictionary(() => o.Variables, k, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
     public static T RemoveVariable<T>(this T o, string k) where T : OctopusCreateReleaseSettings => o.Modify(b => b.RemoveDictionary(() => o.Variables, k));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Variables))]
     public static T ClearVariables<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.ClearDictionary(() => o.Variables));
     #endregion
     #region DeployAt
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeployAt"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployAt))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployAt))]
     public static T SetDeployAt<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.DeployAt, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeployAt"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployAt))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployAt))]
     public static T ResetDeployAt<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.DeployAt));
     #endregion
     #region DeployTo
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeployTo"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployTo))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployTo))]
     public static T SetDeployTo<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.DeployTo, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.DeployTo"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployTo))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.DeployTo))]
     public static T ResetDeployTo<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.DeployTo));
     #endregion
     #region Tenant
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Tenant"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Tenant))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Tenant))]
     public static T SetTenant<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Tenant, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Tenant"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Tenant))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Tenant))]
     public static T ResetTenant<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Tenant));
     #endregion
     #region TenantTag
     /// <inheritdoc cref="OctopusCreateReleaseSettings.TenantTag"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.TenantTag))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.TenantTag))]
     public static T SetTenantTag<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.TenantTag, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.TenantTag"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.TenantTag))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.TenantTag))]
     public static T ResetTenantTag<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.TenantTag));
     #endregion
     #region Server
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Server))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Server))]
     public static T SetServer<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Server, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Server))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Server))]
     public static T ResetServer<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Server));
     #endregion
     #region ApiKey
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ApiKey))]
     public static T SetApiKey<T>(this T o, [Secret] string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ApiKey, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ApiKey))]
     public static T ResetApiKey<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ApiKey));
     #endregion
     #region Username
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Username))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Username))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Password
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Password))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Password))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Debug
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region IgnoreSslErrors
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
     public static T SetIgnoreSslErrors<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
     public static T ResetIgnoreSslErrors<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.IgnoreSslErrors));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
     public static T EnableIgnoreSslErrors<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
     public static T DisableIgnoreSslErrors<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.IgnoreSslErrors))]
     public static T ToggleIgnoreSslErrors<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, !o.IgnoreSslErrors));
     #endregion
     #region EnableServiceMessages
     /// <inheritdoc cref="OctopusCreateReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
     public static T SetEnableServiceMessages<T>(this T o, bool? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
     public static T ResetEnableServiceMessages<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.EnableServiceMessages));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
     public static T EnableEnableServiceMessages<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, true));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
     public static T DisableEnableServiceMessages<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, false));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.EnableServiceMessages))]
     public static T ToggleEnableServiceMessages<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, !o.EnableServiceMessages));
     #endregion
     #region Timeout
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Timeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Timeout))]
     public static T SetTimeout<T>(this T o, int? v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Timeout))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Proxy
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Proxy))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Proxy))]
     public static T SetProxy<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Proxy, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Proxy))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Proxy))]
     public static T ResetProxy<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Proxy));
     #endregion
     #region ProxyUsername
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyUsername))]
     public static T SetProxyUsername<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ProxyUsername, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyUsername))]
     public static T ResetProxyUsername<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ProxyUsername));
     #endregion
     #region ProxyPassword
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyPassword))]
     public static T SetProxyPassword<T>(this T o, [Secret] string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.ProxyPassword, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.ProxyPassword))]
     public static T ResetProxyPassword<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.ProxyPassword));
     #endregion
     #region Space
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Space))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Space))]
     public static T SetSpace<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.Space, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Space))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.Space))]
     public static T ResetSpace<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.Space));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="OctopusCreateReleaseSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, string v) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="OctopusCreateReleaseSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusCreateReleaseSettings), Property = nameof(OctopusCreateReleaseSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : OctopusCreateReleaseSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
 }
 #endregion
 #region OctopusDeployReleaseSettingsExtensions
 /// <inheritdoc cref="OctopusTasks.OctopusDeployRelease(Fallout.Common.Tools.Octopus.OctopusDeployReleaseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctopusDeployReleaseSettingsExtensions
 {
     #region Progress
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
     public static T SetProgress<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Progress, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
     public static T ResetProgress<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Progress));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
     public static T EnableProgress<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Progress, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
     public static T DisableProgress<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Progress, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Progress"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Progress))]
     public static T ToggleProgress<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Progress, !o.Progress));
     #endregion
     #region ForcePackageDownload
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
     public static T SetForcePackageDownload<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
     public static T ResetForcePackageDownload<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.ForcePackageDownload));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
     public static T EnableForcePackageDownload<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
     public static T DisableForcePackageDownload<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ForcePackageDownload"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ForcePackageDownload))]
     public static T ToggleForcePackageDownload<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ForcePackageDownload, !o.ForcePackageDownload));
     #endregion
     #region WaitForDepployment
     /// <inheritdoc cref="OctopusDeployReleaseSettings.WaitForDepployment"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
     public static T SetWaitForDepployment<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDepployment, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.WaitForDepployment"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
     public static T ResetWaitForDepployment<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.WaitForDepployment));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.WaitForDepployment"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
     public static T EnableWaitForDepployment<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDepployment, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.WaitForDepployment"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
     public static T DisableWaitForDepployment<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDepployment, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.WaitForDepployment"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.WaitForDepployment))]
     public static T ToggleWaitForDepployment<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.WaitForDepployment, !o.WaitForDepployment));
     #endregion
     #region DeploymentTimeout
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeploymentTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentTimeout))]
     public static T SetDeploymentTimeout<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.DeploymentTimeout, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeploymentTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentTimeout))]
     public static T ResetDeploymentTimeout<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.DeploymentTimeout));
     #endregion
     #region CancelOnTimeout
     /// <inheritdoc cref="OctopusDeployReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
     public static T SetCancelOnTimeout<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
     public static T ResetCancelOnTimeout<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.CancelOnTimeout));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
     public static T EnableCancelOnTimeout<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
     public static T DisableCancelOnTimeout<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.CancelOnTimeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.CancelOnTimeout))]
     public static T ToggleCancelOnTimeout<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.CancelOnTimeout, !o.CancelOnTimeout));
     #endregion
     #region DeploymentCheckSleepCycle
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeploymentCheckSleepCycle"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentCheckSleepCycle))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentCheckSleepCycle))]
     public static T SetDeploymentCheckSleepCycle<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.DeploymentCheckSleepCycle, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeploymentCheckSleepCycle"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentCheckSleepCycle))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeploymentCheckSleepCycle))]
     public static T ResetDeploymentCheckSleepCycle<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.DeploymentCheckSleepCycle));
     #endregion
     #region GuidedFailure
     /// <inheritdoc cref="OctopusDeployReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
     public static T SetGuidedFailure<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
     public static T ResetGuidedFailure<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.GuidedFailure));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
     public static T EnableGuidedFailure<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
     public static T DisableGuidedFailure<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.GuidedFailure"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.GuidedFailure))]
     public static T ToggleGuidedFailure<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.GuidedFailure, !o.GuidedFailure));
     #endregion
     #region SpecificMachines
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T SetSpecificMachines<T>(this T o, params string[] v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T SetSpecificMachines<T>(this T o, IEnumerable<string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T AddSpecificMachines<T>(this T o, params string[] v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.AddCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T AddSpecificMachines<T>(this T o, IEnumerable<string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.AddCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T RemoveSpecificMachines<T>(this T o, params string[] v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T RemoveSpecificMachines<T>(this T o, IEnumerable<string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.SpecificMachines, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.SpecificMachines"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.SpecificMachines))]
     public static T ClearSpecificMachines<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.ClearCollection(() => o.SpecificMachines));
     #endregion
     #region Force
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
     public static T ResetForce<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
     public static T EnableForce<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
     public static T DisableForce<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Force"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Skip
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T SetSkip<T>(this T o, params string[] v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Skip, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T SetSkip<T>(this T o, IEnumerable<string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Skip, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T AddSkip<T>(this T o, params string[] v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.AddCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T AddSkip<T>(this T o, IEnumerable<string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.AddCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T RemoveSkip<T>(this T o, params string[] v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T RemoveSkip<T>(this T o, IEnumerable<string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.RemoveCollection(() => o.Skip, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Skip))]
     public static T ClearSkip<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.ClearCollection(() => o.Skip));
     #endregion
     #region NoRawLog
     /// <inheritdoc cref="OctopusDeployReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
     public static T SetNoRawLog<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
     public static T ResetNoRawLog<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.NoRawLog));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
     public static T EnableNoRawLog<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
     public static T DisableNoRawLog<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.NoRawLog"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.NoRawLog))]
     public static T ToggleNoRawLog<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.NoRawLog, !o.NoRawLog));
     #endregion
     #region RawLogFile
     /// <inheritdoc cref="OctopusDeployReleaseSettings.RawLogFile"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.RawLogFile))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.RawLogFile))]
     public static T SetRawLogFile<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.RawLogFile, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.RawLogFile"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.RawLogFile))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.RawLogFile))]
     public static T ResetRawLogFile<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.RawLogFile));
     #endregion
     #region Variables
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
     public static T SetVariables<T>(this T o, IDictionary<string, string> v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Variables, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
     public static T SetVariable<T>(this T o, string k, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.SetDictionary(() => o.Variables, k, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
     public static T AddVariable<T>(this T o, string k, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.AddDictionary(() => o.Variables, k, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
     public static T RemoveVariable<T>(this T o, string k) where T : OctopusDeployReleaseSettings => o.Modify(b => b.RemoveDictionary(() => o.Variables, k));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Variables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Variables))]
     public static T ClearVariables<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.ClearDictionary(() => o.Variables));
     #endregion
     #region DeployAt
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeployAt"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployAt))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployAt))]
     public static T SetDeployAt<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.DeployAt, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeployAt"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployAt))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployAt))]
     public static T ResetDeployAt<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.DeployAt));
     #endregion
     #region Tenant
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Tenant"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Tenant))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Tenant))]
     public static T SetTenant<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Tenant, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Tenant"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Tenant))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Tenant))]
     public static T ResetTenant<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Tenant));
     #endregion
     #region TenantTag
     /// <inheritdoc cref="OctopusDeployReleaseSettings.TenantTag"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.TenantTag))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.TenantTag))]
     public static T SetTenantTag<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.TenantTag, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.TenantTag"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.TenantTag))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.TenantTag))]
     public static T ResetTenantTag<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.TenantTag));
     #endregion
     #region Project
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Project"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Project))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Project"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Project))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Project))]
     public static T ResetProject<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region DeployTo
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeployTo"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployTo))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployTo))]
     public static T SetDeployTo<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.DeployTo, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.DeployTo"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployTo))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.DeployTo))]
     public static T ResetDeployTo<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.DeployTo));
     #endregion
     #region Version
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Version))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Version))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Channel
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Channel"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Channel))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Channel))]
     public static T SetChannel<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Channel, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Channel"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Channel))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Channel))]
     public static T ResetChannel<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Channel));
     #endregion
     #region UpdateVariables
     /// <inheritdoc cref="OctopusDeployReleaseSettings.UpdateVariables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
     public static T SetUpdateVariables<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.UpdateVariables, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.UpdateVariables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
     public static T ResetUpdateVariables<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.UpdateVariables));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.UpdateVariables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
     public static T EnableUpdateVariables<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.UpdateVariables, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.UpdateVariables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
     public static T DisableUpdateVariables<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.UpdateVariables, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.UpdateVariables"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.UpdateVariables))]
     public static T ToggleUpdateVariables<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.UpdateVariables, !o.UpdateVariables));
     #endregion
     #region Server
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Server))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Server))]
     public static T SetServer<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Server, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Server))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Server))]
     public static T ResetServer<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Server));
     #endregion
     #region ApiKey
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ApiKey))]
     public static T SetApiKey<T>(this T o, [Secret] string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ApiKey, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ApiKey))]
     public static T ResetApiKey<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.ApiKey));
     #endregion
     #region Username
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Username))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Username))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Password
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Password))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Password))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Debug
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region IgnoreSslErrors
     /// <inheritdoc cref="OctopusDeployReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
     public static T SetIgnoreSslErrors<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
     public static T ResetIgnoreSslErrors<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.IgnoreSslErrors));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
     public static T EnableIgnoreSslErrors<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
     public static T DisableIgnoreSslErrors<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.IgnoreSslErrors))]
     public static T ToggleIgnoreSslErrors<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, !o.IgnoreSslErrors));
     #endregion
     #region EnableServiceMessages
     /// <inheritdoc cref="OctopusDeployReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
     public static T SetEnableServiceMessages<T>(this T o, bool? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
     public static T ResetEnableServiceMessages<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.EnableServiceMessages));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
     public static T EnableEnableServiceMessages<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, true));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
     public static T DisableEnableServiceMessages<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, false));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.EnableServiceMessages))]
     public static T ToggleEnableServiceMessages<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, !o.EnableServiceMessages));
     #endregion
     #region Timeout
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Timeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Timeout))]
     public static T SetTimeout<T>(this T o, int? v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Timeout))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Proxy
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Proxy))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Proxy))]
     public static T SetProxy<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Proxy, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Proxy))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Proxy))]
     public static T ResetProxy<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Proxy));
     #endregion
     #region ProxyUsername
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyUsername))]
     public static T SetProxyUsername<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ProxyUsername, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyUsername))]
     public static T ResetProxyUsername<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.ProxyUsername));
     #endregion
     #region ProxyPassword
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyPassword))]
     public static T SetProxyPassword<T>(this T o, [Secret] string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.ProxyPassword, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.ProxyPassword))]
     public static T ResetProxyPassword<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.ProxyPassword));
     #endregion
     #region Space
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Space))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Space))]
     public static T SetSpace<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.Space, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Space))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.Space))]
     public static T ResetSpace<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.Space));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="OctopusDeployReleaseSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, string v) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="OctopusDeployReleaseSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusDeployReleaseSettings), Property = nameof(OctopusDeployReleaseSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : OctopusDeployReleaseSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
 }
 #endregion
 #region OctopusBuildInformationSettingsExtensions
 /// <inheritdoc cref="OctopusTasks.OctopusBuildInformation(Fallout.Common.Tools.Octopus.OctopusBuildInformationSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctopusBuildInformationSettingsExtensions
 {
     #region PackageId
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T SetPackageId<T>(this T o, params string[] v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.PackageId, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T SetPackageId<T>(this T o, IEnumerable<string> v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.PackageId, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T AddPackageId<T>(this T o, params string[] v) where T : OctopusBuildInformationSettings => o.Modify(b => b.AddCollection(() => o.PackageId, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T AddPackageId<T>(this T o, IEnumerable<string> v) where T : OctopusBuildInformationSettings => o.Modify(b => b.AddCollection(() => o.PackageId, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T RemovePackageId<T>(this T o, params string[] v) where T : OctopusBuildInformationSettings => o.Modify(b => b.RemoveCollection(() => o.PackageId, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T RemovePackageId<T>(this T o, IEnumerable<string> v) where T : OctopusBuildInformationSettings => o.Modify(b => b.RemoveCollection(() => o.PackageId, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.PackageId"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.PackageId))]
     public static T ClearPackageId<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.ClearCollection(() => o.PackageId));
     #endregion
     #region Version
     /// <inheritdoc cref="OctopusBuildInformationSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Version))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Version"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Version))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region File
     /// <inheritdoc cref="OctopusBuildInformationSettings.File"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.File))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.File))]
     public static T SetFile<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.File, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.File"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.File))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.File))]
     public static T ResetFile<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.File));
     #endregion
     #region OverwriteMode
     /// <inheritdoc cref="OctopusBuildInformationSettings.OverwriteMode"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.OverwriteMode))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.OverwriteMode))]
     public static T SetOverwriteMode<T>(this T o, OctopusOverwriteMode v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.OverwriteMode, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.OverwriteMode"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.OverwriteMode))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.OverwriteMode))]
     public static T ResetOverwriteMode<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.OverwriteMode));
     #endregion
     #region Server
     /// <inheritdoc cref="OctopusBuildInformationSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Server))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Server))]
     public static T SetServer<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Server, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Server"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Server))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Server))]
     public static T ResetServer<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Server));
     #endregion
     #region ApiKey
     /// <inheritdoc cref="OctopusBuildInformationSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ApiKey))]
     public static T SetApiKey<T>(this T o, [Secret] string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.ApiKey, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.ApiKey"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ApiKey))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ApiKey))]
     public static T ResetApiKey<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.ApiKey));
     #endregion
     #region Username
     /// <inheritdoc cref="OctopusBuildInformationSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Username))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Username"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Username))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Password
     /// <inheritdoc cref="OctopusBuildInformationSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Password))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Password"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Password))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="OctopusBuildInformationSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ConfigFile))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Debug
     /// <inheritdoc cref="OctopusBuildInformationSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region IgnoreSslErrors
     /// <inheritdoc cref="OctopusBuildInformationSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
     public static T SetIgnoreSslErrors<T>(this T o, bool? v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
     public static T ResetIgnoreSslErrors<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.IgnoreSslErrors));
     /// <inheritdoc cref="OctopusBuildInformationSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
     public static T EnableIgnoreSslErrors<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, true));
     /// <inheritdoc cref="OctopusBuildInformationSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
     public static T DisableIgnoreSslErrors<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, false));
     /// <inheritdoc cref="OctopusBuildInformationSettings.IgnoreSslErrors"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.IgnoreSslErrors))]
     public static T ToggleIgnoreSslErrors<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.IgnoreSslErrors, !o.IgnoreSslErrors));
     #endregion
     #region EnableServiceMessages
     /// <inheritdoc cref="OctopusBuildInformationSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
     public static T SetEnableServiceMessages<T>(this T o, bool? v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
     public static T ResetEnableServiceMessages<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.EnableServiceMessages));
     /// <inheritdoc cref="OctopusBuildInformationSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
     public static T EnableEnableServiceMessages<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, true));
     /// <inheritdoc cref="OctopusBuildInformationSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
     public static T DisableEnableServiceMessages<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, false));
     /// <inheritdoc cref="OctopusBuildInformationSettings.EnableServiceMessages"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.EnableServiceMessages))]
     public static T ToggleEnableServiceMessages<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.EnableServiceMessages, !o.EnableServiceMessages));
     #endregion
     #region Timeout
     /// <inheritdoc cref="OctopusBuildInformationSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Timeout))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Timeout))]
     public static T SetTimeout<T>(this T o, int? v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Timeout))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Proxy
     /// <inheritdoc cref="OctopusBuildInformationSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Proxy))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Proxy))]
     public static T SetProxy<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Proxy, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Proxy"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Proxy))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Proxy))]
     public static T ResetProxy<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Proxy));
     #endregion
     #region ProxyUsername
     /// <inheritdoc cref="OctopusBuildInformationSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyUsername))]
     public static T SetProxyUsername<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.ProxyUsername, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.ProxyUsername"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyUsername))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyUsername))]
     public static T ResetProxyUsername<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.ProxyUsername));
     #endregion
     #region ProxyPassword
     /// <inheritdoc cref="OctopusBuildInformationSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyPassword))]
     public static T SetProxyPassword<T>(this T o, [Secret] string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.ProxyPassword, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.ProxyPassword"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyPassword))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.ProxyPassword))]
     public static T ResetProxyPassword<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.ProxyPassword));
     #endregion
     #region Space
     /// <inheritdoc cref="OctopusBuildInformationSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Space))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Space))]
     public static T SetSpace<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.Space, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.Space"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Space))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.Space))]
     public static T ResetSpace<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.Space));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="OctopusBuildInformationSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, string v) where T : OctopusBuildInformationSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="OctopusBuildInformationSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.LogLevel))]
+    [Builder(Type = typeof(OctopusBuildInformationSettings), Property = nameof(OctopusBuildInformationSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : OctopusBuildInformationSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
 }
 #endregion
 #region OctopusPackFormat
 /// <summary>Used within <see cref="OctopusTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OctopusPackFormat>))]
@@ -1891,7 +1878,6 @@ public partial class OctopusPackFormat : Enumeration
 #endregion
 #region OctopusOverwriteMode
 /// <summary>Used within <see cref="OctopusTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OctopusOverwriteMode>))]

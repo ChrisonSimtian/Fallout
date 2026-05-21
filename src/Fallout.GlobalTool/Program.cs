@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
@@ -50,7 +49,6 @@ public partial class Program
         Host.Information($"NUKE Global Tool 🌐 {typeof(Program).Assembly.GetInformationalText()}");
     }
 
-    [CanBeNull]
     private static AbsolutePath TryGetRootDirectory()
     {
         // TODO: copied in FalloutBuild.GetRootDirectory
@@ -64,7 +62,7 @@ public partial class Program
         return Constants.TryGetRootDirectoryFrom(Directory.GetCurrentDirectory());
     }
 
-    private static int Handle(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    private static int Handle(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var hasCommand = args.FirstOrDefault()?.StartsWithOrdinalIgnoreCase(CommandPrefix.ToString()) ?? false;
         if (hasCommand)

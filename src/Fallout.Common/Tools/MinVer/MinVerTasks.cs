@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.Tools.MinVer;
@@ -20,7 +19,6 @@ partial class MinVerTasks
     }
 }
 
-[PublicAPI]
 public record MinVer(string MinVerVersion)
 {
     public string MinVerMajor => MinVerVersion.Split('.')[0];

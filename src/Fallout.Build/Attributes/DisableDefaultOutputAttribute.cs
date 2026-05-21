@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common;
 
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class)]
 public class DisableDefaultOutputAttribute : Attribute
 {

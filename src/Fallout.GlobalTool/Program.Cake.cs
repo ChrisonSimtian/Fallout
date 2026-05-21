@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Fallout.Common;
@@ -25,8 +24,7 @@ partial class Program
 {
     public const string CAKE_FILE_PATTERN = "*.cake";
 
-    [UsedImplicitly]
-    public static int CakeConvert(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int CakeConvert(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         PrintInfo();
         Logging.Configure();
@@ -81,8 +79,7 @@ partial class Program
         return 0;
     }
 
-    [UsedImplicitly]
-    public static int CakeClean(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    public static int CakeClean(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var cakeFiles = GetCakeFiles().ToList();
         Host.Information("Found .cake files:");
@@ -125,7 +122,7 @@ partial class Program
     {
         IEnumerable<(string Type, string Id, string Version)> GetPackages(
             string packageType,
-            [RegexPattern] string regexPattern)
+            string regexPattern)
         {
             var regex = new Regex(regexPattern);
             foreach (Match match in regex.Matches(content))

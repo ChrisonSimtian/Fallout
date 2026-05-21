@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using static Fallout.Common.ChangeLog.ChangelogTasks;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazChangelog : IFalloutBuild
 {
     // TODO: assert file exists

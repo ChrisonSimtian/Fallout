@@ -7,7 +7,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Serilog;
 using Serilog.Events;
@@ -17,7 +16,7 @@ namespace Fallout.Common.Tooling;
 public class LogErrorAsStandard : Attribute;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-public class LogLevelPattern(LogEventLevel level, [RegexPattern] string pattern) : Attribute
+public class LogLevelPattern(LogEventLevel level, string pattern) : Attribute
 {
     public LogEventLevel Level { get; } = level;
     public string Pattern { get; } = pattern;

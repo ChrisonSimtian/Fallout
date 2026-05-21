@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public struct Output
 {
     public OutputType Type;

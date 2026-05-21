@@ -6,13 +6,11 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.ValueInjection;
 
 namespace Fallout.Common.CI;
 
-[MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
 public class CIAttribute : ValueInjectionAttributeBase
 {

@@ -5,7 +5,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.ProjectModel;
@@ -54,14 +53,12 @@ public static partial class ProjectExtensions
         return project.GetItemMetadata(itemGroupName, metadataName).Select(ReflectionUtility.Convert<T>);
     }
 
-    [CanBeNull]
     public static string GetItemMetadataSingleOrDefault(this Project project, string itemGroupName, string includeName, string metadataName)
     {
         var items = project.GetMSBuildProject().GetItems(itemGroupName);
         return items.SingleOrDefault(x => x.EvaluatedInclude == includeName)?.GetMetadataValue(metadataName);
     }
 
-    [CanBeNull]
     public static T GetItemMetadataSingleOrDefault<T>(this Project project, string itemGroupName, string includeName, string metadataName)
     {
         return ReflectionUtility.Convert<T>(project.GetItemMetadataSingleOrDefault(itemGroupName, includeName, metadataName));

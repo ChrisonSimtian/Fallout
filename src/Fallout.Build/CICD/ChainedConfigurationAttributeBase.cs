@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI;
 
-[PublicAPI]
 public abstract class ChainedConfigurationAttributeBase : ConfigurationAttributeBase
 {
     public override IEnumerable<string> IrrelevantTargetNames => NonEntryTargets.Concat(ExcludedTargets);

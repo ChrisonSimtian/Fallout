@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.GitReleaseManager;
 
 /// <summary><p>GitReleaseManager is a tool that will help create a set of release notes for your application/product. It does this using the collection of issues which are stored on the GitHub Issue Tracker for your application/product.<para/>By inspecting the issues that have been assigned to a particular milestone, GitReleaseManager creates a set of release notes, in markdown format, which are then used to create a Release on GitHub.<para/>In addition to creating a Release, GitReleaseManager can be used to publish a release, close a milestone, and also to export the complete set of release notes for your application/product.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class GitReleaseManagerTasks : ToolTasks, IRequireNuGetPackage
@@ -66,7 +64,6 @@ public partial class GitReleaseManagerTasks : ToolTasks, IRequireNuGetPackage
 }
 #region GitReleaseManagerAddAssetsSettings
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerAddAssets), Arguments = "addasset")]
 public partial class GitReleaseManagerAddAssetsSettings : ToolOptions
@@ -93,7 +90,6 @@ public partial class GitReleaseManagerAddAssetsSettings : ToolOptions
 #endregion
 #region GitReleaseManagerCloseSettings
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerClose), Arguments = "close")]
 public partial class GitReleaseManagerCloseSettings : ToolOptions
@@ -118,7 +114,6 @@ public partial class GitReleaseManagerCloseSettings : ToolOptions
 #endregion
 #region GitReleaseManagerCreateSettings
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerCreate), Arguments = "create")]
 public partial class GitReleaseManagerCreateSettings : ToolOptions
@@ -153,7 +148,6 @@ public partial class GitReleaseManagerCreateSettings : ToolOptions
 #endregion
 #region GitReleaseManagerExportSettings
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerExportSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerExport), Arguments = "export")]
 public partial class GitReleaseManagerExportSettings : ToolOptions
@@ -180,7 +174,6 @@ public partial class GitReleaseManagerExportSettings : ToolOptions
 #endregion
 #region GitReleaseManagerPublishSettings
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerPublish), Arguments = "publish")]
 public partial class GitReleaseManagerPublishSettings : ToolOptions
@@ -205,455 +198,450 @@ public partial class GitReleaseManagerPublishSettings : ToolOptions
 #endregion
 #region GitReleaseManagerAddAssetsSettingsExtensions
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerAddAssetsSettingsExtensions
 {
     #region AssetPaths
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T SetAssetPaths<T>(this T o, params string[] v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T SetAssetPaths<T>(this T o, IEnumerable<string> v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T AddAssetPaths<T>(this T o, params string[] v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.AddCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T AddAssetPaths<T>(this T o, IEnumerable<string> v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.AddCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T RemoveAssetPaths<T>(this T o, params string[] v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.RemoveCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T RemoveAssetPaths<T>(this T o, IEnumerable<string> v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.RemoveCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.AssetPaths))]
     public static T ClearAssetPaths<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.ClearCollection(() => o.AssetPaths));
     #endregion
     #region TagName
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.TagName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TagName))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TagName))]
     public static T SetTagName<T>(this T o, string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.TagName, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.TagName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TagName))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TagName))]
     public static T ResetTagName<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.TagName));
     #endregion
     #region UserName
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.UserName))]
     public static T SetUserName<T>(this T o, string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.UserName, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.UserName))]
     public static T ResetUserName<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.UserName));
     #endregion
     #region Password
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RepositoryOwner
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryOwner))]
     public static T SetRepositoryOwner<T>(this T o, string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.RepositoryOwner, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryOwner))]
     public static T ResetRepositoryOwner<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.RepositoryOwner));
     #endregion
     #region RepositoryName
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryName))]
     public static T SetRepositoryName<T>(this T o, string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.RepositoryName, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.RepositoryName))]
     public static T ResetRepositoryName<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.RepositoryName));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TargetDirectory))]
     public static T SetTargetDirectory<T>(this T o, string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.TargetDirectory))]
     public static T ResetTargetDirectory<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region Token
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Token))]
     public static T SetToken<T>(this T o, [Secret] string v) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="GitReleaseManagerAddAssetsSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerAddAssetsSettings), Property = nameof(GitReleaseManagerAddAssetsSettings.Token))]
     public static T ResetToken<T>(this T o) where T : GitReleaseManagerAddAssetsSettings => o.Modify(b => b.Remove(() => o.Token));
     #endregion
 }
 #endregion
 #region GitReleaseManagerCloseSettingsExtensions
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerCloseSettingsExtensions
 {
     #region Milestone
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.Milestone"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Milestone))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Milestone))]
     public static T SetMilestone<T>(this T o, string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.Milestone, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.Milestone"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Milestone))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Milestone))]
     public static T ResetMilestone<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.Milestone));
     #endregion
     #region UserName
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.UserName))]
     public static T SetUserName<T>(this T o, string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.UserName, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.UserName))]
     public static T ResetUserName<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.UserName));
     #endregion
     #region Password
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RepositoryOwner
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryOwner))]
     public static T SetRepositoryOwner<T>(this T o, string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.RepositoryOwner, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryOwner))]
     public static T ResetRepositoryOwner<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.RepositoryOwner));
     #endregion
     #region RepositoryName
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryName))]
     public static T SetRepositoryName<T>(this T o, string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.RepositoryName, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.RepositoryName))]
     public static T ResetRepositoryName<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.RepositoryName));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.TargetDirectory))]
     public static T SetTargetDirectory<T>(this T o, string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.TargetDirectory))]
     public static T ResetTargetDirectory<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region Token
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Token))]
     public static T SetToken<T>(this T o, [Secret] string v) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="GitReleaseManagerCloseSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerCloseSettings), Property = nameof(GitReleaseManagerCloseSettings.Token))]
     public static T ResetToken<T>(this T o) where T : GitReleaseManagerCloseSettings => o.Modify(b => b.Remove(() => o.Token));
     #endregion
 }
 #endregion
 #region GitReleaseManagerCreateSettingsExtensions
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerCreateSettingsExtensions
 {
     #region AssetPaths
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T SetAssetPaths<T>(this T o, params string[] v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T SetAssetPaths<T>(this T o, IEnumerable<string> v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T AddAssetPaths<T>(this T o, params string[] v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.AddCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T AddAssetPaths<T>(this T o, IEnumerable<string> v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.AddCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T RemoveAssetPaths<T>(this T o, params string[] v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.RemoveCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T RemoveAssetPaths<T>(this T o, IEnumerable<string> v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.RemoveCollection(() => o.AssetPaths, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.AssetPaths"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.AssetPaths))]
     public static T ClearAssetPaths<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.ClearCollection(() => o.AssetPaths));
     #endregion
     #region TargetCommitish
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.TargetCommitish"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetCommitish))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetCommitish))]
     public static T SetTargetCommitish<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.TargetCommitish, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.TargetCommitish"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetCommitish))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetCommitish))]
     public static T ResetTargetCommitish<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.TargetCommitish));
     #endregion
     #region Milestone
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Milestone"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Milestone))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Milestone))]
     public static T SetMilestone<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Milestone, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Milestone"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Milestone))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Milestone))]
     public static T ResetMilestone<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.Milestone));
     #endregion
     #region Name
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Name"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Name))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Name"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Name))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Name))]
     public static T ResetName<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region InputFilePath
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.InputFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.InputFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.InputFilePath))]
     public static T SetInputFilePath<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.InputFilePath, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.InputFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.InputFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.InputFilePath))]
     public static T ResetInputFilePath<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.InputFilePath));
     #endregion
     #region Prerelease
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
     public static T SetPrerelease<T>(this T o, bool? v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Prerelease, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
     public static T ResetPrerelease<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.Prerelease));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
     public static T EnablePrerelease<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Prerelease, true));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
     public static T DisablePrerelease<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Prerelease, false));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Prerelease))]
     public static T TogglePrerelease<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Prerelease, !o.Prerelease));
     #endregion
     #region UserName
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.UserName))]
     public static T SetUserName<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.UserName, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.UserName))]
     public static T ResetUserName<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.UserName));
     #endregion
     #region Password
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RepositoryOwner
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryOwner))]
     public static T SetRepositoryOwner<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.RepositoryOwner, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryOwner))]
     public static T ResetRepositoryOwner<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.RepositoryOwner));
     #endregion
     #region RepositoryName
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryName))]
     public static T SetRepositoryName<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.RepositoryName, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.RepositoryName))]
     public static T ResetRepositoryName<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.RepositoryName));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetDirectory))]
     public static T SetTargetDirectory<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.TargetDirectory))]
     public static T ResetTargetDirectory<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region Token
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Token))]
     public static T SetToken<T>(this T o, [Secret] string v) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="GitReleaseManagerCreateSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerCreateSettings), Property = nameof(GitReleaseManagerCreateSettings.Token))]
     public static T ResetToken<T>(this T o) where T : GitReleaseManagerCreateSettings => o.Modify(b => b.Remove(() => o.Token));
     #endregion
 }
 #endregion
 #region GitReleaseManagerExportSettingsExtensions
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerExportSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerExportSettingsExtensions
 {
     #region TagName
     /// <inheritdoc cref="GitReleaseManagerExportSettings.TagName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TagName))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TagName))]
     public static T SetTagName<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.TagName, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.TagName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TagName))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TagName))]
     public static T ResetTagName<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.TagName));
     #endregion
     #region FileOutputPath
     /// <inheritdoc cref="GitReleaseManagerExportSettings.FileOutputPath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.FileOutputPath))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.FileOutputPath))]
     public static T SetFileOutputPath<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.FileOutputPath, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.FileOutputPath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.FileOutputPath))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.FileOutputPath))]
     public static T ResetFileOutputPath<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.FileOutputPath));
     #endregion
     #region UserName
     /// <inheritdoc cref="GitReleaseManagerExportSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.UserName))]
     public static T SetUserName<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.UserName, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.UserName))]
     public static T ResetUserName<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.UserName));
     #endregion
     #region Password
     /// <inheritdoc cref="GitReleaseManagerExportSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RepositoryOwner
     /// <inheritdoc cref="GitReleaseManagerExportSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryOwner))]
     public static T SetRepositoryOwner<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.RepositoryOwner, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryOwner))]
     public static T ResetRepositoryOwner<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.RepositoryOwner));
     #endregion
     #region RepositoryName
     /// <inheritdoc cref="GitReleaseManagerExportSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryName))]
     public static T SetRepositoryName<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.RepositoryName, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.RepositoryName))]
     public static T ResetRepositoryName<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.RepositoryName));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="GitReleaseManagerExportSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TargetDirectory))]
     public static T SetTargetDirectory<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.TargetDirectory))]
     public static T ResetTargetDirectory<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="GitReleaseManagerExportSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region Token
     /// <inheritdoc cref="GitReleaseManagerExportSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Token))]
     public static T SetToken<T>(this T o, [Secret] string v) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="GitReleaseManagerExportSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerExportSettings), Property = nameof(GitReleaseManagerExportSettings.Token))]
     public static T ResetToken<T>(this T o) where T : GitReleaseManagerExportSettings => o.Modify(b => b.Remove(() => o.Token));
     #endregion
 }
 #endregion
 #region GitReleaseManagerPublishSettingsExtensions
 /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerPublishSettingsExtensions
 {
     #region TagName
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.TagName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TagName))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TagName))]
     public static T SetTagName<T>(this T o, string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.TagName, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.TagName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TagName))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TagName))]
     public static T ResetTagName<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.TagName));
     #endregion
     #region UserName
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.UserName))]
     public static T SetUserName<T>(this T o, string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.UserName, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.UserName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.UserName))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.UserName))]
     public static T ResetUserName<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.UserName));
     #endregion
     #region Password
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.Password"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Password))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RepositoryOwner
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryOwner))]
     public static T SetRepositoryOwner<T>(this T o, string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.RepositoryOwner, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.RepositoryOwner"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryOwner))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryOwner))]
     public static T ResetRepositoryOwner<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.RepositoryOwner));
     #endregion
     #region RepositoryName
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryName))]
     public static T SetRepositoryName<T>(this T o, string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.RepositoryName, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.RepositoryName"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryName))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.RepositoryName))]
     public static T ResetRepositoryName<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.RepositoryName));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TargetDirectory))]
     public static T SetTargetDirectory<T>(this T o, string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TargetDirectory))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.TargetDirectory))]
     public static T ResetTargetDirectory<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.LogFilePath))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region Token
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Token))]
     public static T SetToken<T>(this T o, [Secret] string v) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="GitReleaseManagerPublishSettings.Token"/>
-    [Pure] [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Token))]
+    [Builder(Type = typeof(GitReleaseManagerPublishSettings), Property = nameof(GitReleaseManagerPublishSettings.Token))]
     public static T ResetToken<T>(this T o) where T : GitReleaseManagerPublishSettings => o.Modify(b => b.Remove(() => o.Token));
     #endregion
 }

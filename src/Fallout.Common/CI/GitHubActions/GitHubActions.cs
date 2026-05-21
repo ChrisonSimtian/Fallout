@@ -11,7 +11,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Fallout.Common.IO;
@@ -23,11 +22,9 @@ namespace Fallout.Common.CI.GitHubActions;
 /// <summary>
 /// Interface according to the <a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables">official website</a>.
 /// </summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class GitHubActions : Host, IBuildServer
 {
-    [UsedImplicitly]
     internal static bool IsRunningGitHubActions => EnvironmentInfo.HasVariable("GITHUB_ACTIONS");
 
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
@@ -161,7 +158,7 @@ public partial class GitHubActions : Host, IBuildServer
             : $"::{command} {parameters}::{EscapeData(message)}");
     }
 
-    private string EscapeData([CanBeNull] string data)
+    private string EscapeData(string data)
     {
         return data?
             .Replace("%", "%25")

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.ReSharper;
 
 /// <summary><p>For more details, visit the <a href="https://www.jetbrains.com/help/resharper/ReSharper_Command_Line_Tools.html">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class ReSharperTasks : ToolTasks, IRequireNuGetPackage
@@ -52,7 +50,6 @@ public partial class ReSharperTasks : ToolTasks, IRequireNuGetPackage
 }
 #region ReSharperInspectCodeSettings
 /// <inheritdoc cref="ReSharperTasks.ReSharperInspectCode(Fallout.Common.Tools.ReSharper.ReSharperInspectCodeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(ReSharperTasks), Command = nameof(ReSharperTasks.ReSharperInspectCode), Arguments = "inspectcode")]
 public partial class ReSharperInspectCodeSettings : ReSharperSettingsBase
@@ -115,7 +112,6 @@ public partial class ReSharperInspectCodeSettings : ReSharperSettingsBase
 #endregion
 #region ReSharperCleanupCodeSettings
 /// <inheritdoc cref="ReSharperTasks.ReSharperCleanupCode(Fallout.Common.Tools.ReSharper.ReSharperCleanupCodeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(ReSharperTasks), Command = nameof(ReSharperTasks.ReSharperCleanupCode), Arguments = "cleanupcode")]
 public partial class ReSharperCleanupCodeSettings : ReSharperSettingsBase
@@ -164,7 +160,6 @@ public partial class ReSharperCleanupCodeSettings : ReSharperSettingsBase
 #endregion
 #region ReSharperDupFinderSettings
 /// <inheritdoc cref="ReSharperTasks.ReSharperDupFinder(Fallout.Common.Tools.ReSharper.ReSharperDupFinderSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(ReSharperTasks), Command = nameof(ReSharperTasks.ReSharperDupFinder), Arguments = "dupfinder")]
 public partial class ReSharperDupFinderSettings : ReSharperSettingsBase
@@ -209,7 +204,6 @@ public partial class ReSharperDupFinderSettings : ReSharperSettingsBase
 #endregion
 #region ReSharperSettingsBase
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class ReSharperSettingsBase : ToolOptions
 {
@@ -219,924 +213,919 @@ public partial class ReSharperSettingsBase : ToolOptions
 #endregion
 #region ReSharperInspectCodeSettingsExtensions
 /// <inheritdoc cref="ReSharperTasks.ReSharperInspectCode(Fallout.Common.Tools.ReSharper.ReSharperInspectCodeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class ReSharperInspectCodeSettingsExtensions
 {
     #region TargetPath
     /// <inheritdoc cref="ReSharperInspectCodeSettings.TargetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.TargetPath))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.TargetPath))]
     public static T SetTargetPath<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.TargetPath, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.TargetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.TargetPath))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.TargetPath))]
     public static T ResetTargetPath<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.TargetPath));
     #endregion
     #region Output
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Output"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Output))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Output"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Output))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Format
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Format"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Format))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Format))]
     public static T SetFormat<T>(this T o, ReSharperFormat v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Format, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Format"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Format))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Format))]
     public static T ResetFormat<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Format));
     #endregion
     #region Jobs
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Jobs"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Jobs))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Jobs))]
     public static T SetJobs<T>(this T o, int? v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Jobs, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Jobs"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Jobs))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Jobs))]
     public static T ResetJobs<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Jobs));
     #endregion
     #region AbsolutePaths
     /// <inheritdoc cref="ReSharperInspectCodeSettings.AbsolutePaths"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
     public static T SetAbsolutePaths<T>(this T o, bool? v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.AbsolutePaths, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.AbsolutePaths"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
     public static T ResetAbsolutePaths<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.AbsolutePaths));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.AbsolutePaths"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
     public static T EnableAbsolutePaths<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.AbsolutePaths, true));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.AbsolutePaths"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
     public static T DisableAbsolutePaths<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.AbsolutePaths, false));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.AbsolutePaths"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.AbsolutePaths))]
     public static T ToggleAbsolutePaths<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.AbsolutePaths, !o.AbsolutePaths));
     #endregion
     #region Project
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Project"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Project))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Project"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Project))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Project))]
     public static T ResetProject<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region NoSwea
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoSwea"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
     public static T SetNoSwea<T>(this T o, bool? v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoSwea, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoSwea"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
     public static T ResetNoSwea<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.NoSwea));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoSwea"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
     public static T EnableNoSwea<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoSwea, true));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoSwea"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
     public static T DisableNoSwea<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoSwea, false));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoSwea"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoSwea))]
     public static T ToggleNoSwea<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoSwea, !o.NoSwea));
     #endregion
     #region Severity
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Severity"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Severity))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Severity))]
     public static T SetSeverity<T>(this T o, ReSharperSeverity v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Severity, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Severity"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Severity))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Severity))]
     public static T ResetSeverity<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Severity));
     #endregion
     #region DumpIssuesTypes
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DumpIssuesTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
     public static T SetDumpIssuesTypes<T>(this T o, bool? v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DumpIssuesTypes, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DumpIssuesTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
     public static T ResetDumpIssuesTypes<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.DumpIssuesTypes));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DumpIssuesTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
     public static T EnableDumpIssuesTypes<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DumpIssuesTypes, true));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DumpIssuesTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
     public static T DisableDumpIssuesTypes<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DumpIssuesTypes, false));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DumpIssuesTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DumpIssuesTypes))]
     public static T ToggleDumpIssuesTypes<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DumpIssuesTypes, !o.DumpIssuesTypes));
     #endregion
     #region Settings
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Settings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Settings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Settings))]
     public static T SetSettings<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Settings, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Settings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Settings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Settings))]
     public static T ResetSettings<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Settings));
     #endregion
     #region DisableSettingsLayers
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T SetDisableSettingsLayers<T>(this T o, params ReSharperSettingsLayers[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T SetDisableSettingsLayers<T>(this T o, IEnumerable<ReSharperSettingsLayers> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T AddDisableSettingsLayers<T>(this T o, params ReSharperSettingsLayers[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T AddDisableSettingsLayers<T>(this T o, IEnumerable<ReSharperSettingsLayers> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T RemoveDisableSettingsLayers<T>(this T o, params ReSharperSettingsLayers[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T RemoveDisableSettingsLayers<T>(this T o, IEnumerable<ReSharperSettingsLayers> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DisableSettingsLayers))]
     public static T ClearDisableSettingsLayers<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.ClearCollection(() => o.DisableSettingsLayers));
     #endregion
     #region NoBuiltinSettings
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
     public static T SetNoBuiltinSettings<T>(this T o, bool? v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
     public static T ResetNoBuiltinSettings<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.NoBuiltinSettings));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
     public static T EnableNoBuiltinSettings<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, true));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
     public static T DisableNoBuiltinSettings<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, false));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.NoBuiltinSettings))]
     public static T ToggleNoBuiltinSettings<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, !o.NoBuiltinSettings));
     #endregion
     #region CachesHome
     /// <inheritdoc cref="ReSharperInspectCodeSettings.CachesHome"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CachesHome))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CachesHome))]
     public static T SetCachesHome<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.CachesHome, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.CachesHome"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CachesHome))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CachesHome))]
     public static T ResetCachesHome<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.CachesHome));
     #endregion
     #region CreateConfigFile
     /// <inheritdoc cref="ReSharperInspectCodeSettings.CreateConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CreateConfigFile))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CreateConfigFile))]
     public static T SetCreateConfigFile<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.CreateConfigFile, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.CreateConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CreateConfigFile))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.CreateConfigFile))]
     public static T ResetCreateConfigFile<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.CreateConfigFile));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ConfigFile))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ConfigFile))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Verbosity))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, ReSharperVerbosity v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Verbosity))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
     #region Debug
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region Properties
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
     public static T SetProperties<T>(this T o, IDictionary<string, string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Properties, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
     public static T SetProperty<T>(this T o, string k, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.SetDictionary(() => o.Properties, k, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
     public static T AddProperty<T>(this T o, string k, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddDictionary(() => o.Properties, k, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
     public static T RemoveProperty<T>(this T o, string k) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveDictionary(() => o.Properties, k));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Properties))]
     public static T ClearProperties<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.ClearDictionary(() => o.Properties));
     #endregion
     #region Toolset
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Toolset"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Toolset))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Toolset))]
     public static T SetToolset<T>(this T o, ReSharperMSBuildToolset v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Toolset, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Toolset"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Toolset))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Toolset))]
     public static T ResetToolset<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.Toolset));
     #endregion
     #region ToolsetPath
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ToolsetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ToolsetPath))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ToolsetPath))]
     public static T SetToolsetPath<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.ToolsetPath, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ToolsetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ToolsetPath))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ToolsetPath))]
     public static T ResetToolsetPath<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.ToolsetPath));
     #endregion
     #region DotNetCore
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DotNetCore"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCore))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCore))]
     public static T SetDotNetCore<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DotNetCore, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DotNetCore"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCore))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCore))]
     public static T ResetDotNetCore<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.DotNetCore));
     #endregion
     #region DotNetCoreSdk
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DotNetCoreSdk"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCoreSdk))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCoreSdk))]
     public static T SetDotNetCoreSdk<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.DotNetCoreSdk, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.DotNetCoreSdk"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCoreSdk))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.DotNetCoreSdk))]
     public static T ResetDotNetCoreSdk<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.DotNetCoreSdk));
     #endregion
     #region MonoPath
     /// <inheritdoc cref="ReSharperInspectCodeSettings.MonoPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.MonoPath))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.MonoPath))]
     public static T SetMonoPath<T>(this T o, string v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.MonoPath, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.MonoPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.MonoPath))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.MonoPath))]
     public static T ResetMonoPath<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Remove(() => o.MonoPath));
     #endregion
     #region ReferenceTargets
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T SetReferenceTargets<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T SetReferenceTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T AddReferenceTargets<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T AddReferenceTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T RemoveReferenceTargets<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T RemoveReferenceTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ReferenceTargets))]
     public static T ClearReferenceTargets<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.ClearCollection(() => o.ReferenceTargets));
     #endregion
     #region ItemTargets
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T SetItemTargets<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T SetItemTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T AddItemTargets<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T AddItemTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T RemoveItemTargets<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T RemoveItemTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.ItemTargets))]
     public static T ClearItemTargets<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.ClearCollection(() => o.ItemTargets));
     #endregion
     #region Include
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T SetInclude<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Include, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T SetInclude<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Include, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T AddInclude<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T AddInclude<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T RemoveInclude<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T RemoveInclude<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Include))]
     public static T ClearInclude<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.ClearCollection(() => o.Include));
     #endregion
     #region Exclude
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T SetExclude<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T SetExclude<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.Set(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T AddExclude<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T AddExclude<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.AddCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T RemoveExclude<T>(this T o, params string[] v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T RemoveExclude<T>(this T o, IEnumerable<string> v) where T : ReSharperInspectCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperInspectCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperInspectCodeSettings), Property = nameof(ReSharperInspectCodeSettings.Exclude))]
     public static T ClearExclude<T>(this T o) where T : ReSharperInspectCodeSettings => o.Modify(b => b.ClearCollection(() => o.Exclude));
     #endregion
 }
 #endregion
 #region ReSharperCleanupCodeSettingsExtensions
 /// <inheritdoc cref="ReSharperTasks.ReSharperCleanupCode(Fallout.Common.Tools.ReSharper.ReSharperCleanupCodeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class ReSharperCleanupCodeSettingsExtensions
 {
     #region TargetPath
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.TargetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.TargetPath))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.TargetPath))]
     public static T SetTargetPath<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.TargetPath, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.TargetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.TargetPath))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.TargetPath))]
     public static T ResetTargetPath<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.TargetPath));
     #endregion
     #region Profile
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Profile"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Profile))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Profile))]
     public static T SetProfile<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Profile, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Profile"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Profile))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Profile))]
     public static T ResetProfile<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.Profile));
     #endregion
     #region Settings
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Settings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Settings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Settings))]
     public static T SetSettings<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Settings, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Settings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Settings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Settings))]
     public static T ResetSettings<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.Settings));
     #endregion
     #region DisableSettingsLayers
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T SetDisableSettingsLayers<T>(this T o, params ReSharperSettingsLayers[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T SetDisableSettingsLayers<T>(this T o, IEnumerable<ReSharperSettingsLayers> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T AddDisableSettingsLayers<T>(this T o, params ReSharperSettingsLayers[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T AddDisableSettingsLayers<T>(this T o, IEnumerable<ReSharperSettingsLayers> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T RemoveDisableSettingsLayers<T>(this T o, params ReSharperSettingsLayers[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T RemoveDisableSettingsLayers<T>(this T o, IEnumerable<ReSharperSettingsLayers> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.DisableSettingsLayers, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DisableSettingsLayers"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DisableSettingsLayers))]
     public static T ClearDisableSettingsLayers<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.ClearCollection(() => o.DisableSettingsLayers));
     #endregion
     #region NoBuiltinSettings
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
     public static T SetNoBuiltinSettings<T>(this T o, bool? v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
     public static T ResetNoBuiltinSettings<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.NoBuiltinSettings));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
     public static T EnableNoBuiltinSettings<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, true));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
     public static T DisableNoBuiltinSettings<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, false));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.NoBuiltinSettings"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.NoBuiltinSettings))]
     public static T ToggleNoBuiltinSettings<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.NoBuiltinSettings, !o.NoBuiltinSettings));
     #endregion
     #region CachesHome
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.CachesHome"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CachesHome))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CachesHome))]
     public static T SetCachesHome<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.CachesHome, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.CachesHome"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CachesHome))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CachesHome))]
     public static T ResetCachesHome<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.CachesHome));
     #endregion
     #region CreateConfigFile
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.CreateConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CreateConfigFile))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CreateConfigFile))]
     public static T SetCreateConfigFile<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.CreateConfigFile, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.CreateConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CreateConfigFile))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.CreateConfigFile))]
     public static T ResetCreateConfigFile<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.CreateConfigFile));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ConfigFile))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ConfigFile))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Verbosity))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, ReSharperVerbosity v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Verbosity))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
     #region Debug
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region Properties
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
     public static T SetProperties<T>(this T o, IDictionary<string, string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Properties, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
     public static T SetProperty<T>(this T o, string k, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.SetDictionary(() => o.Properties, k, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
     public static T AddProperty<T>(this T o, string k, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddDictionary(() => o.Properties, k, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
     public static T RemoveProperty<T>(this T o, string k) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveDictionary(() => o.Properties, k));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Properties))]
     public static T ClearProperties<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.ClearDictionary(() => o.Properties));
     #endregion
     #region Toolset
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Toolset"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Toolset))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Toolset))]
     public static T SetToolset<T>(this T o, ReSharperMSBuildToolset v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Toolset, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Toolset"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Toolset))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Toolset))]
     public static T ResetToolset<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.Toolset));
     #endregion
     #region ToolsetPath
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ToolsetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ToolsetPath))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ToolsetPath))]
     public static T SetToolsetPath<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.ToolsetPath, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ToolsetPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ToolsetPath))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ToolsetPath))]
     public static T ResetToolsetPath<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.ToolsetPath));
     #endregion
     #region DotNetCore
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DotNetCore"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCore))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCore))]
     public static T SetDotNetCore<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.DotNetCore, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DotNetCore"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCore))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCore))]
     public static T ResetDotNetCore<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.DotNetCore));
     #endregion
     #region DotNetCoreSdk
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DotNetCoreSdk"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCoreSdk))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCoreSdk))]
     public static T SetDotNetCoreSdk<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.DotNetCoreSdk, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.DotNetCoreSdk"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCoreSdk))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.DotNetCoreSdk))]
     public static T ResetDotNetCoreSdk<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.DotNetCoreSdk));
     #endregion
     #region MonoPath
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.MonoPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.MonoPath))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.MonoPath))]
     public static T SetMonoPath<T>(this T o, string v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.MonoPath, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.MonoPath"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.MonoPath))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.MonoPath))]
     public static T ResetMonoPath<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Remove(() => o.MonoPath));
     #endregion
     #region ReferenceTargets
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T SetReferenceTargets<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T SetReferenceTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T AddReferenceTargets<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T AddReferenceTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T RemoveReferenceTargets<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T RemoveReferenceTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ReferenceTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ReferenceTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ReferenceTargets))]
     public static T ClearReferenceTargets<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.ClearCollection(() => o.ReferenceTargets));
     #endregion
     #region ItemTargets
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T SetItemTargets<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T SetItemTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T AddItemTargets<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T AddItemTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T RemoveItemTargets<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T RemoveItemTargets<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.ItemTargets, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.ItemTargets"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.ItemTargets))]
     public static T ClearItemTargets<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.ClearCollection(() => o.ItemTargets));
     #endregion
     #region Include
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T SetInclude<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Include, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T SetInclude<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Include, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T AddInclude<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T AddInclude<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T RemoveInclude<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T RemoveInclude<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Include, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Include"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Include))]
     public static T ClearInclude<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.ClearCollection(() => o.Include));
     #endregion
     #region Exclude
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T SetExclude<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T SetExclude<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.Set(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T AddExclude<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T AddExclude<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.AddCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T RemoveExclude<T>(this T o, params string[] v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T RemoveExclude<T>(this T o, IEnumerable<string> v) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.RemoveCollection(() => o.Exclude, v));
     /// <inheritdoc cref="ReSharperCleanupCodeSettings.Exclude"/>
-    [Pure] [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
+    [Builder(Type = typeof(ReSharperCleanupCodeSettings), Property = nameof(ReSharperCleanupCodeSettings.Exclude))]
     public static T ClearExclude<T>(this T o) where T : ReSharperCleanupCodeSettings => o.Modify(b => b.ClearCollection(() => o.Exclude));
     #endregion
 }
 #endregion
 #region ReSharperDupFinderSettingsExtensions
 /// <inheritdoc cref="ReSharperTasks.ReSharperDupFinder(Fallout.Common.Tools.ReSharper.ReSharperDupFinderSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class ReSharperDupFinderSettingsExtensions
 {
     #region Source
     /// <inheritdoc cref="ReSharperDupFinderSettings.Source"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Source))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Source))]
     public static T SetSource<T>(this T o, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Source, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Source"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Source))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Source))]
     public static T ResetSource<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.Source));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="ReSharperDupFinderSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.OutputFile))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.OutputFile))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
     #region ExcludeFiles
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T SetExcludeFiles<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ExcludeFiles, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T SetExcludeFiles<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ExcludeFiles, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T AddExcludeFiles<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddCollection(() => o.ExcludeFiles, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T AddExcludeFiles<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddCollection(() => o.ExcludeFiles, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T RemoveExcludeFiles<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeFiles, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T RemoveExcludeFiles<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeFiles, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeFiles"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeFiles))]
     public static T ClearExcludeFiles<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeFiles));
     #endregion
     #region ExcludeComments
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T SetExcludeComments<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ExcludeComments, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T SetExcludeComments<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ExcludeComments, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T AddExcludeComments<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddCollection(() => o.ExcludeComments, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T AddExcludeComments<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddCollection(() => o.ExcludeComments, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T RemoveExcludeComments<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeComments, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T RemoveExcludeComments<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeComments, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeComments"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeComments))]
     public static T ClearExcludeComments<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeComments));
     #endregion
     #region ExcludeCodeRegions
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T SetExcludeCodeRegions<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ExcludeCodeRegions, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T SetExcludeCodeRegions<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ExcludeCodeRegions, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T AddExcludeCodeRegions<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddCollection(() => o.ExcludeCodeRegions, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T AddExcludeCodeRegions<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddCollection(() => o.ExcludeCodeRegions, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T RemoveExcludeCodeRegions<T>(this T o, params string[] v) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeCodeRegions, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T RemoveExcludeCodeRegions<T>(this T o, IEnumerable<string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeCodeRegions, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ExcludeCodeRegions"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ExcludeCodeRegions))]
     public static T ClearExcludeCodeRegions<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeCodeRegions));
     #endregion
     #region DiscardFields
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardFields"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
     public static T SetDiscardFields<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardFields, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardFields"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
     public static T ResetDiscardFields<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.DiscardFields));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardFields"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
     public static T EnableDiscardFields<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardFields, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardFields"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
     public static T DisableDiscardFields<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardFields, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardFields"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardFields))]
     public static T ToggleDiscardFields<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardFields, !o.DiscardFields));
     #endregion
     #region DiscardLiterals
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLiterals"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
     public static T SetDiscardLiterals<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLiterals, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLiterals"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
     public static T ResetDiscardLiterals<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.DiscardLiterals));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLiterals"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
     public static T EnableDiscardLiterals<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLiterals, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLiterals"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
     public static T DisableDiscardLiterals<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLiterals, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLiterals"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLiterals))]
     public static T ToggleDiscardLiterals<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLiterals, !o.DiscardLiterals));
     #endregion
     #region DiscardLocalVars
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLocalVars"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
     public static T SetDiscardLocalVars<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLocalVars, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLocalVars"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
     public static T ResetDiscardLocalVars<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.DiscardLocalVars));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLocalVars"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
     public static T EnableDiscardLocalVars<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLocalVars, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLocalVars"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
     public static T DisableDiscardLocalVars<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLocalVars, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardLocalVars"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardLocalVars))]
     public static T ToggleDiscardLocalVars<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardLocalVars, !o.DiscardLocalVars));
     #endregion
     #region DiscardTypes
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
     public static T SetDiscardTypes<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardTypes, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
     public static T ResetDiscardTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.DiscardTypes));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
     public static T EnableDiscardTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardTypes, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
     public static T DisableDiscardTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardTypes, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardTypes))]
     public static T ToggleDiscardTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardTypes, !o.DiscardTypes));
     #endregion
     #region DiscardCost
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardCost"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardCost))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardCost))]
     public static T SetDiscardCost<T>(this T o, int? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.DiscardCost, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.DiscardCost"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardCost))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.DiscardCost))]
     public static T ResetDiscardCost<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.DiscardCost));
     #endregion
     #region Properties
     /// <inheritdoc cref="ReSharperDupFinderSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
     public static T SetProperties<T>(this T o, IDictionary<string, string> v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Properties, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
     public static T SetProperty<T>(this T o, string k, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.SetDictionary(() => o.Properties, k, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
     public static T AddProperty<T>(this T o, string k, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.AddDictionary(() => o.Properties, k, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
     public static T RemoveProperty<T>(this T o, string k) where T : ReSharperDupFinderSettings => o.Modify(b => b.RemoveDictionary(() => o.Properties, k));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Properties"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Properties))]
     public static T ClearProperties<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.ClearDictionary(() => o.Properties));
     #endregion
     #region NormalizeTypes
     /// <inheritdoc cref="ReSharperDupFinderSettings.NormalizeTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
     public static T SetNormalizeTypes<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.NormalizeTypes, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.NormalizeTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
     public static T ResetNormalizeTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.NormalizeTypes));
     /// <inheritdoc cref="ReSharperDupFinderSettings.NormalizeTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
     public static T EnableNormalizeTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.NormalizeTypes, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.NormalizeTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
     public static T DisableNormalizeTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.NormalizeTypes, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.NormalizeTypes"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.NormalizeTypes))]
     public static T ToggleNormalizeTypes<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.NormalizeTypes, !o.NormalizeTypes));
     #endregion
     #region ShowText
     /// <inheritdoc cref="ReSharperDupFinderSettings.ShowText"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
     public static T SetShowText<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ShowText, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ShowText"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
     public static T ResetShowText<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.ShowText));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ShowText"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
     public static T EnableShowText<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ShowText, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ShowText"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
     public static T DisableShowText<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ShowText, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ShowText"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ShowText))]
     public static T ToggleShowText<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ShowText, !o.ShowText));
     #endregion
     #region CachesHome
     /// <inheritdoc cref="ReSharperDupFinderSettings.CachesHome"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CachesHome))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CachesHome))]
     public static T SetCachesHome<T>(this T o, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.CachesHome, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.CachesHome"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CachesHome))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CachesHome))]
     public static T ResetCachesHome<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.CachesHome));
     #endregion
     #region CreateConfigFile
     /// <inheritdoc cref="ReSharperDupFinderSettings.CreateConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CreateConfigFile))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CreateConfigFile))]
     public static T SetCreateConfigFile<T>(this T o, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.CreateConfigFile, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.CreateConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CreateConfigFile))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.CreateConfigFile))]
     public static T ResetCreateConfigFile<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.CreateConfigFile));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="ReSharperDupFinderSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ConfigFile))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ConfigFile))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="ReSharperDupFinderSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Verbosity))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, ReSharperVerbosity v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Verbosity))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
     #region Debug
     /// <inheritdoc cref="ReSharperDupFinderSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
     public static T ResetDebug<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
     public static T EnableDebug<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
     public static T DisableDebug<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="ReSharperDupFinderSettings.Debug"/>
-    [Pure] [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
+    [Builder(Type = typeof(ReSharperDupFinderSettings), Property = nameof(ReSharperDupFinderSettings.Debug))]
     public static T ToggleDebug<T>(this T o) where T : ReSharperDupFinderSettings => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
 }
 #endregion
 #region ReSharperSettingsBaseExtensions
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class ReSharperSettingsBaseExtensions
 {
     #region Plugins
     /// <inheritdoc cref="ReSharperSettingsBase.Plugins"/>
-    [Pure] [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
+    [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
     public static T SetPlugins<T>(this T o, IDictionary<string, string> v) where T : ReSharperSettingsBase => o.Modify(b => b.Set(() => o.Plugins, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="ReSharperSettingsBase.Plugins"/>
-    [Pure] [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
+    [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
     public static T SetPlugin<T>(this T o, string k, string v) where T : ReSharperSettingsBase => o.Modify(b => b.SetDictionary(() => o.Plugins, k, v));
     /// <inheritdoc cref="ReSharperSettingsBase.Plugins"/>
-    [Pure] [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
+    [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
     public static T AddPlugin<T>(this T o, string k, string v) where T : ReSharperSettingsBase => o.Modify(b => b.AddDictionary(() => o.Plugins, k, v));
     /// <inheritdoc cref="ReSharperSettingsBase.Plugins"/>
-    [Pure] [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
+    [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
     public static T RemovePlugin<T>(this T o, string k) where T : ReSharperSettingsBase => o.Modify(b => b.RemoveDictionary(() => o.Plugins, k));
     /// <inheritdoc cref="ReSharperSettingsBase.Plugins"/>
-    [Pure] [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
+    [Builder(Type = typeof(ReSharperSettingsBase), Property = nameof(ReSharperSettingsBase.Plugins))]
     public static T ClearPlugins<T>(this T o) where T : ReSharperSettingsBase => o.Modify(b => b.ClearDictionary(() => o.Plugins));
     #endregion
 }
 #endregion
 #region ReSharperSettingsLayers
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<ReSharperSettingsLayers>))]
@@ -1154,7 +1143,6 @@ public partial class ReSharperSettingsLayers : Enumeration
 #endregion
 #region ReSharperMSBuildToolset
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<ReSharperMSBuildToolset>))]
@@ -1171,7 +1159,6 @@ public partial class ReSharperMSBuildToolset : Enumeration
 #endregion
 #region ReSharperFormat
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<ReSharperFormat>))]
@@ -1189,7 +1176,6 @@ public partial class ReSharperFormat : Enumeration
 #endregion
 #region ReSharperVerbosity
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<ReSharperVerbosity>))]
@@ -1210,7 +1196,6 @@ public partial class ReSharperVerbosity : Enumeration
 #endregion
 #region ReSharperSeverity
 /// <summary>Used within <see cref="ReSharperTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<ReSharperSeverity>))]

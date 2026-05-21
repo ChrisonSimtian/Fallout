@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Serilog;
 #pragma warning disable CS0618
@@ -17,7 +16,6 @@ using Serilog;
 
 namespace Fallout.Common;
 
-[PublicAPI]
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
 public static class ControlFlow
@@ -27,8 +25,6 @@ public static class ControlFlow
         SuppressErrorsIf(condition: true, action, includeStackTrace: includeStackTrace, logWarning: logWarning);
     }
 
-    [ContractAnnotation("defaultValue: notnull => notnull")]
-    [CanBeNull]
     public static T SuppressErrors<T>(Func<T> action, T defaultValue = default, bool includeStackTrace = false, bool logWarning = true)
     {
         return (T)SuppressErrorsIf(condition: true, action, defaultValue, includeStackTrace, logWarning);
@@ -39,8 +35,6 @@ public static class ControlFlow
         return SuppressErrors<IEnumerable<T>>(action, includeStackTrace: includeStackTrace) ?? Enumerable.Empty<T>();
     }
 
-    [ContractAnnotation("defaultValue: notnull => notnull")]
-    [CanBeNull]
     private static object SuppressErrorsIf(
         bool condition,
         Delegate action,
@@ -65,8 +59,8 @@ public static class ControlFlow
     }
 
     public static void ExecuteWithRetry(
-        [InstantHandle] Action action,
-        [InstantHandle] Action cleanup = null,
+        Action action,
+        Action cleanup = null,
         int retryAttempts = 3,
         TimeSpan? delay = null,
         Action<string> logAction = null)

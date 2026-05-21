@@ -6,15 +6,12 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class ToolPathResolver
 {
-    [CanBeNull]
     public static string TryGetEnvironmentExecutable(string environmentExecutable)
     {
         var environmentExecutablePath = EnvironmentInfo.GetVariable(environmentExecutable);

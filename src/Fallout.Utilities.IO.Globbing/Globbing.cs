@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using GlobExpressions;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -26,7 +25,6 @@ public static class Globbing
             _ => EnvironmentInfo.IsWin ? GlobOptions.CaseInsensitive : GlobOptions.None
         };
 
-    [Pure]
     public static IReadOnlyCollection<string> GlobFiles(string directory, params string[] patterns)
     {
         if (patterns.Length == 0)
@@ -41,7 +39,6 @@ public static class Globbing
         return GlobFiles((string) directory, patterns).Select(x => (AbsolutePath) x).ToList();
     }
 
-    [Pure]
     public static IReadOnlyCollection<string> GlobDirectories(string directory, params string[] patterns)
     {
         if (patterns.Length == 0)

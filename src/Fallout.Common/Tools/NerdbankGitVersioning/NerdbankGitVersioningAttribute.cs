@@ -5,7 +5,6 @@
 
 using System;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
@@ -17,8 +16,6 @@ namespace Fallout.Common.Tools.NerdbankGitVersioning;
 /// <summary>
 /// Injects an instance of <see cref="NerdbankGitVersioning"/> based on the local repository.
 /// </summary>
-[PublicAPI]
-[UsedImplicitly(ImplicitUseKindFlags.Default)]
 public class NerdbankGitVersioningAttribute : ValueInjectionAttributeBase
 {
     public bool UpdateBuildNumber { get; set; }

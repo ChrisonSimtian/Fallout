@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -20,8 +19,6 @@ public enum GitProtocol
     Ssh
 }
 
-[PublicAPI]
-[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class GitRepository
 {
     private const string FallbackRemoteName = "origin";
@@ -70,7 +67,7 @@ public class GitRepository
             remoteBranch);
     }
 
-    private static (string Name, string Branch) GetRemoteNameAndBranch(AbsolutePath gitDirectory, [CanBeNull] string branch)
+    private static (string Name, string Branch) GetRemoteNameAndBranch(AbsolutePath gitDirectory, string branch)
     {
         if (branch == null)
             return (null, null);
@@ -120,13 +117,11 @@ public class GitRepository
         return headFile.ReadAllText().TrimStart("ref: ").Trim();
     }
 
-    [CanBeNull]
     internal static string GetBranchFromCI()
     {
         return (Host.Instance as IBuildServer)?.Branch;
     }
 
-    [CanBeNull]
     internal static string GetCommitFromCI()
     {
         return (Host.Instance as IBuildServer)?.Commit;
@@ -230,38 +225,30 @@ public class GitRepository
     public string Identifier { get; private set; }
 
     /// <summary>Local path from which the repository was parsed.</summary>
-    [CanBeNull]
     public AbsolutePath LocalDirectory { get; private set; }
 
     /// <summary>Current head; <c>null</c> if parsed from URL.</summary>
-    [CanBeNull]
     public string Head { get; private set; }
 
     /// <summary>Current commit; <c>null</c> if parsed from URL.</summary>
-    [CanBeNull]
     public string Commit { get; }
 
     /// <summary>List of tags; <c>null</c> if parsed from URL.</summary>
     public IReadOnlyCollection<string> Tags { get; }
 
     /// <summary>Name of the remote.</summary>
-    [CanBeNull]
     public string RemoteName { get; }
 
     /// <summary>Name of the remote branch.</summary>
-    [CanBeNull]
     public string RemoteBranch { get; }
 
     /// <summary>Current branch; <c>null</c> if head is detached.</summary>
-    [CanBeNull]
     public string Branch { get; private set; }
 
     /// <summary>Url in the form of <c>https://endpoint/identifier.git</c></summary>
-    [CanBeNull]
     public string HttpsUrl => Endpoint != null ? $"https://{Endpoint}/{Identifier}.git" : null;
 
     /// <summary>Url in the form of <c>git@endpoint:identifier.git</c></summary>
-    [CanBeNull]
     public string SshUrl => Endpoint != null ? $"git@{Endpoint}:{Identifier}.git" : null;
 
     public GitRepository SetBranch(string branch)

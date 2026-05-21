@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
@@ -28,7 +27,6 @@ namespace Fallout.Common.Tooling;
 ///     });
 ///     </code>
 /// </example>
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class PathVariableAttribute : ToolInjectionAttributeBase
 {

@@ -6,13 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
 public static partial class EnumerableExtensions
 {
-    [CanBeNull]
     public static T SingleOrDefaultOrError<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate, string message)
     {
         try
@@ -25,7 +23,6 @@ public static partial class EnumerableExtensions
         }
     }
 
-    [CanBeNull]
     public static T SingleOrDefaultOrError<T>(this IEnumerable<T> enumerable, string message)
     {
         try
@@ -38,7 +35,6 @@ public static partial class EnumerableExtensions
         }
     }
 
-    [CanBeNull]
     public static T SingleOrError<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate, string message)
     {
         try
@@ -51,7 +47,6 @@ public static partial class EnumerableExtensions
         }
     }
 
-    [CanBeNull]
     public static T SingleOrError<T>(this IEnumerable<T> enumerable, string message)
     {
         try

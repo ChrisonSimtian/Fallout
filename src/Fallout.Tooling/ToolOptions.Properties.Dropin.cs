@@ -4,7 +4,6 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
-using JetBrains.Annotations;
 
 // ReSharper disable ArrangeMethodOrOperatorBody
 
@@ -25,8 +24,7 @@ partial class ToolOptionsExtensions
 
     /// <inheritdoc cref="ToolOptions.ProcessExitHandler"/>
     [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessExitHandler))]
-    [Pure]
-    public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Action<IProcess> exitHandler)
+    public static T SetProcessExitHandler<T>(this T o, Action<IProcess> exitHandler)
         where T : ToolOptions
     {
         return o.Modify2(b =>
@@ -43,8 +41,7 @@ partial class ToolOptionsExtensions
 
     /// <inheritdoc cref="ToolOptions.ProcessExitHandler"/>
     [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessExitHandler))]
-    [Pure]
-    public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Func<IProcess, object> exitHandler)
+    public static T SetProcessExitHandler<T>(this T o, Func<IProcess, object> exitHandler)
         where T : ToolOptions
     {
         return o.Modify2(b =>
@@ -57,8 +54,7 @@ partial class ToolOptionsExtensions
 
     /// <inheritdoc cref="ToolOptions.ProcessExitHandler"/>
     [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessExitHandler))]
-    [Pure]
-    public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Action<T, IProcess> exitHandler)
+    public static T SetProcessExitHandler<T>(this T o, Action<T, IProcess> exitHandler)
         where T : ToolOptions
     {
         return o.Modify2(b =>
@@ -75,8 +71,7 @@ partial class ToolOptionsExtensions
 
     /// <inheritdoc cref="ToolOptions.ProcessExitHandler"/>
     [Builder(Type = typeof(ToolOptions), Property = nameof(ToolOptions.ProcessExitHandler))]
-    [Pure]
-    public static T SetProcessExitHandler<T>(this T o, [CanBeNull] Func<T, IProcess, object> exitHandler)
+    public static T SetProcessExitHandler<T>(this T o, Func<T, IProcess, object> exitHandler)
         where T : ToolOptions
     {
         return o.Modify2(b =>

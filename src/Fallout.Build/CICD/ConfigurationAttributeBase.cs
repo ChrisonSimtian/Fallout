@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -15,7 +14,6 @@ using static Fallout.Common.CI.BuildServerConfigurationGeneration;
 
 namespace Fallout.Common.CI;
 
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Class)]
 public abstract class ConfigurationAttributeBase : Attribute, IConfigurationGenerator
 {

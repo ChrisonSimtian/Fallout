@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common;
@@ -24,7 +23,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Indicates whether an argument was passed.
     /// </summary>
-    [Pure]
     public static bool HasArgument(string name)
     {
         return ArgumentParser.HasArgument(name);
@@ -33,7 +31,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Indicates whether an argument was passed. The argument name is resolved from the member name.
     /// </summary>
-    [Pure]
     public static bool HasArgument<T>(Expression<Func<T>> expression)
     {
         return HasArgument(expression.GetMemberInfo().Name);
@@ -42,8 +39,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the converted value for a named argument.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static T GetNamedArgument<T>(string parameterName, char? separator = null)
     {
         return (T)ArgumentParser.GetNamedArgument(parameterName, typeof(T), separator);
@@ -52,8 +47,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the converted value for a named argument. The argument name is resolved from the member name.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static T GetNamedArgument<T>(Expression<Func<T>> expression, char? separator = null)
     {
         return GetNamedArgument<T>(expression.GetMemberInfo().Name, separator);
@@ -62,8 +55,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the converted value for a named argument. The argument name is resolved from the member name.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static T GetNamedArgument<T>(Expression<Func<object>> expression, char? separator = null)
     {
         return GetNamedArgument<T>(expression.GetMemberInfo().Name, separator);
@@ -72,8 +63,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the converted value for a positional argument.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static T GetPositionalArgument<T>(int position, char? separator = null)
     {
         return (T)ArgumentParser.GetPositionalArgument(position, typeof(T), separator);
@@ -82,8 +71,6 @@ public static partial class EnvironmentInfo
     /// <summary>
     /// Returns the converted values for all positional arguments.
     /// </summary>
-    [Pure]
-    [CanBeNull]
     public static T[] GetAllPositionalArguments<T>(char? separator = null)
     {
         return (T[])ArgumentParser.GetAllPositionalArguments(typeof(T), separator);

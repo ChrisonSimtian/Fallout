@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
@@ -21,8 +20,6 @@ namespace Fallout.Common.Tools.OctoVersion;
 /// <summary>
 /// Injects an instance of <see cref="OctoVersion"/> based on the local repository.
 /// </summary>
-[PublicAPI]
-[UsedImplicitly(ImplicitUseKindFlags.Default)]
 public class OctoVersionAttribute : ValueInjectionAttributeBase
 {
     private bool? _autoDetectBranch;
@@ -54,29 +51,29 @@ public class OctoVersionAttribute : ValueInjectionAttributeBase
     /// Name of the parameter specifying whether to auto detect the branch to explicitly pass to OctoVersion, based on the Git working copy.
     /// If this parameter is provided, it will override any value passed in the AutoDetectBranch property.
     /// </summary>
-    [CanBeNull] public string AutoDetectBranchMember { get; set; }
+    public string AutoDetectBranchMember { get; set; }
 
     /// <summary>
     /// branch to pass to OctoVersion.
     /// </summary>
-    [CanBeNull] public string Branch { get; set; }
+    public string Branch { get; set; }
 
     /// <summary>
     /// Name of the parameter containing the branch to be passed to OctoVersion.
     /// If this parameter is provided, it will override any value passed in the Branch property.
     /// </summary>
-    [CanBeNull] public string BranchMember { get; set; }
+    public string BranchMember { get; set; }
 
     /// <summary>
     /// FullSemVer to pass to OctoVersion.
     /// </summary>
-    [CanBeNull] public string FullSemVer { get; set; }
+    public string FullSemVer { get; set; }
 
     /// <summary>
     /// Name of the parameter containing the FullSemVer to be passed to OctoVersion.
     /// If this parameter is provided, it will override any value passed in the FullSemVer property.
     /// </summary>
-    [CanBeNull] public string FullSemVerMember { get; set; }
+    public string FullSemVerMember { get; set; }
 
     /// <summary>
     /// Major version number to pass to OctoVersion..
@@ -91,7 +88,7 @@ public class OctoVersionAttribute : ValueInjectionAttributeBase
     /// Name of the parameter containing the Major version number to be passed to OctoVersion.
     /// If this parameter is provided, it will override any value passed in the Major property.
     /// </summary>
-    [CanBeNull] public string MajorMember { get; set; }
+    public string MajorMember { get; set; }
 
     /// <summary>
     /// Minor version number to pass to OctoVersion.
@@ -106,7 +103,7 @@ public class OctoVersionAttribute : ValueInjectionAttributeBase
     /// Name of the parameter containing the Minor version number to be passed to OctoVersion.
     /// If this parameter is provided, it will override any value passed in the Minor property.
     /// </summary>
-    [CanBeNull] public string MinorMember { get; set; }
+    public string MinorMember { get; set; }
 
     /// <summary>
     /// Patch version number to pass to OctoVersion.
@@ -121,7 +118,7 @@ public class OctoVersionAttribute : ValueInjectionAttributeBase
     /// Name of the parameter containing the Patch version number to be passed to OctoVersion.
     /// If this parameter is provided, it will override any value passed in the Patch property
     /// </summary>
-    [CanBeNull] public string PatchMember { get; set; }
+    public string PatchMember { get; set; }
 
     public override object GetValue(MemberInfo member, object instance)
     {

@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
-[PublicAPI]
 public static class ArrayExtensions
 {
     public static void Deconstruct<T>(this T[] items, out T t0)

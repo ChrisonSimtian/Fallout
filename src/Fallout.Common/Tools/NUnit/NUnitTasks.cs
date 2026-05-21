@@ -3,12 +3,10 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.Tools.NUnit;
 
-[PublicAPI]
 public class NUnitVerbosityMappingAttribute : VerbosityMappingAttribute
 {
     public NUnitVerbosityMappingAttribute()

@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.CI.AzurePipelines;
@@ -13,7 +12,6 @@ namespace Fallout.Common.CI.AzurePipelines;
 /// <summary>
 /// See <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted">Microsoft-hosted agents</a>
 /// </summary>
-[PublicAPI]
 public enum AzurePipelinesImage
 {
     [EnumValue("windows-2022")] Windows2022,

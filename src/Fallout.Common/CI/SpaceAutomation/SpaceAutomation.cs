@@ -6,21 +6,18 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.SpaceAutomation;
 
 /// <summary>
 /// Interface according to the <a href="https://www.jetbrains.com/help/space/automation.html">official website</a>.
 /// </summary>
-[PublicAPI]
 [CI]
 [ExcludeFromCodeCoverage]
 public partial class SpaceAutomation : Host, IBuildServer
 {
     public new static SpaceAutomation Instance => Host.Instance as SpaceAutomation;
 
-    [UsedImplicitly]
     internal static bool IsRunningSpaceAutomation => EnvironmentInfo.HasVariable("JB_SPACE_PROJECT_KEY");
 
     string IBuildServer.Branch => GitBranch;

@@ -6,11 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.ProjectModel;
 
-[PublicAPI]
 public static partial class ProjectExtensions
 {
     static ProjectExtensions()
@@ -22,7 +20,6 @@ public static partial class ProjectExtensions
     /// Returns the <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-target-framework-and-target-platform">
     /// target frameworks</a> of the project.
     /// </summary>
-    [CanBeNull]
     public static IReadOnlyCollection<string> GetTargetFrameworks(this Project project)
     {
         return project.GetSplittedPropertyValue("TargetFramework", "TargetFrameworks");
@@ -31,7 +28,6 @@ public static partial class ProjectExtensions
     /// <summary>
     /// Returns the <a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog">runtime identifiers</a> of the project.
     /// </summary>
-    [CanBeNull]
     public static IReadOnlyCollection<string> GetRuntimeIdentifiers(this Project project)
     {
         return project.GetSplittedPropertyValue("RuntimeIdentifier", "RuntimeIdentifiers");
@@ -65,7 +61,6 @@ public static partial class ProjectExtensions
             : null;
     }
 
-    [CanBeNull]
     private static IReadOnlyCollection<string> GetSplittedPropertyValue(
         this Project project,
         params string[] names)

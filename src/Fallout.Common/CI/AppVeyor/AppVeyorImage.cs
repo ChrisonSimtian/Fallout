@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.CI.AppVeyor;
@@ -13,7 +12,6 @@ namespace Fallout.Common.CI.AppVeyor;
 /// <summary>
 /// See <a href="https://www.appveyor.com/docs/build-environment/">Build environment</a>
 /// </summary>
-[PublicAPI]
 public enum AppVeyorImage
 {
     [EnumValue("Visual Studio 2013")] VisualStudio2013,

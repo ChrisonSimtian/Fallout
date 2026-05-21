@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.SpaceAutomation.Configuration;
 
-[PublicAPI]
 public class SpaceAutomationPushTrigger : SpaceAutomationTrigger
 {
     public bool? OnPush { get; set; }

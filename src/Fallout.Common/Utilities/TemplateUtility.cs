@@ -6,14 +6,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 public static class TemplateUtility
 {
     public static void AddRegion(List<string> content, string section, IEnumerable<string> lines)
@@ -70,9 +68,9 @@ public static class TemplateUtility
 
     private static void FillTemplateDirectoryRecursivelyInternal(
         AbsolutePath directory,
-        [CanBeNull] IReadOnlyDictionary<string, string> tokens,
-        [CanBeNull] Func<AbsolutePath, bool> excludeDirectory,
-        [CanBeNull] Func<AbsolutePath, bool> excludeFile = null)
+        IReadOnlyDictionary<string, string> tokens,
+        Func<AbsolutePath, bool> excludeDirectory,
+        Func<AbsolutePath, bool> excludeFile = null)
     {
         Assert.DirectoryExists(directory);
 
@@ -172,7 +170,7 @@ public static class TemplateUtility
         }
     }
 
-    private static string Replace(this string str, [CanBeNull] IReadOnlyDictionary<string, string> tokens)
+    private static string Replace(this string str, IReadOnlyDictionary<string, string> tokens)
     {
         return tokens?.OrderByDescending(x => x.Key.Length).Aggregate(str, (t, r) => t.Replace($"_{r.Key}_", r.Value));
     }

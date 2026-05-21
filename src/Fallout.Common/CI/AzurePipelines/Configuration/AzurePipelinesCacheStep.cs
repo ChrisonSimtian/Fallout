@@ -5,14 +5,12 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Tooling;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
 // https://docs.microsoft.com/en-us/azure/devops/pipelines/release/caching
-[PublicAPI]
 public class AzurePipelinesCacheStep : AzurePipelinesStep
 {
     public AzurePipelinesImage Image { get; set; }

@@ -7,14 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.IO;
 
 // TODO: document
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class FileGlobbingAttribute : FileSystemGlobbingAttributeBase
 {
@@ -25,7 +23,6 @@ public class FileGlobbingAttribute : FileSystemGlobbingAttributeBase
 }
 
 // TODO: document
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class DirectoryGlobbingAttribute : FileSystemGlobbingAttributeBase
 {

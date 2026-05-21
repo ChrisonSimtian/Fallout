@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.OctoVersion;
 
 /// <summary><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class OctoVersionTasks : ToolTasks, IRequireNuGetPackage
@@ -45,7 +43,6 @@ public partial class OctoVersionTasks : ToolTasks, IRequireNuGetPackage
 }
 #region OctoVersionGetVersionSettings
 /// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Common.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctoVersionTasks), Command = nameof(OctoVersionTasks.OctoVersionGetVersion), Arguments = "octoversion")]
 public partial class OctoVersionGetVersionSettings : ToolOptions, IToolOptionsWithFramework
@@ -78,7 +75,6 @@ public partial class OctoVersionGetVersionSettings : ToolOptions, IToolOptionsWi
 #endregion
 #region OctoVersionExecuteSettings
 /// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Common.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctoVersionTasks), Command = nameof(OctoVersionTasks.OctoVersionExecute), Arguments = "octoversion")]
 public partial class OctoVersionExecuteSettings : ToolOptions, IToolOptionsWithFramework
@@ -111,293 +107,290 @@ public partial class OctoVersionExecuteSettings : ToolOptions, IToolOptionsWithF
 #endregion
 #region OctoVersionGetVersionSettingsExtensions
 /// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Common.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctoVersionGetVersionSettingsExtensions
 {
     #region CurrentBranch
     /// <inheritdoc cref="OctoVersionGetVersionSettings.CurrentBranch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.CurrentBranch))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.CurrentBranch))]
     public static T SetCurrentBranch<T>(this T o, string v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.CurrentBranch, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.CurrentBranch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.CurrentBranch))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.CurrentBranch))]
     public static T ResetCurrentBranch<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.CurrentBranch));
     #endregion
     #region NonPreReleaseTags
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T SetNonPreReleaseTags<T>(this T o, params string[] v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T SetNonPreReleaseTags<T>(this T o, IEnumerable<string> v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T AddNonPreReleaseTags<T>(this T o, params string[] v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.AddCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T AddNonPreReleaseTags<T>(this T o, IEnumerable<string> v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.AddCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T RemoveNonPreReleaseTags<T>(this T o, params string[] v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.RemoveCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T RemoveNonPreReleaseTags<T>(this T o, IEnumerable<string> v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.RemoveCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.NonPreReleaseTags))]
     public static T ClearNonPreReleaseTags<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.ClearCollection(() => o.NonPreReleaseTags));
     #endregion
     #region RepositoryPath
     /// <inheritdoc cref="OctoVersionGetVersionSettings.RepositoryPath"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.RepositoryPath))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.RepositoryPath))]
     public static T SetRepositoryPath<T>(this T o, string v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.RepositoryPath, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.RepositoryPath"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.RepositoryPath))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.RepositoryPath))]
     public static T ResetRepositoryPath<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.RepositoryPath));
     #endregion
     #region Major
     /// <inheritdoc cref="OctoVersionGetVersionSettings.Major"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Major))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Major))]
     public static T SetMajor<T>(this T o, int? v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.Major, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.Major"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Major))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Major))]
     public static T ResetMajor<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.Major));
     #endregion
     #region Minor
     /// <inheritdoc cref="OctoVersionGetVersionSettings.Minor"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Minor))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Minor))]
     public static T SetMinor<T>(this T o, int? v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.Minor, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.Minor"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Minor))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Minor))]
     public static T ResetMinor<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.Minor));
     #endregion
     #region Patch
     /// <inheritdoc cref="OctoVersionGetVersionSettings.Patch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Patch))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Patch))]
     public static T SetPatch<T>(this T o, int? v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.Patch, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.Patch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Patch))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.Patch))]
     public static T ResetPatch<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.Patch));
     #endregion
     #region PreReleaseTag
     /// <inheritdoc cref="OctoVersionGetVersionSettings.PreReleaseTag"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.PreReleaseTag))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.PreReleaseTag))]
     public static T SetPreReleaseTag<T>(this T o, string v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.PreReleaseTag, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.PreReleaseTag"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.PreReleaseTag))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.PreReleaseTag))]
     public static T ResetPreReleaseTag<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.PreReleaseTag));
     #endregion
     #region BuildMetadata
     /// <inheritdoc cref="OctoVersionGetVersionSettings.BuildMetadata"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.BuildMetadata))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.BuildMetadata))]
     public static T SetBuildMetadata<T>(this T o, string v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.BuildMetadata, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.BuildMetadata"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.BuildMetadata))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.BuildMetadata))]
     public static T ResetBuildMetadata<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.BuildMetadata));
     #endregion
     #region FullSemVer
     /// <inheritdoc cref="OctoVersionGetVersionSettings.FullSemVer"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.FullSemVer))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.FullSemVer))]
     public static T SetFullSemVer<T>(this T o, string v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.FullSemVer, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.FullSemVer"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.FullSemVer))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.FullSemVer))]
     public static T ResetFullSemVer<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.FullSemVer));
     #endregion
     #region OutputFormats
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T SetOutputFormats<T>(this T o, params OctoVersionOutputFormatter[] v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T SetOutputFormats<T>(this T o, IEnumerable<OctoVersionOutputFormatter> v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T AddOutputFormats<T>(this T o, params OctoVersionOutputFormatter[] v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.AddCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T AddOutputFormats<T>(this T o, IEnumerable<OctoVersionOutputFormatter> v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.AddCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T RemoveOutputFormats<T>(this T o, params OctoVersionOutputFormatter[] v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.RemoveCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T RemoveOutputFormats<T>(this T o, IEnumerable<OctoVersionOutputFormatter> v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.RemoveCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputFormats))]
     public static T ClearOutputFormats<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.ClearCollection(() => o.OutputFormats));
     #endregion
     #region DetectEnvironment
     /// <inheritdoc cref="OctoVersionGetVersionSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
     public static T SetDetectEnvironment<T>(this T o, bool? v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
     public static T ResetDetectEnvironment<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.DetectEnvironment));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
     public static T EnableDetectEnvironment<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, true));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
     public static T DisableDetectEnvironment<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, false));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.DetectEnvironment))]
     public static T ToggleDetectEnvironment<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, !o.DetectEnvironment));
     #endregion
     #region OutputJsonFile
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputJsonFile"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputJsonFile))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputJsonFile))]
     public static T SetOutputJsonFile<T>(this T o, string v) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Set(() => o.OutputJsonFile, v));
     /// <inheritdoc cref="OctoVersionGetVersionSettings.OutputJsonFile"/>
-    [Pure] [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputJsonFile))]
+    [Builder(Type = typeof(OctoVersionGetVersionSettings), Property = nameof(OctoVersionGetVersionSettings.OutputJsonFile))]
     public static T ResetOutputJsonFile<T>(this T o) where T : OctoVersionGetVersionSettings => o.Modify(b => b.Remove(() => o.OutputJsonFile));
     #endregion
 }
 #endregion
 #region OctoVersionExecuteSettingsExtensions
 /// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Common.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OctoVersionExecuteSettingsExtensions
 {
     #region CurrentBranch
     /// <inheritdoc cref="OctoVersionExecuteSettings.CurrentBranch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.CurrentBranch))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.CurrentBranch))]
     public static T SetCurrentBranch<T>(this T o, string v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.CurrentBranch, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.CurrentBranch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.CurrentBranch))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.CurrentBranch))]
     public static T ResetCurrentBranch<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.CurrentBranch));
     #endregion
     #region NonPreReleaseTags
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T SetNonPreReleaseTags<T>(this T o, params string[] v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T SetNonPreReleaseTags<T>(this T o, IEnumerable<string> v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T AddNonPreReleaseTags<T>(this T o, params string[] v) where T : OctoVersionExecuteSettings => o.Modify(b => b.AddCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T AddNonPreReleaseTags<T>(this T o, IEnumerable<string> v) where T : OctoVersionExecuteSettings => o.Modify(b => b.AddCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T RemoveNonPreReleaseTags<T>(this T o, params string[] v) where T : OctoVersionExecuteSettings => o.Modify(b => b.RemoveCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T RemoveNonPreReleaseTags<T>(this T o, IEnumerable<string> v) where T : OctoVersionExecuteSettings => o.Modify(b => b.RemoveCollection(() => o.NonPreReleaseTags, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.NonPreReleaseTags"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.NonPreReleaseTags))]
     public static T ClearNonPreReleaseTags<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.ClearCollection(() => o.NonPreReleaseTags));
     #endregion
     #region RepositoryPath
     /// <inheritdoc cref="OctoVersionExecuteSettings.RepositoryPath"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.RepositoryPath))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.RepositoryPath))]
     public static T SetRepositoryPath<T>(this T o, string v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.RepositoryPath, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.RepositoryPath"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.RepositoryPath))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.RepositoryPath))]
     public static T ResetRepositoryPath<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.RepositoryPath));
     #endregion
     #region Major
     /// <inheritdoc cref="OctoVersionExecuteSettings.Major"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Major))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Major))]
     public static T SetMajor<T>(this T o, int? v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.Major, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.Major"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Major))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Major))]
     public static T ResetMajor<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.Major));
     #endregion
     #region Minor
     /// <inheritdoc cref="OctoVersionExecuteSettings.Minor"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Minor))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Minor))]
     public static T SetMinor<T>(this T o, int? v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.Minor, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.Minor"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Minor))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Minor))]
     public static T ResetMinor<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.Minor));
     #endregion
     #region Patch
     /// <inheritdoc cref="OctoVersionExecuteSettings.Patch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Patch))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Patch))]
     public static T SetPatch<T>(this T o, int? v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.Patch, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.Patch"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Patch))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.Patch))]
     public static T ResetPatch<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.Patch));
     #endregion
     #region PreReleaseTag
     /// <inheritdoc cref="OctoVersionExecuteSettings.PreReleaseTag"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.PreReleaseTag))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.PreReleaseTag))]
     public static T SetPreReleaseTag<T>(this T o, string v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.PreReleaseTag, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.PreReleaseTag"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.PreReleaseTag))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.PreReleaseTag))]
     public static T ResetPreReleaseTag<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.PreReleaseTag));
     #endregion
     #region BuildMetadata
     /// <inheritdoc cref="OctoVersionExecuteSettings.BuildMetadata"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.BuildMetadata))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.BuildMetadata))]
     public static T SetBuildMetadata<T>(this T o, string v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.BuildMetadata, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.BuildMetadata"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.BuildMetadata))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.BuildMetadata))]
     public static T ResetBuildMetadata<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.BuildMetadata));
     #endregion
     #region FullSemVer
     /// <inheritdoc cref="OctoVersionExecuteSettings.FullSemVer"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.FullSemVer))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.FullSemVer))]
     public static T SetFullSemVer<T>(this T o, string v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.FullSemVer, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.FullSemVer"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.FullSemVer))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.FullSemVer))]
     public static T ResetFullSemVer<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.FullSemVer));
     #endregion
     #region OutputFormats
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T SetOutputFormats<T>(this T o, params OctoVersionOutputFormatter[] v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T SetOutputFormats<T>(this T o, IEnumerable<OctoVersionOutputFormatter> v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T AddOutputFormats<T>(this T o, params OctoVersionOutputFormatter[] v) where T : OctoVersionExecuteSettings => o.Modify(b => b.AddCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T AddOutputFormats<T>(this T o, IEnumerable<OctoVersionOutputFormatter> v) where T : OctoVersionExecuteSettings => o.Modify(b => b.AddCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T RemoveOutputFormats<T>(this T o, params OctoVersionOutputFormatter[] v) where T : OctoVersionExecuteSettings => o.Modify(b => b.RemoveCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T RemoveOutputFormats<T>(this T o, IEnumerable<OctoVersionOutputFormatter> v) where T : OctoVersionExecuteSettings => o.Modify(b => b.RemoveCollection(() => o.OutputFormats, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputFormats"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputFormats))]
     public static T ClearOutputFormats<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.ClearCollection(() => o.OutputFormats));
     #endregion
     #region DetectEnvironment
     /// <inheritdoc cref="OctoVersionExecuteSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
     public static T SetDetectEnvironment<T>(this T o, bool? v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
     public static T ResetDetectEnvironment<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.DetectEnvironment));
     /// <inheritdoc cref="OctoVersionExecuteSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
     public static T EnableDetectEnvironment<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, true));
     /// <inheritdoc cref="OctoVersionExecuteSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
     public static T DisableDetectEnvironment<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, false));
     /// <inheritdoc cref="OctoVersionExecuteSettings.DetectEnvironment"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.DetectEnvironment))]
     public static T ToggleDetectEnvironment<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.DetectEnvironment, !o.DetectEnvironment));
     #endregion
     #region OutputJsonFile
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputJsonFile"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputJsonFile))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputJsonFile))]
     public static T SetOutputJsonFile<T>(this T o, string v) where T : OctoVersionExecuteSettings => o.Modify(b => b.Set(() => o.OutputJsonFile, v));
     /// <inheritdoc cref="OctoVersionExecuteSettings.OutputJsonFile"/>
-    [Pure] [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputJsonFile))]
+    [Builder(Type = typeof(OctoVersionExecuteSettings), Property = nameof(OctoVersionExecuteSettings.OutputJsonFile))]
     public static T ResetOutputJsonFile<T>(this T o) where T : OctoVersionExecuteSettings => o.Modify(b => b.Remove(() => o.OutputJsonFile));
     #endregion
 }
 #endregion
 #region OctoVersionOutputFormatter
 /// <summary>Used within <see cref="OctoVersionTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OctoVersionOutputFormatter>))]

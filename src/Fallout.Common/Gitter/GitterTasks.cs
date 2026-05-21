@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Fallout.Common.Utilities.Net;
 
 namespace Fallout.Common.Gitter;
-//[PublicAPI]
+//
 //[Headers("Accept: application/json")]
 //public interface IGitterRestClient
 //{

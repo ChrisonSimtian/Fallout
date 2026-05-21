@@ -5,7 +5,6 @@
 
 using System.Linq;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tools.GitHub;
@@ -15,7 +14,6 @@ partial class Build
 {
     AbsolutePath StargazersFile => TemporaryDirectory / "stargazers.csv";
 
-    [UsedImplicitly]
     Target UpdateStargazers => _ => _
         .Executes(async () =>
         {

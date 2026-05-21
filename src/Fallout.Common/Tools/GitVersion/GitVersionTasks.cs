@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -28,7 +27,6 @@ partial class GitVersionTasks
     }
 }
 
-[PublicAPI]
 public record GitVersion(
     int Major,
     int Minor,

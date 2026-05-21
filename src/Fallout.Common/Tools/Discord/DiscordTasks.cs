@@ -5,13 +5,11 @@
 
 using System.Net.Http;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
 
 namespace Fallout.Common.Tools.Discord;
 
-[PublicAPI]
 public static class DiscordTasks
 {
     public static void SendDiscordMessage(Configure<DiscordMessage> configurator, string webhook)

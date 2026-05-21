@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazReports : IHazArtifacts
 {
     AbsolutePath ReportDirectory => ArtifactsDirectory / "reports";

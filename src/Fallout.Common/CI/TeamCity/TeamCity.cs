@@ -9,7 +9,6 @@ using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Tools.DotCover;
 using Fallout.Common.Utilities;
@@ -21,17 +20,14 @@ namespace Fallout.Common.CI.TeamCity;
 /// <summary>
 /// Interface according to the <a href="https://confluence.jetbrains.com/display/TCDL/Build+Script+Interaction+with+TeamCity">official website</a>.
 /// </summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class TeamCity : Host, IBuildServer
 {
     public new static TeamCity Instance => Host.Instance as TeamCity;
 
-    [UsedImplicitly]
     internal static bool IsRunningTeamCity => EnvironmentInfo.HasVariable("TEAMCITY_VERSION");
 
-    [CanBeNull]
-    private static IReadOnlyDictionary<string, string> ParseDictionary([CanBeNull] AbsolutePath file)
+    private static IReadOnlyDictionary<string, string> ParseDictionary(AbsolutePath file)
     {
         if (file == null)
             return null;
@@ -115,10 +111,10 @@ public partial class TeamCity : Host, IBuildServer
     public long BuildId => long.Parse(ConfigurationProperties?["teamcity.build.id"] ?? 0.ToString());
     public bool IsBuildPersonal => bool.Parse(SystemProperties?.GetValueOrDefault("build.is.personal") ?? bool.FalseString);
     public bool IsPullRequest => ConfigurationProperties?.GetValueOrDefault("teamcity.pullRequest.number") != null;
-    [CanBeNull] public long? PullRequestNumber => IsPullRequest ? long.Parse(ConfigurationProperties["teamcity.pullRequest.number"]) : null;
-    [CanBeNull] public string PullRequestSourceBranch => IsPullRequest ? ConfigurationProperties["teamcity.pullRequest.source.branch"] : null;
-    [CanBeNull] public string PullRequestTargetBranch => IsPullRequest ? ConfigurationProperties["teamcity.pullRequest.target.branch"] : null;
-    [CanBeNull] public string PullRequestTitle => IsPullRequest ? ConfigurationProperties["teamcity.pullRequest.title"] : null;
+    public long? PullRequestNumber => IsPullRequest ? long.Parse(ConfigurationProperties["teamcity.pullRequest.number"]) : null;
+    public string PullRequestSourceBranch => IsPullRequest ? ConfigurationProperties["teamcity.pullRequest.source.branch"] : null;
+    public string PullRequestTargetBranch => IsPullRequest ? ConfigurationProperties["teamcity.pullRequest.target.branch"] : null;
+    public string PullRequestTitle => IsPullRequest ? ConfigurationProperties["teamcity.pullRequest.title"] : null;
 
     [NoConvert] public string BranchName => ConfigurationProperties?.GetValueOrDefault("teamcity.build.branch")
         .NotNull("Configuration property 'teamcity.build.branch' is null. See https://youtrack.jetbrains.com/issue/TW-62888.");

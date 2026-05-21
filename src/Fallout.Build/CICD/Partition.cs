@@ -8,11 +8,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI;
 
-[PublicAPI]
 [TypeConverter(typeof(TypeConverter))]
 public class Partition
 {

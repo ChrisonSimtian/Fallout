@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.InnoSetup;
 
 /// <summary><p>Inno Setup is a free installer for Windows programs by Jordan Russell and Martijn Laan. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.</p><p>For more details, visit the <a href="http://www.jrsoftware.org/isinfo.php">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class InnoSetupTasks : ToolTasks, IRequirePathTool
@@ -37,7 +35,6 @@ public partial class InnoSetupTasks : ToolTasks, IRequirePathTool
 }
 #region InnoSetupSettings
 /// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Common.Tools.InnoSetup.InnoSetupSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(InnoSetupTasks), Command = nameof(InnoSetupTasks.InnoSetup))]
 public partial class InnoSetupSettings : ToolOptions
@@ -66,148 +63,147 @@ public partial class InnoSetupSettings : ToolOptions
 #endregion
 #region InnoSetupSettingsExtensions
 /// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Common.Tools.InnoSetup.InnoSetupSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class InnoSetupSettingsExtensions
 {
     #region ScriptFile
     /// <inheritdoc cref="InnoSetupSettings.ScriptFile"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.ScriptFile))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.ScriptFile))]
     public static T SetScriptFile<T>(this T o, string v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.ScriptFile, v));
     /// <inheritdoc cref="InnoSetupSettings.ScriptFile"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.ScriptFile))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.ScriptFile))]
     public static T ResetScriptFile<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.ScriptFile));
     #endregion
     #region Output
     /// <inheritdoc cref="InnoSetupSettings.Output"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
     public static T SetOutput<T>(this T o, bool? v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="InnoSetupSettings.Output"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.Output));
     /// <inheritdoc cref="InnoSetupSettings.Output"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
     public static T EnableOutput<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Output, true));
     /// <inheritdoc cref="InnoSetupSettings.Output"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
     public static T DisableOutput<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Output, false));
     /// <inheritdoc cref="InnoSetupSettings.Output"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Output))]
     public static T ToggleOutput<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Output, !o.Output));
     #endregion
     #region OutputDir
     /// <inheritdoc cref="InnoSetupSettings.OutputDir"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputDir))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputDir))]
     public static T SetOutputDir<T>(this T o, string v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.OutputDir, v));
     /// <inheritdoc cref="InnoSetupSettings.OutputDir"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputDir))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputDir))]
     public static T ResetOutputDir<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.OutputDir));
     #endregion
     #region OutputBaseFilename
     /// <inheritdoc cref="InnoSetupSettings.OutputBaseFilename"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputBaseFilename))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputBaseFilename))]
     public static T SetOutputBaseFilename<T>(this T o, string v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.OutputBaseFilename, v));
     /// <inheritdoc cref="InnoSetupSettings.OutputBaseFilename"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputBaseFilename))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.OutputBaseFilename))]
     public static T ResetOutputBaseFilename<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.OutputBaseFilename));
     #endregion
     #region SignTools
     /// <inheritdoc cref="InnoSetupSettings.SignTools"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
     public static T SetSignTools<T>(this T o, IDictionary<string, string> v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.SignTools, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="InnoSetupSettings.SignTools"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
     public static T SetSignTool<T>(this T o, string k, string v) where T : InnoSetupSettings => o.Modify(b => b.SetDictionary(() => o.SignTools, k, v));
     /// <inheritdoc cref="InnoSetupSettings.SignTools"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
     public static T AddSignTool<T>(this T o, string k, string v) where T : InnoSetupSettings => o.Modify(b => b.AddDictionary(() => o.SignTools, k, v));
     /// <inheritdoc cref="InnoSetupSettings.SignTools"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
     public static T RemoveSignTool<T>(this T o, string k) where T : InnoSetupSettings => o.Modify(b => b.RemoveDictionary(() => o.SignTools, k));
     /// <inheritdoc cref="InnoSetupSettings.SignTools"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.SignTools))]
     public static T ClearSignTools<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.ClearDictionary(() => o.SignTools));
     #endregion
     #region Quiet
     /// <inheritdoc cref="InnoSetupSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="InnoSetupSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="InnoSetupSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="InnoSetupSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="InnoSetupSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
     #region QuietWithProgress
     /// <inheritdoc cref="InnoSetupSettings.QuietWithProgress"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
     public static T SetQuietWithProgress<T>(this T o, bool? v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.QuietWithProgress, v));
     /// <inheritdoc cref="InnoSetupSettings.QuietWithProgress"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
     public static T ResetQuietWithProgress<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.QuietWithProgress));
     /// <inheritdoc cref="InnoSetupSettings.QuietWithProgress"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
     public static T EnableQuietWithProgress<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.QuietWithProgress, true));
     /// <inheritdoc cref="InnoSetupSettings.QuietWithProgress"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
     public static T DisableQuietWithProgress<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.QuietWithProgress, false));
     /// <inheritdoc cref="InnoSetupSettings.QuietWithProgress"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.QuietWithProgress))]
     public static T ToggleQuietWithProgress<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.QuietWithProgress, !o.QuietWithProgress));
     #endregion
     #region KeyValueDefinitions
     /// <inheritdoc cref="InnoSetupSettings.KeyValueDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
     public static T SetKeyValueDefinitions<T>(this T o, IDictionary<string, string> v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.KeyValueDefinitions, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="InnoSetupSettings.KeyValueDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
     public static T SetKeyValueDefinition<T>(this T o, string k, string v) where T : InnoSetupSettings => o.Modify(b => b.SetDictionary(() => o.KeyValueDefinitions, k, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyValueDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
     public static T AddKeyValueDefinition<T>(this T o, string k, string v) where T : InnoSetupSettings => o.Modify(b => b.AddDictionary(() => o.KeyValueDefinitions, k, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyValueDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
     public static T RemoveKeyValueDefinition<T>(this T o, string k) where T : InnoSetupSettings => o.Modify(b => b.RemoveDictionary(() => o.KeyValueDefinitions, k));
     /// <inheritdoc cref="InnoSetupSettings.KeyValueDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyValueDefinitions))]
     public static T ClearKeyValueDefinitions<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.ClearDictionary(() => o.KeyValueDefinitions));
     #endregion
     #region KeyDefinitions
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T SetKeyDefinitions<T>(this T o, params string[] v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.KeyDefinitions, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T SetKeyDefinitions<T>(this T o, IEnumerable<string> v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.KeyDefinitions, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T AddKeyDefinitions<T>(this T o, params string[] v) where T : InnoSetupSettings => o.Modify(b => b.AddCollection(() => o.KeyDefinitions, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T AddKeyDefinitions<T>(this T o, IEnumerable<string> v) where T : InnoSetupSettings => o.Modify(b => b.AddCollection(() => o.KeyDefinitions, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T RemoveKeyDefinitions<T>(this T o, params string[] v) where T : InnoSetupSettings => o.Modify(b => b.RemoveCollection(() => o.KeyDefinitions, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T RemoveKeyDefinitions<T>(this T o, IEnumerable<string> v) where T : InnoSetupSettings => o.Modify(b => b.RemoveCollection(() => o.KeyDefinitions, v));
     /// <inheritdoc cref="InnoSetupSettings.KeyDefinitions"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.KeyDefinitions))]
     public static T ClearKeyDefinitions<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.ClearCollection(() => o.KeyDefinitions));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="InnoSetupSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Verbosity))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, int? v) where T : InnoSetupSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="InnoSetupSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Verbosity))]
+    [Builder(Type = typeof(InnoSetupSettings), Property = nameof(InnoSetupSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : InnoSetupSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
 }

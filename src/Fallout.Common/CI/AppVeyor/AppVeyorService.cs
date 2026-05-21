@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.AppVeyor;
 
@@ -13,7 +12,6 @@ namespace Fallout.Common.CI.AppVeyor;
 ///
 /// See <a href="https://www.appveyor.com/docs/services-databases">Services and databases</a>
 /// </summary>
-[PublicAPI]
 public enum AppVeyorService
 {
     MSSQL2008R2SP2,

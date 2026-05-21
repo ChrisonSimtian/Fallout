@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.MSpec;
 
 /// <summary><p>MSpec is called a 'context/specification' test framework because of the 'grammar' that is used in describing and coding the tests or 'specs'.</p><p>For more details, visit the <a href="https://github.com/machine/machine.specifications">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId)]
 public partial class MSpecTasks : ToolTasks, IRequireNuGetPackage
@@ -37,7 +35,6 @@ public partial class MSpecTasks : ToolTasks, IRequireNuGetPackage
 }
 #region MSpecSettings
 /// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Common.Tools.MSpec.MSpecSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MSpecTasks), Command = nameof(MSpecTasks.MSpec))]
 public partial class MSpecSettings : ToolOptions
@@ -74,252 +71,251 @@ public partial class MSpecSettings : ToolOptions
 #endregion
 #region MSpecSettingsExtensions
 /// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Common.Tools.MSpec.MSpecSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class MSpecSettingsExtensions
 {
     #region Assemblies
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T SetAssemblies<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Assemblies, v));
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T SetAssemblies<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Assemblies, v));
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T AddAssemblies<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Assemblies, v));
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T AddAssemblies<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Assemblies, v));
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T RemoveAssemblies<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Assemblies, v));
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T RemoveAssemblies<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Assemblies, v));
     /// <inheritdoc cref="MSpecSettings.Assemblies"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Assemblies))]
     public static T ClearAssemblies<T>(this T o) where T : MSpecSettings => o.Modify(b => b.ClearCollection(() => o.Assemblies));
     #endregion
     #region Filters
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T SetFilters<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T SetFilters<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T AddFilters<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T AddFilters<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T RemoveFilters<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T RemoveFilters<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="MSpecSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Filters))]
     public static T ClearFilters<T>(this T o) where T : MSpecSettings => o.Modify(b => b.ClearCollection(() => o.Filters));
     #endregion
     #region Includes
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T SetIncludes<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Includes, v));
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T SetIncludes<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Includes, v));
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T AddIncludes<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Includes, v));
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T AddIncludes<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Includes, v));
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T RemoveIncludes<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Includes, v));
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T RemoveIncludes<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Includes, v));
     /// <inheritdoc cref="MSpecSettings.Includes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Includes))]
     public static T ClearIncludes<T>(this T o) where T : MSpecSettings => o.Modify(b => b.ClearCollection(() => o.Includes));
     #endregion
     #region Excludes
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T SetExcludes<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Excludes, v));
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T SetExcludes<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Excludes, v));
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T AddExcludes<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Excludes, v));
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T AddExcludes<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.AddCollection(() => o.Excludes, v));
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T RemoveExcludes<T>(this T o, params string[] v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Excludes, v));
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T RemoveExcludes<T>(this T o, IEnumerable<string> v) where T : MSpecSettings => o.Modify(b => b.RemoveCollection(() => o.Excludes, v));
     /// <inheritdoc cref="MSpecSettings.Excludes"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Excludes))]
     public static T ClearExcludes<T>(this T o) where T : MSpecSettings => o.Modify(b => b.ClearCollection(() => o.Excludes));
     #endregion
     #region HtmlOutput
     /// <inheritdoc cref="MSpecSettings.HtmlOutput"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.HtmlOutput))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.HtmlOutput))]
     public static T SetHtmlOutput<T>(this T o, string v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.HtmlOutput, v));
     /// <inheritdoc cref="MSpecSettings.HtmlOutput"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.HtmlOutput))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.HtmlOutput))]
     public static T ResetHtmlOutput<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.HtmlOutput));
     #endregion
     #region XmlOutput
     /// <inheritdoc cref="MSpecSettings.XmlOutput"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.XmlOutput))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.XmlOutput))]
     public static T SetXmlOutput<T>(this T o, string v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.XmlOutput, v));
     /// <inheritdoc cref="MSpecSettings.XmlOutput"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.XmlOutput))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.XmlOutput))]
     public static T ResetXmlOutput<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.XmlOutput));
     #endregion
     #region TeamCity
     /// <inheritdoc cref="MSpecSettings.TeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
     public static T SetTeamCity<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TeamCity, v));
     /// <inheritdoc cref="MSpecSettings.TeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
     public static T ResetTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.TeamCity));
     /// <inheritdoc cref="MSpecSettings.TeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
     public static T EnableTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TeamCity, true));
     /// <inheritdoc cref="MSpecSettings.TeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
     public static T DisableTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TeamCity, false));
     /// <inheritdoc cref="MSpecSettings.TeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TeamCity))]
     public static T ToggleTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TeamCity, !o.TeamCity));
     #endregion
     #region NoTeamCity
     /// <inheritdoc cref="MSpecSettings.NoTeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
     public static T SetNoTeamCity<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoTeamCity, v));
     /// <inheritdoc cref="MSpecSettings.NoTeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
     public static T ResetNoTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.NoTeamCity));
     /// <inheritdoc cref="MSpecSettings.NoTeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
     public static T EnableNoTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoTeamCity, true));
     /// <inheritdoc cref="MSpecSettings.NoTeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
     public static T DisableNoTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoTeamCity, false));
     /// <inheritdoc cref="MSpecSettings.NoTeamCity"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoTeamCity))]
     public static T ToggleNoTeamCity<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoTeamCity, !o.NoTeamCity));
     #endregion
     #region AppVeyor
     /// <inheritdoc cref="MSpecSettings.AppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
     public static T SetAppVeyor<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.AppVeyor, v));
     /// <inheritdoc cref="MSpecSettings.AppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
     public static T ResetAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.AppVeyor));
     /// <inheritdoc cref="MSpecSettings.AppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
     public static T EnableAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.AppVeyor, true));
     /// <inheritdoc cref="MSpecSettings.AppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
     public static T DisableAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.AppVeyor, false));
     /// <inheritdoc cref="MSpecSettings.AppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.AppVeyor))]
     public static T ToggleAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.AppVeyor, !o.AppVeyor));
     #endregion
     #region NoAppVeyor
     /// <inheritdoc cref="MSpecSettings.NoAppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
     public static T SetNoAppVeyor<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoAppVeyor, v));
     /// <inheritdoc cref="MSpecSettings.NoAppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
     public static T ResetNoAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.NoAppVeyor));
     /// <inheritdoc cref="MSpecSettings.NoAppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
     public static T EnableNoAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoAppVeyor, true));
     /// <inheritdoc cref="MSpecSettings.NoAppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
     public static T DisableNoAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoAppVeyor, false));
     /// <inheritdoc cref="MSpecSettings.NoAppVeyor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoAppVeyor))]
     public static T ToggleNoAppVeyor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoAppVeyor, !o.NoAppVeyor));
     #endregion
     #region TimeInfo
     /// <inheritdoc cref="MSpecSettings.TimeInfo"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
     public static T SetTimeInfo<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TimeInfo, v));
     /// <inheritdoc cref="MSpecSettings.TimeInfo"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
     public static T ResetTimeInfo<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.TimeInfo));
     /// <inheritdoc cref="MSpecSettings.TimeInfo"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
     public static T EnableTimeInfo<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TimeInfo, true));
     /// <inheritdoc cref="MSpecSettings.TimeInfo"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
     public static T DisableTimeInfo<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TimeInfo, false));
     /// <inheritdoc cref="MSpecSettings.TimeInfo"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.TimeInfo))]
     public static T ToggleTimeInfo<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.TimeInfo, !o.TimeInfo));
     #endregion
     #region Silent
     /// <inheritdoc cref="MSpecSettings.Silent"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
     public static T SetSilent<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Silent, v));
     /// <inheritdoc cref="MSpecSettings.Silent"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
     public static T ResetSilent<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.Silent));
     /// <inheritdoc cref="MSpecSettings.Silent"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
     public static T EnableSilent<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Silent, true));
     /// <inheritdoc cref="MSpecSettings.Silent"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
     public static T DisableSilent<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Silent, false));
     /// <inheritdoc cref="MSpecSettings.Silent"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.Silent))]
     public static T ToggleSilent<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.Silent, !o.Silent));
     #endregion
     #region DottedProgress
     /// <inheritdoc cref="MSpecSettings.DottedProgress"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
     public static T SetDottedProgress<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.DottedProgress, v));
     /// <inheritdoc cref="MSpecSettings.DottedProgress"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
     public static T ResetDottedProgress<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.DottedProgress));
     /// <inheritdoc cref="MSpecSettings.DottedProgress"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
     public static T EnableDottedProgress<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.DottedProgress, true));
     /// <inheritdoc cref="MSpecSettings.DottedProgress"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
     public static T DisableDottedProgress<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.DottedProgress, false));
     /// <inheritdoc cref="MSpecSettings.DottedProgress"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.DottedProgress))]
     public static T ToggleDottedProgress<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.DottedProgress, !o.DottedProgress));
     #endregion
     #region NoColor
     /// <inheritdoc cref="MSpecSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
     public static T SetNoColor<T>(this T o, bool? v) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoColor, v));
     /// <inheritdoc cref="MSpecSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
     public static T ResetNoColor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Remove(() => o.NoColor));
     /// <inheritdoc cref="MSpecSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
     public static T EnableNoColor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoColor, true));
     /// <inheritdoc cref="MSpecSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
     public static T DisableNoColor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoColor, false));
     /// <inheritdoc cref="MSpecSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
+    [Builder(Type = typeof(MSpecSettings), Property = nameof(MSpecSettings.NoColor))]
     public static T ToggleNoColor<T>(this T o) where T : MSpecSettings => o.Modify(b => b.Set(() => o.NoColor, !o.NoColor));
     #endregion
 }

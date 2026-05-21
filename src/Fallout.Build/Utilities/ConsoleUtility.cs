@@ -7,7 +7,6 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
@@ -26,7 +25,6 @@ public class ConsoleUtility
     private static bool s_interrupted;
 
     // ReSharper disable once CognitiveComplexity
-    [CanBeNull]
     public static string PromptForInput(string question, string defaultValue)
     {
         if (s_interrupted)

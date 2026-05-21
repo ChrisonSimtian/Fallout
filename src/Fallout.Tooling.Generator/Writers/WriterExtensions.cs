@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.CodeGeneration.Writers;
 
@@ -15,7 +14,7 @@ public static class WriterExtensions
     public static TWrapper ForEach<TWrapper, TItem>(
         this TWrapper writerWrapper,
         IEnumerable<TItem> enumerable,
-        [InstantHandle] Action<TWrapper, TItem> action)
+        Action<TWrapper, TItem> action)
         where TWrapper : IWriterWrapper
     {
         foreach (var item in enumerable)
@@ -26,7 +25,7 @@ public static class WriterExtensions
     public static TWrapper ForEach<TWrapper, TItem>(
         this TWrapper writerWrapper,
         IEnumerable<TItem> enumerable,
-        [InstantHandle] Action<TItem> action)
+        Action<TItem> action)
         where TWrapper : IWriterWrapper
     {
         foreach (var item in enumerable)
@@ -37,7 +36,7 @@ public static class WriterExtensions
     public static TWrapper ForEach<TWrapper, TItem>(
         this TWrapper writerWrapper,
         IEnumerable<TItem> enumerable,
-        [InstantHandle] Action<TItem, bool> action)
+        Action<TItem, bool> action)
         where TWrapper : IWriterWrapper
     {
         var list = enumerable.ToList();
@@ -46,7 +45,7 @@ public static class WriterExtensions
         return writerWrapper;
     }
 
-    public static T WriteLine<T>(this T writerWrapper, [CanBeNull] string text)
+    public static T WriteLine<T>(this T writerWrapper, string text)
         where T : IWriterWrapper
     {
         if (text != null)
@@ -68,14 +67,14 @@ public static class WriterExtensions
         return writerWrapper;
     }
 
-    public static T WriteBlock<T>(this T writerWrapper, [InstantHandle] Action<T> action)
+    public static T WriteBlock<T>(this T writerWrapper, Action<T> action)
         where T : IWriterWrapper
     {
         writerWrapper.Writer.WriteBlock(() => action(writerWrapper));
         return writerWrapper;
     }
 
-    public static T When<T>(this T writerWrapper, bool condition, [InstantHandle] Action<T> action)
+    public static T When<T>(this T writerWrapper, bool condition, Action<T> action)
         where T : IWriterWrapper
     {
         if (condition)

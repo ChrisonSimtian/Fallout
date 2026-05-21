@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class NpmToolPathResolver
 {
     public static AbsolutePath NpmPackageJsonFile;

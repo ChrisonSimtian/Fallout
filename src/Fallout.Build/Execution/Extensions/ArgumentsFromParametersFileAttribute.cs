@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Fallout.Common.CI;
 using Fallout.Common.IO;
@@ -17,7 +16,6 @@ using Fallout.Common.ValueInjection;
 
 namespace Fallout.Common.Execution;
 
-[PublicAPI]
 public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)

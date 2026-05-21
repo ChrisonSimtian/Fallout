@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI.TeamCity.Configuration;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -22,7 +21,6 @@ using static Fallout.Common.IO.PathConstruction;
 
 namespace Fallout.Common.CI.TeamCity;
 
-[PublicAPI]
 public class TeamCityAttribute : ChainedConfigurationAttributeBase
 {
     public override Type HostType => typeof(TeamCity);

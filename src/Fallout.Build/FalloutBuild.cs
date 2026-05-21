@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Build.Execution.Extensions;
 using Fallout.Common.CI;
 using Fallout.Common.Execution;
@@ -47,7 +46,6 @@ namespace Fallout.Common;
 /// }
 /// </code>
 /// </example>
-[PublicAPI]
 // Before logo
 [ArgumentsFromParametersFile(Priority = 150)]
 [HandleReSharperSurrogateArguments(Priority = 150)]
@@ -156,25 +154,21 @@ public abstract partial class FalloutBuild : IFalloutBuild
     [Parameter("Partition to use on CI.", List = false)]
     public Partition Partition { get; internal set; } = Partition.Single;
 
-    [CanBeNull]
     protected internal virtual string NuGetPackagesConfigFile =>
         BuildProjectDirectory != null
             ? NuGetPackageResolver.GetPackagesConfigFile(BuildProjectDirectory)
             : null;
 
-    [CanBeNull]
     protected internal virtual string NuGetAssetsConfigFile =>
         BuildProjectDirectory != null
             ? BuildProjectDirectory / "obj" / "project.assets.json"
             : null;
 
-    [CanBeNull]
     protected internal virtual AbsolutePath NpmPackageJsonFile =>
         BuildProjectDirectory != null
             ? BuildProjectDirectory / "package.json"
             : null;
 
-    [CanBeNull]
     protected internal virtual string EmbeddedPackagesDirectory =>
         BuildProjectFile == null
             ? Assembly.GetEntryAssembly().NotNull().Location != string.Empty

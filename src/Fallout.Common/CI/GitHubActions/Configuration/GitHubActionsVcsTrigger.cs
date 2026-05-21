@@ -5,14 +5,12 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.GitHubActions.Configuration;
 
-[PublicAPI]
 public class GitHubActionsVcsTrigger : GitHubActionsDetailedTrigger
 {
     public GitHubActionsTrigger Kind { get; set; }

@@ -5,14 +5,12 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.CI.GitHubActions.Configuration;
 
 // https://github.com/actions/cache
-[PublicAPI]
 public class GitHubActionsCacheStep : GitHubActionsStep
 {
     public string[] IncludePatterns { get; set; }

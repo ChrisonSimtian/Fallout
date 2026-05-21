@@ -5,14 +5,12 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
 namespace Fallout.Common.Utilities;
 
 public static partial class JObjectExtensions
 {
-    [CanBeNull]
     public static T GetPropertyValueOrNull<T>(this JObject jobject, string name)
     {
         var property = jobject.Property(name);

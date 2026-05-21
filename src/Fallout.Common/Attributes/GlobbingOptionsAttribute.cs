@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 
 namespace Fallout.Common.IO;
@@ -14,7 +13,6 @@ namespace Fallout.Common.IO;
 /// <summary>
 /// Allows to configure the case-sensitivity used for globbing operations in <see cref="PathConstruction"/>.
 /// </summary>
-[PublicAPI]
 public sealed class GlobbingOptionsAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
     private readonly GlobbingCaseSensitivity _caseSensitivity;

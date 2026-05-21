@@ -9,7 +9,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
@@ -96,10 +95,12 @@ public class CITest
             throw exception.InnerException.NotNull();
         }
 
-        if (property.GetCustomAttribute<CanBeNullAttribute>() == null)
+        // After the JetBrains.Annotations removal, [CanBeNull] is gone. Allow null on
+        // reference types and nullable value types; require non-null on plain value types.
+        var allowsNull = !property.PropertyType.IsValueType
+                         || Nullable.GetUnderlyingType(property.PropertyType) != null;
+        if (!allowsNull)
             value.Should().NotBeNull();
-        else if (property.PropertyType != typeof(string))
-            Nullable.GetUnderlyingType(property.PropertyType).Should().NotBeNull();
 
         if (value is not string strValue || property.GetCustomAttribute<NoConvertAttribute>() != null)
             return;

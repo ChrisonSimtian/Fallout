@@ -7,14 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
 /// <summary>
 /// Abstraction for <see cref="Process"/>.
 /// </summary>
-[PublicAPI]
 public interface IProcess : IDisposable
 {
     /// <summary>

@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using NuGet.Versioning;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -14,7 +13,6 @@ using Fallout.Common.ValueInjection;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public class LatestMavenVersionAttribute : ValueInjectionAttributeBase
 {
     private readonly string _repository;

@@ -6,12 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Common.Execution;
 
-[PublicAPI]
 public class UnsetVisualStudioEnvironmentVariablesAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using static Fallout.Common.Constants;
@@ -31,8 +30,7 @@ partial class Program
 
     private static AbsolutePath SessionFile => GlobalTemporaryDirectory / $"nuke-{SessionId}.dat";
 
-    [UsedImplicitly]
-    private static int GetNextDirectory(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    private static int GetNextDirectory(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var content = SessionFile.Existing()?.ReadAllLines();
         if (content == null || string.IsNullOrWhiteSpace(content[0]))
@@ -48,8 +46,7 @@ partial class Program
         return 0;
     }
 
-    [UsedImplicitly]
-    private static int PopDirectory(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    private static int PopDirectory(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         var content = SessionFile.Existing()?.ReadAllLines().ToList();
         if (content == null || content.Count <= 1)
@@ -64,21 +61,18 @@ partial class Program
         return 0;
     }
 
-    [UsedImplicitly]
-    private static int PushWithCurrentRootDirectory(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    private static int PushWithCurrentRootDirectory(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         return PushAndSetNext(() => rootDirectory.NotNull("No root directory"));
     }
 
-    [UsedImplicitly]
-    private static int PushWithParentRootDirectory(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    private static int PushWithParentRootDirectory(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         return PushAndSetNext(() => TryGetRootDirectoryFrom(Path.GetDirectoryName(rootDirectory.NotNull("No root directory")))
             .NotNull("No parent root directory"));
     }
 
-    [UsedImplicitly]
-    private static int PushWithChosenRootDirectory(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
+    private static int PushWithChosenRootDirectory(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         return PushAndSetNext(() =>
         {

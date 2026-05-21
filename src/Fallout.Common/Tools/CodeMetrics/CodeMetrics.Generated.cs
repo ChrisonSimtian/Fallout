@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.CodeMetrics;
 
 /// <summary><p>Code metrics is a set of software measures that provide developers better insight into the code they are developing. By taking advantage of code metrics, developers can understand which types and/or methods should be reworked or more thoroughly tested. Development teams can identify potential risks, understand the current state of a project, and track progress during software development.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class CodeMetricsTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class CodeMetricsTasks : ToolTasks, IRequireNuGetPackage
 }
 #region CodeMetricsSettings
 /// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Common.Tools.CodeMetrics.CodeMetricsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CodeMetricsTasks), Command = nameof(CodeMetricsTasks.CodeMetrics))]
 public partial class CodeMetricsSettings : ToolOptions
@@ -53,32 +50,31 @@ public partial class CodeMetricsSettings : ToolOptions
 #endregion
 #region CodeMetricsSettingsExtensions
 /// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Common.Tools.CodeMetrics.CodeMetricsSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class CodeMetricsSettingsExtensions
 {
     #region Project
     /// <inheritdoc cref="CodeMetricsSettings.Project"/>
-    [Pure] [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Project))]
+    [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Project))]
     public static T SetProject<T>(this T o, string v) where T : CodeMetricsSettings => o.Modify(b => b.Set(() => o.Project, v));
     /// <inheritdoc cref="CodeMetricsSettings.Project"/>
-    [Pure] [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Project))]
+    [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Project))]
     public static T ResetProject<T>(this T o) where T : CodeMetricsSettings => o.Modify(b => b.Remove(() => o.Project));
     #endregion
     #region Solution
     /// <inheritdoc cref="CodeMetricsSettings.Solution"/>
-    [Pure] [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Solution))]
+    [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Solution))]
     public static T SetSolution<T>(this T o, string v) where T : CodeMetricsSettings => o.Modify(b => b.Set(() => o.Solution, v));
     /// <inheritdoc cref="CodeMetricsSettings.Solution"/>
-    [Pure] [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Solution))]
+    [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.Solution))]
     public static T ResetSolution<T>(this T o) where T : CodeMetricsSettings => o.Modify(b => b.Remove(() => o.Solution));
     #endregion
     #region OutputFile
     /// <inheritdoc cref="CodeMetricsSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.OutputFile))]
+    [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.OutputFile))]
     public static T SetOutputFile<T>(this T o, string v) where T : CodeMetricsSettings => o.Modify(b => b.Set(() => o.OutputFile, v));
     /// <inheritdoc cref="CodeMetricsSettings.OutputFile"/>
-    [Pure] [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.OutputFile))]
+    [Builder(Type = typeof(CodeMetricsSettings), Property = nameof(CodeMetricsSettings.OutputFile))]
     public static T ResetOutputFile<T>(this T o) where T : CodeMetricsSettings => o.Modify(b => b.Remove(() => o.OutputFile));
     #endregion
 }

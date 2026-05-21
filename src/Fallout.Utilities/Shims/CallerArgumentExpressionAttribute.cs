@@ -6,12 +6,10 @@
 #if NETSTANDARD
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 // ReSharper disable once CheckNamespace
 namespace System.Runtime.CompilerServices;
 
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Parameter)]
 public sealed class CallerArgumentExpressionAttribute : Attribute
 {

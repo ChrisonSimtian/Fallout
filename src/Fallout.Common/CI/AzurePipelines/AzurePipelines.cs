@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -17,13 +16,11 @@ namespace Fallout.Common.CI.AzurePipelines;
 /// Interface according to the <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&amp;tabs=yaml">official website</a>.
 /// <a href="https://github.com/Microsoft/azure-pipelines-tasks/blob/master/docs/authoring/commands.md">Azure Pipeline Tasks Documentation</a>
 /// </summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class AzurePipelines : Host, IBuildServer
 {
     public new static AzurePipelines Instance => Host.Instance as AzurePipelines;
 
-    [UsedImplicitly]
     internal static bool IsRunningAzurePipelines => EnvironmentInfo.HasVariable("TF_BUILD");
 
     private readonly Action<string> _messageSink;
@@ -65,7 +62,7 @@ public partial class AzurePipelines : Host, IBuildServer
     public AzurePipelinesRepositoryType RepositoryProvider =>
         EnvironmentInfo.GetVariable<AzurePipelinesRepositoryType>("BUILD_REPOSITORY_PROVIDER");
 
-    [CanBeNull] public string RepositoryTfvcWorkspace => EnvironmentInfo.GetVariable("BUILD_REPOSITORY_TFVC_WORKSPACE");
+    public string RepositoryTfvcWorkspace => EnvironmentInfo.GetVariable("BUILD_REPOSITORY_TFVC_WORKSPACE");
     public string RepositoryUri => EnvironmentInfo.GetVariable("BUILD_REPOSITORY_URI");
     public string RequestedFor => EnvironmentInfo.GetVariable("BUILD_REQUESTEDFOR");
     public string RequestedForEmail => EnvironmentInfo.GetVariable("BUILD_REQUESTEDFOREMAIL");
@@ -76,15 +73,15 @@ public partial class AzurePipelines : Host, IBuildServer
     public string SourceVersion => EnvironmentInfo.GetVariable("BUILD_SOURCEVERSION");
     public string StagingDirectory => EnvironmentInfo.GetVariable("BUILD_STAGINGDIRECTORY");
     public bool RepositoryGitSubmoduleCheckout => EnvironmentInfo.GetVariable<bool>("BUILD_REPOSITORY_GIT_SUBMODULECHECKOUT");
-    [CanBeNull] public string SourceTfvcShelveset => EnvironmentInfo.GetVariable("BUILD_SOURCETFVCSHELVESET");
+    public string SourceTfvcShelveset => EnvironmentInfo.GetVariable("BUILD_SOURCETFVCSHELVESET");
     public string TestResultsDirectory => EnvironmentInfo.GetVariable("COMMON_TESTRESULTSDIRECTORY");
-    [CanBeNull] public string AccessToken => EnvironmentInfo.GetVariable("SYSTEM_ACCESSTOKEN");
+    public string AccessToken => EnvironmentInfo.GetVariable("SYSTEM_ACCESSTOKEN");
     public Guid CollectionId => EnvironmentInfo.GetVariable<Guid>("SYSTEM_COLLECTIONID");
     public string DefaultWorkingDirectory => EnvironmentInfo.GetVariable("SYSTEM_DEFAULTWORKINGDIRECTORY");
     public long DefinitionId => EnvironmentInfo.GetVariable<long>("SYSTEM_DEFINITIONID");
-    [CanBeNull] public long? PullRequestId => EnvironmentInfo.GetVariable<long?>("SYSTEM_PULLREQUEST_PULLREQUESTID");
-    [CanBeNull] public string PullRequestSourceBranch => EnvironmentInfo.GetVariable("SYSTEM_PULLREQUEST_SOURCEBRANCH");
-    [CanBeNull] public string PullRequestTargetBranch => EnvironmentInfo.GetVariable("SYSTEM_PULLREQUEST_TARGETBRANCH");
+    public long? PullRequestId => EnvironmentInfo.GetVariable<long?>("SYSTEM_PULLREQUEST_PULLREQUESTID");
+    public string PullRequestSourceBranch => EnvironmentInfo.GetVariable("SYSTEM_PULLREQUEST_SOURCEBRANCH");
+    public string PullRequestTargetBranch => EnvironmentInfo.GetVariable("SYSTEM_PULLREQUEST_TARGETBRANCH");
     public string StageName => EnvironmentInfo.GetVariable("SYSTEM_STAGENAME");
     public string StageDisplayName => EnvironmentInfo.GetVariable("SYSTEM_STAGEDISPLAYNAME");
     public string TeamFoundationCollectionUri => EnvironmentInfo.GetVariable("SYSTEM_TEAMFOUNDATIONCOLLECTIONURI");
@@ -243,12 +240,12 @@ public partial class AzurePipelines : Host, IBuildServer
         Write(command, escapedTokens, message);
     }
 
-    private void Write(string command, string[] escapedTokens, [CanBeNull] string message)
+    private void Write(string command, string[] escapedTokens, string message)
     {
         _messageSink.Invoke($"##vso[{command} {escapedTokens.JoinSemicolon()}]{EscapeMessage(message)}");
     }
 
-    private string EscapeMessage([CanBeNull] string data)
+    private string EscapeMessage(string data)
     {
         return data?
             .Replace("\r", "%0D")

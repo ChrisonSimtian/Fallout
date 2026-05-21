@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.GitHubActions.Configuration;
 
-[PublicAPI]
 public class GitHubActionsScheduledTrigger : GitHubActionsDetailedTrigger
 {
     public string Cron { get; set; }

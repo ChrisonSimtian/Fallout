@@ -8,12 +8,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Fallout.CodeGeneration.Model;
 
-[UsedImplicitly(ImplicitUseKindFlags.Assign, ImplicitUseTargetFlags.WithMembers)]
 public class DataClass : IDeprecatable
 {
     [JsonIgnore]
@@ -22,7 +20,6 @@ public class DataClass : IDeprecatable
     [JsonIgnore]
     public virtual bool IsToolSettingsClass => false;
 
-    [NotNull]
     [JsonIgnore]
     public virtual IDeprecatable Parent => Tool;
 
@@ -47,7 +44,6 @@ public class DataClass : IDeprecatable
     public string DeprecationMessage { get; set; }
 }
 
-[UsedImplicitly]
 public class SettingsClass : DataClass
 {
     public SettingsClass()
@@ -60,7 +56,6 @@ public class SettingsClass : DataClass
     [JsonIgnore]
     public Task Task { get; set; }
 
-    [NotNull]
     [JsonIgnore]
     public override IDeprecatable Parent => Task;
 

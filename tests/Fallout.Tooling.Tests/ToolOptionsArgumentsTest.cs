@@ -9,7 +9,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -23,7 +22,6 @@ public class ToolOptionsArgumentsTest
     [Fact] public void TestBool_FlagTrue() => Assert<BoolToolOptions>(new { Flag = true }, ["/flag"]);
     [Fact] public void TestBool_FlagFalse() => Assert<BoolToolOptions>(new { Flag = false }, []);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class BoolToolOptions : ToolOptions
     {
         [Argument(Format = "/bool:{value}")] public bool Bool => Get<bool>(() => Bool);
@@ -40,7 +38,6 @@ public class ToolOptionsArgumentsTest
         options.GetSecrets().Should().Equal("secret-value");
     }
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class StringToolOptions : ToolOptions
     {
         [Argument(Format = "--string {value}")] public string String => Get<string>(() => String);
@@ -49,7 +46,6 @@ public class ToolOptionsArgumentsTest
 
     [Fact] public void TestImplicit() => Assert<ImplicitToolOptions>(new { String = "value" }, ["implicit argument", "--string", "value"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [Command(Arguments = "implicit argument")]
     private class ImplicitToolOptions : ToolOptions
     {
@@ -65,7 +61,6 @@ public class ToolOptionsArgumentsTest
         // ReSharper restore SimilarAnonymousTypeNearby
     }
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class OrderToolOptions : ToolOptions
     {
         [Argument(Format = "/flag1")] public bool Flag1 => Get<bool>(() => Flag1);
@@ -83,7 +78,6 @@ public class ToolOptionsArgumentsTest
         },
         arguments: ["first", "second", "middle", "second-last", "last"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class PositionToolOptions : ToolOptions
     {
         [Argument(Format = "{value}")] public string Middle => Get<string>(() => Middle);
@@ -97,7 +91,6 @@ public class ToolOptionsArgumentsTest
     [Fact] public void TestFormatter_Method2() => Assert<FormatToolOptions>(new { Date = DateTime.UnixEpoch }, ["01/01/1970"]);
     [Fact] public void TestFormatter_TypeMethod() => Assert<FormatToolOptions>(new { Minutes = TimeSpan.FromMinutes(10) }, ["10"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class FormatToolOptions : ToolOptions
     {
         [Argument(Format = "{value}", FormatterMethod = nameof(FormatTime))]
@@ -126,7 +119,6 @@ public class ToolOptionsArgumentsTest
     [Fact] public void TestList_QuoteMultiple_WhitespaceValue() => Assert<ListToolOptions>(new { QuotedList = new[] { "a", "white space" } }, ["--param:\"a \\\"white space\\\"\""]);
     [Fact] public void TestList_Formatted() => Assert<ListToolOptions>(new { FormattedList = new[] { "true", "false" } }, ["--param=TRUE", "--param=FALSE"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class ListToolOptions : ToolOptions
     {
         [Argument(Format = "--param {value}")] public IReadOnlyList<string> SimpleList => Get<List<string>>(() => SimpleList);
@@ -146,7 +138,6 @@ public class ToolOptionsArgumentsTest
     [Fact] public void TestDictionary_Whitespace() => Assert<DictionaryToolOptions>(new { WhitespaceDictionary = _simpleDictionary }, ["--", "key1=1", "key2=foobar"]);
     [Fact] public void TestDictionary_Formatted() => Assert<DictionaryToolOptions>(new { FormattedDictionary = _simpleDictionary }, ["/p:key1=1", "/p:key2=FOOBAR"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class DictionaryToolOptions : ToolOptions
     {
         [Argument(Format = "-p {key}={value}")] public IReadOnlyDictionary<string, object> SimpleDictionary => Get<Dictionary<string, object>>(() => SimpleDictionary);
@@ -165,7 +156,6 @@ public class ToolOptionsArgumentsTest
     [Fact] public void TestLookup_Separator() => Assert<LookupToolOptions>(new { SeparatorLookup = _simpleLookupTable }, ["--param:key1=1,2;key2=true,false"]);
     [Fact] public void TestLookup_Formatted() => Assert<LookupToolOptions>(new { FormattedLookup = _simpleLookupTable }, ["--param", "key1", "1+2", "--param", "key2", "TRUE+FALSE"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class LookupToolOptions : ToolOptions
     {
         [Argument(Format = "--param {key}={value}")] public ILookup<string, object> SimpleLookup => Get<LookupTable<string, object>>(() => SimpleLookup);
@@ -185,7 +175,6 @@ public class ToolOptionsArgumentsTest
         },
         arguments: ["--string", "value", "first", "second"]);
 
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     private class AdditionalArgumentsToolOptions : ToolOptions
     {
         [Argument(Format = "--string {value}")] public string String => Get<string>(() => String);

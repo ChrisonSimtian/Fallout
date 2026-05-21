@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -39,16 +38,13 @@ namespace Fallout.Common.IO;
 /// string absolutePath2 = (AbsolutePath) "foo" / "bar"  // Throws exception
 /// </code>
 /// </example>
-[PublicAPI]
 public static class PathConstruction
 {
-    [Pure]
     public static WinRelativePath GetWinRelativePath(string basePath, string destinationPath)
     {
         return (WinRelativePath) GetRelativePath(basePath, destinationPath);
     }
 
-    [Pure]
     public static UnixRelativePath GetUnixRelativePath(string basePath, string destinationPath)
     {
         return (UnixRelativePath) GetRelativePath(basePath, destinationPath);
@@ -85,18 +81,7 @@ public static class PathConstruction
     }
 
     // TODO: check usages
-    [Pure]
     // [Obsolete($"Use {nameof(AbsolutePath)}.{nameof(GetRelativePathTo)} extension method")]
-    [CodeTemplate(
-        searchTemplate: "PathConstruction.GetRelativePath($expr{'Fallout.Common.IO.AbsolutePath', true}$, $args$)",
-        ReplaceTemplate = "$expr$.GetRelativePathTo($args$)",
-        ReplaceMessage = "Replace with $expr$.GetRelativePathTo($args$)",
-        Message = $"WARNING: {nameof(GetRelativePath)} is obsolete")]
-    [CodeTemplate(
-        searchTemplate: "GetRelativePath($expr{'Fallout.Common.IO.AbsolutePath', true}$, $args$)",
-        ReplaceTemplate = "$expr$.GetRelativePathTo($args$)",
-        ReplaceMessage = "Replace with $expr$.GetRelativePathTo($args$)",
-        Message = $"WARNING: {nameof(GetRelativePath)} is obsolete")]
     public static string GetRelativePath(string basePath, string destinationPath)
     {
         basePath = NormalizePath(basePath);
@@ -115,18 +100,7 @@ public static class PathConstruction
             .Concat(destinationParts.Skip(sameParts).ToList()).Join(separator);
     }
 
-    [Pure]
     // [Obsolete($"Use {nameof(AbsolutePath)}.{nameof(Contains)} extension method")]
-    [CodeTemplate(
-        searchTemplate: "PathConstruction.IsDescendantPath($expr{'Fallout.Common.IO.AbsolutePath', true}$, $args$)",
-        ReplaceTemplate = "$expr$.Contains($args$)",
-        ReplaceMessage = "Replace with $expr$.Contains($args$)",
-        Message = $"WARNING: {nameof(IsDescendantPath)} is obsolete")]
-    [CodeTemplate(
-        searchTemplate: "IsDescendantPath($expr{'Fallout.Common.IO.AbsolutePath', true}$, $args$)",
-        ReplaceTemplate = "$expr$.Contains($args$)",
-        ReplaceMessage = "Replace with $expr$.Contains($args$)",
-        Message = $"WARNING: {nameof(IsDescendantPath)} is obsolete")]
     public static bool IsDescendantPath(string basePath, string destinationPath)
     {
         var destinationPathParts = NormalizePath(destinationPath).Split(AllSeparators);
@@ -140,40 +114,39 @@ public static class PathConstruction
 
     internal static readonly char[] AllSeparators = { WinSeparator, UncSeparator, UnixSeparator };
 
-    private static bool IsSameDirectory([CanBeNull] string pathPart)
+    private static bool IsSameDirectory(string pathPart)
         => pathPart?.Length == 1 &&
            pathPart[index: 0] == '.';
 
-    private static bool IsUpwardsDirectory([CanBeNull] string pathPart)
+    private static bool IsUpwardsDirectory(string pathPart)
         => pathPart?.Length == 2 &&
            pathPart[index: 0] == '.' &&
            pathPart[index: 1] == '.';
 
-    internal static bool IsWinRoot([CanBeNull] string root)
+    internal static bool IsWinRoot(string root)
         => root?.Length == 2 &&
            char.IsLetter(root[index: 0]) &&
            root[index: 1] == ':';
 
-    internal static bool IsUnixRoot([CanBeNull] string root)
+    internal static bool IsUnixRoot(string root)
         => root?.Length == 1 &&
            root[index: 0] == UnixSeparator;
 
-    internal static bool IsUncRoot([CanBeNull] string root)
+    internal static bool IsUncRoot(string root)
         => root?.Length >= 3 &&
            root[index: 0] == UncSeparator &&
            root[index: 1] == UncSeparator &&
            root.Skip(count: 2).All(char.IsLetterOrDigit);
 
-    private static string GetHeadPart([CanBeNull] string str, int count) => new((str ?? string.Empty).Take(count).ToArray());
+    private static string GetHeadPart(string str, int count) => new((str ?? string.Empty).Take(count).ToArray());
 
-    internal static bool HasUnixRoot([CanBeNull] string path) => IsUnixRoot(GetHeadPart(path, count: 1));
-    internal static bool HasUncRoot([CanBeNull] string path) => IsUncRoot(GetHeadPart(path, count: 3));
-    internal static bool HasWinRoot([CanBeNull] string path) => IsWinRoot(GetHeadPart(path, count: 2));
+    internal static bool HasUnixRoot(string path) => IsUnixRoot(GetHeadPart(path, count: 1));
+    internal static bool HasUncRoot(string path) => IsUncRoot(GetHeadPart(path, count: 3));
+    internal static bool HasWinRoot(string path) => IsWinRoot(GetHeadPart(path, count: 2));
 
-    public static bool HasPathRoot([CanBeNull] string path) => GetPathRoot(path) != null;
+    public static bool HasPathRoot(string path) => GetPathRoot(path) != null;
 
-    [CanBeNull]
-    public static string GetPathRoot([CanBeNull] string path)
+    public static string GetPathRoot(string path)
     {
         if (path == null)
             return null;
@@ -193,7 +166,7 @@ public static class PathConstruction
         return null;
     }
 
-    public static string Combine([CanBeNull] string left, string right, char? separator = null)
+    public static string Combine(string left, string right, char? separator = null)
     {
         // TODO: better something like "SafeHandleRoots"?
         left = Trim(left);
@@ -220,7 +193,7 @@ public static class PathConstruction
     }
 
     // ReSharper disable once CognitiveComplexity
-    public static string NormalizePath([CanBeNull] string path, char? separator = null)
+    public static string NormalizePath(string path, char? separator = null)
     {
         AssertSeparatorChoice(path, separator);
 
@@ -260,7 +233,7 @@ public static class PathConstruction
         return Combine(root, tailParts.Join(separator.ToString()), separator);
     }
 
-    private static char GetSeparator([CanBeNull] string path)
+    private static char GetSeparator(string path)
     {
         var root = GetPathRoot(path);
         if (root != null)
@@ -278,7 +251,7 @@ public static class PathConstruction
         return Path.DirectorySeparatorChar;
     }
 
-    private static void AssertSeparatorChoice([CanBeNull] string path, char? separator)
+    private static void AssertSeparatorChoice(string path, char? separator)
     {
         if (separator == null)
             return;
@@ -292,8 +265,7 @@ public static class PathConstruction
         Assert.True(!IsUnixRoot(root) || separator == UnixSeparator, $"For Unix-rooted paths the separator must be '{UnixSeparator}'");
     }
 
-    [ContractAnnotation("null => null; notnull => notnull")]
-    private static string Trim([CanBeNull] string path)
+    private static string Trim(string path)
     {
         if (path == null)
             return null;

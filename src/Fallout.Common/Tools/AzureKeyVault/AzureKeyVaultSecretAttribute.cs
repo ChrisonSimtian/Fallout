@@ -6,12 +6,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tools.AzureKeyVault
 {
     /// <summary>Attribute to obtain a secret from the Azure KeyVault defined by <see cref="AzureKeyVaultConfigurationAttribute"/>.</summary>
-    [PublicAPI]
     public class AzureKeyVaultSecretAttribute : AzureKeyVaultAttributeBase
     {
         private readonly string _secretName;

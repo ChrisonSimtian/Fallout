@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.MakeNSIS;
 
 /// <summary><p>NSIS creates installers that are capable of installing, uninstalling, setting system settings, extracting files, etc. Because it's based on script files you can fully control every part of your installer.</p><p>For more details, visit the <a href="https://nsis.sourceforge.io/Docs/Contents.html">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class MakeNSISTasks : ToolTasks, IRequirePathTool
@@ -37,7 +35,6 @@ public partial class MakeNSISTasks : ToolTasks, IRequirePathTool
 }
 #region MakeNSISSettings
 /// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Common.Tools.MakeNSIS.MakeNSISSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MakeNSISTasks), Command = nameof(MakeNSISTasks.MakeNSIS))]
 public partial class MakeNSISSettings : ToolOptions
@@ -74,210 +71,209 @@ public partial class MakeNSISSettings : ToolOptions
 #endregion
 #region MakeNSISSettingsExtensions
 /// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Common.Tools.MakeNSIS.MakeNSISSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class MakeNSISSettingsExtensions
 {
     #region Verbosity
     /// <inheritdoc cref="MakeNSISSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.Verbosity))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, int? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="MakeNSISSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.Verbosity))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
     #region CompilerPriority
     /// <inheritdoc cref="MakeNSISSettings.CompilerPriority"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.CompilerPriority))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.CompilerPriority))]
     public static T SetCompilerPriority<T>(this T o, int? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.CompilerPriority, v));
     /// <inheritdoc cref="MakeNSISSettings.CompilerPriority"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.CompilerPriority))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.CompilerPriority))]
     public static T ResetCompilerPriority<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.CompilerPriority));
     #endregion
     #region LogOutputFile
     /// <inheritdoc cref="MakeNSISSettings.LogOutputFile"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.LogOutputFile))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.LogOutputFile))]
     public static T SetLogOutputFile<T>(this T o, string v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.LogOutputFile, v));
     /// <inheritdoc cref="MakeNSISSettings.LogOutputFile"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.LogOutputFile))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.LogOutputFile))]
     public static T ResetLogOutputFile<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.LogOutputFile));
     #endregion
     #region NoConfig
     /// <inheritdoc cref="MakeNSISSettings.NoConfig"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
     public static T SetNoConfig<T>(this T o, bool? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoConfig, v));
     /// <inheritdoc cref="MakeNSISSettings.NoConfig"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
     public static T ResetNoConfig<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.NoConfig));
     /// <inheritdoc cref="MakeNSISSettings.NoConfig"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
     public static T EnableNoConfig<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoConfig, true));
     /// <inheritdoc cref="MakeNSISSettings.NoConfig"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
     public static T DisableNoConfig<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoConfig, false));
     /// <inheritdoc cref="MakeNSISSettings.NoConfig"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoConfig))]
     public static T ToggleNoConfig<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoConfig, !o.NoConfig));
     #endregion
     #region NoCurrentDirectoryChange
     /// <inheritdoc cref="MakeNSISSettings.NoCurrentDirectoryChange"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
     public static T SetNoCurrentDirectoryChange<T>(this T o, bool? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoCurrentDirectoryChange, v));
     /// <inheritdoc cref="MakeNSISSettings.NoCurrentDirectoryChange"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
     public static T ResetNoCurrentDirectoryChange<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.NoCurrentDirectoryChange));
     /// <inheritdoc cref="MakeNSISSettings.NoCurrentDirectoryChange"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
     public static T EnableNoCurrentDirectoryChange<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoCurrentDirectoryChange, true));
     /// <inheritdoc cref="MakeNSISSettings.NoCurrentDirectoryChange"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
     public static T DisableNoCurrentDirectoryChange<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoCurrentDirectoryChange, false));
     /// <inheritdoc cref="MakeNSISSettings.NoCurrentDirectoryChange"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.NoCurrentDirectoryChange))]
     public static T ToggleNoCurrentDirectoryChange<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.NoCurrentDirectoryChange, !o.NoCurrentDirectoryChange));
     #endregion
     #region InputCharset
     /// <inheritdoc cref="MakeNSISSettings.InputCharset"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.InputCharset))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.InputCharset))]
     public static T SetInputCharset<T>(this T o, string v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.InputCharset, v));
     /// <inheritdoc cref="MakeNSISSettings.InputCharset"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.InputCharset))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.InputCharset))]
     public static T ResetInputCharset<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.InputCharset));
     #endregion
     #region OutputCharset
     /// <inheritdoc cref="MakeNSISSettings.OutputCharset"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OutputCharset))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OutputCharset))]
     public static T SetOutputCharset<T>(this T o, string v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OutputCharset, v));
     /// <inheritdoc cref="MakeNSISSettings.OutputCharset"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OutputCharset))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OutputCharset))]
     public static T ResetOutputCharset<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.OutputCharset));
     #endregion
     #region OnlyRunPreprocessor
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
     public static T SetOnlyRunPreprocessor<T>(this T o, bool? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunPreprocessor, v));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
     public static T ResetOnlyRunPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.OnlyRunPreprocessor));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
     public static T EnableOnlyRunPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunPreprocessor, true));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
     public static T DisableOnlyRunPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunPreprocessor, false));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunPreprocessor))]
     public static T ToggleOnlyRunPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunPreprocessor, !o.OnlyRunPreprocessor));
     #endregion
     #region OnlyRunSaveVersionPreprocessor
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunSaveVersionPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
     public static T SetOnlyRunSaveVersionPreprocessor<T>(this T o, bool? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunSaveVersionPreprocessor, v));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunSaveVersionPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
     public static T ResetOnlyRunSaveVersionPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.OnlyRunSaveVersionPreprocessor));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunSaveVersionPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
     public static T EnableOnlyRunSaveVersionPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunSaveVersionPreprocessor, true));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunSaveVersionPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
     public static T DisableOnlyRunSaveVersionPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunSaveVersionPreprocessor, false));
     /// <inheritdoc cref="MakeNSISSettings.OnlyRunSaveVersionPreprocessor"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.OnlyRunSaveVersionPreprocessor))]
     public static T ToggleOnlyRunSaveVersionPreprocessor<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.OnlyRunSaveVersionPreprocessor, !o.OnlyRunSaveVersionPreprocessor));
     #endregion
     #region TreatWarningsAsErrors
     /// <inheritdoc cref="MakeNSISSettings.TreatWarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
     public static T SetTreatWarningsAsErrors<T>(this T o, bool? v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.TreatWarningsAsErrors, v));
     /// <inheritdoc cref="MakeNSISSettings.TreatWarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
     public static T ResetTreatWarningsAsErrors<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.TreatWarningsAsErrors));
     /// <inheritdoc cref="MakeNSISSettings.TreatWarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
     public static T EnableTreatWarningsAsErrors<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.TreatWarningsAsErrors, true));
     /// <inheritdoc cref="MakeNSISSettings.TreatWarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
     public static T DisableTreatWarningsAsErrors<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.TreatWarningsAsErrors, false));
     /// <inheritdoc cref="MakeNSISSettings.TreatWarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.TreatWarningsAsErrors))]
     public static T ToggleTreatWarningsAsErrors<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.TreatWarningsAsErrors, !o.TreatWarningsAsErrors));
     #endregion
     #region DefinedSymbols
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T SetDefinedSymbols<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.DefinedSymbols, v));
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T SetDefinedSymbols<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.DefinedSymbols, v));
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T AddDefinedSymbols<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.AddCollection(() => o.DefinedSymbols, v));
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T AddDefinedSymbols<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.AddCollection(() => o.DefinedSymbols, v));
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T RemoveDefinedSymbols<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.RemoveCollection(() => o.DefinedSymbols, v));
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T RemoveDefinedSymbols<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.RemoveCollection(() => o.DefinedSymbols, v));
     /// <inheritdoc cref="MakeNSISSettings.DefinedSymbols"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.DefinedSymbols))]
     public static T ClearDefinedSymbols<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.ClearCollection(() => o.DefinedSymbols));
     #endregion
     #region PreExecutionCodes
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T SetPreExecutionCodes<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.PreExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T SetPreExecutionCodes<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.PreExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T AddPreExecutionCodes<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.AddCollection(() => o.PreExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T AddPreExecutionCodes<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.AddCollection(() => o.PreExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T RemovePreExecutionCodes<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.RemoveCollection(() => o.PreExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T RemovePreExecutionCodes<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.RemoveCollection(() => o.PreExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PreExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PreExecutionCodes))]
     public static T ClearPreExecutionCodes<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.ClearCollection(() => o.PreExecutionCodes));
     #endregion
     #region ScriptFile
     /// <inheritdoc cref="MakeNSISSettings.ScriptFile"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.ScriptFile))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.ScriptFile))]
     public static T SetScriptFile<T>(this T o, string v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.ScriptFile, v));
     /// <inheritdoc cref="MakeNSISSettings.ScriptFile"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.ScriptFile))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.ScriptFile))]
     public static T ResetScriptFile<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.Remove(() => o.ScriptFile));
     #endregion
     #region PostExecutionCodes
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T SetPostExecutionCodes<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.PostExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T SetPostExecutionCodes<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.Set(() => o.PostExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T AddPostExecutionCodes<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.AddCollection(() => o.PostExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T AddPostExecutionCodes<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.AddCollection(() => o.PostExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T RemovePostExecutionCodes<T>(this T o, params string[] v) where T : MakeNSISSettings => o.Modify(b => b.RemoveCollection(() => o.PostExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T RemovePostExecutionCodes<T>(this T o, IEnumerable<string> v) where T : MakeNSISSettings => o.Modify(b => b.RemoveCollection(() => o.PostExecutionCodes, v));
     /// <inheritdoc cref="MakeNSISSettings.PostExecutionCodes"/>
-    [Pure] [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
+    [Builder(Type = typeof(MakeNSISSettings), Property = nameof(MakeNSISSettings.PostExecutionCodes))]
     public static T ClearPostExecutionCodes<T>(this T o) where T : MakeNSISSettings => o.Modify(b => b.ClearCollection(() => o.PostExecutionCodes));
     #endregion
 }

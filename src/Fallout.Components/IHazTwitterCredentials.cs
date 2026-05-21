@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 [ParameterPrefix(Twitter)]
 public interface IHazTwitterCredentials : IFalloutBuild
 {

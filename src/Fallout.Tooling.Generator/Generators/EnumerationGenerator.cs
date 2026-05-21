@@ -28,7 +28,6 @@ public static class EnumerationGenerator
         toolWriter
             .WriteLine($"#region {enumeration.Name}")
             .WriteSummary(enumeration)
-            .WriteLine("[PublicAPI]")
             .WriteLine("[Serializable]")
             .WriteObsoleteAttributeWhenObsolete(enumeration)
             .WriteLine("[ExcludeFromCodeCoverage]")

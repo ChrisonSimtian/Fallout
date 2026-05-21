@@ -8,13 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
 
 namespace Fallout.Common.Tools.Mastodon;
 
-[PublicAPI]
 public static class MastodonTasks
 {
     public static void SendMastodonMessage(Configure<MastodonStatus> configurator, string instance, string accessToken)

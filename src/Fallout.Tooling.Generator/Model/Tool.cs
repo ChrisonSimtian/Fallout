@@ -10,12 +10,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Fallout.CodeGeneration.Model;
 
-[UsedImplicitly(ImplicitUseKindFlags.Assign, ImplicitUseTargetFlags.WithMembers)]
 [DebuggerDisplay("{" + nameof(SpecificationFile) + "}")]
 public class Tool : IDeprecatable
 {
@@ -30,7 +28,7 @@ public class Tool : IDeprecatable
 
     [JsonIgnore] public string Namespace { get; set; }
 
-    [CanBeNull] [JsonIgnore] public IDeprecatable Parent => null;
+    [JsonIgnore] public IDeprecatable Parent => null;
 
     [Description("Contains all references on which this definition is based on. Allows checking for updates.")]
     public List<string> References { get; set; } = new();
@@ -97,7 +95,6 @@ public class Tool : IDeprecatable
     [Description("Used enumerations.")]
     public List<Enumeration> Enumerations { get; set; } = new();
 
-    [CanBeNull]
     [Description("Can be used to store additional information about the tool.")]
     [JsonProperty("_metadata")]
     public Dictionary<string, object> Metadata { get; set; }

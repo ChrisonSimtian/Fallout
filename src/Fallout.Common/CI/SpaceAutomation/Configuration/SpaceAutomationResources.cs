@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.SpaceAutomation.Configuration;
 
-[PublicAPI]
 public class SpaceAutomationResources : ConfigurationEntity
 {
     public string Cpu { get; set; }

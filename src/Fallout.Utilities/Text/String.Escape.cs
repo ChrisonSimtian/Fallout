@@ -5,14 +5,12 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
 public static partial class StringExtensions
 {
-    [Pure]
-    public static string EscapeBraces([CanBeNull] this string str)
+    public static string EscapeBraces(this string str)
     {
         if (string.IsNullOrWhiteSpace(str))
             return string.Empty;

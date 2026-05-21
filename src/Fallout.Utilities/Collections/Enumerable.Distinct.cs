@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
@@ -29,7 +28,7 @@ public static partial class EnumerableExtensions
             _selector = selector;
         }
 
-        public bool Equals([CanBeNull] TSource x, [CanBeNull] TSource y)
+        public bool Equals(TSource x, TSource y)
         {
             if (ReferenceEquals(x, y))
                 return true;
@@ -42,7 +41,7 @@ public static partial class EnumerableExtensions
             return Equals(_selector(x), _selector(y));
         }
 
-        public int GetHashCode([NotNull] TSource obj)
+        public int GetHashCode(TSource obj)
         {
             return _selector(obj).GetHashCode();
         }

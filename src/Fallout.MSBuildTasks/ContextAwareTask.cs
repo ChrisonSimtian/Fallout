@@ -7,7 +7,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using Fallout.Common;
@@ -18,7 +17,6 @@ using Fallout.Common.Utilities;
 
 namespace Fallout.MSBuildTasks;
 
-[PublicAPI]
 public abstract class ContextAwareTask : Task
 {
     // Taken from https://github.com/dasMulli/AssemblyInfoGenerationSdk/blob/master/src/DasMulli.AssemblyInfoGeneration.Sdk/ContextAwareTask.cs

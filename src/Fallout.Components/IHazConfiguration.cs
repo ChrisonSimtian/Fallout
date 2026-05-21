@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazConfiguration : IFalloutBuild
 {
     [Parameter] Configuration Configuration => TryGetValue(() => Configuration) ??

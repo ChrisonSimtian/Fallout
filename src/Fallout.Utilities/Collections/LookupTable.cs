@@ -7,11 +7,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
-[PublicAPI]
 [Serializable]
 public class LookupTable<TKey, TValue>(Dictionary<TKey, List<TValue>> dictionary) : ILookup<TKey, TValue>
 {
@@ -38,7 +36,7 @@ public class LookupTable<TKey, TValue>(Dictionary<TKey, List<TValue>> dictionary
 
     public int Count => Lookup.Count;
 
-    public IEnumerable<TValue> this[[NotNull] TKey key]
+    public IEnumerable<TValue> this[TKey key]
     {
         get => Lookup[key];
         set => _dictionary[key] = value.ToList();
@@ -82,7 +80,7 @@ public class LookupTable<TKey, TValue>(Dictionary<TKey, List<TValue>> dictionary
         return GetEnumerator();
     }
 
-    public bool Contains([NotNull] TKey key)
+    public bool Contains(TKey key)
     {
         return _dictionary.ContainsKey(key);
     }

@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Microsoft.Build.Framework;
 using Fallout.CodeGeneration;
 using Fallout.CodeGeneration.Model;
@@ -14,7 +13,6 @@ using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.MSBuildTasks;
 
-[UsedImplicitly]
 public class CodeGenerationTask : ContextAwareTask
 {
     [Required]
@@ -25,7 +23,6 @@ public class CodeGenerationTask : ContextAwareTask
 
     public bool UseNestedNamespaces { get; set; }
 
-    [CanBeNull]
     public string BaseNamespace { get; set; }
 
     public bool UpdateReferences { get; set; }

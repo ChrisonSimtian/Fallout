@@ -5,7 +5,6 @@
 
 using System.Linq;
 using System.Text;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -17,7 +16,6 @@ partial class Build
     AbsolutePath ContributorsFile => RootDirectory / "CONTRIBUTORS.md";
     AbsolutePath ContributorsCacheFile => TemporaryDirectory / "contributors.dat";
 
-    [UsedImplicitly]
     Target UpdateContributors => _ => _
         .Executes(() =>
         {

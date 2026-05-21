@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 
-[PublicAPI]
 public class AzurePipelinesDownloadStep : AzurePipelinesStep
 {
     public string ArtifactName { get; set; }

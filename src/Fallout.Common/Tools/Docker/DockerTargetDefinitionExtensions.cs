@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
@@ -21,7 +20,6 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Common.Tools.Docker;
 
-[PublicAPI]
 public static class DockerTargetDefinitionExtensions
 {
     private static readonly AbsolutePath WindowsRootDirectory = @"C:\nuke";

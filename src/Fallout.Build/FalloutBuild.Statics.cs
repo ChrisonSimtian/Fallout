@@ -7,7 +7,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -49,25 +48,21 @@ public abstract partial class FalloutBuild
     /// <summary>
     /// Gets the full path to the build assembly file.
     /// </summary>
-    [CanBeNull]
     public static AbsolutePath BuildAssemblyFile { get; }
 
     /// <summary>
     /// Gets the full path to the build assembly directory.
     /// </summary>
-    [CanBeNull]
     public static AbsolutePath BuildAssemblyDirectory { get; }
 
     /// <summary>
     /// Gets the full path to the build project directory, or <c>null</c>
     /// </summary>
-    [CanBeNull]
     public static AbsolutePath BuildProjectDirectory { get; }
 
     /// <summary>
     /// Gets the full path to the build project file, or <c>null</c>
     /// </summary>
-    [CanBeNull]
     public static AbsolutePath BuildProjectFile { get; }
 
     /// <summary>
@@ -109,7 +104,6 @@ public abstract partial class FalloutBuild
                      }.JoinNewLine());
     }
 
-    [CanBeNull]
     private static AbsolutePath GetBuildAssemblyFile()
     {
         var entryAssembly = Assembly.GetEntryAssembly();
@@ -130,8 +124,7 @@ public abstract partial class FalloutBuild
         return assemblyLocation != string.Empty ? assemblyLocation : invokedLocation;
     }
 
-    [CanBeNull]
-    private static AbsolutePath GetBuildProjectFile([CanBeNull] AbsolutePath buildAssemblyDirectory)
+    private static AbsolutePath GetBuildProjectFile(AbsolutePath buildAssemblyDirectory)
     {
         if (buildAssemblyDirectory == null)
             return null;

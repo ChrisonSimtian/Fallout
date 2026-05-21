@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
@@ -35,7 +34,6 @@ partial class OctoVersionTasks
     }
 }
 
-[PublicAPI]
 public record OctoVersionInfo(
     int? Major,
     int? Minor,

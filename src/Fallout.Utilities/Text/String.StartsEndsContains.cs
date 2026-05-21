@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
@@ -15,7 +14,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string contains another string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool ContainsOrdinalIgnoreCase(this string str, string other)
     {
         return str.IndexOf(other, StringComparison.OrdinalIgnoreCase) >= 0;
@@ -24,7 +22,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a collection of strings contains any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool ContainsAnyOrdinalIgnoreCase(this IEnumerable<string> str, params string[] others)
     {
         return others.Any(x => str.Contains(x, StringComparer.OrdinalIgnoreCase));
@@ -33,7 +30,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string equals another string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EqualsOrdinalIgnoreCase(this string str, string other)
     {
         return str.Equals(other, StringComparison.OrdinalIgnoreCase);
@@ -42,7 +38,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string contains any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool ContainsAnyOrdinalIgnoreCase(this string str, params string[] others)
     {
         return others.Any(str.ContainsOrdinalIgnoreCase);
@@ -51,7 +46,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string contains any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool ContainsAnyOrdinalIgnoreCase(this string str, IEnumerable<string> others)
     {
         return others.Any(str.ContainsOrdinalIgnoreCase);
@@ -60,7 +54,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string equals any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EqualsAnyOrdinalIgnoreCase(this string str, params string[] others)
     {
         return others.Any(str.EqualsOrdinalIgnoreCase);
@@ -69,7 +62,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string equals any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EqualsAnyOrdinalIgnoreCase(this string str, IEnumerable<string> others)
     {
         return others.Any(str.EqualsOrdinalIgnoreCase);
@@ -78,7 +70,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string starts with another string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool StartsWithOrdinalIgnoreCase(this string str, string other)
     {
         return str.StartsWith(other, StringComparison.OrdinalIgnoreCase);
@@ -87,7 +78,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string ends with another string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EndsWithOrdinalIgnoreCase(this string str, string other)
     {
         return str.EndsWith(other, StringComparison.OrdinalIgnoreCase);
@@ -96,7 +86,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string starts with any other string under <see cref="StringComparison.CurrentCulture"/> comparison.
     /// </summary>
-    [Pure]
     public static bool StartsWithAny(this string str, params string[] others)
     {
         return str.StartsWithAny(others.AsEnumerable());
@@ -105,7 +94,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string starts with any other string under <see cref="StringComparison.CurrentCulture"/> comparison.
     /// </summary>
-    [Pure]
     public static bool StartsWithAny(this string str, IEnumerable<string> others)
     {
         return others.Any(str.StartsWith);
@@ -114,7 +102,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string starts with any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool StartsWithAnyOrdinalIgnoreCase(this string str, params string[] others)
     {
         return str.StartsWithAnyOrdinalIgnoreCase(others.AsEnumerable());
@@ -123,7 +110,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string starts with any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool StartsWithAnyOrdinalIgnoreCase(this string str, IEnumerable<string> others)
     {
         return others.Any(str.StartsWithOrdinalIgnoreCase);
@@ -132,7 +118,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string ends with any other string under <see cref="StringComparison.CurrentCulture"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EndsWithAny(this string str, params string[] others)
     {
         return str.EndsWithAny(others.AsEnumerable());
@@ -141,7 +126,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string ends with any other string under <see cref="StringComparison.CurrentCulture"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EndsWithAny(this string str, IEnumerable<string> others)
     {
         return others.Any(str.EndsWith);
@@ -150,7 +134,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string ends with any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EndsWithAnyOrdinalIgnoreCase(this string str, params string[] others)
     {
         return str.EndsWithAnyOrdinalIgnoreCase(others.AsEnumerable());
@@ -159,7 +142,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Indicates whether a string ends with any other string under <see cref="StringComparison.OrdinalIgnoreCase"/> comparison.
     /// </summary>
-    [Pure]
     public static bool EndsWithAnyOrdinalIgnoreCase(this string str, IEnumerable<string> others)
     {
         return others.Any(str.EndsWithOrdinalIgnoreCase);

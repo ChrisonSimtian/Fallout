@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.VSWhere;
 
 /// <summary><p>VSWhere is designed to be a redistributable, single-file executable that can be used in build or deployment scripts to find where Visual Studio - or other products in the Visual Studio family - is located.</p><p>For more details, visit the <a href="https://github.com/Microsoft/vswhere">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class VSWhereTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class VSWhereTasks : ToolTasks, IRequireNuGetPackage
 }
 #region VSWhereSettings
 /// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Common.Tools.VSWhere.VSWhereSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(VSWhereTasks), Command = nameof(VSWhereTasks.VSWhere))]
 public partial class VSWhereSettings : ToolOptions
@@ -71,7 +68,6 @@ public partial class VSWhereSettings : ToolOptions
 #endregion
 #region VSWhereCatalog
 /// <summary>Used within <see cref="VSWhereTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class VSWhereCatalog : Options
 {
@@ -113,7 +109,6 @@ public partial class VSWhereCatalog : Options
 #endregion
 #region VSWhereResult
 /// <summary>Used within <see cref="VSWhereTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class VSWhereResult : Options
 {
@@ -157,204 +152,202 @@ public partial class VSWhereResult : Options
 #endregion
 #region VSWhereSettingsExtensions
 /// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Common.Tools.VSWhere.VSWhereSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class VSWhereSettingsExtensions
 {
     #region Latest
     /// <inheritdoc cref="VSWhereSettings.Latest"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
     public static T SetLatest<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Latest, v));
     /// <inheritdoc cref="VSWhereSettings.Latest"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
     public static T ResetLatest<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.Latest));
     /// <inheritdoc cref="VSWhereSettings.Latest"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
     public static T EnableLatest<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Latest, true));
     /// <inheritdoc cref="VSWhereSettings.Latest"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
     public static T DisableLatest<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Latest, false));
     /// <inheritdoc cref="VSWhereSettings.Latest"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Latest))]
     public static T ToggleLatest<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Latest, !o.Latest));
     #endregion
     #region Format
     /// <inheritdoc cref="VSWhereSettings.Format"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Format))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Format))]
     public static T SetFormat<T>(this T o, VSWhereFormat v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Format, v));
     /// <inheritdoc cref="VSWhereSettings.Format"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Format))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Format))]
     public static T ResetFormat<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.Format));
     #endregion
     #region NoLogo
     /// <inheritdoc cref="VSWhereSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
     public static T SetNoLogo<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.NoLogo, v));
     /// <inheritdoc cref="VSWhereSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
     public static T ResetNoLogo<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.NoLogo));
     /// <inheritdoc cref="VSWhereSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
     public static T EnableNoLogo<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.NoLogo, true));
     /// <inheritdoc cref="VSWhereSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
     public static T DisableNoLogo<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.NoLogo, false));
     /// <inheritdoc cref="VSWhereSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.NoLogo))]
     public static T ToggleNoLogo<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.NoLogo, !o.NoLogo));
     #endregion
     #region UTF8
     /// <inheritdoc cref="VSWhereSettings.UTF8"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
     public static T SetUTF8<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.UTF8, v));
     /// <inheritdoc cref="VSWhereSettings.UTF8"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
     public static T ResetUTF8<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.UTF8));
     /// <inheritdoc cref="VSWhereSettings.UTF8"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
     public static T EnableUTF8<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.UTF8, true));
     /// <inheritdoc cref="VSWhereSettings.UTF8"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
     public static T DisableUTF8<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.UTF8, false));
     /// <inheritdoc cref="VSWhereSettings.UTF8"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.UTF8))]
     public static T ToggleUTF8<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.UTF8, !o.UTF8));
     #endregion
     #region Legacy
     /// <inheritdoc cref="VSWhereSettings.Legacy"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
     public static T SetLegacy<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Legacy, v));
     /// <inheritdoc cref="VSWhereSettings.Legacy"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
     public static T ResetLegacy<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.Legacy));
     /// <inheritdoc cref="VSWhereSettings.Legacy"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
     public static T EnableLegacy<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Legacy, true));
     /// <inheritdoc cref="VSWhereSettings.Legacy"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
     public static T DisableLegacy<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Legacy, false));
     /// <inheritdoc cref="VSWhereSettings.Legacy"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Legacy))]
     public static T ToggleLegacy<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Legacy, !o.Legacy));
     #endregion
     #region All
     /// <inheritdoc cref="VSWhereSettings.All"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="VSWhereSettings.All"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
     public static T ResetAll<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="VSWhereSettings.All"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
     public static T EnableAll<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="VSWhereSettings.All"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
     public static T DisableAll<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="VSWhereSettings.All"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.All))]
     public static T ToggleAll<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region Prerelease
     /// <inheritdoc cref="VSWhereSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
     public static T SetPrerelease<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Prerelease, v));
     /// <inheritdoc cref="VSWhereSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
     public static T ResetPrerelease<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.Prerelease));
     /// <inheritdoc cref="VSWhereSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
     public static T EnablePrerelease<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Prerelease, true));
     /// <inheritdoc cref="VSWhereSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
     public static T DisablePrerelease<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Prerelease, false));
     /// <inheritdoc cref="VSWhereSettings.Prerelease"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Prerelease))]
     public static T TogglePrerelease<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Prerelease, !o.Prerelease));
     #endregion
     #region Products
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T SetProducts<T>(this T o, params string[] v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Products, v));
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T SetProducts<T>(this T o, IEnumerable<string> v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Products, v));
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T AddProducts<T>(this T o, params string[] v) where T : VSWhereSettings => o.Modify(b => b.AddCollection(() => o.Products, v));
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T AddProducts<T>(this T o, IEnumerable<string> v) where T : VSWhereSettings => o.Modify(b => b.AddCollection(() => o.Products, v));
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T RemoveProducts<T>(this T o, params string[] v) where T : VSWhereSettings => o.Modify(b => b.RemoveCollection(() => o.Products, v));
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T RemoveProducts<T>(this T o, IEnumerable<string> v) where T : VSWhereSettings => o.Modify(b => b.RemoveCollection(() => o.Products, v));
     /// <inheritdoc cref="VSWhereSettings.Products"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Products))]
     public static T ClearProducts<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.ClearCollection(() => o.Products));
     #endregion
     #region Requires
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T SetRequires<T>(this T o, params string[] v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Requires, v));
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T SetRequires<T>(this T o, IEnumerable<string> v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Requires, v));
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T AddRequires<T>(this T o, params string[] v) where T : VSWhereSettings => o.Modify(b => b.AddCollection(() => o.Requires, v));
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T AddRequires<T>(this T o, IEnumerable<string> v) where T : VSWhereSettings => o.Modify(b => b.AddCollection(() => o.Requires, v));
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T RemoveRequires<T>(this T o, params string[] v) where T : VSWhereSettings => o.Modify(b => b.RemoveCollection(() => o.Requires, v));
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T RemoveRequires<T>(this T o, IEnumerable<string> v) where T : VSWhereSettings => o.Modify(b => b.RemoveCollection(() => o.Requires, v));
     /// <inheritdoc cref="VSWhereSettings.Requires"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Requires))]
     public static T ClearRequires<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.ClearCollection(() => o.Requires));
     #endregion
     #region RequiresAny
     /// <inheritdoc cref="VSWhereSettings.RequiresAny"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
     public static T SetRequiresAny<T>(this T o, bool? v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.RequiresAny, v));
     /// <inheritdoc cref="VSWhereSettings.RequiresAny"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
     public static T ResetRequiresAny<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.RequiresAny));
     /// <inheritdoc cref="VSWhereSettings.RequiresAny"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
     public static T EnableRequiresAny<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.RequiresAny, true));
     /// <inheritdoc cref="VSWhereSettings.RequiresAny"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
     public static T DisableRequiresAny<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.RequiresAny, false));
     /// <inheritdoc cref="VSWhereSettings.RequiresAny"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.RequiresAny))]
     public static T ToggleRequiresAny<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.RequiresAny, !o.RequiresAny));
     #endregion
     #region Version
     /// <inheritdoc cref="VSWhereSettings.Version"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Version))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="VSWhereSettings.Version"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Version))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Property
     /// <inheritdoc cref="VSWhereSettings.Property"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Property))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Property))]
     public static T SetProperty<T>(this T o, string v) where T : VSWhereSettings => o.Modify(b => b.Set(() => o.Property, v));
     /// <inheritdoc cref="VSWhereSettings.Property"/>
-    [Pure] [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Property))]
+    [Builder(Type = typeof(VSWhereSettings), Property = nameof(VSWhereSettings.Property))]
     public static T ResetProperty<T>(this T o) where T : VSWhereSettings => o.Modify(b => b.Remove(() => o.Property));
     #endregion
 }
 #endregion
 #region VSWhereFormat
 /// <summary>Used within <see cref="VSWhereTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<VSWhereFormat>))]

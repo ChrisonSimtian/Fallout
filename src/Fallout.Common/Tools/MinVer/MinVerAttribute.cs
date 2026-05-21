@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
@@ -18,8 +17,6 @@ namespace Fallout.Common.Tools.MinVer;
 /// <summary>
 /// Injects an instance of <see cref="MinVer"/> based on the local repository.
 /// </summary>
-[PublicAPI]
-[UsedImplicitly(ImplicitUseKindFlags.Default)]
 public class MinVerAttribute : ValueInjectionAttributeBase
 {
     public string Framework { get; set; }

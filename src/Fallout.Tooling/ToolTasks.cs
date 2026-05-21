@@ -6,11 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public abstract partial class ToolTasks
 {
     protected internal virtual partial Action<OutputType, string> GetLogger(ToolOptions options = null);

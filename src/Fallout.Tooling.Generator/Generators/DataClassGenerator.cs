@@ -85,7 +85,6 @@ public static class DataClassGenerator
         writer
             .WriteLine($"#region {dataClass.Name}")
             .WriteSummary(dataClass)
-            .WriteLine("[PublicAPI]")
             .WriteObsoleteAttributeWhenObsolete(dataClass)
             .WriteLine("[ExcludeFromCodeCoverage]")
             .WriteLine(GetCommandAttribute())

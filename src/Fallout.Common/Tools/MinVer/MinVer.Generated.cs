@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.MinVer;
 
 /// <summary><p>Minimalistic versioning using Git tags.</p><p>For more details, visit the <a href="https://github.com/adamralph/minver">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class MinVerTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class MinVerTasks : ToolTasks, IRequireNuGetPackage
 }
 #region MinVerSettings
 /// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Common.Tools.MinVer.MinVerSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MinVerTasks), Command = nameof(MinVerTasks.MinVer))]
 public partial class MinVerSettings : ToolOptions, IToolOptionsWithFramework
@@ -59,63 +56,61 @@ public partial class MinVerSettings : ToolOptions, IToolOptionsWithFramework
 #endregion
 #region MinVerSettingsExtensions
 /// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Common.Tools.MinVer.MinVerSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class MinVerSettingsExtensions
 {
     #region AutoIncrement
     /// <inheritdoc cref="MinVerSettings.AutoIncrement"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.AutoIncrement))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.AutoIncrement))]
     public static T SetAutoIncrement<T>(this T o, MinVerVersionPart v) where T : MinVerSettings => o.Modify(b => b.Set(() => o.AutoIncrement, v));
     /// <inheritdoc cref="MinVerSettings.AutoIncrement"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.AutoIncrement))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.AutoIncrement))]
     public static T ResetAutoIncrement<T>(this T o) where T : MinVerSettings => o.Modify(b => b.Remove(() => o.AutoIncrement));
     #endregion
     #region BuildMetadata
     /// <inheritdoc cref="MinVerSettings.BuildMetadata"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.BuildMetadata))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.BuildMetadata))]
     public static T SetBuildMetadata<T>(this T o, string v) where T : MinVerSettings => o.Modify(b => b.Set(() => o.BuildMetadata, v));
     /// <inheritdoc cref="MinVerSettings.BuildMetadata"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.BuildMetadata))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.BuildMetadata))]
     public static T ResetBuildMetadata<T>(this T o) where T : MinVerSettings => o.Modify(b => b.Remove(() => o.BuildMetadata));
     #endregion
     #region DefaultPreReleaseIdentifiers
     /// <inheritdoc cref="MinVerSettings.DefaultPreReleaseIdentifiers"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.DefaultPreReleaseIdentifiers))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.DefaultPreReleaseIdentifiers))]
     public static T SetDefaultPreReleaseIdentifiers<T>(this T o, string v) where T : MinVerSettings => o.Modify(b => b.Set(() => o.DefaultPreReleaseIdentifiers, v));
     /// <inheritdoc cref="MinVerSettings.DefaultPreReleaseIdentifiers"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.DefaultPreReleaseIdentifiers))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.DefaultPreReleaseIdentifiers))]
     public static T ResetDefaultPreReleaseIdentifiers<T>(this T o) where T : MinVerSettings => o.Modify(b => b.Remove(() => o.DefaultPreReleaseIdentifiers));
     #endregion
     #region MinimumMajorMinor
     /// <inheritdoc cref="MinVerSettings.MinimumMajorMinor"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.MinimumMajorMinor))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.MinimumMajorMinor))]
     public static T SetMinimumMajorMinor<T>(this T o, string v) where T : MinVerSettings => o.Modify(b => b.Set(() => o.MinimumMajorMinor, v));
     /// <inheritdoc cref="MinVerSettings.MinimumMajorMinor"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.MinimumMajorMinor))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.MinimumMajorMinor))]
     public static T ResetMinimumMajorMinor<T>(this T o) where T : MinVerSettings => o.Modify(b => b.Remove(() => o.MinimumMajorMinor));
     #endregion
     #region TagPrefix
     /// <inheritdoc cref="MinVerSettings.TagPrefix"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.TagPrefix))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.TagPrefix))]
     public static T SetTagPrefix<T>(this T o, string v) where T : MinVerSettings => o.Modify(b => b.Set(() => o.TagPrefix, v));
     /// <inheritdoc cref="MinVerSettings.TagPrefix"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.TagPrefix))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.TagPrefix))]
     public static T ResetTagPrefix<T>(this T o) where T : MinVerSettings => o.Modify(b => b.Remove(() => o.TagPrefix));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="MinVerSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.Verbosity))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, MinVerVerbosity v) where T : MinVerSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="MinVerSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.Verbosity))]
+    [Builder(Type = typeof(MinVerSettings), Property = nameof(MinVerSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : MinVerSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
 }
 #endregion
 #region MinVerVerbosity
 /// <summary>Used within <see cref="MinVerTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<MinVerVerbosity>))]
@@ -134,7 +129,6 @@ public partial class MinVerVerbosity : Enumeration
 #endregion
 #region MinVerVersionPart
 /// <summary>Used within <see cref="MinVerTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<MinVerVersionPart>))]

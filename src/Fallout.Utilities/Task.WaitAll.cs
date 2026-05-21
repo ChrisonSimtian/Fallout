@@ -8,11 +8,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
 public static partial class TaskExtensions

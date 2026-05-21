@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.TeamCity;
 
-[PublicAPI]
 public enum TeamCityImportType
 {
     /// <summary>JUnit Ant task XML reports</summary>

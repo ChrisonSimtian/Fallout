@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -14,7 +13,6 @@ using Serilog.Events;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class ToolingExtensions
 {
     public static AbsolutePath SetExecutable(this AbsolutePath path, bool updateVcsIndex = false)

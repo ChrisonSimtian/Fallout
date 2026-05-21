@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Git;
 
-[PublicAPI]
 public static class GitRepositoryExtensions
 {
     public static bool IsOnMainOrMasterBranch(this GitRepository repository)

@@ -6,12 +6,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tools.AzureKeyVault
 {
     /// <summary>Attribute to obtain the KeyVault defined by <see cref="AzureKeyVaultConfigurationAttribute"/> to retrieve multiple items.</summary>
-    [PublicAPI]
     public class AzureKeyVaultAttribute : AzureKeyVaultAttributeBase
     {
         protected override object GetValue(AzureKeyVaultConfiguration configuration, MemberInfo member)

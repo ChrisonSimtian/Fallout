@@ -7,12 +7,11 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.AppVeyor;
-// [PublicAPI]
+// 
 // [Headers("Accept: application/json")]
 // public interface IAppVeyorRestClient
 // {
@@ -21,7 +20,6 @@ namespace Fallout.Common.CI.AppVeyor;
 // }
 //
 
-[PublicAPI]
 public enum AppVeyorMessageCategory
 {
     Information,
@@ -32,7 +30,6 @@ public enum AppVeyorMessageCategory
 /// <summary>
 /// Interface according to the <a href="https://www.appveyor.com/docs/environment-variables/">official website</a>.
 /// </summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class AppVeyor : Host, IBuildServer
 {
@@ -40,7 +37,6 @@ public partial class AppVeyor : Host, IBuildServer
 
     public static int MessageLimit = 500;
 
-    [UsedImplicitly]
     internal static bool IsRunningAppVeyor => EnvironmentInfo.HasVariable("APPVEYOR");
 
     private readonly Lazy<Tool> _cli = Lazy.Create(() => IsRunningAppVeyor ? ToolResolver.GetEnvironmentOrPathTool("appveyor") : null);
@@ -66,31 +62,31 @@ public partial class AppVeyor : Host, IBuildServer
     public int BuildNumber => EnvironmentInfo.GetVariable<int>("APPVEYOR_BUILD_NUMBER");
     public string BuildVersion => EnvironmentInfo.GetVariable("APPVEYOR_BUILD_VERSION");
     public string BuildWorkerImage => EnvironmentInfo.GetVariable("APPVEYOR_BUILD_WORKER_IMAGE");
-    [CanBeNull] public int? PullRequestNumber => EnvironmentInfo.GetVariable<int?>("APPVEYOR_PULL_REQUEST_NUMBER");
-    [CanBeNull] public string PullRequestTitle => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_TITLE");
-    [CanBeNull] public string PullRequestHeadRepositoryName => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_REPO_NAME");
-    [CanBeNull] public string PullRequestHeadRepositoryBranch => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH");
-    [CanBeNull] public string PullRequestHeadCommit => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_COMMIT");
+    public int? PullRequestNumber => EnvironmentInfo.GetVariable<int?>("APPVEYOR_PULL_REQUEST_NUMBER");
+    public string PullRequestTitle => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_TITLE");
+    public string PullRequestHeadRepositoryName => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_REPO_NAME");
+    public string PullRequestHeadRepositoryBranch => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH");
+    public string PullRequestHeadCommit => EnvironmentInfo.GetVariable("APPVEYOR_PULL_REQUEST_HEAD_COMMIT");
     public string JobId => EnvironmentInfo.GetVariable("APPVEYOR_JOB_ID");
-    [CanBeNull] public string JobName => EnvironmentInfo.GetVariable("APPVEYOR_JOB_NAME");
+    public string JobName => EnvironmentInfo.GetVariable("APPVEYOR_JOB_NAME");
     public int JobNumber => EnvironmentInfo.GetVariable<int>("APPVEYOR_JOB_NUMBER");
     public string RepositoryProvider => EnvironmentInfo.GetVariable("APPVEYOR_REPO_PROVIDER");
     public string RepositoryScm => EnvironmentInfo.GetVariable("APPVEYOR_REPO_SCM");
     public string RepositoryName => EnvironmentInfo.GetVariable("APPVEYOR_REPO_NAME");
     public string RepositoryBranch => EnvironmentInfo.GetVariable("APPVEYOR_REPO_BRANCH");
     public bool RepositoryTag => EnvironmentInfo.GetVariable<bool>("APPVEYOR_REPO_TAG");
-    [CanBeNull] public string RepositoryTagName => EnvironmentInfo.GetVariable("APPVEYOR_REPO_TAG_NAME");
+    public string RepositoryTagName => EnvironmentInfo.GetVariable("APPVEYOR_REPO_TAG_NAME");
     public string RepositoryCommitSha => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT");
     public string RepositoryCommitAuthor => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_AUTHOR");
     public string RepositoryCommitAuthorEmail => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL");
     public DateTime RepositoryCommitTimestamp => EnvironmentInfo.GetVariable<DateTime>("APPVEYOR_REPO_COMMIT_TIMESTAMP");
     public string RepositoryCommitMessage => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_MESSAGE");
-    [CanBeNull] public string RepositoryCommitMessageExtended => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED");
+    public string RepositoryCommitMessageExtended => EnvironmentInfo.GetVariable("APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED");
     public bool ScheduledBuild => EnvironmentInfo.GetVariable<bool>("APPVEYOR_SCHEDULED_BUILD");
     public bool ForcedBuild => EnvironmentInfo.GetVariable<bool>("APPVEYOR_FORCED_BUILD");
     public bool Rebuild => EnvironmentInfo.GetVariable<bool>("APPVEYOR_RE_BUILD");
-    [CanBeNull] public string Platform => EnvironmentInfo.GetVariable("PLATFORM");
-    [CanBeNull] public string Configuration => EnvironmentInfo.GetVariable("CONFIGURATION");
+    public string Platform => EnvironmentInfo.GetVariable("PLATFORM");
+    public string Configuration => EnvironmentInfo.GetVariable("CONFIGURATION");
 
     public void UpdateBuildVersion(string version)
     {

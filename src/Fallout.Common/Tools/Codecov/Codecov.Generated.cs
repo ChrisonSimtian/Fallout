@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Codecov;
 
 /// <summary><p>Code coverage is a measurement used to express which lines of code were executed by a test suite. We use three primary terms to describe each line executed.<para/><ul><li>hit - indicates that the source code was executed by the test suite.</li><li>partial - indicates that the source code was not fully executed by the test suite; there are remaining branches that were not executed.</li><li>miss - indicates that the source code was not executed by the test suite.</li></ul><para/>Coverage is the ratio of <c>hits / (sum of hit + partial + miss)</c>. A code base that has 5 lines executed by tests out of 12 total lines will receive a coverage ratio of 41% (rounding down).<para/>Phrased simply, code coverage provides a visual measurement of what source code is being executed by a test suite. This information indicates to the software developer where they should write new tests in an effort to achieve higher coverage.<para/>Testing source code helps to prevent bugs and syntax errors by executing each line with a known variable and cross-checking it with an expected output.</p><p>For more details, visit the <a href="https://about.codecov.io/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId)]
 public partial class CodecovTasks : ToolTasks, IRequireNuGetPackage
@@ -37,7 +35,6 @@ public partial class CodecovTasks : ToolTasks, IRequireNuGetPackage
 }
 #region CodecovSettings
 /// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Common.Tools.Codecov.CodecovSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CodecovTasks), Command = nameof(CodecovTasks.Codecov))]
 public partial class CodecovSettings : ToolOptions
@@ -86,258 +83,257 @@ public partial class CodecovSettings : ToolOptions
 #endregion
 #region CodecovSettingsExtensions
 /// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Common.Tools.Codecov.CodecovSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class CodecovSettingsExtensions
 {
     #region Branch
     /// <inheritdoc cref="CodecovSettings.Branch"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Branch))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Branch))]
     public static T SetBranch<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Branch, v));
     /// <inheritdoc cref="CodecovSettings.Branch"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Branch))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Branch))]
     public static T ResetBranch<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Branch));
     #endregion
     #region Build
     /// <inheritdoc cref="CodecovSettings.Build"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Build))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Build))]
     public static T SetBuild<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Build, v));
     /// <inheritdoc cref="CodecovSettings.Build"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Build))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Build))]
     public static T ResetBuild<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Build));
     #endregion
     #region Sha
     /// <inheritdoc cref="CodecovSettings.Sha"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Sha))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Sha))]
     public static T SetSha<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Sha, v));
     /// <inheritdoc cref="CodecovSettings.Sha"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Sha))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Sha))]
     public static T ResetSha<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Sha));
     #endregion
     #region DisableNetwork
     /// <inheritdoc cref="CodecovSettings.DisableNetwork"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
     public static T SetDisableNetwork<T>(this T o, bool? v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.DisableNetwork, v));
     /// <inheritdoc cref="CodecovSettings.DisableNetwork"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
     public static T ResetDisableNetwork<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.DisableNetwork));
     /// <inheritdoc cref="CodecovSettings.DisableNetwork"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
     public static T EnableDisableNetwork<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.DisableNetwork, true));
     /// <inheritdoc cref="CodecovSettings.DisableNetwork"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
     public static T DisableDisableNetwork<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.DisableNetwork, false));
     /// <inheritdoc cref="CodecovSettings.DisableNetwork"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.DisableNetwork))]
     public static T ToggleDisableNetwork<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.DisableNetwork, !o.DisableNetwork));
     #endregion
     #region Dump
     /// <inheritdoc cref="CodecovSettings.Dump"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
     public static T SetDump<T>(this T o, bool? v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Dump, v));
     /// <inheritdoc cref="CodecovSettings.Dump"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
     public static T ResetDump<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Dump));
     /// <inheritdoc cref="CodecovSettings.Dump"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
     public static T EnableDump<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Dump, true));
     /// <inheritdoc cref="CodecovSettings.Dump"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
     public static T DisableDump<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Dump, false));
     /// <inheritdoc cref="CodecovSettings.Dump"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Dump))]
     public static T ToggleDump<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Dump, !o.Dump));
     #endregion
     #region EnvironmentVariables
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T SetEnvironmentVariables<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.EnvironmentVariables, v));
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T SetEnvironmentVariables<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.EnvironmentVariables, v));
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T AddEnvironmentVariables<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.AddCollection(() => o.EnvironmentVariables, v));
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T AddEnvironmentVariables<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.AddCollection(() => o.EnvironmentVariables, v));
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T RemoveEnvironmentVariables<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.RemoveCollection(() => o.EnvironmentVariables, v));
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T RemoveEnvironmentVariables<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.RemoveCollection(() => o.EnvironmentVariables, v));
     /// <inheritdoc cref="CodecovSettings.EnvironmentVariables"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.EnvironmentVariables))]
     public static T ClearEnvironmentVariables<T>(this T o) where T : CodecovSettings => o.Modify(b => b.ClearCollection(() => o.EnvironmentVariables));
     #endregion
     #region Features
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T SetFeatures<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Features, v));
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T SetFeatures<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Features, v));
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T AddFeatures<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.AddCollection(() => o.Features, v));
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T AddFeatures<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.AddCollection(() => o.Features, v));
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T RemoveFeatures<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.RemoveCollection(() => o.Features, v));
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T RemoveFeatures<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.RemoveCollection(() => o.Features, v));
     /// <inheritdoc cref="CodecovSettings.Features"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Features))]
     public static T ClearFeatures<T>(this T o) where T : CodecovSettings => o.Modify(b => b.ClearCollection(() => o.Features));
     #endregion
     #region Files
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T SetFiles<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Files, v));
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T SetFiles<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Files, v));
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T AddFiles<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.AddCollection(() => o.Files, v));
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T AddFiles<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.AddCollection(() => o.Files, v));
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T RemoveFiles<T>(this T o, params string[] v) where T : CodecovSettings => o.Modify(b => b.RemoveCollection(() => o.Files, v));
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T RemoveFiles<T>(this T o, IEnumerable<string> v) where T : CodecovSettings => o.Modify(b => b.RemoveCollection(() => o.Files, v));
     /// <inheritdoc cref="CodecovSettings.Files"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Files))]
     public static T ClearFiles<T>(this T o) where T : CodecovSettings => o.Modify(b => b.ClearCollection(() => o.Files));
     #endregion
     #region Flags
     /// <inheritdoc cref="CodecovSettings.Flags"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Flags))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Flags))]
     public static T SetFlags<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Flags, v));
     /// <inheritdoc cref="CodecovSettings.Flags"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Flags))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Flags))]
     public static T ResetFlags<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Flags));
     #endregion
     #region Name
     /// <inheritdoc cref="CodecovSettings.Name"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Name))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="CodecovSettings.Name"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Name))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Name))]
     public static T ResetName<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region NoColor
     /// <inheritdoc cref="CodecovSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
     public static T SetNoColor<T>(this T o, bool? v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.NoColor, v));
     /// <inheritdoc cref="CodecovSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
     public static T ResetNoColor<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.NoColor));
     /// <inheritdoc cref="CodecovSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
     public static T EnableNoColor<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.NoColor, true));
     /// <inheritdoc cref="CodecovSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
     public static T DisableNoColor<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.NoColor, false));
     /// <inheritdoc cref="CodecovSettings.NoColor"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.NoColor))]
     public static T ToggleNoColor<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.NoColor, !o.NoColor));
     #endregion
     #region PullRequest
     /// <inheritdoc cref="CodecovSettings.PullRequest"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.PullRequest))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.PullRequest))]
     public static T SetPullRequest<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.PullRequest, v));
     /// <inheritdoc cref="CodecovSettings.PullRequest"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.PullRequest))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.PullRequest))]
     public static T ResetPullRequest<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.PullRequest));
     #endregion
     #region RepositoryRoot
     /// <inheritdoc cref="CodecovSettings.RepositoryRoot"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.RepositoryRoot))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.RepositoryRoot))]
     public static T SetRepositoryRoot<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.RepositoryRoot, v));
     /// <inheritdoc cref="CodecovSettings.RepositoryRoot"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.RepositoryRoot))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.RepositoryRoot))]
     public static T ResetRepositoryRoot<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.RepositoryRoot));
     #endregion
     #region Required
     /// <inheritdoc cref="CodecovSettings.Required"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
     public static T SetRequired<T>(this T o, bool? v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Required, v));
     /// <inheritdoc cref="CodecovSettings.Required"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
     public static T ResetRequired<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Required));
     /// <inheritdoc cref="CodecovSettings.Required"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
     public static T EnableRequired<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Required, true));
     /// <inheritdoc cref="CodecovSettings.Required"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
     public static T DisableRequired<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Required, false));
     /// <inheritdoc cref="CodecovSettings.Required"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Required))]
     public static T ToggleRequired<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Required, !o.Required));
     #endregion
     #region Slug
     /// <inheritdoc cref="CodecovSettings.Slug"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Slug))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Slug))]
     public static T SetSlug<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Slug, v));
     /// <inheritdoc cref="CodecovSettings.Slug"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Slug))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Slug))]
     public static T ResetSlug<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Slug));
     #endregion
     #region Tag
     /// <inheritdoc cref="CodecovSettings.Tag"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Tag))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Tag))]
     public static T SetTag<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Tag, v));
     /// <inheritdoc cref="CodecovSettings.Tag"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Tag))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Tag))]
     public static T ResetTag<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Tag));
     #endregion
     #region Token
     /// <inheritdoc cref="CodecovSettings.Token"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Token))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Token))]
     public static T SetToken<T>(this T o, [Secret] string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Token, v));
     /// <inheritdoc cref="CodecovSettings.Token"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Token))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Token))]
     public static T ResetToken<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Token));
     #endregion
     #region Url
     /// <inheritdoc cref="CodecovSettings.Url"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Url))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Url))]
     public static T SetUrl<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Url, v));
     /// <inheritdoc cref="CodecovSettings.Url"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Url))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Url))]
     public static T ResetUrl<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Url));
     #endregion
     #region Verbose
     /// <inheritdoc cref="CodecovSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
     public static T SetVerbose<T>(this T o, bool? v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Verbose, v));
     /// <inheritdoc cref="CodecovSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
     public static T ResetVerbose<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Verbose));
     /// <inheritdoc cref="CodecovSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
     public static T EnableVerbose<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Verbose, true));
     /// <inheritdoc cref="CodecovSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
     public static T DisableVerbose<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Verbose, false));
     /// <inheritdoc cref="CodecovSettings.Verbose"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Verbose))]
     public static T ToggleVerbose<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Verbose, !o.Verbose));
     #endregion
     #region Framework
     /// <inheritdoc cref="CodecovSettings.Framework"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Framework))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Framework))]
     public static T SetFramework<T>(this T o, string v) where T : CodecovSettings => o.Modify(b => b.Set(() => o.Framework, v));
     /// <inheritdoc cref="CodecovSettings.Framework"/>
-    [Pure] [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Framework))]
+    [Builder(Type = typeof(CodecovSettings), Property = nameof(CodecovSettings.Framework))]
     public static T ResetFramework<T>(this T o) where T : CodecovSettings => o.Modify(b => b.Remove(() => o.Framework));
     #endregion
 }

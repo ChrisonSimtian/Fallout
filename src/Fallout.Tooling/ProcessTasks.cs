@@ -10,7 +10,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
@@ -18,7 +17,6 @@ using Serilog.Events;
 
 namespace Fallout.Common.Tooling;
 
-[PublicAPI]
 public static class ProcessTasks
 {
     public static bool DefaultLogOutput = true;
@@ -113,7 +111,6 @@ public static class ProcessTasks
             outputFilter ?? (x => x));
     }
 
-    [CanBeNull]
     private static string GetToolPathOverride(string toolPath)
     {
         if (toolPath.EndsWithOrdinalIgnoreCase(".dll"))
@@ -131,15 +128,14 @@ public static class ProcessTasks
     }
 
     // TODO: add default values
-    [CanBeNull]
     private static IProcess StartProcessInternal(
         string toolPath,
         string arguments,
         string workingDirectory,
-        [CanBeNull] IReadOnlyDictionary<string, string> environmentVariables,
+        IReadOnlyDictionary<string, string> environmentVariables,
         int? timeout,
         bool logInvocation,
-        [CanBeNull] Action<OutputType, string> logger,
+        Action<OutputType, string> logger,
         Func<string, string> outputFilter)
     {
         Assert.FileExists(toolPath);
@@ -199,7 +195,7 @@ public static class ProcessTasks
 
     private static BlockingCollection<Output> GetOutputCollection(
         Process process,
-        [CanBeNull] Action<OutputType, string> logger,
+        Action<OutputType, string> logger,
         Func<string, string> outputFilter)
     {
         var output = new BlockingCollection<Output>();

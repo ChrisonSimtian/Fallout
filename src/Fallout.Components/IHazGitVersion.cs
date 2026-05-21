@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.Tools.GitVersion;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazGitVersion : IFalloutBuild
 {
     [GitVersion(NoFetch = true, Framework = "net8.0")]

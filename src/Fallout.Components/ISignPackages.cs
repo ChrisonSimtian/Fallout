@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.IO;
@@ -46,7 +45,6 @@ namespace Fallout.Components;
 /// </ul>
 /// </para>
 /// </remarks>
-[PublicAPI]
 [ParameterPrefix(SignPath)]
 public interface ISignPackages : IFalloutBuild
 {

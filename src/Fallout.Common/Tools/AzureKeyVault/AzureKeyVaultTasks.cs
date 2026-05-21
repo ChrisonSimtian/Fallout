@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tools.AzureKeyVault
 {
-    [PublicAPI]
     public static class AzureKeyVaultTasks
     {
         /// <summary><p>Load an Azure Key Vault to obtain secrets.</p></summary>

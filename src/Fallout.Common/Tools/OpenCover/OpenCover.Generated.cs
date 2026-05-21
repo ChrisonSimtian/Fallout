@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.OpenCover;
 
 /// <summary><p>OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.</p><p>For more details, visit the <a href="https://github.com/OpenCover/opencover">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class OpenCoverTasks : ToolTasks, IRequireNuGetPackage
@@ -38,7 +36,6 @@ public partial class OpenCoverTasks : ToolTasks, IRequireNuGetPackage
 }
 #region OpenCoverSettings
 /// <inheritdoc cref="OpenCoverTasks.OpenCover(Fallout.Common.Tools.OpenCover.OpenCoverSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OpenCoverTasks), Command = nameof(OpenCoverTasks.OpenCover))]
 public partial class OpenCoverSettings : ToolOptions
@@ -95,393 +92,391 @@ public partial class OpenCoverSettings : ToolOptions
 #endregion
 #region OpenCoverSettingsExtensions
 /// <inheritdoc cref="OpenCoverTasks.OpenCover(Fallout.Common.Tools.OpenCover.OpenCoverSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class OpenCoverSettingsExtensions
 {
     #region TargetPath
     /// <inheritdoc cref="OpenCoverSettings.TargetPath"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetPath))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetPath))]
     public static T SetTargetPath<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetPath, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetPath"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetPath))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetPath))]
     public static T ResetTargetPath<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetPath));
     #endregion
     #region TargetArguments
     /// <inheritdoc cref="OpenCoverSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetArguments))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetArguments))]
     public static T SetTargetArguments<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetArguments, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetArguments"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetArguments))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetArguments))]
     public static T ResetTargetArguments<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetArguments));
     #endregion
     #region TargetDirectory
     /// <inheritdoc cref="OpenCoverSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetDirectory))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetDirectory))]
     public static T SetTargetDirectory<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetDirectory, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetDirectory"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetDirectory))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetDirectory))]
     public static T ResetTargetDirectory<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetDirectory));
     #endregion
     #region CoverByTests
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T SetCoverByTests<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T SetCoverByTests<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T AddCoverByTests<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T AddCoverByTests<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T RemoveCoverByTests<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T RemoveCoverByTests<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.CoverByTests, v));
     /// <inheritdoc cref="OpenCoverSettings.CoverByTests"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.CoverByTests))]
     public static T ClearCoverByTests<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.CoverByTests));
     #endregion
     #region PerformanceCounters
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
     public static T SetPerformanceCounters<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, v));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
     public static T ResetPerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.PerformanceCounters));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
     public static T EnablePerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, true));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
     public static T DisablePerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, false));
     /// <inheritdoc cref="OpenCoverSettings.PerformanceCounters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.PerformanceCounters))]
     public static T TogglePerformanceCounters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.PerformanceCounters, !o.PerformanceCounters));
     #endregion
     #region ExcludeByAttributes
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T SetExcludeByAttributes<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T SetExcludeByAttributes<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T AddExcludeByAttributes<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T AddExcludeByAttributes<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T RemoveExcludeByAttributes<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T RemoveExcludeByAttributes<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByAttributes, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByAttributes"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByAttributes))]
     public static T ClearExcludeByAttributes<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeByAttributes));
     #endregion
     #region ExcludeByFile
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T SetExcludeByFile<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T SetExcludeByFile<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T AddExcludeByFile<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T AddExcludeByFile<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T RemoveExcludeByFile<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T RemoveExcludeByFile<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeByFile, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeByFile"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeByFile))]
     public static T ClearExcludeByFile<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeByFile));
     #endregion
     #region ExcludeDirectories
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T SetExcludeDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T SetExcludeDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T AddExcludeDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T AddExcludeDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T RemoveExcludeDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T RemoveExcludeDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludeDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.ExcludeDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ExcludeDirectories))]
     public static T ClearExcludeDirectories<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.ExcludeDirectories));
     #endregion
     #region Filters
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T SetFilters<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T SetFilters<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T AddFilters<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T AddFilters<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T RemoveFilters<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T RemoveFilters<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.Filters, v));
     /// <inheritdoc cref="OpenCoverSettings.Filters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Filters))]
     public static T ClearFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.Filters));
     #endregion
     #region HideSkippedKinds
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T SetHideSkippedKinds<T>(this T o, params OpenCoverSkipping[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T SetHideSkippedKinds<T>(this T o, IEnumerable<OpenCoverSkipping> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T AddHideSkippedKinds<T>(this T o, params OpenCoverSkipping[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T AddHideSkippedKinds<T>(this T o, IEnumerable<OpenCoverSkipping> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T RemoveHideSkippedKinds<T>(this T o, params OpenCoverSkipping[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T RemoveHideSkippedKinds<T>(this T o, IEnumerable<OpenCoverSkipping> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.HideSkippedKinds, v));
     /// <inheritdoc cref="OpenCoverSettings.HideSkippedKinds"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.HideSkippedKinds))]
     public static T ClearHideSkippedKinds<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.HideSkippedKinds));
     #endregion
     #region Verbosity
     /// <inheritdoc cref="OpenCoverSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Verbosity))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Verbosity))]
     public static T SetVerbosity<T>(this T o, OpenCoverVerbosity v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Verbosity, v));
     /// <inheritdoc cref="OpenCoverSettings.Verbosity"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Verbosity))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Verbosity))]
     public static T ResetVerbosity<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Verbosity));
     #endregion
     #region MergeByHash
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
     public static T SetMergeByHash<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, v));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
     public static T ResetMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.MergeByHash));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
     public static T EnableMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, true));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
     public static T DisableMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, false));
     /// <inheritdoc cref="OpenCoverSettings.MergeByHash"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeByHash))]
     public static T ToggleMergeByHash<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeByHash, !o.MergeByHash));
     #endregion
     #region MergeOutput
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
     public static T SetMergeOutput<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, v));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
     public static T ResetMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.MergeOutput));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
     public static T EnableMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, true));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
     public static T DisableMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, false));
     /// <inheritdoc cref="OpenCoverSettings.MergeOutput"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MergeOutput))]
     public static T ToggleMergeOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MergeOutput, !o.MergeOutput));
     #endregion
     #region NoDefaultFilters
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
     public static T SetNoDefaultFilters<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, v));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
     public static T ResetNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.NoDefaultFilters));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
     public static T EnableNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, true));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
     public static T DisableNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, false));
     /// <inheritdoc cref="OpenCoverSettings.NoDefaultFilters"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.NoDefaultFilters))]
     public static T ToggleNoDefaultFilters<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.NoDefaultFilters, !o.NoDefaultFilters));
     #endregion
     #region OldStyle
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
     public static T SetOldStyle<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, v));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
     public static T ResetOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.OldStyle));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
     public static T EnableOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, true));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
     public static T DisableOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, false));
     /// <inheritdoc cref="OpenCoverSettings.OldStyle"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.OldStyle))]
     public static T ToggleOldStyle<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.OldStyle, !o.OldStyle));
     #endregion
     #region Output
     /// <inheritdoc cref="OpenCoverSettings.Output"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Output))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="OpenCoverSettings.Output"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Output))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region SafeMode
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
     public static T SetSafeMode<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, v));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
     public static T ResetSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.SafeMode));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
     public static T EnableSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, true));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
     public static T DisableSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, false));
     /// <inheritdoc cref="OpenCoverSettings.SafeMode"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SafeMode))]
     public static T ToggleSafeMode<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SafeMode, !o.SafeMode));
     #endregion
     #region SearchDirectories
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T SetSearchDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T SetSearchDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T AddSearchDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T AddSearchDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.AddCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T RemoveSearchDirectories<T>(this T o, params string[] v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T RemoveSearchDirectories<T>(this T o, IEnumerable<string> v) where T : OpenCoverSettings => o.Modify(b => b.RemoveCollection(() => o.SearchDirectories, v));
     /// <inheritdoc cref="OpenCoverSettings.SearchDirectories"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SearchDirectories))]
     public static T ClearSearchDirectories<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.ClearCollection(() => o.SearchDirectories));
     #endregion
     #region Service
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
     public static T SetService<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, v));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
     public static T ResetService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Service));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
     public static T EnableService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, true));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
     public static T DisableService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, false));
     /// <inheritdoc cref="OpenCoverSettings.Service"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Service))]
     public static T ToggleService<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Service, !o.Service));
     #endregion
     #region ShowUnvisited
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
     public static T SetShowUnvisited<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, v));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
     public static T ResetShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.ShowUnvisited));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
     public static T EnableShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, true));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
     public static T DisableShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, false));
     /// <inheritdoc cref="OpenCoverSettings.ShowUnvisited"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.ShowUnvisited))]
     public static T ToggleShowUnvisited<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.ShowUnvisited, !o.ShowUnvisited));
     #endregion
     #region SkipAutoProperties
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
     public static T SetSkipAutoProperties<T>(this T o, bool? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, v));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
     public static T ResetSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.SkipAutoProperties));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
     public static T EnableSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, true));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
     public static T DisableSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, false));
     /// <inheritdoc cref="OpenCoverSettings.SkipAutoProperties"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.SkipAutoProperties))]
     public static T ToggleSkipAutoProperties<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.SkipAutoProperties, !o.SkipAutoProperties));
     #endregion
     #region MaximumVisitCount
     /// <inheritdoc cref="OpenCoverSettings.MaximumVisitCount"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MaximumVisitCount))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MaximumVisitCount))]
     public static T SetMaximumVisitCount<T>(this T o, int? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.MaximumVisitCount, v));
     /// <inheritdoc cref="OpenCoverSettings.MaximumVisitCount"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MaximumVisitCount))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.MaximumVisitCount))]
     public static T ResetMaximumVisitCount<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.MaximumVisitCount));
     #endregion
     #region Registration
     /// <inheritdoc cref="OpenCoverSettings.Registration"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Registration))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Registration))]
     public static T SetRegistration<T>(this T o, RegistrationType v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.Registration, v));
     /// <inheritdoc cref="OpenCoverSettings.Registration"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Registration))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.Registration))]
     public static T ResetRegistration<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.Registration));
     #endregion
     #region TargetExitCodeOffset
     /// <inheritdoc cref="OpenCoverSettings.TargetExitCodeOffset"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetExitCodeOffset))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetExitCodeOffset))]
     public static T SetTargetExitCodeOffset<T>(this T o, int? v) where T : OpenCoverSettings => o.Modify(b => b.Set(() => o.TargetExitCodeOffset, v));
     /// <inheritdoc cref="OpenCoverSettings.TargetExitCodeOffset"/>
-    [Pure] [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetExitCodeOffset))]
+    [Builder(Type = typeof(OpenCoverSettings), Property = nameof(OpenCoverSettings.TargetExitCodeOffset))]
     public static T ResetTargetExitCodeOffset<T>(this T o) where T : OpenCoverSettings => o.Modify(b => b.Remove(() => o.TargetExitCodeOffset));
     #endregion
 }
 #endregion
 #region OpenCoverVerbosity
 /// <summary>Used within <see cref="OpenCoverTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OpenCoverVerbosity>))]
@@ -503,7 +498,6 @@ public partial class OpenCoverVerbosity : Enumeration
 #endregion
 #region OpenCoverSkipping
 /// <summary>Used within <see cref="OpenCoverTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<OpenCoverSkipping>))]
@@ -521,7 +515,6 @@ public partial class OpenCoverSkipping : Enumeration
 #endregion
 #region RegistrationType
 /// <summary>Used within <see cref="OpenCoverTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<RegistrationType>))]

@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Helm;
 
 /// <summary><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class HelmTasks : ToolTasks, IRequirePathTool
@@ -324,7 +322,6 @@ public partial class HelmTasks : ToolTasks, IRequirePathTool
 }
 #region HelmCompletionSettings
 /// <inheritdoc cref="HelmTasks.HelmCompletion(Fallout.Common.Tools.Helm.HelmCompletionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmCompletion), Arguments = "completion")]
 public partial class HelmCompletionSettings : HelmOptionsBase
@@ -335,7 +332,6 @@ public partial class HelmCompletionSettings : HelmOptionsBase
 #endregion
 #region HelmCreateSettings
 /// <inheritdoc cref="HelmTasks.HelmCreate(Fallout.Common.Tools.Helm.HelmCreateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmCreate), Arguments = "create")]
 public partial class HelmCreateSettings : HelmOptionsBase
@@ -348,7 +344,6 @@ public partial class HelmCreateSettings : HelmOptionsBase
 #endregion
 #region HelmDeleteSettings
 /// <inheritdoc cref="HelmTasks.HelmDelete(Fallout.Common.Tools.Helm.HelmDeleteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmDelete), Arguments = "delete")]
 public partial class HelmDeleteSettings : HelmOptionsBase
@@ -381,7 +376,6 @@ public partial class HelmDeleteSettings : HelmOptionsBase
 #endregion
 #region HelmDependencyBuildSettings
 /// <inheritdoc cref="HelmTasks.HelmDependencyBuild(Fallout.Common.Tools.Helm.HelmDependencyBuildSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmDependencyBuild), Arguments = "dependency build")]
 public partial class HelmDependencyBuildSettings : HelmOptionsBase
@@ -396,7 +390,6 @@ public partial class HelmDependencyBuildSettings : HelmOptionsBase
 #endregion
 #region HelmDependencyListSettings
 /// <inheritdoc cref="HelmTasks.HelmDependencyList(Fallout.Common.Tools.Helm.HelmDependencyListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmDependencyList), Arguments = "dependency list")]
 public partial class HelmDependencyListSettings : HelmOptionsBase
@@ -407,7 +400,6 @@ public partial class HelmDependencyListSettings : HelmOptionsBase
 #endregion
 #region HelmDependencyUpdateSettings
 /// <inheritdoc cref="HelmTasks.HelmDependencyUpdate(Fallout.Common.Tools.Helm.HelmDependencyUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmDependencyUpdate), Arguments = "dependency update")]
 public partial class HelmDependencyUpdateSettings : HelmOptionsBase
@@ -424,7 +416,6 @@ public partial class HelmDependencyUpdateSettings : HelmOptionsBase
 #endregion
 #region HelmFetchSettings
 /// <inheritdoc cref="HelmTasks.HelmFetch(Fallout.Common.Tools.Helm.HelmFetchSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmFetch), Arguments = "fetch")]
 public partial class HelmFetchSettings : HelmOptionsBase
@@ -463,7 +454,6 @@ public partial class HelmFetchSettings : HelmOptionsBase
 #endregion
 #region HelmGetSettings
 /// <inheritdoc cref="HelmTasks.HelmGet(Fallout.Common.Tools.Helm.HelmGetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmGet), Arguments = "get")]
 public partial class HelmGetSettings : HelmOptionsBase
@@ -488,7 +478,6 @@ public partial class HelmGetSettings : HelmOptionsBase
 #endregion
 #region HelmGetHooksSettings
 /// <inheritdoc cref="HelmTasks.HelmGetHooks(Fallout.Common.Tools.Helm.HelmGetHooksSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmGetHooks), Arguments = "get hooks")]
 public partial class HelmGetHooksSettings : HelmOptionsBase
@@ -513,7 +502,6 @@ public partial class HelmGetHooksSettings : HelmOptionsBase
 #endregion
 #region HelmGetManifestSettings
 /// <inheritdoc cref="HelmTasks.HelmGetManifest(Fallout.Common.Tools.Helm.HelmGetManifestSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmGetManifest), Arguments = "get manifest")]
 public partial class HelmGetManifestSettings : HelmOptionsBase
@@ -538,7 +526,6 @@ public partial class HelmGetManifestSettings : HelmOptionsBase
 #endregion
 #region HelmGetNotesSettings
 /// <inheritdoc cref="HelmTasks.HelmGetNotes(Fallout.Common.Tools.Helm.HelmGetNotesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmGetNotes), Arguments = "get notes")]
 public partial class HelmGetNotesSettings : HelmOptionsBase
@@ -563,7 +550,6 @@ public partial class HelmGetNotesSettings : HelmOptionsBase
 #endregion
 #region HelmGetValuesSettings
 /// <inheritdoc cref="HelmTasks.HelmGetValues(Fallout.Common.Tools.Helm.HelmGetValuesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmGetValues), Arguments = "get values")]
 public partial class HelmGetValuesSettings : HelmOptionsBase
@@ -592,7 +578,6 @@ public partial class HelmGetValuesSettings : HelmOptionsBase
 #endregion
 #region HelmHistorySettings
 /// <inheritdoc cref="HelmTasks.HelmHistory(Fallout.Common.Tools.Helm.HelmHistorySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmHistory), Arguments = "history")]
 public partial class HelmHistorySettings : HelmOptionsBase
@@ -621,7 +606,6 @@ public partial class HelmHistorySettings : HelmOptionsBase
 #endregion
 #region HelmHomeSettings
 /// <inheritdoc cref="HelmTasks.HelmHome(Fallout.Common.Tools.Helm.HelmHomeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmHome), Arguments = "home")]
 public partial class HelmHomeSettings : HelmOptionsBase
@@ -630,7 +614,6 @@ public partial class HelmHomeSettings : HelmOptionsBase
 #endregion
 #region HelmInitSettings
 /// <inheritdoc cref="HelmTasks.HelmInit(Fallout.Common.Tools.Helm.HelmInitSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmInit), Arguments = "init")]
 public partial class HelmInitSettings : HelmOptionsBase
@@ -687,7 +670,6 @@ public partial class HelmInitSettings : HelmOptionsBase
 #endregion
 #region HelmInspectSettings
 /// <inheritdoc cref="HelmTasks.HelmInspect(Fallout.Common.Tools.Helm.HelmInspectSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmInspect), Arguments = "inspect")]
 public partial class HelmInspectSettings : HelmOptionsBase
@@ -718,7 +700,6 @@ public partial class HelmInspectSettings : HelmOptionsBase
 #endregion
 #region HelmInspectChartSettings
 /// <inheritdoc cref="HelmTasks.HelmInspectChart(Fallout.Common.Tools.Helm.HelmInspectChartSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmInspectChart), Arguments = "inspect chart")]
 public partial class HelmInspectChartSettings : HelmOptionsBase
@@ -749,7 +730,6 @@ public partial class HelmInspectChartSettings : HelmOptionsBase
 #endregion
 #region HelmInspectReadmeSettings
 /// <inheritdoc cref="HelmTasks.HelmInspectReadme(Fallout.Common.Tools.Helm.HelmInspectReadmeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmInspectReadme), Arguments = "inspect readme")]
 public partial class HelmInspectReadmeSettings : HelmOptionsBase
@@ -776,7 +756,6 @@ public partial class HelmInspectReadmeSettings : HelmOptionsBase
 #endregion
 #region HelmInspectValuesSettings
 /// <inheritdoc cref="HelmTasks.HelmInspectValues(Fallout.Common.Tools.Helm.HelmInspectValuesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmInspectValues), Arguments = "inspect values")]
 public partial class HelmInspectValuesSettings : HelmOptionsBase
@@ -807,7 +786,6 @@ public partial class HelmInspectValuesSettings : HelmOptionsBase
 #endregion
 #region HelmInstallSettings
 /// <inheritdoc cref="HelmTasks.HelmInstall(Fallout.Common.Tools.Helm.HelmInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmInstall), Arguments = "install")]
 public partial class HelmInstallSettings : HelmOptionsBase
@@ -884,7 +862,6 @@ public partial class HelmInstallSettings : HelmOptionsBase
 #endregion
 #region HelmLintSettings
 /// <inheritdoc cref="HelmTasks.HelmLint(Fallout.Common.Tools.Helm.HelmLintSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmLint), Arguments = "lint")]
 public partial class HelmLintSettings : HelmOptionsBase
@@ -907,7 +884,6 @@ public partial class HelmLintSettings : HelmOptionsBase
 #endregion
 #region HelmListSettings
 /// <inheritdoc cref="HelmTasks.HelmList(Fallout.Common.Tools.Helm.HelmListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmList), Arguments = "list")]
 public partial class HelmListSettings : HelmOptionsBase
@@ -960,7 +936,6 @@ public partial class HelmListSettings : HelmOptionsBase
 #endregion
 #region HelmPackageSettings
 /// <inheritdoc cref="HelmTasks.HelmPackage(Fallout.Common.Tools.Helm.HelmPackageSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmPackage), Arguments = "package")]
 public partial class HelmPackageSettings : HelmOptionsBase
@@ -987,7 +962,6 @@ public partial class HelmPackageSettings : HelmOptionsBase
 #endregion
 #region HelmPluginInstallSettings
 /// <inheritdoc cref="HelmTasks.HelmPluginInstall(Fallout.Common.Tools.Helm.HelmPluginInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmPluginInstall), Arguments = "plugin install")]
 public partial class HelmPluginInstallSettings : HelmOptionsBase
@@ -1002,7 +976,6 @@ public partial class HelmPluginInstallSettings : HelmOptionsBase
 #endregion
 #region HelmPluginListSettings
 /// <inheritdoc cref="HelmTasks.HelmPluginList(Fallout.Common.Tools.Helm.HelmPluginListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmPluginList), Arguments = "plugin list")]
 public partial class HelmPluginListSettings : HelmOptionsBase
@@ -1011,7 +984,6 @@ public partial class HelmPluginListSettings : HelmOptionsBase
 #endregion
 #region HelmPluginRemoveSettings
 /// <inheritdoc cref="HelmTasks.HelmPluginRemove(Fallout.Common.Tools.Helm.HelmPluginRemoveSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmPluginRemove), Arguments = "plugin remove")]
 public partial class HelmPluginRemoveSettings : HelmOptionsBase
@@ -1022,7 +994,6 @@ public partial class HelmPluginRemoveSettings : HelmOptionsBase
 #endregion
 #region HelmPluginUpdateSettings
 /// <inheritdoc cref="HelmTasks.HelmPluginUpdate(Fallout.Common.Tools.Helm.HelmPluginUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmPluginUpdate), Arguments = "plugin update")]
 public partial class HelmPluginUpdateSettings : HelmOptionsBase
@@ -1033,7 +1004,6 @@ public partial class HelmPluginUpdateSettings : HelmOptionsBase
 #endregion
 #region HelmRepoAddSettings
 /// <inheritdoc cref="HelmTasks.HelmRepoAdd(Fallout.Common.Tools.Helm.HelmRepoAddSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmRepoAdd), Arguments = "repo add")]
 public partial class HelmRepoAddSettings : HelmOptionsBase
@@ -1058,7 +1028,6 @@ public partial class HelmRepoAddSettings : HelmOptionsBase
 #endregion
 #region HelmRepoIndexSettings
 /// <inheritdoc cref="HelmTasks.HelmRepoIndex(Fallout.Common.Tools.Helm.HelmRepoIndexSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmRepoIndex), Arguments = "repo index")]
 public partial class HelmRepoIndexSettings : HelmOptionsBase
@@ -1073,7 +1042,6 @@ public partial class HelmRepoIndexSettings : HelmOptionsBase
 #endregion
 #region HelmRepoListSettings
 /// <inheritdoc cref="HelmTasks.HelmRepoList(Fallout.Common.Tools.Helm.HelmRepoListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmRepoList), Arguments = "repo list")]
 public partial class HelmRepoListSettings : HelmOptionsBase
@@ -1082,7 +1050,6 @@ public partial class HelmRepoListSettings : HelmOptionsBase
 #endregion
 #region HelmRepoRemoveSettings
 /// <inheritdoc cref="HelmTasks.HelmRepoRemove(Fallout.Common.Tools.Helm.HelmRepoRemoveSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmRepoRemove), Arguments = "repo remove")]
 public partial class HelmRepoRemoveSettings : HelmOptionsBase
@@ -1093,7 +1060,6 @@ public partial class HelmRepoRemoveSettings : HelmOptionsBase
 #endregion
 #region HelmRepoUpdateSettings
 /// <inheritdoc cref="HelmTasks.HelmRepoUpdate(Fallout.Common.Tools.Helm.HelmRepoUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmRepoUpdate), Arguments = "repo update")]
 public partial class HelmRepoUpdateSettings : HelmOptionsBase
@@ -1104,7 +1070,6 @@ public partial class HelmRepoUpdateSettings : HelmOptionsBase
 #endregion
 #region HelmResetSettings
 /// <inheritdoc cref="HelmTasks.HelmReset(Fallout.Common.Tools.Helm.HelmResetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmReset), Arguments = "reset")]
 public partial class HelmResetSettings : HelmOptionsBase
@@ -1129,7 +1094,6 @@ public partial class HelmResetSettings : HelmOptionsBase
 #endregion
 #region HelmRollbackSettings
 /// <inheritdoc cref="HelmTasks.HelmRollback(Fallout.Common.Tools.Helm.HelmRollbackSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmRollback), Arguments = "rollback")]
 public partial class HelmRollbackSettings : HelmOptionsBase
@@ -1168,7 +1132,6 @@ public partial class HelmRollbackSettings : HelmOptionsBase
 #endregion
 #region HelmSearchSettings
 /// <inheritdoc cref="HelmTasks.HelmSearch(Fallout.Common.Tools.Helm.HelmSearchSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmSearch), Arguments = "search")]
 public partial class HelmSearchSettings : HelmOptionsBase
@@ -1187,7 +1150,6 @@ public partial class HelmSearchSettings : HelmOptionsBase
 #endregion
 #region HelmServeSettings
 /// <inheritdoc cref="HelmTasks.HelmServe(Fallout.Common.Tools.Helm.HelmServeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmServe), Arguments = "serve")]
 public partial class HelmServeSettings : HelmOptionsBase
@@ -1202,7 +1164,6 @@ public partial class HelmServeSettings : HelmOptionsBase
 #endregion
 #region HelmStatusSettings
 /// <inheritdoc cref="HelmTasks.HelmStatus(Fallout.Common.Tools.Helm.HelmStatusSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmStatus), Arguments = "status")]
 public partial class HelmStatusSettings : HelmOptionsBase
@@ -1229,7 +1190,6 @@ public partial class HelmStatusSettings : HelmOptionsBase
 #endregion
 #region HelmTemplateSettings
 /// <inheritdoc cref="HelmTasks.HelmTemplate(Fallout.Common.Tools.Helm.HelmTemplateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmTemplate), Arguments = "template")]
 public partial class HelmTemplateSettings : HelmOptionsBase
@@ -1264,7 +1224,6 @@ public partial class HelmTemplateSettings : HelmOptionsBase
 #endregion
 #region HelmTestSettings
 /// <inheritdoc cref="HelmTasks.HelmTest(Fallout.Common.Tools.Helm.HelmTestSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmTest), Arguments = "test")]
 public partial class HelmTestSettings : HelmOptionsBase
@@ -1293,7 +1252,6 @@ public partial class HelmTestSettings : HelmOptionsBase
 #endregion
 #region HelmUpgradeSettings
 /// <inheritdoc cref="HelmTasks.HelmUpgrade(Fallout.Common.Tools.Helm.HelmUpgradeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmUpgrade), Arguments = "upgrade")]
 public partial class HelmUpgradeSettings : HelmOptionsBase
@@ -1374,7 +1332,6 @@ public partial class HelmUpgradeSettings : HelmOptionsBase
 #endregion
 #region HelmVerifySettings
 /// <inheritdoc cref="HelmTasks.HelmVerify(Fallout.Common.Tools.Helm.HelmVerifySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmVerify), Arguments = "verify")]
 public partial class HelmVerifySettings : HelmOptionsBase
@@ -1387,7 +1344,6 @@ public partial class HelmVerifySettings : HelmOptionsBase
 #endregion
 #region HelmVersionSettings
 /// <inheritdoc cref="HelmTasks.HelmVersion(Fallout.Common.Tools.Helm.HelmVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(HelmTasks), Command = nameof(HelmTasks.HelmVersion), Arguments = "version")]
 public partial class HelmVersionSettings : HelmOptionsBase
@@ -1416,7 +1372,6 @@ public partial class HelmVersionSettings : HelmOptionsBase
 #endregion
 #region HelmOptionsBase
 /// <summary>Used within <see cref="HelmTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public partial class HelmOptionsBase : ToolOptions
 {
@@ -1438,1086 +1393,1072 @@ public partial class HelmOptionsBase : ToolOptions
 #endregion
 #region HelmCompletionSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmCompletion(Fallout.Common.Tools.Helm.HelmCompletionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmCompletionSettingsExtensions
 {
     #region Shell
     /// <inheritdoc cref="HelmCompletionSettings.Shell"/>
-    [Pure] [Builder(Type = typeof(HelmCompletionSettings), Property = nameof(HelmCompletionSettings.Shell))]
+    [Builder(Type = typeof(HelmCompletionSettings), Property = nameof(HelmCompletionSettings.Shell))]
     public static T SetShell<T>(this T o, string v) where T : HelmCompletionSettings => o.Modify(b => b.Set(() => o.Shell, v));
     /// <inheritdoc cref="HelmCompletionSettings.Shell"/>
-    [Pure] [Builder(Type = typeof(HelmCompletionSettings), Property = nameof(HelmCompletionSettings.Shell))]
+    [Builder(Type = typeof(HelmCompletionSettings), Property = nameof(HelmCompletionSettings.Shell))]
     public static T ResetShell<T>(this T o) where T : HelmCompletionSettings => o.Modify(b => b.Remove(() => o.Shell));
     #endregion
 }
 #endregion
 #region HelmCreateSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmCreate(Fallout.Common.Tools.Helm.HelmCreateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmCreateSettingsExtensions
 {
     #region Starter
     /// <inheritdoc cref="HelmCreateSettings.Starter"/>
-    [Pure] [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Starter))]
+    [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Starter))]
     public static T SetStarter<T>(this T o, string v) where T : HelmCreateSettings => o.Modify(b => b.Set(() => o.Starter, v));
     /// <inheritdoc cref="HelmCreateSettings.Starter"/>
-    [Pure] [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Starter))]
+    [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Starter))]
     public static T ResetStarter<T>(this T o) where T : HelmCreateSettings => o.Modify(b => b.Remove(() => o.Starter));
     #endregion
     #region Name
     /// <inheritdoc cref="HelmCreateSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Name))]
+    [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : HelmCreateSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="HelmCreateSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Name))]
+    [Builder(Type = typeof(HelmCreateSettings), Property = nameof(HelmCreateSettings.Name))]
     public static T ResetName<T>(this T o) where T : HelmCreateSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
 }
 #endregion
 #region HelmDeleteSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmDelete(Fallout.Common.Tools.Helm.HelmDeleteSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmDeleteSettingsExtensions
 {
     #region Description
     /// <inheritdoc cref="HelmDeleteSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Description))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="HelmDeleteSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Description))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region DryRun
     /// <inheritdoc cref="HelmDeleteSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="HelmDeleteSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="HelmDeleteSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="HelmDeleteSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="HelmDeleteSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region NoHooks
     /// <inheritdoc cref="HelmDeleteSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
     public static T SetNoHooks<T>(this T o, bool? v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.NoHooks, v));
     /// <inheritdoc cref="HelmDeleteSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
     public static T ResetNoHooks<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.NoHooks));
     /// <inheritdoc cref="HelmDeleteSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
     public static T EnableNoHooks<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.NoHooks, true));
     /// <inheritdoc cref="HelmDeleteSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
     public static T DisableNoHooks<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.NoHooks, false));
     /// <inheritdoc cref="HelmDeleteSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.NoHooks))]
     public static T ToggleNoHooks<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.NoHooks, !o.NoHooks));
     #endregion
     #region Purge
     /// <inheritdoc cref="HelmDeleteSettings.Purge"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
     public static T SetPurge<T>(this T o, bool? v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Purge, v));
     /// <inheritdoc cref="HelmDeleteSettings.Purge"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
     public static T ResetPurge<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.Purge));
     /// <inheritdoc cref="HelmDeleteSettings.Purge"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
     public static T EnablePurge<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Purge, true));
     /// <inheritdoc cref="HelmDeleteSettings.Purge"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
     public static T DisablePurge<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Purge, false));
     /// <inheritdoc cref="HelmDeleteSettings.Purge"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Purge))]
     public static T TogglePurge<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Purge, !o.Purge));
     #endregion
     #region Timeout
     /// <inheritdoc cref="HelmDeleteSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Timeout))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Timeout))]
     public static T SetTimeout<T>(this T o, long? v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="HelmDeleteSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Timeout))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmDeleteSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmDeleteSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmDeleteSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmDeleteSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmDeleteSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmDeleteSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmDeleteSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmDeleteSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCert))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmDeleteSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCert))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmDeleteSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmDeleteSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmDeleteSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsKey))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmDeleteSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsKey))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmDeleteSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmDeleteSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmDeleteSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmDeleteSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmDeleteSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseNames
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T SetReleaseNames<T>(this T o, params string[] v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.ReleaseNames, v));
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T SetReleaseNames<T>(this T o, IEnumerable<string> v) where T : HelmDeleteSettings => o.Modify(b => b.Set(() => o.ReleaseNames, v));
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T AddReleaseNames<T>(this T o, params string[] v) where T : HelmDeleteSettings => o.Modify(b => b.AddCollection(() => o.ReleaseNames, v));
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T AddReleaseNames<T>(this T o, IEnumerable<string> v) where T : HelmDeleteSettings => o.Modify(b => b.AddCollection(() => o.ReleaseNames, v));
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T RemoveReleaseNames<T>(this T o, params string[] v) where T : HelmDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.ReleaseNames, v));
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T RemoveReleaseNames<T>(this T o, IEnumerable<string> v) where T : HelmDeleteSettings => o.Modify(b => b.RemoveCollection(() => o.ReleaseNames, v));
     /// <inheritdoc cref="HelmDeleteSettings.ReleaseNames"/>
-    [Pure] [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
+    [Builder(Type = typeof(HelmDeleteSettings), Property = nameof(HelmDeleteSettings.ReleaseNames))]
     public static T ClearReleaseNames<T>(this T o) where T : HelmDeleteSettings => o.Modify(b => b.ClearCollection(() => o.ReleaseNames));
     #endregion
 }
 #endregion
 #region HelmDependencyBuildSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmDependencyBuild(Fallout.Common.Tools.Helm.HelmDependencyBuildSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmDependencyBuildSettingsExtensions
 {
     #region Keyring
     /// <inheritdoc cref="HelmDependencyBuildSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Keyring))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmDependencyBuildSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmDependencyBuildSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Keyring))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmDependencyBuildSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmDependencyBuildSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmDependencyBuildSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmDependencyBuildSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmDependencyBuildSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmDependencyBuildSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmDependencyBuildSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmDependencyBuildSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmDependencyBuildSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmDependencyBuildSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmDependencyBuildSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmDependencyBuildSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Chart))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmDependencyBuildSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmDependencyBuildSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Chart))]
+    [Builder(Type = typeof(HelmDependencyBuildSettings), Property = nameof(HelmDependencyBuildSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmDependencyBuildSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmDependencyListSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmDependencyList(Fallout.Common.Tools.Helm.HelmDependencyListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmDependencyListSettingsExtensions
 {
     #region Chart
     /// <inheritdoc cref="HelmDependencyListSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyListSettings), Property = nameof(HelmDependencyListSettings.Chart))]
+    [Builder(Type = typeof(HelmDependencyListSettings), Property = nameof(HelmDependencyListSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmDependencyListSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmDependencyListSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyListSettings), Property = nameof(HelmDependencyListSettings.Chart))]
+    [Builder(Type = typeof(HelmDependencyListSettings), Property = nameof(HelmDependencyListSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmDependencyListSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmDependencyUpdateSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmDependencyUpdate(Fallout.Common.Tools.Helm.HelmDependencyUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmDependencyUpdateSettingsExtensions
 {
     #region Keyring
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Keyring))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Keyring))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region SkipRefresh
     /// <inheritdoc cref="HelmDependencyUpdateSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
     public static T SetSkipRefresh<T>(this T o, bool? v) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.SkipRefresh, v));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
     public static T ResetSkipRefresh<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Remove(() => o.SkipRefresh));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
     public static T EnableSkipRefresh<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.SkipRefresh, true));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
     public static T DisableSkipRefresh<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.SkipRefresh, false));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.SkipRefresh))]
     public static T ToggleSkipRefresh<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.SkipRefresh, !o.SkipRefresh));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Chart))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmDependencyUpdateSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Chart))]
+    [Builder(Type = typeof(HelmDependencyUpdateSettings), Property = nameof(HelmDependencyUpdateSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmDependencyUpdateSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmFetchSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmFetch(Fallout.Common.Tools.Helm.HelmFetchSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmFetchSettingsExtensions
 {
     #region CaFile
     /// <inheritdoc cref="HelmFetchSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CaFile))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmFetchSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CaFile))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmFetchSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CertFile))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmFetchSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CertFile))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region Destination
     /// <inheritdoc cref="HelmFetchSettings.Destination"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Destination))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Destination))]
     public static T SetDestination<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Destination, v));
     /// <inheritdoc cref="HelmFetchSettings.Destination"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Destination))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Destination))]
     public static T ResetDestination<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Destination));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmFetchSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmFetchSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmFetchSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmFetchSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmFetchSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmFetchSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.KeyFile))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmFetchSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.KeyFile))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmFetchSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Keyring))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmFetchSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Keyring))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmFetchSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Password))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmFetchSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Password))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region Prov
     /// <inheritdoc cref="HelmFetchSettings.Prov"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
     public static T SetProv<T>(this T o, bool? v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Prov, v));
     /// <inheritdoc cref="HelmFetchSettings.Prov"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
     public static T ResetProv<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Prov));
     /// <inheritdoc cref="HelmFetchSettings.Prov"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
     public static T EnableProv<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Prov, true));
     /// <inheritdoc cref="HelmFetchSettings.Prov"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
     public static T DisableProv<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Prov, false));
     /// <inheritdoc cref="HelmFetchSettings.Prov"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Prov))]
     public static T ToggleProv<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Prov, !o.Prov));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmFetchSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Repo))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmFetchSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Repo))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region Untar
     /// <inheritdoc cref="HelmFetchSettings.Untar"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
     public static T SetUntar<T>(this T o, bool? v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Untar, v));
     /// <inheritdoc cref="HelmFetchSettings.Untar"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
     public static T ResetUntar<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Untar));
     /// <inheritdoc cref="HelmFetchSettings.Untar"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
     public static T EnableUntar<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Untar, true));
     /// <inheritdoc cref="HelmFetchSettings.Untar"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
     public static T DisableUntar<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Untar, false));
     /// <inheritdoc cref="HelmFetchSettings.Untar"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untar))]
     public static T ToggleUntar<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Untar, !o.Untar));
     #endregion
     #region Untardir
     /// <inheritdoc cref="HelmFetchSettings.Untardir"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untardir))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untardir))]
     public static T SetUntardir<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Untardir, v));
     /// <inheritdoc cref="HelmFetchSettings.Untardir"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untardir))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Untardir))]
     public static T ResetUntardir<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Untardir));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmFetchSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Username))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmFetchSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Username))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmFetchSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmFetchSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmFetchSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmFetchSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmFetchSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmFetchSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Version))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmFetchSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Version))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Charts
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T SetCharts<T>(this T o, params string[] v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Charts, v));
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T SetCharts<T>(this T o, IEnumerable<string> v) where T : HelmFetchSettings => o.Modify(b => b.Set(() => o.Charts, v));
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T AddCharts<T>(this T o, params string[] v) where T : HelmFetchSettings => o.Modify(b => b.AddCollection(() => o.Charts, v));
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T AddCharts<T>(this T o, IEnumerable<string> v) where T : HelmFetchSettings => o.Modify(b => b.AddCollection(() => o.Charts, v));
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T RemoveCharts<T>(this T o, params string[] v) where T : HelmFetchSettings => o.Modify(b => b.RemoveCollection(() => o.Charts, v));
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T RemoveCharts<T>(this T o, IEnumerable<string> v) where T : HelmFetchSettings => o.Modify(b => b.RemoveCollection(() => o.Charts, v));
     /// <inheritdoc cref="HelmFetchSettings.Charts"/>
-    [Pure] [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
+    [Builder(Type = typeof(HelmFetchSettings), Property = nameof(HelmFetchSettings.Charts))]
     public static T ClearCharts<T>(this T o) where T : HelmFetchSettings => o.Modify(b => b.ClearCollection(() => o.Charts));
     #endregion
 }
 #endregion
 #region HelmGetSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmGet(Fallout.Common.Tools.Helm.HelmGetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmGetSettingsExtensions
 {
     #region Revision
     /// <inheritdoc cref="HelmGetSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Revision))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Revision))]
     public static T SetRevision<T>(this T o, int? v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmGetSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Revision))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmGetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmGetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmGetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmGetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmGetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmGetSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmGetSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmGetSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmGetSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmGetSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmGetSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmGetSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmGetSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmGetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmGetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmGetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmGetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmGetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmGetSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmGetSettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmGetSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetSettings), Property = nameof(HelmGetSettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmGetSettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmGetHooksSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmGetHooks(Fallout.Common.Tools.Helm.HelmGetHooksSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmGetHooksSettingsExtensions
 {
     #region Revision
     /// <inheritdoc cref="HelmGetHooksSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Revision))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Revision))]
     public static T SetRevision<T>(this T o, int? v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmGetHooksSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Revision))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmGetHooksSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmGetHooksSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmGetHooksSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmGetHooksSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmGetHooksSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmGetHooksSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmGetHooksSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmGetHooksSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmGetHooksSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmGetHooksSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmGetHooksSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmGetHooksSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmGetHooksSettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmGetHooksSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetHooksSettings), Property = nameof(HelmGetHooksSettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmGetHooksSettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmGetManifestSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmGetManifest(Fallout.Common.Tools.Helm.HelmGetManifestSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmGetManifestSettingsExtensions
 {
     #region Revision
     /// <inheritdoc cref="HelmGetManifestSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Revision))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Revision))]
     public static T SetRevision<T>(this T o, int? v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmGetManifestSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Revision))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmGetManifestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmGetManifestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmGetManifestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmGetManifestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmGetManifestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmGetManifestSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmGetManifestSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmGetManifestSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmGetManifestSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmGetManifestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmGetManifestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmGetManifestSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmGetManifestSettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmGetManifestSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetManifestSettings), Property = nameof(HelmGetManifestSettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmGetManifestSettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmGetNotesSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmGetNotes(Fallout.Common.Tools.Helm.HelmGetNotesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmGetNotesSettingsExtensions
 {
     #region Revision
     /// <inheritdoc cref="HelmGetNotesSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Revision))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Revision))]
     public static T SetRevision<T>(this T o, int? v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmGetNotesSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Revision))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmGetNotesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmGetNotesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmGetNotesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmGetNotesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmGetNotesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmGetNotesSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmGetNotesSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmGetNotesSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmGetNotesSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmGetNotesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmGetNotesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmGetNotesSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmGetNotesSettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmGetNotesSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetNotesSettings), Property = nameof(HelmGetNotesSettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmGetNotesSettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmGetValuesSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmGetValues(Fallout.Common.Tools.Helm.HelmGetValuesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmGetValuesSettingsExtensions
 {
     #region All
     /// <inheritdoc cref="HelmGetValuesSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="HelmGetValuesSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
     public static T ResetAll<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="HelmGetValuesSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
     public static T EnableAll<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="HelmGetValuesSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
     public static T DisableAll<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="HelmGetValuesSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.All))]
     public static T ToggleAll<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region Output
     /// <inheritdoc cref="HelmGetValuesSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Output))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="HelmGetValuesSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Output))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Revision
     /// <inheritdoc cref="HelmGetValuesSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Revision))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Revision))]
     public static T SetRevision<T>(this T o, int? v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmGetValuesSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Revision))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmGetValuesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmGetValuesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmGetValuesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmGetValuesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmGetValuesSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmGetValuesSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmGetValuesSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCert))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmGetValuesSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmGetValuesSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsKey))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmGetValuesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmGetValuesSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmGetValuesSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmGetValuesSettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmGetValuesSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmGetValuesSettings), Property = nameof(HelmGetValuesSettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmGetValuesSettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmHistorySettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmHistory(Fallout.Common.Tools.Helm.HelmHistorySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmHistorySettingsExtensions
 {
     #region ColWidth
     /// <inheritdoc cref="HelmHistorySettings.ColWidth"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ColWidth))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ColWidth))]
     public static T SetColWidth<T>(this T o, uint? v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.ColWidth, v));
     /// <inheritdoc cref="HelmHistorySettings.ColWidth"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ColWidth))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ColWidth))]
     public static T ResetColWidth<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.ColWidth));
     #endregion
     #region Max
     /// <inheritdoc cref="HelmHistorySettings.Max"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Max))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Max))]
     public static T SetMax<T>(this T o, int? v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.Max, v));
     /// <inheritdoc cref="HelmHistorySettings.Max"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Max))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Max))]
     public static T ResetMax<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.Max));
     #endregion
     #region Output
     /// <inheritdoc cref="HelmHistorySettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Output))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Output))]
     public static T SetOutput<T>(this T o, string v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="HelmHistorySettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Output))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Output))]
     public static T ResetOutput<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmHistorySettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmHistorySettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmHistorySettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmHistorySettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmHistorySettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmHistorySettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmHistorySettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmHistorySettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCert))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmHistorySettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCert))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmHistorySettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsHostname))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmHistorySettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsHostname))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmHistorySettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsKey))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmHistorySettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsKey))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmHistorySettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmHistorySettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmHistorySettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmHistorySettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmHistorySettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmHistorySettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ReleaseName))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmHistorySettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmHistorySettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ReleaseName))]
+    [Builder(Type = typeof(HelmHistorySettings), Property = nameof(HelmHistorySettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmHistorySettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmHomeSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmHome(Fallout.Common.Tools.Helm.HelmHomeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmHomeSettingsExtensions
 {
@@ -2525,1761 +2466,1750 @@ public static partial class HelmHomeSettingsExtensions
 #endregion
 #region HelmInitSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmInit(Fallout.Common.Tools.Helm.HelmInitSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmInitSettingsExtensions
 {
     #region AutomountServiceAccountToken
     /// <inheritdoc cref="HelmInitSettings.AutomountServiceAccountToken"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
     public static T SetAutomountServiceAccountToken<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.AutomountServiceAccountToken, v));
     /// <inheritdoc cref="HelmInitSettings.AutomountServiceAccountToken"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
     public static T ResetAutomountServiceAccountToken<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.AutomountServiceAccountToken));
     /// <inheritdoc cref="HelmInitSettings.AutomountServiceAccountToken"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
     public static T EnableAutomountServiceAccountToken<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.AutomountServiceAccountToken, true));
     /// <inheritdoc cref="HelmInitSettings.AutomountServiceAccountToken"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
     public static T DisableAutomountServiceAccountToken<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.AutomountServiceAccountToken, false));
     /// <inheritdoc cref="HelmInitSettings.AutomountServiceAccountToken"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.AutomountServiceAccountToken))]
     public static T ToggleAutomountServiceAccountToken<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.AutomountServiceAccountToken, !o.AutomountServiceAccountToken));
     #endregion
     #region CanaryImage
     /// <inheritdoc cref="HelmInitSettings.CanaryImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
     public static T SetCanaryImage<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.CanaryImage, v));
     /// <inheritdoc cref="HelmInitSettings.CanaryImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
     public static T ResetCanaryImage<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.CanaryImage));
     /// <inheritdoc cref="HelmInitSettings.CanaryImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
     public static T EnableCanaryImage<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.CanaryImage, true));
     /// <inheritdoc cref="HelmInitSettings.CanaryImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
     public static T DisableCanaryImage<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.CanaryImage, false));
     /// <inheritdoc cref="HelmInitSettings.CanaryImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.CanaryImage))]
     public static T ToggleCanaryImage<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.CanaryImage, !o.CanaryImage));
     #endregion
     #region ClientOnly
     /// <inheritdoc cref="HelmInitSettings.ClientOnly"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
     public static T SetClientOnly<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ClientOnly, v));
     /// <inheritdoc cref="HelmInitSettings.ClientOnly"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
     public static T ResetClientOnly<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.ClientOnly));
     /// <inheritdoc cref="HelmInitSettings.ClientOnly"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
     public static T EnableClientOnly<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ClientOnly, true));
     /// <inheritdoc cref="HelmInitSettings.ClientOnly"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
     public static T DisableClientOnly<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ClientOnly, false));
     /// <inheritdoc cref="HelmInitSettings.ClientOnly"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ClientOnly))]
     public static T ToggleClientOnly<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ClientOnly, !o.ClientOnly));
     #endregion
     #region DryRun
     /// <inheritdoc cref="HelmInitSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="HelmInitSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="HelmInitSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="HelmInitSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="HelmInitSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region ForceUpgrade
     /// <inheritdoc cref="HelmInitSettings.ForceUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
     public static T SetForceUpgrade<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ForceUpgrade, v));
     /// <inheritdoc cref="HelmInitSettings.ForceUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
     public static T ResetForceUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.ForceUpgrade));
     /// <inheritdoc cref="HelmInitSettings.ForceUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
     public static T EnableForceUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ForceUpgrade, true));
     /// <inheritdoc cref="HelmInitSettings.ForceUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
     public static T DisableForceUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ForceUpgrade, false));
     /// <inheritdoc cref="HelmInitSettings.ForceUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ForceUpgrade))]
     public static T ToggleForceUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ForceUpgrade, !o.ForceUpgrade));
     #endregion
     #region HistoryMax
     /// <inheritdoc cref="HelmInitSettings.HistoryMax"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.HistoryMax))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.HistoryMax))]
     public static T SetHistoryMax<T>(this T o, long? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.HistoryMax, v));
     /// <inheritdoc cref="HelmInitSettings.HistoryMax"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.HistoryMax))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.HistoryMax))]
     public static T ResetHistoryMax<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.HistoryMax));
     #endregion
     #region LocalRepoUrl
     /// <inheritdoc cref="HelmInitSettings.LocalRepoUrl"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.LocalRepoUrl))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.LocalRepoUrl))]
     public static T SetLocalRepoUrl<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.LocalRepoUrl, v));
     /// <inheritdoc cref="HelmInitSettings.LocalRepoUrl"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.LocalRepoUrl))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.LocalRepoUrl))]
     public static T ResetLocalRepoUrl<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.LocalRepoUrl));
     #endregion
     #region NetHost
     /// <inheritdoc cref="HelmInitSettings.NetHost"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
     public static T SetNetHost<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.NetHost, v));
     /// <inheritdoc cref="HelmInitSettings.NetHost"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
     public static T ResetNetHost<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.NetHost));
     /// <inheritdoc cref="HelmInitSettings.NetHost"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
     public static T EnableNetHost<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.NetHost, true));
     /// <inheritdoc cref="HelmInitSettings.NetHost"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
     public static T DisableNetHost<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.NetHost, false));
     /// <inheritdoc cref="HelmInitSettings.NetHost"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NetHost))]
     public static T ToggleNetHost<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.NetHost, !o.NetHost));
     #endregion
     #region NodeSelectors
     /// <inheritdoc cref="HelmInitSettings.NodeSelectors"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NodeSelectors))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NodeSelectors))]
     public static T SetNodeSelectors<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.NodeSelectors, v));
     /// <inheritdoc cref="HelmInitSettings.NodeSelectors"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NodeSelectors))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.NodeSelectors))]
     public static T ResetNodeSelectors<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.NodeSelectors));
     #endregion
     #region Output
     /// <inheritdoc cref="HelmInitSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Output))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Output))]
     public static T SetOutput<T>(this T o, HelmOutputFormat v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="HelmInitSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Output))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Override
     /// <inheritdoc cref="HelmInitSettings.Override"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
     public static T SetOverride<T>(this T o, IDictionary<string, object> v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Override, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmInitSettings.Override"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
     public static T SetOverride<T>(this T o, string k, object v) where T : HelmInitSettings => o.Modify(b => b.SetDictionary(() => o.Override, k, v));
     /// <inheritdoc cref="HelmInitSettings.Override"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
     public static T AddOverride<T>(this T o, string k, object v) where T : HelmInitSettings => o.Modify(b => b.AddDictionary(() => o.Override, k, v));
     /// <inheritdoc cref="HelmInitSettings.Override"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
     public static T RemoveOverride<T>(this T o, string k) where T : HelmInitSettings => o.Modify(b => b.RemoveDictionary(() => o.Override, k));
     /// <inheritdoc cref="HelmInitSettings.Override"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Override))]
     public static T ClearOverride<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.ClearDictionary(() => o.Override));
     #endregion
     #region Replicas
     /// <inheritdoc cref="HelmInitSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Replicas))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Replicas))]
     public static T SetReplicas<T>(this T o, long? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Replicas, v));
     /// <inheritdoc cref="HelmInitSettings.Replicas"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Replicas))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Replicas))]
     public static T ResetReplicas<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.Replicas));
     #endregion
     #region ServiceAccount
     /// <inheritdoc cref="HelmInitSettings.ServiceAccount"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ServiceAccount))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ServiceAccount))]
     public static T SetServiceAccount<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.ServiceAccount, v));
     /// <inheritdoc cref="HelmInitSettings.ServiceAccount"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ServiceAccount))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.ServiceAccount))]
     public static T ResetServiceAccount<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.ServiceAccount));
     #endregion
     #region SkipRefresh
     /// <inheritdoc cref="HelmInitSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
     public static T SetSkipRefresh<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.SkipRefresh, v));
     /// <inheritdoc cref="HelmInitSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
     public static T ResetSkipRefresh<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.SkipRefresh));
     /// <inheritdoc cref="HelmInitSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
     public static T EnableSkipRefresh<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.SkipRefresh, true));
     /// <inheritdoc cref="HelmInitSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
     public static T DisableSkipRefresh<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.SkipRefresh, false));
     /// <inheritdoc cref="HelmInitSettings.SkipRefresh"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.SkipRefresh))]
     public static T ToggleSkipRefresh<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.SkipRefresh, !o.SkipRefresh));
     #endregion
     #region StableRepoUrl
     /// <inheritdoc cref="HelmInitSettings.StableRepoUrl"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.StableRepoUrl))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.StableRepoUrl))]
     public static T SetStableRepoUrl<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.StableRepoUrl, v));
     /// <inheritdoc cref="HelmInitSettings.StableRepoUrl"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.StableRepoUrl))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.StableRepoUrl))]
     public static T ResetStableRepoUrl<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.StableRepoUrl));
     #endregion
     #region TillerImage
     /// <inheritdoc cref="HelmInitSettings.TillerImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerImage))]
     public static T SetTillerImage<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerImage, v));
     /// <inheritdoc cref="HelmInitSettings.TillerImage"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerImage))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerImage))]
     public static T ResetTillerImage<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TillerImage));
     #endregion
     #region TillerTls
     /// <inheritdoc cref="HelmInitSettings.TillerTls"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
     public static T SetTillerTls<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTls, v));
     /// <inheritdoc cref="HelmInitSettings.TillerTls"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
     public static T ResetTillerTls<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TillerTls));
     /// <inheritdoc cref="HelmInitSettings.TillerTls"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
     public static T EnableTillerTls<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTls, true));
     /// <inheritdoc cref="HelmInitSettings.TillerTls"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
     public static T DisableTillerTls<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTls, false));
     /// <inheritdoc cref="HelmInitSettings.TillerTls"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTls))]
     public static T ToggleTillerTls<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTls, !o.TillerTls));
     #endregion
     #region TillerTlsCert
     /// <inheritdoc cref="HelmInitSettings.TillerTlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsCert))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsCert))]
     public static T SetTillerTlsCert<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsCert, v));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsCert))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsCert))]
     public static T ResetTillerTlsCert<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TillerTlsCert));
     #endregion
     #region TillerTlsHostname
     /// <inheritdoc cref="HelmInitSettings.TillerTlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsHostname))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsHostname))]
     public static T SetTillerTlsHostname<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsHostname, v));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsHostname))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsHostname))]
     public static T ResetTillerTlsHostname<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TillerTlsHostname));
     #endregion
     #region TillerTlsKey
     /// <inheritdoc cref="HelmInitSettings.TillerTlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsKey))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsKey))]
     public static T SetTillerTlsKey<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsKey, v));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsKey))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsKey))]
     public static T ResetTillerTlsKey<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TillerTlsKey));
     #endregion
     #region TillerTlsVerify
     /// <inheritdoc cref="HelmInitSettings.TillerTlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
     public static T SetTillerTlsVerify<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsVerify, v));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
     public static T ResetTillerTlsVerify<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TillerTlsVerify));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
     public static T EnableTillerTlsVerify<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsVerify, true));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
     public static T DisableTillerTlsVerify<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsVerify, false));
     /// <inheritdoc cref="HelmInitSettings.TillerTlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TillerTlsVerify))]
     public static T ToggleTillerTlsVerify<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TillerTlsVerify, !o.TillerTlsVerify));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmInitSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmInitSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region Upgrade
     /// <inheritdoc cref="HelmInitSettings.Upgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
     public static T SetUpgrade<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Upgrade, v));
     /// <inheritdoc cref="HelmInitSettings.Upgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
     public static T ResetUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.Upgrade));
     /// <inheritdoc cref="HelmInitSettings.Upgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
     public static T EnableUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Upgrade, true));
     /// <inheritdoc cref="HelmInitSettings.Upgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
     public static T DisableUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Upgrade, false));
     /// <inheritdoc cref="HelmInitSettings.Upgrade"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Upgrade))]
     public static T ToggleUpgrade<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Upgrade, !o.Upgrade));
     #endregion
     #region Wait
     /// <inheritdoc cref="HelmInitSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="HelmInitSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="HelmInitSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="HelmInitSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="HelmInitSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
+    [Builder(Type = typeof(HelmInitSettings), Property = nameof(HelmInitSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : HelmInitSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
 }
 #endregion
 #region HelmInspectSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmInspect(Fallout.Common.Tools.Helm.HelmInspectSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmInspectSettingsExtensions
 {
     #region CaFile
     /// <inheritdoc cref="HelmInspectSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmInspectSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmInspectSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmInspectSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmInspectSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmInspectSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmInspectSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmInspectSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmInspectSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmInspectSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmInspectSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmInspectSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmInspectSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmInspectSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Password))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmInspectSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Password))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmInspectSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmInspectSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmInspectSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Username))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmInspectSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Username))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmInspectSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmInspectSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmInspectSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmInspectSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmInspectSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmInspectSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Version))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmInspectSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Version))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmInspectSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmInspectSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmInspectSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectSettings), Property = nameof(HelmInspectSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmInspectSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmInspectChartSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmInspectChart(Fallout.Common.Tools.Helm.HelmInspectChartSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmInspectChartSettingsExtensions
 {
     #region CaFile
     /// <inheritdoc cref="HelmInspectChartSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmInspectChartSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmInspectChartSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmInspectChartSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmInspectChartSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmInspectChartSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmInspectChartSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmInspectChartSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmInspectChartSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmInspectChartSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmInspectChartSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmInspectChartSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Password))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Password))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmInspectChartSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmInspectChartSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Username))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Username))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmInspectChartSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmInspectChartSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmInspectChartSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmInspectChartSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmInspectChartSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Version))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Version))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmInspectChartSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmInspectChartSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmInspectChartSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectChartSettings), Property = nameof(HelmInspectChartSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmInspectChartSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmInspectReadmeSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmInspectReadme(Fallout.Common.Tools.Helm.HelmInspectReadmeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmInspectReadmeSettingsExtensions
 {
     #region CaFile
     /// <inheritdoc cref="HelmInspectReadmeSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmInspectReadmeSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmInspectReadmeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmInspectReadmeSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmInspectReadmeSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmInspectReadmeSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmInspectReadmeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmInspectReadmeSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Version))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Version))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmInspectReadmeSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmInspectReadmeSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmInspectReadmeSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectReadmeSettings), Property = nameof(HelmInspectReadmeSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmInspectReadmeSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmInspectValuesSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmInspectValues(Fallout.Common.Tools.Helm.HelmInspectValuesSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmInspectValuesSettingsExtensions
 {
     #region CaFile
     /// <inheritdoc cref="HelmInspectValuesSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CaFile))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmInspectValuesSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CertFile))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmInspectValuesSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmInspectValuesSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmInspectValuesSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmInspectValuesSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmInspectValuesSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmInspectValuesSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Keyring))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmInspectValuesSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Password))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Password))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmInspectValuesSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Repo))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmInspectValuesSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Username))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Username))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmInspectValuesSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmInspectValuesSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmInspectValuesSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmInspectValuesSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmInspectValuesSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Version))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Version))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmInspectValuesSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmInspectValuesSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmInspectValuesSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Chart))]
+    [Builder(Type = typeof(HelmInspectValuesSettings), Property = nameof(HelmInspectValuesSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmInspectValuesSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmInstallSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmInstall(Fallout.Common.Tools.Helm.HelmInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmInstallSettingsExtensions
 {
     #region Atomic
     /// <inheritdoc cref="HelmInstallSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
     public static T SetAtomic<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Atomic, v));
     /// <inheritdoc cref="HelmInstallSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
     public static T ResetAtomic<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Atomic));
     /// <inheritdoc cref="HelmInstallSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
     public static T EnableAtomic<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Atomic, true));
     /// <inheritdoc cref="HelmInstallSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
     public static T DisableAtomic<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Atomic, false));
     /// <inheritdoc cref="HelmInstallSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Atomic))]
     public static T ToggleAtomic<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Atomic, !o.Atomic));
     #endregion
     #region CaFile
     /// <inheritdoc cref="HelmInstallSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CaFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmInstallSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CaFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmInstallSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CertFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmInstallSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CertFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region DepUp
     /// <inheritdoc cref="HelmInstallSettings.DepUp"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
     public static T SetDepUp<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DepUp, v));
     /// <inheritdoc cref="HelmInstallSettings.DepUp"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
     public static T ResetDepUp<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.DepUp));
     /// <inheritdoc cref="HelmInstallSettings.DepUp"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
     public static T EnableDepUp<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DepUp, true));
     /// <inheritdoc cref="HelmInstallSettings.DepUp"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
     public static T DisableDepUp<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DepUp, false));
     /// <inheritdoc cref="HelmInstallSettings.DepUp"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DepUp))]
     public static T ToggleDepUp<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DepUp, !o.DepUp));
     #endregion
     #region Description
     /// <inheritdoc cref="HelmInstallSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Description))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="HelmInstallSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Description))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmInstallSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmInstallSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmInstallSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmInstallSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmInstallSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region DryRun
     /// <inheritdoc cref="HelmInstallSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="HelmInstallSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="HelmInstallSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="HelmInstallSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="HelmInstallSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmInstallSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmInstallSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.KeyFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmInstallSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Keyring))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmInstallSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Keyring))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Name
     /// <inheritdoc cref="HelmInstallSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Name))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="HelmInstallSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Name))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Name))]
     public static T ResetName<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region NameTemplate
     /// <inheritdoc cref="HelmInstallSettings.NameTemplate"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NameTemplate))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NameTemplate))]
     public static T SetNameTemplate<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NameTemplate, v));
     /// <inheritdoc cref="HelmInstallSettings.NameTemplate"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NameTemplate))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NameTemplate))]
     public static T ResetNameTemplate<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.NameTemplate));
     #endregion
     #region Namespace
     /// <inheritdoc cref="HelmInstallSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Namespace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Namespace))]
     public static T SetNamespace<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Namespace, v));
     /// <inheritdoc cref="HelmInstallSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Namespace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Namespace))]
     public static T ResetNamespace<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Namespace));
     #endregion
     #region NoCrdHook
     /// <inheritdoc cref="HelmInstallSettings.NoCrdHook"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
     public static T SetNoCrdHook<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoCrdHook, v));
     /// <inheritdoc cref="HelmInstallSettings.NoCrdHook"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
     public static T ResetNoCrdHook<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.NoCrdHook));
     /// <inheritdoc cref="HelmInstallSettings.NoCrdHook"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
     public static T EnableNoCrdHook<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoCrdHook, true));
     /// <inheritdoc cref="HelmInstallSettings.NoCrdHook"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
     public static T DisableNoCrdHook<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoCrdHook, false));
     /// <inheritdoc cref="HelmInstallSettings.NoCrdHook"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoCrdHook))]
     public static T ToggleNoCrdHook<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoCrdHook, !o.NoCrdHook));
     #endregion
     #region NoHooks
     /// <inheritdoc cref="HelmInstallSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
     public static T SetNoHooks<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoHooks, v));
     /// <inheritdoc cref="HelmInstallSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
     public static T ResetNoHooks<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.NoHooks));
     /// <inheritdoc cref="HelmInstallSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
     public static T EnableNoHooks<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoHooks, true));
     /// <inheritdoc cref="HelmInstallSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
     public static T DisableNoHooks<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoHooks, false));
     /// <inheritdoc cref="HelmInstallSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.NoHooks))]
     public static T ToggleNoHooks<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.NoHooks, !o.NoHooks));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmInstallSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Password))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmInstallSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Password))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RenderSubchartNotes
     /// <inheritdoc cref="HelmInstallSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
     public static T SetRenderSubchartNotes<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, v));
     /// <inheritdoc cref="HelmInstallSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
     public static T ResetRenderSubchartNotes<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.RenderSubchartNotes));
     /// <inheritdoc cref="HelmInstallSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
     public static T EnableRenderSubchartNotes<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, true));
     /// <inheritdoc cref="HelmInstallSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
     public static T DisableRenderSubchartNotes<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, false));
     /// <inheritdoc cref="HelmInstallSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.RenderSubchartNotes))]
     public static T ToggleRenderSubchartNotes<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, !o.RenderSubchartNotes));
     #endregion
     #region Replace
     /// <inheritdoc cref="HelmInstallSettings.Replace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
     public static T SetReplace<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Replace, v));
     /// <inheritdoc cref="HelmInstallSettings.Replace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
     public static T ResetReplace<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Replace));
     /// <inheritdoc cref="HelmInstallSettings.Replace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
     public static T EnableReplace<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Replace, true));
     /// <inheritdoc cref="HelmInstallSettings.Replace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
     public static T DisableReplace<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Replace, false));
     /// <inheritdoc cref="HelmInstallSettings.Replace"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Replace))]
     public static T ToggleReplace<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Replace, !o.Replace));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmInstallSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Repo))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmInstallSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Repo))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region Set
     /// <inheritdoc cref="HelmInstallSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
     public static T SetSet<T>(this T o, IDictionary<string, object> v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Set, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmInstallSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
     public static T SetSet<T>(this T o, string k, object v) where T : HelmInstallSettings => o.Modify(b => b.SetDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmInstallSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
     public static T AddSet<T>(this T o, string k, object v) where T : HelmInstallSettings => o.Modify(b => b.AddDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmInstallSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
     public static T RemoveSet<T>(this T o, string k) where T : HelmInstallSettings => o.Modify(b => b.RemoveDictionary(() => o.Set, k));
     /// <inheritdoc cref="HelmInstallSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Set))]
     public static T ClearSet<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.ClearDictionary(() => o.Set));
     #endregion
     #region SetFile
     /// <inheritdoc cref="HelmInstallSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
     public static T SetSetFile<T>(this T o, IDictionary<string, object> v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.SetFile, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmInstallSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
     public static T SetSetFile<T>(this T o, string k, object v) where T : HelmInstallSettings => o.Modify(b => b.SetDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmInstallSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
     public static T AddSetFile<T>(this T o, string k, object v) where T : HelmInstallSettings => o.Modify(b => b.AddDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmInstallSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
     public static T RemoveSetFile<T>(this T o, string k) where T : HelmInstallSettings => o.Modify(b => b.RemoveDictionary(() => o.SetFile, k));
     /// <inheritdoc cref="HelmInstallSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetFile))]
     public static T ClearSetFile<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.ClearDictionary(() => o.SetFile));
     #endregion
     #region SetString
     /// <inheritdoc cref="HelmInstallSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
     public static T SetSetString<T>(this T o, IDictionary<string, object> v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.SetString, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmInstallSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
     public static T SetSetString<T>(this T o, string k, object v) where T : HelmInstallSettings => o.Modify(b => b.SetDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmInstallSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
     public static T AddSetString<T>(this T o, string k, object v) where T : HelmInstallSettings => o.Modify(b => b.AddDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmInstallSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
     public static T RemoveSetString<T>(this T o, string k) where T : HelmInstallSettings => o.Modify(b => b.RemoveDictionary(() => o.SetString, k));
     /// <inheritdoc cref="HelmInstallSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.SetString))]
     public static T ClearSetString<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.ClearDictionary(() => o.SetString));
     #endregion
     #region Timeout
     /// <inheritdoc cref="HelmInstallSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Timeout))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Timeout))]
     public static T SetTimeout<T>(this T o, long? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="HelmInstallSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Timeout))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmInstallSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmInstallSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmInstallSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmInstallSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmInstallSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmInstallSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmInstallSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmInstallSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCert))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmInstallSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCert))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmInstallSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmInstallSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmInstallSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsKey))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmInstallSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsKey))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmInstallSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmInstallSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmInstallSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmInstallSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmInstallSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmInstallSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Username))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmInstallSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Username))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Values
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T SetValues<T>(this T o, params string[] v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T SetValues<T>(this T o, IEnumerable<string> v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T AddValues<T>(this T o, params string[] v) where T : HelmInstallSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T AddValues<T>(this T o, IEnumerable<string> v) where T : HelmInstallSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T RemoveValues<T>(this T o, params string[] v) where T : HelmInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T RemoveValues<T>(this T o, IEnumerable<string> v) where T : HelmInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmInstallSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Values))]
     public static T ClearValues<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.ClearCollection(() => o.Values));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmInstallSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmInstallSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmInstallSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmInstallSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmInstallSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmInstallSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Version))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmInstallSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Version))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Wait
     /// <inheritdoc cref="HelmInstallSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="HelmInstallSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="HelmInstallSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="HelmInstallSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="HelmInstallSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmInstallSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Chart))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmInstallSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmInstallSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Chart))]
+    [Builder(Type = typeof(HelmInstallSettings), Property = nameof(HelmInstallSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmInstallSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmLintSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmLint(Fallout.Common.Tools.Helm.HelmLintSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmLintSettingsExtensions
 {
     #region Namespace
     /// <inheritdoc cref="HelmLintSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Namespace))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Namespace))]
     public static T SetNamespace<T>(this T o, string v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Namespace, v));
     /// <inheritdoc cref="HelmLintSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Namespace))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Namespace))]
     public static T ResetNamespace<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.Remove(() => o.Namespace));
     #endregion
     #region Set
     /// <inheritdoc cref="HelmLintSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
     public static T SetSet<T>(this T o, IDictionary<string, object> v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Set, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmLintSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
     public static T SetSet<T>(this T o, string k, object v) where T : HelmLintSettings => o.Modify(b => b.SetDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmLintSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
     public static T AddSet<T>(this T o, string k, object v) where T : HelmLintSettings => o.Modify(b => b.AddDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmLintSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
     public static T RemoveSet<T>(this T o, string k) where T : HelmLintSettings => o.Modify(b => b.RemoveDictionary(() => o.Set, k));
     /// <inheritdoc cref="HelmLintSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Set))]
     public static T ClearSet<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.ClearDictionary(() => o.Set));
     #endregion
     #region SetFile
     /// <inheritdoc cref="HelmLintSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
     public static T SetSetFile<T>(this T o, IDictionary<string, object> v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.SetFile, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmLintSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
     public static T SetSetFile<T>(this T o, string k, object v) where T : HelmLintSettings => o.Modify(b => b.SetDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmLintSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
     public static T AddSetFile<T>(this T o, string k, object v) where T : HelmLintSettings => o.Modify(b => b.AddDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmLintSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
     public static T RemoveSetFile<T>(this T o, string k) where T : HelmLintSettings => o.Modify(b => b.RemoveDictionary(() => o.SetFile, k));
     /// <inheritdoc cref="HelmLintSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetFile))]
     public static T ClearSetFile<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.ClearDictionary(() => o.SetFile));
     #endregion
     #region SetString
     /// <inheritdoc cref="HelmLintSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
     public static T SetSetString<T>(this T o, IDictionary<string, object> v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.SetString, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmLintSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
     public static T SetSetString<T>(this T o, string k, object v) where T : HelmLintSettings => o.Modify(b => b.SetDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmLintSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
     public static T AddSetString<T>(this T o, string k, object v) where T : HelmLintSettings => o.Modify(b => b.AddDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmLintSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
     public static T RemoveSetString<T>(this T o, string k) where T : HelmLintSettings => o.Modify(b => b.RemoveDictionary(() => o.SetString, k));
     /// <inheritdoc cref="HelmLintSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.SetString))]
     public static T ClearSetString<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.ClearDictionary(() => o.SetString));
     #endregion
     #region Strict
     /// <inheritdoc cref="HelmLintSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
     public static T SetStrict<T>(this T o, bool? v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Strict, v));
     /// <inheritdoc cref="HelmLintSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
     public static T ResetStrict<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.Remove(() => o.Strict));
     /// <inheritdoc cref="HelmLintSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
     public static T EnableStrict<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Strict, true));
     /// <inheritdoc cref="HelmLintSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
     public static T DisableStrict<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Strict, false));
     /// <inheritdoc cref="HelmLintSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Strict))]
     public static T ToggleStrict<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Strict, !o.Strict));
     #endregion
     #region Values
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T SetValues<T>(this T o, params string[] v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T SetValues<T>(this T o, IEnumerable<string> v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T AddValues<T>(this T o, params string[] v) where T : HelmLintSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T AddValues<T>(this T o, IEnumerable<string> v) where T : HelmLintSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T RemoveValues<T>(this T o, params string[] v) where T : HelmLintSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T RemoveValues<T>(this T o, IEnumerable<string> v) where T : HelmLintSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmLintSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Values))]
     public static T ClearValues<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.ClearCollection(() => o.Values));
     #endregion
     #region Path
     /// <inheritdoc cref="HelmLintSettings.Path"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Path))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Path))]
     public static T SetPath<T>(this T o, string v) where T : HelmLintSettings => o.Modify(b => b.Set(() => o.Path, v));
     /// <inheritdoc cref="HelmLintSettings.Path"/>
-    [Pure] [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Path))]
+    [Builder(Type = typeof(HelmLintSettings), Property = nameof(HelmLintSettings.Path))]
     public static T ResetPath<T>(this T o) where T : HelmLintSettings => o.Modify(b => b.Remove(() => o.Path));
     #endregion
 }
 #endregion
 #region HelmListSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmList(Fallout.Common.Tools.Helm.HelmListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmListSettingsExtensions
 {
     #region All
     /// <inheritdoc cref="HelmListSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="HelmListSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
     public static T ResetAll<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="HelmListSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
     public static T EnableAll<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="HelmListSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
     public static T DisableAll<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="HelmListSettings.All"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.All))]
     public static T ToggleAll<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region ChartName
     /// <inheritdoc cref="HelmListSettings.ChartName"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
     public static T SetChartName<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.ChartName, v));
     /// <inheritdoc cref="HelmListSettings.ChartName"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
     public static T ResetChartName<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.ChartName));
     /// <inheritdoc cref="HelmListSettings.ChartName"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
     public static T EnableChartName<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.ChartName, true));
     /// <inheritdoc cref="HelmListSettings.ChartName"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
     public static T DisableChartName<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.ChartName, false));
     /// <inheritdoc cref="HelmListSettings.ChartName"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ChartName))]
     public static T ToggleChartName<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.ChartName, !o.ChartName));
     #endregion
     #region ColWidth
     /// <inheritdoc cref="HelmListSettings.ColWidth"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ColWidth))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ColWidth))]
     public static T SetColWidth<T>(this T o, uint? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.ColWidth, v));
     /// <inheritdoc cref="HelmListSettings.ColWidth"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ColWidth))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.ColWidth))]
     public static T ResetColWidth<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.ColWidth));
     #endregion
     #region Date
     /// <inheritdoc cref="HelmListSettings.Date"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
     public static T SetDate<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Date, v));
     /// <inheritdoc cref="HelmListSettings.Date"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
     public static T ResetDate<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Date));
     /// <inheritdoc cref="HelmListSettings.Date"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
     public static T EnableDate<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Date, true));
     /// <inheritdoc cref="HelmListSettings.Date"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
     public static T DisableDate<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Date, false));
     /// <inheritdoc cref="HelmListSettings.Date"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Date))]
     public static T ToggleDate<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Date, !o.Date));
     #endregion
     #region Deleted
     /// <inheritdoc cref="HelmListSettings.Deleted"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
     public static T SetDeleted<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleted, v));
     /// <inheritdoc cref="HelmListSettings.Deleted"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
     public static T ResetDeleted<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Deleted));
     /// <inheritdoc cref="HelmListSettings.Deleted"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
     public static T EnableDeleted<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleted, true));
     /// <inheritdoc cref="HelmListSettings.Deleted"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
     public static T DisableDeleted<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleted, false));
     /// <inheritdoc cref="HelmListSettings.Deleted"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleted))]
     public static T ToggleDeleted<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleted, !o.Deleted));
     #endregion
     #region Deleting
     /// <inheritdoc cref="HelmListSettings.Deleting"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
     public static T SetDeleting<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleting, v));
     /// <inheritdoc cref="HelmListSettings.Deleting"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
     public static T ResetDeleting<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Deleting));
     /// <inheritdoc cref="HelmListSettings.Deleting"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
     public static T EnableDeleting<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleting, true));
     /// <inheritdoc cref="HelmListSettings.Deleting"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
     public static T DisableDeleting<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleting, false));
     /// <inheritdoc cref="HelmListSettings.Deleting"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deleting))]
     public static T ToggleDeleting<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deleting, !o.Deleting));
     #endregion
     #region Deployed
     /// <inheritdoc cref="HelmListSettings.Deployed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
     public static T SetDeployed<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deployed, v));
     /// <inheritdoc cref="HelmListSettings.Deployed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
     public static T ResetDeployed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Deployed));
     /// <inheritdoc cref="HelmListSettings.Deployed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
     public static T EnableDeployed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deployed, true));
     /// <inheritdoc cref="HelmListSettings.Deployed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
     public static T DisableDeployed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deployed, false));
     /// <inheritdoc cref="HelmListSettings.Deployed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Deployed))]
     public static T ToggleDeployed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Deployed, !o.Deployed));
     #endregion
     #region Failed
     /// <inheritdoc cref="HelmListSettings.Failed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
     public static T SetFailed<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Failed, v));
     /// <inheritdoc cref="HelmListSettings.Failed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
     public static T ResetFailed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Failed));
     /// <inheritdoc cref="HelmListSettings.Failed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
     public static T EnableFailed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Failed, true));
     /// <inheritdoc cref="HelmListSettings.Failed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
     public static T DisableFailed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Failed, false));
     /// <inheritdoc cref="HelmListSettings.Failed"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Failed))]
     public static T ToggleFailed<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Failed, !o.Failed));
     #endregion
     #region Max
     /// <inheritdoc cref="HelmListSettings.Max"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Max))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Max))]
     public static T SetMax<T>(this T o, long? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Max, v));
     /// <inheritdoc cref="HelmListSettings.Max"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Max))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Max))]
     public static T ResetMax<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Max));
     #endregion
     #region Namespace
     /// <inheritdoc cref="HelmListSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Namespace))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Namespace))]
     public static T SetNamespace<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Namespace, v));
     /// <inheritdoc cref="HelmListSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Namespace))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Namespace))]
     public static T ResetNamespace<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Namespace));
     #endregion
     #region Offset
     /// <inheritdoc cref="HelmListSettings.Offset"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Offset))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Offset))]
     public static T SetOffset<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Offset, v));
     /// <inheritdoc cref="HelmListSettings.Offset"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Offset))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Offset))]
     public static T ResetOffset<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Offset));
     #endregion
     #region Output
     /// <inheritdoc cref="HelmListSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Output))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Output))]
     public static T SetOutput<T>(this T o, HelmOutputFormat v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="HelmListSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Output))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Pending
     /// <inheritdoc cref="HelmListSettings.Pending"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
     public static T SetPending<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Pending, v));
     /// <inheritdoc cref="HelmListSettings.Pending"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
     public static T ResetPending<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Pending));
     /// <inheritdoc cref="HelmListSettings.Pending"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
     public static T EnablePending<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Pending, true));
     /// <inheritdoc cref="HelmListSettings.Pending"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
     public static T DisablePending<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Pending, false));
     /// <inheritdoc cref="HelmListSettings.Pending"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Pending))]
     public static T TogglePending<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Pending, !o.Pending));
     #endregion
     #region Reverse
     /// <inheritdoc cref="HelmListSettings.Reverse"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
     public static T SetReverse<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Reverse, v));
     /// <inheritdoc cref="HelmListSettings.Reverse"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
     public static T ResetReverse<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Reverse));
     /// <inheritdoc cref="HelmListSettings.Reverse"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
     public static T EnableReverse<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Reverse, true));
     /// <inheritdoc cref="HelmListSettings.Reverse"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
     public static T DisableReverse<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Reverse, false));
     /// <inheritdoc cref="HelmListSettings.Reverse"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Reverse))]
     public static T ToggleReverse<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Reverse, !o.Reverse));
     #endregion
     #region Short
     /// <inheritdoc cref="HelmListSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
     public static T SetShort<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Short, v));
     /// <inheritdoc cref="HelmListSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
     public static T ResetShort<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Short));
     /// <inheritdoc cref="HelmListSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
     public static T EnableShort<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Short, true));
     /// <inheritdoc cref="HelmListSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
     public static T DisableShort<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Short, false));
     /// <inheritdoc cref="HelmListSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Short))]
     public static T ToggleShort<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Short, !o.Short));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmListSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmListSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmListSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmListSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmListSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmListSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmListSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmListSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCert))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmListSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCert))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmListSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmListSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmListSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsKey))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmListSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsKey))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmListSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmListSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmListSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmListSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmListSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region Filter
     /// <inheritdoc cref="HelmListSettings.Filter"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Filter))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Filter))]
     public static T SetFilter<T>(this T o, string v) where T : HelmListSettings => o.Modify(b => b.Set(() => o.Filter, v));
     /// <inheritdoc cref="HelmListSettings.Filter"/>
-    [Pure] [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Filter))]
+    [Builder(Type = typeof(HelmListSettings), Property = nameof(HelmListSettings.Filter))]
     public static T ResetFilter<T>(this T o) where T : HelmListSettings => o.Modify(b => b.Remove(() => o.Filter));
     #endregion
 }
 #endregion
 #region HelmPackageSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmPackage(Fallout.Common.Tools.Helm.HelmPackageSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmPackageSettingsExtensions
 {
     #region AppVersion
     /// <inheritdoc cref="HelmPackageSettings.AppVersion"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.AppVersion))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.AppVersion))]
     public static T SetAppVersion<T>(this T o, string v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.AppVersion, v));
     /// <inheritdoc cref="HelmPackageSettings.AppVersion"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.AppVersion))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.AppVersion))]
     public static T ResetAppVersion<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.AppVersion));
     #endregion
     #region DependencyUpdate
     /// <inheritdoc cref="HelmPackageSettings.DependencyUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
     public static T SetDependencyUpdate<T>(this T o, bool? v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.DependencyUpdate, v));
     /// <inheritdoc cref="HelmPackageSettings.DependencyUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
     public static T ResetDependencyUpdate<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.DependencyUpdate));
     /// <inheritdoc cref="HelmPackageSettings.DependencyUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
     public static T EnableDependencyUpdate<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.DependencyUpdate, true));
     /// <inheritdoc cref="HelmPackageSettings.DependencyUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
     public static T DisableDependencyUpdate<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.DependencyUpdate, false));
     /// <inheritdoc cref="HelmPackageSettings.DependencyUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.DependencyUpdate))]
     public static T ToggleDependencyUpdate<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.DependencyUpdate, !o.DependencyUpdate));
     #endregion
     #region Destination
     /// <inheritdoc cref="HelmPackageSettings.Destination"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Destination))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Destination))]
     public static T SetDestination<T>(this T o, string v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Destination, v));
     /// <inheritdoc cref="HelmPackageSettings.Destination"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Destination))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Destination))]
     public static T ResetDestination<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.Destination));
     #endregion
     #region Key
     /// <inheritdoc cref="HelmPackageSettings.Key"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Key))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Key))]
     public static T SetKey<T>(this T o, string v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Key, v));
     /// <inheritdoc cref="HelmPackageSettings.Key"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Key))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Key))]
     public static T ResetKey<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.Key));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmPackageSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Keyring))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmPackageSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Keyring))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Save
     /// <inheritdoc cref="HelmPackageSettings.Save"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
     public static T SetSave<T>(this T o, bool? v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Save, v));
     /// <inheritdoc cref="HelmPackageSettings.Save"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
     public static T ResetSave<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.Save));
     /// <inheritdoc cref="HelmPackageSettings.Save"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
     public static T EnableSave<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Save, true));
     /// <inheritdoc cref="HelmPackageSettings.Save"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
     public static T DisableSave<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Save, false));
     /// <inheritdoc cref="HelmPackageSettings.Save"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Save))]
     public static T ToggleSave<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Save, !o.Save));
     #endregion
     #region Sign
     /// <inheritdoc cref="HelmPackageSettings.Sign"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
     public static T SetSign<T>(this T o, bool? v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Sign, v));
     /// <inheritdoc cref="HelmPackageSettings.Sign"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
     public static T ResetSign<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.Sign));
     /// <inheritdoc cref="HelmPackageSettings.Sign"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
     public static T EnableSign<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Sign, true));
     /// <inheritdoc cref="HelmPackageSettings.Sign"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
     public static T DisableSign<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Sign, false));
     /// <inheritdoc cref="HelmPackageSettings.Sign"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Sign))]
     public static T ToggleSign<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Sign, !o.Sign));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmPackageSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Version))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmPackageSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Version))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region ChartPaths
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T SetChartPaths<T>(this T o, params string[] v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.ChartPaths, v));
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T SetChartPaths<T>(this T o, IEnumerable<string> v) where T : HelmPackageSettings => o.Modify(b => b.Set(() => o.ChartPaths, v));
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T AddChartPaths<T>(this T o, params string[] v) where T : HelmPackageSettings => o.Modify(b => b.AddCollection(() => o.ChartPaths, v));
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T AddChartPaths<T>(this T o, IEnumerable<string> v) where T : HelmPackageSettings => o.Modify(b => b.AddCollection(() => o.ChartPaths, v));
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T RemoveChartPaths<T>(this T o, params string[] v) where T : HelmPackageSettings => o.Modify(b => b.RemoveCollection(() => o.ChartPaths, v));
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T RemoveChartPaths<T>(this T o, IEnumerable<string> v) where T : HelmPackageSettings => o.Modify(b => b.RemoveCollection(() => o.ChartPaths, v));
     /// <inheritdoc cref="HelmPackageSettings.ChartPaths"/>
-    [Pure] [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
+    [Builder(Type = typeof(HelmPackageSettings), Property = nameof(HelmPackageSettings.ChartPaths))]
     public static T ClearChartPaths<T>(this T o) where T : HelmPackageSettings => o.Modify(b => b.ClearCollection(() => o.ChartPaths));
     #endregion
 }
 #endregion
 #region HelmPluginInstallSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmPluginInstall(Fallout.Common.Tools.Helm.HelmPluginInstallSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmPluginInstallSettingsExtensions
 {
     #region Version
     /// <inheritdoc cref="HelmPluginInstallSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Version))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmPluginInstallSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Version))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmPluginInstallSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Options
     /// <inheritdoc cref="HelmPluginInstallSettings.Options"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Options))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Options))]
     public static T SetOptions<T>(this T o, string v) where T : HelmPluginInstallSettings => o.Modify(b => b.Set(() => o.Options, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Options"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Options))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Options))]
     public static T ResetOptions<T>(this T o) where T : HelmPluginInstallSettings => o.Modify(b => b.Remove(() => o.Options));
     #endregion
     #region Paths
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T SetPaths<T>(this T o, params string[] v) where T : HelmPluginInstallSettings => o.Modify(b => b.Set(() => o.Paths, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T SetPaths<T>(this T o, IEnumerable<string> v) where T : HelmPluginInstallSettings => o.Modify(b => b.Set(() => o.Paths, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T AddPaths<T>(this T o, params string[] v) where T : HelmPluginInstallSettings => o.Modify(b => b.AddCollection(() => o.Paths, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T AddPaths<T>(this T o, IEnumerable<string> v) where T : HelmPluginInstallSettings => o.Modify(b => b.AddCollection(() => o.Paths, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T RemovePaths<T>(this T o, params string[] v) where T : HelmPluginInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Paths, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T RemovePaths<T>(this T o, IEnumerable<string> v) where T : HelmPluginInstallSettings => o.Modify(b => b.RemoveCollection(() => o.Paths, v));
     /// <inheritdoc cref="HelmPluginInstallSettings.Paths"/>
-    [Pure] [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
+    [Builder(Type = typeof(HelmPluginInstallSettings), Property = nameof(HelmPluginInstallSettings.Paths))]
     public static T ClearPaths<T>(this T o) where T : HelmPluginInstallSettings => o.Modify(b => b.ClearCollection(() => o.Paths));
     #endregion
 }
 #endregion
 #region HelmPluginListSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmPluginList(Fallout.Common.Tools.Helm.HelmPluginListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmPluginListSettingsExtensions
 {
@@ -4287,182 +4217,177 @@ public static partial class HelmPluginListSettingsExtensions
 #endregion
 #region HelmPluginRemoveSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmPluginRemove(Fallout.Common.Tools.Helm.HelmPluginRemoveSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmPluginRemoveSettingsExtensions
 {
     #region Plugins
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T SetPlugins<T>(this T o, params string[] v) where T : HelmPluginRemoveSettings => o.Modify(b => b.Set(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T SetPlugins<T>(this T o, IEnumerable<string> v) where T : HelmPluginRemoveSettings => o.Modify(b => b.Set(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T AddPlugins<T>(this T o, params string[] v) where T : HelmPluginRemoveSettings => o.Modify(b => b.AddCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T AddPlugins<T>(this T o, IEnumerable<string> v) where T : HelmPluginRemoveSettings => o.Modify(b => b.AddCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T RemovePlugins<T>(this T o, params string[] v) where T : HelmPluginRemoveSettings => o.Modify(b => b.RemoveCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T RemovePlugins<T>(this T o, IEnumerable<string> v) where T : HelmPluginRemoveSettings => o.Modify(b => b.RemoveCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginRemoveSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginRemoveSettings), Property = nameof(HelmPluginRemoveSettings.Plugins))]
     public static T ClearPlugins<T>(this T o) where T : HelmPluginRemoveSettings => o.Modify(b => b.ClearCollection(() => o.Plugins));
     #endregion
 }
 #endregion
 #region HelmPluginUpdateSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmPluginUpdate(Fallout.Common.Tools.Helm.HelmPluginUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmPluginUpdateSettingsExtensions
 {
     #region Plugins
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T SetPlugins<T>(this T o, params string[] v) where T : HelmPluginUpdateSettings => o.Modify(b => b.Set(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T SetPlugins<T>(this T o, IEnumerable<string> v) where T : HelmPluginUpdateSettings => o.Modify(b => b.Set(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T AddPlugins<T>(this T o, params string[] v) where T : HelmPluginUpdateSettings => o.Modify(b => b.AddCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T AddPlugins<T>(this T o, IEnumerable<string> v) where T : HelmPluginUpdateSettings => o.Modify(b => b.AddCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T RemovePlugins<T>(this T o, params string[] v) where T : HelmPluginUpdateSettings => o.Modify(b => b.RemoveCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T RemovePlugins<T>(this T o, IEnumerable<string> v) where T : HelmPluginUpdateSettings => o.Modify(b => b.RemoveCollection(() => o.Plugins, v));
     /// <inheritdoc cref="HelmPluginUpdateSettings.Plugins"/>
-    [Pure] [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
+    [Builder(Type = typeof(HelmPluginUpdateSettings), Property = nameof(HelmPluginUpdateSettings.Plugins))]
     public static T ClearPlugins<T>(this T o) where T : HelmPluginUpdateSettings => o.Modify(b => b.ClearCollection(() => o.Plugins));
     #endregion
 }
 #endregion
 #region HelmRepoAddSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmRepoAdd(Fallout.Common.Tools.Helm.HelmRepoAddSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmRepoAddSettingsExtensions
 {
     #region CaFile
     /// <inheritdoc cref="HelmRepoAddSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CaFile))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmRepoAddSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CaFile))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmRepoAddSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CertFile))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmRepoAddSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CertFile))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmRepoAddSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.KeyFile))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmRepoAddSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.KeyFile))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region NoUpdate
     /// <inheritdoc cref="HelmRepoAddSettings.NoUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
     public static T SetNoUpdate<T>(this T o, bool? v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.NoUpdate, v));
     /// <inheritdoc cref="HelmRepoAddSettings.NoUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
     public static T ResetNoUpdate<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.NoUpdate));
     /// <inheritdoc cref="HelmRepoAddSettings.NoUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
     public static T EnableNoUpdate<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.NoUpdate, true));
     /// <inheritdoc cref="HelmRepoAddSettings.NoUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
     public static T DisableNoUpdate<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.NoUpdate, false));
     /// <inheritdoc cref="HelmRepoAddSettings.NoUpdate"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.NoUpdate))]
     public static T ToggleNoUpdate<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.NoUpdate, !o.NoUpdate));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmRepoAddSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Password))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmRepoAddSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Password))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmRepoAddSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Username))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmRepoAddSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Username))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Name
     /// <inheritdoc cref="HelmRepoAddSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Name))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="HelmRepoAddSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Name))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Name))]
     public static T ResetName<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region Url
     /// <inheritdoc cref="HelmRepoAddSettings.Url"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Url))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Url))]
     public static T SetUrl<T>(this T o, string v) where T : HelmRepoAddSettings => o.Modify(b => b.Set(() => o.Url, v));
     /// <inheritdoc cref="HelmRepoAddSettings.Url"/>
-    [Pure] [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Url))]
+    [Builder(Type = typeof(HelmRepoAddSettings), Property = nameof(HelmRepoAddSettings.Url))]
     public static T ResetUrl<T>(this T o) where T : HelmRepoAddSettings => o.Modify(b => b.Remove(() => o.Url));
     #endregion
 }
 #endregion
 #region HelmRepoIndexSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmRepoIndex(Fallout.Common.Tools.Helm.HelmRepoIndexSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmRepoIndexSettingsExtensions
 {
     #region Merge
     /// <inheritdoc cref="HelmRepoIndexSettings.Merge"/>
-    [Pure] [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Merge))]
+    [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Merge))]
     public static T SetMerge<T>(this T o, string v) where T : HelmRepoIndexSettings => o.Modify(b => b.Set(() => o.Merge, v));
     /// <inheritdoc cref="HelmRepoIndexSettings.Merge"/>
-    [Pure] [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Merge))]
+    [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Merge))]
     public static T ResetMerge<T>(this T o) where T : HelmRepoIndexSettings => o.Modify(b => b.Remove(() => o.Merge));
     #endregion
     #region Url
     /// <inheritdoc cref="HelmRepoIndexSettings.Url"/>
-    [Pure] [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Url))]
+    [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Url))]
     public static T SetUrl<T>(this T o, string v) where T : HelmRepoIndexSettings => o.Modify(b => b.Set(() => o.Url, v));
     /// <inheritdoc cref="HelmRepoIndexSettings.Url"/>
-    [Pure] [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Url))]
+    [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Url))]
     public static T ResetUrl<T>(this T o) where T : HelmRepoIndexSettings => o.Modify(b => b.Remove(() => o.Url));
     #endregion
     #region Directory
     /// <inheritdoc cref="HelmRepoIndexSettings.Directory"/>
-    [Pure] [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Directory))]
+    [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Directory))]
     public static T SetDirectory<T>(this T o, string v) where T : HelmRepoIndexSettings => o.Modify(b => b.Set(() => o.Directory, v));
     /// <inheritdoc cref="HelmRepoIndexSettings.Directory"/>
-    [Pure] [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Directory))]
+    [Builder(Type = typeof(HelmRepoIndexSettings), Property = nameof(HelmRepoIndexSettings.Directory))]
     public static T ResetDirectory<T>(this T o) where T : HelmRepoIndexSettings => o.Modify(b => b.Remove(() => o.Directory));
     #endregion
 }
 #endregion
 #region HelmRepoListSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmRepoList(Fallout.Common.Tools.Helm.HelmRepoListSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmRepoListSettingsExtensions
 {
@@ -4470,1551 +4395,1537 @@ public static partial class HelmRepoListSettingsExtensions
 #endregion
 #region HelmRepoRemoveSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmRepoRemove(Fallout.Common.Tools.Helm.HelmRepoRemoveSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmRepoRemoveSettingsExtensions
 {
     #region Name
     /// <inheritdoc cref="HelmRepoRemoveSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmRepoRemoveSettings), Property = nameof(HelmRepoRemoveSettings.Name))]
+    [Builder(Type = typeof(HelmRepoRemoveSettings), Property = nameof(HelmRepoRemoveSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : HelmRepoRemoveSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="HelmRepoRemoveSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmRepoRemoveSettings), Property = nameof(HelmRepoRemoveSettings.Name))]
+    [Builder(Type = typeof(HelmRepoRemoveSettings), Property = nameof(HelmRepoRemoveSettings.Name))]
     public static T ResetName<T>(this T o) where T : HelmRepoRemoveSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
 }
 #endregion
 #region HelmRepoUpdateSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmRepoUpdate(Fallout.Common.Tools.Helm.HelmRepoUpdateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmRepoUpdateSettingsExtensions
 {
     #region Strict
     /// <inheritdoc cref="HelmRepoUpdateSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
+    [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
     public static T SetStrict<T>(this T o, bool? v) where T : HelmRepoUpdateSettings => o.Modify(b => b.Set(() => o.Strict, v));
     /// <inheritdoc cref="HelmRepoUpdateSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
+    [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
     public static T ResetStrict<T>(this T o) where T : HelmRepoUpdateSettings => o.Modify(b => b.Remove(() => o.Strict));
     /// <inheritdoc cref="HelmRepoUpdateSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
+    [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
     public static T EnableStrict<T>(this T o) where T : HelmRepoUpdateSettings => o.Modify(b => b.Set(() => o.Strict, true));
     /// <inheritdoc cref="HelmRepoUpdateSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
+    [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
     public static T DisableStrict<T>(this T o) where T : HelmRepoUpdateSettings => o.Modify(b => b.Set(() => o.Strict, false));
     /// <inheritdoc cref="HelmRepoUpdateSettings.Strict"/>
-    [Pure] [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
+    [Builder(Type = typeof(HelmRepoUpdateSettings), Property = nameof(HelmRepoUpdateSettings.Strict))]
     public static T ToggleStrict<T>(this T o) where T : HelmRepoUpdateSettings => o.Modify(b => b.Set(() => o.Strict, !o.Strict));
     #endregion
 }
 #endregion
 #region HelmResetSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmReset(Fallout.Common.Tools.Helm.HelmResetSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmResetSettingsExtensions
 {
     #region Force
     /// <inheritdoc cref="HelmResetSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="HelmResetSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
     public static T ResetForce<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="HelmResetSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
     public static T EnableForce<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="HelmResetSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
     public static T DisableForce<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="HelmResetSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region RemoveHelmHome
     /// <inheritdoc cref="HelmResetSettings.RemoveHelmHome"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
     public static T SetRemoveHelmHome<T>(this T o, bool? v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.RemoveHelmHome, v));
     /// <inheritdoc cref="HelmResetSettings.RemoveHelmHome"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
     public static T ResetRemoveHelmHome<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.RemoveHelmHome));
     /// <inheritdoc cref="HelmResetSettings.RemoveHelmHome"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
     public static T EnableRemoveHelmHome<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.RemoveHelmHome, true));
     /// <inheritdoc cref="HelmResetSettings.RemoveHelmHome"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
     public static T DisableRemoveHelmHome<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.RemoveHelmHome, false));
     /// <inheritdoc cref="HelmResetSettings.RemoveHelmHome"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.RemoveHelmHome))]
     public static T ToggleRemoveHelmHome<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.RemoveHelmHome, !o.RemoveHelmHome));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmResetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmResetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmResetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmResetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmResetSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmResetSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmResetSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmResetSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCert))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmResetSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCert))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmResetSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmResetSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmResetSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsKey))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmResetSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsKey))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmResetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmResetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmResetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmResetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmResetSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmResetSettings), Property = nameof(HelmResetSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmResetSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
 }
 #endregion
 #region HelmRollbackSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmRollback(Fallout.Common.Tools.Helm.HelmRollbackSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmRollbackSettingsExtensions
 {
     #region Description
     /// <inheritdoc cref="HelmRollbackSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Description))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="HelmRollbackSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Description))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region DryRun
     /// <inheritdoc cref="HelmRollbackSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="HelmRollbackSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="HelmRollbackSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="HelmRollbackSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="HelmRollbackSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Force
     /// <inheritdoc cref="HelmRollbackSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="HelmRollbackSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
     public static T ResetForce<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="HelmRollbackSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
     public static T EnableForce<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="HelmRollbackSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
     public static T DisableForce<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="HelmRollbackSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region NoHooks
     /// <inheritdoc cref="HelmRollbackSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
     public static T SetNoHooks<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.NoHooks, v));
     /// <inheritdoc cref="HelmRollbackSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
     public static T ResetNoHooks<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.NoHooks));
     /// <inheritdoc cref="HelmRollbackSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
     public static T EnableNoHooks<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.NoHooks, true));
     /// <inheritdoc cref="HelmRollbackSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
     public static T DisableNoHooks<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.NoHooks, false));
     /// <inheritdoc cref="HelmRollbackSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.NoHooks))]
     public static T ToggleNoHooks<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.NoHooks, !o.NoHooks));
     #endregion
     #region RecreatePods
     /// <inheritdoc cref="HelmRollbackSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
     public static T SetRecreatePods<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.RecreatePods, v));
     /// <inheritdoc cref="HelmRollbackSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
     public static T ResetRecreatePods<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.RecreatePods));
     /// <inheritdoc cref="HelmRollbackSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
     public static T EnableRecreatePods<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.RecreatePods, true));
     /// <inheritdoc cref="HelmRollbackSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
     public static T DisableRecreatePods<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.RecreatePods, false));
     /// <inheritdoc cref="HelmRollbackSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.RecreatePods))]
     public static T ToggleRecreatePods<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.RecreatePods, !o.RecreatePods));
     #endregion
     #region Timeout
     /// <inheritdoc cref="HelmRollbackSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Timeout))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Timeout))]
     public static T SetTimeout<T>(this T o, long? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="HelmRollbackSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Timeout))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmRollbackSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmRollbackSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmRollbackSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmRollbackSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmRollbackSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmRollbackSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmRollbackSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmRollbackSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCert))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmRollbackSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCert))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmRollbackSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmRollbackSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmRollbackSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsKey))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmRollbackSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsKey))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmRollbackSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmRollbackSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmRollbackSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmRollbackSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmRollbackSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region Wait
     /// <inheritdoc cref="HelmRollbackSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="HelmRollbackSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="HelmRollbackSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="HelmRollbackSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="HelmRollbackSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
     #region Release
     /// <inheritdoc cref="HelmRollbackSettings.Release"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Release))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Release))]
     public static T SetRelease<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Release, v));
     /// <inheritdoc cref="HelmRollbackSettings.Release"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Release))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Release))]
     public static T ResetRelease<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Release));
     #endregion
     #region Revision
     /// <inheritdoc cref="HelmRollbackSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Revision))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Revision))]
     public static T SetRevision<T>(this T o, string v) where T : HelmRollbackSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmRollbackSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Revision))]
+    [Builder(Type = typeof(HelmRollbackSettings), Property = nameof(HelmRollbackSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmRollbackSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
 }
 #endregion
 #region HelmSearchSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmSearch(Fallout.Common.Tools.Helm.HelmSearchSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmSearchSettingsExtensions
 {
     #region ColWidth
     /// <inheritdoc cref="HelmSearchSettings.ColWidth"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.ColWidth))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.ColWidth))]
     public static T SetColWidth<T>(this T o, uint? v) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.ColWidth, v));
     /// <inheritdoc cref="HelmSearchSettings.ColWidth"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.ColWidth))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.ColWidth))]
     public static T ResetColWidth<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Remove(() => o.ColWidth));
     #endregion
     #region Regexp
     /// <inheritdoc cref="HelmSearchSettings.Regexp"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
     public static T SetRegexp<T>(this T o, bool? v) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Regexp, v));
     /// <inheritdoc cref="HelmSearchSettings.Regexp"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
     public static T ResetRegexp<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Remove(() => o.Regexp));
     /// <inheritdoc cref="HelmSearchSettings.Regexp"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
     public static T EnableRegexp<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Regexp, true));
     /// <inheritdoc cref="HelmSearchSettings.Regexp"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
     public static T DisableRegexp<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Regexp, false));
     /// <inheritdoc cref="HelmSearchSettings.Regexp"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Regexp))]
     public static T ToggleRegexp<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Regexp, !o.Regexp));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmSearchSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Version))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmSearchSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Version))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Versions
     /// <inheritdoc cref="HelmSearchSettings.Versions"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
     public static T SetVersions<T>(this T o, bool? v) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Versions, v));
     /// <inheritdoc cref="HelmSearchSettings.Versions"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
     public static T ResetVersions<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Remove(() => o.Versions));
     /// <inheritdoc cref="HelmSearchSettings.Versions"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
     public static T EnableVersions<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Versions, true));
     /// <inheritdoc cref="HelmSearchSettings.Versions"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
     public static T DisableVersions<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Versions, false));
     /// <inheritdoc cref="HelmSearchSettings.Versions"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Versions))]
     public static T ToggleVersions<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Versions, !o.Versions));
     #endregion
     #region Keyword
     /// <inheritdoc cref="HelmSearchSettings.Keyword"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Keyword))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Keyword))]
     public static T SetKeyword<T>(this T o, string v) where T : HelmSearchSettings => o.Modify(b => b.Set(() => o.Keyword, v));
     /// <inheritdoc cref="HelmSearchSettings.Keyword"/>
-    [Pure] [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Keyword))]
+    [Builder(Type = typeof(HelmSearchSettings), Property = nameof(HelmSearchSettings.Keyword))]
     public static T ResetKeyword<T>(this T o) where T : HelmSearchSettings => o.Modify(b => b.Remove(() => o.Keyword));
     #endregion
 }
 #endregion
 #region HelmServeSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmServe(Fallout.Common.Tools.Helm.HelmServeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmServeSettingsExtensions
 {
     #region Address
     /// <inheritdoc cref="HelmServeSettings.Address"/>
-    [Pure] [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Address))]
+    [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Address))]
     public static T SetAddress<T>(this T o, string v) where T : HelmServeSettings => o.Modify(b => b.Set(() => o.Address, v));
     /// <inheritdoc cref="HelmServeSettings.Address"/>
-    [Pure] [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Address))]
+    [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Address))]
     public static T ResetAddress<T>(this T o) where T : HelmServeSettings => o.Modify(b => b.Remove(() => o.Address));
     #endregion
     #region RepoPath
     /// <inheritdoc cref="HelmServeSettings.RepoPath"/>
-    [Pure] [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.RepoPath))]
+    [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.RepoPath))]
     public static T SetRepoPath<T>(this T o, string v) where T : HelmServeSettings => o.Modify(b => b.Set(() => o.RepoPath, v));
     /// <inheritdoc cref="HelmServeSettings.RepoPath"/>
-    [Pure] [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.RepoPath))]
+    [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.RepoPath))]
     public static T ResetRepoPath<T>(this T o) where T : HelmServeSettings => o.Modify(b => b.Remove(() => o.RepoPath));
     #endregion
     #region Url
     /// <inheritdoc cref="HelmServeSettings.Url"/>
-    [Pure] [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Url))]
+    [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Url))]
     public static T SetUrl<T>(this T o, string v) where T : HelmServeSettings => o.Modify(b => b.Set(() => o.Url, v));
     /// <inheritdoc cref="HelmServeSettings.Url"/>
-    [Pure] [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Url))]
+    [Builder(Type = typeof(HelmServeSettings), Property = nameof(HelmServeSettings.Url))]
     public static T ResetUrl<T>(this T o) where T : HelmServeSettings => o.Modify(b => b.Remove(() => o.Url));
     #endregion
 }
 #endregion
 #region HelmStatusSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmStatus(Fallout.Common.Tools.Helm.HelmStatusSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmStatusSettingsExtensions
 {
     #region Output
     /// <inheritdoc cref="HelmStatusSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Output))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Output))]
     public static T SetOutput<T>(this T o, HelmOutputFormat v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.Output, v));
     /// <inheritdoc cref="HelmStatusSettings.Output"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Output))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Output))]
     public static T ResetOutput<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.Output));
     #endregion
     #region Revision
     /// <inheritdoc cref="HelmStatusSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Revision))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Revision))]
     public static T SetRevision<T>(this T o, int? v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.Revision, v));
     /// <inheritdoc cref="HelmStatusSettings.Revision"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Revision))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Revision))]
     public static T ResetRevision<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.Revision));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmStatusSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmStatusSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmStatusSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmStatusSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmStatusSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmStatusSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmStatusSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmStatusSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCert))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmStatusSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCert))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmStatusSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmStatusSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmStatusSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsKey))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmStatusSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsKey))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmStatusSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmStatusSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmStatusSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmStatusSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmStatusSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region ReleaseName
     /// <inheritdoc cref="HelmStatusSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.ReleaseName))]
     public static T SetReleaseName<T>(this T o, string v) where T : HelmStatusSettings => o.Modify(b => b.Set(() => o.ReleaseName, v));
     /// <inheritdoc cref="HelmStatusSettings.ReleaseName"/>
-    [Pure] [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.ReleaseName))]
+    [Builder(Type = typeof(HelmStatusSettings), Property = nameof(HelmStatusSettings.ReleaseName))]
     public static T ResetReleaseName<T>(this T o) where T : HelmStatusSettings => o.Modify(b => b.Remove(() => o.ReleaseName));
     #endregion
 }
 #endregion
 #region HelmTemplateSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmTemplate(Fallout.Common.Tools.Helm.HelmTemplateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmTemplateSettingsExtensions
 {
     #region Execute
     /// <inheritdoc cref="HelmTemplateSettings.Execute"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
     public static T SetExecute<T>(this T o, IDictionary<string, object> v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Execute, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmTemplateSettings.Execute"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
     public static T SetExecute<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.SetDictionary(() => o.Execute, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.Execute"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
     public static T AddExecute<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.AddDictionary(() => o.Execute, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.Execute"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
     public static T RemoveExecute<T>(this T o, string k) where T : HelmTemplateSettings => o.Modify(b => b.RemoveDictionary(() => o.Execute, k));
     /// <inheritdoc cref="HelmTemplateSettings.Execute"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Execute))]
     public static T ClearExecute<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.ClearDictionary(() => o.Execute));
     #endregion
     #region IsUpgrade
     /// <inheritdoc cref="HelmTemplateSettings.IsUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
     public static T SetIsUpgrade<T>(this T o, bool? v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.IsUpgrade, v));
     /// <inheritdoc cref="HelmTemplateSettings.IsUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
     public static T ResetIsUpgrade<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.IsUpgrade));
     /// <inheritdoc cref="HelmTemplateSettings.IsUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
     public static T EnableIsUpgrade<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.IsUpgrade, true));
     /// <inheritdoc cref="HelmTemplateSettings.IsUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
     public static T DisableIsUpgrade<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.IsUpgrade, false));
     /// <inheritdoc cref="HelmTemplateSettings.IsUpgrade"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.IsUpgrade))]
     public static T ToggleIsUpgrade<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.IsUpgrade, !o.IsUpgrade));
     #endregion
     #region KubeVersion
     /// <inheritdoc cref="HelmTemplateSettings.KubeVersion"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.KubeVersion))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.KubeVersion))]
     public static T SetKubeVersion<T>(this T o, string v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.KubeVersion, v));
     /// <inheritdoc cref="HelmTemplateSettings.KubeVersion"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.KubeVersion))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.KubeVersion))]
     public static T ResetKubeVersion<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.KubeVersion));
     #endregion
     #region Name
     /// <inheritdoc cref="HelmTemplateSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Name))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="HelmTemplateSettings.Name"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Name))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Name))]
     public static T ResetName<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region NameTemplate
     /// <inheritdoc cref="HelmTemplateSettings.NameTemplate"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.NameTemplate))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.NameTemplate))]
     public static T SetNameTemplate<T>(this T o, string v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.NameTemplate, v));
     /// <inheritdoc cref="HelmTemplateSettings.NameTemplate"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.NameTemplate))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.NameTemplate))]
     public static T ResetNameTemplate<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.NameTemplate));
     #endregion
     #region Namespace
     /// <inheritdoc cref="HelmTemplateSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Namespace))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Namespace))]
     public static T SetNamespace<T>(this T o, string v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Namespace, v));
     /// <inheritdoc cref="HelmTemplateSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Namespace))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Namespace))]
     public static T ResetNamespace<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.Namespace));
     #endregion
     #region Notes
     /// <inheritdoc cref="HelmTemplateSettings.Notes"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
     public static T SetNotes<T>(this T o, bool? v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Notes, v));
     /// <inheritdoc cref="HelmTemplateSettings.Notes"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
     public static T ResetNotes<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.Notes));
     /// <inheritdoc cref="HelmTemplateSettings.Notes"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
     public static T EnableNotes<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Notes, true));
     /// <inheritdoc cref="HelmTemplateSettings.Notes"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
     public static T DisableNotes<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Notes, false));
     /// <inheritdoc cref="HelmTemplateSettings.Notes"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Notes))]
     public static T ToggleNotes<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Notes, !o.Notes));
     #endregion
     #region OutputDir
     /// <inheritdoc cref="HelmTemplateSettings.OutputDir"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.OutputDir))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.OutputDir))]
     public static T SetOutputDir<T>(this T o, string v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.OutputDir, v));
     /// <inheritdoc cref="HelmTemplateSettings.OutputDir"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.OutputDir))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.OutputDir))]
     public static T ResetOutputDir<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.OutputDir));
     #endregion
     #region Set
     /// <inheritdoc cref="HelmTemplateSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
     public static T SetSet<T>(this T o, IDictionary<string, object> v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Set, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmTemplateSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
     public static T SetSet<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.SetDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
     public static T AddSet<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.AddDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
     public static T RemoveSet<T>(this T o, string k) where T : HelmTemplateSettings => o.Modify(b => b.RemoveDictionary(() => o.Set, k));
     /// <inheritdoc cref="HelmTemplateSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Set))]
     public static T ClearSet<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.ClearDictionary(() => o.Set));
     #endregion
     #region SetFile
     /// <inheritdoc cref="HelmTemplateSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
     public static T SetSetFile<T>(this T o, IDictionary<string, object> v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.SetFile, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmTemplateSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
     public static T SetSetFile<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.SetDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
     public static T AddSetFile<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.AddDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
     public static T RemoveSetFile<T>(this T o, string k) where T : HelmTemplateSettings => o.Modify(b => b.RemoveDictionary(() => o.SetFile, k));
     /// <inheritdoc cref="HelmTemplateSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetFile))]
     public static T ClearSetFile<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.ClearDictionary(() => o.SetFile));
     #endregion
     #region SetString
     /// <inheritdoc cref="HelmTemplateSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
     public static T SetSetString<T>(this T o, IDictionary<string, object> v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.SetString, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmTemplateSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
     public static T SetSetString<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.SetDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
     public static T AddSetString<T>(this T o, string k, object v) where T : HelmTemplateSettings => o.Modify(b => b.AddDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmTemplateSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
     public static T RemoveSetString<T>(this T o, string k) where T : HelmTemplateSettings => o.Modify(b => b.RemoveDictionary(() => o.SetString, k));
     /// <inheritdoc cref="HelmTemplateSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.SetString))]
     public static T ClearSetString<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.ClearDictionary(() => o.SetString));
     #endregion
     #region Values
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T SetValues<T>(this T o, params string[] v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T SetValues<T>(this T o, IEnumerable<string> v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T AddValues<T>(this T o, params string[] v) where T : HelmTemplateSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T AddValues<T>(this T o, IEnumerable<string> v) where T : HelmTemplateSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T RemoveValues<T>(this T o, params string[] v) where T : HelmTemplateSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T RemoveValues<T>(this T o, IEnumerable<string> v) where T : HelmTemplateSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmTemplateSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Values))]
     public static T ClearValues<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.ClearCollection(() => o.Values));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmTemplateSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Chart))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmTemplateSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmTemplateSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Chart))]
+    [Builder(Type = typeof(HelmTemplateSettings), Property = nameof(HelmTemplateSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmTemplateSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmTestSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmTest(Fallout.Common.Tools.Helm.HelmTestSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmTestSettingsExtensions
 {
     #region Cleanup
     /// <inheritdoc cref="HelmTestSettings.Cleanup"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
     public static T SetCleanup<T>(this T o, bool? v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Cleanup, v));
     /// <inheritdoc cref="HelmTestSettings.Cleanup"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
     public static T ResetCleanup<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.Cleanup));
     /// <inheritdoc cref="HelmTestSettings.Cleanup"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
     public static T EnableCleanup<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Cleanup, true));
     /// <inheritdoc cref="HelmTestSettings.Cleanup"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
     public static T DisableCleanup<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Cleanup, false));
     /// <inheritdoc cref="HelmTestSettings.Cleanup"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Cleanup))]
     public static T ToggleCleanup<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Cleanup, !o.Cleanup));
     #endregion
     #region Parallel
     /// <inheritdoc cref="HelmTestSettings.Parallel"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
     public static T SetParallel<T>(this T o, bool? v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Parallel, v));
     /// <inheritdoc cref="HelmTestSettings.Parallel"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
     public static T ResetParallel<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.Parallel));
     /// <inheritdoc cref="HelmTestSettings.Parallel"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
     public static T EnableParallel<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Parallel, true));
     /// <inheritdoc cref="HelmTestSettings.Parallel"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
     public static T DisableParallel<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Parallel, false));
     /// <inheritdoc cref="HelmTestSettings.Parallel"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Parallel))]
     public static T ToggleParallel<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Parallel, !o.Parallel));
     #endregion
     #region Timeout
     /// <inheritdoc cref="HelmTestSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Timeout))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Timeout))]
     public static T SetTimeout<T>(this T o, long? v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="HelmTestSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Timeout))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmTestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmTestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmTestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmTestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmTestSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmTestSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmTestSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmTestSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCert))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmTestSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCert))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmTestSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmTestSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmTestSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsKey))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmTestSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsKey))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmTestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmTestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmTestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmTestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmTestSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region Release
     /// <inheritdoc cref="HelmTestSettings.Release"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Release))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Release))]
     public static T SetRelease<T>(this T o, string v) where T : HelmTestSettings => o.Modify(b => b.Set(() => o.Release, v));
     /// <inheritdoc cref="HelmTestSettings.Release"/>
-    [Pure] [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Release))]
+    [Builder(Type = typeof(HelmTestSettings), Property = nameof(HelmTestSettings.Release))]
     public static T ResetRelease<T>(this T o) where T : HelmTestSettings => o.Modify(b => b.Remove(() => o.Release));
     #endregion
 }
 #endregion
 #region HelmUpgradeSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmUpgrade(Fallout.Common.Tools.Helm.HelmUpgradeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmUpgradeSettingsExtensions
 {
     #region Atomic
     /// <inheritdoc cref="HelmUpgradeSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
     public static T SetAtomic<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Atomic, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
     public static T ResetAtomic<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Atomic));
     /// <inheritdoc cref="HelmUpgradeSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
     public static T EnableAtomic<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Atomic, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
     public static T DisableAtomic<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Atomic, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Atomic"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Atomic))]
     public static T ToggleAtomic<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Atomic, !o.Atomic));
     #endregion
     #region CaFile
     /// <inheritdoc cref="HelmUpgradeSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CaFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CaFile))]
     public static T SetCaFile<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.CaFile, v));
     /// <inheritdoc cref="HelmUpgradeSettings.CaFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CaFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CaFile))]
     public static T ResetCaFile<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.CaFile));
     #endregion
     #region CertFile
     /// <inheritdoc cref="HelmUpgradeSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CertFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CertFile))]
     public static T SetCertFile<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.CertFile, v));
     /// <inheritdoc cref="HelmUpgradeSettings.CertFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CertFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CertFile))]
     public static T ResetCertFile<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.CertFile));
     #endregion
     #region Description
     /// <inheritdoc cref="HelmUpgradeSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Description))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Description))]
     public static T SetDescription<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Description, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Description"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Description))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Description))]
     public static T ResetDescription<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Description));
     #endregion
     #region Devel
     /// <inheritdoc cref="HelmUpgradeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
     public static T SetDevel<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Devel, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
     public static T ResetDevel<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Devel));
     /// <inheritdoc cref="HelmUpgradeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
     public static T EnableDevel<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Devel, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
     public static T DisableDevel<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Devel, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Devel"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Devel))]
     public static T ToggleDevel<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Devel, !o.Devel));
     #endregion
     #region DryRun
     /// <inheritdoc cref="HelmUpgradeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="HelmUpgradeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="HelmUpgradeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="HelmUpgradeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="HelmUpgradeSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region Force
     /// <inheritdoc cref="HelmUpgradeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
     public static T SetForce<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Force, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
     public static T ResetForce<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Force));
     /// <inheritdoc cref="HelmUpgradeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
     public static T EnableForce<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Force, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
     public static T DisableForce<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Force, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Force"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Force))]
     public static T ToggleForce<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Force, !o.Force));
     #endregion
     #region Install
     /// <inheritdoc cref="HelmUpgradeSettings.Install"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
     public static T SetInstall<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Install, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Install"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
     public static T ResetInstall<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Install));
     /// <inheritdoc cref="HelmUpgradeSettings.Install"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
     public static T EnableInstall<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Install, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Install"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
     public static T DisableInstall<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Install, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Install"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Install))]
     public static T ToggleInstall<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Install, !o.Install));
     #endregion
     #region CreateNamespace
     /// <inheritdoc cref="HelmUpgradeSettings.CreateNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
     public static T SetCreateNamespace<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.CreateNamespace, v));
     /// <inheritdoc cref="HelmUpgradeSettings.CreateNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
     public static T ResetCreateNamespace<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.CreateNamespace));
     /// <inheritdoc cref="HelmUpgradeSettings.CreateNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
     public static T EnableCreateNamespace<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.CreateNamespace, true));
     /// <inheritdoc cref="HelmUpgradeSettings.CreateNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
     public static T DisableCreateNamespace<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.CreateNamespace, false));
     /// <inheritdoc cref="HelmUpgradeSettings.CreateNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.CreateNamespace))]
     public static T ToggleCreateNamespace<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.CreateNamespace, !o.CreateNamespace));
     #endregion
     #region KeyFile
     /// <inheritdoc cref="HelmUpgradeSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.KeyFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.KeyFile))]
     public static T SetKeyFile<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.KeyFile, v));
     /// <inheritdoc cref="HelmUpgradeSettings.KeyFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.KeyFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.KeyFile))]
     public static T ResetKeyFile<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.KeyFile));
     #endregion
     #region Keyring
     /// <inheritdoc cref="HelmUpgradeSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Keyring))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Keyring))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Namespace
     /// <inheritdoc cref="HelmUpgradeSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Namespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Namespace))]
     public static T SetNamespace<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Namespace, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Namespace"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Namespace))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Namespace))]
     public static T ResetNamespace<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Namespace));
     #endregion
     #region NoHooks
     /// <inheritdoc cref="HelmUpgradeSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
     public static T SetNoHooks<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.NoHooks, v));
     /// <inheritdoc cref="HelmUpgradeSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
     public static T ResetNoHooks<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.NoHooks));
     /// <inheritdoc cref="HelmUpgradeSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
     public static T EnableNoHooks<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.NoHooks, true));
     /// <inheritdoc cref="HelmUpgradeSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
     public static T DisableNoHooks<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.NoHooks, false));
     /// <inheritdoc cref="HelmUpgradeSettings.NoHooks"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.NoHooks))]
     public static T ToggleNoHooks<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.NoHooks, !o.NoHooks));
     #endregion
     #region Password
     /// <inheritdoc cref="HelmUpgradeSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Password))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Password))]
     public static T SetPassword<T>(this T o, [Secret] string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Password, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Password"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Password))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Password))]
     public static T ResetPassword<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Password));
     #endregion
     #region RecreatePods
     /// <inheritdoc cref="HelmUpgradeSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
     public static T SetRecreatePods<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RecreatePods, v));
     /// <inheritdoc cref="HelmUpgradeSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
     public static T ResetRecreatePods<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.RecreatePods));
     /// <inheritdoc cref="HelmUpgradeSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
     public static T EnableRecreatePods<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RecreatePods, true));
     /// <inheritdoc cref="HelmUpgradeSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
     public static T DisableRecreatePods<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RecreatePods, false));
     /// <inheritdoc cref="HelmUpgradeSettings.RecreatePods"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RecreatePods))]
     public static T ToggleRecreatePods<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RecreatePods, !o.RecreatePods));
     #endregion
     #region RenderSubchartNotes
     /// <inheritdoc cref="HelmUpgradeSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
     public static T SetRenderSubchartNotes<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, v));
     /// <inheritdoc cref="HelmUpgradeSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
     public static T ResetRenderSubchartNotes<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.RenderSubchartNotes));
     /// <inheritdoc cref="HelmUpgradeSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
     public static T EnableRenderSubchartNotes<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, true));
     /// <inheritdoc cref="HelmUpgradeSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
     public static T DisableRenderSubchartNotes<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, false));
     /// <inheritdoc cref="HelmUpgradeSettings.RenderSubchartNotes"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.RenderSubchartNotes))]
     public static T ToggleRenderSubchartNotes<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.RenderSubchartNotes, !o.RenderSubchartNotes));
     #endregion
     #region Repo
     /// <inheritdoc cref="HelmUpgradeSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Repo))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Repo))]
     public static T SetRepo<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Repo, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Repo"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Repo))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Repo))]
     public static T ResetRepo<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Repo));
     #endregion
     #region ResetValues
     /// <inheritdoc cref="HelmUpgradeSettings.ResetValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
     public static T SetResetValues<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ResetValues, v));
     /// <inheritdoc cref="HelmUpgradeSettings.ResetValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
     public static T ResetResetValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.ResetValues));
     /// <inheritdoc cref="HelmUpgradeSettings.ResetValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
     public static T EnableResetValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ResetValues, true));
     /// <inheritdoc cref="HelmUpgradeSettings.ResetValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
     public static T DisableResetValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ResetValues, false));
     /// <inheritdoc cref="HelmUpgradeSettings.ResetValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ResetValues))]
     public static T ToggleResetValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ResetValues, !o.ResetValues));
     #endregion
     #region ReuseValues
     /// <inheritdoc cref="HelmUpgradeSettings.ReuseValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
     public static T SetReuseValues<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ReuseValues, v));
     /// <inheritdoc cref="HelmUpgradeSettings.ReuseValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
     public static T ResetReuseValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.ReuseValues));
     /// <inheritdoc cref="HelmUpgradeSettings.ReuseValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
     public static T EnableReuseValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ReuseValues, true));
     /// <inheritdoc cref="HelmUpgradeSettings.ReuseValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
     public static T DisableReuseValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ReuseValues, false));
     /// <inheritdoc cref="HelmUpgradeSettings.ReuseValues"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.ReuseValues))]
     public static T ToggleReuseValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.ReuseValues, !o.ReuseValues));
     #endregion
     #region Set
     /// <inheritdoc cref="HelmUpgradeSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
     public static T SetSet<T>(this T o, IDictionary<string, object> v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Set, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmUpgradeSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
     public static T SetSet<T>(this T o, string k, object v) where T : HelmUpgradeSettings => o.Modify(b => b.SetDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
     public static T AddSet<T>(this T o, string k, object v) where T : HelmUpgradeSettings => o.Modify(b => b.AddDictionary(() => o.Set, k, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
     public static T RemoveSet<T>(this T o, string k) where T : HelmUpgradeSettings => o.Modify(b => b.RemoveDictionary(() => o.Set, k));
     /// <inheritdoc cref="HelmUpgradeSettings.Set"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Set))]
     public static T ClearSet<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.ClearDictionary(() => o.Set));
     #endregion
     #region SetFile
     /// <inheritdoc cref="HelmUpgradeSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
     public static T SetSetFile<T>(this T o, IDictionary<string, object> v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.SetFile, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmUpgradeSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
     public static T SetSetFile<T>(this T o, string k, object v) where T : HelmUpgradeSettings => o.Modify(b => b.SetDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmUpgradeSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
     public static T AddSetFile<T>(this T o, string k, object v) where T : HelmUpgradeSettings => o.Modify(b => b.AddDictionary(() => o.SetFile, k, v));
     /// <inheritdoc cref="HelmUpgradeSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
     public static T RemoveSetFile<T>(this T o, string k) where T : HelmUpgradeSettings => o.Modify(b => b.RemoveDictionary(() => o.SetFile, k));
     /// <inheritdoc cref="HelmUpgradeSettings.SetFile"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetFile))]
     public static T ClearSetFile<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.ClearDictionary(() => o.SetFile));
     #endregion
     #region SetString
     /// <inheritdoc cref="HelmUpgradeSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
     public static T SetSetString<T>(this T o, IDictionary<string, object> v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.SetString, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="HelmUpgradeSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
     public static T SetSetString<T>(this T o, string k, object v) where T : HelmUpgradeSettings => o.Modify(b => b.SetDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmUpgradeSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
     public static T AddSetString<T>(this T o, string k, object v) where T : HelmUpgradeSettings => o.Modify(b => b.AddDictionary(() => o.SetString, k, v));
     /// <inheritdoc cref="HelmUpgradeSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
     public static T RemoveSetString<T>(this T o, string k) where T : HelmUpgradeSettings => o.Modify(b => b.RemoveDictionary(() => o.SetString, k));
     /// <inheritdoc cref="HelmUpgradeSettings.SetString"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.SetString))]
     public static T ClearSetString<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.ClearDictionary(() => o.SetString));
     #endregion
     #region Timeout
     /// <inheritdoc cref="HelmUpgradeSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Timeout))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Timeout))]
     public static T SetTimeout<T>(this T o, long? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Timeout, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Timeout"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Timeout))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Timeout))]
     public static T ResetTimeout<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Timeout));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmUpgradeSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmUpgradeSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmUpgradeSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmUpgradeSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCert))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCert))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmUpgradeSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmUpgradeSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsKey))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsKey))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmUpgradeSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmUpgradeSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
     #region Username
     /// <inheritdoc cref="HelmUpgradeSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Username))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Username))]
     public static T SetUsername<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Username, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Username"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Username))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Username))]
     public static T ResetUsername<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Username));
     #endregion
     #region Values
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T SetValues<T>(this T o, params string[] v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T SetValues<T>(this T o, IEnumerable<string> v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Values, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T AddValues<T>(this T o, params string[] v) where T : HelmUpgradeSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T AddValues<T>(this T o, IEnumerable<string> v) where T : HelmUpgradeSettings => o.Modify(b => b.AddCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T RemoveValues<T>(this T o, params string[] v) where T : HelmUpgradeSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T RemoveValues<T>(this T o, IEnumerable<string> v) where T : HelmUpgradeSettings => o.Modify(b => b.RemoveCollection(() => o.Values, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Values"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Values))]
     public static T ClearValues<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.ClearCollection(() => o.Values));
     #endregion
     #region Verify
     /// <inheritdoc cref="HelmUpgradeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
     public static T SetVerify<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Verify, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
     public static T ResetVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Verify));
     /// <inheritdoc cref="HelmUpgradeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
     public static T EnableVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Verify, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
     public static T DisableVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Verify, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Verify"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Verify))]
     public static T ToggleVerify<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Verify, !o.Verify));
     #endregion
     #region Version
     /// <inheritdoc cref="HelmUpgradeSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Version))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Version))]
     public static T SetVersion<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Version"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Version))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Version));
     #endregion
     #region Wait
     /// <inheritdoc cref="HelmUpgradeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
     public static T SetWait<T>(this T o, bool? v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Wait, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
     public static T ResetWait<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Wait));
     /// <inheritdoc cref="HelmUpgradeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
     public static T EnableWait<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Wait, true));
     /// <inheritdoc cref="HelmUpgradeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
     public static T DisableWait<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Wait, false));
     /// <inheritdoc cref="HelmUpgradeSettings.Wait"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Wait))]
     public static T ToggleWait<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Wait, !o.Wait));
     #endregion
     #region Release
     /// <inheritdoc cref="HelmUpgradeSettings.Release"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Release))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Release))]
     public static T SetRelease<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Release, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Release"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Release))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Release))]
     public static T ResetRelease<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Release));
     #endregion
     #region Chart
     /// <inheritdoc cref="HelmUpgradeSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Chart))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Chart))]
     public static T SetChart<T>(this T o, string v) where T : HelmUpgradeSettings => o.Modify(b => b.Set(() => o.Chart, v));
     /// <inheritdoc cref="HelmUpgradeSettings.Chart"/>
-    [Pure] [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Chart))]
+    [Builder(Type = typeof(HelmUpgradeSettings), Property = nameof(HelmUpgradeSettings.Chart))]
     public static T ResetChart<T>(this T o) where T : HelmUpgradeSettings => o.Modify(b => b.Remove(() => o.Chart));
     #endregion
 }
 #endregion
 #region HelmVerifySettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmVerify(Fallout.Common.Tools.Helm.HelmVerifySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmVerifySettingsExtensions
 {
     #region Keyring
     /// <inheritdoc cref="HelmVerifySettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Keyring))]
+    [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Keyring))]
     public static T SetKeyring<T>(this T o, string v) where T : HelmVerifySettings => o.Modify(b => b.Set(() => o.Keyring, v));
     /// <inheritdoc cref="HelmVerifySettings.Keyring"/>
-    [Pure] [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Keyring))]
+    [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Keyring))]
     public static T ResetKeyring<T>(this T o) where T : HelmVerifySettings => o.Modify(b => b.Remove(() => o.Keyring));
     #endregion
     #region Path
     /// <inheritdoc cref="HelmVerifySettings.Path"/>
-    [Pure] [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Path))]
+    [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Path))]
     public static T SetPath<T>(this T o, string v) where T : HelmVerifySettings => o.Modify(b => b.Set(() => o.Path, v));
     /// <inheritdoc cref="HelmVerifySettings.Path"/>
-    [Pure] [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Path))]
+    [Builder(Type = typeof(HelmVerifySettings), Property = nameof(HelmVerifySettings.Path))]
     public static T ResetPath<T>(this T o) where T : HelmVerifySettings => o.Modify(b => b.Remove(() => o.Path));
     #endregion
 }
 #endregion
 #region HelmVersionSettingsExtensions
 /// <inheritdoc cref="HelmTasks.HelmVersion(Fallout.Common.Tools.Helm.HelmVersionSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmVersionSettingsExtensions
 {
     #region Client
     /// <inheritdoc cref="HelmVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
     public static T SetClient<T>(this T o, bool? v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Client, v));
     /// <inheritdoc cref="HelmVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
     public static T ResetClient<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.Client));
     /// <inheritdoc cref="HelmVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
     public static T EnableClient<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Client, true));
     /// <inheritdoc cref="HelmVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
     public static T DisableClient<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Client, false));
     /// <inheritdoc cref="HelmVersionSettings.Client"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Client))]
     public static T ToggleClient<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Client, !o.Client));
     #endregion
     #region Server
     /// <inheritdoc cref="HelmVersionSettings.Server"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
     public static T SetServer<T>(this T o, bool? v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Server, v));
     /// <inheritdoc cref="HelmVersionSettings.Server"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
     public static T ResetServer<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.Server));
     /// <inheritdoc cref="HelmVersionSettings.Server"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
     public static T EnableServer<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Server, true));
     /// <inheritdoc cref="HelmVersionSettings.Server"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
     public static T DisableServer<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Server, false));
     /// <inheritdoc cref="HelmVersionSettings.Server"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Server))]
     public static T ToggleServer<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Server, !o.Server));
     #endregion
     #region Short
     /// <inheritdoc cref="HelmVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
     public static T SetShort<T>(this T o, bool? v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Short, v));
     /// <inheritdoc cref="HelmVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
     public static T ResetShort<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.Short));
     /// <inheritdoc cref="HelmVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
     public static T EnableShort<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Short, true));
     /// <inheritdoc cref="HelmVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
     public static T DisableShort<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Short, false));
     /// <inheritdoc cref="HelmVersionSettings.Short"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Short))]
     public static T ToggleShort<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Short, !o.Short));
     #endregion
     #region Template
     /// <inheritdoc cref="HelmVersionSettings.Template"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Template))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Template))]
     public static T SetTemplate<T>(this T o, string v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Template, v));
     /// <inheritdoc cref="HelmVersionSettings.Template"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Template))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Template))]
     public static T ResetTemplate<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.Template));
     #endregion
     #region Tls
     /// <inheritdoc cref="HelmVersionSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
     public static T SetTls<T>(this T o, bool? v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Tls, v));
     /// <inheritdoc cref="HelmVersionSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
     public static T ResetTls<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.Tls));
     /// <inheritdoc cref="HelmVersionSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
     public static T EnableTls<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Tls, true));
     /// <inheritdoc cref="HelmVersionSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
     public static T DisableTls<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Tls, false));
     /// <inheritdoc cref="HelmVersionSettings.Tls"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.Tls))]
     public static T ToggleTls<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.Tls, !o.Tls));
     #endregion
     #region TlsCaCert
     /// <inheritdoc cref="HelmVersionSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCaCert))]
     public static T SetTlsCaCert<T>(this T o, string v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsCaCert, v));
     /// <inheritdoc cref="HelmVersionSettings.TlsCaCert"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCaCert))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCaCert))]
     public static T ResetTlsCaCert<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.TlsCaCert));
     #endregion
     #region TlsCert
     /// <inheritdoc cref="HelmVersionSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCert))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCert))]
     public static T SetTlsCert<T>(this T o, string v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsCert, v));
     /// <inheritdoc cref="HelmVersionSettings.TlsCert"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCert))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsCert))]
     public static T ResetTlsCert<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.TlsCert));
     #endregion
     #region TlsHostname
     /// <inheritdoc cref="HelmVersionSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsHostname))]
     public static T SetTlsHostname<T>(this T o, string v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsHostname, v));
     /// <inheritdoc cref="HelmVersionSettings.TlsHostname"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsHostname))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsHostname))]
     public static T ResetTlsHostname<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.TlsHostname));
     #endregion
     #region TlsKey
     /// <inheritdoc cref="HelmVersionSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsKey))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsKey))]
     public static T SetTlsKey<T>(this T o, string v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsKey, v));
     /// <inheritdoc cref="HelmVersionSettings.TlsKey"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsKey))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsKey))]
     public static T ResetTlsKey<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.TlsKey));
     #endregion
     #region TlsVerify
     /// <inheritdoc cref="HelmVersionSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
     public static T SetTlsVerify<T>(this T o, bool? v) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsVerify, v));
     /// <inheritdoc cref="HelmVersionSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
     public static T ResetTlsVerify<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Remove(() => o.TlsVerify));
     /// <inheritdoc cref="HelmVersionSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
     public static T EnableTlsVerify<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsVerify, true));
     /// <inheritdoc cref="HelmVersionSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
     public static T DisableTlsVerify<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsVerify, false));
     /// <inheritdoc cref="HelmVersionSettings.TlsVerify"/>
-    [Pure] [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
+    [Builder(Type = typeof(HelmVersionSettings), Property = nameof(HelmVersionSettings.TlsVerify))]
     public static T ToggleTlsVerify<T>(this T o) where T : HelmVersionSettings => o.Modify(b => b.Set(() => o.TlsVerify, !o.TlsVerify));
     #endregion
 }
 #endregion
 #region HelmOptionsBaseExtensions
 /// <summary>Used within <see cref="HelmTasks"/>.</summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class HelmOptionsBaseExtensions
 {
     #region Debug
     /// <inheritdoc cref="HelmOptionsBase.Debug"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
     public static T SetDebug<T>(this T o, bool? v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Debug, v));
     /// <inheritdoc cref="HelmOptionsBase.Debug"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
     public static T ResetDebug<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.Debug));
     /// <inheritdoc cref="HelmOptionsBase.Debug"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
     public static T EnableDebug<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Debug, true));
     /// <inheritdoc cref="HelmOptionsBase.Debug"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
     public static T DisableDebug<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Debug, false));
     /// <inheritdoc cref="HelmOptionsBase.Debug"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Debug))]
     public static T ToggleDebug<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Debug, !o.Debug));
     #endregion
     #region Home
     /// <inheritdoc cref="HelmOptionsBase.Home"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Home))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Home))]
     public static T SetHome<T>(this T o, string v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Home, v));
     /// <inheritdoc cref="HelmOptionsBase.Home"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Home))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Home))]
     public static T ResetHome<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.Home));
     #endregion
     #region Host
     /// <inheritdoc cref="HelmOptionsBase.Host"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Host))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Host))]
     public static T SetHost<T>(this T o, string v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Host, v));
     /// <inheritdoc cref="HelmOptionsBase.Host"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Host))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Host))]
     public static T ResetHost<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.Host));
     #endregion
     #region KubeContext
     /// <inheritdoc cref="HelmOptionsBase.KubeContext"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.KubeContext))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.KubeContext))]
     public static T SetKubeContext<T>(this T o, string v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.KubeContext, v));
     /// <inheritdoc cref="HelmOptionsBase.KubeContext"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.KubeContext))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.KubeContext))]
     public static T ResetKubeContext<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.KubeContext));
     #endregion
     #region Kubeconfig
     /// <inheritdoc cref="HelmOptionsBase.Kubeconfig"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Kubeconfig))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Kubeconfig))]
     public static T SetKubeconfig<T>(this T o, string v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.Kubeconfig, v));
     /// <inheritdoc cref="HelmOptionsBase.Kubeconfig"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Kubeconfig))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.Kubeconfig))]
     public static T ResetKubeconfig<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.Kubeconfig));
     #endregion
     #region TillerConnectionTimeout
     /// <inheritdoc cref="HelmOptionsBase.TillerConnectionTimeout"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerConnectionTimeout))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerConnectionTimeout))]
     public static T SetTillerConnectionTimeout<T>(this T o, long? v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.TillerConnectionTimeout, v));
     /// <inheritdoc cref="HelmOptionsBase.TillerConnectionTimeout"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerConnectionTimeout))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerConnectionTimeout))]
     public static T ResetTillerConnectionTimeout<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.TillerConnectionTimeout));
     #endregion
     #region TillerNamespace
     /// <inheritdoc cref="HelmOptionsBase.TillerNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerNamespace))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerNamespace))]
     public static T SetTillerNamespace<T>(this T o, string v) where T : HelmOptionsBase => o.Modify(b => b.Set(() => o.TillerNamespace, v));
     /// <inheritdoc cref="HelmOptionsBase.TillerNamespace"/>
-    [Pure] [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerNamespace))]
+    [Builder(Type = typeof(HelmOptionsBase), Property = nameof(HelmOptionsBase.TillerNamespace))]
     public static T ResetTillerNamespace<T>(this T o) where T : HelmOptionsBase => o.Modify(b => b.Remove(() => o.TillerNamespace));
     #endregion
 }
 #endregion
 #region HelmOutputFormat
 /// <summary>Used within <see cref="HelmTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<HelmOutputFormat>))]

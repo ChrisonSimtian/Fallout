@@ -6,11 +6,9 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.TeamCity;
 
-[PublicAPI]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public enum TeamCityStatus
 {

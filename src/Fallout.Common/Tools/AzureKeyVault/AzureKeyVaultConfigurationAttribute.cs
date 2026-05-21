@@ -6,14 +6,12 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.ValueInjection;
 using Serilog;
 
 namespace Fallout.Common.Tools.AzureKeyVault
 {
     /// <summary>Defines where the KeyVault login details can be found.</summary>
-    [PublicAPI]
     public class AzureKeyVaultConfigurationAttribute : ValueInjectionAttributeBase
     {
         /// <summary><p>The base url of the Azure Key Vault. Either <see cref="BaseUrl"/> or <see cref="BaseUrlParameterName"/> must be set.</p></summary>

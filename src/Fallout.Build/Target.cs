@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Execution;
 
 namespace Fallout.Common;
@@ -28,7 +27,6 @@ public delegate ITargetDefinition Setup(ITargetDefinition definition);
 
 public delegate ITargetDefinition Cleanup(ITargetDefinition definition);
 
-[PublicAPI]
 public static class ExecutableTargetExtensions
 {
     public static bool Contains(this IEnumerable<ExecutableTarget> targets, Target target)

@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities.Collections;
 
@@ -14,8 +13,8 @@ public static partial class EnumerableExtensions
 {
     public static Dictionary<TKey, TValue> ToDictionary<T, TKey, TValue>(
         this IEnumerable<T> enumerable,
-        [InstantHandle] Func<T, TKey> keySelector,
-        [InstantHandle] Func<T, TValue> valueSelector,
+        Func<T, TKey> keySelector,
+        Func<T, TValue> valueSelector,
         IEqualityComparer<TKey> comparer = null,
         Func<ArgumentException, TKey, Exception> exceptionFactory = null)
     {
@@ -40,8 +39,8 @@ public static partial class EnumerableExtensions
 
     public static Dictionary<TKey, TValue> ToDictionarySafe<T, TKey, TValue>(
         this IEnumerable<T> enumerable,
-        [InstantHandle] Func<T, TKey> keySelector,
-        [InstantHandle] Func<T, TValue> valueSelector,
+        Func<T, TKey> keySelector,
+        Func<T, TValue> valueSelector,
         string duplicationMessage)
     {
         var groups = enumerable.ToLookup(keySelector.Invoke, valueSelector.Invoke);

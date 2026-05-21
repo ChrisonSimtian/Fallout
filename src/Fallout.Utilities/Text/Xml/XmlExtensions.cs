@@ -6,18 +6,15 @@
 using System;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 public static class XmlExtensions
 {
     /// <summary>
     /// Serializes an object as XML string.
     /// </summary>
-    [Pure]
     public static string ToXml<T>(this T obj, SaveOptions options = SaveOptions.None)
     {
         var serializer = new XmlSerializer(typeof(T));
@@ -34,7 +31,6 @@ public static class XmlExtensions
     /// <summary>
     /// Deserializes an object from a XML string.
     /// </summary>
-    [Pure]
     public static T GetXml<T>(this string content, LoadOptions options = LoadOptions.PreserveWhitespace)
     {
         var serializer = new XmlSerializer(typeof(T));
@@ -65,7 +61,6 @@ public static class XmlExtensions
     /// <summary>
     /// Deserializes an <see cref="XDocument"/> from a file.
     /// </summary>
-    [Pure]
     public static XDocument ReadXml(this AbsolutePath path, LoadOptions options = LoadOptions.PreserveWhitespace)
     {
         Assert.FileExists(path);
@@ -75,7 +70,6 @@ public static class XmlExtensions
     /// <summary>
     /// Deserializes an object as XML from a file.
     /// </summary>
-    [Pure]
     public static T ReadXml<T>(this AbsolutePath path, LoadOptions options = LoadOptions.PreserveWhitespace)
     {
         var content = path.ReadAllText();

@@ -6,7 +6,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Tooling;
 
@@ -30,17 +29,14 @@ namespace Fallout.Common.Tooling;
 ///     });
 ///     </code>
 /// </example>
-[PublicAPI]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class NuGetPackageAttribute : ToolInjectionAttributeBase
 {
     private readonly string _packageId;
     private readonly string _packageExecutable;
 
-    [CanBeNull]
     public string Framework { get; set; }
 
-    [CanBeNull]
     public string Version { get; set; }
 
     public NuGetPackageAttribute(string packageId, string packageExecutable)

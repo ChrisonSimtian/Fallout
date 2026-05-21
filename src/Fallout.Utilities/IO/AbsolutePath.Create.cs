@@ -6,11 +6,9 @@
 using System;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.IO;
 
-[PublicAPI]
 public static partial class AbsolutePathExtensions
 {
     /// <summary>

@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Fallout.Common.IO;
@@ -13,7 +12,6 @@ using Fallout.Common.Tooling;
 
 namespace Fallout.Common.Utilities;
 
-[PublicAPI]
 public static class JsonExtensions
 {
     public static JsonSerializerSettings DefaultSerializerSettings =
@@ -27,7 +25,6 @@ public static class JsonExtensions
     /// <summary>
     /// Serializes an object as JSON string.
     /// </summary>
-    [Pure]
     public static string ToJson<T>(
         this T obj,
         JsonSerializerSettings serializerSettings = null,
@@ -39,7 +36,6 @@ public static class JsonExtensions
     /// <summary>
     /// Deserializes an object from a JSON string.
     /// </summary>
-    [Pure]
     public static T GetJson<T>(this string content, JsonSerializerSettings serializerSettings = null)
     {
         return JsonConvert.DeserializeObject<T>(content, serializerSettings ?? DefaultSerializerSettings);
@@ -48,7 +44,6 @@ public static class JsonExtensions
     /// <summary>
     /// Deserializes a <see cref="JObject"/> from a JSON string.
     /// </summary>
-    [Pure]
     public static JObject GetJson(this string content, JsonSerializerSettings serializerSettings = null)
     {
         return content.GetJson<JObject>(serializerSettings);
@@ -66,7 +61,6 @@ public static class JsonExtensions
     /// <summary>
     /// Deserializes an object as JSON from a file.
     /// </summary>
-    [Pure]
     public static T ReadJson<T>(this AbsolutePath path, JsonSerializerSettings serializerSettings = null)
     {
         var content = path.ReadAllText();
@@ -76,7 +70,6 @@ public static class JsonExtensions
     /// <summary>
     /// Deserializes a <see cref="JObject"/> as JSON from a file.
     /// </summary>
-    [Pure]
     public static JObject ReadJson(this AbsolutePath path, JsonSerializerSettings serializerSettings = null)
     {
         return path.ReadJson<JObject>(serializerSettings);

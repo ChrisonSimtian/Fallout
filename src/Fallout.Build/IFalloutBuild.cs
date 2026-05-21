@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -15,7 +14,6 @@ using Fallout.Common.Tooling;
 
 namespace Fallout.Common;
 
-[PublicAPI]
 public interface IFalloutBuild
 {
     void ReportSummary(Configure<Dictionary<string, string>> configurator = null);
@@ -45,8 +43,8 @@ public interface IFalloutBuild
     AbsolutePath TemporaryDirectory { get; }
     AbsolutePath BuildAssemblyFile { get; }
     AbsolutePath BuildAssemblyDirectory { get; }
-    [CanBeNull] AbsolutePath BuildProjectDirectory { get; }
-    [CanBeNull] AbsolutePath BuildProjectFile { get; }
+    AbsolutePath BuildProjectDirectory { get; }
+    AbsolutePath BuildProjectFile { get; }
 
     Verbosity Verbosity { get; }
     Host Host { get; }
@@ -58,9 +56,7 @@ public interface IFalloutBuild
     bool Continue { get; }
     Partition Partition { get; }
 
-    [CanBeNull]
     public T TryGetValue<T>(Expression<Func<T>> parameterExpression) where T : class;
 
-    [CanBeNull]
     public T TryGetValue<T>(Expression<Func<object>> parameterExpression);
 }

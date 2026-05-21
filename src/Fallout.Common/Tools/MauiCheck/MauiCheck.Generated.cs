@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.MauiCheck;
 
 /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class MauiCheckTasks : ToolTasks, IRequireNuGetPackage
@@ -45,7 +43,6 @@ public partial class MauiCheckTasks : ToolTasks, IRequireNuGetPackage
 }
 #region MauiCheckSettings
 /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Common.Tools.MauiCheck.MauiCheckSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MauiCheckTasks), Command = nameof(MauiCheckTasks.MauiCheck))]
 public partial class MauiCheckSettings : ToolOptions
@@ -66,7 +63,6 @@ public partial class MauiCheckSettings : ToolOptions
 #endregion
 #region MauiCheckConfigSettings
 /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MauiCheckTasks), Command = nameof(MauiCheckTasks.MauiCheckConfig), Arguments = "config")]
 public partial class MauiCheckConfigSettings : ToolOptions
@@ -83,181 +79,178 @@ public partial class MauiCheckConfigSettings : ToolOptions
 #endregion
 #region MauiCheckSettingsExtensions
 /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Common.Tools.MauiCheck.MauiCheckSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class MauiCheckSettingsExtensions
 {
     #region Manifest
     /// <inheritdoc cref="MauiCheckSettings.Manifest"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Manifest))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Manifest))]
     public static T SetManifest<T>(this T o, string v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Manifest, v));
     /// <inheritdoc cref="MauiCheckSettings.Manifest"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Manifest))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Manifest))]
     public static T ResetManifest<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Remove(() => o.Manifest));
     #endregion
     #region Fix
     /// <inheritdoc cref="MauiCheckSettings.Fix"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
     public static T SetFix<T>(this T o, bool? v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Fix, v));
     /// <inheritdoc cref="MauiCheckSettings.Fix"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
     public static T ResetFix<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Remove(() => o.Fix));
     /// <inheritdoc cref="MauiCheckSettings.Fix"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
     public static T EnableFix<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Fix, true));
     /// <inheritdoc cref="MauiCheckSettings.Fix"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
     public static T DisableFix<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Fix, false));
     /// <inheritdoc cref="MauiCheckSettings.Fix"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Fix))]
     public static T ToggleFix<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Fix, !o.Fix));
     #endregion
     #region NonInteractive
     /// <inheritdoc cref="MauiCheckSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
     public static T SetNonInteractive<T>(this T o, bool? v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.NonInteractive, v));
     /// <inheritdoc cref="MauiCheckSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
     public static T ResetNonInteractive<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Remove(() => o.NonInteractive));
     /// <inheritdoc cref="MauiCheckSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
     public static T EnableNonInteractive<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.NonInteractive, true));
     /// <inheritdoc cref="MauiCheckSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
     public static T DisableNonInteractive<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.NonInteractive, false));
     /// <inheritdoc cref="MauiCheckSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.NonInteractive))]
     public static T ToggleNonInteractive<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.NonInteractive, !o.NonInteractive));
     #endregion
     #region Preview
     /// <inheritdoc cref="MauiCheckSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
     public static T SetPreview<T>(this T o, bool? v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Preview, v));
     /// <inheritdoc cref="MauiCheckSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
     public static T ResetPreview<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Remove(() => o.Preview));
     /// <inheritdoc cref="MauiCheckSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
     public static T EnablePreview<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Preview, true));
     /// <inheritdoc cref="MauiCheckSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
     public static T DisablePreview<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Preview, false));
     /// <inheritdoc cref="MauiCheckSettings.Preview"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Preview))]
     public static T TogglePreview<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Preview, !o.Preview));
     #endregion
     #region Ci
     /// <inheritdoc cref="MauiCheckSettings.Ci"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
     public static T SetCi<T>(this T o, bool? v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Ci, v));
     /// <inheritdoc cref="MauiCheckSettings.Ci"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
     public static T ResetCi<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Remove(() => o.Ci));
     /// <inheritdoc cref="MauiCheckSettings.Ci"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
     public static T EnableCi<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Ci, true));
     /// <inheritdoc cref="MauiCheckSettings.Ci"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
     public static T DisableCi<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Ci, false));
     /// <inheritdoc cref="MauiCheckSettings.Ci"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Ci))]
     public static T ToggleCi<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Ci, !o.Ci));
     #endregion
     #region Skip
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T SetSkip<T>(this T o, params MauiCheckCheckup[] v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Skip, v));
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T SetSkip<T>(this T o, IEnumerable<MauiCheckCheckup> v) where T : MauiCheckSettings => o.Modify(b => b.Set(() => o.Skip, v));
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T AddSkip<T>(this T o, params MauiCheckCheckup[] v) where T : MauiCheckSettings => o.Modify(b => b.AddCollection(() => o.Skip, v));
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T AddSkip<T>(this T o, IEnumerable<MauiCheckCheckup> v) where T : MauiCheckSettings => o.Modify(b => b.AddCollection(() => o.Skip, v));
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T RemoveSkip<T>(this T o, params MauiCheckCheckup[] v) where T : MauiCheckSettings => o.Modify(b => b.RemoveCollection(() => o.Skip, v));
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T RemoveSkip<T>(this T o, IEnumerable<MauiCheckCheckup> v) where T : MauiCheckSettings => o.Modify(b => b.RemoveCollection(() => o.Skip, v));
     /// <inheritdoc cref="MauiCheckSettings.Skip"/>
-    [Pure] [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
+    [Builder(Type = typeof(MauiCheckSettings), Property = nameof(MauiCheckSettings.Skip))]
     public static T ClearSkip<T>(this T o) where T : MauiCheckSettings => o.Modify(b => b.ClearCollection(() => o.Skip));
     #endregion
 }
 #endregion
 #region MauiCheckConfigSettingsExtensions
 /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class MauiCheckConfigSettingsExtensions
 {
     #region DotNetVersion
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetVersion"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
     public static T SetDotNetVersion<T>(this T o, bool? v) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetVersion, v));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetVersion"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
     public static T ResetDotNetVersion<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Remove(() => o.DotNetVersion));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetVersion"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
     public static T EnableDotNetVersion<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetVersion, true));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetVersion"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
     public static T DisableDotNetVersion<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetVersion, false));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetVersion"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetVersion))]
     public static T ToggleDotNetVersion<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetVersion, !o.DotNetVersion));
     #endregion
     #region DotNetPrerelease
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetPrerelease"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
     public static T SetDotNetPrerelease<T>(this T o, bool? v) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetPrerelease, v));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetPrerelease"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
     public static T ResetDotNetPrerelease<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Remove(() => o.DotNetPrerelease));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetPrerelease"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
     public static T EnableDotNetPrerelease<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetPrerelease, true));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetPrerelease"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
     public static T DisableDotNetPrerelease<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetPrerelease, false));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetPrerelease"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetPrerelease))]
     public static T ToggleDotNetPrerelease<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetPrerelease, !o.DotNetPrerelease));
     #endregion
     #region DotNetRollForward
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetRollForward"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetRollForward))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetRollForward))]
     public static T SetDotNetRollForward<T>(this T o, MauiCheckDotNetRollForward v) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.DotNetRollForward, v));
     /// <inheritdoc cref="MauiCheckConfigSettings.DotNetRollForward"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetRollForward))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.DotNetRollForward))]
     public static T ResetDotNetRollForward<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Remove(() => o.DotNetRollForward));
     #endregion
     #region NuGetSources
     /// <inheritdoc cref="MauiCheckConfigSettings.NuGetSources"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
     public static T SetNuGetSources<T>(this T o, bool? v) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.NuGetSources, v));
     /// <inheritdoc cref="MauiCheckConfigSettings.NuGetSources"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
     public static T ResetNuGetSources<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Remove(() => o.NuGetSources));
     /// <inheritdoc cref="MauiCheckConfigSettings.NuGetSources"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
     public static T EnableNuGetSources<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.NuGetSources, true));
     /// <inheritdoc cref="MauiCheckConfigSettings.NuGetSources"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
     public static T DisableNuGetSources<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.NuGetSources, false));
     /// <inheritdoc cref="MauiCheckConfigSettings.NuGetSources"/>
-    [Pure] [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
+    [Builder(Type = typeof(MauiCheckConfigSettings), Property = nameof(MauiCheckConfigSettings.NuGetSources))]
     public static T ToggleNuGetSources<T>(this T o) where T : MauiCheckConfigSettings => o.Modify(b => b.Set(() => o.NuGetSources, !o.NuGetSources));
     #endregion
 }
 #endregion
 #region MauiCheckDotNetRollForward
 /// <summary>Used within <see cref="MauiCheckTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<MauiCheckDotNetRollForward>))]
@@ -280,7 +273,6 @@ public partial class MauiCheckDotNetRollForward : Enumeration
 #endregion
 #region MauiCheckCheckup
 /// <summary>Used within <see cref="MauiCheckTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<MauiCheckCheckup>))]

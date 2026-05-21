@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.Pwsh;
 
 /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [PathTool(Executable = PathExecutable)]
 public partial class PwshTasks : ToolTasks, IRequirePathTool
@@ -37,7 +35,6 @@ public partial class PwshTasks : ToolTasks, IRequirePathTool
 }
 #region PwshSettings
 /// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Common.Tools.Pwsh.PwshSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PwshTasks), Command = nameof(PwshTasks.Pwsh))]
 public partial class PwshSettings : ToolOptions
@@ -94,321 +91,319 @@ public partial class PwshSettings : ToolOptions
 #endregion
 #region PwshSettingsExtensions
 /// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Common.Tools.Pwsh.PwshSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class PwshSettingsExtensions
 {
     #region Version
     /// <inheritdoc cref="PwshSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
     public static T SetVersion<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.Version, v));
     /// <inheritdoc cref="PwshSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
     public static T ResetVersion<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.Version));
     /// <inheritdoc cref="PwshSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
     public static T EnableVersion<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Version, true));
     /// <inheritdoc cref="PwshSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
     public static T DisableVersion<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Version, false));
     /// <inheritdoc cref="PwshSettings.Version"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Version))]
     public static T ToggleVersion<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Version, !o.Version));
     #endregion
     #region NoLogo
     /// <inheritdoc cref="PwshSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
     public static T SetNoLogo<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoLogo, v));
     /// <inheritdoc cref="PwshSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
     public static T ResetNoLogo<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.NoLogo));
     /// <inheritdoc cref="PwshSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
     public static T EnableNoLogo<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoLogo, true));
     /// <inheritdoc cref="PwshSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
     public static T DisableNoLogo<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoLogo, false));
     /// <inheritdoc cref="PwshSettings.NoLogo"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoLogo))]
     public static T ToggleNoLogo<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoLogo, !o.NoLogo));
     #endregion
     #region NoExit
     /// <inheritdoc cref="PwshSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
     public static T SetNoExit<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoExit, v));
     /// <inheritdoc cref="PwshSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
     public static T ResetNoExit<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.NoExit));
     /// <inheritdoc cref="PwshSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
     public static T EnableNoExit<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoExit, true));
     /// <inheritdoc cref="PwshSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
     public static T DisableNoExit<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoExit, false));
     /// <inheritdoc cref="PwshSettings.NoExit"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoExit))]
     public static T ToggleNoExit<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoExit, !o.NoExit));
     #endregion
     #region SingleThreadedApartment
     /// <inheritdoc cref="PwshSettings.SingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
     public static T SetSingleThreadedApartment<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.SingleThreadedApartment, v));
     /// <inheritdoc cref="PwshSettings.SingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
     public static T ResetSingleThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.SingleThreadedApartment));
     /// <inheritdoc cref="PwshSettings.SingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
     public static T EnableSingleThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.SingleThreadedApartment, true));
     /// <inheritdoc cref="PwshSettings.SingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
     public static T DisableSingleThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.SingleThreadedApartment, false));
     /// <inheritdoc cref="PwshSettings.SingleThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SingleThreadedApartment))]
     public static T ToggleSingleThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.SingleThreadedApartment, !o.SingleThreadedApartment));
     #endregion
     #region MultiThreadedApartment
     /// <inheritdoc cref="PwshSettings.MultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
     public static T SetMultiThreadedApartment<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.MultiThreadedApartment, v));
     /// <inheritdoc cref="PwshSettings.MultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
     public static T ResetMultiThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.MultiThreadedApartment));
     /// <inheritdoc cref="PwshSettings.MultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
     public static T EnableMultiThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.MultiThreadedApartment, true));
     /// <inheritdoc cref="PwshSettings.MultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
     public static T DisableMultiThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.MultiThreadedApartment, false));
     /// <inheritdoc cref="PwshSettings.MultiThreadedApartment"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.MultiThreadedApartment))]
     public static T ToggleMultiThreadedApartment<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.MultiThreadedApartment, !o.MultiThreadedApartment));
     #endregion
     #region NoProfile
     /// <inheritdoc cref="PwshSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
     public static T SetNoProfile<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfile, v));
     /// <inheritdoc cref="PwshSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
     public static T ResetNoProfile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.NoProfile));
     /// <inheritdoc cref="PwshSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
     public static T EnableNoProfile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfile, true));
     /// <inheritdoc cref="PwshSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
     public static T DisableNoProfile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfile, false));
     /// <inheritdoc cref="PwshSettings.NoProfile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfile))]
     public static T ToggleNoProfile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfile, !o.NoProfile));
     #endregion
     #region NoProfileLoadTime
     /// <inheritdoc cref="PwshSettings.NoProfileLoadTime"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
     public static T SetNoProfileLoadTime<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfileLoadTime, v));
     /// <inheritdoc cref="PwshSettings.NoProfileLoadTime"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
     public static T ResetNoProfileLoadTime<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.NoProfileLoadTime));
     /// <inheritdoc cref="PwshSettings.NoProfileLoadTime"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
     public static T EnableNoProfileLoadTime<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfileLoadTime, true));
     /// <inheritdoc cref="PwshSettings.NoProfileLoadTime"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
     public static T DisableNoProfileLoadTime<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfileLoadTime, false));
     /// <inheritdoc cref="PwshSettings.NoProfileLoadTime"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NoProfileLoadTime))]
     public static T ToggleNoProfileLoadTime<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NoProfileLoadTime, !o.NoProfileLoadTime));
     #endregion
     #region NonInteractive
     /// <inheritdoc cref="PwshSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
     public static T SetNonInteractive<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.NonInteractive, v));
     /// <inheritdoc cref="PwshSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
     public static T ResetNonInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.NonInteractive));
     /// <inheritdoc cref="PwshSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
     public static T EnableNonInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NonInteractive, true));
     /// <inheritdoc cref="PwshSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
     public static T DisableNonInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NonInteractive, false));
     /// <inheritdoc cref="PwshSettings.NonInteractive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.NonInteractive))]
     public static T ToggleNonInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.NonInteractive, !o.NonInteractive));
     #endregion
     #region Interactive
     /// <inheritdoc cref="PwshSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
     public static T SetInteractive<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.Interactive, v));
     /// <inheritdoc cref="PwshSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
     public static T ResetInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.Interactive));
     /// <inheritdoc cref="PwshSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
     public static T EnableInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Interactive, true));
     /// <inheritdoc cref="PwshSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
     public static T DisableInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Interactive, false));
     /// <inheritdoc cref="PwshSettings.Interactive"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Interactive))]
     public static T ToggleInteractive<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Interactive, !o.Interactive));
     #endregion
     #region InputFormat
     /// <inheritdoc cref="PwshSettings.InputFormat"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.InputFormat))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.InputFormat))]
     public static T SetInputFormat<T>(this T o, PwshInOutFormat v) where T : PwshSettings => o.Modify(b => b.Set(() => o.InputFormat, v));
     /// <inheritdoc cref="PwshSettings.InputFormat"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.InputFormat))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.InputFormat))]
     public static T ResetInputFormat<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.InputFormat));
     #endregion
     #region OutputFormat
     /// <inheritdoc cref="PwshSettings.OutputFormat"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.OutputFormat))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.OutputFormat))]
     public static T SetOutputFormat<T>(this T o, PwshInOutFormat v) where T : PwshSettings => o.Modify(b => b.Set(() => o.OutputFormat, v));
     /// <inheritdoc cref="PwshSettings.OutputFormat"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.OutputFormat))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.OutputFormat))]
     public static T ResetOutputFormat<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.OutputFormat));
     #endregion
     #region WindowStyle
     /// <inheritdoc cref="PwshSettings.WindowStyle"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WindowStyle))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WindowStyle))]
     public static T SetWindowStyle<T>(this T o, PwshWindowStyle v) where T : PwshSettings => o.Modify(b => b.Set(() => o.WindowStyle, v));
     /// <inheritdoc cref="PwshSettings.WindowStyle"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WindowStyle))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WindowStyle))]
     public static T ResetWindowStyle<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.WindowStyle));
     #endregion
     #region EncodedCommand
     /// <inheritdoc cref="PwshSettings.EncodedCommand"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.EncodedCommand))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.EncodedCommand))]
     public static T SetEncodedCommand<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.EncodedCommand, v));
     /// <inheritdoc cref="PwshSettings.EncodedCommand"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.EncodedCommand))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.EncodedCommand))]
     public static T ResetEncodedCommand<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.EncodedCommand));
     #endregion
     #region ConfigurationName
     /// <inheritdoc cref="PwshSettings.ConfigurationName"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationName))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationName))]
     public static T SetConfigurationName<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.ConfigurationName, v));
     /// <inheritdoc cref="PwshSettings.ConfigurationName"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationName))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationName))]
     public static T ResetConfigurationName<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.ConfigurationName));
     #endregion
     #region ExecutionPolicy
     /// <inheritdoc cref="PwshSettings.ExecutionPolicy"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ExecutionPolicy))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ExecutionPolicy))]
     public static T SetExecutionPolicy<T>(this T o, PwshExecutionPolicy v) where T : PwshSettings => o.Modify(b => b.Set(() => o.ExecutionPolicy, v));
     /// <inheritdoc cref="PwshSettings.ExecutionPolicy"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ExecutionPolicy))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ExecutionPolicy))]
     public static T ResetExecutionPolicy<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.ExecutionPolicy));
     #endregion
     #region File
     /// <inheritdoc cref="PwshSettings.File"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.File))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.File))]
     public static T SetFile<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.File, v));
     /// <inheritdoc cref="PwshSettings.File"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.File))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.File))]
     public static T ResetFile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.File));
     #endregion
     #region FileArguments
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T SetFileArguments<T>(this T o, params string[] v) where T : PwshSettings => o.Modify(b => b.Set(() => o.FileArguments, v));
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T SetFileArguments<T>(this T o, IEnumerable<string> v) where T : PwshSettings => o.Modify(b => b.Set(() => o.FileArguments, v));
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T AddFileArguments<T>(this T o, params string[] v) where T : PwshSettings => o.Modify(b => b.AddCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T AddFileArguments<T>(this T o, IEnumerable<string> v) where T : PwshSettings => o.Modify(b => b.AddCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T RemoveFileArguments<T>(this T o, params string[] v) where T : PwshSettings => o.Modify(b => b.RemoveCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T RemoveFileArguments<T>(this T o, IEnumerable<string> v) where T : PwshSettings => o.Modify(b => b.RemoveCollection(() => o.FileArguments, v));
     /// <inheritdoc cref="PwshSettings.FileArguments"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.FileArguments))]
     public static T ClearFileArguments<T>(this T o) where T : PwshSettings => o.Modify(b => b.ClearCollection(() => o.FileArguments));
     #endregion
     #region Command
     /// <inheritdoc cref="PwshSettings.Command"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Command))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Command))]
     public static T SetCommand<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="PwshSettings.Command"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Command))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.Command));
     #endregion
     #region SettingsFile
     /// <inheritdoc cref="PwshSettings.SettingsFile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SettingsFile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SettingsFile))]
     public static T SetSettingsFile<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.SettingsFile, v));
     /// <inheritdoc cref="PwshSettings.SettingsFile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SettingsFile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SettingsFile))]
     public static T ResetSettingsFile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.SettingsFile));
     #endregion
     #region CustomPipeName
     /// <inheritdoc cref="PwshSettings.CustomPipeName"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.CustomPipeName))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.CustomPipeName))]
     public static T SetCustomPipeName<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.CustomPipeName, v));
     /// <inheritdoc cref="PwshSettings.CustomPipeName"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.CustomPipeName))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.CustomPipeName))]
     public static T ResetCustomPipeName<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.CustomPipeName));
     #endregion
     #region SSHServerMode
     /// <inheritdoc cref="PwshSettings.SSHServerMode"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
     public static T SetSSHServerMode<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.SSHServerMode, v));
     /// <inheritdoc cref="PwshSettings.SSHServerMode"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
     public static T ResetSSHServerMode<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.SSHServerMode));
     /// <inheritdoc cref="PwshSettings.SSHServerMode"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
     public static T EnableSSHServerMode<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.SSHServerMode, true));
     /// <inheritdoc cref="PwshSettings.SSHServerMode"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
     public static T DisableSSHServerMode<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.SSHServerMode, false));
     /// <inheritdoc cref="PwshSettings.SSHServerMode"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.SSHServerMode))]
     public static T ToggleSSHServerMode<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.SSHServerMode, !o.SSHServerMode));
     #endregion
     #region WorkingDirectory
     /// <inheritdoc cref="PwshSettings.WorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WorkingDirectory))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WorkingDirectory))]
     public static T SetWorkingDirectory<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.WorkingDirectory, v));
     /// <inheritdoc cref="PwshSettings.WorkingDirectory"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WorkingDirectory))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.WorkingDirectory))]
     public static T ResetWorkingDirectory<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.WorkingDirectory));
     #endregion
     #region ConfigurationFile
     /// <inheritdoc cref="PwshSettings.ConfigurationFile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationFile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationFile))]
     public static T SetConfigurationFile<T>(this T o, string v) where T : PwshSettings => o.Modify(b => b.Set(() => o.ConfigurationFile, v));
     /// <inheritdoc cref="PwshSettings.ConfigurationFile"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationFile))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.ConfigurationFile))]
     public static T ResetConfigurationFile<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.ConfigurationFile));
     #endregion
     #region Login
     /// <inheritdoc cref="PwshSettings.Login"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
     public static T SetLogin<T>(this T o, bool? v) where T : PwshSettings => o.Modify(b => b.Set(() => o.Login, v));
     /// <inheritdoc cref="PwshSettings.Login"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
     public static T ResetLogin<T>(this T o) where T : PwshSettings => o.Modify(b => b.Remove(() => o.Login));
     /// <inheritdoc cref="PwshSettings.Login"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
     public static T EnableLogin<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Login, true));
     /// <inheritdoc cref="PwshSettings.Login"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
     public static T DisableLogin<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Login, false));
     /// <inheritdoc cref="PwshSettings.Login"/>
-    [Pure] [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
+    [Builder(Type = typeof(PwshSettings), Property = nameof(PwshSettings.Login))]
     public static T ToggleLogin<T>(this T o) where T : PwshSettings => o.Modify(b => b.Set(() => o.Login, !o.Login));
     #endregion
 }
 #endregion
 #region PwshExecutionPolicy
 /// <summary>Used within <see cref="PwshTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<PwshExecutionPolicy>))]
@@ -429,7 +424,6 @@ public partial class PwshExecutionPolicy : Enumeration
 #endregion
 #region PwshInOutFormat
 /// <summary>Used within <see cref="PwshTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<PwshInOutFormat>))]
@@ -445,7 +439,6 @@ public partial class PwshInOutFormat : Enumeration
 #endregion
 #region PwshWindowStyle
 /// <summary>Used within <see cref="PwshTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<PwshWindowStyle>))]

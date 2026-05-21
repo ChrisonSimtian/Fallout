@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,6 @@ using System.Text;
 namespace Fallout.Common.Tools.DocFX;
 
 /// <summary><p>DocFX is an API documentation generator for .NET, and currently it supports C# and VB. It generates API reference documentation from triple-slash comments in your source code. It also allows you to use Markdown files to create additional topics such as tutorials and how-tos, and to customize the generated reference documentation. DocFX builds a static HTML website from your source code and Markdown files, which can be easily hosted on any web servers (for example, <em>github.io</em>). Also, DocFX provides you the flexibility to customize the layout and style of your website through templates. If you are interested in creating your own website with your own styles, you can follow <a href="http://dotnet.github.io/docfx/tutorial/howto_create_custom_template.html">how to create custom template</a> to create custom templates.</p><p>For more details, visit the <a href="https://dotnet.github.io/docfx/">official website</a>.</p></summary>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [NuGetTool(Id = PackageId, Executable = PackageExecutable)]
 public partial class DocFXTasks : ToolTasks, IRequireNuGetPackage
@@ -101,7 +99,6 @@ public partial class DocFXTasks : ToolTasks, IRequireNuGetPackage
 }
 #region DocFXBuildSettings
 /// <inheritdoc cref="DocFXTasks.DocFXBuild(Fallout.Common.Tools.DocFX.DocFXBuildSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXBuild), Arguments = "build")]
 public partial class DocFXBuildSettings : ToolOptions
@@ -198,7 +195,6 @@ public partial class DocFXBuildSettings : ToolOptions
 #endregion
 #region DocFXDependencySettings
 /// <inheritdoc cref="DocFXTasks.DocFXDependency(Fallout.Common.Tools.DocFX.DocFXDependencySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXDependency), Arguments = "dependency")]
 public partial class DocFXDependencySettings : ToolOptions
@@ -215,7 +211,6 @@ public partial class DocFXDependencySettings : ToolOptions
 #endregion
 #region DocFXDownloadSettings
 /// <inheritdoc cref="DocFXTasks.DocFXDownload(Fallout.Common.Tools.DocFX.DocFXDownloadSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXDownload), Arguments = "download")]
 public partial class DocFXDownloadSettings : ToolOptions
@@ -230,7 +225,6 @@ public partial class DocFXDownloadSettings : ToolOptions
 #endregion
 #region DocFXHelpSettings
 /// <inheritdoc cref="DocFXTasks.DocFXHelp(Fallout.Common.Tools.DocFX.DocFXHelpSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXHelp), Arguments = "help")]
 public partial class DocFXHelpSettings : ToolOptions
@@ -241,7 +235,6 @@ public partial class DocFXHelpSettings : ToolOptions
 #endregion
 #region DocFXInitSettings
 /// <inheritdoc cref="DocFXTasks.DocFXInit(Fallout.Common.Tools.DocFX.DocFXInitSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXInit), Arguments = "init")]
 public partial class DocFXInitSettings : ToolOptions
@@ -264,7 +257,6 @@ public partial class DocFXInitSettings : ToolOptions
 #endregion
 #region DocFXMergeSettings
 /// <inheritdoc cref="DocFXTasks.DocFXMerge(Fallout.Common.Tools.DocFX.DocFXMergeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXMerge), Arguments = "merge")]
 public partial class DocFXMergeSettings : ToolOptions
@@ -297,7 +289,6 @@ public partial class DocFXMergeSettings : ToolOptions
 #endregion
 #region DocFXMetadataSettings
 /// <inheritdoc cref="DocFXTasks.DocFXMetadata(Fallout.Common.Tools.DocFX.DocFXMetadataSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXMetadata), Arguments = "metadata")]
 public partial class DocFXMetadataSettings : ToolOptions
@@ -338,7 +329,6 @@ public partial class DocFXMetadataSettings : ToolOptions
 #endregion
 #region DocFXPdfSettings
 /// <inheritdoc cref="DocFXTasks.DocFXPdf(Fallout.Common.Tools.DocFX.DocFXPdfSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXPdf), Arguments = "pdf")]
 public partial class DocFXPdfSettings : ToolOptions
@@ -459,7 +449,6 @@ public partial class DocFXPdfSettings : ToolOptions
 #endregion
 #region DocFXServeSettings
 /// <inheritdoc cref="DocFXTasks.DocFXServe(Fallout.Common.Tools.DocFX.DocFXServeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXServe), Arguments = "serve")]
 public partial class DocFXServeSettings : ToolOptions
@@ -476,7 +465,6 @@ public partial class DocFXServeSettings : ToolOptions
 #endregion
 #region DocFXTemplateSettings
 /// <inheritdoc cref="DocFXTasks.DocFXTemplate(Fallout.Common.Tools.DocFX.DocFXTemplateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DocFXTasks), Command = nameof(DocFXTasks.DocFXTemplate), Arguments = "template")]
 public partial class DocFXTemplateSettings : ToolOptions
@@ -493,2066 +481,2055 @@ public partial class DocFXTemplateSettings : ToolOptions
 #endregion
 #region DocFXBuildSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXBuild(Fallout.Common.Tools.DocFX.DocFXBuildSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXBuildSettingsExtensions
 {
     #region ConfigFile
     /// <inheritdoc cref="DocFXBuildSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ConfigFile))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="DocFXBuildSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ConfigFile))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region ChangesFile
     /// <inheritdoc cref="DocFXBuildSettings.ChangesFile"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ChangesFile))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ChangesFile))]
     public static T SetChangesFile<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ChangesFile, v));
     /// <inheritdoc cref="DocFXBuildSettings.ChangesFile"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ChangesFile))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ChangesFile))]
     public static T ResetChangesFile<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ChangesFile));
     #endregion
     #region CleanupCacheHistory
     /// <inheritdoc cref="DocFXBuildSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
     public static T SetCleanupCacheHistory<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, v));
     /// <inheritdoc cref="DocFXBuildSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
     public static T ResetCleanupCacheHistory<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.CleanupCacheHistory));
     /// <inheritdoc cref="DocFXBuildSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
     public static T EnableCleanupCacheHistory<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, true));
     /// <inheritdoc cref="DocFXBuildSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
     public static T DisableCleanupCacheHistory<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, false));
     /// <inheritdoc cref="DocFXBuildSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CleanupCacheHistory))]
     public static T ToggleCleanupCacheHistory<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, !o.CleanupCacheHistory));
     #endregion
     #region Content
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T SetContent<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Content, v));
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T SetContent<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Content, v));
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T AddContent<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T AddContent<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T RemoveContent<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T RemoveContent<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXBuildSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Content))]
     public static T ClearContent<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.Content));
     #endregion
     #region DisableGitFeatures
     /// <inheritdoc cref="DocFXBuildSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
     public static T SetDisableGitFeatures<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, v));
     /// <inheritdoc cref="DocFXBuildSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
     public static T ResetDisableGitFeatures<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.DisableGitFeatures));
     /// <inheritdoc cref="DocFXBuildSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
     public static T EnableDisableGitFeatures<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, true));
     /// <inheritdoc cref="DocFXBuildSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
     public static T DisableDisableGitFeatures<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, false));
     /// <inheritdoc cref="DocFXBuildSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DisableGitFeatures))]
     public static T ToggleDisableGitFeatures<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, !o.DisableGitFeatures));
     #endregion
     #region DryRun
     /// <inheritdoc cref="DocFXBuildSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="DocFXBuildSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="DocFXBuildSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="DocFXBuildSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="DocFXBuildSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region EnableDebugMode
     /// <inheritdoc cref="DocFXBuildSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
     public static T SetEnableDebugMode<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, v));
     /// <inheritdoc cref="DocFXBuildSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
     public static T ResetEnableDebugMode<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.EnableDebugMode));
     /// <inheritdoc cref="DocFXBuildSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
     public static T EnableEnableDebugMode<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, true));
     /// <inheritdoc cref="DocFXBuildSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
     public static T DisableEnableDebugMode<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, false));
     /// <inheritdoc cref="DocFXBuildSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.EnableDebugMode))]
     public static T ToggleEnableDebugMode<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, !o.EnableDebugMode));
     #endregion
     #region ExportRawModel
     /// <inheritdoc cref="DocFXBuildSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
     public static T SetExportRawModel<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportRawModel, v));
     /// <inheritdoc cref="DocFXBuildSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
     public static T ResetExportRawModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ExportRawModel));
     /// <inheritdoc cref="DocFXBuildSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
     public static T EnableExportRawModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportRawModel, true));
     /// <inheritdoc cref="DocFXBuildSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
     public static T DisableExportRawModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportRawModel, false));
     /// <inheritdoc cref="DocFXBuildSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportRawModel))]
     public static T ToggleExportRawModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportRawModel, !o.ExportRawModel));
     #endregion
     #region ExportViewModel
     /// <inheritdoc cref="DocFXBuildSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
     public static T SetExportViewModel<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportViewModel, v));
     /// <inheritdoc cref="DocFXBuildSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
     public static T ResetExportViewModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ExportViewModel));
     /// <inheritdoc cref="DocFXBuildSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
     public static T EnableExportViewModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportViewModel, true));
     /// <inheritdoc cref="DocFXBuildSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
     public static T DisableExportViewModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportViewModel, false));
     /// <inheritdoc cref="DocFXBuildSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ExportViewModel))]
     public static T ToggleExportViewModel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ExportViewModel, !o.ExportViewModel));
     #endregion
     #region FALName
     /// <inheritdoc cref="DocFXBuildSettings.FALName"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FALName))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FALName))]
     public static T SetFALName<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.FALName, v));
     /// <inheritdoc cref="DocFXBuildSettings.FALName"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FALName))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FALName))]
     public static T ResetFALName<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.FALName));
     #endregion
     #region FileMetadataFilePath
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePath))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePath))]
     public static T SetFileMetadataFilePath<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePath, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePath))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePath))]
     public static T ResetFileMetadataFilePath<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.FileMetadataFilePath));
     #endregion
     #region FileMetadataFilePaths
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T SetFileMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T SetFileMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T AddFileMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T AddFileMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T RemoveFileMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T RemoveFileMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.FileMetadataFilePaths))]
     public static T ClearFileMetadataFilePaths<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.FileMetadataFilePaths));
     #endregion
     #region ForcePostProcess
     /// <inheritdoc cref="DocFXBuildSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
     public static T SetForcePostProcess<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, v));
     /// <inheritdoc cref="DocFXBuildSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
     public static T ResetForcePostProcess<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ForcePostProcess));
     /// <inheritdoc cref="DocFXBuildSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
     public static T EnableForcePostProcess<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, true));
     /// <inheritdoc cref="DocFXBuildSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
     public static T DisableForcePostProcess<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, false));
     /// <inheritdoc cref="DocFXBuildSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForcePostProcess))]
     public static T ToggleForcePostProcess<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, !o.ForcePostProcess));
     #endregion
     #region ForceRebuild
     /// <inheritdoc cref="DocFXBuildSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
     public static T SetForceRebuild<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForceRebuild, v));
     /// <inheritdoc cref="DocFXBuildSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
     public static T ResetForceRebuild<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ForceRebuild));
     /// <inheritdoc cref="DocFXBuildSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
     public static T EnableForceRebuild<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForceRebuild, true));
     /// <inheritdoc cref="DocFXBuildSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
     public static T DisableForceRebuild<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForceRebuild, false));
     /// <inheritdoc cref="DocFXBuildSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ForceRebuild))]
     public static T ToggleForceRebuild<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ForceRebuild, !o.ForceRebuild));
     #endregion
     #region GlobalMetadata
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadata))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadata))]
     public static T SetGlobalMetadata<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.GlobalMetadata, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadata))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadata))]
     public static T ResetGlobalMetadata<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.GlobalMetadata));
     #endregion
     #region GlobalMetadataFilePath
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePath))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePath))]
     public static T SetGlobalMetadataFilePath<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePath, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePath))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePath))]
     public static T ResetGlobalMetadataFilePath<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.GlobalMetadataFilePath));
     #endregion
     #region GlobalMetadataFilePaths
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T SetGlobalMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T SetGlobalMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T AddGlobalMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T AddGlobalMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T RemoveGlobalMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T RemoveGlobalMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXBuildSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.GlobalMetadataFilePaths))]
     public static T ClearGlobalMetadataFilePaths<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.GlobalMetadataFilePaths));
     #endregion
     #region Host
     /// <inheritdoc cref="DocFXBuildSettings.Host"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Host))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Host))]
     public static T SetHost<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Host, v));
     /// <inheritdoc cref="DocFXBuildSettings.Host"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Host))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Host))]
     public static T ResetHost<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.Host));
     #endregion
     #region IntermediateFolder
     /// <inheritdoc cref="DocFXBuildSettings.IntermediateFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.IntermediateFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.IntermediateFolder))]
     public static T SetIntermediateFolder<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.IntermediateFolder, v));
     /// <inheritdoc cref="DocFXBuildSettings.IntermediateFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.IntermediateFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.IntermediateFolder))]
     public static T ResetIntermediateFolder<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.IntermediateFolder));
     #endregion
     #region KeepFileLink
     /// <inheritdoc cref="DocFXBuildSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
     public static T SetKeepFileLink<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.KeepFileLink, v));
     /// <inheritdoc cref="DocFXBuildSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
     public static T ResetKeepFileLink<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.KeepFileLink));
     /// <inheritdoc cref="DocFXBuildSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
     public static T EnableKeepFileLink<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.KeepFileLink, true));
     /// <inheritdoc cref="DocFXBuildSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
     public static T DisableKeepFileLink<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.KeepFileLink, false));
     /// <inheritdoc cref="DocFXBuildSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.KeepFileLink))]
     public static T ToggleKeepFileLink<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.KeepFileLink, !o.KeepFileLink));
     #endregion
     #region LruSize
     /// <inheritdoc cref="DocFXBuildSettings.LruSize"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LruSize))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LruSize))]
     public static T SetLruSize<T>(this T o, int? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.LruSize, v));
     /// <inheritdoc cref="DocFXBuildSettings.LruSize"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LruSize))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LruSize))]
     public static T ResetLruSize<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.LruSize));
     #endregion
     #region MarkdownEngineName
     /// <inheritdoc cref="DocFXBuildSettings.MarkdownEngineName"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineName))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineName))]
     public static T SetMarkdownEngineName<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.MarkdownEngineName, v));
     /// <inheritdoc cref="DocFXBuildSettings.MarkdownEngineName"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineName))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineName))]
     public static T ResetMarkdownEngineName<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.MarkdownEngineName));
     #endregion
     #region MarkdownEngineProperties
     /// <inheritdoc cref="DocFXBuildSettings.MarkdownEngineProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineProperties))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineProperties))]
     public static T SetMarkdownEngineProperties<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.MarkdownEngineProperties, v));
     /// <inheritdoc cref="DocFXBuildSettings.MarkdownEngineProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineProperties))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MarkdownEngineProperties))]
     public static T ResetMarkdownEngineProperties<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.MarkdownEngineProperties));
     #endregion
     #region MaxParallelism
     /// <inheritdoc cref="DocFXBuildSettings.MaxParallelism"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MaxParallelism))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MaxParallelism))]
     public static T SetMaxParallelism<T>(this T o, int? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.MaxParallelism, v));
     /// <inheritdoc cref="DocFXBuildSettings.MaxParallelism"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MaxParallelism))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.MaxParallelism))]
     public static T ResetMaxParallelism<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.MaxParallelism));
     #endregion
     #region NoLangKeyword
     /// <inheritdoc cref="DocFXBuildSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
     public static T SetNoLangKeyword<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, v));
     /// <inheritdoc cref="DocFXBuildSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
     public static T ResetNoLangKeyword<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.NoLangKeyword));
     /// <inheritdoc cref="DocFXBuildSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
     public static T EnableNoLangKeyword<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, true));
     /// <inheritdoc cref="DocFXBuildSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
     public static T DisableNoLangKeyword<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, false));
     /// <inheritdoc cref="DocFXBuildSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.NoLangKeyword))]
     public static T ToggleNoLangKeyword<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, !o.NoLangKeyword));
     #endregion
     #region OutputFolder
     /// <inheritdoc cref="DocFXBuildSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolder))]
     public static T SetOutputFolder<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.OutputFolder, v));
     /// <inheritdoc cref="DocFXBuildSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolder))]
     public static T ResetOutputFolder<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.OutputFolder));
     #endregion
     #region OutputFolderForDebugFiles
     /// <inheritdoc cref="DocFXBuildSettings.OutputFolderForDebugFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolderForDebugFiles))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolderForDebugFiles))]
     public static T SetOutputFolderForDebugFiles<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.OutputFolderForDebugFiles, v));
     /// <inheritdoc cref="DocFXBuildSettings.OutputFolderForDebugFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolderForDebugFiles))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.OutputFolderForDebugFiles))]
     public static T ResetOutputFolderForDebugFiles<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.OutputFolderForDebugFiles));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T AddOverwrite<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T AddOverwrite<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T RemoveOverwrite<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T RemoveOverwrite<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXBuildSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Overwrite))]
     public static T ClearOverwrite<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.Overwrite));
     #endregion
     #region Port
     /// <inheritdoc cref="DocFXBuildSettings.Port"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Port))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Port))]
     public static T SetPort<T>(this T o, int? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="DocFXBuildSettings.Port"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Port))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Port))]
     public static T ResetPort<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region PostProcessors
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T SetPostProcessors<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T SetPostProcessors<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T AddPostProcessors<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T AddPostProcessors<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T RemovePostProcessors<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T RemovePostProcessors<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXBuildSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PostProcessors))]
     public static T ClearPostProcessors<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.PostProcessors));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXBuildSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXBuildSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXBuildSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXBuildSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXBuildSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region RawModelOutputFolder
     /// <inheritdoc cref="DocFXBuildSettings.RawModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RawModelOutputFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RawModelOutputFolder))]
     public static T SetRawModelOutputFolder<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.RawModelOutputFolder, v));
     /// <inheritdoc cref="DocFXBuildSettings.RawModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RawModelOutputFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RawModelOutputFolder))]
     public static T ResetRawModelOutputFolder<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.RawModelOutputFolder));
     #endregion
     #region Resource
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T SetResource<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Resource, v));
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T SetResource<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Resource, v));
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T AddResource<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T AddResource<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T RemoveResource<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T RemoveResource<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXBuildSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Resource))]
     public static T ClearResource<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.Resource));
     #endregion
     #region SchemaLicense
     /// <inheritdoc cref="DocFXBuildSettings.SchemaLicense"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.SchemaLicense))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.SchemaLicense))]
     public static T SetSchemaLicense<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.SchemaLicense, v));
     /// <inheritdoc cref="DocFXBuildSettings.SchemaLicense"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.SchemaLicense))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.SchemaLicense))]
     public static T ResetSchemaLicense<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.SchemaLicense));
     #endregion
     #region Serve
     /// <inheritdoc cref="DocFXBuildSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
     public static T SetServe<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Serve, v));
     /// <inheritdoc cref="DocFXBuildSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
     public static T ResetServe<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.Serve));
     /// <inheritdoc cref="DocFXBuildSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
     public static T EnableServe<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Serve, true));
     /// <inheritdoc cref="DocFXBuildSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
     public static T DisableServe<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Serve, false));
     /// <inheritdoc cref="DocFXBuildSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Serve))]
     public static T ToggleServe<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Serve, !o.Serve));
     #endregion
     #region Templates
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T SetTemplates<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Templates, v));
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T SetTemplates<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Templates, v));
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T AddTemplates<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T AddTemplates<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T RemoveTemplates<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T RemoveTemplates<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXBuildSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Templates))]
     public static T ClearTemplates<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.Templates));
     #endregion
     #region Themes
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T SetThemes<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Themes, v));
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T SetThemes<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.Themes, v));
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T AddThemes<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T AddThemes<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T RemoveThemes<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T RemoveThemes<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXBuildSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.Themes))]
     public static T ClearThemes<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.Themes));
     #endregion
     #region ViewModelOutputFolder
     /// <inheritdoc cref="DocFXBuildSettings.ViewModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ViewModelOutputFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ViewModelOutputFolder))]
     public static T SetViewModelOutputFolder<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.ViewModelOutputFolder, v));
     /// <inheritdoc cref="DocFXBuildSettings.ViewModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ViewModelOutputFolder))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.ViewModelOutputFolder))]
     public static T ResetViewModelOutputFolder<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.ViewModelOutputFolder));
     #endregion
     #region XRefMaps
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T SetXRefMaps<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T SetXRefMaps<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T AddXRefMaps<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T AddXRefMaps<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.AddCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T RemoveXRefMaps<T>(this T o, params string[] v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T RemoveXRefMaps<T>(this T o, IEnumerable<string> v) where T : DocFXBuildSettings => o.Modify(b => b.RemoveCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXBuildSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.XRefMaps))]
     public static T ClearXRefMaps<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.ClearCollection(() => o.XRefMaps));
     #endregion
     #region CorrelationId
     /// <inheritdoc cref="DocFXBuildSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CorrelationId))]
     public static T SetCorrelationId<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.CorrelationId, v));
     /// <inheritdoc cref="DocFXBuildSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.CorrelationId))]
     public static T ResetCorrelationId<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.CorrelationId));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="DocFXBuildSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="DocFXBuildSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="DocFXBuildSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, DocFXLogLevel v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="DocFXBuildSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
     #region RepoRoot
     /// <inheritdoc cref="DocFXBuildSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RepoRoot))]
     public static T SetRepoRoot<T>(this T o, string v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.RepoRoot, v));
     /// <inheritdoc cref="DocFXBuildSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.RepoRoot))]
     public static T ResetRepoRoot<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.RepoRoot));
     #endregion
     #region WarningsAsErrors
     /// <inheritdoc cref="DocFXBuildSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
     public static T SetWarningsAsErrors<T>(this T o, bool? v) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, v));
     /// <inheritdoc cref="DocFXBuildSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
     public static T ResetWarningsAsErrors<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Remove(() => o.WarningsAsErrors));
     /// <inheritdoc cref="DocFXBuildSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
     public static T EnableWarningsAsErrors<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, true));
     /// <inheritdoc cref="DocFXBuildSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
     public static T DisableWarningsAsErrors<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, false));
     /// <inheritdoc cref="DocFXBuildSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXBuildSettings), Property = nameof(DocFXBuildSettings.WarningsAsErrors))]
     public static T ToggleWarningsAsErrors<T>(this T o) where T : DocFXBuildSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, !o.WarningsAsErrors));
     #endregion
 }
 #endregion
 #region DocFXDependencySettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXDependency(Fallout.Common.Tools.DocFX.DocFXDependencySettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXDependencySettingsExtensions
 {
     #region DependencyFile
     /// <inheritdoc cref="DocFXDependencySettings.DependencyFile"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.DependencyFile))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.DependencyFile))]
     public static T SetDependencyFile<T>(this T o, string v) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.DependencyFile, v));
     /// <inheritdoc cref="DocFXDependencySettings.DependencyFile"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.DependencyFile))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.DependencyFile))]
     public static T ResetDependencyFile<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Remove(() => o.DependencyFile));
     #endregion
     #region IntermediateFolder
     /// <inheritdoc cref="DocFXDependencySettings.IntermediateFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.IntermediateFolder))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.IntermediateFolder))]
     public static T SetIntermediateFolder<T>(this T o, string v) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.IntermediateFolder, v));
     /// <inheritdoc cref="DocFXDependencySettings.IntermediateFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.IntermediateFolder))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.IntermediateFolder))]
     public static T ResetIntermediateFolder<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Remove(() => o.IntermediateFolder));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXDependencySettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXDependencySettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXDependencySettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXDependencySettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXDependencySettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region VersionName
     /// <inheritdoc cref="DocFXDependencySettings.VersionName"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.VersionName))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.VersionName))]
     public static T SetVersionName<T>(this T o, string v) where T : DocFXDependencySettings => o.Modify(b => b.Set(() => o.VersionName, v));
     /// <inheritdoc cref="DocFXDependencySettings.VersionName"/>
-    [Pure] [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.VersionName))]
+    [Builder(Type = typeof(DocFXDependencySettings), Property = nameof(DocFXDependencySettings.VersionName))]
     public static T ResetVersionName<T>(this T o) where T : DocFXDependencySettings => o.Modify(b => b.Remove(() => o.VersionName));
     #endregion
 }
 #endregion
 #region DocFXDownloadSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXDownload(Fallout.Common.Tools.DocFX.DocFXDownloadSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXDownloadSettingsExtensions
 {
     #region ArchiveFile
     /// <inheritdoc cref="DocFXDownloadSettings.ArchiveFile"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.ArchiveFile))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.ArchiveFile))]
     public static T SetArchiveFile<T>(this T o, string v) where T : DocFXDownloadSettings => o.Modify(b => b.Set(() => o.ArchiveFile, v));
     /// <inheritdoc cref="DocFXDownloadSettings.ArchiveFile"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.ArchiveFile))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.ArchiveFile))]
     public static T ResetArchiveFile<T>(this T o) where T : DocFXDownloadSettings => o.Modify(b => b.Remove(() => o.ArchiveFile));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXDownloadSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXDownloadSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXDownloadSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXDownloadSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXDownloadSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXDownloadSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXDownloadSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXDownloadSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXDownloadSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXDownloadSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region Uri
     /// <inheritdoc cref="DocFXDownloadSettings.Uri"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.Uri))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.Uri))]
     public static T SetUri<T>(this T o, string v) where T : DocFXDownloadSettings => o.Modify(b => b.Set(() => o.Uri, v));
     /// <inheritdoc cref="DocFXDownloadSettings.Uri"/>
-    [Pure] [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.Uri))]
+    [Builder(Type = typeof(DocFXDownloadSettings), Property = nameof(DocFXDownloadSettings.Uri))]
     public static T ResetUri<T>(this T o) where T : DocFXDownloadSettings => o.Modify(b => b.Remove(() => o.Uri));
     #endregion
 }
 #endregion
 #region DocFXHelpSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXHelp(Fallout.Common.Tools.DocFX.DocFXHelpSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXHelpSettingsExtensions
 {
     #region Command
     /// <inheritdoc cref="DocFXHelpSettings.Command"/>
-    [Pure] [Builder(Type = typeof(DocFXHelpSettings), Property = nameof(DocFXHelpSettings.Command))]
+    [Builder(Type = typeof(DocFXHelpSettings), Property = nameof(DocFXHelpSettings.Command))]
     public static T SetCommand<T>(this T o, string v) where T : DocFXHelpSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="DocFXHelpSettings.Command"/>
-    [Pure] [Builder(Type = typeof(DocFXHelpSettings), Property = nameof(DocFXHelpSettings.Command))]
+    [Builder(Type = typeof(DocFXHelpSettings), Property = nameof(DocFXHelpSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : DocFXHelpSettings => o.Modify(b => b.Remove(() => o.Command));
     #endregion
 }
 #endregion
 #region DocFXInitSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXInit(Fallout.Common.Tools.DocFX.DocFXInitSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXInitSettingsExtensions
 {
     #region ApiSourceFolder
     /// <inheritdoc cref="DocFXInitSettings.ApiSourceFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceFolder))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceFolder))]
     public static T SetApiSourceFolder<T>(this T o, string v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.ApiSourceFolder, v));
     /// <inheritdoc cref="DocFXInitSettings.ApiSourceFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceFolder))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceFolder))]
     public static T ResetApiSourceFolder<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.ApiSourceFolder));
     #endregion
     #region ApiSourceGlobPattern
     /// <inheritdoc cref="DocFXInitSettings.ApiSourceGlobPattern"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceGlobPattern))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceGlobPattern))]
     public static T SetApiSourceGlobPattern<T>(this T o, string v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.ApiSourceGlobPattern, v));
     /// <inheritdoc cref="DocFXInitSettings.ApiSourceGlobPattern"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceGlobPattern))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.ApiSourceGlobPattern))]
     public static T ResetApiSourceGlobPattern<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.ApiSourceGlobPattern));
     #endregion
     #region OnlyConfigFile
     /// <inheritdoc cref="DocFXInitSettings.OnlyConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
     public static T SetOnlyConfigFile<T>(this T o, bool? v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.OnlyConfigFile, v));
     /// <inheritdoc cref="DocFXInitSettings.OnlyConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
     public static T ResetOnlyConfigFile<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.OnlyConfigFile));
     /// <inheritdoc cref="DocFXInitSettings.OnlyConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
     public static T EnableOnlyConfigFile<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.OnlyConfigFile, true));
     /// <inheritdoc cref="DocFXInitSettings.OnlyConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
     public static T DisableOnlyConfigFile<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.OnlyConfigFile, false));
     /// <inheritdoc cref="DocFXInitSettings.OnlyConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OnlyConfigFile))]
     public static T ToggleOnlyConfigFile<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.OnlyConfigFile, !o.OnlyConfigFile));
     #endregion
     #region OutputFolder
     /// <inheritdoc cref="DocFXInitSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OutputFolder))]
     public static T SetOutputFolder<T>(this T o, string v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.OutputFolder, v));
     /// <inheritdoc cref="DocFXInitSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.OutputFolder))]
     public static T ResetOutputFolder<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.OutputFolder));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="DocFXInitSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, bool? v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXInitSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
     public static T ResetOverwrite<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.Overwrite));
     /// <inheritdoc cref="DocFXInitSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
     public static T EnableOverwrite<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Overwrite, true));
     /// <inheritdoc cref="DocFXInitSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
     public static T DisableOverwrite<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Overwrite, false));
     /// <inheritdoc cref="DocFXInitSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Overwrite))]
     public static T ToggleOverwrite<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Overwrite, !o.Overwrite));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXInitSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXInitSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXInitSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXInitSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXInitSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region Quiet
     /// <inheritdoc cref="DocFXInitSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
     public static T SetQuiet<T>(this T o, bool? v) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Quiet, v));
     /// <inheritdoc cref="DocFXInitSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
     public static T ResetQuiet<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Remove(() => o.Quiet));
     /// <inheritdoc cref="DocFXInitSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
     public static T EnableQuiet<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Quiet, true));
     /// <inheritdoc cref="DocFXInitSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
     public static T DisableQuiet<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Quiet, false));
     /// <inheritdoc cref="DocFXInitSettings.Quiet"/>
-    [Pure] [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
+    [Builder(Type = typeof(DocFXInitSettings), Property = nameof(DocFXInitSettings.Quiet))]
     public static T ToggleQuiet<T>(this T o) where T : DocFXInitSettings => o.Modify(b => b.Set(() => o.Quiet, !o.Quiet));
     #endregion
 }
 #endregion
 #region DocFXMergeSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXMerge(Fallout.Common.Tools.DocFX.DocFXMergeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXMergeSettingsExtensions
 {
     #region ConfigFile
     /// <inheritdoc cref="DocFXMergeSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.ConfigFile))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="DocFXMergeSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.ConfigFile))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region Content
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T SetContent<T>(this T o, params string[] v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.Content, v));
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T SetContent<T>(this T o, IEnumerable<string> v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.Content, v));
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T AddContent<T>(this T o, params string[] v) where T : DocFXMergeSettings => o.Modify(b => b.AddCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T AddContent<T>(this T o, IEnumerable<string> v) where T : DocFXMergeSettings => o.Modify(b => b.AddCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T RemoveContent<T>(this T o, params string[] v) where T : DocFXMergeSettings => o.Modify(b => b.RemoveCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T RemoveContent<T>(this T o, IEnumerable<string> v) where T : DocFXMergeSettings => o.Modify(b => b.RemoveCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXMergeSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.Content))]
     public static T ClearContent<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.ClearCollection(() => o.Content));
     #endregion
     #region FileMetadataFilePath
     /// <inheritdoc cref="DocFXMergeSettings.FileMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.FileMetadataFilePath))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.FileMetadataFilePath))]
     public static T SetFileMetadataFilePath<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePath, v));
     /// <inheritdoc cref="DocFXMergeSettings.FileMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.FileMetadataFilePath))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.FileMetadataFilePath))]
     public static T ResetFileMetadataFilePath<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.FileMetadataFilePath));
     #endregion
     #region GlobalMetadata
     /// <inheritdoc cref="DocFXMergeSettings.GlobalMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadata))]
     public static T SetGlobalMetadata<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.GlobalMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.GlobalMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadata))]
     public static T ResetGlobalMetadata<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.GlobalMetadata));
     #endregion
     #region GlobalMetadataFilePath
     /// <inheritdoc cref="DocFXMergeSettings.GlobalMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadataFilePath))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadataFilePath))]
     public static T SetGlobalMetadataFilePath<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePath, v));
     /// <inheritdoc cref="DocFXMergeSettings.GlobalMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadataFilePath))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.GlobalMetadataFilePath))]
     public static T ResetGlobalMetadataFilePath<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.GlobalMetadataFilePath));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXMergeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXMergeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXMergeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXMergeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXMergeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region TocMetadata
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T SetTocMetadata<T>(this T o, params string[] v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.TocMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T SetTocMetadata<T>(this T o, IEnumerable<string> v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.TocMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T AddTocMetadata<T>(this T o, params string[] v) where T : DocFXMergeSettings => o.Modify(b => b.AddCollection(() => o.TocMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T AddTocMetadata<T>(this T o, IEnumerable<string> v) where T : DocFXMergeSettings => o.Modify(b => b.AddCollection(() => o.TocMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T RemoveTocMetadata<T>(this T o, params string[] v) where T : DocFXMergeSettings => o.Modify(b => b.RemoveCollection(() => o.TocMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T RemoveTocMetadata<T>(this T o, IEnumerable<string> v) where T : DocFXMergeSettings => o.Modify(b => b.RemoveCollection(() => o.TocMetadata, v));
     /// <inheritdoc cref="DocFXMergeSettings.TocMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.TocMetadata))]
     public static T ClearTocMetadata<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.ClearCollection(() => o.TocMetadata));
     #endregion
     #region CorrelationId
     /// <inheritdoc cref="DocFXMergeSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.CorrelationId))]
     public static T SetCorrelationId<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.CorrelationId, v));
     /// <inheritdoc cref="DocFXMergeSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.CorrelationId))]
     public static T ResetCorrelationId<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.CorrelationId));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="DocFXMergeSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="DocFXMergeSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="DocFXMergeSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, DocFXLogLevel v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="DocFXMergeSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
     #region RepoRoot
     /// <inheritdoc cref="DocFXMergeSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.RepoRoot))]
     public static T SetRepoRoot<T>(this T o, string v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.RepoRoot, v));
     /// <inheritdoc cref="DocFXMergeSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.RepoRoot))]
     public static T ResetRepoRoot<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.RepoRoot));
     #endregion
     #region WarningsAsErrors
     /// <inheritdoc cref="DocFXMergeSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
     public static T SetWarningsAsErrors<T>(this T o, bool? v) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, v));
     /// <inheritdoc cref="DocFXMergeSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
     public static T ResetWarningsAsErrors<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Remove(() => o.WarningsAsErrors));
     /// <inheritdoc cref="DocFXMergeSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
     public static T EnableWarningsAsErrors<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, true));
     /// <inheritdoc cref="DocFXMergeSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
     public static T DisableWarningsAsErrors<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, false));
     /// <inheritdoc cref="DocFXMergeSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMergeSettings), Property = nameof(DocFXMergeSettings.WarningsAsErrors))]
     public static T ToggleWarningsAsErrors<T>(this T o) where T : DocFXMergeSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, !o.WarningsAsErrors));
     #endregion
 }
 #endregion
 #region DocFXMetadataSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXMetadata(Fallout.Common.Tools.DocFX.DocFXMetadataSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXMetadataSettingsExtensions
 {
     #region Projects
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T SetProjects<T>(this T o, params string[] v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.Projects, v));
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T SetProjects<T>(this T o, IEnumerable<string> v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.Projects, v));
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T AddProjects<T>(this T o, params string[] v) where T : DocFXMetadataSettings => o.Modify(b => b.AddCollection(() => o.Projects, v));
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T AddProjects<T>(this T o, IEnumerable<string> v) where T : DocFXMetadataSettings => o.Modify(b => b.AddCollection(() => o.Projects, v));
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T RemoveProjects<T>(this T o, params string[] v) where T : DocFXMetadataSettings => o.Modify(b => b.RemoveCollection(() => o.Projects, v));
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T RemoveProjects<T>(this T o, IEnumerable<string> v) where T : DocFXMetadataSettings => o.Modify(b => b.RemoveCollection(() => o.Projects, v));
     /// <inheritdoc cref="DocFXMetadataSettings.Projects"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.Projects))]
     public static T ClearProjects<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.ClearCollection(() => o.Projects));
     #endregion
     #region DisableDefaultFilter
     /// <inheritdoc cref="DocFXMetadataSettings.DisableDefaultFilter"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
     public static T SetDisableDefaultFilter<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilter, v));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableDefaultFilter"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
     public static T ResetDisableDefaultFilter<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.DisableDefaultFilter));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableDefaultFilter"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
     public static T EnableDisableDefaultFilter<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilter, true));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableDefaultFilter"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
     public static T DisableDisableDefaultFilter<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilter, false));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableDefaultFilter"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableDefaultFilter))]
     public static T ToggleDisableDefaultFilter<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableDefaultFilter, !o.DisableDefaultFilter));
     #endregion
     #region DisableGitFeatures
     /// <inheritdoc cref="DocFXMetadataSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
     public static T SetDisableGitFeatures<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, v));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
     public static T ResetDisableGitFeatures<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.DisableGitFeatures));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
     public static T EnableDisableGitFeatures<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, true));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
     public static T DisableDisableGitFeatures<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, false));
     /// <inheritdoc cref="DocFXMetadataSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.DisableGitFeatures))]
     public static T ToggleDisableGitFeatures<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, !o.DisableGitFeatures));
     #endregion
     #region FilterConfigFile
     /// <inheritdoc cref="DocFXMetadataSettings.FilterConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.FilterConfigFile))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.FilterConfigFile))]
     public static T SetFilterConfigFile<T>(this T o, string v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.FilterConfigFile, v));
     /// <inheritdoc cref="DocFXMetadataSettings.FilterConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.FilterConfigFile))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.FilterConfigFile))]
     public static T ResetFilterConfigFile<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.FilterConfigFile));
     #endregion
     #region ForceRebuild
     /// <inheritdoc cref="DocFXMetadataSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
     public static T SetForceRebuild<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ForceRebuild, v));
     /// <inheritdoc cref="DocFXMetadataSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
     public static T ResetForceRebuild<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.ForceRebuild));
     /// <inheritdoc cref="DocFXMetadataSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
     public static T EnableForceRebuild<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ForceRebuild, true));
     /// <inheritdoc cref="DocFXMetadataSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
     public static T DisableForceRebuild<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ForceRebuild, false));
     /// <inheritdoc cref="DocFXMetadataSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ForceRebuild))]
     public static T ToggleForceRebuild<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ForceRebuild, !o.ForceRebuild));
     #endregion
     #region GlobalNamespaceId
     /// <inheritdoc cref="DocFXMetadataSettings.GlobalNamespaceId"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.GlobalNamespaceId))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.GlobalNamespaceId))]
     public static T SetGlobalNamespaceId<T>(this T o, string v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.GlobalNamespaceId, v));
     /// <inheritdoc cref="DocFXMetadataSettings.GlobalNamespaceId"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.GlobalNamespaceId))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.GlobalNamespaceId))]
     public static T ResetGlobalNamespaceId<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.GlobalNamespaceId));
     #endregion
     #region MSBuildProperties
     /// <inheritdoc cref="DocFXMetadataSettings.MSBuildProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
     public static T SetMSBuildProperties<T>(this T o, IDictionary<string, string> v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.MSBuildProperties, v.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase)));
     /// <inheritdoc cref="DocFXMetadataSettings.MSBuildProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
     public static T SetMSBuildProperty<T>(this T o, string k, string v) where T : DocFXMetadataSettings => o.Modify(b => b.SetDictionary(() => o.MSBuildProperties, k, v));
     /// <inheritdoc cref="DocFXMetadataSettings.MSBuildProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
     public static T AddMSBuildProperty<T>(this T o, string k, string v) where T : DocFXMetadataSettings => o.Modify(b => b.AddDictionary(() => o.MSBuildProperties, k, v));
     /// <inheritdoc cref="DocFXMetadataSettings.MSBuildProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
     public static T RemoveMSBuildProperty<T>(this T o, string k) where T : DocFXMetadataSettings => o.Modify(b => b.RemoveDictionary(() => o.MSBuildProperties, k));
     /// <inheritdoc cref="DocFXMetadataSettings.MSBuildProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.MSBuildProperties))]
     public static T ClearMSBuildProperties<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.ClearDictionary(() => o.MSBuildProperties));
     #endregion
     #region OutputFolder
     /// <inheritdoc cref="DocFXMetadataSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.OutputFolder))]
     public static T SetOutputFolder<T>(this T o, string v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.OutputFolder, v));
     /// <inheritdoc cref="DocFXMetadataSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.OutputFolder))]
     public static T ResetOutputFolder<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.OutputFolder));
     #endregion
     #region PreserveRawInlineComments
     /// <inheritdoc cref="DocFXMetadataSettings.PreserveRawInlineComments"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
     public static T SetPreserveRawInlineComments<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PreserveRawInlineComments, v));
     /// <inheritdoc cref="DocFXMetadataSettings.PreserveRawInlineComments"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
     public static T ResetPreserveRawInlineComments<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.PreserveRawInlineComments));
     /// <inheritdoc cref="DocFXMetadataSettings.PreserveRawInlineComments"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
     public static T EnablePreserveRawInlineComments<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PreserveRawInlineComments, true));
     /// <inheritdoc cref="DocFXMetadataSettings.PreserveRawInlineComments"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
     public static T DisablePreserveRawInlineComments<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PreserveRawInlineComments, false));
     /// <inheritdoc cref="DocFXMetadataSettings.PreserveRawInlineComments"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PreserveRawInlineComments))]
     public static T TogglePreserveRawInlineComments<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PreserveRawInlineComments, !o.PreserveRawInlineComments));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXMetadataSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXMetadataSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXMetadataSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXMetadataSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXMetadataSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region ShouldSkipMarkup
     /// <inheritdoc cref="DocFXMetadataSettings.ShouldSkipMarkup"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
     public static T SetShouldSkipMarkup<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ShouldSkipMarkup, v));
     /// <inheritdoc cref="DocFXMetadataSettings.ShouldSkipMarkup"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
     public static T ResetShouldSkipMarkup<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.ShouldSkipMarkup));
     /// <inheritdoc cref="DocFXMetadataSettings.ShouldSkipMarkup"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
     public static T EnableShouldSkipMarkup<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ShouldSkipMarkup, true));
     /// <inheritdoc cref="DocFXMetadataSettings.ShouldSkipMarkup"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
     public static T DisableShouldSkipMarkup<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ShouldSkipMarkup, false));
     /// <inheritdoc cref="DocFXMetadataSettings.ShouldSkipMarkup"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.ShouldSkipMarkup))]
     public static T ToggleShouldSkipMarkup<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.ShouldSkipMarkup, !o.ShouldSkipMarkup));
     #endregion
     #region CorrelationId
     /// <inheritdoc cref="DocFXMetadataSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.CorrelationId))]
     public static T SetCorrelationId<T>(this T o, string v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.CorrelationId, v));
     /// <inheritdoc cref="DocFXMetadataSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.CorrelationId))]
     public static T ResetCorrelationId<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.CorrelationId));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="DocFXMetadataSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="DocFXMetadataSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="DocFXMetadataSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, DocFXLogLevel v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="DocFXMetadataSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
     #region RepoRoot
     /// <inheritdoc cref="DocFXMetadataSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.RepoRoot))]
     public static T SetRepoRoot<T>(this T o, string v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.RepoRoot, v));
     /// <inheritdoc cref="DocFXMetadataSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.RepoRoot))]
     public static T ResetRepoRoot<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.RepoRoot));
     #endregion
     #region WarningsAsErrors
     /// <inheritdoc cref="DocFXMetadataSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
     public static T SetWarningsAsErrors<T>(this T o, bool? v) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, v));
     /// <inheritdoc cref="DocFXMetadataSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
     public static T ResetWarningsAsErrors<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Remove(() => o.WarningsAsErrors));
     /// <inheritdoc cref="DocFXMetadataSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
     public static T EnableWarningsAsErrors<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, true));
     /// <inheritdoc cref="DocFXMetadataSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
     public static T DisableWarningsAsErrors<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, false));
     /// <inheritdoc cref="DocFXMetadataSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXMetadataSettings), Property = nameof(DocFXMetadataSettings.WarningsAsErrors))]
     public static T ToggleWarningsAsErrors<T>(this T o) where T : DocFXMetadataSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, !o.WarningsAsErrors));
     #endregion
 }
 #endregion
 #region DocFXPdfSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXPdf(Fallout.Common.Tools.DocFX.DocFXPdfSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXPdfSettingsExtensions
 {
     #region BasePath
     /// <inheritdoc cref="DocFXPdfSettings.BasePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.BasePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.BasePath))]
     public static T SetBasePath<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.BasePath, v));
     /// <inheritdoc cref="DocFXPdfSettings.BasePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.BasePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.BasePath))]
     public static T ResetBasePath<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.BasePath));
     #endregion
     #region CssFilePath
     /// <inheritdoc cref="DocFXPdfSettings.CssFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CssFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CssFilePath))]
     public static T SetCssFilePath<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.CssFilePath, v));
     /// <inheritdoc cref="DocFXPdfSettings.CssFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CssFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CssFilePath))]
     public static T ResetCssFilePath<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.CssFilePath));
     #endregion
     #region ExcludedTocs
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T SetExcludedTocs<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExcludedTocs, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T SetExcludedTocs<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExcludedTocs, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T AddExcludedTocs<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.ExcludedTocs, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T AddExcludedTocs<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.ExcludedTocs, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T RemoveExcludedTocs<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludedTocs, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T RemoveExcludedTocs<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.ExcludedTocs, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExcludedTocs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExcludedTocs))]
     public static T ClearExcludedTocs<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.ExcludedTocs));
     #endregion
     #region GeneratesAppendices
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesAppendices"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
     public static T SetGeneratesAppendices<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesAppendices, v));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesAppendices"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
     public static T ResetGeneratesAppendices<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.GeneratesAppendices));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesAppendices"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
     public static T EnableGeneratesAppendices<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesAppendices, true));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesAppendices"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
     public static T DisableGeneratesAppendices<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesAppendices, false));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesAppendices"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesAppendices))]
     public static T ToggleGeneratesAppendices<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesAppendices, !o.GeneratesAppendices));
     #endregion
     #region GeneratesExternalLink
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesExternalLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
     public static T SetGeneratesExternalLink<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesExternalLink, v));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesExternalLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
     public static T ResetGeneratesExternalLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.GeneratesExternalLink));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesExternalLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
     public static T EnableGeneratesExternalLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesExternalLink, true));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesExternalLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
     public static T DisableGeneratesExternalLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesExternalLink, false));
     /// <inheritdoc cref="DocFXPdfSettings.GeneratesExternalLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GeneratesExternalLink))]
     public static T ToggleGeneratesExternalLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GeneratesExternalLink, !o.GeneratesExternalLink));
     #endregion
     #region PdfHost
     /// <inheritdoc cref="DocFXPdfSettings.PdfHost"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PdfHost))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PdfHost))]
     public static T SetPdfHost<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PdfHost, v));
     /// <inheritdoc cref="DocFXPdfSettings.PdfHost"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PdfHost))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PdfHost))]
     public static T ResetPdfHost<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.PdfHost));
     #endregion
     #region KeepRawFiles
     /// <inheritdoc cref="DocFXPdfSettings.KeepRawFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
     public static T SetKeepRawFiles<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepRawFiles, v));
     /// <inheritdoc cref="DocFXPdfSettings.KeepRawFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
     public static T ResetKeepRawFiles<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.KeepRawFiles));
     /// <inheritdoc cref="DocFXPdfSettings.KeepRawFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
     public static T EnableKeepRawFiles<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepRawFiles, true));
     /// <inheritdoc cref="DocFXPdfSettings.KeepRawFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
     public static T DisableKeepRawFiles<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepRawFiles, false));
     /// <inheritdoc cref="DocFXPdfSettings.KeepRawFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepRawFiles))]
     public static T ToggleKeepRawFiles<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepRawFiles, !o.KeepRawFiles));
     #endregion
     #region LoadErrorHandling
     /// <inheritdoc cref="DocFXPdfSettings.LoadErrorHandling"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LoadErrorHandling))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LoadErrorHandling))]
     public static T SetLoadErrorHandling<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.LoadErrorHandling, v));
     /// <inheritdoc cref="DocFXPdfSettings.LoadErrorHandling"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LoadErrorHandling))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LoadErrorHandling))]
     public static T ResetLoadErrorHandling<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.LoadErrorHandling));
     #endregion
     #region Locale
     /// <inheritdoc cref="DocFXPdfSettings.Locale"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Locale))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Locale))]
     public static T SetLocale<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Locale, v));
     /// <inheritdoc cref="DocFXPdfSettings.Locale"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Locale))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Locale))]
     public static T ResetLocale<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.Locale));
     #endregion
     #region Name
     /// <inheritdoc cref="DocFXPdfSettings.Name"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Name))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Name))]
     public static T SetName<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Name, v));
     /// <inheritdoc cref="DocFXPdfSettings.Name"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Name))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Name))]
     public static T ResetName<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.Name));
     #endregion
     #region NoInputStreamArgs
     /// <inheritdoc cref="DocFXPdfSettings.NoInputStreamArgs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
     public static T SetNoInputStreamArgs<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoInputStreamArgs, v));
     /// <inheritdoc cref="DocFXPdfSettings.NoInputStreamArgs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
     public static T ResetNoInputStreamArgs<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.NoInputStreamArgs));
     /// <inheritdoc cref="DocFXPdfSettings.NoInputStreamArgs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
     public static T EnableNoInputStreamArgs<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoInputStreamArgs, true));
     /// <inheritdoc cref="DocFXPdfSettings.NoInputStreamArgs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
     public static T DisableNoInputStreamArgs<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoInputStreamArgs, false));
     /// <inheritdoc cref="DocFXPdfSettings.NoInputStreamArgs"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoInputStreamArgs))]
     public static T ToggleNoInputStreamArgs<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoInputStreamArgs, !o.NoInputStreamArgs));
     #endregion
     #region RawOutputFolder
     /// <inheritdoc cref="DocFXPdfSettings.RawOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawOutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawOutputFolder))]
     public static T SetRawOutputFolder<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.RawOutputFolder, v));
     /// <inheritdoc cref="DocFXPdfSettings.RawOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawOutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawOutputFolder))]
     public static T ResetRawOutputFolder<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.RawOutputFolder));
     #endregion
     #region ConfigFile
     /// <inheritdoc cref="DocFXPdfSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ConfigFile))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ConfigFile))]
     public static T SetConfigFile<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ConfigFile, v));
     /// <inheritdoc cref="DocFXPdfSettings.ConfigFile"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ConfigFile))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ConfigFile))]
     public static T ResetConfigFile<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ConfigFile));
     #endregion
     #region ChangesFile
     /// <inheritdoc cref="DocFXPdfSettings.ChangesFile"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ChangesFile))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ChangesFile))]
     public static T SetChangesFile<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ChangesFile, v));
     /// <inheritdoc cref="DocFXPdfSettings.ChangesFile"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ChangesFile))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ChangesFile))]
     public static T ResetChangesFile<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ChangesFile));
     #endregion
     #region CleanupCacheHistory
     /// <inheritdoc cref="DocFXPdfSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
     public static T SetCleanupCacheHistory<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, v));
     /// <inheritdoc cref="DocFXPdfSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
     public static T ResetCleanupCacheHistory<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.CleanupCacheHistory));
     /// <inheritdoc cref="DocFXPdfSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
     public static T EnableCleanupCacheHistory<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, true));
     /// <inheritdoc cref="DocFXPdfSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
     public static T DisableCleanupCacheHistory<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, false));
     /// <inheritdoc cref="DocFXPdfSettings.CleanupCacheHistory"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CleanupCacheHistory))]
     public static T ToggleCleanupCacheHistory<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.CleanupCacheHistory, !o.CleanupCacheHistory));
     #endregion
     #region Content
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T SetContent<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Content, v));
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T SetContent<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Content, v));
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T AddContent<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T AddContent<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T RemoveContent<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T RemoveContent<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Content, v));
     /// <inheritdoc cref="DocFXPdfSettings.Content"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Content))]
     public static T ClearContent<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.Content));
     #endregion
     #region DisableGitFeatures
     /// <inheritdoc cref="DocFXPdfSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
     public static T SetDisableGitFeatures<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, v));
     /// <inheritdoc cref="DocFXPdfSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
     public static T ResetDisableGitFeatures<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.DisableGitFeatures));
     /// <inheritdoc cref="DocFXPdfSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
     public static T EnableDisableGitFeatures<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, true));
     /// <inheritdoc cref="DocFXPdfSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
     public static T DisableDisableGitFeatures<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, false));
     /// <inheritdoc cref="DocFXPdfSettings.DisableGitFeatures"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DisableGitFeatures))]
     public static T ToggleDisableGitFeatures<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DisableGitFeatures, !o.DisableGitFeatures));
     #endregion
     #region DryRun
     /// <inheritdoc cref="DocFXPdfSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
     public static T SetDryRun<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DryRun, v));
     /// <inheritdoc cref="DocFXPdfSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
     public static T ResetDryRun<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.DryRun));
     /// <inheritdoc cref="DocFXPdfSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
     public static T EnableDryRun<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DryRun, true));
     /// <inheritdoc cref="DocFXPdfSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
     public static T DisableDryRun<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DryRun, false));
     /// <inheritdoc cref="DocFXPdfSettings.DryRun"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.DryRun))]
     public static T ToggleDryRun<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.DryRun, !o.DryRun));
     #endregion
     #region EnableDebugMode
     /// <inheritdoc cref="DocFXPdfSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
     public static T SetEnableDebugMode<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, v));
     /// <inheritdoc cref="DocFXPdfSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
     public static T ResetEnableDebugMode<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.EnableDebugMode));
     /// <inheritdoc cref="DocFXPdfSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
     public static T EnableEnableDebugMode<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, true));
     /// <inheritdoc cref="DocFXPdfSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
     public static T DisableEnableDebugMode<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, false));
     /// <inheritdoc cref="DocFXPdfSettings.EnableDebugMode"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.EnableDebugMode))]
     public static T ToggleEnableDebugMode<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.EnableDebugMode, !o.EnableDebugMode));
     #endregion
     #region ExportRawModel
     /// <inheritdoc cref="DocFXPdfSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
     public static T SetExportRawModel<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportRawModel, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
     public static T ResetExportRawModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ExportRawModel));
     /// <inheritdoc cref="DocFXPdfSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
     public static T EnableExportRawModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportRawModel, true));
     /// <inheritdoc cref="DocFXPdfSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
     public static T DisableExportRawModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportRawModel, false));
     /// <inheritdoc cref="DocFXPdfSettings.ExportRawModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportRawModel))]
     public static T ToggleExportRawModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportRawModel, !o.ExportRawModel));
     #endregion
     #region ExportViewModel
     /// <inheritdoc cref="DocFXPdfSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
     public static T SetExportViewModel<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportViewModel, v));
     /// <inheritdoc cref="DocFXPdfSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
     public static T ResetExportViewModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ExportViewModel));
     /// <inheritdoc cref="DocFXPdfSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
     public static T EnableExportViewModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportViewModel, true));
     /// <inheritdoc cref="DocFXPdfSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
     public static T DisableExportViewModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportViewModel, false));
     /// <inheritdoc cref="DocFXPdfSettings.ExportViewModel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ExportViewModel))]
     public static T ToggleExportViewModel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ExportViewModel, !o.ExportViewModel));
     #endregion
     #region FALName
     /// <inheritdoc cref="DocFXPdfSettings.FALName"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FALName))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FALName))]
     public static T SetFALName<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.FALName, v));
     /// <inheritdoc cref="DocFXPdfSettings.FALName"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FALName))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FALName))]
     public static T ResetFALName<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.FALName));
     #endregion
     #region FileMetadataFilePath
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePath))]
     public static T SetFileMetadataFilePath<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePath, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePath))]
     public static T ResetFileMetadataFilePath<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.FileMetadataFilePath));
     #endregion
     #region FileMetadataFilePaths
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T SetFileMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T SetFileMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T AddFileMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T AddFileMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T RemoveFileMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T RemoveFileMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.FileMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.FileMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.FileMetadataFilePaths))]
     public static T ClearFileMetadataFilePaths<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.FileMetadataFilePaths));
     #endregion
     #region ForcePostProcess
     /// <inheritdoc cref="DocFXPdfSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
     public static T SetForcePostProcess<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, v));
     /// <inheritdoc cref="DocFXPdfSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
     public static T ResetForcePostProcess<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ForcePostProcess));
     /// <inheritdoc cref="DocFXPdfSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
     public static T EnableForcePostProcess<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, true));
     /// <inheritdoc cref="DocFXPdfSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
     public static T DisableForcePostProcess<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, false));
     /// <inheritdoc cref="DocFXPdfSettings.ForcePostProcess"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForcePostProcess))]
     public static T ToggleForcePostProcess<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForcePostProcess, !o.ForcePostProcess));
     #endregion
     #region ForceRebuild
     /// <inheritdoc cref="DocFXPdfSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
     public static T SetForceRebuild<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForceRebuild, v));
     /// <inheritdoc cref="DocFXPdfSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
     public static T ResetForceRebuild<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ForceRebuild));
     /// <inheritdoc cref="DocFXPdfSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
     public static T EnableForceRebuild<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForceRebuild, true));
     /// <inheritdoc cref="DocFXPdfSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
     public static T DisableForceRebuild<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForceRebuild, false));
     /// <inheritdoc cref="DocFXPdfSettings.ForceRebuild"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ForceRebuild))]
     public static T ToggleForceRebuild<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ForceRebuild, !o.ForceRebuild));
     #endregion
     #region GlobalMetadata
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadata))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadata))]
     public static T SetGlobalMetadata<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GlobalMetadata, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadata"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadata))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadata))]
     public static T ResetGlobalMetadata<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.GlobalMetadata));
     #endregion
     #region GlobalMetadataFilePath
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePath))]
     public static T SetGlobalMetadataFilePath<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePath, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePath))]
     public static T ResetGlobalMetadataFilePath<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.GlobalMetadataFilePath));
     #endregion
     #region GlobalMetadataFilePaths
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T SetGlobalMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T SetGlobalMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T AddGlobalMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T AddGlobalMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T RemoveGlobalMetadataFilePaths<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T RemoveGlobalMetadataFilePaths<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.GlobalMetadataFilePaths, v));
     /// <inheritdoc cref="DocFXPdfSettings.GlobalMetadataFilePaths"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.GlobalMetadataFilePaths))]
     public static T ClearGlobalMetadataFilePaths<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.GlobalMetadataFilePaths));
     #endregion
     #region Host
     /// <inheritdoc cref="DocFXPdfSettings.Host"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Host))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Host))]
     public static T SetHost<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Host, v));
     /// <inheritdoc cref="DocFXPdfSettings.Host"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Host))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Host))]
     public static T ResetHost<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.Host));
     #endregion
     #region IntermediateFolder
     /// <inheritdoc cref="DocFXPdfSettings.IntermediateFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.IntermediateFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.IntermediateFolder))]
     public static T SetIntermediateFolder<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.IntermediateFolder, v));
     /// <inheritdoc cref="DocFXPdfSettings.IntermediateFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.IntermediateFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.IntermediateFolder))]
     public static T ResetIntermediateFolder<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.IntermediateFolder));
     #endregion
     #region KeepFileLink
     /// <inheritdoc cref="DocFXPdfSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
     public static T SetKeepFileLink<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepFileLink, v));
     /// <inheritdoc cref="DocFXPdfSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
     public static T ResetKeepFileLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.KeepFileLink));
     /// <inheritdoc cref="DocFXPdfSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
     public static T EnableKeepFileLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepFileLink, true));
     /// <inheritdoc cref="DocFXPdfSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
     public static T DisableKeepFileLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepFileLink, false));
     /// <inheritdoc cref="DocFXPdfSettings.KeepFileLink"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.KeepFileLink))]
     public static T ToggleKeepFileLink<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.KeepFileLink, !o.KeepFileLink));
     #endregion
     #region LruSize
     /// <inheritdoc cref="DocFXPdfSettings.LruSize"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LruSize))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LruSize))]
     public static T SetLruSize<T>(this T o, int? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.LruSize, v));
     /// <inheritdoc cref="DocFXPdfSettings.LruSize"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LruSize))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LruSize))]
     public static T ResetLruSize<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.LruSize));
     #endregion
     #region MarkdownEngineName
     /// <inheritdoc cref="DocFXPdfSettings.MarkdownEngineName"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineName))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineName))]
     public static T SetMarkdownEngineName<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.MarkdownEngineName, v));
     /// <inheritdoc cref="DocFXPdfSettings.MarkdownEngineName"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineName))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineName))]
     public static T ResetMarkdownEngineName<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.MarkdownEngineName));
     #endregion
     #region MarkdownEngineProperties
     /// <inheritdoc cref="DocFXPdfSettings.MarkdownEngineProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineProperties))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineProperties))]
     public static T SetMarkdownEngineProperties<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.MarkdownEngineProperties, v));
     /// <inheritdoc cref="DocFXPdfSettings.MarkdownEngineProperties"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineProperties))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MarkdownEngineProperties))]
     public static T ResetMarkdownEngineProperties<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.MarkdownEngineProperties));
     #endregion
     #region MaxParallelism
     /// <inheritdoc cref="DocFXPdfSettings.MaxParallelism"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MaxParallelism))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MaxParallelism))]
     public static T SetMaxParallelism<T>(this T o, int? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.MaxParallelism, v));
     /// <inheritdoc cref="DocFXPdfSettings.MaxParallelism"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MaxParallelism))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.MaxParallelism))]
     public static T ResetMaxParallelism<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.MaxParallelism));
     #endregion
     #region NoLangKeyword
     /// <inheritdoc cref="DocFXPdfSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
     public static T SetNoLangKeyword<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, v));
     /// <inheritdoc cref="DocFXPdfSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
     public static T ResetNoLangKeyword<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.NoLangKeyword));
     /// <inheritdoc cref="DocFXPdfSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
     public static T EnableNoLangKeyword<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, true));
     /// <inheritdoc cref="DocFXPdfSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
     public static T DisableNoLangKeyword<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, false));
     /// <inheritdoc cref="DocFXPdfSettings.NoLangKeyword"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.NoLangKeyword))]
     public static T ToggleNoLangKeyword<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.NoLangKeyword, !o.NoLangKeyword));
     #endregion
     #region OutputFolder
     /// <inheritdoc cref="DocFXPdfSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolder))]
     public static T SetOutputFolder<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.OutputFolder, v));
     /// <inheritdoc cref="DocFXPdfSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolder))]
     public static T ResetOutputFolder<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.OutputFolder));
     #endregion
     #region OutputFolderForDebugFiles
     /// <inheritdoc cref="DocFXPdfSettings.OutputFolderForDebugFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolderForDebugFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolderForDebugFiles))]
     public static T SetOutputFolderForDebugFiles<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.OutputFolderForDebugFiles, v));
     /// <inheritdoc cref="DocFXPdfSettings.OutputFolderForDebugFiles"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolderForDebugFiles))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.OutputFolderForDebugFiles))]
     public static T ResetOutputFolderForDebugFiles<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.OutputFolderForDebugFiles));
     #endregion
     #region Overwrite
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T SetOverwrite<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T AddOverwrite<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T AddOverwrite<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T RemoveOverwrite<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T RemoveOverwrite<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Overwrite, v));
     /// <inheritdoc cref="DocFXPdfSettings.Overwrite"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Overwrite))]
     public static T ClearOverwrite<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.Overwrite));
     #endregion
     #region Port
     /// <inheritdoc cref="DocFXPdfSettings.Port"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Port))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Port))]
     public static T SetPort<T>(this T o, int? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="DocFXPdfSettings.Port"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Port))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Port))]
     public static T ResetPort<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region PostProcessors
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T SetPostProcessors<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T SetPostProcessors<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T AddPostProcessors<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T AddPostProcessors<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T RemovePostProcessors<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T RemovePostProcessors<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.PostProcessors, v));
     /// <inheritdoc cref="DocFXPdfSettings.PostProcessors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PostProcessors))]
     public static T ClearPostProcessors<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.PostProcessors));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXPdfSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXPdfSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXPdfSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXPdfSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXPdfSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
     #region RawModelOutputFolder
     /// <inheritdoc cref="DocFXPdfSettings.RawModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawModelOutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawModelOutputFolder))]
     public static T SetRawModelOutputFolder<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.RawModelOutputFolder, v));
     /// <inheritdoc cref="DocFXPdfSettings.RawModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawModelOutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RawModelOutputFolder))]
     public static T ResetRawModelOutputFolder<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.RawModelOutputFolder));
     #endregion
     #region Resource
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T SetResource<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Resource, v));
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T SetResource<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Resource, v));
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T AddResource<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T AddResource<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T RemoveResource<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T RemoveResource<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Resource, v));
     /// <inheritdoc cref="DocFXPdfSettings.Resource"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Resource))]
     public static T ClearResource<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.Resource));
     #endregion
     #region SchemaLicense
     /// <inheritdoc cref="DocFXPdfSettings.SchemaLicense"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.SchemaLicense))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.SchemaLicense))]
     public static T SetSchemaLicense<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.SchemaLicense, v));
     /// <inheritdoc cref="DocFXPdfSettings.SchemaLicense"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.SchemaLicense))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.SchemaLicense))]
     public static T ResetSchemaLicense<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.SchemaLicense));
     #endregion
     #region Serve
     /// <inheritdoc cref="DocFXPdfSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
     public static T SetServe<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Serve, v));
     /// <inheritdoc cref="DocFXPdfSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
     public static T ResetServe<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.Serve));
     /// <inheritdoc cref="DocFXPdfSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
     public static T EnableServe<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Serve, true));
     /// <inheritdoc cref="DocFXPdfSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
     public static T DisableServe<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Serve, false));
     /// <inheritdoc cref="DocFXPdfSettings.Serve"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Serve))]
     public static T ToggleServe<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Serve, !o.Serve));
     #endregion
     #region Templates
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T SetTemplates<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Templates, v));
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T SetTemplates<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Templates, v));
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T AddTemplates<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T AddTemplates<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T RemoveTemplates<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T RemoveTemplates<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Templates, v));
     /// <inheritdoc cref="DocFXPdfSettings.Templates"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Templates))]
     public static T ClearTemplates<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.Templates));
     #endregion
     #region Themes
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T SetThemes<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Themes, v));
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T SetThemes<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.Themes, v));
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T AddThemes<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T AddThemes<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T RemoveThemes<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T RemoveThemes<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.Themes, v));
     /// <inheritdoc cref="DocFXPdfSettings.Themes"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.Themes))]
     public static T ClearThemes<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.Themes));
     #endregion
     #region ViewModelOutputFolder
     /// <inheritdoc cref="DocFXPdfSettings.ViewModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ViewModelOutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ViewModelOutputFolder))]
     public static T SetViewModelOutputFolder<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.ViewModelOutputFolder, v));
     /// <inheritdoc cref="DocFXPdfSettings.ViewModelOutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ViewModelOutputFolder))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.ViewModelOutputFolder))]
     public static T ResetViewModelOutputFolder<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.ViewModelOutputFolder));
     #endregion
     #region XRefMaps
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T SetXRefMaps<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T SetXRefMaps<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T AddXRefMaps<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T AddXRefMaps<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.AddCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T RemoveXRefMaps<T>(this T o, params string[] v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T RemoveXRefMaps<T>(this T o, IEnumerable<string> v) where T : DocFXPdfSettings => o.Modify(b => b.RemoveCollection(() => o.XRefMaps, v));
     /// <inheritdoc cref="DocFXPdfSettings.XRefMaps"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.XRefMaps))]
     public static T ClearXRefMaps<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.ClearCollection(() => o.XRefMaps));
     #endregion
     #region CorrelationId
     /// <inheritdoc cref="DocFXPdfSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CorrelationId))]
     public static T SetCorrelationId<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.CorrelationId, v));
     /// <inheritdoc cref="DocFXPdfSettings.CorrelationId"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CorrelationId))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.CorrelationId))]
     public static T ResetCorrelationId<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.CorrelationId));
     #endregion
     #region LogFilePath
     /// <inheritdoc cref="DocFXPdfSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogFilePath))]
     public static T SetLogFilePath<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.LogFilePath, v));
     /// <inheritdoc cref="DocFXPdfSettings.LogFilePath"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogFilePath))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogFilePath))]
     public static T ResetLogFilePath<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.LogFilePath));
     #endregion
     #region LogLevel
     /// <inheritdoc cref="DocFXPdfSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogLevel))]
     public static T SetLogLevel<T>(this T o, DocFXLogLevel v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.LogLevel, v));
     /// <inheritdoc cref="DocFXPdfSettings.LogLevel"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogLevel))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.LogLevel))]
     public static T ResetLogLevel<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.LogLevel));
     #endregion
     #region RepoRoot
     /// <inheritdoc cref="DocFXPdfSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RepoRoot))]
     public static T SetRepoRoot<T>(this T o, string v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.RepoRoot, v));
     /// <inheritdoc cref="DocFXPdfSettings.RepoRoot"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RepoRoot))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.RepoRoot))]
     public static T ResetRepoRoot<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.RepoRoot));
     #endregion
     #region WarningsAsErrors
     /// <inheritdoc cref="DocFXPdfSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
     public static T SetWarningsAsErrors<T>(this T o, bool? v) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, v));
     /// <inheritdoc cref="DocFXPdfSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
     public static T ResetWarningsAsErrors<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Remove(() => o.WarningsAsErrors));
     /// <inheritdoc cref="DocFXPdfSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
     public static T EnableWarningsAsErrors<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, true));
     /// <inheritdoc cref="DocFXPdfSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
     public static T DisableWarningsAsErrors<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, false));
     /// <inheritdoc cref="DocFXPdfSettings.WarningsAsErrors"/>
-    [Pure] [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
+    [Builder(Type = typeof(DocFXPdfSettings), Property = nameof(DocFXPdfSettings.WarningsAsErrors))]
     public static T ToggleWarningsAsErrors<T>(this T o) where T : DocFXPdfSettings => o.Modify(b => b.Set(() => o.WarningsAsErrors, !o.WarningsAsErrors));
     #endregion
 }
 #endregion
 #region DocFXServeSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXServe(Fallout.Common.Tools.DocFX.DocFXServeSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXServeSettingsExtensions
 {
     #region Folder
     /// <inheritdoc cref="DocFXServeSettings.Folder"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Folder))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Folder))]
     public static T SetFolder<T>(this T o, string v) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.Folder, v));
     /// <inheritdoc cref="DocFXServeSettings.Folder"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Folder))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Folder))]
     public static T ResetFolder<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Remove(() => o.Folder));
     #endregion
     #region Host
     /// <inheritdoc cref="DocFXServeSettings.Host"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Host))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Host))]
     public static T SetHost<T>(this T o, string v) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.Host, v));
     /// <inheritdoc cref="DocFXServeSettings.Host"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Host))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Host))]
     public static T ResetHost<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Remove(() => o.Host));
     #endregion
     #region Port
     /// <inheritdoc cref="DocFXServeSettings.Port"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Port))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Port))]
     public static T SetPort<T>(this T o, int? v) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.Port, v));
     /// <inheritdoc cref="DocFXServeSettings.Port"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Port))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.Port))]
     public static T ResetPort<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Remove(() => o.Port));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXServeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXServeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXServeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXServeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXServeSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXServeSettings), Property = nameof(DocFXServeSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXServeSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
 }
 #endregion
 #region DocFXTemplateSettingsExtensions
 /// <inheritdoc cref="DocFXTasks.DocFXTemplate(Fallout.Common.Tools.DocFX.DocFXTemplateSettings)"/>
-[PublicAPI]
 [ExcludeFromCodeCoverage]
 public static partial class DocFXTemplateSettingsExtensions
 {
     #region Command
     /// <inheritdoc cref="DocFXTemplateSettings.Command"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.Command))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.Command))]
     public static T SetCommand<T>(this T o, string v) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.Command, v));
     /// <inheritdoc cref="DocFXTemplateSettings.Command"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.Command))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.Command))]
     public static T ResetCommand<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Remove(() => o.Command));
     #endregion
     #region All
     /// <inheritdoc cref="DocFXTemplateSettings.All"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
     public static T SetAll<T>(this T o, bool? v) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.All, v));
     /// <inheritdoc cref="DocFXTemplateSettings.All"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
     public static T ResetAll<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Remove(() => o.All));
     /// <inheritdoc cref="DocFXTemplateSettings.All"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
     public static T EnableAll<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.All, true));
     /// <inheritdoc cref="DocFXTemplateSettings.All"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
     public static T DisableAll<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.All, false));
     /// <inheritdoc cref="DocFXTemplateSettings.All"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.All))]
     public static T ToggleAll<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.All, !o.All));
     #endregion
     #region OutputFolder
     /// <inheritdoc cref="DocFXTemplateSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.OutputFolder))]
     public static T SetOutputFolder<T>(this T o, string v) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.OutputFolder, v));
     /// <inheritdoc cref="DocFXTemplateSettings.OutputFolder"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.OutputFolder))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.OutputFolder))]
     public static T ResetOutputFolder<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Remove(() => o.OutputFolder));
     #endregion
     #region PrintHelpMessage
     /// <inheritdoc cref="DocFXTemplateSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
     public static T SetPrintHelpMessage<T>(this T o, bool? v) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, v));
     /// <inheritdoc cref="DocFXTemplateSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
     public static T ResetPrintHelpMessage<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Remove(() => o.PrintHelpMessage));
     /// <inheritdoc cref="DocFXTemplateSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
     public static T EnablePrintHelpMessage<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, true));
     /// <inheritdoc cref="DocFXTemplateSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
     public static T DisablePrintHelpMessage<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, false));
     /// <inheritdoc cref="DocFXTemplateSettings.PrintHelpMessage"/>
-    [Pure] [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
+    [Builder(Type = typeof(DocFXTemplateSettings), Property = nameof(DocFXTemplateSettings.PrintHelpMessage))]
     public static T TogglePrintHelpMessage<T>(this T o) where T : DocFXTemplateSettings => o.Modify(b => b.Set(() => o.PrintHelpMessage, !o.PrintHelpMessage));
     #endregion
 }
 #endregion
 #region DocFXLogLevel
 /// <summary>Used within <see cref="DocFXTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<DocFXLogLevel>))]
@@ -2572,7 +2549,6 @@ public partial class DocFXLogLevel : Enumeration
 #endregion
 #region DocFXTemplateCommand
 /// <summary>Used within <see cref="DocFXTasks"/>.</summary>
-[PublicAPI]
 [Serializable]
 [ExcludeFromCodeCoverage]
 [TypeConverter(typeof(TypeConverter<DocFXTemplateCommand>))]

@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -24,7 +23,7 @@ internal static class BuildExecutor
     // NOTE: no IFalloutBuild because of BuildAttemptFile + WriteTarget
     private static AbsolutePath BuildAttemptFile => Constants.GetBuildAttemptFile(FalloutBuild.RootDirectory);
 
-    public static void Execute(FalloutBuild build, [CanBeNull] IReadOnlyCollection<string> skippedTargets)
+    public static void Execute(FalloutBuild build, IReadOnlyCollection<string> skippedTargets)
     {
         if (skippedTargets != null)
         {

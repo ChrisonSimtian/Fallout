@@ -6,7 +6,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.CI;
 using Fallout.Common.Git;
 using Fallout.Common.Tooling;
@@ -14,7 +13,6 @@ using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Execution;
 
-[PublicAPI]
 public class ArgumentsFromGitCommitMessageAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
     public string Prefix { get; set; } = "[nuke++]";

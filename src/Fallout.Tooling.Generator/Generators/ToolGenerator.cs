@@ -63,7 +63,6 @@ public static class ToolGenerator
     {
         return new[]
                {
-                   "JetBrains.Annotations",
                    "Newtonsoft.Json",
                    "Fallout.Common",
                    "Fallout.Common.Tooling",

@@ -5,12 +5,10 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.CI.TeamCity.Configuration;
 
-[PublicAPI]
 public class TeamCityArtifactDependency : TeamCityDependency
 {
     public TeamCityBuildType BuildType { get; set; }

@@ -5,13 +5,11 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.ProjectModel;
 
 namespace Fallout.Components;
 
-[PublicAPI]
 public interface IHazSolution : IFalloutBuild
 {
     [Solution] [Required] Solution Solution => TryGetValue(() => Solution);

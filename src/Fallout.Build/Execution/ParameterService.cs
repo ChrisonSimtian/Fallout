@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using JetBrains.Annotations;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Serilog;
@@ -26,8 +25,8 @@ internal partial class ParameterService
     private readonly Func<IReadOnlyDictionary<string, string>> _environmentVariablesProvider;
 
     public ParameterService(
-        [CanBeNull] Func<ArgumentParser> argumentParserProvider,
-        [CanBeNull] Func<IReadOnlyDictionary<string, string>> environmentVariablesProvider)
+        Func<ArgumentParser> argumentParserProvider,
+        Func<IReadOnlyDictionary<string, string>> environmentVariablesProvider)
     {
         _argumentParserProvider = argumentParserProvider;
         _environmentVariablesProvider = environmentVariablesProvider;
@@ -69,14 +68,12 @@ internal partial class ParameterService
         return prefix + (attribute.Name ?? member.Name);
     }
 
-    [CanBeNull]
     public static string GetParameterDescription(MemberInfo member)
     {
         var attribute = member.GetCustomAttribute<ParameterAttribute>().NotNull();
         return attribute.Description?.TrimEnd('.');
     }
 
-    [CanBeNull]
     public static IEnumerable<(string Text, object Object)> GetParameterValueSet(MemberInfo member, object instance)
     {
         var attribute = member.GetCustomAttribute<ParameterAttribute>().NotNull();
@@ -130,15 +127,13 @@ internal partial class ParameterService
         }
     }
 
-    [CanBeNull]
-    public static object GetFromMemberInfo(MemberInfo member, [CanBeNull] Type destinationType, Func<string, Type, char?, object> provider)
+    public static object GetFromMemberInfo(MemberInfo member, Type destinationType, Func<string, Type, char?, object> provider)
     {
         var attribute = member.GetCustomAttribute<ParameterAttribute>().NotNull();
         var separator = (attribute.Separator ?? string.Empty).SingleOrDefault();
         return provider.Invoke(GetParameterMemberName(member), destinationType ?? member.GetMemberType(), separator);
     }
 
-    [CanBeNull]
     public object GetParameter(string parameterName, Type destinationType, char? separator)
     {
         object TryFromCommandLineArguments() =>
@@ -169,19 +164,16 @@ internal partial class ParameterService
                TryFromProfileArguments();
     }
 
-    [CanBeNull]
     public object GetCommandLineArgument(string argumentName, Type destinationType, char? separator)
     {
         return ArgumentsParser.GetNamedArgument(argumentName, destinationType, separator);
     }
 
-    [CanBeNull]
     public object GetCommandLineArgument(int position, Type destinationType, char? separator)
     {
         return ArgumentsParser.GetPositionalArgument(position, destinationType, separator);
     }
 
-    [CanBeNull]
     public object GetPositionalCommandLineArguments(Type destinationType, char? separator = null)
     {
         return ArgumentsParser.GetAllPositionalArguments(destinationType, separator);
@@ -192,7 +184,6 @@ internal partial class ParameterService
         return ArgumentsParser.HasArgument(argumentName);
     }
 
-    [CanBeNull]
     public object GetEnvironmentVariable(string variableName, Type destinationType, char? separator)
     {
         static string GetTrimmedName(string name)

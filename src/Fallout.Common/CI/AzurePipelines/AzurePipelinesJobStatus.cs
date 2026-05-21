@@ -5,11 +5,9 @@
 
 using System;
 using System.Linq;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.CI.AzurePipelines;
 
-[PublicAPI]
 public enum AzurePipelinesJobStatus
 {
     Canceled,

@@ -7,7 +7,6 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using JetBrains.Annotations;
 
 namespace Fallout.Common.Utilities;
 
@@ -16,7 +15,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Calculates the MD5 hash for a given string.
     /// </summary>
-    [Pure]
     public static string GetMD5Hash(this string str)
     {
         using var algorithm = MD5.Create();
@@ -27,7 +25,6 @@ public static partial class StringExtensions
     /// <summary>
     /// Calculates the SHA256 hash for a given string.
     /// </summary>
-    [Pure]
     public static string GetSHA256Hash(this string str)
     {
         using var algorithm = SHA256.Create();

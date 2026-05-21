@@ -8,14 +8,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Build.Shared;
 
-[PublicAPI]
 internal record Notification(string Title, string Text, Link[] Links)
 {
     public string Title { get; } = Title;
@@ -23,14 +21,12 @@ internal record Notification(string Title, string Text, Link[] Links)
     public Link[] Links { get; } = Links;
 }
 
-[PublicAPI]
 internal record Link(string Text, string Url)
 {
     public string Text { get; } = Text;
     public string Url { get; } = Url;
 }
 
-[PublicAPI]
 internal class NotificationFetcher
 {
     // TODO: host this file. Until then GetNotificationAsync catches the 404 and returns null.

@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using JetBrains.Annotations;
 using Microsoft.VisualStudio.SolutionPersistence.Model;
 using Microsoft.VisualStudio.SolutionPersistence.Serializer;
 using Fallout.Common.IO;
@@ -17,7 +16,6 @@ using Fallout.Common.Utilities;
 
 namespace Fallout.Common.ProjectModel;
 
-[PublicAPI]
 public interface IProjectContainer
 {
     IProjectContainer Parent { get; }
@@ -25,10 +23,8 @@ public interface IProjectContainer
     IReadOnlyCollection<SolutionFolder> SolutionFolders { get; }
 }
 
-[PublicAPI]
 public static class ProjectContainerExtensions
 {
-    [CanBeNull]
     public static SolutionFolder GetSolutionFolder(this IProjectContainer container, string name)
     {
         return container.SolutionFolders.SingleOrDefault(x => name.Equals(x.Name, StringComparison.Ordinal));
@@ -37,14 +33,12 @@ public static class ProjectContainerExtensions
     /// <summary>
     /// Gets a project by its name.
     /// </summary>
-    [CanBeNull]
     public static Project GetProject(this IProjectContainer container, string name)
     {
         return container.Projects.SingleOrDefault(x => name.Equals(x.Name, StringComparison.Ordinal));
     }
 }
 
-[PublicAPI]
 public class Solution(SolutionModel model, AbsolutePath path = null) : IProjectContainer, IAbsolutePathHolder
 {
 	private ConcurrentDictionary<object, object> wrappers { get; } = new();
@@ -64,10 +58,10 @@ public class Solution(SolutionModel model, AbsolutePath path = null) : IProjectC
 
     public SolutionModel GetModel() => model;
 
-    [CanBeNull] public AbsolutePath Path { get; set; } = path;
-    [CanBeNull] public string Name => Path?.NameWithoutExtension;
-    [CanBeNull] public string FileName => Path?.Name;
-    [CanBeNull] public AbsolutePath Directory => Path?.Parent;
+    public AbsolutePath Path { get; set; } = path;
+    public string Name => Path?.NameWithoutExtension;
+    public string FileName => Path?.Name;
+    public AbsolutePath Directory => Path?.Parent;
 
     public IReadOnlyCollection<Project> AllProjects => model.SolutionProjects.Select(GetOrCreate<Project>).ToList();
     public IReadOnlyCollection<SolutionFolder> AllSolutionFolders => model.SolutionFolders.Select(GetOrCreate<SolutionFolder>).ToList();
@@ -96,7 +90,6 @@ public class Solution(SolutionModel model, AbsolutePath path = null) : IProjectC
     }
 }
 
-[PublicAPI]
 public class SolutionItem(SolutionItemModel model, Solution solution)
 {
     public string Name => model.ActualDisplayName;
@@ -107,7 +100,6 @@ public class SolutionItem(SolutionItemModel model, Solution solution)
     public override string ToString() => model.ActualDisplayName;
 }
 
-[PublicAPI]
 public class SolutionFolder(SolutionFolderModel model, Solution solution) : SolutionItem(model, solution), IProjectContainer
 {
     public SolutionFolderModel GetModel() => model;
@@ -116,15 +108,14 @@ public class SolutionFolder(SolutionFolderModel model, Solution solution) : Solu
     public IReadOnlyCollection<SolutionFolder> SolutionFolders => Solution.AllSolutionFolders.Where(x => x.Parent == this).ToList();
 }
 
-[PublicAPI]
 public class Project(SolutionProjectModel model, Solution solution) : SolutionItem(model, solution), IAbsolutePathHolder
 {
     public SolutionProjectModel GetModel() => model;
 
     public string RelativePath => model.FilePath;
-    [CanBeNull] public AbsolutePath Path => Solution.Directory.NotNull() / model.FilePath;
-    [CanBeNull] public string FileName => System.IO.Path.GetFileName(RelativePath);
-    [CanBeNull] public AbsolutePath Directory => Path?.Parent;
+    public AbsolutePath Path => Solution.Directory.NotNull() / model.FilePath;
+    public string FileName => System.IO.Path.GetFileName(RelativePath);
+    public AbsolutePath Directory => Path?.Parent;
 
     public static implicit operator string(Project project) => project.Path;
     public static implicit operator AbsolutePath(Project project) => project.Path;
