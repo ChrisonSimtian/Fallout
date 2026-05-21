@@ -9,7 +9,7 @@
 #
 #     - To trigger manual generation invoke:
 #
-#         nuke --generate-configuration GitHubActions_test --host GitHubActions
+#         fallout --generate-configuration GitHubActions_test --host GitHubActions
 #
 # </auto-generated>
 # ------------------------------------------------------------------------------

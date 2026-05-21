@@ -15,7 +15,7 @@ using static Fallout.Common.Tools.Git.GitTasks;
 
 partial class Build
 {
-    AbsolutePath SpecificationsDirectory => RootDirectory / "source" / "Fallout.Common" / "Tools";
+    AbsolutePath SpecificationsDirectory => RootDirectory / "src" / "Fallout.Common" / "Tools";
     AbsolutePath ReferencesDirectory => BuildProjectDirectory / "references";
 
     Target References => _ => _
