@@ -68,13 +68,24 @@ public class GitHubActionsVcsTrigger : GitHubActionsDetailedTrigger
                 }
             }
 
-            if (IncludePaths.Length > 0 || ExcludePaths.Length > 0)
+            // Exclusive-only patterns must use `paths-ignore`; a `paths:` block of only
+            // `!`-prefixed entries is a documented GitHub Actions footgun — the workflow
+            // never fires because no positive pattern matches.
+            if (IncludePaths.Length > 0)
             {
                 writer.WriteLine("paths:");
                 using (writer.Indent())
                 {
                     IncludePaths.ForEach(WriteValue);
                     ExcludePaths.Select(x => $"!{x}").ForEach(WriteValue);
+                }
+            }
+            else if (ExcludePaths.Length > 0)
+            {
+                writer.WriteLine("paths-ignore:");
+                using (writer.Indent())
+                {
+                    ExcludePaths.ForEach(WriteValue);
                 }
             }
         }

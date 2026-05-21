@@ -20,10 +20,10 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - '!docs/**'
-      - '!.assets/**'
-      - '!**/*.md'
+    paths-ignore:
+      - 'docs/**'
+      - '.assets/**'
+      - '**/*.md'
 
 jobs:
   ubuntu-latest:
