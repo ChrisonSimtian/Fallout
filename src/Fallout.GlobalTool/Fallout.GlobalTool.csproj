@@ -5,7 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <RollForward>LatestMajor</RollForward>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>nuke</ToolCommandName>
+    <ToolCommandName>fallout</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>

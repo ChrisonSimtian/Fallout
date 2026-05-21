@@ -20,7 +20,7 @@ From now on, you can use the global tool to:
 - [Manage secrets in parameter files](../06-global-tool/02-secrets.md)
 
 :::note
-If you're running on Linux-based systems, it's worth checking if the `nuke` global tool is available. This can be verified with `where nuke`. If the global tool is not found, you have to manually add `$HOME/.dotnet/tools` to your terminal configuration:
+If you're running on Linux-based systems, it's worth checking if the `fallout` global tool is available. This can be verified with `where fallout`. If the global tool is not found, you have to manually add `$HOME/.dotnet/tools` to your terminal configuration:
 
 <Tabs>
   <TabItem value="zsh" label="Zsh" default>

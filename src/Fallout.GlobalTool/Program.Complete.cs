@@ -17,7 +17,7 @@ namespace Fallout.GlobalTool;
 
 partial class Program
 {
-    private const string CommandName = "nuke";
+    private const string CommandName = "fallout";
 
     [UsedImplicitly]
     public static int Complete(string[] args, [CanBeNull] AbsolutePath rootDirectory, [CanBeNull] AbsolutePath buildScript)
