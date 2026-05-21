@@ -16,10 +16,12 @@
     <ProjectReference Include="..\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
     <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
     <ProjectReference Include="..\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
+    <!-- SolutionPersistence is vendored — source compiled into Fallout.VisualStudio.SolutionPersistence.
+         The generator runs inside Roslyn, so its dependency DLLs need to land in this project's output dir. -->
+    <ProjectReference Include="..\Fallout.VisualStudio.SolutionPersistence\Fallout.VisualStudio.SolutionPersistence.csproj" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="matkoch.Microsoft.VisualStudio.SolutionPersistence" PrivateAssets="all" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" VersionOverride="4.7.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
     <PackageReference Include="Newtonsoft.Json" PrivateAssets="all" GeneratePathProperty="true" />
@@ -27,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(Pkgmatkoch_Microsoft_VisualStudio_SolutionPersistence)\lib\netstandard2.0\*.*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MSBuildProjectDirectory)\..\Fallout.VisualStudio.SolutionPersistence\bin\$(Configuration)\netstandard2.0\Microsoft.VisualStudio.SolutionPersistence.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     <None Include="$(PkgNewtonsoft_Json)\lib\netstandard2.0\*.*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     <None Include="$(PkgScriban)\lib\netstandard2.0\*.*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
@@ -44,7 +46,7 @@
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Utilities.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Utilities.IO.Globbing.dll" IncludeRuntimeDependency="false" />
 
-      <TargetPathWithTargetPlatformMoniker Include="$(Pkgmatkoch_Microsoft_VisualStudio_SolutionPersistence)\lib\$(TargetFramework)\*.dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\..\Fallout.VisualStudio.SolutionPersistence\bin\$(Configuration)\netstandard2.0\Microsoft.VisualStudio.SolutionPersistence.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(PkgNewtonsoft_Json)\lib\$(TargetFramework)\*.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(PkgScriban)\lib\$(TargetFramework)\*.dll" IncludeRuntimeDependency="false" />
     </ItemGroup>

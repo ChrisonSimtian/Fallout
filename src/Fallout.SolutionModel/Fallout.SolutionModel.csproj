@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="matkoch.Microsoft.VisualStudio.SolutionPersistence" />
+    <ProjectReference Include="..\Fallout.VisualStudio.SolutionPersistence\Fallout.VisualStudio.SolutionPersistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -20,6 +20,7 @@
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
   <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
   <Project Path="src\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
+  <Project Path="src\Fallout.VisualStudio.SolutionPersistence\Fallout.VisualStudio.SolutionPersistence.csproj" />
   <Project Path="src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" />
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Tooling\Fallout.Tooling.csproj" />
