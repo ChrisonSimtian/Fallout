@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -68,7 +69,7 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
 
                 continue;
 
-                string GetDeclaration(IProjectContainer container)
+                string GetDeclaration(IProjectContainer container, string folderName = null)
                 {
                     var prefix = new string('_', container.Descendants(x => x.Parent).Count() + 1);
                     var model = new
@@ -78,7 +79,7 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                         Name = GetEscapedName(container switch
                         {
                             Solution => member.Name,
-                            SolutionFolder folder => prefix.Substring(1) + folder.Name,
+                            SolutionFolder folder => folderName ?? folder.Name,
                             _ => throw new ArgumentOutOfRangeException(nameof(container), container, null)
                         }),
                         Projects = container.Projects.OrderBy(x => x.Name).Select(x => new
@@ -89,10 +90,11 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                         Folders = container.SolutionFolders.OrderBy(x => x.Name).Select(x => new
                         {
                             x.Name,
-                            TypeName = prefix + GetEscapedName(x.Name),
+                            TypeName = $"{prefix}{GetEscapedName(x.Name)}",
                             EscapedName = GetEscapedName(x.Name),
                         }),
-                        Declarations = container.SolutionFolders.OrderBy(x => x.Name).Select(GetDeclaration).ToArray(),
+                        Declarations = container.SolutionFolders.OrderBy(x => x.Name)
+                            .Select(x => GetDeclaration(x, $"{prefix}{GetEscapedName(x.Name)}")).ToArray(),
                     };
 
                     // lang=csharp
@@ -118,10 +120,24 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                         """);
                     return template.Render(model);
 
-                    string GetEscapedName(string name) => name
-                        // .Replace(".", fancyNaming ? "丨" : "_")
-                        .Replace(".", fancyNaming ? "٠" : "_")
-                        .ReplaceRegex(@"(^[\W^\d]|[\W])", _ => "_");
+                    // C# identifiers can't start with a digit and can only contain
+                    // letters/digits/underscore. The old regex `(^[\W^\d]|[\W])` was
+                    // attempting both but the `^\d` inside the character class was
+                    // misread as "match `^` or `\d`" rather than "starts with digit".
+                    // Folders like `00-Build` produced invalid output. Upstream fix
+                    // from nuke-build/nuke#1581.
+                    string GetEscapedName(string name)
+                    {
+                        name = name
+                            // .Replace(".", fancyNaming ? "丨" : "_")
+                            .Replace(".", fancyNaming ? "٠" : "_")
+                            .ReplaceRegex(@"[^A-Za-z0-9_]", _ => "_");
+
+                        if (Regex.IsMatch(name, @"^[0-9]"))
+                            return "_" + name;
+
+                        return name;
+                    }
                 }
             }
         }
