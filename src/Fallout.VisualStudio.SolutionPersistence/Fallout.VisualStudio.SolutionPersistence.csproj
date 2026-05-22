@@ -24,9 +24,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <IsPackable>false</IsPackable>
     <NoWarn>$(NoWarn);CS1591;CS1573;CS8632;RS0016</NoWarn>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <!-- Pack as Fallout.VisualStudio.SolutionPersistence so consumers of Fallout.SolutionModel
+         get a working dependency. AssemblyName stays Microsoft.* for type identity / drop-in
+         compatibility with anything originally written against the upstream package. -->
+    <PackageId>Fallout.VisualStudio.SolutionPersistence</PackageId>
+    <Description>Vendored fork of Microsoft.VisualStudio.SolutionPersistence with netstandard2.0 support. Ships as part of Fallout; the assembly name is unchanged so it's a drop-in for code written against the upstream package.</Description>
+    <PackageTags>solution-persistence visualstudio msbuild fallout</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
