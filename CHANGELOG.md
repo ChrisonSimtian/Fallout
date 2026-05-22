@@ -4,17 +4,66 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [vNext]
-- **String reference audit** (#30): centralized canonical project URLs in `Constants.FalloutWebsite` / `FalloutRepository` / `FalloutRawRepository` / `FalloutDocsUrl` / `FalloutTelemetryDocsUrl` / `FalloutNotificationsUrl`. Tool wrapper JSON `$schema` URLs (63 files) and `*.Generated.cs` "Generated from" comments updated from `nuke-build/nuke/master/source/` to `ChrisonSimtian/Fallout/main/src/`. Notifications endpoint, telemetry disclosure text, telemetry data-points doc links, IDE plugin URLs (removed from `build/Build.cs` and `templates/Build.cs` — re-add when Fallout plugins ship), `GitHubActions` HTTP `User-Agent`, MSBuild "external files no longer supported" error link, issue templates, and docs URLs all updated. Attribution refs to NUKE in README/CONTRIBUTING/CLAUDE.md/CHANGELOG history and pedagogical test fixtures intentionally kept.
-- **Telemetry neutralized**: the previous Azure Application Insights `InstrumentationKey` routed data to the original NUKE maintainer's account, which we don't own. Set to empty string; static constructor short-circuits before any `TelemetryClient` work. Plumbing stays in place for when a Fallout-controlled endpoint is configured. `IsCommonType` repository check now recognizes both the Fallout and upstream NUKE `RepositoryUrl`.
-- **Solution file renamed**: `nuke-common.slnx` → `fallout.slnx`. References in test fixtures, parameters.json, and docs updated.
-- **Runtime state directory renamed**: `.nuke/` → `.fallout/`. Framework `NukeDirectoryName` const now `.fallout`; new `LegacyNukeDirectoryName = ".nuke"` provides read-only fallback so existing consumer projects keep working until they migrate. CI cache paths, `Nuke.Common.targets` MSBuild includes (with legacy fallbacks), bootstrap script `TempDirectory`, `AzurePipelinesCachePaths.Nuke`, and `GitHubActionsAttribute.CacheIncludePatterns` defaults updated. New consumer projects scaffolded by `dotnet nuke :setup` get `.fallout/`. Comprehensive consumer migration handled later by the Fallout.Migrate CLI (#48).
-- **Visual assets**: added `.assets/fallout-logo.svg` (radioactive trefoil + wordmark, yellow #F5C800 on black). Startup banner in `Host.WriteLogo` now colours the FALLOUT wordmark yellow and adds a tagline + "☢ survived the fallout" footer via true-color ANSI escapes (modern terminals render directly, older sinks ignore the escape bytes). Dropped all Matt-era visual assets — partner/sponsor logos (JetBrains, AWS, Datadog, Octopus, etc.) and NUKE-branded icons/logos/screenshots. NuGet `PackageIcon` temporarily disabled with TODO — needs a 256×256 PNG export of the new logo.
-- **Repo restructure**: `source/` → `src/`. Test projects moved to `tests/`. `images/` + root `icon.png` → `.assets/`. `Directory.Build.props` and `AssemblyInfo.cs` hoisted to root. See `docs/architecture.md` for the canonical layout.
-- **Removed Matt-era files** that no longer fit our workflow: `.editorconfig`, all `*.DotSettings` (ReSharper), `.run/` (Rider run configs), `GitVersion.yml` (we're on Nerdbank.GitVersioning), `external/` (orphan submodule placeholder), `Dockerfile` (referenced .NET 8, not wired to CI).
-- **TFS leftover stripped** from `nuget.config` and `src/Nuke.GlobalTool/templates/nuget.config` — the `<solution><add key="disableSourceControlIntegration"/></solution>` block is only relevant under TFVC, useless on git.
-- **Fixed `GetNuGetReleaseNotes` escaping** — now also URL-encodes `;` (was only escaping `,`). Without this, semicolons in changelog bullets split the MSBuild `-p:PackageReleaseNotes=` value into multiple arguments and crashed Pack.
-- **Rebrand in progress: NUKE → Fallout.** License headers, LICENSE, package metadata, README, CONTRIBUTING, CODE_OF_CONDUCT and the startup logo carry the Fallout identity. Originally NUKE by [@matkoch](https://github.com/matkoch) and contributors. Namespaces, package IDs, and the global tool name still use `Nuke.*` and will rename in later phases — see the Fallout rebrand milestone.
+## [10.3.0] / 2026-05-22
+- **Fixed `Fallout.SolutionModel` 10.2.24–10.2.34 unrestorable** (#107): the vendored SolutionPersistence wrapper was `IsPackable=false`, so `dotnet pack` fell back to emitting the dependency under the *assembly* name (`Microsoft.VisualStudio.SolutionPersistence`) at the Fallout version — which doesn't exist on nuget.org. Wrapper now packs as `Fallout.VisualStudio.SolutionPersistence` (PackageId set explicitly; `AssemblyName` preserved for drop-in type identity), so `Fallout.SolutionModel.nuspec` declares the correct transitive dep. Also affected `Fallout.Common`, `Fallout.Build`, `Fallout.ProjectModel`, `Fallout.Components` — all fixed.
+- **`--skip-duplicate` on the publish push** (#108): release.yml's `IPublish.PushSettings` now enables skip-duplicate, so a partial publish failure (e.g. one package's API key permission gap) no longer makes reruns error on the already-uploaded versions. Pipeline is idempotent.
+- **Fixed `build.ps1` bootstrap on PowerShell 7.5+** (#15): the script now uses `Join-Path` for SDK resolution so newer PowerShell's stricter path handling doesn't break the launcher.
+- **Fixed solution folder names starting with digits** (#16): `StronglyTypedSolutionGenerator` prefixes a leading underscore when the folder name would produce an invalid C# identifier.
+- **Retired `GitVersion.Tool`** (#81) — version is now sourced exclusively from `Nerdbank.GitVersioning` via `version.json`. `MajorMinorPatchVersion` and friends in `Build.cs` read NB.GV's `$(Version)` MSBuild output.
+- **Trimmed unused / replaceable dependencies** (#75, #78, #79, #80, #82): dropped `JetBrains.ReSharper.GlobalTools`, the matkoch Spectre.Console fork (swapped for upstream `Spectre.Console`), `Microsoft.ApplicationInsights`, `Codecov.Tool`, and `xunit.runner.console`. See `docs/dependencies.md` for the current graph.
+- **Bumped Scriban 7.1.0 → 7.2.0** (#84) to clear NU1903.
+
+## [10.2.0] / 2026-05-21
+The NUKE → Fallout hard fork. Originally NUKE by [@matkoch](https://github.com/matkoch) and contributors; under new maintenance and rebranded to Fallout.
+
+### Rebrand — names, namespaces, packages
+- **Renamed `Nuke.*` → `Fallout.*`** across namespaces, csproj filenames, assembly names, and package IDs (#54). Top-level packages are now `Fallout.Common`, `Fallout.Build`, `Fallout.Components`, `Fallout.Tooling`, `Fallout.ProjectModel`, `Fallout.SolutionModel`, `Fallout.Utilities*`, `Fallout.GlobalTool`, `Fallout.MSBuildTasks`, `Fallout.SourceGenerators`, `Fallout.Tooling.Generator`, `Fallout.VisualStudio.SolutionPersistence`. Pre-reserved on nuget.org under the verified `Fallout.*` prefix owned by Chrison.dev.
+- **Renamed `NukeBuild` → `FalloutBuild`** and `INukeBuild` → `IFalloutBuild` (#59). All build classes inherit the renamed base.
+- **Renamed `Constants` internals** (`NukeFileName`, `NukeDirectoryName`, etc.) → `Fallout*` (#60), with read-only legacy fallbacks where consumer projects still emit `.nuke/`.
+- **Renamed the global tool command**: `dotnet nuke` → `dotnet fallout` (#66). Regenerated all tool wrappers (#67).
+- **Finished phase 3.5 rename** (#65): MSBuild props, env vars (`NUKE_*` → `FALLOUT_*`, with legacy reads), the credential store, and telemetry keys.
+- **Solution file**: `nuke-common.slnx` → `fallout.slnx` (#51).
+- **Runtime state dir**: `.nuke/` → `.fallout/` (#51). Framework const `NukeDirectoryName` now `.fallout`; new `LegacyNukeDirectoryName = ".nuke"` provides a read-only fallback so pre-migration consumer repos keep building. New consumer projects scaffolded by `dotnet fallout :setup` get `.fallout/`. Bulk consumer migration handled by the Fallout.Migrate CLI.
+
+### Consumer migration tooling
+- **`Fallout.Migrate` CLI** (#68): one-shot rewrite of a consumer repo from NUKE to Fallout — namespace replacement, `.nuke/` → `.fallout/` move, build-script bootstrap update.
+- **`Fallout.Migrate.Analyzers` with `FALLOUT004` codefix** (#36): in-IDE diagnostic for code still referencing `Nuke.*` symbols, with a one-click fix to the matching `Fallout.*` symbol.
+- **Migration guide** (#37): `docs/migration.md` walks consumers through the rename end-to-end.
+
+### Backwards-compat: Nuke.* transition shims
+- **`Nuke.Common` MVP shim package** (#70): thin wrapper assembly in the `Nuke.*` namespace whose types inherit from the corresponding `Fallout.*` types — lets pre-rename consumers compile against the new packages without source changes. Lives at `src/Shims/Nuke.Common/`.
+- **`TransitionShimGenerator` source generator** (#69): emits shim type wrappers per-target, covering the Nuke.Common "Easy tier" surface (plain types, interfaces, enums) and static-class method delegation. Hard-tier types (sealed structs, delegates, etc.) raise `SHIM001` warnings with a pointer to `fallout-migrate`.
+- **Shim packages publish to GitHub Packages** (#47): `Nuke.*` package IDs belong to matkoch on nuget.org, so the transition shim feed lives at GH Packages (`https://nuget.pkg.github.com/ChrisonSimtian/index.json`). Production-build feed is nuget.org with `Fallout.*` only.
+
+### Vendored fork of `Microsoft.VisualStudio.SolutionPersistence`
+- **Replaced `matkoch.Microsoft.VisualStudio.SolutionPersistence` with a vendored fork** (#86). The upstream Microsoft package only ships `net472` + `net8.0`; our source generators need `netstandard2.0`. Matt's fork had the netstandard2.0 patches — we forked his repo at [`ChrisonSimtian/vs-solutionpersistence`](https://github.com/ChrisonSimtian/vs-solutionpersistence) (preserves the MIT license + upstream Microsoft history + attribution chain). Sources are a submodule at `vendor/vs-solutionpersistence/`; wrapper csproj at `src/Fallout.VisualStudio.SolutionPersistence/` compiles them with the TFMs we need. Assembly name stays `Microsoft.VisualStudio.SolutionPersistence` so type identity is preserved. (Note: in 10.2 the wrapper packed as `IsPackable=false` and caused the restore bug fixed in 10.3.0 above — known issue, fix-forward.)
+
+### Visual identity
+- **Logo + banner** (#50): `.assets/fallout-logo.svg` — radioactive trefoil + wordmark, yellow `#F5C800` on black. `Host.WriteLogo` paints the FALLOUT wordmark yellow with a "☢ survived the fallout" footer via true-color ANSI (modern terminals render; legacy sinks ignore the escapes).
+- **Dropped Matt-era visual assets**: partner/sponsor logos (JetBrains, AWS, Datadog, Octopus) and NUKE-branded icons/logos/screenshots removed. `PackageIcon` temporarily off until a 256×256 PNG export of the SVG lands.
+
+### Repo restructure
+- **`source/` → `src/`, tests moved to `tests/`, `images/` + root `icon.png` → `.assets/`** (#49). `Directory.Build.props` and `AssemblyInfo.cs` hoisted to root. See `docs/architecture.md` for the canonical layout.
+- **Removed Matt-era IDE files**: `.editorconfig`, all `*.DotSettings` (ReSharper), `.run/` (Rider run configs), `GitVersion.yml`, `external/` (orphan submodule placeholder), `Dockerfile` (referenced .NET 8, not CI-wired). Also legacy CLI reference files moved to `docs/cli-tools/` (#71).
+- **TFS leftover stripped** from `nuget.config` files — the `<solution><add key="disableSourceControlIntegration"/></solution>` block is only relevant under TFVC.
+
+### Telemetry
+- **Neutralized telemetry** — the previous Azure Application Insights `InstrumentationKey` routed data to the original NUKE maintainer's account, which we don't own. Set to empty string; static constructor short-circuits before any `TelemetryClient` work. Plumbing stays in place for when a Fallout-controlled endpoint stands up. `IsCommonType` repository check now recognizes both the Fallout and upstream NUKE `RepositoryUrl`.
+
+### CI / release
+- **Primary feed is nuget.org** (#58, #54): `Fallout.*` packages publish to https://api.nuget.org/v3/index.json under the reserved prefix.
+- **GitHub Actions–only CI** at this point — AppVeyor / TeamCity / GitLab generation removed (#22 dropped the AppVeyor-era orphan code). Re-introduction is demand-driven (CI roadmap milestone).
+- **Validation matrix split**: ubuntu-latest runs on every PR; windows-latest / macos-latest run only on push to main, as cost-vs-coverage trade-off.
+- **Skip release on docs-only pushes** to main: `paths-ignore` covers `docs/**`, `.assets/**`, `**/*.md`.
+- **Rich release notes** from milestone + auto PR list (#21): release body links to the matching `vX.Y.Z` milestone and inlines the PR list.
+
+### String-reference audit
+- **Canonical URLs centralized** (#30) in `Constants.FalloutWebsite` / `FalloutRepository` / `FalloutRawRepository` / `FalloutDocsUrl` / `FalloutTelemetryDocsUrl` / `FalloutNotificationsUrl`. Tool wrapper JSON `$schema` URLs (63 files) and `*.Generated.cs` "Generated from" comments updated from `nuke-build/nuke/master/source/` to `ChrisonSimtian/Fallout/main/src/`. IDE-plugin URLs removed from `build/Build.cs` and `templates/Build.cs` (re-add when Fallout plugins ship). NUKE attribution in README/CONTRIBUTING/CLAUDE.md/CHANGELOG history and pedagogical test fixtures intentionally kept.
+
+### Misc
+- **Fixed `GetNuGetReleaseNotes` escaping** — now URL-encodes `;` in addition to `,`. Without this, semicolons in changelog bullets split the MSBuild `-p:PackageReleaseNotes=` value and crashed Pack.
+- **Dropped `JetBrains.Annotations`** (#76).
+- **Docs**: dependency overview (#85, #87), architecture overview, v11/v12 plugin-architecture roadmap, costs/sponsorship transparency (#56), README badge row (#62) + Repobeats activity image (#63), rebrand namespace mapping (#53).
 
 ## [10.1.0] / 2025-12-02
 - Fixed solution folders in `StronglyTypedSolutionGenerator`
