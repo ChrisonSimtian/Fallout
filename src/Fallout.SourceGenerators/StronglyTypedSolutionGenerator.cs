@@ -7,11 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Newtonsoft.Json.Linq;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.ProjectModel;
@@ -160,8 +160,8 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
         {
             var parametersFile = Constants.GetDefaultParametersFile(rootDirectory);
             Assert.FileExists(parametersFile);
-            var obj = JObject.Parse(File.ReadAllText(parametersFile));
-            var solutionRelativePath = obj[memberName].NotNull($"Property '{memberName}' does not exist in '{parametersFile}'.").Value<string>();
+            var obj = JsonNode.Parse(File.ReadAllText(parametersFile)).NotNull().AsObject();
+            var solutionRelativePath = obj[memberName].NotNull($"Property '{memberName}' does not exist in '{parametersFile}'.").GetValue<string>();
             return rootDirectory / solutionRelativePath.NotNull();
         }
 
