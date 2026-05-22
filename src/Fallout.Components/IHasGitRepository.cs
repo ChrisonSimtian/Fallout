@@ -6,11 +6,11 @@
 using System;
 using System.Linq;
 using Fallout.Common;
+using Fallout.Common.Git;
 
 namespace Fallout.Components;
 
-public interface IHazConfiguration : IFalloutBuild
+public interface IHasGitRepository : IFalloutBuild
 {
-    [Parameter] Configuration Configuration => TryGetValue(() => Configuration) ??
-                                               (IsLocalBuild ? Configuration.Debug : Configuration.Release);
+    [GitRepository] [Required] GitRepository GitRepository => TryGetValue(() => GitRepository);
 }

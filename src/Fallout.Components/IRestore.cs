@@ -12,7 +12,7 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-public interface IRestore : IHazSolution, IFalloutBuild
+public interface IRestore : IHasSolution, IFalloutBuild
 {
     Target Restore => _ => _
         .Executes(() =>

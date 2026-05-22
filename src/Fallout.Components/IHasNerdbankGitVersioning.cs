@@ -6,13 +6,11 @@
 using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.Tools.GitVersion;
+using Fallout.Common.Tools.NerdbankGitVersioning;
 
 namespace Fallout.Components;
 
-public interface IHazGitVersion : IFalloutBuild
+public interface IHasNerdbankGitVersioning : IFalloutBuild
 {
-    [GitVersion(NoFetch = true, Framework = "net8.0")]
-    [Required]
-    GitVersion Versioning => TryGetValue(() => Versioning);
+    [NerdbankGitVersioning] [Required] NerdbankGitVersioning Versioning => TryGetValue(() => Versioning);
 }

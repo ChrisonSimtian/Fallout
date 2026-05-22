@@ -5,12 +5,11 @@
 
 using System;
 using System.Linq;
-using Fallout.Common;
-using Fallout.Common.ProjectModel;
+using Fallout.Common.IO;
 
 namespace Fallout.Components;
 
-public interface IHazSolution : IFalloutBuild
+public interface IHasReports : IHasArtifacts
 {
-    [Solution] [Required] Solution Solution => TryGetValue(() => Solution);
+    AbsolutePath ReportDirectory => ArtifactsDirectory / "reports";
 }

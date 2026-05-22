@@ -10,7 +10,7 @@ using Fallout.Common;
 namespace Fallout.Components;
 
 [ParameterPrefix(Twitter)]
-public interface IHazTwitterCredentials : IFalloutBuild
+public interface IHasTwitterCredentials : IFalloutBuild
 {
     public const string Twitter = nameof(Twitter);
 

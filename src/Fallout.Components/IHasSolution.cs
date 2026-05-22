@@ -6,11 +6,11 @@
 using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.Tools.NerdbankGitVersioning;
+using Fallout.Common.ProjectModel;
 
 namespace Fallout.Components;
 
-public interface IHazNerdbankGitVersioning : IFalloutBuild
+public interface IHasSolution : IFalloutBuild
 {
-    [NerdbankGitVersioning] [Required] NerdbankGitVersioning Versioning => TryGetValue(() => Versioning);
+    [Solution] [Required] Solution Solution => TryGetValue(() => Solution);
 }

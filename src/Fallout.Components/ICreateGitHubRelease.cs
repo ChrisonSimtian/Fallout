@@ -19,7 +19,7 @@ using Octokit;
 namespace Fallout.Components;
 
 [ParameterPrefix(GitHubRelease)]
-public interface ICreateGitHubRelease : IHazGitRepository, IHazChangelog
+public interface ICreateGitHubRelease : IHasGitRepository, IHasChangelog
 {
     public const string GitHubRelease = nameof(GitHubRelease);
 

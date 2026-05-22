@@ -10,7 +10,7 @@ using Fallout.Common.IO;
 
 namespace Fallout.Components;
 
-public interface IHazArtifacts : IFalloutBuild
+public interface IHasArtifacts : IFalloutBuild
 {
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 }

@@ -26,9 +26,9 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 [ShutdownDotNetAfterServerBuild]
 partial class Build
     : FalloutBuild,
-        IHazChangelog,
-        IHazGitRepository,
-        IHazSolution,
+        IHasChangelog,
+        IHasGitRepository,
+        IHasSolution,
         IRestore,
         ICompile,
         IPack,
@@ -41,10 +41,10 @@ partial class Build
 
     [CI] readonly GitHubActions GitHubActions;
 
-    GitRepository GitRepository => From<IHazGitRepository>().GitRepository;
+    GitRepository GitRepository => From<IHasGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
-    Fallout.Common.ProjectModel.Solution IHazSolution.Solution => Solution;
+    Fallout.Common.ProjectModel.Solution IHasSolution.Solution => Solution;
 
     AbsolutePath OutputDirectory => RootDirectory / "output";
     AbsolutePath SourceDirectory => RootDirectory / "source";
@@ -64,7 +64,7 @@ partial class Build
     private static int ParseMajor(string informationalVersion)
         => int.Parse(informationalVersion.Split('.')[0]);
 
-    AbsolutePath IHazArtifacts.ArtifactsDirectory => RootDirectory / "output";
+    AbsolutePath IHasArtifacts.ArtifactsDirectory => RootDirectory / "output";
 
     Target Clean => _ => _
         .Before<IRestore>()

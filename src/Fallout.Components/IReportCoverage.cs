@@ -19,7 +19,7 @@ using static Fallout.Common.Tools.ReportGenerator.ReportGeneratorTasks;
 
 namespace Fallout.Components;
 
-public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
+public interface IReportCoverage : ITest, IHasReports, IHasGitRepository
 {
     bool CreateCoverageHtmlReport { get; }
     bool ReportToCodecov { get; }
@@ -60,7 +60,7 @@ public interface IReportCoverage : ITest, IHazReports, IHazGitRepository
         .SetToken(CodecovToken)
         .SetBranch(GitRepository.Branch)
         .SetSha(GitRepository.Commit)
-        .WhenNotNull(this as IHazGitVersion, (_, o) => _
+        .WhenNotNull(this as IHasGitVersion, (_, o) => _
             .SetBuild(o.Versioning.FullSemVer))
         .SetFramework("netcoreapp3.0");
 

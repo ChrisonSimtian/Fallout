@@ -22,7 +22,7 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-public interface ITest : ICompile, IHazArtifacts
+public interface ITest : ICompile, IHasArtifacts
 {
     AbsolutePath TestResultDirectory => ArtifactsDirectory / "test-results";
 

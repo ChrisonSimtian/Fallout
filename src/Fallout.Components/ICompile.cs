@@ -16,7 +16,7 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-public interface ICompile : IRestore, IHazConfiguration
+public interface ICompile : IRestore, IHasConfiguration
 {
     Target Compile => _ => _
         .DependsOn(Restore)
@@ -24,9 +24,9 @@ public interface ICompile : IRestore, IHazConfiguration
         .Executes(() =>
         {
             ReportSummary(_ => _
-                .WhenNotNull(this as IHazGitVersion, (_, o) => _
+                .WhenNotNull(this as IHasGitVersion, (_, o) => _
                     .AddPair("Version", o.Versioning.NuGetVersionV2))
-                .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
+                .WhenNotNull(this as IHasNerdbankGitVersioning, (_, o) => _
                     .AddPair("Version", o.Versioning.NuGetPackageVersion)));
 
             DotNetBuild(_ => _
@@ -48,13 +48,13 @@ public interface ICompile : IRestore, IHazConfiguration
         .When(IsServerBuild, _ => _
             .EnableContinuousIntegrationBuild())
         .SetNoRestore(SucceededTargets.Contains(Restore))
-        .WhenNotNull(this as IHazGitRepository, (_, o) => _
+        .WhenNotNull(this as IHasGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
-        .WhenNotNull(this as IHazGitVersion, (_, o) => _
+        .WhenNotNull(this as IHasGitVersion, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
-        .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
+        .WhenNotNull(this as IHasNerdbankGitVersioning, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblyVersion)
             .SetFileVersion(o.Versioning.AssemblyFileVersion)
             .SetInformationalVersion(o.Versioning.AssemblyInformationalVersion));
@@ -65,13 +65,13 @@ public interface ICompile : IRestore, IHazConfiguration
         .EnableNoLogo()
         .When(IsServerBuild, _ => _
             .EnableContinuousIntegrationBuild())
-        .WhenNotNull(this as IHazGitRepository, (_, o) => _
+        .WhenNotNull(this as IHasGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
-        .WhenNotNull(this as IHazGitVersion, (_, o) => _
+        .WhenNotNull(this as IHasGitVersion, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblySemVer)
             .SetFileVersion(o.Versioning.AssemblySemFileVer)
             .SetInformationalVersion(o.Versioning.InformationalVersion))
-        .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
+        .WhenNotNull(this as IHasNerdbankGitVersioning, (_, o) => _
             .SetAssemblyVersion(o.Versioning.AssemblyVersion)
             .SetFileVersion(o.Versioning.AssemblyFileVersion)
             .SetInformationalVersion(o.Versioning.AssemblyInformationalVersion));

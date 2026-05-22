@@ -6,11 +6,13 @@
 using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.Git;
+using Fallout.Common.Tools.GitVersion;
 
 namespace Fallout.Components;
 
-public interface IHazGitRepository : IFalloutBuild
+public interface IHasGitVersion : IFalloutBuild
 {
-    [GitRepository] [Required] GitRepository GitRepository => TryGetValue(() => GitRepository);
+    [GitVersion(NoFetch = true, Framework = "net8.0")]
+    [Required]
+    GitVersion Versioning => TryGetValue(() => Versioning);
 }

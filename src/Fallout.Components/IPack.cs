@@ -15,7 +15,7 @@ using static Fallout.Common.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 
-public interface IPack : ICompile, IHazArtifacts
+public interface IPack : ICompile, IHasArtifacts
 {
     AbsolutePath PackagesDirectory => ArtifactsDirectory / "packages";
 
@@ -37,13 +37,13 @@ public interface IPack : ICompile, IHazArtifacts
         .SetConfiguration(Configuration)
         .SetNoBuild(SucceededTargets.Contains(Compile))
         .SetOutputDirectory(PackagesDirectory)
-        .WhenNotNull(this as IHazGitRepository, (_, o) => _
+        .WhenNotNull(this as IHasGitRepository, (_, o) => _
             .SetRepositoryUrl(o.GitRepository.HttpsUrl))
-        .WhenNotNull(this as IHazGitVersion, (_, o) => _
+        .WhenNotNull(this as IHasGitVersion, (_, o) => _
             .SetVersion(o.Versioning.NuGetVersionV2))
-        .WhenNotNull(this as IHazNerdbankGitVersioning, (_, o) => _
+        .WhenNotNull(this as IHasNerdbankGitVersioning, (_, o) => _
             .SetVersion(o.Versioning.NuGetPackageVersion))
-        .WhenNotNull(this as IHazChangelog, (_, o) => _
+        .WhenNotNull(this as IHasChangelog, (_, o) => _
             .SetPackageReleaseNotes(o.NuGetReleaseNotes));
 
     Configure<DotNetPackSettings> PackSettings => _ => _;

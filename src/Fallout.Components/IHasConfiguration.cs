@@ -5,11 +5,12 @@
 
 using System;
 using System.Linq;
-using Fallout.Common.IO;
+using Fallout.Common;
 
 namespace Fallout.Components;
 
-public interface IHazReports : IHazArtifacts
+public interface IHasConfiguration : IFalloutBuild
 {
-    AbsolutePath ReportDirectory => ArtifactsDirectory / "reports";
+    [Parameter] Configuration Configuration => TryGetValue(() => Configuration) ??
+                                               (IsLocalBuild ? Configuration.Debug : Configuration.Release);
 }
