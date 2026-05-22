@@ -142,6 +142,12 @@ partial class Build
         => From<IPack>().PackagesDirectory.GlobFiles("*.nupkg")
             .Where(x => !x.NameWithoutExtension.StartsWith("Nuke.", StringComparison.OrdinalIgnoreCase));
 
+    // `--skip-duplicate` makes nuget push idempotent: if a version is already on the feed,
+    // skip it instead of erroring. Lets us rerun release.yml safely when a single package
+    // fails mid-batch without nuking the whole pipeline on retry.
+    Configure<DotNetNuGetPushSettings> IPublish.PushSettings => _ => _
+        .EnableSkipDuplicate();
+
     IEnumerable<AbsolutePath> NuGetPackageFiles
         => From<IPack>().PackagesDirectory.GlobFiles("*.nupkg");
 
