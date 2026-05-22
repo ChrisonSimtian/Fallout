@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Nuke.Build</AssemblyName>
+    <RootNamespace>Nuke.Build</RootNamespace>
+    <PackageId>Nuke.Build</PackageId>
+    <Title>Nuke.Build (Fallout transition shim)</Title>
+    <!--
+      Packs as a normal build artifact. The release pipeline's Publish target filters
+      `Nuke.*` packages out of the nuget.org push (see Build.cs PushPackageFiles
+      override) since that package ID belongs to the original NUKE maintainer. The
+      produced nupkg is pushed to GitHub Packages by release.yml (#47).
+    -->
+    <IsPackable>true</IsPackable>
+    <Description>Transition shim that re-exports the most common Nuke.Build types as subclasses/wrappers of the canonical Fallout.* types. For projects mid-migration from NUKE to Fallout. Published only to GitHub Packages (nuget.org's Nuke.Build is owned by the original NUKE maintainer).</Description>
+    <PackageTags>build automation continuous-integration tools orchestration nuke shim transition</PackageTags>
+    <!-- Disable XML doc generation here; Directory.Build.props turns it on for packable projects,
+         but the shim types' XML docs are intentionally minimal (point at the canonical type). -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj"
+                      ReferenceOutputAssembly="false"
+                      OutputItemType="Analyzer" />
+  </ItemGroup>
+
+</Project>

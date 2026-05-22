@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Nuke.Components</AssemblyName>
+    <RootNamespace>Nuke.Components</RootNamespace>
+    <PackageId>Nuke.Components</PackageId>
+    <Title>Nuke.Components (Fallout transition shim)</Title>
+    <!--
+      Packs as a normal build artifact. The release pipeline's Publish target filters
+      `Nuke.*` packages out of the nuget.org push (see Build.cs PushPackageFiles
+      override) since that package ID belongs to the original NUKE maintainer. The
+      produced nupkg is pushed to GitHub Packages by release.yml (#47).
+    -->
+    <IsPackable>true</IsPackable>
+    <Description>Transition shim that re-exports the Nuke.Components composition interfaces (ICompile, IRestore, IPack, etc.) as sub-interfaces of the canonical Fallout.Components types. For projects mid-migration from NUKE to Fallout. Published only to GitHub Packages.</Description>
+    <PackageTags>build automation continuous-integration tools orchestration nuke shim transition components</PackageTags>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Components\Fallout.Components.csproj" />
+    <ProjectReference Include="..\..\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj"
+                      ReferenceOutputAssembly="false"
+                      OutputItemType="Analyzer" />
+  </ItemGroup>
+
+</Project>

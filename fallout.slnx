@@ -17,7 +17,9 @@
   <Project Path="src\Fallout.GlobalTool\Fallout.GlobalTool.csproj" />
   <Project Path="src\Fallout.Migrate\Fallout.Migrate.csproj" />
   <Project Path="src\Fallout.Migrate.Analyzers\Fallout.Migrate.Analyzers.csproj" />
+  <Project Path="src\Shims\Nuke.Build\Nuke.Build.csproj" />
   <Project Path="src\Shims\Nuke.Common\Nuke.Common.csproj" />
+  <Project Path="src\Shims\Nuke.Components\Nuke.Components.csproj" />
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
   <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
   <Project Path="src\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
