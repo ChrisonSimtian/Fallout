@@ -43,6 +43,14 @@ v12 commits the public contract that third-party contributors compile their plug
 
 The exact shape isn't pinned yet — that's what the RFCs are for.
 
+### Beyond v12 — Continuous Delivery vision
+
+**Milestone:** [13.0 - Continuous Delivery vision](https://github.com/ChrisonSimtian/Fallout/milestone/8)
+
+Long-horizon direction: extend Fallout beyond CI into release management and deployment orchestration — the space currently owned by TeamCity, Octopus Deploy, and the release stages of Azure DevOps Pipelines. The wedge hypothesis is the same one that powers Fallout-on-CI: C#-native, code-first, single binary, leveraging the v12 plugin SDK.
+
+Shape is genuinely TBD. The milestone collects RFCs and scoping work; no release-date commitment. Comment on [#106](https://github.com/ChrisonSimtian/Fallout/issues/106) with deployment shapes you'd want to use Fallout for.
+
 ## How to engage — RFCs open now
 
 Five RFC issues are open to shape v12's SDK. These are **self-RFCs**: each one ships an opinionated proposal and asks "tell me where I'm wrong" rather than "what should we do." Strong opinions backed by use cases are the most useful kind of comment.
@@ -65,6 +73,7 @@ No firm calendar date yet. Expect v11 in calendar year 2026; v12 follows after t
 
 - The full backlog of bug fixes, polish, and incremental improvements outside the plugin-architecture theme. See [open issues](https://github.com/ChrisonSimtian/Fallout/issues) for those.
 - CI provider revival (Azure Pipelines, GitLab, TeamCity, etc.) — tracked as demand-driven in the [CI roadmap milestone](https://github.com/ChrisonSimtian/Fallout/milestone/4).
+- Continuous Delivery (deployment orchestration, environment promotion, release tracking) — see the [v13 CD vision milestone](https://github.com/ChrisonSimtian/Fallout/milestone/8) for the placeholder RFC.
 - Long-tail design discussion without a release target — see the [Backlog milestone](https://github.com/ChrisonSimtian/Fallout/milestone/3).
 
 ## Versioning and stability promises
