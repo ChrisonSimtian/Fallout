@@ -13,7 +13,7 @@ namespace Fallout.Common.IO;
 /// <summary>
 /// Allows to configure the case-sensitivity used for globbing operations in <see cref="PathConstruction"/>.
 /// </summary>
-public sealed class GlobbingOptionsAttribute : BuildExtensionAttributeBase, IOnBuildCreated
+public class GlobbingOptionsAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
     private readonly GlobbingCaseSensitivity _caseSensitivity;
 

@@ -16,6 +16,7 @@ using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Git;
+using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities;
 
@@ -23,7 +24,9 @@ namespace Nuke.Common.Shim.Tests;
 
 // Consumer's typical Build.cs entry-point — inherits the shim's NukeBuild,
 // uses the canonical Fallout types via `Fallout.Common.Target` (shim doesn't
-// bridge delegates; that's `fallout-migrate`'s job).
+// bridge delegates; that's `fallout-migrate`'s job). The [GlobbingOptions(...)]
+// attribute resolves through the shim now that the canonical is un-sealed.
+[GlobbingOptions(Fallout.Common.IO.GlobbingCaseSensitivity.CaseInsensitive)]
 public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
 {
     [Parameter("Configuration to build")] readonly string Configuration;
