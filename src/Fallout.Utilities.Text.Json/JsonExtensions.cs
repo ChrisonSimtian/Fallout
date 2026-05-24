@@ -17,6 +17,8 @@ namespace Fallout.Common.Utilities;
 
 public static class JsonExtensions
 {
+    [Obsolete("Use DefaultSerializerOptions (JsonSerializerOptions) instead. Newtonsoft.Json surface is scheduled for removal in v11 (#83).")]
+#pragma warning disable CS0618 // AllWritableContractResolver retires alongside.
     public static JsonSerializerSettings DefaultSerializerSettings =
         new()
         {
@@ -24,6 +26,7 @@ public static class JsonExtensions
             DefaultValueHandling = DefaultValueHandling.Ignore,
             ContractResolver = new AllWritableContractResolver()
         };
+#pragma warning restore CS0618
 
     public static JsonSerializerOptions DefaultSerializerOptions { get; } =
         new()
@@ -46,7 +49,9 @@ public static class JsonExtensions
         JsonSerializerSettings serializerSettings = null,
         Formatting formatting = Formatting.Indented)
     {
+#pragma warning disable CS0618 // DefaultSerializerSettings retires alongside.
         return JsonConvert.SerializeObject(obj, formatting, serializerSettings ?? DefaultSerializerSettings);
+#pragma warning restore CS0618
     }
 
     /// <summary>
@@ -55,7 +60,9 @@ public static class JsonExtensions
     [Obsolete("Use the JsonSerializerOptions overload instead. Newtonsoft.Json surface is scheduled for removal in v11 as part of the System.Text.Json migration (#83).")]
     public static T GetJson<T>(this string content, JsonSerializerSettings serializerSettings = null)
     {
+#pragma warning disable CS0618 // DefaultSerializerSettings retires alongside.
         return JsonConvert.DeserializeObject<T>(content, serializerSettings ?? DefaultSerializerSettings);
+#pragma warning restore CS0618
     }
 
     /// <summary>

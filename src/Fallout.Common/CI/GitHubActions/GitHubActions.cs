@@ -114,8 +114,10 @@ public partial class GitHubActions : Host, IBuildServer
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
+#pragma warning disable CS0618 // JObjectExtensions retires in v11; PullRequestNumber/Action follow when GitHubEvent migrates to JsonObject (API-break, separate PR).
     public int? PullRequestNumber => GitHubEvent.GetPropertyValue<int>("number");
     public string PullRequestAction => GitHubEvent.GetPropertyStringValue("action");
+#pragma warning restore CS0618
 
     public AbsolutePath StepSummaryFile => EnvironmentInfo.GetVariable("GITHUB_STEP_SUMMARY");
 

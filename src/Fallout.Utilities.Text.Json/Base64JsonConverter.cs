@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace Fallout.Utilities.Text.Json;
 
+[Obsolete("Newtonsoft-specific Base64 JSON type converter with zero internal callers. Scheduled for removal in v11 (#83); consumers needing this should pin Newtonsoft.Json directly.")]
 public class Base64JsonConverter<T> : TypeConverter
 {
     public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)

@@ -18,6 +18,7 @@ namespace Fallout.Common.Utilities;
 // invisible to callers and a rename is the cleanest fix.
 public static class JsonObjectExtensions
 {
+    [Obsolete("Returns a Newtonsoft JObject. For new code, use System.Text.Json.Nodes.JsonNode.Parse(System.Text.Json.JsonSerializer.Serialize(obj)) or JsonSerializer.SerializeToNode(obj). Scheduled for removal in v11 (#83).")]
     public static JObject ToJObject(this object obj, JsonSerializer serializer = null)
     {
         serializer ??= JsonSerializer.CreateDefault();

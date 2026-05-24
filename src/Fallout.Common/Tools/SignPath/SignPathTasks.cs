@@ -10,8 +10,8 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -71,7 +71,7 @@ public static class SignPathTasks
             using var httpClient = CreateAuthorizedHttpClient(authToken, DefaultHttpClientTimeout);
             var response = await httpClient.PostAsync(
                 GetSignPathAppVeyorIntegrationUrl(organizationId, projectSlug, signingPolicySlug),
-                new StringContent(content.ToJson(), Encoding.UTF8, contentType));
+                new StringContent(content.ToJson(JsonExtensions.DefaultSerializerOptions), Encoding.UTF8, contentType));
             response.AssertStatusCode(HttpStatusCode.Created);
 
             Log.Information("Signing request created: {Url}", response.Headers.Location.AbsoluteUri.Replace("api/v1", "Web"));
@@ -149,11 +149,11 @@ public static class SignPathTasks
             {
                 var response = SendGetRequestWithRetry(httpClient, signingRequestUrl);
                 var rawContent = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                var jsonContent = rawContent.GetJson();
-                signingRequestStatus = jsonContent["status"].NotNull().Value<string>();
+                var jsonContent = rawContent.GetJsonObject();
+                signingRequestStatus = jsonContent["status"].NotNull().GetValue<string>();
                 signedArtifactUrl = signingRequestStatus switch
                 {
-                    SigningRequestStatus.Completed => jsonContent["signedArtifactLink"].NotNull().Value<string>(),
+                    SigningRequestStatus.Completed => jsonContent["signedArtifactLink"].NotNull().GetValue<string>(),
                     SigningRequestStatus.Failed => null,
                     SigningRequestStatus.Denied => null,
                     SigningRequestStatus.Cancelled => null,
@@ -255,8 +255,8 @@ public static class SignPathTasks
         if (response.StatusCode != statusCode)
         {
             var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            var jobject = content.GetJson();
-            Assert.Fail($"[{response.StatusCode}] {jobject.GetChildren<JValue>("").Select(x => x.Value<string>()).JoinNewLine()}");
+            var jobject = content.GetJsonObject();
+            Assert.Fail($"[{response.StatusCode}] {jobject.GetChildren<JsonValue>("").Select(x => x.GetValue<string>()).JoinNewLine()}");
         }
 
         return response;

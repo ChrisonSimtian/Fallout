@@ -52,7 +52,9 @@ public static class ProcessExtensions
 
     public static T StdToJson<T>(this IEnumerable<Output> output)
     {
+#pragma warning disable CS0618 // GetJson<T>(Newtonsoft) retires in v11; this whole StdToJson surface is part of the Fallout.Tooling migration follow-up.
         return output.StdToText().GetJson<T>();
+#pragma warning restore CS0618
     }
 
     public static JObject StdToJson(this IEnumerable<Output> output)
