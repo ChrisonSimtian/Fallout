@@ -13,19 +13,27 @@ This package is a **partial transition shim** for projects mid-migration from NU
 | `[Solution]` | `Fallout.Common.ProjectModel.SolutionAttribute` | Subclass |
 | `[GitRepository]` | `Fallout.Common.Git.GitRepositoryAttribute` | Subclass |
 | `CI host singletons` (`GitHubActions`, `AzurePipelines`, `TeamCity`, `AppVeyor`, `GitLab`, `Jenkins`, `Bamboo`, `Bitbucket`, `Bitrise`, `TravisCI`) | `Fallout.Common.CI.<Vendor>.<Vendor>` | Hand-written static class re-exposing `.Instance` (returns canonical type) |
+| `DelegateDisposable` | `Fallout.Common.Utilities.DelegateDisposable` | Hand-written static class re-exposing `CreateBracket` / `SetAndRestore` |
 
 The MVP unblocks a `class Build : NukeBuild` declaration with parameter/secret/solution/git injection — the entry-point surface of most consumer Build.cs files. CI host shims cover the `GitHubActions.Instance.Workflow`-style access path.
 
-### CI host shim limitation
+### Hand-bridge limitation (CI hosts, `DelegateDisposable`)
 
-Because CI hosts are framework-injected, `[CI] readonly GitHubActions GitHubActions;` field declarations and `Host is GitHubActions` type checks need consumers to use the canonical (`Fallout.Common.CI.GitHubActions.GitHubActions`) type directly — the shim's `Instance` accessor returns a canonical instance, but the shim type itself is `static class` so it can't be used as a field type. Use `fallout-migrate` to rewrite those references.
+These types are framework-injected or use private/internal constructors. The shim is `static class`, so consumers receiving canonical-typed instances (e.g. `[CI] readonly GitHubActions GitHubActions;`, `Host is GitHubActions`, methods returning `DelegateDisposable`) need to switch the type reference to canonical. Use `fallout-migrate` for those rewrites; the shim covers static factory / `.Instance` access paths only.
+
+## What's NOT covered (and won't be)
+
+These types have private/internal ctors and no public static factories, **and** are mainly used as value types — meaning the hand-bridge would be empty (no public statics to re-expose) and a subclass shim can't carry implicit operators or be assignment-compatible with framework-returned canonical instances:
+
+- **`Fallout.Common.IO.AbsolutePath`** — used via `AbsolutePath path = "/foo"` (implicit `string`/`AbsolutePath` conversion), `parent / "child"` (`operator/`), and field-injection. None of those work through a static-class shim. Use `fallout-migrate` to rewrite `Nuke.Common.IO.AbsolutePath` → `Fallout.Common.IO.AbsolutePath`.
+- **`Fallout.Common.Tools.AzureKeyVault.AzureKeyVault`** — zero public statics, framework-constructed only. `fallout-migrate` rename.
+- **`Fallout.Common.Tools.MSBuild.MSBuildProject`** — zero public statics, framework-returned only. `fallout-migrate` rename.
 
 ## What's NOT covered (yet)
 
 - **CI attributes** (`[GitHubActions]`, `[AzurePipelines]`, `[TeamCity]`, `[AppVeyor]`, ...) — these take enum parameters (`GitHubActionsImage`, etc.) that the shim doesn't re-export. C# can't subclass enums; bridging them needs a source generator. Tracked in the follow-up issue.
 - **The `Target` delegate** — delegates can't be implicitly converted across types in C#, so the shim can't bridge `Nuke.Common.Target Compile => _ => _` cleanly. Use `fallout-migrate` for the source-level rename.
 - **Static helper classes** — `DotNetTasks`, `MSBuildTasks`, etc. require method-by-method delegation. Tracked for the source-generator follow-up.
-- **IO types** — `AbsolutePath`, file globbing helpers — also need wrapper classes with mirrored members.
 
 ## Packaging
 

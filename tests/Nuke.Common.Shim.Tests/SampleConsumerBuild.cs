@@ -17,6 +17,7 @@ using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Git;
 using Nuke.Common.ProjectModel;
+using Nuke.Common.Utilities;
 
 namespace Nuke.Common.Shim.Tests;
 
@@ -44,5 +45,18 @@ public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
         _ = TeamCity.Instance?.BuildNumber;
         _ = AppVeyor.Instance?.AccountName;
         _ = AppVeyor.MessageLimit;
+    }
+
+    // DelegateDisposable shim re-exposes the static factories. Consumer
+    // usage stays canonical-typed at runtime (the factories return
+    // canonical IDisposable instances).
+    void TouchDelegateDisposableShim()
+    {
+        using var bracket = DelegateDisposable.CreateBracket(
+            setup: () => { },
+            cleanup: () => { });
+        using var typed = DelegateDisposable.CreateBracket(
+            setup: () => 42,
+            cleanup: _ => { });
     }
 }
