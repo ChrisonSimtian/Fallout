@@ -11,6 +11,10 @@
 #pragma warning disable CS0169  // unused fields — same reason
 
 using Nuke.Common;
+using Nuke.Common.CI.AppVeyor;
+using Nuke.Common.CI.AzurePipelines;
+using Nuke.Common.CI.GitHubActions;
+using Nuke.Common.CI.TeamCity;
 using Nuke.Common.Git;
 using Nuke.Common.ProjectModel;
 
@@ -27,4 +31,18 @@ public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
     [Solution] readonly Fallout.Common.ProjectModel.Solution Solution;
     [Solution("path/to/explicit.slnx")] readonly Fallout.Common.ProjectModel.Solution ExplicitSolution;
     [GitRepository] readonly Fallout.Common.Git.GitRepository GitRepository;
+
+    // CI-host shims expose only the static `Instance` accessor. Consumers can
+    // still chain into instance members because the returned type is canonical.
+    // Field-injection patterns like `[CI] readonly GitHubActions GitHubActions`
+    // are intentionally NOT supported — those need `fallout-migrate` to flip
+    // the type reference to canonical.
+    void TouchCiHostShims()
+    {
+        _ = GitHubActions.Instance?.Workflow;
+        _ = AzurePipelines.Instance?.AgentName;
+        _ = TeamCity.Instance?.BuildNumber;
+        _ = AppVeyor.Instance?.AccountName;
+        _ = AppVeyor.MessageLimit;
+    }
 }

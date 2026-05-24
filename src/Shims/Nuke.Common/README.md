@@ -12,8 +12,13 @@ This package is a **partial transition shim** for projects mid-migration from NU
 | `[Secret]` | `Fallout.Common.SecretAttribute` | Subclass |
 | `[Solution]` | `Fallout.Common.ProjectModel.SolutionAttribute` | Subclass |
 | `[GitRepository]` | `Fallout.Common.Git.GitRepositoryAttribute` | Subclass |
+| `CI host singletons` (`GitHubActions`, `AzurePipelines`, `TeamCity`, `AppVeyor`, `GitLab`, `Jenkins`, `Bamboo`, `Bitbucket`, `Bitrise`, `TravisCI`) | `Fallout.Common.CI.<Vendor>.<Vendor>` | Hand-written static class re-exposing `.Instance` (returns canonical type) |
 
-The MVP unblocks a `class Build : NukeBuild` declaration with parameter/secret/solution/git injection — the entry-point surface of most consumer Build.cs files.
+The MVP unblocks a `class Build : NukeBuild` declaration with parameter/secret/solution/git injection — the entry-point surface of most consumer Build.cs files. CI host shims cover the `GitHubActions.Instance.Workflow`-style access path.
+
+### CI host shim limitation
+
+Because CI hosts are framework-injected, `[CI] readonly GitHubActions GitHubActions;` field declarations and `Host is GitHubActions` type checks need consumers to use the canonical (`Fallout.Common.CI.GitHubActions.GitHubActions`) type directly — the shim's `Instance` accessor returns a canonical instance, but the shim type itself is `static class` so it can't be used as a field type. Use `fallout-migrate` to rewrite those references.
 
 ## What's NOT covered (yet)
 
