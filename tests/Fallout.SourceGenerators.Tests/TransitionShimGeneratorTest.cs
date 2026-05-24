@@ -72,6 +72,52 @@ public class TransitionShimGeneratorTest
         return Verifier.Verify(result);
     }
 
+    // Hand-bridge suppression: when the consuming compilation declares a type at
+    // the target shim FQN, the generator treats that as the authoritative bridge —
+    // no emission, no SHIM001 (even for canonical kinds that would otherwise be
+    // skipped as Hard tier). Mirrors the session-4 CI host pattern in Nuke.Common.
+    [Fact]
+    public void SkipsCanonicalTypesAlreadyHandBridgedByConsumer()
+    {
+        var canonical = CompileCanonicalAssembly("""
+            namespace Fallout.Common
+            {
+                public sealed class HandBridgedSealed { public HandBridgedSealed() {} }
+                public class HandBridgedRegular { public HandBridgedRegular() {} }
+            }
+            """);
+
+        var shimCompilation = CSharpCompilation.Create("Nuke.HandBridged",
+            new[]
+            {
+                CSharpSyntaxTree.ParseText("""
+                    [assembly: Fallout.Migrate.Shims.ShimAllPublicTypesUnder("Fallout.Common", "Nuke.Common")]
+                    """),
+                CSharpSyntaxTree.ParseText("""
+                    namespace Nuke.Common
+                    {
+                        public static class HandBridgedSealed { }
+                        public static class HandBridgedRegular { }
+                    }
+                    """),
+            },
+            Basic.Reference.Assemblies.NetStandard20.References.All
+                .Concat(new[] { canonical }),
+            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+        var driver = CSharpGeneratorDriver.Create(new TransitionShimGenerator());
+        var result = driver.RunGenerators(shimCompilation).GetRunResult();
+
+        // No source emitted for the hand-bridged canonical types.
+        result.GeneratedTrees
+            .Where(t => !t.FilePath.EndsWith("ShimAllPublicTypesUnderAttribute.g.cs", System.StringComparison.Ordinal))
+            .Should().BeEmpty();
+
+        // And no SHIM001 diagnostic for either hand-bridged type — the sealed
+        // one would normally warn, the regular one would normally emit.
+        result.Diagnostics.Should().BeEmpty();
+    }
+
     [Fact]
     public void EmitsNothingWhenNoMarkerAttributePresent()
     {
