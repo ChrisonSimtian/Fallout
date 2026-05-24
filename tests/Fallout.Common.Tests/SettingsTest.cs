@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Newtonsoft.Json;
 using Fallout.Common.Tools.MSBuild;
 using Fallout.Common.Tools.OpenCover;
 using Fallout.Common.Tools.Xunit;
@@ -173,16 +174,15 @@ public class SettingsTest
     [Fact]
     public Task TestDiscord()
     {
-#pragma warning disable CS0618 // Test pins Options.JsonSerializerSettings round-trip; STJ equivalents follow in Fallout.Tooling's #83 migration.
-        var result = new DiscordMessage()
+        // Options.JsonSerializerSettings is Newtonsoft; STJ equivalent lands with Fallout.Tooling's STJ-4 migration (#117).
+        var message = new DiscordMessage()
             .SetNonce("nonce")
             .SetChannelId("channel-id")
             .AddEmbeds(_ => _
                 .SetType(DiscordEmbedType.article)
                 .SetAuthor(_ => _
-                    .SetName("author-name")))
-            .ToJson(Options.JsonSerializerSettings);
-#pragma warning restore CS0618
+                    .SetName("author-name")));
+        var result = JsonConvert.SerializeObject(message, Formatting.Indented, Options.JsonSerializerSettings);
 
         return Verifier.Verify(result);
     }

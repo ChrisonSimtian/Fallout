@@ -114,10 +114,9 @@ public partial class GitHubActions : Host, IBuildServer
 
     public JObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
-#pragma warning disable CS0618 // JObjectExtensions retires in v11; PullRequestNumber/Action follow when GitHubEvent migrates to JsonObject (API-break, separate PR).
-    public int? PullRequestNumber => GitHubEvent.GetPropertyValue<int>("number");
-    public string PullRequestAction => GitHubEvent.GetPropertyStringValue("action");
-#pragma warning restore CS0618
+    // Note: GitHubEvent stays JObject (Newtonsoft) public surface for v11; full JsonObject migration is a separate API-break PR.
+    public int? PullRequestNumber => GitHubEvent.Property("number")?.Value.Value<int>();
+    public string PullRequestAction => GitHubEvent.Property("action")?.Value.Value<string>();
 
     public AbsolutePath StepSummaryFile => EnvironmentInfo.GetVariable("GITHUB_STEP_SUMMARY");
 
