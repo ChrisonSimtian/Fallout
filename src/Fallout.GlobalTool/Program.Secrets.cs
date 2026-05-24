@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -109,15 +109,15 @@ partial class Program
 
     private static Dictionary<string, string> LoadSecrets(IReadOnlyCollection<string> secretParameters, string password, AbsolutePath parametersFile)
     {
-        var jobject = parametersFile.ReadJson();
-        return jobject.Properties()
-            .Where(x => secretParameters.Contains(x.Name))
-            .ToDictionary(x => x.Name, x => Decrypt(x.Value.Value<string>(), password, x.Name));
+        var jobject = parametersFile.ReadJsonObject();
+        return jobject
+            .Where(x => secretParameters.Contains(x.Key))
+            .ToDictionary(x => x.Key, x => Decrypt(x.Value.GetValue<string>(), password, x.Key));
     }
 
     private static void SaveSecrets(Dictionary<string, string> secrets, string password, AbsolutePath parametersFile)
     {
-        parametersFile.UpdateJson(obj =>
+        parametersFile.UpdateJsonObject(obj =>
         {
             foreach (var (name, secret) in secrets)
                 obj[name] = Encrypt(secret, password);

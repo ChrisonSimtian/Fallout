@@ -6,7 +6,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -84,9 +84,9 @@ partial class Program
             return;
 
         var globalJsonFile = rootDirectory / "global.json";
-        var jobject = globalJsonFile.Existing()?.ReadJson() ?? new JObject();
-        jobject["sdk"] ??= new JObject();
+        var jobject = globalJsonFile.Existing()?.ReadJsonObject() ?? new JsonObject();
+        jobject["sdk"] ??= new JsonObject();
         jobject["sdk"].NotNull()["version"] = latestInstalledSdk;
-        globalJsonFile.WriteJson(jobject);
+        globalJsonFile.WriteJson(jobject, JsonExtensions.DefaultSerializerOptions);
     }
 }

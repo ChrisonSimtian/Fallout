@@ -245,6 +245,6 @@ partial class Program
         var dictionary = new Dictionary<string, string> { ["$schema"] = BuildSchemaFileName };
         if (solutionFile != null)
             dictionary["Solution"] = rootDirectory.GetUnixRelativePathTo(solutionFile).ToString();
-        parametersFile.WriteJson(dictionary);
+        parametersFile.WriteJson(dictionary, JsonExtensions.DefaultSerializerOptions);
     }
 }

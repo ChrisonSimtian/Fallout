@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
@@ -22,7 +21,10 @@ partial class OctoVersionTasks
             try
             {
                 var file = (AbsolutePath) getVersion.OutputJsonFile;
-                return file.ReadJson<OctoVersionInfo>(new JsonSerializerSettings { ContractResolver = new AllWritableContractResolver() });
+                // STJ deserializes records natively via constructor binding, so
+                // the AllWritableContractResolver workaround Newtonsoft needed
+                // is no longer required.
+                return file.ReadJson<OctoVersionInfo>(JsonExtensions.DefaultSerializerOptions);
             }
             catch (Exception exception)
             {

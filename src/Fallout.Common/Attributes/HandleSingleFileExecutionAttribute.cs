@@ -8,8 +8,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Nodes;
 using ICSharpCode.SharpZipLib.Zip;
-using Newtonsoft.Json.Linq;
 using NuGet.Packaging;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
@@ -107,7 +107,7 @@ public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, I
     private string GetDotNetRuntimeVersion()
     {
         var globalJsonFile = Build.RootDirectory / "global.json";
-        var jobject = globalJsonFile.Existing()?.ReadJson() ?? new JObject();
-        return jobject["sdk"]?["version"]?.Value<string>()[..5];
+        var jobject = globalJsonFile.Existing()?.ReadJsonObject() ?? new JsonObject();
+        return jobject["sdk"]?["version"]?.GetValue<string>()[..5];
     }
 }
