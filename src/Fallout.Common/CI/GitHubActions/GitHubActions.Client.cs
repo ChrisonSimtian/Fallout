@@ -5,8 +5,8 @@
 
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Net;
 
@@ -22,16 +22,14 @@ public partial class GitHubActions
             .GetResponseAsync();
     }
 
-    private JObject GetJobDetails(long runId)
+    private JsonObject GetJobDetails(long runId)
     {
         var response = _httpClient.Value
             .CreateRequest(HttpMethod.Get, $"repos/{Repository}/actions/runs/{runId}/jobs")
             .GetResponse()
             .AssertSuccessfulStatusCode();
 
-#pragma warning disable CS0618 // GetBodyAsJson(JObject) retires in v11; migrate to GetBodyAsJsonObject + System.Text.Json.Nodes.JsonObject access patterns then.
-        return response.GetBodyAsJson().GetAwaiter().GetResult()
-#pragma warning restore CS0618
+        return response.GetBodyAsJsonObject().GetAwaiter().GetResult()
             .GetChildren("jobs")
             .Single(x => x.GetPropertyStringValue("name") == Job);
     }
