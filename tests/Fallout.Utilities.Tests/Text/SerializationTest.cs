@@ -20,8 +20,10 @@ public class SerializationTest
     public void JsonTest()
     {
         var data = CreateData("Json");
+#pragma warning disable CS0618 // Test pins Newtonsoft round-trip semantics; STJ equivalents will get their own test cases in v11.
         var content = data.ToJson();
         var copy = content.GetJson<Data>();
+#pragma warning restore CS0618
 
         copy.Should().BeEquivalentTo(data);
     }

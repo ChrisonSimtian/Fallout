@@ -191,7 +191,9 @@ public class ToolOptionsArgumentsTest
         where T : ToolOptions, new()
     {
         var options = new T();
+#pragma warning disable CS0618 // ToJObject (Newtonsoft) retires in v11 alongside ToolOptions.InternalOptions which is itself JObject-typed.
         options.InternalOptions = obj.ToJObject(Options.JsonSerializer);
+#pragma warning restore CS0618
         return options;
     }
 }

@@ -14,6 +14,7 @@ namespace Fallout.Common.Tooling;
 /// <summary>
 /// Treats all properties as writable.
 /// </summary>
+[Obsolete("Newtonsoft-specific contract resolver. System.Text.Json handles records and init-only properties natively, so this workaround is unnecessary on the STJ path. Scheduled for removal in v11 (#83).")]
 internal class AllWritableContractResolver : DefaultContractResolver
 {
     protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)

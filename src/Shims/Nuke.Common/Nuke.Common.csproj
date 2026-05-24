@@ -18,6 +18,12 @@
     <!-- Disable XML doc generation here; Directory.Build.props turns it on for packable projects,
          but the shim types' XML docs are intentionally minimal (point at the canonical type). -->
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- Suppress CS0618 on the generated shim source. The TransitionShimGenerator emits delegations
+         to canonical methods, and any canonical method marked [Obsolete] propagates the warning into
+         the auto-generated shim body. Consumers calling the canonical type directly still see the
+         [Obsolete] guidance; this NoWarn just keeps the shim project's build clean. Track propagating
+         [Obsolete] through the generator as a v11 follow-up. -->
+    <NoWarn>$(NoWarn);CS0618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

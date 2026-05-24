@@ -173,6 +173,7 @@ public class SettingsTest
     [Fact]
     public Task TestDiscord()
     {
+#pragma warning disable CS0618 // Test pins Options.JsonSerializerSettings round-trip; STJ equivalents follow in Fallout.Tooling's #83 migration.
         var result = new DiscordMessage()
             .SetNonce("nonce")
             .SetChannelId("channel-id")
@@ -181,6 +182,7 @@ public class SettingsTest
                 .SetAuthor(_ => _
                     .SetName("author-name")))
             .ToJson(Options.JsonSerializerSettings);
+#pragma warning restore CS0618
 
         return Verifier.Verify(result);
     }
