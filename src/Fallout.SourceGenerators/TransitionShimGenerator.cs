@@ -32,14 +32,30 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
     private const string AttributeName = "ShimAllPublicTypesUnderAttribute";
     private const string AttributeFullName = AttributeNamespace + "." + AttributeName;
 
-    private static readonly DiagnosticDescriptor SkippedTypeRule = new(
+    // SHIM001: actionable skips. Something COULD still bridge these — un-seal
+    // the canonical, promote a ctor's visibility, dedup across assemblies, or
+    // hand-write a shim. Warning by default.
+    private static readonly DiagnosticDescriptor ActionableSkipRule = new(
         id: "SHIM001",
-        title: "Transition-shim type skipped (Hard tier)",
-        messageFormat: "Type '{0}' was skipped by the transition-shim generator (kind: {1}). Consumers relying on this via the Nuke.* shim will need to migrate via 'fallout-migrate'.",
+        title: "Transition-shim type skipped (actionable)",
+        messageFormat: "Type '{0}' was skipped by the transition-shim generator (kind: {1}). Consumers relying on this via the Nuke.* shim need a hand-written bridge, a canonical-side fix (un-seal / widen ctor visibility), or to migrate via 'fallout-migrate'.",
         category: "Migration",
         defaultSeverity: DiagnosticSeverity.Warning,
         isEnabledByDefault: true,
-        description: "The transition-shim generator's Easy tier covers classes, abstract classes, interfaces, and attributes. Sealed classes, static classes, enums, and delegates need richer mechanisms (member-by-member delegation, etc.) and are deferred.");
+        description: "Covers skip kinds where an action is available: sealed-class (un-seal canonical or hand-bridge), no-accessible-ctor (widen ctor visibility, hand-bridge static surface, or fallout-migrate), and ambiguous-across-assemblies (dedup at canonical or fallout-migrate).");
+
+    // SHIM002: language-limit skips. C# can't subclass these kinds — they're
+    // intentionally not bridged and are documented fallout-migrate territory.
+    // Info severity, OFF by default; enable in .editorconfig if you want the
+    // full skip catalogue.
+    private static readonly DiagnosticDescriptor LanguageLimitSkipRule = new(
+        id: "SHIM002",
+        title: "Transition-shim type skipped (language limit; fallout-migrate territory)",
+        messageFormat: "Type '{0}' was skipped by the transition-shim generator (kind: {1}). This kind cannot be subclassed in C# — use 'fallout-migrate' to rewrite the consumer's reference to the canonical Fallout.* name.",
+        category: "Migration",
+        defaultSeverity: DiagnosticSeverity.Info,
+        isEnabledByDefault: false,
+        description: "Covers skip kinds bounded by C# language limits: enum, delegate, and struct cannot be subclassed cross-assembly, so a transparent shim is impossible. The consumer-side fix is always 'fallout-migrate'. Off by default to keep the build console quiet; opt in via dotnet_diagnostic.SHIM002.severity if you want the full inventory.");
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -229,7 +245,7 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
         if (ambiguousFqns.Contains(fqn))
         {
             ctx.ReportDiagnostic(Diagnostic.Create(
-                SkippedTypeRule,
+                ActionableSkipRule,
                 location: Location.None,
                 type.ToDisplayString(),
                 "ambiguous-across-assemblies"));
@@ -239,8 +255,9 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
         var skipReason = ClassifyForSkip(type);
         if (skipReason is not null)
         {
+            var rule = IsLanguageLimitKind(skipReason) ? LanguageLimitSkipRule : ActionableSkipRule;
             ctx.ReportDiagnostic(Diagnostic.Create(
-                SkippedTypeRule,
+                rule,
                 location: Location.None,
                 type.ToDisplayString(),
                 skipReason));
@@ -254,6 +271,9 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
         var source = EmitTopLevelShim(type, marker);
         ctx.AddSource(hint, source);
     }
+
+    private static bool IsLanguageLimitKind(string skipReason)
+        => skipReason is "enum" or "delegate" or "struct";
 
     /// <summary>
     /// Returns a one-word kind label if this type should be skipped, otherwise null.
