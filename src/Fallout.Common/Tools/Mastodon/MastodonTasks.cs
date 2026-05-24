@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Fallout.Common.Tooling;
+using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Net;
 
 namespace Fallout.Common.Tools.Mastodon;
@@ -37,10 +38,8 @@ public static class MastodonTasks
                     .AddStreamContent("file", stream, Path.GetFileName(file)))
                 .GetResponseAsync();
 
-#pragma warning disable CS0618 // GetBodyAsJson(JObject) retires in v11; migrate to GetBodyAsJsonObject + System.Text.Json.Nodes.JsonObject access patterns then.
-            var json = await response.GetBodyAsJson();
-#pragma warning restore CS0618
-            return json["id"].NotNull().ToString();
+            var json = await response.GetBodyAsJsonObject();
+            return json.GetPropertyStringValue("id");
         }
 
         var mediaTasks = status.MediaFiles.Select(PostMediaFile).ToArray();

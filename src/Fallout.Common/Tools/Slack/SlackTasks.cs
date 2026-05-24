@@ -51,9 +51,7 @@ public static class SlackTasks
             .WithJsonContent(message)
             .GetResponseAsync();
 
-#pragma warning disable CS0618 // GetBodyAsJson(JObject) retires in v11; migrate to GetBodyAsJsonObject + System.Text.Json.Nodes.JsonObject access patterns then.
-        var jobject = await response.GetBodyAsJson();
-#pragma warning restore CS0618
+        var jobject = await response.GetBodyAsJsonObject();
         var error = jobject.GetPropertyValueOrNull<string>("error");
         Assert.True(error == null, error);
 
