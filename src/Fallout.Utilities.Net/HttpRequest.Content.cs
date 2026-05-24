@@ -1,4 +1,4 @@
-﻿// Copyright 2026 Maintainers of Fallout.
+// Copyright 2026 Maintainers of Fallout.
 // Originally based on NUKE by Matthias Koch and contributors.
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace Fallout.Common.Utilities.Net;
@@ -17,7 +18,7 @@ namespace Fallout.Common.Utilities.Net;
 public static partial class HttpRequestExtensions
 {
     /// <summary>
-    /// Sets the JSON-serialized object as content via <see cref="JsonConvert.SerializeObject(object?)"/>.
+    /// Sets the JSON-serialized object as content via <see cref="Newtonsoft.Json.JsonConvert.SerializeObject(object?)"/>.
     /// </summary>
     public static HttpRequestBuilder WithJsonContent<T>(this HttpRequestBuilder builder, T obj)
     {
@@ -26,11 +27,21 @@ public static partial class HttpRequestExtensions
     }
 
     /// <summary>
-    /// Sets the JSON-serialized object as content via <see cref="JsonConvert.SerializeObject(object?)"/>.
+    /// Sets the JSON-serialized object as content via <see cref="Newtonsoft.Json.JsonConvert.SerializeObject(object?)"/>.
     /// </summary>
+    [Obsolete("Use the JsonSerializerOptions overload instead. Newtonsoft.Json.JsonSerializerSettings is scheduled for removal in v11 as part of the System.Text.Json migration (#83).")]
     public static HttpRequestBuilder WithJsonContent<T>(this HttpRequestBuilder builder, T obj, JsonSerializerSettings settings)
     {
         var content = JsonConvert.SerializeObject(obj, settings);
+        return builder.WithStringContent(content, "application/json");
+    }
+
+    /// <summary>
+    /// Sets the JSON-serialized object as content via <see cref="System.Text.Json.JsonSerializer.Serialize{TValue}(TValue, JsonSerializerOptions?)"/>.
+    /// </summary>
+    public static HttpRequestBuilder WithJsonContent<T>(this HttpRequestBuilder builder, T obj, JsonSerializerOptions options)
+    {
+        var content = System.Text.Json.JsonSerializer.Serialize(obj, options);
         return builder.WithStringContent(content, "application/json");
     }
 

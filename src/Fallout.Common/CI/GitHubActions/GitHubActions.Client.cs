@@ -29,7 +29,9 @@ public partial class GitHubActions
             .GetResponse()
             .AssertSuccessfulStatusCode();
 
+#pragma warning disable CS0618 // GetBodyAsJson(JObject) retires in v11; migrate to GetBodyAsJsonObject + System.Text.Json.Nodes.JsonObject access patterns then.
         return response.GetBodyAsJson().GetAwaiter().GetResult()
+#pragma warning restore CS0618
             .GetChildren("jobs")
             .Single(x => x.GetPropertyStringValue("name") == Job);
     }
