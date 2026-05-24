@@ -129,6 +129,14 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
             fqnCounts.Where(kv => kv.Value > 1).Select(kv => kv.Key),
             StringComparer.Ordinal);
 
+        // Pre-pass: collect FQNs of every top-level public type the consuming
+        // compilation already declares under the target shim prefix. A hand-
+        // written bridge at the target FQN is the consumer's authoritative
+        // answer — the generator skips that canonical type silently (no
+        // emission, no SHIM001).
+        var handBridged = new HashSet<string>(StringComparer.Ordinal);
+        CollectHandBridgedFqns(compilation.SourceModule.GlobalNamespace, marker.ToPrefix, handBridged);
+
         // The same logical type can be reached via multiple referenced assemblies.
         // Dedupe hint names so AddSource doesn't throw.
         var emittedHints = new HashSet<string>(StringComparer.Ordinal);
@@ -140,8 +148,28 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
             if (!assemblyRef.Name.StartsWith("Fallout.", StringComparison.Ordinal))
                 continue;
 
-            VisitNamespace(ctx, assemblyRef.GlobalNamespace, marker, emittedHints, ambiguous);
+            VisitNamespace(ctx, assemblyRef.GlobalNamespace, marker, emittedHints, ambiguous, handBridged);
         }
+    }
+
+    private static void CollectHandBridgedFqns(INamespaceSymbol ns, string toPrefix, HashSet<string> sink)
+    {
+        var fullNs = ns.ToDisplayString();
+        var inScope = !string.IsNullOrEmpty(fullNs)
+            && (fullNs == toPrefix || fullNs.StartsWith(toPrefix + ".", StringComparison.Ordinal));
+        if (inScope)
+        {
+            foreach (var type in ns.GetTypeMembers())
+            {
+                if (type.DeclaredAccessibility != Accessibility.Public) continue;
+                // Compose the metadata-style FQN: namespace + "." + MetadataName.
+                // MetadataName encodes arity (e.g. `Foo`1` for `Foo<T>`), so this
+                // matches arity correctly when we look it up later.
+                sink.Add(fullNs + "." + type.MetadataName);
+            }
+        }
+        foreach (var child in ns.GetNamespaceMembers())
+            CollectHandBridgedFqns(child, toPrefix, sink);
     }
 
     private static void CountFqnsInNamespace(INamespaceSymbol ns, ShimMarker marker, Dictionary<string, int> counts)
@@ -161,7 +189,7 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
             CountFqnsInNamespace(child, marker, counts);
     }
 
-    private static void VisitNamespace(SourceProductionContext ctx, INamespaceSymbol ns, ShimMarker marker, HashSet<string> emittedHints, HashSet<string> ambiguousFqns)
+    private static void VisitNamespace(SourceProductionContext ctx, INamespaceSymbol ns, ShimMarker marker, HashSet<string> emittedHints, HashSet<string> ambiguousFqns, HashSet<string> handBridgedFqns)
     {
         foreach (var type in ns.GetTypeMembers())
         {
@@ -176,17 +204,25 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
                 || fullNamespace.StartsWith(marker.FromPrefix + ".", StringComparison.Ordinal);
             if (!matches) continue;
 
-            EmitOrSkipType(ctx, type, marker, emittedHints, ambiguousFqns);
+            EmitOrSkipType(ctx, type, marker, emittedHints, ambiguousFqns, handBridgedFqns);
         }
         foreach (var child in ns.GetNamespaceMembers())
-            VisitNamespace(ctx, child, marker, emittedHints, ambiguousFqns);
+            VisitNamespace(ctx, child, marker, emittedHints, ambiguousFqns, handBridgedFqns);
     }
 
-    private static void EmitOrSkipType(SourceProductionContext ctx, INamedTypeSymbol type, ShimMarker marker, HashSet<string> emittedHints, HashSet<string> ambiguousFqns)
+    private static void EmitOrSkipType(SourceProductionContext ctx, INamedTypeSymbol type, ShimMarker marker, HashSet<string> emittedHints, HashSet<string> ambiguousFqns, HashSet<string> handBridgedFqns)
     {
         // Skip nested types at top level — they get emitted inside their
         // declaring shim's source.
         if (type.ContainingType is not null)
+            return;
+
+        // If the consumer hand-wrote a shim at the target FQN, treat that as the
+        // authoritative bridge. Skip both emission and the SHIM001 diagnostic —
+        // the canonical type is covered, just not by us.
+        var targetNs = SwapNamespace(type.ContainingNamespace.ToDisplayString(), marker);
+        var targetMetadataFqn = targetNs + "." + type.MetadataName;
+        if (handBridgedFqns.Contains(targetMetadataFqn))
             return;
 
         var fqn = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
