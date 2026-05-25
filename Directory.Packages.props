@@ -15,8 +15,6 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="10.0.0" />
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.7.115" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <PackageVersion Include="NJsonSchema" Version="11.5.2" />
-    <PackageVersion Include="NJsonSchema.NewtonsoftJson" Version="11.5.2" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageVersion Include="NuGet.Packaging" Version="6.14.3" />
     <PackageVersion Include="Octokit" Version="14.0.0" />

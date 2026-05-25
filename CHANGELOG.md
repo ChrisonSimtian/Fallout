@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking changes
 
+- **`SchemaUtility` rewritten on `System.Text.Json` — NJsonSchema gone** (#114, STJ-1 of #83). The build-parameter schema generator (which emits `.fallout/build.schema.json` for editor autocomplete) no longer goes through NJsonSchema. It now hand-rolls the draft-04 schema using `JsonNode`/`JsonObject` directly — same output shape, no Rico-entanglement.
+  - **Dropped packages**: `NJsonSchema`, `NJsonSchema.NewtonsoftJson`, `NJsonSchema.Annotations`, `Namotion.Reflection` — four packages and ~12 transitive dependencies gone from `Fallout.Build`. `Newtonsoft.Json` stays in the closure only via `Fallout.Common`'s `*Tasks.cs` (Slack/Twitter/Teams) until #119 lands.
+  - **API**: `SchemaUtility.GetJsonString(IFalloutBuild)` and `GetJsonDocument(IFalloutBuild)` unchanged for consumers.
+  - **Behavior preserved**: well-known definitions in canonical order (Host, ExecutableTarget, Verbosity, FalloutBuild), `allOf:[user, base]` envelope, `[CustomParameter]` subclasses render as plain string (not recursive), value-type `Nullable<T>` → `[T, "null"]`, reference-type nullables → `["null", T]` for primitives / `oneOf [null, $ref]` for refs, `[TypeConverter]`-attributed types (AbsolutePath, Solution, etc.) render as `"string"`.
+
 - **`Fallout.Tooling` engine migrated to System.Text.Json** (#117 STJ-4, #118 STJ-5). The tool-options ↔ JSON layer that powers every tool wrapper is now STJ-native:
   - `Options.InternalOptions` is now `System.Text.Json.Nodes.JsonObject` (was Newtonsoft `JObject`). `Options.JsonSerializer` and `Options.JsonSerializerSettings` are gone — use `Options.SerializerOptions` (`JsonSerializerOptions`) instead.
   - The Options→InternalOptions converter is now a `JsonConverterFactory` registered on `SerializerOptions.Converters` (STJ doesn't inherit class-level `[JsonConverter]` attributes onto subclasses). `LookupTable<,>` round-trips through a parallel `ObjectFromFieldConverter` factory; `Enumeration` subclasses go through a new `EnumerationJsonConverterFactory` that bridges `[TypeConverter]`-attributed types (which STJ doesn't honour natively).
