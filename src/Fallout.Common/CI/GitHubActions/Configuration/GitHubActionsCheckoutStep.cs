@@ -17,11 +17,21 @@ public class GitHubActionsCheckoutStep : GitHubActionsStep
     public bool? Progress { get; set; }
     public string Filter { get; set; }
 
+    /// <summary>
+    /// The git ref to check out. When unset, actions/checkout picks the default for the event
+    /// (the merge SHA on pull_request triggers, which leaves HEAD detached). Set to
+    /// <c>${{ github.head_ref }}</c> on PR workflows that read <c>.git/HEAD</c> directly
+    /// (e.g. <see cref="Fallout.Common.Git.GitRepository.FromLocalDirectory"/>) so the branch
+    /// resolves correctly.
+    /// </summary>
+    public string Ref { get; set; }
+
     public override void Write(CustomFileWriter writer)
     {
         writer.WriteLine("- uses: actions/checkout@v6");
 
-        if (Submodules.HasValue || Lfs.HasValue || FetchDepth.HasValue || Progress.HasValue || !Filter.IsNullOrWhiteSpace())
+        if (Submodules.HasValue || Lfs.HasValue || FetchDepth.HasValue || Progress.HasValue ||
+            !Filter.IsNullOrWhiteSpace() || !Ref.IsNullOrWhiteSpace())
         {
             using (writer.Indent())
             {
@@ -38,6 +48,8 @@ public class GitHubActionsCheckoutStep : GitHubActionsStep
                         writer.WriteLine($"progress: {Progress.ToString().ToLowerInvariant()}");
                     if (!Filter.IsNullOrWhiteSpace())
                         writer.WriteLine($"filter: {Filter}");
+                    if (!Ref.IsNullOrWhiteSpace())
+                        writer.WriteLine($"ref: {Ref}");
                 }
             }
         }

@@ -29,6 +29,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     private uint? _fetchDepth;
     private bool? _progress;
     private string _filter;
+    private string _ref;
 
     public GitHubActionsAttribute(
         string name,
@@ -117,6 +118,17 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
         get => throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Forwarded to <c>actions/checkout</c>'s <c>ref</c> input. Set to
+    /// <c>${{ github.head_ref }}</c> on PR-triggered workflows that need <c>.git/HEAD</c>
+    /// to stay attached (e.g. ones that read the current branch via GitRepository).
+    /// </summary>
+    public string CheckoutRef
+    {
+        set => _ref = value;
+        get => throw new NotSupportedException();
+    }
+
     public override CustomFileWriter CreateWriter(StreamWriter streamWriter)
     {
         return new CustomFileWriter(streamWriter, indentationFactor: 2, commentPrefix: "#");
@@ -167,7 +179,8 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                          Lfs = _lfs,
                          FetchDepth = _fetchDepth,
                          Progress = _progress,
-                         Filter = _filter
+                         Filter = _filter,
+                         Ref = _ref
                      };
 
         if (CacheKeyFiles.Any())
