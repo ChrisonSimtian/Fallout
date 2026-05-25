@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Newtonsoft.Json;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -147,9 +148,8 @@ public class OptionsTest
         options.Set(() => LookupValue, new LookupTable<string, int> { ["key"] = new[] { 1, 2, 3 } });
         options.Set(() => NestedValue, options);
 
-#pragma warning disable CS0618 // Test pins Options.JsonSerializerSettings round-trip; STJ equivalents follow in Fallout.Tooling's #83 migration.
-        return Verifier.Verify(options.ToJson(Options.JsonSerializerSettings));
-#pragma warning restore CS0618
+        // Options.JsonSerializerSettings is Newtonsoft; STJ equivalent lands with Fallout.Tooling's STJ-4 migration (#117).
+        return Verifier.Verify(JsonConvert.SerializeObject(options, Formatting.Indented, Options.JsonSerializerSettings));
     }
 }
 

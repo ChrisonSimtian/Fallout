@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [10.3.0] / 2026-05-22
+## [Unreleased] — 11.0
+
+### Breaking changes
+- **`Fallout.Utilities.Text.Json` Newtonsoft surface removed** (#116, STJ-3 of #83). The `[Obsolete]`-marked Newtonsoft.Json overloads added in 10.3.x are gone:
+  - **Deleted types:** `JObjectExtensions` (`GetChildren`/`GetPropertyValue`/`GetPropertyStringValue`/`GetPropertyValueOrNull` on `JObject`), `AllWritableContractResolver`, `Base64JsonConverter<T>`.
+  - **`JsonExtensions` stripped to System.Text.Json only**: `DefaultSerializerSettings` removed (use `DefaultSerializerOptions`); the `JsonSerializerSettings`-taking overloads of `ToJson` / `GetJson` / `ReadJson` / `WriteJson` / `UpdateJson` and the `JObject`-returning `GetJson`/`ReadJson`/`UpdateJson(Action<JObject>)` are gone. Equivalent STJ surface: same method names taking `JsonSerializerOptions` (now defaulted to `DefaultSerializerOptions` when omitted), plus `GetJsonObject` / `ReadJsonObject` / `UpdateJsonObject(Action<JsonObject>)` for `JsonNode`-based access.
+  - **Migration**: replace `obj.ToJson(settings)` with `obj.ToJson(JsonExtensions.DefaultSerializerOptions)` (or pass your own `JsonSerializerOptions`); replace `content.GetJson<JObject>()` with `content.GetJsonObject()`; replace `JObject.GetPropertyValue<T>(name)` with `JsonObject.GetPropertyValue<T>(name)` (same method name, different receiver type via `using System.Text.Json.Nodes`).
+  - **Still pending**: `Object.ToJObject` and the `Newtonsoft.Json` `PackageReference` remain in `Fallout.Utilities.Text.Json` until STJ-4 (Fallout.Tooling, #117) lands — `Fallout.Tooling.Options.InternalOptions` is typed `JObject` and drives the last caller.
+
+
 - **Fixed `Fallout.SolutionModel` 10.2.24–10.2.34 unrestorable** (#107): the vendored SolutionPersistence wrapper was `IsPackable=false`, so `dotnet pack` fell back to emitting the dependency under the *assembly* name (`Microsoft.VisualStudio.SolutionPersistence`) at the Fallout version — which doesn't exist on nuget.org. Wrapper now packs as `Fallout.VisualStudio.SolutionPersistence` (PackageId set explicitly; `AssemblyName` preserved for drop-in type identity), so `Fallout.SolutionModel.nuspec` declares the correct transitive dep. Also affected `Fallout.Common`, `Fallout.Build`, `Fallout.ProjectModel`, `Fallout.Components` — all fixed.
 - **`--skip-duplicate` on the publish push** (#108): release.yml's `IPublish.PushSettings` now enables skip-duplicate, so a partial publish failure (e.g. one package's API key permission gap) no longer makes reruns error on the already-uploaded versions. Pipeline is idempotent.
 - **Fixed `build.ps1` bootstrap on PowerShell 7.5+** (#15): the script now uses `Join-Path` for SDK resolution so newer PowerShell's stricter path handling doesn't break the launcher.

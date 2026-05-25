@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Fallout.Common.Utilities;
 
@@ -52,9 +53,8 @@ public static class ProcessExtensions
 
     public static T StdToJson<T>(this IEnumerable<Output> output)
     {
-#pragma warning disable CS0618 // GetJson<T>(Newtonsoft) retires in v11; this whole StdToJson surface is part of the Fallout.Tooling migration follow-up.
-        return output.StdToText().GetJson<T>();
-#pragma warning restore CS0618
+        // Fallout.Tooling stays on Newtonsoft until STJ-4 (#117); call Newtonsoft directly instead of through the util lib.
+        return JsonConvert.DeserializeObject<T>(output.StdToText());
     }
 
     public static JObject StdToJson(this IEnumerable<Output> output)
