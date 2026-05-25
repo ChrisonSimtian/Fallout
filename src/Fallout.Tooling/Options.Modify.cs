@@ -4,8 +4,7 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
-using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Fallout.Common.Tooling;
 
@@ -14,8 +13,8 @@ public static partial class OptionsExtensions
     public static T Modify<T>(this T options, Action<IOptions> modification = null)
         where T : IOptions
     {
-        var json = JsonConvert.SerializeObject(options);
-        var copy = JsonConvert.DeserializeObject<T>(json);
+        var json = JsonSerializer.Serialize(options, options.GetType(), Tooling.Options.SerializerOptions);
+        var copy = (T)JsonSerializer.Deserialize(json, options.GetType(), Tooling.Options.SerializerOptions);
 
         // TODO OPTIONS: HACK
         if (options is ToolOptions originalOptions && copy is ToolOptions copiedOptions)

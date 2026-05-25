@@ -63,7 +63,6 @@ public static class ToolGenerator
     {
         return new[]
                {
-                   "Newtonsoft.Json",
                    "Fallout.Common",
                    "Fallout.Common.Tooling",
                    "Fallout.Common.Tools",
@@ -75,7 +74,8 @@ public static class ToolGenerator
                    "System.Diagnostics.CodeAnalysis",
                    "System.IO",
                    "System.Linq",
-                   "System.Text"
+                   "System.Text",
+                   "System.Text.Json.Serialization"
                }
             .Concat(tool.Imports ?? new List<string>())
             .OrderBy(x => x);

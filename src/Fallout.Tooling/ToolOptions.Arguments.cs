@@ -7,7 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -59,13 +60,13 @@ partial class ToolOptions
             yield return commandAttribute.Arguments;
 
         var escapeMethod = CreateEscape();
-        var arguments = InternalOptions.Properties()
-            .Select(x => (Token: x.Value, Property: _allProperties[x.Name]))
-            .Select(x => (x.Token, x.Property, Attribute: x.Property.GetCustomAttribute<ArgumentAttribute>()))
+        var arguments = InternalOptions
+            .Select(kv => (Node: kv.Value, Property: _allProperties[kv.Key]))
+            .Select(x => (x.Node, x.Property, Attribute: x.Property.GetCustomAttribute<ArgumentAttribute>()))
             .Where(x => x.Attribute != null)
             .OrderByDescending(x => x.Attribute.Position.CompareTo(0))
             .ThenBy(x => x.Attribute.Position)
-            .SelectMany(x => GetArgument(x.Token, x.Property, x.Attribute, escapeMethod))
+            .SelectMany(x => GetArgument(x.Node, x.Property, x.Attribute, escapeMethod))
             .WhereNotNull()
             .Concat(ProcessAdditionalArguments ?? []);
 
@@ -86,7 +87,7 @@ partial class ToolOptions
     }
 
     private IEnumerable<string> GetArgument(
-        JToken token,
+        JsonNode node,
         PropertyInfo property,
         ArgumentAttribute attribute,
         Func<string, PropertyInfo, string> escape)
@@ -108,22 +109,22 @@ partial class ToolOptions
 
         return [];
 
-        string Parse(JToken token, Type type)
+        string Parse(JsonNode token, Type type)
         {
             string value;
             if (attribute.FormatterMethod != null)
             {
                 var formatterType = attribute.FormatterType ?? GetType();
                 var formatterMethod = formatterType.GetMethod(attribute.FormatterMethod, ReflectionUtility.All);
-                var objValue = type != typeof(object) ? token.ToObject(type) : token.ToObject<string>();
+                var objValue = type != typeof(object) ? DeserializeWithCoercion(token, type) : NodeToString(token);
                 value = formatterMethod.GetValue<string>(obj: this, args: [objValue, property]);
             }
             else
             {
-                value = token.ToObject<string>();
+                value = NodeToString(token);
                 if (new[] { typeof(bool), typeof(bool?) }.Contains(type) ||
                     (type == typeof(object) && new[] { bool.TrueString, bool.FalseString }.Contains(value)))
-                    value = value.ToLowerInvariant();
+                    value = value?.ToLowerInvariant();
             }
 
             return escape.Invoke(value, property);
@@ -133,10 +134,10 @@ partial class ToolOptions
         {
             if (property.PropertyType == typeof(bool?) &&
                 !format.ContainsOrdinalIgnoreCase(ValuePlaceholder) &&
-                !token.Value<bool>())
+                !node.GetValue<bool>())
                 yield break;
 
-            var value = Parse(token, property.PropertyType);
+            var value = Parse(node, property.PropertyType);
             if (value.IsNullOrWhiteSpace())
                 yield break;
 
@@ -149,7 +150,7 @@ partial class ToolOptions
             Assert.True(formatParts.Length <= 2);
 
             var valueType = property.PropertyType.GetScalarType();
-            var values = token.Value<JArray>().Select(x => Parse(x, valueType)).Where(x => !x.IsNullOrWhiteSpace());
+            var values = node.AsArray().Select(x => Parse(x, valueType)).Where(x => !x.IsNullOrWhiteSpace());
 
             if (attribute.Separator == null)
             {
@@ -179,7 +180,7 @@ partial class ToolOptions
         IEnumerable<string> GetDictionaryArguments()
         {
             var valueType = property.PropertyType.GetGenericArguments().Last();
-            var pairs = token.Value<JObject>().Properties().Select(x => (Key: x.Name, Value: Parse(x, valueType)))
+            var pairs = node.AsObject().Select(kv => (Key: kv.Key, Value: Parse(kv.Value, valueType)))
                 .Where(x => !x.Value.IsNullOrWhiteSpace());
 
             if (attribute.Separator == null)
@@ -209,8 +210,8 @@ partial class ToolOptions
         IEnumerable<string> GetLookupArguments()
         {
             var valueType = property.PropertyType.GetGenericArguments().Last();
-            var pairs = token.Value<JObject>().Properties()
-                .Select(x => (Key: x.Name, Values: x.Value.Value<JArray>().Select(x => Parse(x, valueType))));
+            var pairs = node.AsObject()
+                .Select(kv => (Key: kv.Key, Values: kv.Value.AsArray().Select(x => Parse(x, valueType))));
 
             if (attribute.Separator == null)
             {
@@ -240,12 +241,42 @@ partial class ToolOptions
                     return [part];
 
                 if (attribute.Separator.IsNullOrWhiteSpace())
-                    return pairs.Select(x => part.Replace(KeyPlaceholder, x.Key).Replace(ValuePlaceholder, x.Values.Join(attribute.InnerSeparator)));
+                    return pairs.Select(x => part.Replace(KeyPlaceholder, x.Key).Replace(ValuePlaceholder, x.Values.Join(attribute.InnerSeparator))).ToArray();
 
                 var pairPart = part.Substring(pairStart, pairLength);
                 var replacedPairs = pairs.Select(x => pairPart.Replace(KeyPlaceholder, x.Key).Replace(ValuePlaceholder, x.Values.Join(attribute.InnerSeparator)));
                 return [part.Substring(startIndex: 0, length: pairStart) + replacedPairs.Join(attribute.Separator)];
             });
         }
+    }
+
+    // Mirrors Newtonsoft's permissive JToken.ToObject<string>(): unwraps the JSON value to a plain
+    // string regardless of underlying kind. STJ's GetValue<string>() throws on non-string nodes.
+    private static string NodeToString(JsonNode node)
+    {
+        if (node is null) return null;
+        return node.GetValueKind() switch
+        {
+            JsonValueKind.String => node.GetValue<string>(),
+            JsonValueKind.True => bool.TrueString,
+            JsonValueKind.False => bool.FalseString,
+            JsonValueKind.Null => null,
+            _ => node.ToString()
+        };
+    }
+
+    // Newtonsoft's JToken.ToObject<T> coerced string JSON values into target primitives (e.g. "true" -> bool).
+    // STJ refuses. Bridge that one quirk so test fixtures and tool wrappers passing string-typed bool values
+    // through the formatter-method path keep working. DateTime/numeric/etc. are handled correctly by STJ's
+    // native string-to-T deserialization, so we only intervene for bool.
+    private static object DeserializeWithCoercion(JsonNode token, Type type)
+    {
+        if (token is JsonValue jv && jv.GetValueKind() == JsonValueKind.String)
+        {
+            var target = Nullable.GetUnderlyingType(type) ?? type;
+            if (target == typeof(bool) && bool.TryParse(jv.GetValue<string>(), out var coerced))
+                return coerced;
+        }
+        return token.Deserialize(type, Options.SerializerOptions);
     }
 }

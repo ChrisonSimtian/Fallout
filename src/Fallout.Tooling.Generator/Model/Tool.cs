@@ -10,14 +10,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Fallout.CodeGeneration.Model;
 
 [DebuggerDisplay("{" + nameof(SpecificationFile) + "}")]
 public class Tool : IDeprecatable
 {
-    [JsonProperty("$schema")]
+    [JsonPropertyName("$schema")]
     public string Schema => "https://raw.githubusercontent.com/ChrisonSimtian/Fallout/main/src/Fallout.Tooling.Generator/schema.json";
 
     [JsonIgnore] public string SpecificationFile { get; set; }
@@ -34,13 +34,13 @@ public class Tool : IDeprecatable
     public List<string> References { get; set; } = new();
     public List<string> Imports { get; set; } = new();
 
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [RegularExpression(RegexPatterns.Name)]
     [Description("Name of the Tool.")]
     public string Name { get; set; }
 
     [Url]
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [Description("Url to the official website.")]
     public string OfficialUrl { get; set; }
 
@@ -51,17 +51,17 @@ public class Tool : IDeprecatable
         "Help or introduction text to for the tool. Supports 'a-href', 'c', 'em', 'b', 'ul', 'li' and 'para' tags for better formatting.")]
     public string Help { get; set; }
 
-    [JsonProperty(PropertyName = "nugetPackageId")]
+    [JsonPropertyName("nugetPackageId")]
     [Description("ID for the NuGet package.")]
     public string NuGetPackageId { get; set; }
 
-    [JsonProperty(PropertyName = "nugetFramework")]
+    [JsonPropertyName("nugetFramework")]
     public bool NuGetFramework { get; set; }
 
     [Description("ID for the NPM package.")]
     public string NpmPackageId { get; set; }
 
-    [JsonProperty(PropertyName = "aptPackageId")]
+    [JsonPropertyName("aptPackageId")]
     [Description("ID for the AptGet package.")]
     public string AptGetPackageId { get; set; }
 
@@ -96,6 +96,6 @@ public class Tool : IDeprecatable
     public List<Enumeration> Enumerations { get; set; } = new();
 
     [Description("Can be used to store additional information about the tool.")]
-    [JsonProperty("_metadata")]
+    [JsonPropertyName("_metadata")]
     public Dictionary<string, object> Metadata { get; set; }
 }

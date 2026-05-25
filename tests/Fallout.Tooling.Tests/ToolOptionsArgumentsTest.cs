@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using FluentAssertions;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
@@ -191,9 +193,7 @@ public class ToolOptionsArgumentsTest
         where T : ToolOptions, new()
     {
         var options = new T();
-#pragma warning disable CS0618 // ToJObject (Newtonsoft) retires in v11 alongside ToolOptions.InternalOptions which is itself JObject-typed.
-        options.InternalOptions = obj.ToJObject(Options.JsonSerializer);
-#pragma warning restore CS0618
+        options.InternalOptions = JsonSerializer.SerializeToNode(obj, Options.SerializerOptions).AsObject();
         return options;
     }
 }

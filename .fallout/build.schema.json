@@ -37,8 +37,6 @@
         "Publish",
         "References",
         "ReportCoverage",
-        "ReportDuplicates",
-        "ReportIssues",
         "Restore",
         "RunTargetInDockerImageTest",
         "Test",

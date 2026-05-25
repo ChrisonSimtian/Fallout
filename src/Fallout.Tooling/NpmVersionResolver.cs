@@ -1,14 +1,11 @@
-﻿// Copyright 2026 Maintainers of Fallout.
+// Copyright 2026 Maintainers of Fallout.
 // Originally based on NUKE by Matthias Koch and contributors.
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using System;
-using System.Linq;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Fallout.Common.Tooling;
 
@@ -22,8 +19,8 @@ public static class NpmVersionResolver
         {
             var url = $"https://registry.npmjs.org/{packageId}";
             var jsonString = await s_client.GetStringAsync(url);
-            var jsonObject = JsonConvert.DeserializeObject<JObject>(jsonString);
-            return (jsonObject["dist-tags"]?["latest"]).NotNull().Value<string>();
+            var jsonObject = JsonNode.Parse(jsonString)?.AsObject();
+            return jsonObject?["dist-tags"]?["latest"]?.GetValue<string>();
         }
         catch
         {

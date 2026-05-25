@@ -1,14 +1,13 @@
-﻿// Copyright 2026 Maintainers of Fallout.
+// Copyright 2026 Maintainers of Fallout.
 // Originally based on NUKE by Matthias Koch and contributors.
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using System;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
 
@@ -24,12 +23,16 @@ public static class NuGetVersionResolver
                 ? $"https://api.nuget.org/v3/flatcontainer/{packageId.ToLowerInvariant()}/index.json"
                 : $"https://api-v2v3search-0.nuget.org/query?q=packageid:{packageId}&prerelease={includePrereleases}";
             var jsonString = await s_client.GetStringAsync(url);
-            var jsonObject = JsonConvert.DeserializeObject<JObject>(jsonString);
-            return includeUnlisted
-                ? jsonObject.First.NotNull().First.NotNull().Children()
-                    .Select(x => x.Value<string>())
-                    .Last(x => includePrereleases || !x.Contains("-"))
-                : jsonObject["data"].NotNull().Single()["version"].NotNull().ToString();
+            var jsonObject = JsonNode.Parse(jsonString)?.AsObject().NotNull();
+
+            if (includeUnlisted)
+            {
+                var versions = jsonObject!.First().Value.NotNull().AsArray()
+                    .Select(x => x!.GetValue<string>());
+                return versions.Last(x => includePrereleases || !x.Contains("-"));
+            }
+
+            return jsonObject!["data"].NotNull().AsArray().Single()!["version"].NotNull().ToString();
         }
         catch
         {

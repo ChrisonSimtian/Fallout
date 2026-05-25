@@ -7,8 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" />
-    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Humanizer" />
+    <PackageReference Include="System.Text.Json" />
     <PackageReference Include="Serilog" />
     <PackageReference Include="System.ComponentModel.Annotations" />
   </ItemGroup>

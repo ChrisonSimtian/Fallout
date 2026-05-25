@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Fallout.Common.Tools.Teams;
 
@@ -22,11 +22,11 @@ namespace Fallout.Common.Tools.Teams;
 public partial class TeamsMessage : Options
 {
     /// <summary></summary>
-    [JsonProperty("title")] public string Title => Get<string>(() => Title);
+    [JsonPropertyName("title")] public string Title => Get<string>(() => Title);
     /// <summary></summary>
-    [JsonProperty("text")] public string Text => Get<string>(() => Text);
+    [JsonPropertyName("text")] public string Text => Get<string>(() => Text);
     /// <summary></summary>
-    [JsonProperty("themeColor")] public string ThemeColor => Get<string>(() => ThemeColor);
+    [JsonPropertyName("themeColor")] public string ThemeColor => Get<string>(() => ThemeColor);
 }
 #endregion
 #region TeamsMessageExtensions

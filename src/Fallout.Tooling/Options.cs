@@ -9,8 +9,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -45,42 +46,65 @@ public interface IOptions
     void ClearCollection<T>(Expression<Func<IReadOnlyCollection<T>>> provider);
 }
 
-[JsonConverter(typeof(TypeConverter))]
 public class Options : IOptions
 {
-    public class TypeConverter : JsonConverter
+    // STJ does NOT inherit class-level [JsonConverter] attributes onto subclasses, so the
+    // Options→InternalOptions redirect lives in a JsonConverterFactory registered in the static
+    // SerializerOptions below. CanConvert matches Options and every subclass (ToolOptions and the
+    // 62 generated *Settings types).
+    public class TypeConverter : JsonConverterFactory
     {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override bool CanConvert(Type typeToConvert)
         {
-            if (value is Options options)
-                JToken.FromObject(options.InternalOptions, serializer).WriteTo(writer);
+            return typeToConvert == typeof(Options) || typeToConvert.IsSubclassOf(typeof(Options));
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
-            var options = (Options)objectType.CreateInstance();
-            options.InternalOptions = JObject.Load(reader);
-            return options;
+            var converterType = typeof(InnerConverter<>).MakeGenericType(typeToConvert);
+            return (JsonConverter)Activator.CreateInstance(converterType).NotNull();
         }
 
-        public override bool CanConvert(Type objectType)
+        private class InnerConverter<T> : JsonConverter<T>
+            where T : Options
         {
-            return objectType.IsSubclassOf(typeof(Options));
+            public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+            {
+                value.InternalOptions.WriteTo(writer, options);
+            }
+
+            public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            {
+                var instance = (T)typeToConvert.CreateInstance();
+                instance.InternalOptions = JsonNode.Parse(ref reader)?.AsObject() ?? new JsonObject();
+                return instance;
+            }
         }
     }
 
-    private static JsonConverter LookupTableConverter = new ObjectFromFieldConverter(typeof(LookupTable<,>), "_dictionary");
-    private static JsonConverter OptionsBuilderConverter = new ObjectFromFieldConverter(typeof(Options), "InternalOptions");
+    internal static JsonConverter LookupTableConverter = new ObjectFromFieldConverter(typeof(LookupTable<,>), "_dictionary");
 
-    internal static JsonSerializer JsonSerializer = new() { Converters = { LookupTableConverter, OptionsBuilderConverter } };
-    internal static JsonSerializerSettings JsonSerializerSettings = new() { Converters = new[] { LookupTableConverter, OptionsBuilderConverter } };
+    internal static JsonSerializerOptions SerializerOptions { get; } = CreateSerializerOptions();
 
-    protected internal JObject InternalOptions = new();
+    private static JsonSerializerOptions CreateSerializerOptions()
+    {
+        var options = new JsonSerializerOptions
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            WriteIndented = true,
+        };
+        options.Converters.Add(new TypeConverter());
+        options.Converters.Add(LookupTableConverter);
+        options.Converters.Add(new EnumerationJsonConverterFactory());
+        return options;
+    }
+
+    protected internal JsonObject InternalOptions = new();
 
     private static string GetOptionName(LambdaExpression lambdaExpression)
     {
         var member = lambdaExpression.GetMemberInfo();
-        return member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? member.Name;
+        return member.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ?? member.Name;
     }
 
     void IOptions.Set<T>(Expression<Func<T>> provider, object value)
@@ -97,18 +121,18 @@ public class Options : IOptions
     {
         if (value != null)
         {
-            var internalOption = JValue.FromObject(value, JsonSerializer);
+            var internalOption = JsonSerializer.SerializeToNode(value, value.GetType(), SerializerOptions);
             InternalOptions[propertyName] = internalOption;
         }
         else
         {
-            InternalOptions.Property(propertyName)?.Remove();
+            InternalOptions.Remove(propertyName);
         }
     }
 
     void IOptions.Remove<T>(Expression<Func<T>> provider)
     {
-        InternalOptions.Property(GetOptionName(provider))?.Remove();
+        InternalOptions.Remove(GetOptionName(provider));
     }
 
     T IOptions.Get<T>(Expression<Func<object>> provider)
@@ -123,7 +147,7 @@ public class Options : IOptions
 
     private T Get<T>(LambdaExpression provider)
     {
-        return InternalOptions[GetOptionName(provider)] is { } token ? token.ToObject<T>(JsonSerializer) : default;
+        return InternalOptions[GetOptionName(provider)] is { } node ? node.Deserialize<T>(SerializerOptions) : default;
     }
 
     #region Dictionary

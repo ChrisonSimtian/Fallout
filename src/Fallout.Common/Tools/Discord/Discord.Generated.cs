@@ -4,7 +4,6 @@ using Fallout.Common;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Fallout.Common.Tools.Discord;
 
@@ -22,15 +22,15 @@ namespace Fallout.Common.Tools.Discord;
 public partial class DiscordMessage : Options
 {
     /// <summary>Id of the channel.</summary>
-    [JsonProperty("channel_id")] public string ChannelId => Get<string>(() => ChannelId);
+    [JsonPropertyName("channel_id")] public string ChannelId => Get<string>(() => ChannelId);
     /// <summary>Message contents (up to 2000 characters).</summary>
-    [JsonProperty("content")] public string Content => Get<string>(() => Content);
+    [JsonPropertyName("content")] public string Content => Get<string>(() => Content);
     /// <summary>Can be used to verify a message was sent (up to 25 characters). Value will appear in the <a href="https://discord.com/developers/docs/topics/gateway-events#message-create">Message Create event</a>.</summary>
-    [JsonProperty("nonce")] public string Nonce => Get<string>(() => Nonce);
+    [JsonPropertyName("nonce")] public string Nonce => Get<string>(() => Nonce);
     /// <summary>Whether this is a TTS message.</summary>
-    [JsonProperty("tts")] public bool? TTS => Get<bool?>(() => TTS);
+    [JsonPropertyName("tts")] public bool? TTS => Get<bool?>(() => TTS);
     /// <summary>Embedded rich content (up to 6000 characters). See <a href="https://autocode.com/tools/discord/embed-builder/">Discord Embed Builder</a>.</summary>
-    [JsonProperty("embeds")] public IReadOnlyList<DiscordEmbed> Embeds => Get<List<DiscordEmbed>>(() => Embeds);
+    [JsonPropertyName("embeds")] public IReadOnlyList<DiscordEmbed> Embeds => Get<List<DiscordEmbed>>(() => Embeds);
 }
 #endregion
 #region DiscordEmbed
@@ -39,27 +39,27 @@ public partial class DiscordMessage : Options
 public partial class DiscordEmbed : Options
 {
     /// <summary>Title of embed.</summary>
-    [JsonProperty("title")] public string Title => Get<string>(() => Title);
+    [JsonPropertyName("title")] public string Title => Get<string>(() => Title);
     /// <summary><a href="https://discord.com/developers/docs/resources/channel#embed-object-embed-types">Type of embed</a> (always <c>rich</c> for webhook embeds).</summary>
-    [JsonProperty("type")] public DiscordEmbedType Type => Get<DiscordEmbedType>(() => Type);
+    [JsonPropertyName("type")] public DiscordEmbedType Type => Get<DiscordEmbedType>(() => Type);
     /// <summary>Description of embed.</summary>
-    [JsonProperty("description")] public string Description => Get<string>(() => Description);
+    [JsonPropertyName("description")] public string Description => Get<string>(() => Description);
     /// <summary>Url of embed.</summary>
-    [JsonProperty("url")] public string Url => Get<string>(() => Url);
+    [JsonPropertyName("url")] public string Url => Get<string>(() => Url);
     /// <summary>ISO8601 timestamp of embed.</summary>
-    [JsonProperty("timestamp")] public string Timestamp => Get<string>(() => Timestamp);
+    [JsonPropertyName("timestamp")] public string Timestamp => Get<string>(() => Timestamp);
     /// <summary>Color code of the embed.</summary>
-    [JsonProperty("color")] public int? Color => Get<int?>(() => Color);
+    [JsonPropertyName("color")] public int? Color => Get<int?>(() => Color);
     /// <summary>Footer information.</summary>
-    [JsonProperty("footer")] public DiscordEmbedFooter Footer => Get<DiscordEmbedFooter>(() => Footer);
+    [JsonPropertyName("footer")] public DiscordEmbedFooter Footer => Get<DiscordEmbedFooter>(() => Footer);
     /// <summary>Image information.</summary>
-    [JsonProperty("image")] public DiscordEmbedImage Image => Get<DiscordEmbedImage>(() => Image);
+    [JsonPropertyName("image")] public DiscordEmbedImage Image => Get<DiscordEmbedImage>(() => Image);
     /// <summary>Thumbnail information.</summary>
-    [JsonProperty("thumbnail")] public DiscordEmbedThumbnail Thumbnail => Get<DiscordEmbedThumbnail>(() => Thumbnail);
+    [JsonPropertyName("thumbnail")] public DiscordEmbedThumbnail Thumbnail => Get<DiscordEmbedThumbnail>(() => Thumbnail);
     /// <summary>Author information.</summary>
-    [JsonProperty("author")] public DiscordEmbedAuthor Author => Get<DiscordEmbedAuthor>(() => Author);
+    [JsonPropertyName("author")] public DiscordEmbedAuthor Author => Get<DiscordEmbedAuthor>(() => Author);
     /// <summary>Fields information.</summary>
-    [JsonProperty("fields")] public IReadOnlyList<DiscordEmbedField> Fields => Get<List<DiscordEmbedField>>(() => Fields);
+    [JsonPropertyName("fields")] public IReadOnlyList<DiscordEmbedField> Fields => Get<List<DiscordEmbedField>>(() => Fields);
 }
 #endregion
 #region DiscordEmbedFooter
@@ -68,9 +68,9 @@ public partial class DiscordEmbed : Options
 public partial class DiscordEmbedFooter : Options
 {
     /// <summary>Footer text.</summary>
-    [JsonProperty("text")] public string Text => Get<string>(() => Text);
+    [JsonPropertyName("text")] public string Text => Get<string>(() => Text);
     /// <summary>Url of footer icon (only supports http(s) and attachments).</summary>
-    [JsonProperty("icon_url")] public string IconUrl => Get<string>(() => IconUrl);
+    [JsonPropertyName("icon_url")] public string IconUrl => Get<string>(() => IconUrl);
 }
 #endregion
 #region DiscordEmbedImage
@@ -79,11 +79,11 @@ public partial class DiscordEmbedFooter : Options
 public partial class DiscordEmbedImage : Options
 {
     /// <summary>Source url of image (only supports http(s) and attachments).</summary>
-    [JsonProperty("url")] public string Url => Get<string>(() => Url);
+    [JsonPropertyName("url")] public string Url => Get<string>(() => Url);
     /// <summary>Height of image.</summary>
-    [JsonProperty("height")] public int? Height => Get<int?>(() => Height);
+    [JsonPropertyName("height")] public int? Height => Get<int?>(() => Height);
     /// <summary>Width of image.</summary>
-    [JsonProperty("width")] public int? Width => Get<int?>(() => Width);
+    [JsonPropertyName("width")] public int? Width => Get<int?>(() => Width);
 }
 #endregion
 #region DiscordEmbedThumbnail
@@ -92,11 +92,11 @@ public partial class DiscordEmbedImage : Options
 public partial class DiscordEmbedThumbnail : Options
 {
     /// <summary>Source url of thumbnail (only supports http(s) and attachments).</summary>
-    [JsonProperty("url")] public string Url => Get<string>(() => Url);
+    [JsonPropertyName("url")] public string Url => Get<string>(() => Url);
     /// <summary>Height of thumbnail.</summary>
-    [JsonProperty("height")] public int? Height => Get<int?>(() => Height);
+    [JsonPropertyName("height")] public int? Height => Get<int?>(() => Height);
     /// <summary>Width of thumbnail.</summary>
-    [JsonProperty("width")] public int? Width => Get<int?>(() => Width);
+    [JsonPropertyName("width")] public int? Width => Get<int?>(() => Width);
 }
 #endregion
 #region DiscordEmbedAuthor
@@ -105,11 +105,11 @@ public partial class DiscordEmbedThumbnail : Options
 public partial class DiscordEmbedAuthor : Options
 {
     /// <summary>Name of author.</summary>
-    [JsonProperty("name")] public string Name => Get<string>(() => Name);
+    [JsonPropertyName("name")] public string Name => Get<string>(() => Name);
     /// <summary>Url of author.</summary>
-    [JsonProperty("url")] public string Url => Get<string>(() => Url);
+    [JsonPropertyName("url")] public string Url => Get<string>(() => Url);
     /// <summary>Url of author icon (only supports http(s) and attachments).</summary>
-    [JsonProperty("icon_url")] public string IconUrl => Get<string>(() => IconUrl);
+    [JsonPropertyName("icon_url")] public string IconUrl => Get<string>(() => IconUrl);
 }
 #endregion
 #region DiscordEmbedField
@@ -118,11 +118,11 @@ public partial class DiscordEmbedAuthor : Options
 public partial class DiscordEmbedField : Options
 {
     /// <summary>Name of the field.</summary>
-    [JsonProperty("name")] public string Name => Get<string>(() => Name);
+    [JsonPropertyName("name")] public string Name => Get<string>(() => Name);
     /// <summary>Value of the field.</summary>
-    [JsonProperty("value")] public string Value => Get<string>(() => Value);
+    [JsonPropertyName("value")] public string Value => Get<string>(() => Value);
     /// <summary>Whether or not this field should siplay inline.</summary>
-    [JsonProperty("inline")] public bool? Inline => Get<bool?>(() => Inline);
+    [JsonPropertyName("inline")] public bool? Inline => Get<bool?>(() => Inline);
 }
 #endregion
 #region DiscordMessageExtensions

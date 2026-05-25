@@ -7,8 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Xml.Linq;
-using Newtonsoft.Json.Linq;
 using NuGet.Packaging;
 using NuGet.Versioning;
 using Fallout.Common.IO;
@@ -50,21 +50,19 @@ public static class NuGetPackageResolver
         bool resolveDependencies = true)
     {
         var assetsContent = packagesConfigFile.ReadAllText();
-        var assetsObject = JObject.Parse(assetsContent);
+        var assetsObject = JsonNode.Parse(assetsContent).NotNull().AsObject();
 
         // ReSharper disable HeapView.BoxingAllocation
+        var firstFramework = assetsObject["project"].NotNull()["frameworks"].NotNull().AsObject().First().Value.NotNull().AsObject();
+
         var directPackageReferences =
-            assetsObject["project"].NotNull()["frameworks"].NotNull()
-                .Single().Single()["dependencies"]
-                ?.Children<JProperty>()
-                .Select(x => x.Name).ToList()
+            (firstFramework["dependencies"]?.AsObject().Select(x => x.Key).ToList())
             ?? new List<string>();
 
         var packageReferences =
-            assetsObject["libraries"].NotNull()
-                .Children<JProperty>()
-                .Where(x => x.Value["type"].NotNull().ToString() == "package")
-                .Select(x => x.Name.Split('/'))
+            assetsObject["libraries"].NotNull().AsObject()
+                .Where(x => x.Value.NotNull()["type"].NotNull().GetValue<string>() == "package")
+                .Select(x => x.Key.Split('/'))
                 .Select(x => (
                     PackageId: x.First(),
                     Version: x.Last()
@@ -74,13 +72,12 @@ public static class NuGetPackageResolver
                 .ToList();
 
         var packageDownloads =
-            assetsObject["project"].NotNull()["frameworks"].NotNull()
-                .Single().Single()["downloadDependencies"]
-                ?.Children<JObject>()
+            (firstFramework["downloadDependencies"]?.AsArray()
+                .Select(x => x.NotNull().AsObject())
                 .Select(x => (
-                    PackageId: x.Property("name").NotNull().Value.ToString(),
-                    Version: x.Property("version").NotNull().Value.ToString().Trim('[', ']').Split(',').First().Trim()
-                )).ToList()
+                    PackageId: x["name"].NotNull().GetValue<string>(),
+                    Version: x["version"].NotNull().GetValue<string>().Trim('[', ']').Split(',').First().Trim()
+                )).ToList())
             ?? new List<(string, string)>();
         // ReSharper restore HeapView.BoxingAllocation
 

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Fallout.CodeGeneration.Model;
 
@@ -23,7 +23,7 @@ public class DataClass : IDeprecatable
     [JsonIgnore]
     public virtual IDeprecatable Parent => Tool;
 
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [RegularExpression(RegexPatterns.Name)]
     [Description("Name of the data class.")]
     public virtual string Name { get; set; }
@@ -59,6 +59,5 @@ public class SettingsClass : DataClass
     [JsonIgnore]
     public override IDeprecatable Parent => Task;
 
-    [JsonProperty(Required = Required.Default)]
     public override string Name => $"{Tool.Name}{Task.Postfix}Settings";
 }

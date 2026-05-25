@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Fallout.CodeGeneration.Model;
 
@@ -27,12 +27,12 @@ public class Property : IDeprecatable
     [JsonIgnore]
     public IDeprecatable Parent => DataClass;
 
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [RegularExpression(RegexPatterns.Name)]
     [Description("Name of the property.")]
     public string Name { get; set; }
 
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [Description("Type of the property. I.e., bool, int, string, List<int>, Dictionary<string, object>, Lookup<string, int.>")]
     public string Type { get; set; }
 

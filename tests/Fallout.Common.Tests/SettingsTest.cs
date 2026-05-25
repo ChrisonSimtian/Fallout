@@ -7,8 +7,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
 using FluentAssertions;
-using Newtonsoft.Json;
 using Fallout.Common.Tools.MSBuild;
 using Fallout.Common.Tools.OpenCover;
 using Fallout.Common.Tools.Xunit;
@@ -174,7 +174,6 @@ public class SettingsTest
     [Fact]
     public Task TestDiscord()
     {
-        // Options.JsonSerializerSettings is Newtonsoft; STJ equivalent lands with Fallout.Tooling's STJ-4 migration (#117).
         var message = new DiscordMessage()
             .SetNonce("nonce")
             .SetChannelId("channel-id")
@@ -182,7 +181,7 @@ public class SettingsTest
                 .SetType(DiscordEmbedType.article)
                 .SetAuthor(_ => _
                     .SetName("author-name")));
-        var result = JsonConvert.SerializeObject(message, Formatting.Indented, Options.JsonSerializerSettings);
+        var result = JsonSerializer.Serialize(message, message.GetType(), Options.SerializerOptions);
 
         return Verifier.Verify(result);
     }

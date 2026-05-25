@@ -145,7 +145,7 @@ public static class DataClassGenerator
             if (property.Json.IsNullOrWhiteSpace())
                 return null;
 
-            return $"[JsonProperty({property.Json.DoubleQuote()})]";
+            return $"[JsonPropertyName({property.Json.DoubleQuote()})]";
         }
     }
 

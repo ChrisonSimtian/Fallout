@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Fallout.CodeGeneration.Model;
 
@@ -20,12 +20,12 @@ public class Enumeration : IDeprecatable
     [JsonIgnore]
     public IDeprecatable Parent => Tool;
 
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [RegularExpression(RegexPatterns.Name)]
     [Description("Name of the enumeration.")]
     public string Name { get; set; }
 
-    [JsonProperty(Required = Required.Always)]
+    [JsonRequired]
     [Description("The enumeration values.")]
     public List<string> Values { get; set; }
 

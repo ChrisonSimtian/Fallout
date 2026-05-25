@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
@@ -61,9 +62,18 @@ public static class DelegateHelper
 
     private static List<TValue> ParseCollection<TValue>(IReadOnlyDictionary<string, object> dictionary, string key, string separator)
     {
-        return (dictionary?.TryGetValue(key, out var value) ?? false
-                ? ((string)value).Split([separator], StringSplitOptions.RemoveEmptyEntries)
-                : [])
+        if (dictionary?.TryGetValue(key, out var value) != true)
+            return [];
+        // STJ round-tripping IReadOnlyDictionary<string, object> deserializes values as JsonElement,
+        // not as primitive strings like Newtonsoft did. Coerce both shapes back to string here.
+        var stringValue = value switch
+        {
+            string s => s,
+            JsonElement el when el.ValueKind == JsonValueKind.String => el.GetString(),
+            null => null,
+            _ => value.ToString()
+        };
+        return (stringValue?.Split([separator], StringSplitOptions.RemoveEmptyEntries) ?? [])
             .Select(ReflectionUtility.Convert<TValue>).ToList();
     }
 

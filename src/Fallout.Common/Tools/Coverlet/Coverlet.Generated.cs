@@ -5,7 +5,6 @@ using Fallout.Common.Tooling;
 using Fallout.Common.Tools;
 using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Utilities.Collections;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +13,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Fallout.Common.Tools.Coverlet;
 

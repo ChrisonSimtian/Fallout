@@ -1,14 +1,13 @@
-﻿// Copyright 2026 Maintainers of Fallout.
+// Copyright 2026 Maintainers of Fallout.
 // Originally based on NUKE by Matthias Koch and contributors.
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tooling;
@@ -53,12 +52,11 @@ public static class ProcessExtensions
 
     public static T StdToJson<T>(this IEnumerable<Output> output)
     {
-        // Fallout.Tooling stays on Newtonsoft until STJ-4 (#117); call Newtonsoft directly instead of through the util lib.
-        return JsonConvert.DeserializeObject<T>(output.StdToText());
+        return JsonSerializer.Deserialize<T>(output.StdToText(), JsonExtensions.DefaultSerializerOptions);
     }
 
-    public static JObject StdToJson(this IEnumerable<Output> output)
+    public static JsonObject StdToJson(this IEnumerable<Output> output)
     {
-        return output.StdToJson<JObject>();
+        return JsonNode.Parse(output.StdToText())?.AsObject();
     }
 }
