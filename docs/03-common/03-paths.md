@@ -6,19 +6,19 @@ Referencing files and directories seems like a trivial task. Nevertheless, devel
 
 Central to the idea of absolute paths is the `AbsolutePath` type and the `FalloutBuild.RootDirectory` property. From there on, you can easily construct paths through the [overloaded division operator](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading):
 
-<!-- snippet: path-construction-basic -->
+{/* snippet: path-construction-basic */}
 ```cs
 AbsolutePath SourceDirectory => RootDirectory / "src";
 AbsolutePath OutputDirectory => RootDirectory / "output";
 AbsolutePath IndexFile => RootDirectory / "docs" / "index.md";
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 ## Common Methods
 
 While `AbsolutePath` is agnostic to whether it points to a file or directory, it provides several commonly used methods for interaction:
 
-<!-- snippet: path-construction-common-methods -->
+{/* snippet: path-construction-common-methods */}
 ```cs
 // Get names
 var nameWithExtension = IndexFile.Name;
@@ -38,13 +38,13 @@ var directoryExists = SourceDirectory.DirectoryExists();
 var fileExists = IndexFile.FileExists();
 var pathExists = (RootDirectory / "dirOrFile").Exists(); // checks for both
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 ## Relative Paths
 
 Occasionally, you may actually want relative paths, for instance, to include them in manifest files that get shipped with your artifacts. In this case, you can make use of `RelativePath`, which uses the path separator dictated by the operating system, or one of types `WinRelativePath` or `UnixRelativePath`, which enforce using backslash or slash respectively:
 
-<!-- snippet: path-construction-relative-paths -->
+{/* snippet: path-construction-relative-paths */}
 ```cs
 // Get the relative path to the index file
 var indexRelativeFile = RootDirectory.GetRelativePathTo(IndexFile);
@@ -53,7 +53,7 @@ var indexRelativeFile = RootDirectory.GetRelativePathTo(IndexFile);
 var indexUnixRelativePath1 = RootDirectory.GetUnixRelativePathTo(IndexFile);
 var indexUnixRelativePath2 = (UnixRelativePath)indexRelativeFile;
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 All relative path types support using the division operator.
 
@@ -85,7 +85,7 @@ source.CopyToDirectory(target, ExistsPolicy.DirectoryMerge | ExistsPolicy.FileFa
 
 Through the integrated [Glob](https://github.com/kthompson/glob) NuGet package, you can use [globbing patterns](https://en.wikipedia.org/wiki/Glob_(programming)) to collect files or directories from a base directory:
 
-<!-- snippet: path-construction-globbing -->
+{/* snippet: path-construction-globbing */}
 ```cs
 // Collect all package files from the output directory
 var packageFiles = OutputDirectory.GlobFiles("*.nupkg");
@@ -95,4 +95,4 @@ SourceDirectory
     .GlobDirectories("**/{obj,bin}", otherPatterns)
     .DeleteDirectories();
 ```
-<!-- endSnippet -->
+{/* endSnippet */}

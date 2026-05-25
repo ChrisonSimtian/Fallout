@@ -3,7 +3,7 @@ title: Introduction
 sidebar_position: 0
 ---
 
-<!-- https://docusaurus.io/docs/next/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter -->
+{/* https://docusaurus.io/docs/next/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter */}
 
 🪴 Write **automation tools and CI/CD pipelines** in plain C# and with access to all .NET libraries.
 
@@ -13,7 +13,7 @@ sidebar_position: 0
 
 💥 Ready for more? Use **advanced features** like CI/CD generation, parallel execution, and build sharing.
 
-## Fast Track ⏱ {#fast-track}
+## Fast Track ⏱
 
 **1. Install the global tool:**
 
@@ -38,7 +38,7 @@ nuke
 
 **4. Open the build project and explore the default `Build` class.**
 
-## Coming from Cake? 🍰 {#coming-from-cake}
+## Coming from Cake? 🍰
 
 Get a feeling how your Cake scripts would look like in NUKE.
 
