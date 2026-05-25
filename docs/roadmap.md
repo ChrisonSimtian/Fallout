@@ -61,6 +61,8 @@ Five RFC issues are open to shape v12's SDK. These are **self-RFCs**: each one s
 - [RFC #4 — Plugin discovery and load model](https://github.com/ChrisonSimtian/Fallout/issues/100): runtime mechanics, trust model.
 - [RFC #5 — Conflict resolution semantics](https://github.com/ChrisonSimtian/Fallout/issues/101): what happens when two plugins step on each other.
 
+**Comment by 2026-08-31.** After that date, each proposed shape locks, rolls into the implementing SDK-* issue named on the RFC, and the RFC closes as decided. The proposals are the working baseline; silence means assent.
+
 The most useful contribution you can make right now is naming a plugin you'd want to build and showing where the proposals don't fit it. "I want to ship a plugin that does X — your model breaks because of Y" is gold.
 
 ## Timeline
