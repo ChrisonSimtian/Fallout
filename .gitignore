@@ -1,6 +1,11 @@
 external
 nuke-global.*
 
+# Docs site (Docusaurus) — only commit source, never artifacts
+site/node_modules/
+site/build/
+site/.docusaurus/
+
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
 [Oo]bj/

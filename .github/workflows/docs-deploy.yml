@@ -1,0 +1,66 @@
+# Hand-written (not auto-generated). Sibling to release.yml.
+#
+# Builds the Docusaurus site at /site/ and deploys to Cloudflare Pages
+# project "fallout-docs", which serves https://docs.fallout.build.
+#
+# The GitHub Pages slot on this repo is taken by fallout.build (apex).
+# Cloudflare Pages handles the docs subdomain so the apex stays untouched.
+#
+# This deploy is also the v13 CD-POC reference point: the shape here
+# (build artifact + authenticated push to an external system's API) is
+# exactly what ADR-0001's "tasks → REST" pattern targets. The deploy
+# stays minimal so it lifts cleanly into Fallout primitives later.
+#
+# Required repo secrets:
+#   - CLOUDFLARE_API_TOKEN — token with Pages:Edit scope
+#   - CLOUDFLARE_ACCOUNT_ID — Cloudflare account ID hosting the project
+
+name: docs-deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'site/**'
+      - 'docs/**'
+      - '.github/workflows/docs-deploy.yml'
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: docs-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Build site
+        working-directory: site
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/build --project-name=fallout-docs --branch=main

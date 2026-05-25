@@ -129,8 +129,8 @@ You can also use the fluent interfaces to manipulate the process invocation, inc
 All fluent interfaces implement a variation of the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern), in which every fluent call will create an immutable copy of the current `ToolSettings` instance with the intended changes applied. This enables great flexibility in composing similar process invocations.
 :::
 
-<!-- TODO: website -->
-<!-- Using any IDE, an individual fluent interface can easily be discovered via code completion. Most importantly, you can look up the original documentation right from where you are: -->
+{/* TODO: website */}
+{/* Using any IDE, an individual fluent interface can easily be discovered via code completion. Most importantly, you can look up the original documentation right from where you are: */}
 
 ### Conditional Modifications
 
@@ -195,7 +195,7 @@ MSBuildTasks.MSBuild(_ => _
         .Add("/r")));
 ```
 
-<!--
+{/*
     SetToolPath
     SetWorkingDirectory
     SetExecutionTimeout
@@ -203,7 +203,7 @@ MSBuildTasks.MSBuild(_ => _
     LogOutput
     When
     SetArgumentConfigurator
--->
+*/}
 
 ### Exit Code Handling
 
@@ -280,7 +280,7 @@ class Build : FalloutBuild
 
 Many of the most popular tools are already implemented. In case a certain tool is not yet supported with a proper CLI task class, NUKE allows you to use the following **injection attributes** to load them:
 
-<!-- snippet: tool-invocation-lightweight -->
+{/* snippet: tool-invocation-lightweight */}
 ```csharp
 [PathVariable]
 readonly Tool Git;
@@ -302,11 +302,11 @@ readonly Tool CorFlags;
     unixPath: "gradlew")]
 readonly Tool Gradle;
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 The injected `Tool` delegate allows passing arguments, working directory, environment variables and many more process-specific options:
 
-<!-- snippet: tool-invocation-lightweight-usage -->
+{/* snippet: tool-invocation-lightweight-usage */}
 ```csharp
 // Pass arguments with string interpolation
 Git($"checkout -b {Branch}");
@@ -323,4 +323,4 @@ CorFlags(
 // Requires: <PackageDownload Include="Redth.Net.Maui.Check" Version="0.10.0" />
 MauiCheck?.Invoke($"--fix --preview");
 ```
-<!-- endSnippet -->
+{/* endSnippet */}

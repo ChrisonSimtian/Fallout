@@ -126,8 +126,8 @@ You can deactivate linking of the above files by removing the `NukeRootDirectory
 
   <PropertyGroup>
     // highlight-start
-    <!-- <NukeRootDirectory>..</NukeRootDirectory> -->
-    <!-- <NukeScriptDirectory>..</NukeScriptDirectory> -->
+    {/* <NukeRootDirectory>..</NukeRootDirectory> */}
+    {/* <NukeScriptDirectory>..</NukeScriptDirectory> */}
     // highlight-end
   </PropertyGroup>
 

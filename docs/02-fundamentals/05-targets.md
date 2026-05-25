@@ -51,7 +51,7 @@ Specifying dependencies is essential to let targets run in a meaningful and pred
 <Tabs>
   <TabItem value="execution" label="Execution Dependencies">
 
-<!--Execution dependencies define that one target _must_ run before another target (unless it is skipped):-->
+{/*Execution dependencies define that one target _must_ run before another target (unless it is skipped):*/}
 
 Define that target `A` must run before target `B` unless `A` is skipped:
 
@@ -75,7 +75,7 @@ class Build : FalloutBuild
   </TabItem>
   <TabItem value="ordering" label="Ordering Dependencies">
 
-<!--Ordering dependencies define that one target _should_ run before/after another target _if_ they're both scheduled:-->
+{/*Ordering dependencies define that one target _should_ run before/after another target _if_ they're both scheduled:*/}
 
 Define that target `A` runs before target `B` if both are scheduled:
 
@@ -99,7 +99,7 @@ class Build : FalloutBuild
   </TabItem>
   <TabItem value="triggers" label="Trigger Dependencies">
 
-<!--Trigger dependencies define that one target _causes_ another target to run once it has succeeded:-->
+{/*Trigger dependencies define that one target _causes_ another target to run once it has succeeded:*/}
 
 Define that target `A` invokes target `B` once it completes:
 

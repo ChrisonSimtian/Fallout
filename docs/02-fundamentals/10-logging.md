@@ -68,11 +68,11 @@ Or by setting it directly in the build implementation:
 <Tabs groupId="logging">
   <TabItem value="trace" label="Trace" default>
 
-<!-- snippet: logging -->
+{/* snippet: logging */}
 ```csharp
 Logging.Level = LogLevel.Trace;
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
   </TabItem>
   <TabItem value="normal" label="Normal">

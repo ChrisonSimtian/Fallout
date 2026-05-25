@@ -89,7 +89,7 @@ SET NUKE_MY_PARAMETER = <value>
 
 You can specify a parameter as a [target requirement](../02-fundamentals/05-targets.md#requirements) using the following shorthand syntax:
 
-<!-- snippet: parameters-requirements -->
+{/* snippet: parameters-requirements */}
 ```cs
 Target Deploy => _ => _
     .Requires(() => ApiKey)
@@ -97,7 +97,7 @@ Target Deploy => _ => _
     {
     });
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 :::tip
 Using the shorthand syntax allows you to provide the value interactively when the build is executed locally.
@@ -107,11 +107,11 @@ Using the shorthand syntax allows you to provide the value interactively when th
 
 When parameters are meant to hold **secret values** like passwords or authentication tokens, you can add the `Secret` attribute:
 
-<!-- snippet: parameters-secrets -->
+{/* snippet: parameters-secrets */}
 ```cs
 [Parameter] [Secret] readonly string NuGetApiKey;
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 Marking a parameter as a secret allows you to use the [secret management](../06-global-tool/02-secrets.md) through the global tool.
 
@@ -130,7 +130,7 @@ Unlisted parameters can be passed as normal and are still available through [she
 
 Parameters **support a wide range of primitive and complex types**, including their nullable and array counterparts:
 
-<!-- snippet: parameters-declaration -->
+{/* snippet: parameters-declaration */}
 ```cs
 [Parameter] readonly string StringValue;
 [Parameter] readonly bool BoolValue;
@@ -154,7 +154,7 @@ Target Print => _ => _
         Log.Information("AbsolutePath = {Value}", AbsolutePath);
     });
 ```
-<!-- endSnippet -->
+{/* endSnippet */}
 
 :::note
 By default, the whitespace character is used to pass multiple values for an array parameter. You can quote your values to treat them as single elements for the parameters. Additionally, you can provide a custom separator through the attribute (whitespace will still work as a separator):
