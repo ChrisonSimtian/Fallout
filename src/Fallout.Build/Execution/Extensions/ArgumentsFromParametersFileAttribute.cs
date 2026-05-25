@@ -7,7 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using Fallout.Common.CI;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -49,11 +50,11 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
         //         : value;
 
         var parameterMembers = ValueInjectionUtility.GetParameterMembers(Build.GetType(), includeUnlisted: true);
-        var jobjectsAndProfiles = new[] { (File: Constants.GetDefaultParametersFile(FalloutBuild.RootDirectory), Profile: Constants.DefaultProfileName) }
+        var parameterObjectsAndProfiles = new[] { (File: Constants.GetDefaultParametersFile(FalloutBuild.RootDirectory), Profile: Constants.DefaultProfileName) }
             .Where(x => File.Exists(x.File))
             .Concat(FalloutBuild.LoadedLocalProfiles.Select(x => (File: Constants.GetParametersProfileFile(FalloutBuild.RootDirectory, x), Profile: x)))
             .ForEachLazy(x => Assert.FileExists(x.File))
-            .Select(x => (JObject: JObject.Parse(File.ReadAllText(x.File)), x.Profile))
+            .Select(x => (JsonObject: JsonNode.Parse(File.ReadAllText(x.File)).NotNull().AsObject(), x.Profile))
             .Reverse();
 
         var passwords = new Dictionary<string, string>();
@@ -66,22 +67,22 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
 
         ParameterService.Instance.ArgumentsFromFilesService = (parameter, destinationType) =>
         {
-            var (property, profile) = jobjectsAndProfiles.Select(x => (Property: x.JObject.Property(parameter), x.Profile))
-                .Where(x => x.Property != null)
+            var (value, profile) = parameterObjectsAndProfiles.Select(x => (Value: x.JsonObject[parameter], x.Profile))
+                .Where(x => x.Value != null)
                 .FirstOrDefault();
-            if (property == null)
+            if (value == null)
                 return null;
 
             var member = parameterMembers.SingleOrDefault(x => ParameterService.GetParameterMemberName(x).EqualsOrdinalIgnoreCase(parameter));
             var scalarType = member?.GetMemberType().GetScalarType();
             if (typeof(IAbsolutePathHolder).IsAssignableFrom(scalarType))
-                return property.Value.ToObject<string>().Apply(x => !PathConstruction.HasPathRoot(x) ? FalloutBuild.RootDirectory / x : (AbsolutePath)x);
+                return value.GetValue<string>().Apply(x => !PathConstruction.HasPathRoot(x) ? FalloutBuild.RootDirectory / x : (AbsolutePath)x);
 
             if ((member?.HasCustomAttribute<SecretAttribute>() ?? false) &&
                 !BuildServerConfigurationGeneration.IsActive)
-                return DecryptValue(profile, parameter, property.Value.ToObject<string>());
+                return DecryptValue(profile, parameter, value.GetValue<string>());
 
-            return property.Value.ToObject(destinationType);
+            return value.Deserialize(destinationType);
         };
     }
 }

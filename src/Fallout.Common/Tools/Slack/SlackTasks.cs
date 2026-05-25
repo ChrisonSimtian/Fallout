@@ -8,8 +8,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Net;
@@ -28,7 +29,7 @@ public static class SlackTasks
     public static async Task SendSlackMessageAsync(Configure<SlackMessage> configurator, string webhook)
     {
         var message = configurator(new SlackMessage());
-        var payload = JsonConvert.SerializeObject(message);
+        var payload = JsonSerializer.Serialize(message);
 
         var response = await s_client.CreateRequest(HttpMethod.Post, webhook)
             .WithFormUrlEncodedContent(new Dictionary<string, string> { ["payload"] = payload })
@@ -63,6 +64,6 @@ public static class SlackTasks
 [Serializable]
 public class SlackMessageActionButton : SlackMessageAction
 {
-    [JsonProperty("type")]
+    [JsonPropertyName("type")]
     public string Type => "button";
 }

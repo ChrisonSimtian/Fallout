@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Breaking changes
 
+- **Last-mile Newtonsoft removal — closes the #83 migration tree** (#119 STJ-6, #115 STJ-2 tail). Every Fallout source file is STJ-native; `Newtonsoft.Json.dll` survives in the closure only as a transitive of `NuGet.Packaging` and `Serilog.Formatting.Compact.Reader`. The `Newtonsoft.Json` `PackageVersion` is gone from `Directory.Packages.props` entirely.
+  - **`GitHubActions.GitHubEvent` is now `JsonObject`** (was Newtonsoft `JObject`). Consumers that introspect the event payload need to swap `using Newtonsoft.Json.Linq` → `using System.Text.Json.Nodes` and update accessors (`["key"].Value<T>()` → `["key"].GetValue<T>()`, `Property(name)` → indexer, etc.).
+  - **`Fallout.Utilities.Net` `HttpRequestExtensions.WithJsonContent` / `HttpResponseExtensions.GetBodyAsJson` defaults are STJ.** The `[Obsolete]`-marked Newtonsoft overloads (`JsonSerializerSettings` parameter, `JObject` return) are gone. `JsonSerializerOptions` overloads remain for explicit configuration; the parameterless default uses STJ with default options. `GetBodyAsJsonObject` returns `System.Text.Json.Nodes.JsonObject`.
+  - **`SlackMessageActionButton.Type` / `TeamsMessage.Type` / `TeamsMessage.Context`**: hand-written `[JsonProperty(...)]` attributes swapped to `[JsonPropertyName(...)]`. Consumer impact only if you subclass these types and added `[JsonProperty]`-style attributes — switch to `[JsonPropertyName]`.
+  - **`TwitterTasks`**: internal error-parsing path swapped from `JObject.Parse` to `JsonNode.Parse`. No public-API change.
+  - **`ArgumentsFromParametersFileAttribute`** (#115 STJ-2 tail): `parameters.json` reading swapped from `JObject` to `JsonObject`. Behaviour identical for valid input; STJ may be slightly stricter about malformed JSON.
+
 - **`SchemaUtility` rewritten on `System.Text.Json` — NJsonSchema gone** (#114, STJ-1 of #83). The build-parameter schema generator (which emits `.fallout/build.schema.json` for editor autocomplete) no longer goes through NJsonSchema. It now hand-rolls the draft-04 schema using `JsonNode`/`JsonObject` directly — same output shape, no Rico-entanglement.
   - **Dropped packages**: `NJsonSchema`, `NJsonSchema.NewtonsoftJson`, `NJsonSchema.Annotations`, `Namotion.Reflection` — four packages and ~12 transitive dependencies gone from `Fallout.Build`. `Newtonsoft.Json` stays in the closure only via `Fallout.Common`'s `*Tasks.cs` (Slack/Twitter/Teams) until #119 lands.
   - **API**: `SchemaUtility.GetJsonString(IFalloutBuild)` and `GetJsonDocument(IFalloutBuild)` unchanged for consumers.

@@ -11,8 +11,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
@@ -29,7 +28,7 @@ public partial class GitHubActions : Host, IBuildServer
 
     public new static GitHubActions Instance => Host.Instance as GitHubActions;
 
-    private readonly Lazy<JObject> _eventContext;
+    private readonly Lazy<JsonObject> _eventContext;
     private readonly Lazy<HttpClient> _httpClient;
     private readonly Lazy<long> _jobId;
 
@@ -38,7 +37,7 @@ public partial class GitHubActions : Host, IBuildServer
         _eventContext = Lazy.Create(() =>
         {
             var content = File.ReadAllText(EventPath);
-            return JsonConvert.DeserializeObject<JObject>(content);
+            return JsonNode.Parse(content)?.AsObject() ?? new JsonObject();
         });
         _httpClient = Lazy.Create(() =>
         {
@@ -112,11 +111,10 @@ public partial class GitHubActions : Host, IBuildServer
     public string Token => EnvironmentInfo.GetVariable("GITHUB_TOKEN");
     public long JobId => _jobId.Value;
 
-    public JObject GitHubEvent => _eventContext.Value;
+    public JsonObject GitHubEvent => _eventContext.Value;
     public bool IsPullRequest => EventName == "pull_request";
-    // Note: GitHubEvent stays JObject (Newtonsoft) public surface for v11; full JsonObject migration is a separate API-break PR.
-    public int? PullRequestNumber => GitHubEvent.Property("number")?.Value.Value<int>();
-    public string PullRequestAction => GitHubEvent.Property("action")?.Value.Value<string>();
+    public int? PullRequestNumber => GitHubEvent["number"]?.GetValue<int>();
+    public string PullRequestAction => GitHubEvent["action"]?.GetValue<string>();
 
     public AbsolutePath StepSummaryFile => EnvironmentInfo.GetVariable("GITHUB_STEP_SUMMARY");
 

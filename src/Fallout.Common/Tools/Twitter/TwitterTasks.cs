@@ -11,8 +11,8 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -95,8 +95,8 @@ public static class TwitterTasks
     {
         try
         {
-            var jResponse = JObject.Parse(response);
-            var message = (string) jResponse["errors"].NotNull()[0].NotNull()["message"];
+            var jResponse = JsonNode.Parse(response).NotNull().AsObject();
+            var message = jResponse["errors"].NotNull().AsArray()[0].NotNull()["message"]?.GetValue<string>();
             if (!string.IsNullOrEmpty(message))
                 return message;
         }
