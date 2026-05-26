@@ -225,10 +225,10 @@ By default, the generated pipeline file will include [caching tasks](https://doc
 
 ```yaml title="azure-pipelines.yml"
 - task: Cache@2
-  displayName: Cache (nuke-temp)
+  displayName: Cache (fallout-temp)
   inputs:
-    key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj
-    restoreKeys: $(Agent.OS) | nuke-temp
+    key: $(Agent.OS) | fallout-temp | **/global.json, **/*.csproj
+    restoreKeys: $(Agent.OS) | fallout-temp
     path: .fallout/temp
 - task: Cache@2
   displayName: Cache (nuget-packages)

@@ -11,7 +11,7 @@ After you've [set up a build](02-setup.md) you can run it either through the glo
 
 ```powershell
 # terminal-command
-nuke [arguments]
+fallout [arguments]
 ```
 
   </TabItem>
@@ -19,7 +19,7 @@ nuke [arguments]
 
 ```powershell
 # terminal-command
-.\build.cmd [arguments]
+.\build.ps1 [arguments]
 ```
 
   </TabItem>
@@ -32,6 +32,10 @@ nuke [arguments]
 
 </TabItem>
 </Tabs>
+
+:::info
+The bootstrappers are thin: they provision the .NET SDK if it isn't already installed, run `dotnet tool restore` (to pin the `Fallout.GlobalTool` version from `.config/dotnet-tools.json`), then forward to `dotnet fallout`. Once `dotnet` is on your `PATH` and tools are restored, `fallout [arguments]` and `./build.sh [arguments]` do the same thing.
+:::
 
 :::info
 This document discusses the default build arguments (also referred to as parameters). You will learn how to [define custom parameters](../02-fundamentals/06-parameters.md) in a following chapter.
@@ -83,7 +87,7 @@ You can invoke a single target or a set of targets either through positional or 
 
 ```powershell
 # terminal-command
-nuke <target> [other-targets...]
+fallout <target> [other-targets...]
 ```
 
   </TabItem>
@@ -91,7 +95,7 @@ nuke <target> [other-targets...]
 
 ```powershell
 # terminal-command
-nuke [arguments...] --targets <target> [other-targets...]
+fallout [arguments...] --targets <target> [other-targets...]
 ```
 
   </TabItem>
@@ -110,7 +114,7 @@ You can skip all or individual targets from the execution plan that are not spec
 
 ```powershell
 # terminal-command
-nuke [targets] --skip
+fallout [targets] --skip
 ```
 
   </TabItem>
@@ -118,7 +122,7 @@ nuke [targets] --skip
 
 ```powershell
 # terminal-command
-nuke [targets] --skip <other-targets...>
+fallout [targets] --skip <other-targets...>
 ```
 
   </TabItem>
@@ -150,7 +154,7 @@ You can continue a failed or aborted build from the first point of failure:
 
 ```powershell
 # terminal-command
-nuke [arguments...] --continue
+fallout [arguments...] --continue
 ```
 
 All previously succeeded targets will be skipped automatically, which can save a lot of unnecessary execution time:
@@ -188,7 +192,7 @@ When you're coming back to a repository or build you haven't worked on in a whil
 
 ```powershell
 # terminal-command
-nuke --help
+fallout --help
 ```
 
 This allows you to inspect all available targets with their direct dependencies as well as parameters with their descriptions:
@@ -208,7 +212,7 @@ Parameters:
   --continue              Indicates to continue a previously failed build attempt.
   --help                  Shows the help text for this build assembly.
   --host                  Host for execution. Default is 'automatic'.
-  --no-logo               Disables displaying the NUKE logo.
+  --no-logo               Disables displaying the Fallout logo.
   --plan                  Shows the execution plan (HTML).
   --profile               Defines the profiles to load.
   --root                  Root directory during build execution.
@@ -225,7 +229,7 @@ In order to get a better understanding of how your builds are structured, you ca
 
 ```powershell
 # terminal-command
-nuke --plan
+fallout --plan
 ```
 
 Hovering a target will show its individual execution plan, that means, all targets that are going to be executed when one specific target is invoked. The style of an edge (solid/dashed/yellow) between two targets indicates their [dependency relation](../02-fundamentals/05-targets.md#dependencies) (execution/ordering/trigger):

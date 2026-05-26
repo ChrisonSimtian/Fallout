@@ -2,12 +2,16 @@
 title: Installation
 ---
 
-Before you can set up a build project, you need to install NUKE's dedicated [.NET global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools):
+Before you can set up a build project, you need to install Fallout's dedicated [.NET global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools):
 
 ```powershell
 # terminal-command
-dotnet tool install Nuke.GlobalTool --global
+dotnet tool install Fallout.GlobalTool --global
 ```
+
+:::tip
+For repos that already have a `.config/dotnet-tools.json` manifest with `Fallout.GlobalTool` pinned (this is what `fallout :setup` creates), you can skip the global install and run `dotnet tool restore` instead — the local manifest version then takes precedence.
+:::
 
 From now on, you can use the global tool to:
 
@@ -35,5 +39,5 @@ echo 'export PATH=$HOME/.dotnet/tools:$PATH' >> ~/.zshrc
 :::
 
 :::info
-While theoretically, you could use NUKE by only adding its main NuGet package, we highly recommend using the dedicated global tool to set up new builds. This ensures that your repository will run consistently in different environments and that your build implementation is always properly formatted.
+While theoretically, you could use Fallout by only adding its main NuGet package, we highly recommend using the dedicated global tool to set up new builds. This ensures that your repository will run consistently in different environments and that your build implementation is always properly formatted.
 :::

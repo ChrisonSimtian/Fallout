@@ -2,7 +2,7 @@
 title: Solution & Project Model
 ---
 
-Particularly when building .NET applications, your build may require information related to solution or project files. Such information is often duplicated with string literals and quickly becomes out-of-date. For instance, when publishing a project you want to build for every target framework that is defined in the project file. NUKE has best-in-class support to read and modify the .NET solution and project model.
+Particularly when building .NET applications, your build may require information related to solution or project files. Such information is often duplicated with string literals and quickly becomes out-of-date. For instance, when publishing a project you want to build for every target framework that is defined in the project file. Fallout has best-in-class support to read and modify the .NET solution and project model.
 
 ## Working with Solutions
 
@@ -33,7 +33,7 @@ With an instance of the `Solution` type you can **read and write the solution** 
 
 ```csharp
 // Gather projects
-var globalToolProject = Solution.GetProject("Nuke.GlobalTool");
+var globalToolProject = Solution.GetProject("Fallout.GlobalTool");
 var testProjects = Solution.GetAllProjects("*.Tests");
 
 // Gather all solution items
@@ -55,11 +55,11 @@ Using the `GenerateProjects` property you can enable a [source generator](https:
 [Solution(GenerateProjects = true)]
 readonly Solution Solution;
 
-Project GlobalToolProject => Solution.Nuke_GlobalTool;
+Project GlobalToolProject => Solution.Fallout_GlobalTool;
 ```
 
 :::info
-For every `SolutionAttribute` with the `GenerateProjects` property enabled, the source generator will create a new type with the same name as the field. In the example above, the type `Nuke.Common.ProjectModel.Solution` is silently replaced by a new type `global::Solution` that is local to your project. Therefore, the field name and type must always be the same.
+For every `SolutionAttribute` with the `GenerateProjects` property enabled, the source generator will create a new type with the same name as the field. In the example above, the type `Fallout.Common.ProjectModel.Solution` is silently replaced by a new type `global::Solution` that is local to your project. Therefore, the field name and type must always be the same.
 :::
 
 ### Creating Solutions

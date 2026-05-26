@@ -6,7 +6,7 @@ import ToolConfirmation from '@site/src/components/ToolConfirmation';
 
 <ToolConfirmation />
 
-Interacting with third-party command-line interface tools (CLIs) is an essential task in build automation. This includes a wide range of aspects, such as resolution of the tool path, construction of arguments to be passed, evaluation of the exit code and capturing of standard and error output. NUKE hides these concerns in dedicated auto-generated CLI wrappers.
+Interacting with third-party command-line interface tools (CLIs) is an essential task in build automation. This includes a wide range of aspects, such as resolution of the tool path, construction of arguments to be passed, evaluation of the exit code and capturing of standard and error output. Fallout hides these concerns in dedicated auto-generated CLI wrappers.
 
 <details>
 <summary>Exhaustive list of supported tools</summary>
@@ -278,7 +278,7 @@ class Build : FalloutBuild
 
 ## Lightweight API
 
-Many of the most popular tools are already implemented. In case a certain tool is not yet supported with a proper CLI task class, NUKE allows you to use the following **injection attributes** to load them:
+Many of the most popular tools are already implemented. In case a certain tool is not yet supported with a proper CLI task class, Fallout allows you to use the following **injection attributes** to load them:
 
 {/* snippet: tool-invocation-lightweight */}
 ```csharp

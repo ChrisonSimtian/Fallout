@@ -40,8 +40,8 @@ As a global tool and library, Fallout has [multiple events](https://github.com/C
 
 - `BuildStarted` – when a build was started
 - `TargetSucceeded` – when a target succeeded (only `Restore`, `Compile`, `Test`)
-- `BuildSetup` – when setting up a build via `nuke [:setup]`
-- `CakeConvert` – when converting Cake files via `nuke :cake-convert`
+- `BuildSetup` – when setting up a build via `fallout [:setup]`
+- `CakeConvert` – when converting Cake files via `fallout :cake-convert`
 
 :::info
 Data for `BuildStarted` and `TargetSucceeded` is only collected when `IsServerBuild` returns `true` (i.e., CI build), or the build is invoked via global tool. I.e., a contributor executing `build.ps1` or `build.sh` will not have telemetry enabled unknowingly. Likewise, when a build project targets a higher telemetry version than the installed global tool, the lower version will be used.

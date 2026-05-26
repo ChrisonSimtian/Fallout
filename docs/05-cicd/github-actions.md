@@ -86,10 +86,20 @@ jobs:
     name: ubuntu-latest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run './build.cmd Compile'
-        run: ./build.cmd Compile
+      - uses: actions/checkout@v6
+      - name: 'Setup: .NET SDK'
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - name: 'Restore: dotnet tools'
+        run: dotnet tool restore
+      - name: 'Run: Compile'
+        run: dotnet fallout Compile
 ```
+
+:::info
+The generated workflow uses `actions/setup-dotnet` to install the .NET SDK on the runner, then `dotnet tool restore` to install the `Fallout.GlobalTool` version pinned in `.config/dotnet-tools.json`, then `dotnet fallout <targets>` to run your build. Your repository needs a `.config/dotnet-tools.json` manifest with `Fallout.GlobalTool` pinned — `fallout :setup` creates one automatically.
+:::
 
 </details>
 
@@ -111,7 +121,7 @@ Target Pack => _ => _
 <summary>Generated output</summary>
 
 ```yaml title=".github/workflows/continuous.yml"
-- uses: actions/upload-artifact@v1
+- uses: actions/upload-artifact@v5
   with:
     name: packages
     path: output/packages
@@ -145,8 +155,8 @@ class Build : FalloutBuild
 <summary>Generated output</summary>
 
 ```yaml title=".github/workflows/continuous.yml"
-- name: Run './build.cmd Publish'
-  run: ./build.cmd Publish
+- name: 'Run: Publish'
+  run: dotnet fallout Publish
   env:
     NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
 ```
@@ -181,8 +191,8 @@ class Build : FalloutBuild
 <summary>Generated output</summary>
 
 ```yaml title=".github/workflows/continuous.yml"
-- name: Run './build.cmd Release'
-  run: ./build.cmd Publish
+- name: 'Run: Publish'
+  run: dotnet fallout Publish
   env:
     GITHUB_CONTEXT: ${{ toJSON(github) }}
 ```
@@ -197,13 +207,13 @@ By default, the generated workflow file will include a [caching step](https://gi
 <summary>Generated output</summary>
 
 ```yaml title=".github/workflows/continuous.yml"
-- name: Cache .fallout/temp, ~/.nuget/packages
-  uses: actions/cache@v2
+- name: 'Cache: .fallout/temp, ~/.nuget/packages'
+  uses: actions/cache@v4
   with:
     path: |
       .fallout/temp
       ~/.nuget/packages
-    key: ${{ runner.os }}-${{ hashFiles('global.json', 'source/**/*.csproj') }}
+    key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
 ```
 
 </details>

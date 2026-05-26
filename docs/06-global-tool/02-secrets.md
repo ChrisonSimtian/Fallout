@@ -4,7 +4,7 @@ title: Managing Secrets
 
 import AsciinemaPlayer from '@site/src/components/AsciinemaPlayer';
 
-Historically, secret values like passwords or auth-tokens are often saved as environment variables on local machines or CI/CD servers. This imposes both, security issues because other processes can access these environment variables and inconveniences when a build must be executed locally for emergency reasons (server downtime). NUKE has an integrated encryption utility, which can be used to save and load secret values to and from [parameter files](../02-fundamentals/06-parameters.md#passing-values-through-parameter-files).
+Historically, secret values like passwords or auth-tokens are often saved as environment variables on local machines or CI/CD servers. This imposes both, security issues because other processes can access these environment variables and inconveniences when a build must be executed locally for emergency reasons (server downtime). Fallout has an integrated encryption utility, which can be used to save and load secret values to and from [parameter files](../02-fundamentals/06-parameters.md#passing-values-through-parameter-files).
 
 :::danger
 Our [custom encryption utility](https://github.com/ChrisonSimtian/Fallout/blob/main/src/Nuke.Utilities/Security/EncryptionUtility.cs) is provided "AS IS" without warranty of any kind.
@@ -20,7 +20,7 @@ You can start managing your secrets by calling:
 
 ```powershell
 # terminal-command
-nuke :secrets [profile]
+fallout :secrets [profile]
 ```
 
 When your parameter file does not contain secrets yet, you'll be prompted to choose a password. Otherwise, you have to provide the original password chosen.
@@ -56,4 +56,4 @@ When secrets are saved to a parameters file, they are prefixed with `v1:` to ind
 
 ## Removing Secrets
 
-If you want to delete a secret, you can simply remove it from the parameters file. In the event of a lost password, you have to remove all secrets and re-populate the parameters file via `nuke :secrets`.
+If you want to delete a secret, you can simply remove it from the parameters file. In the event of a lost password, you have to remove all secrets and re-populate the parameters file via `fallout :secrets`.
