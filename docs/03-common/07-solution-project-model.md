@@ -33,7 +33,7 @@ With an instance of the `Solution` type you can **read and write the solution** 
 
 ```csharp
 // Gather projects
-var globalToolProject = Solution.GetProject("Fallout.GlobalTool");
+var globalToolProject = Solution.GetProject("Fallout.Cli");
 var testProjects = Solution.GetAllProjects("*.Tests");
 
 // Gather all solution items

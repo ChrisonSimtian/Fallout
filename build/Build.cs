@@ -83,7 +83,7 @@ partial class Build
             .ClearProperties());
 
     IEnumerable<(Fallout.Common.ProjectModel.Project Project, string Framework)> ICompile.PublishConfigurations =>
-        from project in new[] { Solution.Fallout_GlobalTool, Solution.Fallout_MSBuildTasks }
+        from project in new[] { Solution.Fallout_Cli, Solution.Fallout_MSBuildTasks }
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
@@ -256,8 +256,8 @@ partial class Build
         .DependsOn<IPack>()
         .Executes(() =>
         {
-            SuppressErrors(() => DotNet($"tool uninstall -g {Solution.Fallout_GlobalTool.Name}"), logWarning: false);
-            DotNet($"tool install -g {Solution.Fallout_GlobalTool.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
+            SuppressErrors(() => DotNet($"tool uninstall -g {Solution.Fallout_Cli.Name}"), logWarning: false);
+            DotNet($"tool install -g {Solution.Fallout_Cli.Name} --add-source {OutputDirectory} --version {DefaultDeploymentVersion}");
         });
 
     T From<T>()

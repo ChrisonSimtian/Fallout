@@ -43,7 +43,7 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
   </ItemGroup>
-  <!-- Roslyn (Fallout.SourceGenerator + Fallout.GlobalTool + Fallout.Migrate.Analyzers) -->
+  <!-- Roslyn (Fallout.SourceGenerator + Fallout.Cli + Fallout.Migrate.Analyzers) -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />

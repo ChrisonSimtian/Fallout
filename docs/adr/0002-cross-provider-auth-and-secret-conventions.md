@@ -14,7 +14,7 @@ Fallout already has mature primitives that are scattered and worth surfacing:
 - **`[Parameter]`** (`src/Fallout.Build/ParameterAttribute.cs:34`) — declarative field injection from CLI args + env vars.
 - **`[Secret]`** (`src/Fallout.Build/ParameterAttribute.cs:76`) — marker attribute; semantically "do not log this value." Currently a passive marker — actual log-scrubbing behaviour needs explicit framework-side support (see Open Questions).
 - **`CredentialStore`** (`src/Fallout.Build/Utilities/CredentialStore.cs`) — macOS Keychain wrapper. Linux/Windows fall back to prompt-only.
-- **Encrypted parameters file** — `parameters.json` (+ named profiles `parameters.<profile>.json`), AES-encrypted with a password held in the Keychain or prompted for. Managed interactively via `dotnet fallout :secrets` (`src/Fallout.GlobalTool/Program.Secrets.cs`).
+- **Encrypted parameters file** — `parameters.json` (+ named profiles `parameters.<profile>.json`), AES-encrypted with a password held in the Keychain or prompted for. Managed interactively via `dotnet fallout :secrets` (`src/Fallout.Cli/Program.Secrets.cs`).
 - **`ImportSecrets`** on `[GitHubActions]` (`src/Fallout.Common/CI/GitHubActions/GitHubActionsAttribute.cs:65`) — declares which `[Parameter, Secret]` fields the workflow should inject from GitHub's secret store, mapped via `SplitCamelHumpsWithKnownWords().JoinUnderscore().ToUpperInvariant()` (line 217).
 - **Provider-sourced injection** — `AzureKeyVaultSecretAttribute`, `AppVeyorSecretAttribute` already exist. They're a third category: **runtime-resolved value providers** that look up the secret from an external store on startup, no env-var hop required.
 
@@ -148,7 +148,7 @@ Skip the existing infrastructure; layer on a standard .NET configuration provide
 - [ADR-0001](0001-cd-primitives-attributes-vs-tasks.md) — the two CD patterns this layers on
 - `src/Fallout.Build/ParameterAttribute.cs:34,76` — `ParameterAttribute` and `SecretAttribute` definitions
 - `src/Fallout.Build/Utilities/CredentialStore.cs` — macOS Keychain wrapper
-- `src/Fallout.GlobalTool/Program.Secrets.cs` — encrypted parameters file CLI
+- `src/Fallout.Cli/Program.Secrets.cs` — encrypted parameters file CLI
 - `src/Fallout.Common/CI/GitHubActions/GitHubActionsAttribute.cs:217` — canonical name derivation (`SplitCamelHumpsWithKnownWords().JoinUnderscore().ToUpperInvariant()`)
 - `src/Fallout.Common/Tools/AzureKeyVault/AzureKeyVaultSecretAttribute.cs` — runtime value-provider precedent (step 3 of the resolution chain)
 - RFC [#113](https://github.com/ChrisonSimtian/Fallout/issues/113) — deployment agent (needs the resolution chain to authenticate to coordinators)

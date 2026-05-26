@@ -14,7 +14,7 @@ Central package versions are pinned in `Directory.Packages.props`; this page lin
 |---|---|---|
 | `Microsoft.Build` (+ `.Framework`, `.Tasks.Core`, `.Utilities.Core`) | MSBuild engine — read/evaluate `.csproj`/`.props` files | `Fallout.ProjectModel`, `Fallout.MSBuildTasks` |
 | `Microsoft.Build.Locator` | Locate an installed MSBuild at runtime | `Fallout.ProjectModel` |
-| `Microsoft.CodeAnalysis.*` (CSharp, Workspaces, MSBuild, Analyzers) | Roslyn — C# parsing/compilation/analysis | `Fallout.SourceGenerators`, `Fallout.GlobalTool` (Cake rewriter) |
+| `Microsoft.CodeAnalysis.*` (CSharp, Workspaces, MSBuild, Analyzers) | Roslyn — C# parsing/compilation/analysis | `Fallout.SourceGenerators`, `Fallout.Cli` (Cake rewriter) |
 | `Microsoft.Extensions.DependencyModel` | Parse `.deps.json` runtime metadata | `Fallout.Build` |
 | `Microsoft.SourceLink.GitHub` | Source-link symbols into published nupkgs so debuggers can step into Fallout | All packable libs |
 | `Nerdbank.GitVersioning` | Build-time semver derived from git history | All packable libs |
@@ -46,7 +46,7 @@ Central package versions are pinned in `Directory.Packages.props`; this page lin
 |---|---|---|
 | `NJsonSchema` + `.NewtonsoftJson` | Generate `build.schema.json` so IDEs can auto-complete `--params` | Drags `Newtonsoft.Json` transitively |
 | `Newtonsoft.Json` | Legacy JSON — direct usage in older codepaths | Long-term consolidation to `System.Text.Json` tracked in [#83](https://github.com/ChrisonSimtian/Fallout/issues/83) |
-| `Scriban` | Templating engine | Used by `Fallout.GlobalTool` Cake rewriter only. **Open CVE NU1903 tracked in [#84](https://github.com/ChrisonSimtian/Fallout/issues/84).** |
+| `Scriban` | Templating engine | Used by `Fallout.Cli` Cake rewriter only. **Open CVE NU1903 tracked in [#84](https://github.com/ChrisonSimtian/Fallout/issues/84).** |
 
 ## Text, IO, archives
 

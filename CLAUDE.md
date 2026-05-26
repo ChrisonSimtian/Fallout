@@ -40,7 +40,7 @@ Production project groupings under `src/`:
 | Core framework | `Fallout.Common`, `Fallout.Build`, `Fallout.Build.Shared`, `Fallout.Components`, `Fallout.Tooling` |
 | Code generation | `Fallout.SourceGenerators`, `Fallout.Tooling.Generator` |
 | Models | `Fallout.ProjectModel`, `Fallout.SolutionModel` |
-| Tooling | `Fallout.GlobalTool`, `Fallout.MSBuildTasks` |
+| Tooling | `Fallout.Cli`, `Fallout.MSBuildTasks` |
 | Migration | `Fallout.Migrate` (CLI for NUKE → Fallout repo migration) |
 | Utilities | `Fallout.Utilities`, `Fallout.Utilities.IO.Compression`, `Fallout.Utilities.IO.Globbing`, `Fallout.Utilities.Net`, `Fallout.Utilities.Text.Json`, `Fallout.Utilities.Text.Yaml` |
 | Vendored | `Fallout.VisualStudio.SolutionPersistence` (fork of upstream `Microsoft.VisualStudio.SolutionPersistence`, sources in `vendor/`) |

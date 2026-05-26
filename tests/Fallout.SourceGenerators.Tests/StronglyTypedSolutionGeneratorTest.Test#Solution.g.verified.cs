@@ -12,11 +12,11 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Common
     public Fallout.Common.ProjectModel.Project Fallout_Build => this.GetProject("Fallout.Build");
     public Fallout.Common.ProjectModel.Project Fallout_Build_Shared => this.GetProject("Fallout.Build.Shared");
     public Fallout.Common.ProjectModel.Project Fallout_Build_Tests => this.GetProject("Fallout.Build.Tests");
+    public Fallout.Common.ProjectModel.Project Fallout_Cli => this.GetProject("Fallout.Cli");
+    public Fallout.Common.ProjectModel.Project Fallout_Cli_Tests => this.GetProject("Fallout.Cli.Tests");
     public Fallout.Common.ProjectModel.Project Fallout_Common => this.GetProject("Fallout.Common");
     public Fallout.Common.ProjectModel.Project Fallout_Common_Tests => this.GetProject("Fallout.Common.Tests");
     public Fallout.Common.ProjectModel.Project Fallout_Components => this.GetProject("Fallout.Components");
-    public Fallout.Common.ProjectModel.Project Fallout_GlobalTool => this.GetProject("Fallout.GlobalTool");
-    public Fallout.Common.ProjectModel.Project Fallout_GlobalTool_Tests => this.GetProject("Fallout.GlobalTool.Tests");
     public Fallout.Common.ProjectModel.Project Fallout_Migrate => this.GetProject("Fallout.Migrate");
     public Fallout.Common.ProjectModel.Project Fallout_Migrate_Analyzers => this.GetProject("Fallout.Migrate.Analyzers");
     public Fallout.Common.ProjectModel.Project Fallout_Migrate_Analyzers_Tests => this.GetProject("Fallout.Migrate.Analyzers.Tests");

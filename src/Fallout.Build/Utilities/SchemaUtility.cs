@@ -100,7 +100,7 @@ public static class SchemaUtility
             userSchema["properties"] = userProperties;
 
         // BuildProjectFile is read by the Fallout global tool's in-tool runner from .fallout/parameters.json
-        // (see Fallout.GlobalTool.BuildProjectResolver). It's not a [Parameter] on the build itself, but we
+        // (see Fallout.Cli.BuildProjectResolver). It's not a [Parameter] on the build itself, but we
         // surface it in the schema so editors offer IntelliSense when consumers configure a non-conventional
         // build project path.
         baseProperties["BuildProjectFile"] = new JsonObject

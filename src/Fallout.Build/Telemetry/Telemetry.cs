@@ -52,7 +52,7 @@ internal static partial class Telemetry
         AbsolutePath GetCookieFile(string name, int version)
             => Constants.GlobalFalloutDirectory / "telemetry-awareness" / $"v{version}" / name;
 
-        // Check for calls from Fallout.GlobalTool and custom global tools
+        // Check for calls from Fallout.Cli and custom global tools
         if (SuppressErrors(() => FalloutBuild.BuildProjectFile, logWarning: false) == null)
         {
             var cookieName = Assembly.GetEntryAssembly().NotNull().GetName().Name;
@@ -84,7 +84,7 @@ internal static partial class Telemetry
 
         for (var version = CurrentVersion; version > 0; version--)
         {
-            var cookieFile = GetCookieFile("Fallout.GlobalTool", version);
+            var cookieFile = GetCookieFile("Fallout.Cli", version);
             if (cookieFile.FileExists())
                 return version;
         }

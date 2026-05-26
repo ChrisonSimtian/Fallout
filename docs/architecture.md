@@ -61,7 +61,7 @@ Images, icons, logos, and other non-code binary content live under `.assets/`. T
 | Core framework | `Fallout.Common`, `Fallout.Build`, `Fallout.Build.Shared`, `Fallout.Components`, `Fallout.Tooling` | The API consumers reference and the host runtime that executes targets. |
 | Code generation | `Fallout.SourceGenerators`, `Fallout.Tooling.Generator` | Roslyn source generators that produce per-target code at compile time, plus the `.cs`-from-`.json` tool-wrapper generator. |
 | Models | `Fallout.ProjectModel`, `Fallout.SolutionModel` | Strongly-typed wrappers over `.csproj` / `.sln` / `.slnx`. |
-| Tooling | `Fallout.GlobalTool`, `Fallout.MSBuildTasks` | The `dotnet fallout` global tool and the MSBuild tasks layer it builds on. |
+| Tooling | `Fallout.Cli`, `Fallout.MSBuildTasks` | The `dotnet fallout` global tool and the MSBuild tasks layer it builds on. |
 | Utilities | `Fallout.Utilities` + sub-packages (`IO.Compression`, `IO.Globbing`, `Net`, `Text.Json`, `Text.Yaml`) | Standalone helpers reusable outside the build context. |
 
 Every project under `src/` has a sibling under `tests/` (e.g. `src/Fallout.Common/` → `tests/Fallout.Common.Tests/`).

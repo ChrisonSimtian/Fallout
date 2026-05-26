@@ -44,7 +44,7 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 - Branch from `main`. Name your branch `feature/<slug>`, `bugfix/<slug>`, or `chore/<slug>`.
 - Make sure your employer allows the contribution.
 - Read [CLAUDE.md](CLAUDE.md) for the codebase conventions — package versions go in `Directory.Packages.props`, license headers are mechanical, tests live next to code.
-- The bootstrappers are now thin: `./build.ps1` / `./build.sh` provision .NET if needed, then run `dotnet tool restore` + `dotnet fallout "$@"`. The `Fallout.GlobalTool` version is pinned in `.config/dotnet-tools.json`.
+- The bootstrappers are now thin: `./build.ps1` / `./build.sh` provision .NET if needed, then run `dotnet tool restore` + `dotnet fallout "$@"`. The `Fallout.Cli` version is pinned in `.config/dotnet-tools.json`.
 - Run `./build.ps1 Test` (or `./build.sh Test`, or directly `dotnet fallout Test` once your tools are restored) locally first.
 
 ### When writing the PR
