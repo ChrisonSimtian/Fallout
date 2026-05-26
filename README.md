@@ -2,12 +2,17 @@
   <img width="320" src=".assets/fallout-logo.svg" alt="Fallout — .NET build system" />
 </p>
 
+<p align="center">
+  <strong>📖 Documentation: <a href="https://docs.fallout.build/">docs.fallout.build</a></strong>
+</p>
+
 > 📦 **Fallout is the successor to NUKE.** [Migrating from NUKE →](docs/migration/from-nuke.md)
 
 # Fallout
 
 > Build automation for C#/.NET — the hard-fork successor to NUKE.
 
+[![Docs](https://img.shields.io/badge/docs-docs.fallout.build-blue?logo=readthedocs&logoColor=white)](https://docs.fallout.build/)
 [![CI](https://github.com/ChrisonSimtian/Fallout/actions/workflows/ubuntu-latest.yml/badge.svg)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/ubuntu-latest.yml)
 [![NuGet](https://img.shields.io/nuget/v/Fallout.Common?label=Fallout.Common)](https://www.nuget.org/packages/Fallout.Common)
 [![NuGet downloads](https://img.shields.io/nuget/dt/Fallout.Common?label=downloads)](https://www.nuget.org/packages/Fallout.Common)
