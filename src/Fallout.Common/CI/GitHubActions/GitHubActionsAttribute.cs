@@ -195,7 +195,6 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
         yield return new GitHubActionsRunStep
                      {
-                         BuildCmdPath = BuildCmdPath,
                          InvokedTargets = InvokedTargets,
                          Imports = GetImports().ToDictionary(x => x.Key, x => x.Value)
                      };

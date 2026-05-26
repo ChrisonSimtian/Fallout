@@ -1,4 +1,5 @@
 ﻿{
+  BuildProjectFile: [],
   Continue: [],
   Help: [],
   Host: [

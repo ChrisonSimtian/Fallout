@@ -99,6 +99,16 @@ public static class SchemaUtility
         if (userProperties != null)
             userSchema["properties"] = userProperties;
 
+        // BuildProjectFile is read by the Fallout global tool's in-tool runner from .fallout/parameters.json
+        // (see Fallout.GlobalTool.BuildProjectResolver). It's not a [Parameter] on the build itself, but we
+        // surface it in the schema so editors offer IntelliSense when consumers configure a non-conventional
+        // build project path.
+        baseProperties["BuildProjectFile"] = new JsonObject
+        {
+            ["type"] = new JsonArray("null", "string"),
+            ["description"] = "Path to the build project (.csproj) relative to the repository root. Defaults to 'build/_build.csproj' when unset. Read by the Fallout global tool's in-tool runner."
+        };
+
         // Force the framework parameters Skip/Target to reference the ExecutableTarget definition.
         if (baseProperties[InvokedTargetsParameterName] is JsonObject targetProp)
             targetProp["items"] = new JsonObject { ["$ref"] = DefinitionsPrefix + "ExecutableTarget" };

@@ -13,7 +13,6 @@ $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 # CONFIGURATION
 ###########################################################################
 
-$BuildProjectFile = Join-Path $PSScriptRoot 'build/_build.csproj'
 $TempDirectory = Join-Path $PSScriptRoot '.fallout/temp'
 
 $DotNetGlobalFile = Join-Path $PSScriptRoot 'global.json'
@@ -34,28 +33,17 @@ function ExecSafe([scriptblock] $cmd) {
     if ($LASTEXITCODE) { exit $LASTEXITCODE }
 }
 
-# Print environment variables
-# WARNING: Make sure that secrets are actually scrambled in build log
-# Get-Item -Path Env:* | Sort-Object -Property Name | ForEach-Object {"{0}={1}" -f $_.Name,$_.Value}
-
-# Check if any dotnet is installed
-if ($null -ne (Get-Command "dotnet" -ErrorAction SilentlyContinue)) {
-    ExecSafe { & dotnet --info }
-}
-
-# If dotnet CLI is installed globally and it matches requested version, use for execution
+# If dotnet CLI is installed globally, use it; otherwise provision a local copy under .fallout\temp.
 if ($null -ne (Get-Command "dotnet" -ErrorAction SilentlyContinue) -and `
     $(dotnet --version) -and $LASTEXITCODE -eq 0) {
     $env:DOTNET_EXE = (Get-Command "dotnet").Path
 }
 else {
-    # Download install script
     $DotNetInstallFile = Join-Path $TempDirectory 'dotnet-install.ps1'
     New-Item -ItemType Directory -Path $TempDirectory -Force | Out-Null
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     (New-Object System.Net.WebClient).DownloadFile($DotNetInstallUrl, $DotNetInstallFile)
 
-    # If global.json exists, load expected version
     if (Test-Path $DotNetGlobalFile) {
         $DotNetGlobal = $(Get-Content $DotNetGlobalFile | Out-String | ConvertFrom-Json)
         if ($DotNetGlobal.PSObject.Properties["sdk"] -and $DotNetGlobal.sdk.PSObject.Properties["version"]) {
@@ -63,7 +51,6 @@ else {
         }
     }
 
-    # Install by channel or version
     $DotNetDirectory = Join-Path $TempDirectory 'dotnet-win'
     if (!(Test-Path variable:DotNetVersion)) {
         ExecSafe { & powershell $DotNetInstallFile -InstallDir $DotNetDirectory -Channel $DotNetChannel -NoPath }
@@ -76,5 +63,5 @@ else {
 
 Write-Output "Microsoft (R) .NET SDK version $(& $env:DOTNET_EXE --version)"
 
-ExecSafe { & $env:DOTNET_EXE build $BuildProjectFile /nodeReuse:false /p:UseSharedCompilation=false -nologo -clp:NoSummary }
-ExecSafe { & $env:DOTNET_EXE run --project $BuildProjectFile --no-build -- $BuildArguments }
+ExecSafe { & $env:DOTNET_EXE tool restore }
+ExecSafe { & $env:DOTNET_EXE fallout $BuildArguments }

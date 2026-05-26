@@ -195,10 +195,6 @@ partial class Program
         AbsolutePath buildDirectory,
         string buildProjectName)
     {
-        (scriptDirectory / "build.cmd").WriteAllLines(
-            FillTemplate(GetTemplate("build.cmd")),
-            platformFamily: PlatformFamily.Linux);
-
         (scriptDirectory / "build.sh").WriteAllLines(
             FillTemplate(
                 GetTemplate("build.sh"),
@@ -206,8 +202,6 @@ partial class Program
                     new
                     {
                         RootDirectory = scriptDirectory.GetUnixRelativePathTo(rootDirectory),
-                        BuildDirectory = scriptDirectory.GetUnixRelativePathTo(buildDirectory),
-                        BuildProjectName = buildProjectName,
                     })),
             platformFamily: PlatformFamily.Linux);
 
@@ -218,12 +212,27 @@ partial class Program
                     new
                     {
                         RootDirectory = scriptDirectory.GetWinRelativePathTo(rootDirectory),
-                        BuildDirectory = scriptDirectory.GetWinRelativePathTo(buildDirectory),
-                        BuildProjectName = buildProjectName,
                     })),
             platformFamily: PlatformFamily.Windows);
 
-        MakeExecutable(scriptDirectory / "build.cmd");
+        // .config/dotnet-tools.json pins Fallout.GlobalTool as a local tool so the thin shims
+        // (build.sh / build.ps1) can `dotnet tool restore` and `dotnet fallout` deterministically.
+        // Skip if the consumer already has a manifest — they may have other tools pinned and we
+        // don't want to clobber. They can add the `fallout.globaltool` entry manually.
+        var toolManifest = rootDirectory / ".config" / "dotnet-tools.json";
+        if (!toolManifest.FileExists())
+        {
+            (rootDirectory / ".config").CreateDirectory();
+            toolManifest.WriteAllLines(
+                FillTemplate(
+                    GetTemplate("dotnet-tools.json"),
+                    tokens: GetDictionary(
+                        new
+                        {
+                            FalloutGlobalToolVersion = typeof(Program).GetTypeInfo().Assembly.GetVersionText(),
+                        })));
+        }
+
         MakeExecutable(scriptDirectory / "build.sh");
 
         void MakeExecutable(AbsolutePath scriptFile)

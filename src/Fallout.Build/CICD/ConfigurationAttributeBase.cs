@@ -35,10 +35,15 @@ public abstract class ConfigurationAttributeBase : Attribute, IConfigurationGene
     public abstract CustomFileWriter CreateWriter(StreamWriter streamWriter);
     public abstract ConfigurationEntity GetConfiguration(IReadOnlyCollection<ExecutableTarget> relevantTargets);
 
+    // Used by legacy CI providers (AzurePipelines, AppVeyor, TeamCity, SpaceAutomation) that still emit
+    // ./build.cmd-style step invocations. GitHubActions doesn't read this since v11 — the generator now
+    // emits a three-step setup-dotnet / tool restore / dotnet fallout shape. Falls back to "build.cmd"
+    // when no file is found so generators don't throw mid-emit; consumers who removed build.cmd will see
+    // the broken reference at runtime instead.
     protected virtual string BuildCmdPath =>
         Build.RootDirectory.GlobFiles("build.cmd", "*/build.cmd")
-            .Select(x => Build.RootDirectory.GetUnixRelativePathTo(x))
-            .FirstOrDefault().NotNull("BuildCmdPath != null");
+            .Select(x => Build.RootDirectory.GetUnixRelativePathTo(x).ToString())
+            .FirstOrDefault() ?? "build.cmd";
 
     public void Generate(IReadOnlyCollection<ExecutableTarget> executableTargets)
     {
