@@ -5,7 +5,7 @@ sidebar_position: 1
 
 import DownloadButton from '@site/src/components/DownloadButton';
 
-<DownloadButton url="/download/rider" />
+<DownloadButton />
 
 In [JetBrains Rider](https://www.jetbrains.com/rider) you can install the _NUKE Support plugin_ to be more productive in writing, running, and debugging your builds.
 
