@@ -81,23 +81,16 @@ public partial class Program
             return (int)commandHandler.Invoke(obj: null, commandArguments).NotNull($"Command '{command}' did not return exit code");
         }
 
-        if (rootDirectory == null || buildScript == null)
+        if (rootDirectory == null)
         {
-            var missingItem = rootDirectory == null
-                ? $"{Constants.FalloutDirectoryName} directory/file"
-                : "build.ps1/sh files";
-
-            return PromptForConfirmation($"Could not find {missingItem}. Do you want to setup a build?")
-                ? Setup(new string[0], rootDirectory, buildScript: null)
+            return PromptForConfirmation($"Could not find {Constants.FalloutDirectoryName} directory/file. Do you want to setup a build?")
+                ? Setup(new string[0], rootDirectory: null, buildScript: null)
                 : 0;
         }
 
         // TODO: docker
 
-        var arguments = args.Select(x => x.DoubleQuoteIfNeeded()).JoinSpace();
-        var process = Build(buildScript, arguments);
-        process.WaitForExit();
-        return process.ExitCode;
+        return Run(args, rootDirectory, BuildProjectResolver.Resolve(rootDirectory));
     }
 
     private static Process Build(string buildScript, string arguments)
