@@ -1,9 +1,8 @@
 ---
 title: Introduction
 sidebar_position: 0
+description: Fallout is a C#-first build automation framework for .NET — the hard-fork successor to NUKE. Write your CI/CD pipelines in plain C#, debug them locally, and share build steps across repositories.
 ---
-
-{/* https://docusaurus.io/docs/next/api/plugins/@docusaurus/plugin-content-docs#markdown-front-matter */}
 
 🪴 Write **automation tools and CI/CD pipelines** in plain C# and with access to all .NET libraries.
 
@@ -19,34 +18,34 @@ sidebar_position: 0
 
 ```powershell
 # terminal-command
-dotnet tool install Nuke.GlobalTool --global
+dotnet tool install Fallout.GlobalTool --global
 ```
 
 **2. Go to a repository of your choice and set up a build:**
 
 ```powershell
 # terminal-command
-nuke :setup
+fallout :setup
 ```
 
 **3. Run the build:**
 
 ```powershell
 # terminal-command
-nuke
+fallout
 ```
 
 **4. Open the build project and explore the default `Build` class.**
 
 ## Coming from Cake? 🍰
 
-Get a feeling how your Cake scripts would look like in NUKE.
+Get a feeling how your Cake scripts would look like in Fallout.
 
 **1. Install the global tool:**
 
 ```powershell
 # terminal-command
-dotnet tool install Nuke.GlobalTool --global
+dotnet tool install Fallout.GlobalTool --global
 ```
 
 **2. Go to a repository built with Cake.**
@@ -55,7 +54,7 @@ dotnet tool install Nuke.GlobalTool --global
 
 ```powershell
 # terminal-command
-nuke :cake-convert
+fallout :cake-convert
 ```
 
 **4. Inspect the outcome (errors are expected).**
