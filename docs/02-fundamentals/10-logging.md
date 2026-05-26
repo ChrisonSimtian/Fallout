@@ -2,7 +2,7 @@
 title: Logging
 ---
 
-As with any other application, good logging greatly reduces the time to detect the source of errors and fix them quickly. NUKE integrates with [Serilog](https://serilog.net/) and prepares a console and file logger for you. Most functions with side effects will automatically log their performed actions. This also includes [invocations of CLI tools](../03-common/08-cli-tools.md). Of course, you can also add your own log messages:
+As with any other application, good logging greatly reduces the time to detect the source of errors and fix them quickly. Fallout integrates with [Serilog](https://serilog.net/) and prepares a console and file logger for you. Most functions with side effects will automatically log their performed actions. This also includes [invocations of CLI tools](../03-common/08-cli-tools.md). Of course, you can also add your own log messages:
 
 ```csharp
 // using Serilog;
@@ -33,7 +33,7 @@ Log messages are only written to console when the appropriate `LogLevel` is set.
 
 ```powershell
 # terminal-command
-nuke --verbosity verbose
+fallout --verbosity verbose
 ```
 
   </TabItem>
@@ -41,7 +41,7 @@ nuke --verbosity verbose
 
 ```powershell
 # terminal-command
-nuke --verbosity normal
+fallout --verbosity normal
 ```
 
   </TabItem>
@@ -49,7 +49,7 @@ nuke --verbosity normal
 
 ```powershell
 # terminal-command
-nuke --verbosity minimal
+fallout --verbosity minimal
 ```
 
   </TabItem>
@@ -57,7 +57,7 @@ nuke --verbosity minimal
 
 ```powershell
 # terminal-command
-nuke --verbosity quiet
+fallout --verbosity quiet
 ```
 
   </TabItem>

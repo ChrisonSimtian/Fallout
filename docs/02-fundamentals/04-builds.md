@@ -2,7 +2,7 @@
 title: Build Anatomy
 ---
 
-A build project is a regular .NET console application. However, unlike regular console applications, NUKE chooses to name the main class `Build` instead of `Program`. This establishes a convention and allows easier navigation in your solution. The `Build` class must inherit from the `FalloutBuild` base class and define a `Main` method to invoke the build execution and define any number of default targets:
+A build project is a regular .NET console application. However, unlike regular console applications, Fallout chooses to name the main class `Build` instead of `Program`. This establishes a convention and allows easier navigation in your solution. The `Build` class must inherit from the `FalloutBuild` base class and define a `Main` method to invoke the build execution and define any number of default targets:
 
 <Tabs>
   <TabItem value="single" label="Single Default&nbsp;Target">

@@ -67,7 +67,7 @@ The only difference between `FromUrl` and `FromLocalDirectory` is that the latte
 
 ## GitHub Integration
 
-As one of the most popular Git hosting services, NUKE provides several methods to retrieve GitHub-specific **identifiers and links** from a repository:
+As one of the most popular Git hosting services, Fallout provides several methods to retrieve GitHub-specific **identifiers and links** from a repository:
 
 {/* snippet: repository-information-github */}
 ```cs

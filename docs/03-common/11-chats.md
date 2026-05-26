@@ -2,7 +2,7 @@
 title: Chats & Social Media
 ---
 
-As a final step of your build automation process, you may want to report errors or announce a new version through different chats and social media channels. NUKE comes with basic support for the most common platforms.
+As a final step of your build automation process, you may want to report errors or announce a new version through different chats and social media channels. Fallout comes with basic support for the most common platforms.
 
 <Tabs>
   <TabItem value="slack" label="Slack" default>
@@ -10,7 +10,7 @@ As a final step of your build automation process, you may want to report errors 
 You can send a [Slack](https://slack.com/) messages as follows:
 
 ```csharp
-// using static Nuke.Common.Tools.Slack.SlackTasks;
+// using static Fallout.Common.Tools.Slack.SlackTasks;
 
 [Parameter] [Secret] readonly string SlackWebhook;
 
@@ -18,7 +18,7 @@ Target Send => _ => _
     .Executes(async () =>
     {
         await SendSlackMessageAsync(_ => _
-                .SetText("Hello from NUKE!"),
+                .SetText("Hello from Fallout!"),
             SlackWebhook);
     });
 ```
@@ -33,7 +33,7 @@ For more advanced scenarios, check out the [SlackAPI](https://github.com/Inumedi
 You can send a [Microsoft Teams](https://www.microsoft.com/en/microsoft-teams/group-chat-software) messages as follows:
 
 ```csharp
-// using static Nuke.Common.Tools.Teams.TeamsTasks;
+// using static Fallout.Common.Tools.Teams.TeamsTasks;
 
 [Parameter] [Secret] readonly string TeamsWebhook;
 
@@ -41,7 +41,7 @@ Target Send => _ => _
     .Executes(async () =>
     {
         await SendTeamsMessageAsync(_ => _
-                .SetText("Hello from NUKE!"),
+                .SetText("Hello from Fallout!"),
             TeamsWebhook)
     });
 ```
@@ -52,7 +52,7 @@ Target Send => _ => _
 You can send a [Twitter](https://twitter.com/) messages as follows:
 
 ```csharp
-// using static Nuke.Common.Tools.Twitter.TwitterTasks;
+// using static Fallout.Common.Tools.Twitter.TwitterTasks;
 
 [Parameter] [Secret] readonly string TwitterConsumerKey;
 [Parameter] [Secret] readonly string TwitterConsumerSecret;
@@ -63,7 +63,7 @@ Target Send => _ => _
     .Executes(async () =>
     {
         await SendTweetAsync(
-            message: "Hello from NUKE",
+            message: "Hello from Fallout",
             TwitterConsumerKey,
             TwitterConsumerSecret,
             TwitterAccessToken,
@@ -81,7 +81,7 @@ For more advanced scenarios, check out the [Tweetinvi](https://github.com/linvi/
 You can send a [Gitter](https://gitter.im/) messages as follows:
 
 ```csharp
-// using static Nuke.Common.Tools.Gitter.GitterTasks;
+// using static Fallout.Common.Tools.Gitter.GitterTasks;
 
 [Parameter] readonly string GitterRoomId;
 [Parameter] [Secret] readonly string GitterAuthToken;
@@ -90,7 +90,7 @@ Target Send => _ => _
     .Executes(() =>
     {
         SendGitterMessage(
-            message: "Hello from NUKE",
+            message: "Hello from Fallout",
             GitterRoomId,
             GitterAuthToken);
     });

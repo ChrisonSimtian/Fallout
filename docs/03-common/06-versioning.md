@@ -6,7 +6,7 @@ Whenever a build produces artifacts, those should be identifiable with a unique 
 
 ## Repository-based Versioning
 
-NUKE supports 4 different tools that help generating version numbers from your repository and its commits. Each of these tools comes with its own attribute that populates the field with the information calculated:
+Fallout supports 4 different tools that help generating version numbers from your repository and its commits. Each of these tools comes with its own attribute that populates the field with the information calculated:
 
 <Tabs>
   <TabItem value="gitversion" label="GitVersion" default>
@@ -17,7 +17,7 @@ Please refer to the [GitVersion documentation](https://gitversion.net/docs/refer
 
 ```powershell title="Tool Installation"
 # terminal-command
-nuke :add-package GitVersion.Tool
+fallout :add-package GitVersion.Tool
 ```
 
 ```csharp title="Build.cs"
@@ -40,7 +40,7 @@ Please refer to the [Nerdbank.GitVersioning documentation](https://github.com/do
 
 ```powershell title="Tool Installation"
 # terminal-command
-nuke :add-package Nerdbank.GitVersioning
+fallout :add-package Nerdbank.GitVersioning
 ```
 
 ```csharp title="Build.cs"
@@ -63,7 +63,7 @@ Please refer to the [OctoVersion documentation](https://github.com/OctopusDeploy
 
 ```powershell title="Tool Installation"
 # terminal-command
-nuke :add-package Octopus.OctoVersion.Tool
+fallout :add-package Octopus.OctoVersion.Tool
 ```
 
 ```csharp title="Build.cs"
@@ -86,7 +86,7 @@ Please refer to the [MinVer documentation](https://github.com/adamralph/minver#u
 
 ```powershell title="Tool Installation"
 # terminal-command
-nuke :add-package minver-cli
+fallout :add-package minver-cli
 ```
 
 ```csharp title="Build.cs"
@@ -104,12 +104,12 @@ Target Print => _ => _
 </Tabs>
 
 :::info
-Note that when the versioning tool fails to calculate version numbers, a warning will be logged and the attributed field remains uninitialized. In that case, you can try executing the issued command manually or `nuke --verbosity verbose` to reveal more detailed information. In most cases, the repository is either not initialized, has no commits, or is missing the tool-specific configuration file.
+Note that when the versioning tool fails to calculate version numbers, a warning will be logged and the attributed field remains uninitialized. In that case, you can try executing the issued command manually or `fallout --verbosity verbose` to reveal more detailed information. In most cases, the repository is either not initialized, has no commits, or is missing the tool-specific configuration file.
 :::
 
 ## Dependency-based Versioning
 
-When your versioning is affected by external dependencies, NUKE provides another mechanism to load the latest version of those prior to build execution. Each attribute provides various properties to control which versions should be considered and how it should be transformed:
+When your versioning is affected by external dependencies, Fallout provides another mechanism to load the latest version of those prior to build execution. Each attribute provides various properties to control which versions should be considered and how it should be transformed:
 
 <Tabs>
   <TabItem value="nuget" label="NuGet&nbsp;Packages" default>

@@ -16,9 +16,9 @@ Canonical reference for how the Fallout repo is laid out and how the pieces fit 
 │   └── Build.*.cs            Partial classes split by concern (CI, Licenses, etc.)
 ├── docs/                     Documentation site content + architecture notes (this file)
 ├── src/                      All production library projects
-│   └── Nuke.<X>/Nuke.<X>.csproj
+│   └── Fallout.<X>/Fallout.<X>.csproj
 ├── tests/                    All test projects
-│   └── Nuke.<X>.Tests/Nuke.<X>.Tests.csproj
+│   └── Fallout.<X>.Tests/Fallout.<X>.Tests.csproj
 ├── AssemblyInfo.cs           Shared InternalsVisibleTo declarations (included by Directory.Build.props)
 ├── Directory.Build.props     Shared MSBuild properties + ItemGroups applied to every project
 ├── Directory.Build.targets   Smart PackageReference → ProjectReference logic

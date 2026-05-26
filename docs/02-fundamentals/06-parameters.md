@@ -2,7 +2,7 @@
 title: Parameters
 ---
 
-Another important aspect of build automation is the ability of passing input values to your build. These input values can be anything from generic texts, numeric and enum values, file and directory paths, arrays of aforementioned, boolean flags, or secrets. NUKE comes with a succinct way to declare parameters and lets you set their values in various ways.
+Another important aspect of build automation is the ability of passing input values to your build. These input values can be anything from generic texts, numeric and enum values, file and directory paths, arrays of aforementioned, boolean flags, or secrets. Fallout comes with a succinct way to declare parameters and lets you set their values in various ways.
 
 You can declare a parameter by adding the `Parameter` attribute to a field or property:
 
@@ -34,7 +34,7 @@ In the most straightforward way, you can pass parameter values from the command-
 
 ```powershell
 # terminal-command
-nuke --my-parameter <value>
+fallout --my-parameter <value>
 ```
 
 :::tip
@@ -43,7 +43,7 @@ With the global tool installed and [shell completion](../06-global-tool/00-shell
 
 ### Passing Values through Parameter Files
 
-Instead of providing default values in your `Build` class or repeatedly specifying them through the command-line, you can also define them in so-called parameter files (JSON). These files are located under the `.nuke` directory:
+Instead of providing default values in your `Build` class or repeatedly specifying them through the command-line, you can also define them in so-called parameter files (JSON). These files are located under the `.fallout` directory:
 
 ```json title=".fallout/parameters.json"
 {
@@ -56,7 +56,7 @@ Besides the default `parameters.json` file, you can create additional profiles f
 
 ```powershell
 # terminal-command
-nuke --profile <name> [other-profiles...]
+fallout --profile <name> [other-profiles...]
 ```
 
 :::info
@@ -73,16 +73,16 @@ Based on the `build.schema.json` file, you can easily configure your parameters 
 
 </p>
 
-Remember, that the `build.schema.json` file must be regenerated whenever you add or change a parameter. For instance by calling `nuke --help`.
+Remember, that the `build.schema.json` file must be regenerated whenever you add or change a parameter. For instance by calling `fallout --help`.
 :::
 
 ### Passing Values through Environment Variables
 
-You can set parameter values through environment variables, which can be really helpful when setting up global values in CI/CD pipelines. This is done in such a manner that casing and underscores are completely ignored. Also, you can use the `NUKE_` prefix to easily distinguish them from others:
+You can set parameter values through environment variables, which can be really helpful when setting up global values in CI/CD pipelines. This is done in such a manner that casing and underscores are completely ignored. Also, you can use the `FALLOUT_` prefix to easily distinguish them from others (the legacy `NUKE_` prefix is still honoured during the 10.x line for backwards compatibility):
 
 ```powershell
 SET MY_PARAMETER = <value>
-SET NUKE_MY_PARAMETER = <value>
+SET FALLOUT_MY_PARAMETER = <value>
 ```
 
 ## Required Parameters

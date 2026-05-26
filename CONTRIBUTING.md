@@ -6,13 +6,13 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 
 ## Where to start
 
-- Discuss non-trivial changes in an [issue](https://github.com/ChrisonSimtian/nuke/issues) first.
+- Discuss non-trivial changes in an [issue](https://github.com/ChrisonSimtian/Fallout/issues) first.
 - Small fixes (typos, broken links, tool wrapper additions) can go straight to a PR against `main`.
 - We're trunk-based: branch from `main`, open a PR against `main`. No `develop` or `release/*` branches.
 
 ## Baseline contributions
 
-- Star the [GitHub project](https://github.com/ChrisonSimtian/nuke/stargazers) to help others find it.
+- Star the [GitHub project](https://github.com/ChrisonSimtian/Fallout/stargazers) to help others find it.
 - File issues with concrete reproduction steps, version info, and logs.
 - Help triage existing issues — confirming bugs or pointing to fixes counts.
 
@@ -34,7 +34,7 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 
 - Bugs blocking active enterprise CI/CD usage.
 - Regressions versus the last NUKE 10.x release.
-- Rebrand-track work (see the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/nuke/milestone/1)).
+- Rebrand-track work (see the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/Fallout/milestone/1)).
 - Demand-driven items where multiple users have weighed in.
 
 ## Pull requests
@@ -44,7 +44,8 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 - Branch from `main`. Name your branch `feature/<slug>`, `bugfix/<slug>`, or `chore/<slug>`.
 - Make sure your employer allows the contribution.
 - Read [CLAUDE.md](CLAUDE.md) for the codebase conventions — package versions go in `Directory.Packages.props`, license headers are mechanical, tests live next to code.
-- Run `./build.ps1 Test` (or `./build.sh Test`) locally first.
+- The bootstrappers are now thin: `./build.ps1` / `./build.sh` provision .NET if needed, then run `dotnet tool restore` + `dotnet fallout "$@"`. The `Fallout.GlobalTool` version is pinned in `.config/dotnet-tools.json`.
+- Run `./build.ps1 Test` (or `./build.sh Test`, or directly `dotnet fallout Test` once your tools are restored) locally first.
 
 ### When writing the PR
 
@@ -55,7 +56,7 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 
 ### Tool wrappers
 
-Tool wrapper JSON lives under `src/Nuke.Common/Tools/<Tool>/<Tool>.json`. When adding or extending one:
+Tool wrapper JSON lives under `src/Fallout.Common/Tools/<Tool>/<Tool>.json`. When adding or extending one:
 
 - Copy the shape from a neighbouring tool.
 - Cover at least a full command with all its arguments.
@@ -72,6 +73,6 @@ Tool wrapper JSON lives under `src/Nuke.Common/Tools/<Tool>/<Tool>.json`. When a
 
 ### After opening a PR
 
-- CI runs `ubuntu-latest`, `windows-latest`, and `macos-latest` matrices.
+- The PR gate is `ubuntu-latest` only (docs-only PRs hit a noop workflow). `windows-latest` and `macos-latest` run post-merge on `main` as release validation.
 - Address review feedback in additional commits rather than force-pushing — easier to review the changes.
 - If CI fails on something unrelated to your change, ping a maintainer.
