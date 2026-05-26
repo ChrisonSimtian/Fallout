@@ -3,34 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fallout — build automation for .NET</title>
-<meta name="description" content="Fallout is a build automation framework for C#/.NET. It's the hard-fork successor to NUKE.">
+<title>Fallout — build automation for C#/.NET</title>
+<meta name="description" content="Fallout is a C#-first build automation framework for .NET — the hard-fork successor to NUKE. Write your CI/CD pipelines in plain C#, debug them locally, and share build steps across repositories.">
 <link rel="icon" type="image/svg+xml" href="/fallout-logo.svg">
+<meta property="og:title" content="Fallout — build automation for C#/.NET">
+<meta property="og:description" content="Write your CI/CD pipelines in plain C#. Debug them locally. The hard-fork successor to NUKE.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fallout.build/">
+<meta property="og:image" content="https://fallout.build/fallout-logo.svg">
+<meta name="twitter:card" content="summary">
 <style>
   :root {
     color-scheme: light dark;
     --fg: #1a1a1a;
     --bg: #ffffff;
+    --bg-alt: #fafafa;
     --muted: #585858;
     --link: #1a73e8;
+    --accent: #1a73e8;
+    --accent-fg: #ffffff;
     --border: #e0e0e0;
-    --notice-bg: #fff8e1;
-    --notice-border: #ffd866;
-    --notice-fg: #5c3d00;
+    --code-bg: #f3f3f3;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --fg: #f0f0f0;
       --bg: #1a1a1a;
+      --bg-alt: #222222;
       --muted: #a0a0a0;
       --link: #8ab4f8;
+      --accent: #8ab4f8;
+      --accent-fg: #0d1117;
       --border: #2a2a2a;
-      --notice-bg: #2a2410;
-      --notice-border: #6a5a20;
-      --notice-fg: #f0d890;
+      --code-bg: #242424;
     }
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     background: var(--bg);
@@ -40,49 +49,73 @@
     padding: 0;
   }
   main {
-    max-width: 720px;
+    max-width: 880px;
     margin: 0 auto;
     padding: 4rem 1.5rem 6rem;
   }
-  .logo {
+  .hero {
+    text-align: center;
+    padding: 1rem 0 2rem;
+  }
+  .hero .logo {
     width: 200px;
-    max-width: 100%;
+    max-width: 60vw;
     margin-bottom: 1.5rem;
   }
   h1 {
-    font-size: 2.5rem;
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
+    font-size: 3rem;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
   }
   .tagline {
     color: var(--muted);
-    font-size: 1.15rem;
-    margin: 0 0 2.5rem;
+    font-size: 1.2rem;
+    margin: 0 auto 2rem;
+    max-width: 640px;
+  }
+  .ctas {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 0 1rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s, transform 0.05s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn--primary {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+  .btn--primary:hover { filter: brightness(1.08); text-decoration: none; }
+  .btn--ghost {
+    border-color: var(--border);
+    color: var(--fg);
+  }
+  .btn--ghost:hover {
+    background: var(--bg-alt);
+    text-decoration: none;
   }
   h2 {
-    font-size: 1.25rem;
-    margin: 2.5rem 0 0.75rem;
+    font-size: 1.5rem;
+    margin: 3.5rem 0 1rem;
     letter-spacing: -0.01em;
   }
-  .notice {
-    background: var(--notice-bg);
-    border: 1px solid var(--notice-border);
-    color: var(--notice-fg);
-    border-radius: 6px;
-    padding: 1rem 1.25rem;
-    margin: 2rem 0;
+  h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
   }
-  .notice strong { font-weight: 600; }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0;
-  }
-  li {
-    padding: 0.4rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-  li:last-child { border-bottom: none; }
+  p { margin: 0 0 1rem; }
   a {
     color: var(--link);
     text-decoration: none;
@@ -91,47 +124,177 @@
   code {
     font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.92em;
-    background: var(--border);
+    background: var(--code-bg);
     padding: 0.1em 0.35em;
     border-radius: 3px;
   }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 0.95em;
+  }
+  .steps {
+    display: grid;
+    gap: 1.25rem;
+    margin: 1rem 0 0;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem 1rem;
+    align-items: baseline;
+  }
+  .step__n {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .step__body { min-width: 0; }
+  .step__body p { margin: 0 0 0.5rem; }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 1rem 0 0;
+  }
+  .feature {
+    padding: 1.25rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .feature p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .callout {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+  .callout p { margin: 0; }
+  ul.links {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+  }
+  ul.links li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  ul.links li:last-child { border-bottom: none; }
   footer {
     margin-top: 4rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 0.9rem;
+    text-align: center;
+  }
+  footer p { margin: 0.25rem 0; }
+  @media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    .tagline { font-size: 1.05rem; }
+    h2 { font-size: 1.3rem; margin-top: 2.75rem; }
+    main { padding: 2.5rem 1.25rem 4rem; }
   }
 </style>
 </head>
 <body>
 <main>
-  <img class="logo" src="/fallout-logo.svg" alt="Fallout logo">
 
-  <h1>Fallout</h1>
-  <p class="tagline">Build automation for C#/.NET — the hard-fork successor to NUKE.</p>
+  <section class="hero">
+    <img class="logo" src="/fallout-logo.svg" alt="Fallout logo">
+    <h1>Fallout</h1>
+    <p class="tagline">Build automation for C#/.NET — write your CI/CD pipelines in plain C#, debug them locally, and share build steps across repositories. The hard-fork successor to NUKE.</p>
+    <div class="ctas">
+      <a class="btn btn--primary" href="https://docs.fallout.build/">Read the docs →</a>
+      <a class="btn btn--ghost" href="https://github.com/ChrisonSimtian/Fallout">View on GitHub</a>
+    </div>
+  </section>
 
-  <div class="notice">
-    <strong>Site under construction.</strong> The original <code>nuke.build</code> site is offline. Fallout continues NUKE's mission under new maintenance — full documentation is being rebuilt at this domain. For now, everything lives on GitHub.
+  <h2 id="quick-start">Quick start</h2>
+  <p>Already have the .NET SDK? You can be running a Fallout build in under a minute.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step__n" aria-hidden="true">1</span>
+      <div class="step__body">
+        <p><strong>Install the global tool</strong></p>
+        <pre><code>dotnet tool install Fallout.GlobalTool --global</code></pre>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step__n" aria-hidden="true">2</span>
+      <div class="step__body">
+        <p><strong>Scaffold a build in any repository</strong></p>
+        <pre><code>fallout :setup</code></pre>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step__n" aria-hidden="true">3</span>
+      <div class="step__body">
+        <p><strong>Run it</strong></p>
+        <pre><code>fallout</code></pre>
+        <p>That's a real C# console app — open the build project in your IDE and you've got code completion, refactoring, and a debugger across your whole pipeline.</p>
+      </div>
+    </div>
   </div>
 
-  <h2>Where to find things</h2>
-  <ul>
-    <li><a href="https://github.com/ChrisonSimtian/Fallout">Source code &amp; issues</a> — <code>github.com/ChrisonSimtian/Fallout</code></li>
-    <li><a href="https://github.com/ChrisonSimtian/Fallout#readme">README</a> — what Fallout is, how to get started</li>
+  <h2 id="why">Why Fallout</h2>
+  <div class="features">
+    <div class="feature">
+      <h3>Builds are C#</h3>
+      <p>Your pipeline is a regular console app — full IDE support, real types, refactoring, and a debugger. No YAML to fight with.</p>
+    </div>
+    <div class="feature">
+      <h3>Debug locally</h3>
+      <p>Tedious commit-and-pray cycles cost real time. Step through your build on your machine before it ever touches CI.</p>
+    </div>
+    <div class="feature">
+      <h3>CI/CD generation</h3>
+      <p>Emit provider configs (GitHub Actions and friends) from your build definition so the CI YAML stays in sync with the code that drives it.</p>
+    </div>
+  </div>
+
+  <h2 id="from-nuke">Coming from NUKE?</h2>
+  <div class="callout">
+    <p>Fallout is the hard-fork successor to <a href="https://github.com/nuke-build/nuke">NUKE</a> — same C#-first ethos, under new maintenance. The migration guide walks you through it: <a href="https://docs.fallout.build/docs/migration/from-nuke">docs.fallout.build/docs/migration/from-nuke</a>. The short version: <code>dotnet tool install -g Fallout.Migrate</code> and run <code>fallout-migrate</code> in your existing NUKE repo.</p>
+  </div>
+
+  <h2 id="links">Where to find things</h2>
+  <ul class="links">
+    <li><a href="https://docs.fallout.build/">Documentation</a> — guides, fundamentals, CI/CD provider docs, ADRs</li>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout">Source &amp; issues</a> — <code>github.com/ChrisonSimtian/Fallout</code></li>
     <li><a href="https://www.nuget.org/packages?q=Fallout">NuGet packages</a> — published under the <code>Fallout.*</code> prefix</li>
-    <li><a href="https://github.com/ChrisonSimtian/Fallout/blob/main/CHANGELOG.md">Changelog</a> — what's shipped</li>
     <li><a href="https://github.com/ChrisonSimtian/Fallout/releases">Releases</a> — version history</li>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout/blob/main/docs/roadmap.md">Roadmap</a> — what's next, plus the open RFCs shaping v12</li>
+    <li><a href="https://github.com/ChrisonSimtian/Fallout/blob/main/CHANGELOG.md">Changelog</a></li>
   </ul>
 
-  <h2>Migrating from NUKE</h2>
-  <p>If you're an existing NUKE user, a migration guide is in progress (tracked in <a href="https://github.com/ChrisonSimtian/Fallout/issues/37">#37</a>). The short version: <code>Nuke.*</code> namespaces and packages are being renamed to <code>Fallout.*</code>, with shim packages and tooling planned to make the transition non-disruptive.</p>
-
-  <h2>What's coming here</h2>
-  <p>Full documentation, guides, and the rest of what <code>nuke.build</code> used to host is being ported in <a href="https://github.com/ChrisonSimtian/Fallout/issues/41">#41</a>. Watch the repo for updates.</p>
-
   <footer>
-    Fallout is MIT-licensed and continues the work of Matthias Koch (<a href="https://github.com/matkoch">@matkoch</a>) and the original <a href="https://github.com/nuke-build/nuke">NUKE</a> contributors.
+    <p>MIT-licensed. Originally <a href="https://github.com/nuke-build/nuke">NUKE</a> by <a href="https://github.com/matkoch">Matthias Koch</a> and contributors.</p>
+    <p>Maintained as Fallout by <a href="https://github.com/ChrisonSimtian">Chrison Simtian</a>.</p>
   </footer>
 </main>
 </body>
