@@ -4,7 +4,7 @@ title: ReSharper
 
 import DownloadButton from '@site/src/components/DownloadButton';
 
-<DownloadButton url="/download/resharper" />
+<DownloadButton />
 
 In [ReSharper](https://www.jetbrains.com/resharper) you can install the _NUKE Support extension_ to be more productive in writing, running, and debugging your builds.
 

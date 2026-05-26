@@ -1,6 +1,6 @@
 # Migrating from NUKE to Fallout
 
-Fallout is the hard-fork successor to [NUKE](https://github.com/nuke-build/nuke). If you maintain a NUKE-based build, this guide gets you running on Fallout in under five minutes. Why the rename and the relationship to upstream NUKE are explained in [the rebrand plan](../rebrand-plan.md).
+Fallout is the hard-fork successor to [NUKE](https://github.com/nuke-build/nuke). If you maintain a NUKE-based build, this guide gets you running on Fallout in under five minutes. Why the rename and the relationship to upstream NUKE are explained in [the rebrand plan](https://github.com/ChrisonSimtian/Fallout/blob/main/docs/rebrand-plan.md).
 
 ## TL;DR
 
@@ -132,4 +132,4 @@ If `fallout-migrate` itself crashed, also attach the stack trace.
 
 ## Staying on NUKE
 
-If you'd prefer not to migrate, that's fine — [`nuke-build/nuke`](https://github.com/nuke-build/nuke) continues under its original maintainer's direction. Fallout doesn't displace it; we hard-forked because we wanted to take the codebase in a different direction (enterprise CI/CD focus, plugin architecture — see [the roadmap](../roadmap.md)). Bug fixes and improvements may flow between the two projects, but the codebases will diverge over time. Pick the one whose direction matches your needs.
+If you'd prefer not to migrate, that's fine — [`nuke-build/nuke`](https://github.com/nuke-build/nuke) continues under its original maintainer's direction. Fallout doesn't displace it; we hard-forked because we wanted to take the codebase in a different direction (enterprise CI/CD focus, plugin architecture — see [the roadmap](https://github.com/ChrisonSimtian/Fallout/blob/main/docs/roadmap.md)). Bug fixes and improvements may flow between the two projects, but the codebases will diverge over time. Pick the one whose direction matches your needs.
