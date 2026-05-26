@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-    <None Include="README.md" Pack="true" PackagePath="\" />
+    <!-- README.md is packed automatically by Directory.Build.props (per-project README when present). -->
   </ItemGroup>
 
 </Project>

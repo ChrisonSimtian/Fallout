@@ -19,7 +19,7 @@
     <!-- TODO: re-enable PackageIcon once we have a 256×256 PNG export of .assets/fallout-logo.svg.
          NuGet doesn't accept SVG for PackageIcon. -->
 <!--    <PackageIcon>icon.png</PackageIcon>-->
-<!--    <PackageReadmeFile>README.md</PackageReadmeFile>-->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
@@ -30,10 +30,20 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <!-- Pack a README.md into every package. Prefer a per-project README.md when present
+       (e.g. Fallout.Migrate.Analyzers, the Nuke.* transition shims) so each package can ship its own
+       landing page; otherwise fall back to the repo-root README.md. Pack="true" only includes the
+       file during `dotnet pack`; PackageReadmeFile above wires it to nuget.org's package page. -->
+  <ItemGroup Condition="Exists('$(MSBuildProjectDirectory)/README.md')">
+    <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup Condition="!Exists('$(MSBuildProjectDirectory)/README.md')">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
   <!-- TODO: re-enable once .assets/icon.png exists (rendered from fallout-logo.svg).
   <ItemGroup Condition="'$(_IsPacking)' == 'True'">
     <None Include="$(MSBuildThisFileDirectory).assets\icon.png" Pack="true" PackagePath="\" />
-    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
   -->
 
