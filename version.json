@@ -4,6 +4,10 @@
   "publicReleaseRefSpec": [
     "^refs/heads/main$"
   ],
+  "pathFilters": [
+    ":/",
+    ":!/tools"
+  ],
   "nuGetPackageVersion": {
     "semVer": 2
   },
