@@ -22,7 +22,10 @@ public class GitHubActionsCheckoutStep : GitHubActionsStep
     /// (the merge SHA on pull_request triggers, which leaves HEAD detached). Set to
     /// <c>${{ github.head_ref }}</c> on PR workflows that read <c>.git/HEAD</c> directly
     /// (e.g. <see cref="Fallout.Common.Git.GitRepository.FromLocalDirectory"/>) so the branch
-    /// resolves correctly.
+    /// resolves correctly. When set, the generator also emits a <c>repository:</c> line that
+    /// resolves to the PR head's repo for fork PRs and falls back to the current repo for push
+    /// events — without it, fork PRs fail with "branch or tag could not be found" because the
+    /// branch only exists on the fork, not on origin.
     /// </summary>
     public string Ref { get; set; }
 
@@ -49,7 +52,16 @@ public class GitHubActionsCheckoutStep : GitHubActionsStep
                     if (!Filter.IsNullOrWhiteSpace())
                         writer.WriteLine($"filter: {Filter}");
                     if (!Ref.IsNullOrWhiteSpace())
+                    {
+                        // Pin checkout to the source repo of the PR head (or the current repo on
+                        // push events). Required when `ref:` is set to `${{ github.head_ref }}` —
+                        // for cross-repo PRs, that branch only exists on the fork, not on origin,
+                        // and checkout's default `repository: ${{ github.repository }}` would fail
+                        // to resolve it. The `||` fallback handles push events where there's no
+                        // pull_request context.
+                        writer.WriteLine("repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}");
                         writer.WriteLine($"ref: {Ref}");
+                    }
                 }
             }
         }
