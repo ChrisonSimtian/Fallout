@@ -78,6 +78,22 @@ Validation workflows: **`ubuntu-latest`** runs on every PR targeting `main` (wit
 
 **Versioning:** [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) — configured in `version.json` at the repo root. Major+minor is hand-bumped; patch comes from git-height. `main` is the public-release ref (stable versions); everything else gets prerelease tags. GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
 
+**Semver policy.** This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) per `CHANGELOG.md`. **Any breaking change must bump the major in `version.json` in the same PR before it can merge to `main`.** A "breaking change" is any of:
+- A conventional-commit subject with the `!` suffix (e.g. `feat(globaltool)!: …`, `fix(security)!: …`).
+- A "BREAKING CHANGE:" footer in the commit body.
+- A change a reviewer reasonably flags as breaking even without the marker (renamed/removed public API, package ID change, on-disk format change, CI/CD shape change consumers depend on).
+
+Patch increments from git-height are reserved for non-breaking fixes; carrying breaking changes under a patch series ships them to consumers silently. **Reviewer responsibility:** if a PR carries `!` (or a flagged breaking change) and `version.json`'s major is unchanged, block the merge until the bump is in the same PR. Record the breaking change under `[Unreleased] — <next-major>` in `CHANGELOG.md` as part of the PR.
+
+**PR-creation flow for breaking changes (Claude's responsibility).** When opening a PR that includes a breaking change (any commit on the branch uses `!`, has a `BREAKING CHANGE:` footer, or otherwise meets the breaking-change definition above), do all of the following at PR-creation time — not after, not as a follow-up:
+
+1. **Add the `breaking-change` label** to the PR: pass `--label breaking-change` to `gh pr create` (or `gh pr edit <num> --add-label breaking-change` if the PR already exists).
+2. **Open the PR body with a `⚠️ Breaking change` callout** that names the affected surface (public API, package ID, CLI flag, on-disk format, CI/CD shape, etc.) and the consumer-side impact in one sentence. This is what reviewers and downstream consumers read first.
+3. **Confirm `version.json`'s major is already bumped** for the target release. If it isn't, stop — bump it in the same branch before opening the PR. Don't open a breaking-change PR against an unchanged-major `version.json`.
+4. **Add a `CHANGELOG.md` entry** under the existing `[Unreleased] — <next-major>` heading, in the same PR, describing the breaking change and the migration path (one paragraph minimum).
+
+If you only discover the breaking nature mid-review, apply all four steps before requesting re-review.
+
 **Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs the three-step shape (`actions/setup-dotnet` → `dotnet tool restore` → `dotnet fallout Test Pack Publish`). **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` repo secret (a nuget.org API key scoped to push `Fallout.*`). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
 **Adding a new `Fallout.X` package — first-publish gotcha.** nuget.org's `Fallout.*` prefix reservation is per-ID, not per-prefix-wildcard: CI's first `nuget push` for any never-published `Fallout.X` package ID returns `403 (does not have permission to access the specified package)` until someone manually web-uploads one nupkg to register the ID. **Two traps when doing that upload:**
