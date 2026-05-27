@@ -1,7 +1,12 @@
 # CODEOWNERS — https://docs.github.com/articles/about-code-owners
 #
-# Every PR touching any path under this repo requires a review from a listed
-# owner before merge (enforced via `require_code_owner_reviews` on the `main`
-# branch protection rule).
+# Scoped to production code and tests only. PRs touching these paths require
+# a review from a listed owner before merge (enforced via
+# `require_code_owner_reviews` on the `main` branch protection rule).
+#
+# Other paths (docs, .assets, build orchestrator, CI workflows, root config,
+# changelogs, etc.) have no code owner and are gated only by the required CI
+# status check.
 
-* @ChrisonSimtian
+/src/**     @ChrisonSimtian
+/tests/**   @ChrisonSimtian
