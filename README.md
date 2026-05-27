@@ -47,6 +47,23 @@ cd path/to/your-nuke-repo
 fallout-migrate
 ```
 
+## Install
+
+```sh
+dotnet tool install -g Fallout.Cli
+```
+
+The CLI installs as `fallout`. Verify with `fallout --help`.
+
+> [!NOTE]
+> **Upgrading from `Fallout.GlobalTool`?** The package was renamed to `Fallout.Cli` for install ergonomics — same `fallout` command, friendlier ID. Uninstall the old one first so you don't end up with two tools claiming the same command:
+>
+> ```sh
+> dotnet tool uninstall -g Fallout.GlobalTool
+> ```
+
+For per-repo manifest pinning (`.config/dotnet-tools.json`), project setup, and shell completion, see the [Installation guide on docs.fallout.build](https://docs.fallout.build/getting-started/installation).
+
 ## Table of Contents
 
 - [Elevator Pitch](#elevator-pitch)
