@@ -80,6 +80,11 @@ Validation workflows: **`ubuntu-latest`** runs on every PR targeting `main` (wit
 
 **Release pipeline:** `.github/workflows/release.yml` — triggered on push to `main`, runs the three-step shape (`actions/setup-dotnet` → `dotnet tool restore` → `dotnet fallout Test Pack Publish`). **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` repo secret (a nuget.org API key scoped to push `Fallout.*`). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
+**Adding a new `Fallout.X` package — first-publish gotcha.** nuget.org's `Fallout.*` prefix reservation is per-ID, not per-prefix-wildcard: CI's first `nuget push` for any never-published `Fallout.X` package ID returns `403 (does not have permission to access the specified package)` until someone manually web-uploads one nupkg to register the ID. **Two traps when doing that upload:**
+
+1. **Set the package owner to the org, not your personal account.** The nuget.org upload UI doesn't prompt you; ownership defaults to the uploading user's profile. If you forget, the package ID is reserved but the org's `NUGET_API_KEY` still 403s on subsequent pushes (the key is scoped to org-owned packages). Fix via `Manage Package → Owners → Add owner → <org>` then optionally remove your personal account. Or upload using credentials of the org's service account directly. See [#208](https://github.com/ChrisonSimtian/Fallout/issues/208) for what this looks like when it goes wrong.
+2. **Validation can lag** the upload by 5–30 minutes. The package page may say "approved" while the API key permission hasn't propagated yet. Wait, then rerun the release pipeline (`gh run rerun <id> --failed`); `--skip-duplicate` makes the retry safe for already-published packages.
+
 ## Conventions worth respecting
 
 - **Centralized package versions** — add new packages to `Directory.Packages.props`, never inline. Adding a *meaningful* library (not a tiny transitive helper)? Add a row to [docs/dependencies.md](docs/dependencies.md) in the same PR — reviewers will ask.
