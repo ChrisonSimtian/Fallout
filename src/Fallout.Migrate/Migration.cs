@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace Fallout.Migrate;
 
@@ -36,8 +37,32 @@ public sealed class Migration
 
     private void RewriteCsprojs(Summary summary)
     {
+        var falloutVersion = ResolveFalloutVersion();
         foreach (var path in EnumerateFiles("*.csproj"))
-            ApplyRewrite(path, CsprojRewriter.Rewrite, summary);
+            ApplyRewrite(path, content => CsprojRewriter.Rewrite(content, falloutVersion), summary);
+    }
+
+    // Pinned into migrated `<PackageReference Include="Fallout.X" Version="..." />` lines.
+    // Uses the running migrate tool's own SemVer (Nerdbank.GitVersioning, set on
+    // AssemblyInformationalVersion) so the migration output aligns with the tool the user
+    // just installed. For dev/local builds without a `+` in InformationalVersion (i.e. no
+    // build-metadata suffix), falls back to a known-published floor so we never emit a
+    // bogus pin like Version="LOCAL". Inlined to keep Fallout.Migrate dependency-free.
+    private static string ResolveFalloutVersion()
+    {
+        const string Fallback = "11.0.0";
+
+        var informational = typeof(Migration).Assembly
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+            ?.InformationalVersion;
+        if (string.IsNullOrEmpty(informational))
+            return Fallback;
+
+        var plusIndex = informational.IndexOf('+');
+        if (plusIndex == -1)
+            return Fallback;
+
+        return informational[..plusIndex];
     }
 
     private void RewriteCsFiles(Summary summary)
