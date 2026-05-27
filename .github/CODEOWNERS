@@ -1,0 +1,7 @@
+# CODEOWNERS — https://docs.github.com/articles/about-code-owners
+#
+# Every PR touching any path under this repo requires a review from a listed
+# owner before merge (enforced via `require_code_owner_reviews` on the `main`
+# branch protection rule).
+
+* @ChrisonSimtian
