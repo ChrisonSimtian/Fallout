@@ -30,4 +30,4 @@ Operational helper scripts that support repo maintenance but are **not** part of
 ]
 ```
 
-Generate ad-hoc as needed — there's no need to commit one-off batch files unless the operation is worth keeping as a historical record.
+Generate ad-hoc as needed; commit if the operation is worth keeping as a historical record. See [`unlist-10.3.40-47.json`](unlist-10.3.40-47.json) — the 102-entry batch used to unlist the 10.3.x patch versions that shipped breaking changes before the v11 semver-policy fix (#220, #222).
