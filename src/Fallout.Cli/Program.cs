@@ -4,13 +4,11 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using Fallout.Common;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Spectre.Console;
 
@@ -91,23 +89,6 @@ public partial class Program
         // TODO: docker
 
         return Run(args, rootDirectory, BuildProjectResolver.Resolve(rootDirectory));
-    }
-
-    private static Process Build(string buildScript, string arguments)
-    {
-        var startInfo =
-            new ProcessStartInfo
-            {
-                FileName = EnvironmentInfo.IsWin
-                    ? ToolPathResolver.GetPathExecutable("powershell")
-                    : ToolPathResolver.GetPathExecutable("bash"),
-                Arguments = EnvironmentInfo.IsWin
-                    ? $"-ExecutionPolicy ByPass -NoProfile -File {buildScript.DoubleQuoteIfNeeded()} {arguments}"
-                    : $"{buildScript.DoubleQuoteIfNeeded()} {arguments}"
-            };
-        startInfo.Environment[Constants.GlobalToolVersionEnvironmentKey] = typeof(Program).Assembly.GetVersionText();
-        startInfo.Environment[Constants.GlobalToolStartTimeEnvironmentKey] = DateTime.Now.ToString("O");
-        return Process.Start(startInfo).NotNull();
     }
 
     private static void ShowInput(string emoji, string title, string value)

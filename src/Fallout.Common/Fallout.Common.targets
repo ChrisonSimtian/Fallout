@@ -46,6 +46,7 @@
     <!-- Legacy: pick up pre-Fallout .nuke/parameters.json if a consumer hasn't migrated yet. -->
     <None Include="$(FalloutRootDirectory)\.nuke\parameters.json" LinkBase="config" Condition="Exists('$(FalloutRootDirectory)\.nuke\parameters.json')" />
     <None Include="$(FalloutRootDirectory)\.nuke\parameters.*.json" LinkBase="config" Condition="Exists('$(FalloutRootDirectory)\.nuke')" />
+    <None Include="$(FalloutRootDirectory)\.config\dotnet-tools.json" LinkBase="config" Condition="Exists('$(FalloutRootDirectory)\.config\dotnet-tools.json')" />
     <None Include="$(FalloutRootDirectory)\global.json" LinkBase="config" Condition="Exists('$(FalloutRootDirectory)\global.json')" />
     <None Include="$(FalloutRootDirectory)\nuget.config" LinkBase="config" Condition="Exists('$(FalloutRootDirectory)\nuget.config')" />
     <None Include="$(FalloutRootDirectory)\GitVersion.yml" LinkBase="config" Condition="Exists('$(FalloutRootDirectory)\GitVersion.yml')" />
