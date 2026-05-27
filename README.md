@@ -67,9 +67,46 @@ For per-repo manifest pinning (`.config/dotnet-tools.json`), project setup, and 
 ## Table of Contents
 
 - [Elevator Pitch](#elevator-pitch)
+- [Building](#building)
 - [Build Status](#build-status)
 - [Activity](#activity)
 - [Sponsorship](#sponsorship)
+
+## Building
+
+### Prerequisites
+
+- [.NET SDK](https://dot.net) — version is pinned in [`global.json`](global.json) (`10.0.x`, rolls forward to the latest minor).
+- This repo uses a **git submodule** for the vendored `vs-solutionpersistence` fork under `vendor/`. Without it the `Fallout.VisualStudio.SolutionPersistence` project will fail to build.
+
+If you cloned normally (without `--recurse-submodules`), initialise it once:
+
+```sh
+git submodule update --init
+```
+
+When cloning fresh you can pull everything in one step:
+
+```sh
+git clone --recurse-submodules https://github.com/ChrisonSimtian/Fallout.git
+```
+
+### Running the build
+
+```powershell
+# Windows
+./build.ps1          # default target = Pack
+
+# macOS / Linux
+./build.sh
+
+# Common targets
+./build.ps1 Compile
+./build.ps1 Test
+./build.ps1 --help   # list all targets and parameters
+```
+
+The build is itself a C# console app (`build/_build.csproj`), so framework changes can be dogfooded by simply running it.
 
 ## Elevator Pitch
 
