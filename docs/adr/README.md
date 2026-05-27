@@ -34,3 +34,4 @@ If you change a decision, do NOT silently rewrite the old ADR — add a new one 
 |---|---|---|
 | [0001](0001-cd-primitives-attributes-vs-tasks.md) | CD primitives — attributes for config, tasks for state | Proposed |
 | [0002](0002-cross-provider-auth-and-secret-conventions.md) | Cross-provider auth and secret conventions | Proposed |
+| [0003](0003-variables-and-substitution.md) | Variables and `${…}` substitution layer | Proposed |
