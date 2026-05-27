@@ -6,12 +6,12 @@ import AsciinemaPlayer from '@site/src/components/AsciinemaPlayer';
 
 Historically, secret values like passwords or auth-tokens are often saved as environment variables on local machines or CI/CD servers. This imposes both, security issues because other processes can access these environment variables and inconveniences when a build must be executed locally for emergency reasons (server downtime). Fallout has an integrated encryption utility, which can be used to save and load secret values to and from [parameter files](../02-fundamentals/06-parameters.md#passing-values-through-parameter-files).
 
-:::danger
-Our [custom encryption utility](https://github.com/ChrisonSimtian/Fallout/blob/main/src/Nuke.Utilities/Security/EncryptionUtility.cs) is provided "AS IS" without warranty of any kind.
+:::info Cryptography
+Our [encryption utility](https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Utilities/Security/EncryptionUtility.cs) uses **AES-256-GCM** with **PBKDF2-SHA256** at **600,000 iterations** (OWASP 2023 recommendation) for key derivation. Each encrypted value carries a fresh random 16-byte salt and a fresh random 12-byte nonce. The 16-byte GCM authentication tag means tampered ciphertexts are rejected on decrypt.
 
-The implementation uses your password, a static salt, 10.000 iterations, and SHA256 to generate a [key-derivation function](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rfc2898derivebytes) ([RFC2898](https://datatracker.ietf.org/doc/html/rfc2898)), which is then used to create a crypto-stream to encrypt and decrypt values via [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
+Encrypted values are prefixed `v2:` to mark the format version.
 
-**Please review the implementation carefully and [open an issue](https://github.com/ChrisonSimtian/Fallout/issues) for any possible flaws.**
+**Legacy `v1:` values** (from earlier versions: static salt, 10,000 iterations, AES-CBC with KDF-derived IV, no authentication) are still decrypted for backward compatibility, but **all new encrypts emit `v2:`**. Re-saving any secret through `fallout :secrets` rewrites it in v2 form automatically — there's no separate migration step. See [#212](https://github.com/ChrisonSimtian/Fallout/issues/212) for the security audit that drove the v2 format.
 :::
 
 ## Adding & Updating Secrets
