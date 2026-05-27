@@ -1,8 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/main/src/NerdBank.GitVersioning/version.schema.json",
-  "version": "10.3",
+  "version": "11.0",
   "publicReleaseRefSpec": [
     "^refs/heads/main$"
+  ],
+  "pathFilters": [
+    ":/",
+    ":!/tools"
   ],
   "nuGetPackageVersion": {
     "semVer": 2

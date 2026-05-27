@@ -122,6 +122,11 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     /// Forwarded to <c>actions/checkout</c>'s <c>ref</c> input. Set to
     /// <c>${{ github.head_ref }}</c> on PR-triggered workflows that need <c>.git/HEAD</c>
     /// to stay attached (e.g. ones that read the current branch via GitRepository).
+    /// <para/>
+    /// When set, the generator also emits <c>repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}</c>
+    /// so cross-repo PRs (from forks) resolve the branch name on the fork instead of failing
+    /// on origin. The fallback to <c>github.repository</c> keeps push-triggered workflows
+    /// (where there's no PR context) working unchanged.
     /// </summary>
     public string CheckoutRef
     {

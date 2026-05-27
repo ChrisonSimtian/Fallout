@@ -168,6 +168,22 @@ public class ConfigurationGenerationTest
                 }
             );
 
+            // Regression guard: when CheckoutRef is set, the generator must also emit a
+            // repository: line that resolves to the PR's head repo (for cross-repo / fork PRs)
+            // with a fallback to the current repo (for push events). Without this, fork PRs
+            // fail at the checkout step because the branch only exists on the fork, not on
+            // origin.
+            yield return
+            (
+                "checkout-ref",
+                new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                {
+                    InvokedTargets = new[] { nameof(Test) },
+                    OnPullRequestBranches = new[] { "main" },
+                    CheckoutRef = "${{ github.head_ref }}"
+                }
+            );
+
             yield return
             (
                 null,
