@@ -1,0 +1,410 @@
+[
+  {
+    "package": "Fallout.Build",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Build",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Build",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Build",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Build",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Build",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Build.Shared",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Build.Shared",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Build.Shared",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Build.Shared",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Build.Shared",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Build.Shared",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Cli",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Cli",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Cli",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Cli",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Cli",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Common",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Common",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Common",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Common",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Common",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Common",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Components",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Components",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Components",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Components",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Components",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Components",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.GlobalTool",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Migrate",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Migrate",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Migrate",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Migrate",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Migrate",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Migrate",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.ProjectModel",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.ProjectModel",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.ProjectModel",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.ProjectModel",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.ProjectModel",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.ProjectModel",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.SolutionModel",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.SolutionModel",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.SolutionModel",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.SolutionModel",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.SolutionModel",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.SolutionModel",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Tooling",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Tooling",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Tooling",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Tooling",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Tooling",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Tooling",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Tooling.Generator",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Tooling.Generator",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Tooling.Generator",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Tooling.Generator",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Tooling.Generator",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Tooling.Generator",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Utilities",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Utilities",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Utilities",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Utilities",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Utilities",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Utilities",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Compression",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Compression",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Compression",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Compression",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Compression",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Compression",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Globbing",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Globbing",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Globbing",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Globbing",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Globbing",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Utilities.IO.Globbing",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Utilities.Net",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Utilities.Net",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Utilities.Net",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Utilities.Net",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Utilities.Net",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Utilities.Net",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Json",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Json",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Json",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Json",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Json",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Json",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Yaml",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Yaml",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Yaml",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Yaml",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Yaml",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.Utilities.Text.Yaml",
+    "version": "10.3.47"
+  },
+  {
+    "package": "Fallout.VisualStudio.SolutionPersistence",
+    "version": "10.3.40"
+  },
+  {
+    "package": "Fallout.VisualStudio.SolutionPersistence",
+    "version": "10.3.41"
+  },
+  {
+    "package": "Fallout.VisualStudio.SolutionPersistence",
+    "version": "10.3.42"
+  },
+  {
+    "package": "Fallout.VisualStudio.SolutionPersistence",
+    "version": "10.3.44"
+  },
+  {
+    "package": "Fallout.VisualStudio.SolutionPersistence",
+    "version": "10.3.45"
+  },
+  {
+    "package": "Fallout.VisualStudio.SolutionPersistence",
+    "version": "10.3.47"
+  }
+]
