@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
     <ProjectReference Include="..\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
-    <ProjectReference Include="..\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
+    <ProjectReference Include="..\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
     <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
     <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
     <ProjectReference Include="..\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />

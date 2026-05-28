@@ -3,7 +3,9 @@
 // Distributed under the MIT License.
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
-namespace Fallout.Common.ProjectModel;
+using Fallout.Common;
+
+namespace Fallout.Solutions;
 
 public static partial class ProjectExtensions
 {

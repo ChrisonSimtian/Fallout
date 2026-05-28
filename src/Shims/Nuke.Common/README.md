@@ -10,7 +10,7 @@ This package is a **partial transition shim** for projects mid-migration from NU
 | `INukeBuild` | `IFalloutBuild` | Sub-interface |
 | `[Parameter]` | `Fallout.Common.ParameterAttribute` | Subclass |
 | `[Secret]` | `Fallout.Common.SecretAttribute` | Subclass |
-| `[Solution]` | `Fallout.Common.ProjectModel.SolutionAttribute` | Subclass |
+| `[Solution]` | `Fallout.Solutions.SolutionAttribute` | Subclass |
 | `[GitRepository]` | `Fallout.Common.Git.GitRepositoryAttribute` | Subclass |
 | `CI host singletons` (`GitHubActions`, `AzurePipelines`, `TeamCity`, `AppVeyor`, `GitLab`, `Jenkins`, `Bamboo`, `Bitbucket`, `Bitrise`, `TravisCI`) | `Fallout.Common.CI.<Vendor>.<Vendor>` | Hand-written static class re-exposing `.Instance` (returns canonical type) |
 | `DelegateDisposable` | `Fallout.Common.Utilities.DelegateDisposable` | Hand-written static class re-exposing `CreateBracket` / `SetAndRestore` |

@@ -32,8 +32,8 @@ public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
     [Parameter("Configuration to build")] readonly string Configuration;
     [Parameter] readonly bool RunTests;
     [Secret] readonly string NuGetApiKey;
-    [Solution] readonly Fallout.Common.ProjectModel.Solution Solution;
-    [Solution("path/to/explicit.slnx")] readonly Fallout.Common.ProjectModel.Solution ExplicitSolution;
+    [Solution] readonly Fallout.Solutions.Solution Solution;
+    [Solution("path/to/explicit.slnx")] readonly Fallout.Solutions.Solution ExplicitSolution;
     [GitRepository] readonly Fallout.Common.Git.GitRepository GitRepository;
 
     // CI-host shims expose only the static `Instance` accessor. Consumers can

@@ -13,7 +13,7 @@ using System.Reflection;
 using Fallout.Common.CI.TeamCity.Configuration;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Fallout.Common.ValueInjection;

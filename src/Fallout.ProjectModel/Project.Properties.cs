@@ -5,7 +5,9 @@
 
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.ProjectModel;
+using Fallout.Common;
+
+namespace Fallout.Solutions;
 
 public static partial class ProjectExtensions
 {

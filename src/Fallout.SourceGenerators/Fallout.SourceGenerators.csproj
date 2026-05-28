@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -13,12 +13,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
-    <ProjectReference Include="..\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
+    <ProjectReference Include="..\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
     <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
     <ProjectReference Include="..\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
-    <!-- SolutionPersistence is vendored — source compiled into Fallout.VisualStudio.SolutionPersistence.
+    <!-- Persistence parser inlined into Fallout.Persistence.Solution.
          The generator runs inside Roslyn, so its dependency DLLs need to land in this project's output dir. -->
-    <ProjectReference Include="..\Fallout.VisualStudio.SolutionPersistence\Fallout.VisualStudio.SolutionPersistence.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(MSBuildProjectDirectory)\..\Fallout.VisualStudio.SolutionPersistence\bin\$(Configuration)\netstandard2.0\Microsoft.VisualStudio.SolutionPersistence.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MSBuildProjectDirectory)\..\Persistence\Fallout.Persistence.Solution\bin\$(Configuration)\netstandard2.0\Fallout.Persistence.Solution.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     <None Include="$(PkgScriban)\lib\netstandard2.0\*.*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
   </ItemGroup>
 
@@ -40,11 +40,11 @@
   <Target Name="GetDependencyTargetPaths">
     <ItemGroup>
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Build.Shared.dll" IncludeRuntimeDependency="false" />
-      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.SolutionModel.dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Solution.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Utilities.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Utilities.IO.Globbing.dll" IncludeRuntimeDependency="false" />
 
-      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\..\Fallout.VisualStudio.SolutionPersistence\bin\$(Configuration)\netstandard2.0\Microsoft.VisualStudio.SolutionPersistence.dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\..\Persistence\Fallout.Persistence.Solution\bin\$(Configuration)\netstandard2.0\Fallout.Persistence.Solution.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(PkgScriban)\lib\$(TargetFramework)\*.dll" IncludeRuntimeDependency="false" />
     </ItemGroup>
   </Target>

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Public facade over the inlined Fallout.Persistence.Solution parser.
+    Exposes Fallout-friendly types (Solution, Project, SolutionFolder,
+    IProjectContainer) for build code and source generators.
+
+    Was previously src/Fallout.SolutionModel (with namespace
+    Fallout.Common.ProjectModel — a rebrand-era mismatch). Renamed
+    to Fallout.Solution and moved under src/Persistence/ in v11.
+  -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <RootNamespace>Fallout.Solutions</RootNamespace>
+    <Description>Fallout's public API for working with .NET solution files.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Utilities\Fallout.Utilities.csproj" />
+    <ProjectReference Include="..\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
+  </ItemGroup>
+
+</Project>

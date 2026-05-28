@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Common.ProjectModel;
+using Fallout.Common;
+
+namespace Fallout.Solutions;
 
 public static partial class ProjectExtensions
 {

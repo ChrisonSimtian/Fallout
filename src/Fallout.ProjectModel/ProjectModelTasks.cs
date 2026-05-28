@@ -15,7 +15,9 @@ using Fallout.Common.Utilities;
 using Serilog;
 #pragma warning disable CA2255
 
-namespace Fallout.Common.ProjectModel;
+using Fallout.Common;
+
+namespace Fallout.Solutions;
 
 public static class ProjectModelTasks
 {
