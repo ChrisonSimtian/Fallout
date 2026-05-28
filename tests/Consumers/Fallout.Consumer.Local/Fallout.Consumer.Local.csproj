@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Fallout.Consumer.Local</RootNamespace>
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+  </PropertyGroup>
+
+  <!--
+    Direct ProjectReferences against this repo's local source. Always tracks
+    HEAD. Catches breakage in the current PR.
+
+    Why not PackageReference + Directory.Build.targets smart-rewrite? The
+    rewrite relies on `nuke-global.sln` being present, and that file is
+    generated on demand (via GenerateGlobalSolution) — it's not in tree by
+    default. ProjectReference is the simpler / more deterministic shape.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.Components\Fallout.Components.csproj" />
+  </ItemGroup>
+
+</Project>
