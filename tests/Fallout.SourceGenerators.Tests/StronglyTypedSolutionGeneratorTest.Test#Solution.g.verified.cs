@@ -43,6 +43,7 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Common
     public Fallout.Common.ProjectModel.Project Nuke_Common => this.GetProject("Nuke.Common");
     public Fallout.Common.ProjectModel.Project Nuke_Common_Shim_Tests => this.GetProject("Nuke.Common.Shim.Tests");
     public Fallout.Common.ProjectModel.Project Nuke_Components => this.GetProject("Nuke.Components");
+    public Fallout.Common.ProjectModel.Project Nuke_Components_Shim_Tests => this.GetProject("Nuke.Components.Shim.Tests");
 
     public _misc misc => Unsafe.As<_misc>(this.GetSolutionFolder("misc"));
 
