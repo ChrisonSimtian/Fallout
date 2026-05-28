@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Fallout.Persistence.Solution.Benchmarks</RootNamespace>
+    <!-- BenchmarkDotNet generates a host project and Release-builds the
+         benchmark assembly automatically. The .csproj just needs to be
+         buildable in Debug for our CI compile-gate. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
+    <ProjectReference Include="..\..\..\src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
+  </ItemGroup>
+
+</Project>
