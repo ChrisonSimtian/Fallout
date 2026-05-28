@@ -71,7 +71,7 @@ Every project under `src/` has a sibling under `tests/` (e.g. `src/Fallout.Commo
 - **Central package versions.** All `PackageReference` versions live in `Directory.Packages.props`. Never inline `Version=` on a `PackageReference` — the build will error.
 - **Smart `PackageReference`.** `Directory.Build.targets` rewrites `PackageReference`s that match a project in the current solution into `ProjectReference`s. Lets us reference our own packages by ID across the dev/release boundary.
 - **`AssemblyInfo.cs` at root.** Shared `InternalsVisibleTo` declarations. Included automatically via `Directory.Build.props`.
-- **License header.** Every `.cs` file starts with the 4-line Fallout/NUKE attribution block. See `CLAUDE.md` for the exact shape.
+- **License header.** Every `.cs` file starts with the 4-line Fallout/NUKE attribution block. See `AGENTS.md` (and the linked `docs/agents/conventions.md`) for the exact shape.
 
 ## CI layout
 
@@ -87,7 +87,7 @@ Linux runs on PRs because it's cheap and fast; Windows and macOS are reserved fo
 ## What this doc deliberately does NOT cover
 
 - API design decisions inside individual projects — read the project's tests for those.
-- Rebrand status and migration strategy — see `CLAUDE.md` and the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/Fallout/milestone/1).
+- Rebrand status and migration strategy — see `AGENTS.md` and the [Fallout rebrand milestone](https://github.com/ChrisonSimtian/Fallout/milestone/1).
 - Contribution workflow — see `CONTRIBUTING.md`.
 
 When in doubt, the structure is whatever this file says it is. If you change the layout, update this file in the same PR.
