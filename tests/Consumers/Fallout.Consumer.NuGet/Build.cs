@@ -1,7 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 //
 // Fallout consumer against PUBLISHED Fallout.* packages (pinned in the csproj).
 // Validates that the most-recent release's surface is intact from a clean

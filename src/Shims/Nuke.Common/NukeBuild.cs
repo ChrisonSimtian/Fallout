@@ -1,8 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
-
 // The TransitionShimGenerator handles namespace prefix swaps (Fallout.* -> Nuke.*)
 // but cannot rename types. NukeBuild -> FalloutBuild and INukeBuild ->
 // IFalloutBuild were renamed during the rebrand (#59), so we hand-write those

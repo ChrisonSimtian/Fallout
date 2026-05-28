@@ -1,8 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
-
 // Hand-written transition shim. The canonical DelegateDisposable has a private
 // ctor and exposes itself only via static factories; the generator skips it as
 // no-accessible-ctor, and a subclass wouldn't compile anyway. This static-class

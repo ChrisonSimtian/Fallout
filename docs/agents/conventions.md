@@ -9,7 +9,7 @@ Three groups: conventions to respect, things never to do, and the tool-wrapper r
 - **Tests next to code, separate folder**: every `Foo` project under `src/` has a sibling `Foo.Tests` project under `tests/`. Mirror the namespace.
 - **No IDE-specific style files committed.** `.editorconfig` and `*.DotSettings` were removed during the takeover — relying on `dotnet format` defaults and review.
 - **Telemetry opt-out is set in test runs** (`FALLOUT_TELEMETRY_OPTOUT=true`). Keep it that way.
-- **License header**: every source file starts with the 4-line `// Copyright … Maintainers of Fallout. // Originally based on NUKE …` block — copy from a neighbouring file when adding new ones.
+- **No per-file license headers.** The MIT notice lives in [`LICENSE`](../../LICENSE) at the repo root, and NuGet packages declare MIT via `PackageLicenseExpression`. Per-file headers were stripped in v11 (one source of truth + the header URL would have rotted on the repo-org transfer). Vendored third-party code keeps its own copyright headers — don't touch those (e.g. files under `src/Persistence/Fallout.Persistence.Solution/` retain Microsoft's MIT notice).
 
 ## What not to do
 

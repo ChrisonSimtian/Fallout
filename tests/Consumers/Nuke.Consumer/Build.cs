@@ -1,7 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 //
 // Pre-rename NUKE consumer pattern, compiled against the Nuke.Common /
 // Nuke.Components transition shims. If a typical NUKE 10.x Build.cs stops

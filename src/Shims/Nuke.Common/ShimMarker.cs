@@ -1,8 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
-
 // Tells the TransitionShimGenerator to emit shims for every public type whose
 // namespace begins with "Fallout.Common." into the corresponding "Nuke.Common."
 // namespace. The generator walks all referenced Fallout.* assemblies; both

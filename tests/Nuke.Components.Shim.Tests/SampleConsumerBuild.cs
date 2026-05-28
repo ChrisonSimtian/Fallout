@@ -1,7 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 //
 // Compile-only contract test for the IHaz* obsolete aliases shipped in the
 // Nuke.Components shim. A NUKE-era consumer declaring `class Build : NukeBuild,

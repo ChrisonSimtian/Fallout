@@ -1,9 +1,4 @@
-﻿// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
-
-using Fallout.Common.Tooling;
+﻿using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common.Tools.DotCover;

@@ -1,8 +1,3 @@
-// Copyright 2026 Maintainers of Fallout.
-// Originally based on NUKE by Matthias Koch and contributors.
-// Distributed under the MIT License.
-// https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
-
 // Hand-written transition shim for the framework-injected CI host singleton.
 // The TransitionShimGenerator can't bridge these because consumers receive
 // canonical-typed instances from Host.Instance (which can't be cast to a shim
