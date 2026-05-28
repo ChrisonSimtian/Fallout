@@ -8,7 +8,7 @@
 
 using Fallout.Common;
 using Fallout.Common.IO;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;  // was Fallout.Common.ProjectModel; — renamed in #254 (persistence layering + namespace cleanup)
 
 class Build : FalloutBuild
 {

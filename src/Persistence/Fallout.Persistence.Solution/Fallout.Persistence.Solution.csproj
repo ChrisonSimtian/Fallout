@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Inlined parser for .sln/.slnx files — formerly the vendored fork of
+    Microsoft.VisualStudio.SolutionPersistence under vendor/. Now owned outright
+    by Fallout. The code originated as Microsoft's library (under MIT); attribution
+    in NOTICE and the file-level Microsoft headers preserved verbatim.
+
+    Most types are `internal` — only the small whitelist referenced in the
+    public facade signatures of Fallout.Solution stays `public`. See
+    docs/agents/repository-layout.md for the persistence-ring layering.
+  -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
+    <RootNamespace>Fallout.Persistence.Solution</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);CS1591;CS1573;CS8632;RS0016</NoWarn>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Description>Internal parser for .sln/.slnx solution files used by Fallout.Solution. Inlined from Microsoft.VisualStudio.SolutionPersistence (MIT).</Description>
+    <PackageTags>solution-persistence visualstudio msbuild fallout internal</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Fallout.Solution" />
+    <InternalsVisibleTo Include="Fallout.SourceGenerators" />
+    <InternalsVisibleTo Include="Fallout.Persistence.Solution.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Errors.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+      <LogicalName>Fallout.Persistence.Solution.Errors.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Polyfills for netstandard2.0: records (IsExternalInit), Span<T>/Memory<T>,
+       IAsyncEnumerable, and System.Diagnostics.CodeAnalysis nullable attributes via PolySharp. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="IsExternalInit" PrivateAssets="all" />
+    <PackageReference Include="PolySharp" PrivateAssets="all" />
+    <PackageReference Include="System.Memory" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" />
+  </ItemGroup>
+
+</Project>

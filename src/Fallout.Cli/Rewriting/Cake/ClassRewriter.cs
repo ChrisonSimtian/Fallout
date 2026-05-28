@@ -36,7 +36,7 @@ internal class ClassRewriter : SafeSyntaxRewriter
             "Fallout.Common",
             "Fallout.Common.Execution",
             "Fallout.Common.IO",
-            "Fallout.Common.ProjectModel",
+            "Fallout.Solutions",
             "Fallout.Common.Tooling",
             "Fallout.Common.Tools.DotNet",
             "Fallout.Common.Tools.GitVersion",

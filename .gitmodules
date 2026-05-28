@@ -1,4 +1,0 @@
-[submodule "vendor/vs-solutionpersistence"]
-	path = vendor/vs-solutionpersistence
-	url = https://github.com/ChrisonSimtian/vs-solutionpersistence
-	branch = main

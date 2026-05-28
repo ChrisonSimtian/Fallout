@@ -10,7 +10,9 @@ using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Serilog;
 
-namespace Fallout.Common.ProjectModel;
+using Fallout.Common;
+
+namespace Fallout.Solutions;
 
 /// <summary>
 ///     Injects an instance of <see cref="Solution"/>. The solution path is resolved in the following order:
