@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using FluentAssertions;
 using Fallout.Common.IO;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 using Xunit;
 
 namespace Fallout.Common.Tests;

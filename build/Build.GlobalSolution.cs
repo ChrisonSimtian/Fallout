@@ -10,7 +10,7 @@ using System.Linq;
 using Fallout.Common;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using Fallout.Utilities.Text.Yaml;
@@ -25,7 +25,7 @@ partial class Build
     AbsolutePath ExternalRepositoriesDirectory => RootDirectory / "external";
     AbsolutePath ExternalRepositoriesFile => ExternalRepositoriesDirectory / "repositories.yml";
 
-    IEnumerable<Fallout.Common.ProjectModel.Solution> ExternalSolutions
+    IEnumerable<Fallout.Solutions.Solution> ExternalSolutions
         => ExternalRepositories
             .Select(x => ExternalRepositoriesDirectory / x.GetGitHubName())
             .Select(x => x.GlobFiles("*.sln").Single())

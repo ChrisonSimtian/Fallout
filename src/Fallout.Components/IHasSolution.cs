@@ -6,7 +6,7 @@
 using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 
 namespace Fallout.Components;
 

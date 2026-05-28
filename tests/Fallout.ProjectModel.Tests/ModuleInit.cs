@@ -4,7 +4,7 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using System.Runtime.CompilerServices;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 
 namespace Fallout.Common.Tests;
 

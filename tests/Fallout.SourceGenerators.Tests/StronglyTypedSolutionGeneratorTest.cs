@@ -10,7 +10,7 @@ using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Fallout.Common;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 using VerifyXunit;
 using Xunit;
 
@@ -23,7 +23,7 @@ public class StronglyTypedSolutionGeneratorTest
     {
         var inputCompilation = CreateCompilation("""
                 using Fallout.Common;
-                using Fallout.Common.ProjectModel;
+                using Fallout.Solutions;
                 partial class Build : FalloutBuild
                 {
                     [Solution(GenerateProjects = true)]
@@ -43,7 +43,7 @@ public class StronglyTypedSolutionGeneratorTest
         var inputCompilation = CreateCompilation("""
 
                 using Fallout.Common;
-                using Fallout.Common.ProjectModel;
+                using Fallout.Solutions;
 
                 partial class Build : FalloutBuild
                 {
@@ -67,7 +67,7 @@ public class StronglyTypedSolutionGeneratorTest
         var inputCompilation = CreateCompilation("""
 
                 using Fallout.Common;
-                using Fallout.Common.ProjectModel;
+                using Fallout.Solutions;
 
                 partial class Build : FalloutBuild
                 {

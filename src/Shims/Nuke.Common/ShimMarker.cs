@@ -13,3 +13,12 @@
 [assembly: Fallout.Migrate.Shims.ShimAllPublicTypesUnder(
     fromNamespacePrefix: "Fallout.Common",
     toNamespacePrefix: "Nuke.Common")]
+
+// The solution-handling types moved from Fallout.Common.ProjectModel to the
+// dedicated Fallout.Solutions namespace in v11 (see #248 and the broader
+// onion-layering work). For NUKE-era consumers, mirror them into the legacy
+// Nuke.Common.ProjectModel namespace so existing `using Nuke.Common.ProjectModel;`
+// + `[Solution] readonly Solution Solution;` keep compiling.
+[assembly: Fallout.Migrate.Shims.ShimAllPublicTypesUnder(
+    fromNamespacePrefix: "Fallout.Solutions",
+    toNamespacePrefix: "Nuke.Common.ProjectModel")]

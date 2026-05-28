@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Fallout.Common.IO;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 using Fallout.Common.Utilities;
 using static Fallout.Common.ControlFlow;
 

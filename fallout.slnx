@@ -22,8 +22,8 @@
   <Project Path="src\Shims\Nuke.Components\Nuke.Components.csproj" />
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
   <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
-  <Project Path="src\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
-  <Project Path="src\Fallout.VisualStudio.SolutionPersistence\Fallout.VisualStudio.SolutionPersistence.csproj" />
+  <Project Path="src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
+  <Project Path="src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
   <Project Path="src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" />
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Tooling\Fallout.Tooling.csproj" />
@@ -41,7 +41,7 @@
   <Project Path="tests\Nuke.Common.Shim.Tests\Nuke.Common.Shim.Tests.csproj" />
   <Project Path="tests\Nuke.Components.Shim.Tests\Nuke.Components.Shim.Tests.csproj" />
   <Project Path="tests\Fallout.ProjectModel.Tests\Fallout.ProjectModel.Tests.csproj" />
-  <Project Path="tests\Fallout.SolutionModel.Tests\Fallout.SolutionModel.Tests.csproj" />
+  <Project Path="tests\Fallout.Solution.Tests\Fallout.Solution.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />
   <Project Path="tests\Consumers\Nuke.Consumer\Nuke.Consumer.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />

@@ -8,7 +8,7 @@ using System.Linq;
 using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
-using Fallout.Common.ProjectModel;
+using Fallout.Solutions;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
 
