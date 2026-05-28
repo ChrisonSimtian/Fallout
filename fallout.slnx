@@ -43,6 +43,9 @@
   <Project Path="tests\Fallout.ProjectModel.Tests\Fallout.ProjectModel.Tests.csproj" />
   <Project Path="tests\Fallout.SolutionModel.Tests\Fallout.SolutionModel.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />
+  <Project Path="tests\Consumers\Nuke.Consumer\Nuke.Consumer.csproj" />
+  <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />
+  <Project Path="tests\Consumers\Fallout.Consumer.NuGet\Fallout.Consumer.NuGet.csproj" />
   <Project Path="tests\Fallout.Tooling.Tests\Fallout.Tooling.Tests.csproj" />
   <Project Path="tests\Fallout.Utilities.Tests\Fallout.Utilities.Tests.csproj" />
 </Solution>

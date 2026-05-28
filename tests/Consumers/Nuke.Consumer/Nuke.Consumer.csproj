@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Nuke.Consumer</RootNamespace>
+    <!-- Build.cs uses readonly fields populated by Fallout's value injection. -->
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Shims\Nuke.Common\Nuke.Common.csproj" />
+    <ProjectReference Include="..\..\..\src\Shims\Nuke.Build\Nuke.Build.csproj" />
+    <ProjectReference Include="..\..\..\src\Shims\Nuke.Components\Nuke.Components.csproj" />
+  </ItemGroup>
+
+</Project>

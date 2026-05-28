@@ -17,6 +17,8 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Common
     public Fallout.Common.ProjectModel.Project Fallout_Common => this.GetProject("Fallout.Common");
     public Fallout.Common.ProjectModel.Project Fallout_Common_Tests => this.GetProject("Fallout.Common.Tests");
     public Fallout.Common.ProjectModel.Project Fallout_Components => this.GetProject("Fallout.Components");
+    public Fallout.Common.ProjectModel.Project Fallout_Consumer_Local => this.GetProject("Fallout.Consumer.Local");
+    public Fallout.Common.ProjectModel.Project Fallout_Consumer_NuGet => this.GetProject("Fallout.Consumer.NuGet");
     public Fallout.Common.ProjectModel.Project Fallout_Migrate => this.GetProject("Fallout.Migrate");
     public Fallout.Common.ProjectModel.Project Fallout_Migrate_Analyzers => this.GetProject("Fallout.Migrate.Analyzers");
     public Fallout.Common.ProjectModel.Project Fallout_Migrate_Analyzers_Tests => this.GetProject("Fallout.Migrate.Analyzers.Tests");
@@ -44,6 +46,7 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Common
     public Fallout.Common.ProjectModel.Project Nuke_Common_Shim_Tests => this.GetProject("Nuke.Common.Shim.Tests");
     public Fallout.Common.ProjectModel.Project Nuke_Components => this.GetProject("Nuke.Components");
     public Fallout.Common.ProjectModel.Project Nuke_Components_Shim_Tests => this.GetProject("Nuke.Components.Shim.Tests");
+    public Fallout.Common.ProjectModel.Project Nuke_Consumer => this.GetProject("Nuke.Consumer");
 
     public _misc misc => Unsafe.As<_misc>(this.GetSolutionFolder("misc"));
 

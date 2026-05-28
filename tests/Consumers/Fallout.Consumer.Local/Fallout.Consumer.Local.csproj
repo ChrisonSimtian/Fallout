@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Fallout.Consumer.Local</RootNamespace>
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+  </PropertyGroup>
+
+  <!--
+    Direct ProjectReferences against this repo's local source. Always tracks
+    HEAD. Catches breakage in the current PR.
+
+    NOTE: this references Fallout.SolutionModel (current main shape). When the
+    persistence-layering work lands (#248/#254), this csproj will need to
+    point at the new location (src/Persistence/Fallout.Solution/) and the
+    Build.cs `using Fallout.Common.ProjectModel;` will need to become
+    `using Fallout.Solutions;`. The PR doing that rename owns both updates;
+    see tests/Consumers/README.md → "Catching breaking changes".
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.SolutionModel\Fallout.SolutionModel.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.Components\Fallout.Components.csproj" />
+  </ItemGroup>
+
+</Project>

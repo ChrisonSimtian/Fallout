@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Fallout.Consumer.NuGet</RootNamespace>
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+
+    <!-- Opt out of Directory.Build.targets' smart-rewrite so PackageReferences
+         actually resolve against nuget.org instead of in-solution ProjectReferences.
+         This is the whole point of this project: validate against the LAST PUBLISHED
+         package surface, not the current source tree.
+
+         Also opt out of central package management so the inline Version="..."
+         pins below take effect. -->
+    <ReplacePackageReferences>false</ReplacePackageReferences>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <!--
+    Pinned to the last release before any in-flight breaking change.
+    BUMP THIS after each release to catch upgrade-direction breaking changes.
+    See tests/Consumers/README.md → "Bumping the NuGet pin".
+  -->
+  <ItemGroup>
+    <PackageReference Include="Fallout.Common" Version="11.0.8" />
+    <PackageReference Include="Fallout.Build" Version="11.0.8" />
+    <PackageReference Include="Fallout.SolutionModel" Version="11.0.8" />
+    <PackageReference Include="Fallout.Components" Version="11.0.8" />
+  </ItemGroup>
+
+</Project>
