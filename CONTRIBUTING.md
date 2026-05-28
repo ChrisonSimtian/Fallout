@@ -76,3 +76,13 @@ Tool wrapper JSON lives under `src/Fallout.Common/Tools/<Tool>/<Tool>.json`. Whe
 - The PR gate is `ubuntu-latest` only (docs-only PRs hit a noop workflow). `windows-latest` and `macos-latest` run post-merge on `main` as release validation.
 - Address review feedback in additional commits rather than force-pushing — easier to review the changes.
 - If CI fails on something unrelated to your change, ping a maintainer.
+
+### Merging
+
+The repo allows both **squash** and **rebase** merge buttons; plain merge commits are disabled (branch protection requires linear history).
+
+- **Default to squash.** One PR → one commit on `main`. Cleanest log, tidiest `Nerdbank.GitVersioning` patch-version cadence, easiest revert.
+- **Choose rebase** if you've curated your commits into a logical sequence you want preserved on `main` (and you don't mind interactive-rebasing away review-fixup noise before merge).
+- If you're using rebase, run `git rebase -i` to squash "address review feedback" / "fix typo" commits before requesting final approval — every commit landing on `main` is a bisect target.
+
+The merger (typically a CODEOWNER) picks the button; the PR description can request a preference but isn't binding.
