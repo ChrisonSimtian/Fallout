@@ -118,10 +118,14 @@ partial class Build
     string IPublish.NuGetSource => "https://api.nuget.org/v3/index.json";
     string IPublish.NuGetApiKey => NuGetApiKey;
 
+    // Publish fires from main OR a release/v* maintenance branch (the 10.x line
+    // publishes from release/v10). The release workflow only triggers on those
+    // refs, so the workflow check is the real gate; the branch check just stops
+    // an accidental Publish from a feature branch.
     Target IPublish.Publish => _ => _
         .Inherit<IPublish>()
         .Consumes(From<IPack>().Pack)
-        .Requires(() => GitRepository.IsOnMainBranch() && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow)
+        .Requires(() => (GitRepository.IsOnMainBranch() || (GitRepository.Branch != null && GitRepository.Branch.StartsWith("release/v", StringComparison.OrdinalIgnoreCase))) && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow)
         .WhenSkipped(DependencyBehavior.Execute);
 
     // Filter `Nuke.*` shim packages out of the nuget.org push — that ID is owned by

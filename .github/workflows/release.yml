@@ -5,15 +5,15 @@
 name: release
 
 # RELEASE-BRANCH MODEL (milestone #13, RFC #267): this workflow lives on the
-# release/v10.3 maintenance line and publishes the 10.3.x channel. It fires on
-# merge to release/v10.3 — releases here are rare (maintenance + the clean
-# 10.3.48 marker), so the per-merge auto-publish that was disabled on `main`
+# release/v10 maintenance line and publishes the 10.3.x channel to nuget.org.
+# It fires on merge to release/v10 — releases here are rare (maintenance + the
+# clean 10.3.x marker), so the per-merge auto-publish that was disabled on `main`
 # (Dependabot noise) is fine on this branch. The first publish from this branch
-# is the 10.3.48 clean marker — the inaugural test of release-from-release/vN.
+# is the clean 10.3.49 marker — the inaugural test of release-from-release/vN.
 on:
   push:
     branches:
-      - release/v10.3
+      - release/v10
     paths-ignore:
       - 'docs/**'
       - '.assets/**'
