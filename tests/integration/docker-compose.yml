@@ -1,0 +1,34 @@
+# Tier 3 release channel: local NuGet server for pre-merge testing.
+# See ./README.md for usage. Tracking issue: ChrisonSimtian/Fallout#279.
+#
+# This compose file spins up BaGet (https://github.com/loic-sharma/BaGet),
+# an open-source .NET-based NuGet server. The repo is stale (last commit
+# Jan 2023) but the Docker image and protocol surface remain functional
+# for the dev/CI use case here. A future PR may swap to a maintained
+# alternative; the interface (NuGet v3 protocol over HTTP) is stable
+# regardless.
+
+services:
+  baget:
+    image: loicsharma/baget:latest
+    container_name: fallout-local-nuget
+    restart: unless-stopped
+    ports:
+      # Bind to localhost only — this is a dev/CI feed, never exposed externally.
+      - "127.0.0.1:5555:80"
+    environment:
+      # Static dev-only API key. Documented in README; do NOT reuse anywhere real.
+      ApiKey: "${FALLOUT_LOCAL_NUGET_API_KEY:-FALLOUT_LOCAL_DEV}"
+      Storage__Type: "FileSystem"
+      Storage__Path: "/var/baget/packages"
+      Database__Type: "Sqlite"
+      Database__ConnectionString: "Data Source=/var/baget/baget.db"
+      Search__Type: "Database"
+      # Reject unauthenticated pushes — clients must supply --api-key.
+      PackageDeletionBehavior: "Unlist"
+    volumes:
+      - baget-data:/var/baget
+
+volumes:
+  baget-data:
+    name: fallout-local-nuget-data

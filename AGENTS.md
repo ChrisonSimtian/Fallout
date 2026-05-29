@@ -53,6 +53,8 @@ Full conventions + what-not-to-do list: [docs/agents/conventions.md](docs/agents
 
 - **[docs/agents/repository-layout.md](docs/agents/repository-layout.md)** — full directory structure, project groupings, transition-shim strategy
 - **[docs/agents/release-and-versioning.md](docs/agents/release-and-versioning.md)** — branching, semver policy, PR-creation flow, release pipeline, NuGet gotchas
+- **[docs/branching-and-release.md](docs/branching-and-release.md)** — maintainer runbook for cutting releases, hotfixing older majors, cutting new `release/vN` branches
+- **[docs/adr/](docs/adr/)** — Architecture Decision Records (start with `0001-release-branch-model.md`)
 - **[docs/agents/conventions.md](docs/agents/conventions.md)** — conventions, what-not-to-do list, tool-wrapper recipe
 - **[docs/architecture.md](docs/architecture.md)** — high-level architecture overview
 - **[docs/rebrand-plan.md](docs/rebrand-plan.md)** — namespace mapping + bridge strategy
