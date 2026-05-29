@@ -1,17 +1,26 @@
 # Hand-written (not auto-generated) — see Build.CI.GitHubActions.cs for the
 # rationale (lets us bridge GitHub's NUGET_API_KEY secret to Fallout's
 # NuGetApiKey parameter, which would otherwise have to share a name).
+#
+# STOPGAP (2026-05-29, #267 / milestone #13):
+# Trigger is workflow_dispatch only — auto-publish on push to main has been
+# disabled because it was firing a Fallout.* release on every merge
+# (Dependabot noise across the userbase: ~20 patch versions in recent days
+# for what was mostly internal cleanup). The proper shape — tag-triggered
+# publishes on `release/vN` branches with multi-channel GitHub Environments —
+# is being implemented under milestone #13 (RFC #267). Until that lands,
+# releases happen manually: navigate to Actions → release → "Run workflow"
+# on the desired ref (main for now; `release/v11` once cut).
 
 name: release
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - 'docs/**'
-      - '.assets/**'
-      - '**/*.md'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Ref to release from (defaults to current branch; will be release/v11 once cut per #267)'
+        required: false
+        default: 'main'
 
 permissions:
   contents: write     # for ICreateGitHubRelease (tag + GitHub release)
