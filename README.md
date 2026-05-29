@@ -25,11 +25,13 @@
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/ChrisonSimtian?label=sponsor&logo=githubsponsors&color=EA4AAA)](https://github.com/sponsors/ChrisonSimtian)
 
 > [!IMPORTANT]
-> **Rebrand in progress + v11/v12 roadmap published.** This repository is being renamed from **NUKE** to **Fallout** as part of a hard fork. URLs, package names, and namespaces are migrating in stages.
+> **Rebrand in progress + roadmap published.** This repository is being renamed from **NUKE** to **Fallout** as part of a hard fork. URLs, package names, and namespaces are migrating in stages.
 >
-> **What's next:** v11 finishes the rebrand and lays the internal foundation for a plugin architecture; v12 ships the public `Fallout.Plugin.Sdk`. The full plan is in [**docs/roadmap.md**](docs/roadmap.md). Five RFCs are open now to shape the SDK — your input matters most before v12 firms up.
+> **Versioning & channels.** Fallout ships on **calendar versions** (`YYYY.MINOR.PATCH`; the major is the year). `main` is the fast, intentionally-unstable **edge** channel; the `release/YYYY` **stable train** carries non-breaking minors/patches after the yearly cut. See [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md) and [docs/branching-and-release.md](docs/branching-and-release.md).
 >
-> Track v11 in [milestone #6](https://github.com/ChrisonSimtian/Fallout/milestone/6) and v12 in [milestone #7](https://github.com/ChrisonSimtian/Fallout/milestone/7).
+> **What's next:** the rebrand completes and the internal foundation for a plugin architecture lands on the 2026 line; a later major ships the public `Fallout.Plugin.Sdk`. The full plan is in [**docs/roadmap.md**](docs/roadmap.md). Five RFCs are open now to shape the SDK — your input matters most before it firms up.
+>
+> Track the work in [milestone #6](https://github.com/ChrisonSimtian/Fallout/milestone/6) (rebrand + plugin foundation) and [milestone #7](https://github.com/ChrisonSimtian/Fallout/milestone/7) (public plugin SDK).
 
 ## Based on NUKE
 
@@ -64,6 +66,9 @@ The CLI installs as `fallout`. Verify with `fallout --help`.
 
 For per-repo manifest pinning (`.config/dotnet-tools.json`), project setup, and shell completion, see the [Installation guide on docs.fallout.build](https://docs.fallout.build/getting-started/installation).
 
+> [!NOTE]
+> **Channels.** Stable releases ship on **calendar versions** (`YYYY.MINOR.PATCH`, e.g. `2026.1.3`; the major is the year) from the `release/YYYY` train — published to GitHub Packages, with nuget.org publishing opt-in per release. A faster, intentionally-unstable **edge** prerelease (`2026.MINOR.PATCH-edge.…`) is published from `main` to **GitHub Packages only**; opt in by adding the GitHub Packages feed if you want to track the bleeding edge. The legacy NUKE `10.x` line stays on semver and receives security/critical fixes only. See [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md) and [docs/branching-and-release.md](docs/branching-and-release.md) for the full model.
+
 ## Table of Contents
 
 - [Elevator Pitch](#elevator-pitch)
@@ -79,14 +84,14 @@ Fallout (NUKE's successor) brings your build automation to an even level with ev
 
 ## Build Status
 
-CI runs on every PR targeting `main` across `ubuntu-latest` — the only required status check. After merge to `main`, post-merge validation runs on `windows-latest` and `macos-latest`. Releases publish from `main` to **nuget.org** under the reserved `Fallout.*` prefix, via `.github/workflows/release.yml`. Docs-only PRs are served by a no-op companion workflow (`ubuntu-latest-docs`) so branch protection is satisfied without spending CI minutes on a real build.
+CI runs on every PR targeting `main` across `ubuntu-latest` — the only required status check. After merge to `main`, post-merge validation runs on `windows-latest` and `macos-latest`, and an **edge** prerelease is published to **GitHub Packages** under the reserved `Fallout.*` prefix. **Stable** releases fire from `release/YYYY` tags via `.github/workflows/release.yml` (GitHub Packages + GitHub Releases by default; nuget.org opt-in per release). Docs-only PRs are served by a no-op companion workflow (`ubuntu-latest-docs`) so branch protection is satisfied without spending CI minutes on a real build.
 
 | Workflow | Status | Trigger |
 |---|---|---|
 | [`ubuntu-latest`](.github/workflows/ubuntu-latest.yml) | [![ubuntu-latest](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/Fallout/ubuntu-latest.yml?branch=main&label=&logo=ubuntu&logoColor=white&style=flat-square)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/ubuntu-latest.yml) | PR to `main` (code paths) — **required check** |
 | [`windows-latest`](.github/workflows/windows-latest.yml) | [![windows-latest](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/Fallout/windows-latest.yml?branch=main&label=&logo=windows&logoColor=white&style=flat-square)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/windows-latest.yml) | push to `main` (post-merge validation) |
 | [`macos-latest`](.github/workflows/macos-latest.yml) | [![macos-latest](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/Fallout/macos-latest.yml?branch=main&label=&logo=apple&logoColor=white&style=flat-square)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/macos-latest.yml) | push to `main` (post-merge validation) |
-| [`release`](.github/workflows/release.yml) | [![release](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/Fallout/release.yml?branch=main&label=&logo=nuget&logoColor=white&style=flat-square)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/release.yml) | push to `main` — publishes `Fallout.*` to nuget.org |
+| [`release`](.github/workflows/release.yml) | [![release](https://img.shields.io/github/actions/workflow/status/ChrisonSimtian/Fallout/release.yml?branch=main&label=&logo=nuget&logoColor=white&style=flat-square)](https://github.com/ChrisonSimtian/Fallout/actions/workflows/release.yml) | edge prerelease on push to `main` (GitHub Packages); stable on `release/YYYY` tag push (nuget.org opt-in) |
 
 Multi-provider CI support (Azure Pipelines, GitLab, TeamCity, AppVeyor) was removed during the takeover and is being revived demand-driven — see [#8](https://github.com/ChrisonSimtian/Fallout/issues/8).
 
