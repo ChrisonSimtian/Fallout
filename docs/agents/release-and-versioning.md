@@ -4,13 +4,33 @@ Branching, semver policy, the PR-creation procedure, and the release pipeline.
 
 ## Branching
 
-Trunk-based:
+Long-lived branches:
 
-- `main` — single long-lived branch. Default branch on GitHub. Every merge can publish a release.
-- `feature/<slug>`, `bugfix/<slug>`, `chore/<slug>`, `docs/<slug>`, `pr/<num>-<slug>` — short-lived branches, opened as PRs against `main`.
-- No `develop`, `release/*`, `master`, or `hotfix/*` branches.
+- `main` — integration trunk. Default branch on GitHub. PRs target here. (As of milestone [#13](https://github.com/ChrisonSimtian/Fallout/milestone/13), merges to `main` no longer auto-publish — releases fire from `release/vN` branches instead. See the release pipeline section below.)
+- `release/vN` — release channel per major version (e.g. `release/v11`). Tag-triggered releases fire from here. Protected per the policy below. See [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267) for the full model.
+
+Short-lived branches (opened as PRs against `main`, then squash- or rebase-merged):
+
+- `feature/<slug>`, `bugfix/<slug>`, `chore/<slug>`, `docs/<slug>`, `pr/<num>-<slug>`.
+
+No `develop`, `master`, or `hotfix/*` branches. Hotfixes for an older major land on `main` first via a normal PR, then are cherry-picked to the relevant `release/vN` and tagged.
 
 CI providers in use: **GitHub Actions only** (others were dropped — see [#8](https://github.com/ChrisonSimtian/Fallout/issues/8) for the demand-driven revival roadmap).
+
+### Branch protection on `release/vN`
+
+When a `release/vN` branch is cut, it gets the same protection profile as `main`:
+
+- Required status check: `ubuntu-latest`
+- Linear history required (no merge commits)
+- CODEOWNER review required
+- Dismiss stale approvals when new commits land
+- Direct pushes blocked (PRs only)
+- Force-push and branch deletion blocked
+- Conversation resolution required
+- Admins not enforced (admins can bypass in emergencies)
+
+Apply by mirroring `main`'s protection JSON to the new branch via the GitHub API (or via repo Settings → Branches). Tag protection for `v*` tags (restricting who can fire a release tag) is tracked separately under milestone #13.
 
 **Validation workflows.** `ubuntu-latest` runs on every PR targeting `main` (with `paths-ignore` for `docs/**`, `.assets/**`, `**/*.md`). `windows-latest` and `macos-latest` run only on push to `main` — they're post-merge / release validation, not PR gates. This is a deliberate cost trade-off.
 
@@ -53,7 +73,7 @@ If you only discover the breaking nature mid-review, apply all relevant steps be
 
 ## Release pipeline
 
-`.github/workflows/release.yml` — triggered on push to `main`, runs the three-step shape (`actions/setup-dotnet` → `dotnet tool restore` → `dotnet fallout Test Pack Publish`). **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` repo secret (a nuget.org API key scoped to push `Fallout.*`). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
+`.github/workflows/release.yml` — currently `workflow_dispatch`-triggered only (stopgap per [#268](https://github.com/ChrisonSimtian/Fallout/pull/268) while the tag-triggered shape lands under [#274](https://github.com/ChrisonSimtian/Fallout/issues/274)). Manual runs go via Actions → `release` → "Run workflow". Once #274 ships, the trigger flips to `push: tags: v*` on `release/v*` branches with three GitHub Environments (`nuget-org`, `github-packages`, `github-releases`). Either shape runs the same three-step body (`actions/setup-dotnet` → `dotnet tool restore` → `dotnet fallout Test Pack Publish`). **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` secret (currently a repo secret; will move to the `nuget-org` environment per [#273](https://github.com/ChrisonSimtian/Fallout/issues/273)). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
 ## Adding a new `Fallout.X` package — first-publish gotcha
 
