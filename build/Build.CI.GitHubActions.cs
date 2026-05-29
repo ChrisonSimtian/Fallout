@@ -32,7 +32,9 @@ using Fallout.Components;
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
     CheckoutRef = "${{ github.head_ref }}",
-    OnPullRequestBranches = new[] { MainBranch },
+    // Trigger for PRs targeting main OR any release/vN branch — both are
+    // long-lived and protected; both require the ubuntu-latest status check.
+    OnPullRequestBranches = new[] { MainBranch, ReleaseBranchPattern },
     OnPullRequestExcludePaths = new[] { "docs/**", ".assets/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
