@@ -7,13 +7,17 @@ Branching, semver policy, the PR-creation procedure, and the release pipeline.
 Long-lived branches:
 
 - `main` — integration trunk. Default branch on GitHub. PRs target here. (As of milestone [#13](https://github.com/ChrisonSimtian/Fallout/milestone/13), merges to `main` no longer auto-publish — releases fire from `release/vN` branches instead. See the release pipeline section below.)
-- `release/vN` — release channel per major version (e.g. `release/v11`). Tag-triggered releases fire from here. Protected per the policy below. See [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267) for the full model.
+- `release/v11` and later — release channel per **major** version. Tag-triggered releases fire from here. Protected per the policy below. See [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267) for the full model.
+- `release/v10.1`, `release/v10.2`, `release/v10.3` — per-**minor** maintenance lines for the pre-v11 (NUKE-lineage) versions. These cover the versions consumers are running today, so each one is patched independently (`10.2.x`, `10.3.x`, …) without dragging in later minors. The split is per-minor only for the 10.x series; v11 onward is per-major. Each branch sits at the **tip** of its version line as shipped:
+  - `release/v10.1` → fork-from-NUKE line (NUKE `10.1.0` lineage, before independent versioning).
+  - `release/v10.2` → the `10.2.x` line (first independent Nerdbank versioning).
+  - `release/v10.3` → the `10.3.x` line (where the first `!` breaking changes — the System.Text.Json migration — actually landed).
 
 Short-lived branches (opened as PRs against `main`, then squash- or rebase-merged):
 
 - `feature/<slug>`, `bugfix/<slug>`, `chore/<slug>`, `docs/<slug>`, `pr/<num>-<slug>`.
 
-No `develop`, `master`, or `hotfix/*` branches. Hotfixes for an older major land on `main` first via a normal PR, then are cherry-picked to the relevant `release/vN` and tagged.
+No `develop`, `master`, or `hotfix/*` branches. The trunk is `main`: new work integrates there and flows out to `release/v11`+. The `release/v10.x` lines are maintenance-only — fixes for a still-supported 10.x minor land via a PR targeting (or a cherry-pick to) the relevant `release/v10.x` branch and are tagged from there. Fixes that also apply to the current major land on `main` first via a normal PR, then are cherry-picked to the relevant `release/vN` and tagged.
 
 CI providers in use: **GitHub Actions only** (others were dropped — see [#8](https://github.com/ChrisonSimtian/Fallout/issues/8) for the demand-driven revival roadmap).
 
