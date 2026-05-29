@@ -2,30 +2,33 @@
 # rationale (lets us bridge GitHub's NUGET_API_KEY secret to Fallout's
 # NuGetApiKey parameter, which would otherwise have to share a name).
 #
+# This is the DELIBERATE (stable + legacy) release path. The fast "edge" channel
+# (push to main → GitHub Packages) lives in edge.yml. See ADR-0004.
+#
 # Shape:
-#   - Trigger: tag push `v*` on a `release/v*` branch. Tag protection ruleset
-#     restricts who can create those tags to repo admins.
+#   - Trigger: tag push `v*` on a release branch — CalVer stable trains
+#     (release/2026 → tag v2026.1.3) or legacy semver lines (release/v10 → v10.x).
+#     Tags keep the `v` prefix so the `v*` tag-protection ruleset applies; the
+#     package version core is the bare CalVer/semver (e.g. 2026.1.3). Tag
+#     protection restricts who can create those tags to repo admins.
 #   - Optional fallback: workflow_dispatch with an existing-tag input, for
 #     re-runs after a transient publish-API failure, OR to opt into a
 #     nuget.org publish (see below).
-#   - validate-ref → test-and-pack → fan out to three publish jobs in
-#     parallel:
-#       - publish-nuget-org   (Tier 1, opt-in via workflow_dispatch flag, approval-gated)
-#       - publish-github-packages (Tier 2, all packages — Fallout.* + Nuke.*)
+#   - validate-ref → test-and-pack → fan out to three publish jobs in parallel:
+#       - publish-nuget-org   (opt-in via workflow_dispatch flag, approval-gated)
+#       - publish-github-packages (all packages — Fallout.* + Nuke.*)
 #       - publish-github-releases (artifact bundling on the tag's GH Release)
 #
-# Channel routing for v11+ (current direction):
-#   - nuget.org is reserved for v10.x and (eventually) "stabilised" v11. Tag
-#     pushes do NOT auto-publish to nuget.org. To publish Fallout.* to
-#     nuget.org you must invoke workflow_dispatch with publish-to-nugetorg=true
-#     — a conscious "this release is stabilised enough for nuget.org" switch.
+# Channel routing (ADR-0004):
+#   - nuget.org is OPT-IN. Tag pushes do NOT auto-publish there. To publish
+#     Fallout.* to nuget.org you invoke workflow_dispatch with
+#     publish-to-nugetorg=true — a conscious "this release is stabilised enough"
+#     switch, used when a release/YYYY stable train is ready for the broad
+#     consumer audience, or for a release/v10 legacy security patch.
 #   - GitHub Packages gets every Fallout.* and Nuke.* build via tag push.
-#     This is the de-facto release channel during v11 prerelease/stabilisation.
 #   - GitHub Releases bundles nupkgs on the tag's release page regardless.
 #
-# When v11 stabilises (or for cutting v10.x maintenance patches), use the
-# workflow_dispatch path with publish-to-nugetorg=true. See
-# docs/branching-and-release.md for the full runbook.
+# See docs/branching-and-release.md for the full runbook.
 
 name: release
 
@@ -63,14 +66,15 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: 'Verify tag is reachable from a release/v* branch'
+      - name: 'Verify tag is reachable from a release branch'
         run: |
           set -euo pipefail
           TAG_SHA="${{ github.sha }}"
-          REACHABLE=$(git branch -r --contains "$TAG_SHA" | grep -E 'origin/release/v[0-9]+' || true)
+          # Match CalVer stable trains (release/2026, …) and legacy semver lines (release/v10, …).
+          REACHABLE=$(git branch -r --contains "$TAG_SHA" | grep -E 'origin/release/(v[0-9]+|[0-9]{4})' || true)
           if [ -z "$REACHABLE" ]; then
-            echo "::error::Tag ${GITHUB_REF_NAME} at $TAG_SHA is not reachable from any release/v* branch."
-            echo "Tag-triggered releases only fire from release/v* branches."
+            echo "::error::Tag ${GITHUB_REF_NAME} at $TAG_SHA is not reachable from any release/ branch."
+            echo "Tag-triggered releases only fire from release/YYYY (stable) or release/v* (legacy) branches."
             exit 1
           fi
           echo "Tag ${GITHUB_REF_NAME} validated. Reachable from:"
