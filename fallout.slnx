@@ -13,6 +13,7 @@
   <Project Path="src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
   <Project Path="src\Fallout.Build\Fallout.Build.csproj" />
   <Project Path="src\Fallout.Common\Fallout.Common.csproj" />
+  <Project Path="src\Fallout.Core\Fallout.Core.csproj" />
   <Project Path="src\Fallout.Components\Fallout.Components.csproj" />
   <Project Path="src\Fallout.Cli\Fallout.Cli.csproj" />
   <Project Path="src\Fallout.Migrate\Fallout.Migrate.csproj" />
@@ -35,6 +36,7 @@
   <Project Path="src\Fallout.Utilities\Fallout.Utilities.csproj" />
   <Project Path="tests\Fallout.Build.Tests\Fallout.Build.Tests.csproj" />
   <Project Path="tests\Fallout.Common.Tests\Fallout.Common.Tests.csproj" />
+  <Project Path="tests\Fallout.Core.Tests\Fallout.Core.Tests.csproj" />
   <Project Path="tests\Fallout.Cli.Tests\Fallout.Cli.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Tests\Fallout.Migrate.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Analyzers.Tests\Fallout.Migrate.Analyzers.Tests.csproj" />

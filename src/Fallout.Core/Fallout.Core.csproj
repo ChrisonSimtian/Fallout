@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net10.0</TargetFrameworks>
+    <Description>The reactor core of Fallout — pure domain types and graph algorithms of the build execution pipeline. No I/O, no process, no console, no logging. References nothing else in the repo.</Description>
+  </PropertyGroup>
+
+</Project>

@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Core.Planning;
 
 internal class StronglyConnectedComponentList<T> : IEnumerable<StronglyConnectedComponent<T>>
 {

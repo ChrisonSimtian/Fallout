@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NuGet.Packaging;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Core.Planning;
 
 namespace Fallout.Common.Execution;
 
@@ -39,35 +39,31 @@ internal static class ExecutionPlanner
         IReadOnlyCollection<ExecutableTarget> executableTargets,
         ICollection<ExecutableTarget> invokedTargets)
     {
-        var vertexDictionary = GetVertexDictionary(executableTargets);
-        var graphAsList = vertexDictionary.Values.ToList();
-        var scheduledTargets = new List<ExecutableTarget>();
+        // Pure graph work — cycle detection and topological ordering — lives in Fallout.Core.
+        // Everything below is orchestration: deciding to fail the build, and applying the domain
+        // scheduling rules (invoked / default / execution-dependency) over the ordered nodes.
+        var strict = ParameterService.GetNamedArgument<bool>("strict");
+        var plan = TopoSort.Order(executableTargets, x => x.AllDependencies, strict);
 
-        var scc = new StronglyConnectedComponentFinder<ExecutableTarget>();
-        var cycles = scc.DetectCycle(graphAsList).Cycles().ToList();
-        if (cycles.Count > 0)
+        if (plan.HasCycles)
         {
             // TODO: logging additional
             Assert.Fail("Circular dependencies between targets:"
-                .Concat(cycles.Select(x => $" - {x.Select(y => y.Value.Name).JoinCommaSpace()}"))
+                .Concat(plan.Cycles.Select(x => $" - {x.Select(y => y.Name).JoinCommaSpace()}"))
                 .JoinNewLine());
         }
 
-        while (graphAsList.Any())
+        if (plan.IsAmbiguous)
         {
-            var independents = graphAsList.Where(x => !graphAsList.Any(y => y.Dependencies.Contains(x))).ToList();
-            if (ParameterService.GetNamedArgument<bool>("strict") && independents.Count > 1)
-            {
-                // TODO: logging additional
-                Assert.Fail("Incomplete target definition order:"
-                    .Concat(independents.Select(x => $"  - {x.Value.Name}"))
-                    .JoinNewLine());
-            }
+            // TODO: logging additional
+            Assert.Fail("Incomplete target definition order:"
+                .Concat(plan.AmbiguousStep.Select(x => $"  - {x.Name}"))
+                .JoinNewLine());
+        }
 
-            var independent = independents.First();
-            graphAsList.Remove(independent);
-
-            var executableTarget = independent.Value;
+        var scheduledTargets = new List<ExecutableTarget>();
+        foreach (var executableTarget in plan.Ordered)
+        {
             if (!(invokedTargets != null && invokedTargets.Contains(executableTarget)) &&
                 !(invokedTargets == null && executableTarget.IsDefault) &&
                 !scheduledTargets.SelectMany(x => x.ExecutionDependencies).Contains(executableTarget))
@@ -79,16 +75,6 @@ internal static class ExecutionPlanner
         scheduledTargets.Reverse();
 
         return scheduledTargets;
-    }
-
-    private static IReadOnlyDictionary<ExecutableTarget, Vertex<ExecutableTarget>> GetVertexDictionary(
-        IReadOnlyCollection<ExecutableTarget> executableTargets)
-    {
-        var vertexDictionary = executableTargets.ToDictionary(x => x, x => new Vertex<ExecutableTarget>(x));
-        foreach (var (executable, vertex) in vertexDictionary)
-            vertex.Dependencies.AddRange(executable.AllDependencies.Select(x => vertexDictionary.GetValueOrDefault(x)).WhereNotNull());
-
-        return vertexDictionary;
     }
 
     private static ExecutableTarget GetExecutableTarget(

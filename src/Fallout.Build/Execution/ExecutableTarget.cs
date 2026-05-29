@@ -11,7 +11,7 @@ using Fallout.Common.Utilities.Collections;
 namespace Fallout.Common.Execution;
 
 [DebuggerDisplay($"{{{nameof(Name)}}} ({{{nameof(Status)}}})")]
-public class ExecutableTarget
+public class ExecutableTarget : ITargetModel
 {
     internal TargetDefinition Definition { get; set; }
     internal Stopwatch Stopwatch { get; } = new();
@@ -61,4 +61,9 @@ public class ExecutableTarget
         get => SummaryInformation.GetValueOrDefault(nameof(OnlyWhen));
         set => SummaryInformation.AddPairWhenValueNotNull(nameof(OnlyWhen), value);
     }
+
+    // ITargetModel — read-only projection over the live dependency lists for Fallout.Core consumers.
+    IReadOnlyCollection<string> ITargetModel.ExecutionDependencyNames => ExecutionDependencies.Select(x => x.Name).ToList();
+    IReadOnlyCollection<string> ITargetModel.OrderDependencyNames => OrderDependencies.Select(x => x.Name).ToList();
+    IReadOnlyCollection<string> ITargetModel.TriggerNames => Triggers.Select(x => x.Name).ToList();
 }
