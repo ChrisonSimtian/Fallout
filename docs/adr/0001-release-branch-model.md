@@ -4,6 +4,8 @@
 
 Accepted (2026-05-29). Implementation shipped under [milestone #13](https://github.com/ChrisonSimtian/Fallout/milestone/13).
 
+> **Amended by [ADR-0004](0004-calendar-versioning-and-dual-pace-channels.md) (2026-05-29).** The **versioning** decision below (per-major semver, "any breaking change bumps the major") is superseded by calendar versioning (`YYYY.MINOR.PATCH`, breaking batched to the yearly cut), and `main` is now also the published **edge** channel. The release-branch model, tag-triggered multi-channel CD, GitHub Environments, and cherry-pick hotfix flow described here remain in force.
+
 ## Context
 
 Pre-decision, Fallout's release pipeline auto-published on every merge to `main`. Nerdbank.GitVersioning bumped the patch via git-height, the tag fired, and `.github/workflows/release.yml` pushed to nuget.org. Two compounding problems surfaced:

@@ -4,20 +4,20 @@ Branching, semver policy, the PR-creation procedure, and the release pipeline.
 
 ## Branching
 
+The branch/channel/versioning model is defined by [ADR-0004](../adr/0004-calendar-versioning-and-dual-pace-channels.md) (calendar versioning + dual-pace channels), which amends [ADR-0001](../adr/0001-release-branch-model.md) (release-branch + tag-triggered multi-channel CD) and [ADR-0002](../adr/0002-v11-off-nuget-by-default.md) (nuget.org opt-in).
+
 Long-lived branches:
 
-- `main` — integration trunk. Default branch on GitHub. PRs target here. (As of milestone [#13](https://github.com/ChrisonSimtian/Fallout/milestone/13), merges to `main` no longer auto-publish — releases fire from `release/vN` branches instead. See the release pipeline section below.)
-- `release/v11` and later — release channel per **major** version. Tag-triggered releases fire from here. Protected per the policy below. See [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267) for the full model.
-- `release/v10.1`, `release/v10.2`, `release/v10.3` — per-**minor** maintenance lines for the pre-v11 (NUKE-lineage) versions. These cover the versions consumers are running today, so each one is patched independently (`10.2.x`, `10.3.x`, …) without dragging in later minors. The split is per-minor only for the 10.x series; v11 onward is per-major. Each branch sits at the **tip** of its version line as shipped:
-  - `release/v10.1` → fork-from-NUKE line (NUKE `10.1.0` lineage, before independent versioning).
-  - `release/v10.2` → the `10.2.x` line (first independent Nerdbank versioning).
-  - `release/v10.3` → the `10.3.x` line (where the first `!` breaking changes — the System.Text.Json migration — actually landed).
+- `main` — integration trunk **and the published `edge` channel**. PRs target here. Every push (or a daily build) publishes a date-stamped prerelease `YYYY.MINOR.PATCH-edge.<YYYYMMDD>.<h>` to **GitHub Packages only** (never nuget.org). Edge is intentionally unstable — the fast/AI-assisted lane. Light/fast review.
+- `release/YYYY` (e.g. `release/2026`) — the **stable train** for the calendar year. Cut from `main`; hardened deliberately (slow crowd's domain, rigorous review). After the cut it takes **non-breaking minors + patches only** — never a breaking change. Tag-triggered releases fire from here. Protected per the policy below.
+- `release/v10` (+ `hotfix/v10.1`, `hotfix/v10.2`) — **legacy semver maintenance line**, `10.x`, **security and critical fixes only, no new features**. Not renumbered into CalVer. This line coexists indefinitely.
+- `release/v11` — **retired.** Nothing clean shipped under it (the `11.0.x` packages were unlisted); its rebrand/plugin work re-homed onto the `2026` line. Kept for archaeology, marked EoL — not a release target.
 
 Short-lived branches (opened as PRs against `main`, then squash- or rebase-merged):
 
 - `feature/<slug>`, `bugfix/<slug>`, `chore/<slug>`, `docs/<slug>`, `pr/<num>-<slug>`.
 
-No `develop`, `master`, or `hotfix/*` branches. The trunk is `main`: new work integrates there and flows out to `release/v11`+. The `release/v10.x` lines are maintenance-only — fixes for a still-supported 10.x minor land via a PR targeting (or a cherry-pick to) the relevant `release/v10.x` branch and are tagged from there. Fixes that also apply to the current major land on `main` first via a normal PR, then are cherry-picked to the relevant `release/vN` and tagged.
+No `develop` or `master` branches. The trunk is `main` (edge): new work integrates there and is promoted to the stable train at the yearly cut / via non-breaking backport. The `release/v10` legacy line is maintenance-only — security/critical fixes land via a PR targeting (or a cherry-pick to) `release/v10` (or the relevant `hotfix/v10.x`) and are tagged from there. Fixes that also apply to the current stable train land on `main` first via a normal PR, then are cherry-picked to `release/YYYY` and tagged.
 
 CI providers in use: **GitHub Actions only** (others were dropped — see [#8](https://github.com/ChrisonSimtian/Fallout/issues/8) for the demand-driven revival roadmap).
 
@@ -42,36 +42,46 @@ Apply by mirroring `main`'s protection JSON to the new branch via the GitHub API
 
 ## Versioning
 
-[Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) — configured in `version.json` at the repo root. Major+minor is hand-bumped; patch comes from git-height. `main` is the public-release ref (stable versions); everything else gets prerelease tags. GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
+**Calendar versioning: `YYYY.MINOR.PATCH`** (see [ADR-0004](../adr/0004-calendar-versioning-and-dual-pace-channels.md)). It is mechanically valid SemVer 2.0 — all three components are numeric — so [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning), NuGet, and version ordering all work unchanged. The major *is* the calendar year.
 
-## Semver policy
+- **`MAJOR` = year**, hand-set in `version.json` at the yearly cut. **`MINOR`** = feature drop within the year. **`PATCH`** = git-height fixes.
+- Per-branch via `version.json`. `main` carries the **next** planned version with an `-edge` prerelease tag (so edge builds sort above current stable). Each `release/YYYY` carries `"version": "YYYY.x"`; `release/v10` keeps `"version": "10.x"`. `publicReleaseRefSpec` matches **both** `^refs/heads/release/\d{4}$` and `^refs/heads/release/v\d+$`.
+- Edge builds put the date in the **prerelease segment** (`2026.2.0-edge.20260529.<h>`), never the version core — a core of `2026.05.29` would be a *stable* release, not a nightly.
 
-This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) per [CHANGELOG.md](../../CHANGELOG.md). **Any breaking change must bump the major in `version.json` in the same PR before it can merge to `main`.** A "breaking change" is any of:
+GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
+
+## Versioning policy
+
+This project ships calendar versions that are valid [Semantic Versioning](https://semver.org/spec/v2.0.0.html) per [CHANGELOG.md](../../CHANGELOG.md). The rule is: **breaking changes are batched to the yearly major cut.**
+
+- A breaking change may land on **`main` only**, is held for the next yearly major (it does **not** bump `version.json`'s major mid-year), and is recorded in `CHANGELOG.md` under the next-major `[Unreleased]` heading with a migration path.
+- **`release/YYYY` stable trains never take a breaking change** — mid-year stable is strictly non-breaking (minor = features, patch = fixes). A PR that breaks may not target a stable train.
+- Surface that isn't ready to commit to can ship behind `[Experimental("FALLOUT0xx")]` instead of being held back — opt-in for consumers, and not a breaking change to add or remove.
+
+A "breaking change" is any of:
 
 - A conventional-commit subject with the `!` suffix (e.g. `feat(globaltool)!: …`, `fix(security)!: …`).
 - A `BREAKING CHANGE:` footer in the commit body.
-- A change a reviewer reasonably flags as breaking even without the marker (renamed/removed public API, package ID change, on-disk format change, CI/CD shape change consumers depend on).
+- A change a reviewer reasonably flags as breaking even without the marker (renamed/removed public API, package ID change, on-disk format change, CI/CD shape change consumers depend on) — **except** changes to `[Experimental]` surface, which carry no stability guarantee.
 
-Patch increments from git-height are reserved for non-breaking fixes; carrying breaking changes under a patch series ships them to consumers silently.
-
-**Reviewer responsibility:** if a PR carries `!` (or a flagged breaking change) and `version.json`'s major is unchanged, block the merge until the bump is in the same PR. Record the breaking change under `[Unreleased] — <next-major>` in `CHANGELOG.md` as part of the PR.
+**Reviewer responsibility:** if a PR carries `!` (or a flagged breaking change), confirm it targets `main` (not a stable train) and that the CHANGELOG entry sits under the next-major heading. Block otherwise.
 
 ## Milestones and version targeting
 
-Milestones are **theme-based** (e.g. "Plugin Architecture Foundation & Rebrand Completion", "Public Plugin SDK", "Continuous Delivery Vision") and carry across releases; version targeting uses **`target/vN`** labels (`target/v11`, `target/v12`, `target/v13`). A breaking change forces a new major via the semver policy above — so its PR carries `target/v<next-major>` instead of `target/v<current-major>`.
+Milestones are **theme-based** (e.g. "Plugin Architecture Foundation & Rebrand Completion", "Public Plugin SDK", "Continuous Delivery Vision") and carry across releases; version targeting uses **`target/YYYY`** labels (`target/2026`, `target/2027`, …). Legacy v10 maintenance work uses `target/v10`. A breaking change is held for the next yearly major — so its PR carries `target/<next-year>`.
 
 ## PR-creation flow
 
 At PR-creation time — not after, not as a follow-up — every PR gets:
 
-1. **A `target/vN` label** matching where it will release. Default to `target/v<current-major>` (read `version.json`'s `version` field). If the PR bumps the major (i.e. it carries a breaking change), use `target/v<new-major>` instead. Pass via `--label target/v11` to `gh pr create`.
+1. **A `target/YYYY` label** matching where it will release. Default to `target/<current-year>` (`target/2026`). If the PR carries a breaking change, it's held for the next yearly major — use `target/<next-year>`. Legacy v10 maintenance work uses `target/v10`. Pass via `--label target/2026` to `gh pr create`.
 
 If the PR includes a **breaking change** (any commit uses `!`, has a `BREAKING CHANGE:` footer, or otherwise meets the breaking-change definition above), additionally:
 
-2. **Add the `breaking-change` label.** `gh pr create --label target/v<new-major> --label breaking-change …`.
+2. **Add the `breaking-change` label.** `gh pr create --label target/<next-year> --label breaking-change …`.
 3. **Open the PR body with a `⚠️ Breaking change` callout** that names the affected surface (public API, package ID, CLI flag, on-disk format, CI/CD shape, etc.) and the consumer-side impact in one sentence. This is what reviewers and downstream consumers read first.
-4. **Confirm `version.json`'s major is already bumped** for the target release. If it isn't, stop — bump it in the same branch before opening the PR. Don't open a breaking-change PR against an unchanged-major `version.json`.
-5. **Add a `CHANGELOG.md` entry** under the existing `[Unreleased] — <next-major>` heading, in the same PR, describing the breaking change and the migration path (one paragraph minimum).
+4. **Confirm the PR targets `main`, not a `release/YYYY` stable train.** Breaking changes accumulate on `main` for the next yearly major; they may not land on a stable train. (Do **not** bump `version.json`'s major in the PR — the major is set once, at the yearly cut.)
+5. **Add a `CHANGELOG.md` entry** under the next-major `[Unreleased]` heading, in the same PR, describing the breaking change and the migration path (one paragraph minimum).
 
 If you only discover the breaking nature mid-review, apply all relevant steps before requesting re-review.
 
@@ -85,9 +95,13 @@ If you only discover the breaking nature mid-review, apply all relevant steps be
 | `publish-github-packages` | `github-packages` | Yes | **All** `*.nupkg` (Fallout.* + Nuke.*) to https://nuget.pkg.github.com/ChrisonSimtian/index.json | None |
 | `publish-github-releases` | `github-releases` | Yes | All `*.nupkg` attached to a GitHub Release on the tag, auto-generated notes | None |
 
-### Why nuget.org is opt-in for v11
+### Edge channel (from `main`)
 
-For v11, **GitHub Packages is the de-facto release channel.** nuget.org is reserved for v10.x maintenance lines and a future "stabilised" v11. To publish Fallout.* to nuget.org you must run `workflow_dispatch` with `publish-to-nugetorg=true` — a conscious "this release is ready for nuget.org" switch. Tag pushes alone publish to GitHub Packages + GitHub Releases only.
+Pushes to `main` publish **edge prereleases** (`YYYY.MINOR.PATCH-edge.<YYYYMMDD>.<h>`) to **GitHub Packages only** — never nuget.org, never a GitHub Release. This is the fast/AI-assisted lane; it is intentionally unstable and causes no nuget.org Dependabot fan-out into consumer repos (the reason `main` was made non-publishing in ADR-0001 — GitHub Packages is opt-in for consumers). _(Wiring tracked alongside ADR-0004 — see the milestone for the PR that adds the `main`-trigger edge job.)_
+
+### Why nuget.org stays opt-in
+
+**GitHub Packages is the default channel for both edge and stable.** nuget.org is reserved for the deliberate publish of a stabilised `release/YYYY` (or a `release/v10` legacy security patch). To publish Fallout.* to nuget.org you must run `workflow_dispatch` with `publish-to-nugetorg=true` — a conscious "this release is ready for nuget.org" switch. Tag pushes alone publish to GitHub Packages + GitHub Releases only.
 
 Two layers of protection on the nuget.org path: the input flag opt-in, plus the `nuget-org` environment's required-reviewer rule.
 
