@@ -20,6 +20,7 @@
       "Bash(./build.sh:*)",
       "Bash(./build.cmd:*)",
       "Bash(pwsh ./build.ps1:*)",
+      "Bash(pwsh -NoProfile ./build.ps1:*)",
       "Bash(git status)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
