@@ -10,6 +10,29 @@ Three groups: conventions to respect, things never to do, and the tool-wrapper r
 - **No IDE-specific style files committed.** `.editorconfig` and `*.DotSettings` were removed during the takeover — relying on `dotnet format` defaults and review.
 - **Telemetry opt-out is set in test runs** (`FALLOUT_TELEMETRY_OPTOUT=true`). Keep it that way.
 - **No per-file license headers.** The MIT notice lives in [`LICENSE`](../../LICENSE) at the repo root, and NuGet packages declare MIT via `PackageLicenseExpression`. Per-file headers were stripped in v11 (one source of truth + the header URL would have rotted on the repo-org transfer). Vendored third-party code keeps its own copyright headers — don't touch those (e.g. files under `src/Persistence/Fallout.Persistence.Solution/` retain Microsoft's MIT notice).
+- **`[Experimental]` for opt-in unstable public APIs.** Not-yet-stable public surface is marked with `[Experimental("FALLOUT0xx")]` rather than held back or shipped silently. See [the `[Experimental]` convention](#experimental-for-opt-in-unstable-apis) below and the [diagnostic-ID registry](../experimental-apis.md).
+
+## `[Experimental]` for opt-in unstable APIs
+
+Per [ADR-0004 §5](../adr/0004-calendar-versioning-and-dual-pace-channels.md), public APIs that aren't ready to commit to a stability guarantee are marked with [`System.Diagnostics.CodeAnalysis.ExperimentalAttribute`](https://learn.microsoft.com/dotnet/api/system.diagnostics.codeanalysis.experimentalattribute) instead of being held back or shipped silently. The attribute ships in the .NET 8+ BCL — **no package reference needed** (the repo targets .NET 10).
+
+```csharp
+using System.Diagnostics.CodeAnalysis;
+
+[Experimental("FALLOUT001")]
+public sealed class NewPluginHost
+{
+    // ...
+}
+```
+
+**Rules:**
+
+- **Diagnostic-ID scheme: `FALLOUT0xx`.** Each experimental surface gets its own ID (e.g. `FALLOUT001`), allocated **sequentially and never reused** — a retired ID stays retired. Register every allocation in the [diagnostic-ID registry](../experimental-apis.md) in the same PR that introduces it.
+- **Consumers must explicitly opt in.** `ExperimentalAttribute` is an *error-by-default* diagnostic: code that touches the API fails to compile until the consumer suppresses the exact ID — `#pragma warning disable FALLOUT001` around the call site, or `<NoWarn>$(NoWarn);FALLOUT001</NoWarn>` in their project. Opting into instability is therefore a conscious, per-API choice — which is right for a *framework* (a product devs build on), not an app.
+- **Promoting to stable = removing the attribute.** Because the feature already rode the trunk (`main`/edge), there is no cross-branch cherry-pick — deleting the `[Experimental]` line is the whole promotion. This is what lets stabilised work feed back into the regular channels without a divergent fork. Adding *or* removing `[Experimental]` is **not** a breaking change.
+- **Channel discipline differs.** On `main`/edge, experimental churn is expected and the attribute is a courtesy. On a `release/YYYY` **stable train**, any risky-but-shipped public surface **must** wear `[Experimental]` — that contract is what keeps the stable line trustworthy while still carrying new work.
+- **Don't apply it speculatively.** Because the diagnostic is error-by-default, marking an API that's already used internally breaks the build everywhere it's referenced. Only add `[Experimental]` to a genuinely not-yet-stable API, and suppress every internal usage in the same change so the build stays green.
 
 ## What not to do
 
