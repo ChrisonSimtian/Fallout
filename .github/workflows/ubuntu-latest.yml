@@ -20,7 +20,7 @@ on:
   pull_request:
     branches:
       - main
-      - 'release/v*'
+      - 'release/*'
     paths-ignore:
       - 'docs/**'
       - '.assets/**'
