@@ -30,6 +30,21 @@ jobs:
   release:
     name: release
     runs-on: ubuntu-latest
+    # Declares the job as deploying to the `nuget-org` GitHub Environment.
+    # Effects:
+    #   - `secrets.NUGET_API_KEY` resolves from the env-scoped secret rather
+    #     than the repo-scoped one (per #273 — repo secret deleted after this
+    #     migration verifies clean).
+    #   - The environment's required-reviewer rule fires before the job runs.
+    #     Currently @ChrisonSimtian is the sole reviewer (#272).
+    #   - A deployment record is created on the GitHub Environment, visible
+    #     under Deployments tab.
+    # When #274 lands the tag-trigger + multi-channel split, this `environment:`
+    # declaration moves down to a dedicated publish-nuget-org step; Test+Pack
+    # become unguarded.
+    environment:
+      name: nuget-org
+      url: https://www.nuget.org/profiles/Fallout
     steps:
       - uses: actions/checkout@v6
         with:
@@ -51,9 +66,11 @@ jobs:
       - name: 'Run: Test, Pack, Publish'
         run: dotnet fallout Test Pack Publish
         env:
-          # Publish target is nuget.org now that Fallout.* rename has landed (#54).
-          # NUGET_API_KEY is an API key scoped to push Fallout.* packages, set in
-          # repo Settings → Secrets and variables → Actions.
+          # Publish target is nuget.org. NUGET_API_KEY is an API key scoped to
+          # push Fallout.* packages. After #273 lands the secret lives on the
+          # `nuget-org` GitHub Environment (declared above) — the env scoping
+          # is what gates the approval step. Before #273, the same secret name
+          # resolved from the repo-level scope.
           NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
