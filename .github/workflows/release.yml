@@ -2,54 +2,73 @@
 # rationale (lets us bridge GitHub's NUGET_API_KEY secret to Fallout's
 # NuGetApiKey parameter, which would otherwise have to share a name).
 #
-# STOPGAP (2026-05-29, #267 / milestone #13):
-# Trigger is workflow_dispatch only — auto-publish on push to main has been
-# disabled because it was firing a Fallout.* release on every merge
-# (Dependabot noise across the userbase: ~20 patch versions in recent days
-# for what was mostly internal cleanup). The proper shape — tag-triggered
-# publishes on `release/vN` branches with multi-channel GitHub Environments —
-# is being implemented under milestone #13 (RFC #267). Until that lands,
-# releases happen manually: navigate to Actions → release → "Run workflow"
-# on the desired ref (main for now; `release/v11` once cut).
+# Shape (post #274, milestone #13):
+#   - Trigger: tag push `v*` on a `release/v*` branch. Tag protection ruleset
+#     restricts who can create those tags to repo admins.
+#   - Optional fallback: workflow_dispatch with an existing-tag input, for
+#     re-runs after a transient publish-API failure.
+#   - validate-ref → test-and-pack → fan out to three publish jobs in
+#     parallel, one per GitHub Environment / Tier:
+#       - publish-nuget-org   (Tier 1, approval-gated, Fallout.* only)
+#       - publish-github-packages (Tier 2, Nuke.* transition shims)
+#       - publish-github-releases (artifact bundling on the tag's GH Release)
+#
+# Tier philosophy (RFC #267): nuget.org = production-grade & slow,
+# GitHub Packages = bleeding edge / beta, GitHub Releases = bundled artifacts.
+# Channel decisions encoded in the per-job `dotnet nuget push` glob patterns.
 
 name: release
 
 on:
+  push:
+    tags:
+      - 'v*'
+  # Fallback for re-running a partial publish after a transient API failure.
+  # Pick an existing tag — the workflow checks it out and re-runs the publish
+  # fan-out. `--skip-duplicate` on each push makes re-runs idempotent.
   workflow_dispatch:
     inputs:
-      ref:
-        description: 'Ref to release from (defaults to current branch; will be release/v11 once cut per #267)'
-        required: false
-        default: 'main'
+      tag:
+        description: 'Existing tag to (re-)release (e.g. v11.0.5)'
+        required: true
 
 permissions:
-  contents: write     # for ICreateGitHubRelease (tag + GitHub release)
-  packages: write     # for the Nuke.* transition-shim push to GH Packages (#47)
+  contents: read
 
 jobs:
-  release:
-    name: release
+  validate-ref:
+    name: validate ref
     runs-on: ubuntu-latest
-    # Declares the job as deploying to the `nuget-org` GitHub Environment.
-    # Effects:
-    #   - `secrets.NUGET_API_KEY` resolves from the env-scoped secret rather
-    #     than the repo-scoped one (per #273 — repo secret deleted after this
-    #     migration verifies clean).
-    #   - The environment's required-reviewer rule fires before the job runs.
-    #     Currently @ChrisonSimtian is the sole reviewer (#272).
-    #   - A deployment record is created on the GitHub Environment, visible
-    #     under Deployments tab.
-    # When #274 lands the tag-trigger + multi-channel split, this `environment:`
-    # declaration moves down to a dedicated publish-nuget-org step; Test+Pack
-    # become unguarded.
-    environment:
-      name: nuget-org
-      url: https://www.nuget.org/profiles/Fallout
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0   # Nerdbank.GitVersioning needs full history
-          submodules: recursive   # vendor/vs-solutionpersistence
+          fetch-depth: 0
+      - name: 'Verify tag is reachable from a release/v* branch'
+        run: |
+          set -euo pipefail
+          TAG_SHA="${{ github.sha }}"
+          REACHABLE=$(git branch -r --contains "$TAG_SHA" | grep -E 'origin/release/v[0-9]+' || true)
+          if [ -z "$REACHABLE" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} at $TAG_SHA is not reachable from any release/v* branch."
+            echo "Tag-triggered releases only fire from release/v* branches."
+            exit 1
+          fi
+          echo "Tag ${GITHUB_REF_NAME} validated. Reachable from:"
+          echo "$REACHABLE"
+
+  test-and-pack:
+    name: test + pack
+    runs-on: ubuntu-latest
+    needs: [validate-ref]
+    # Run when validate-ref succeeded (tag push) OR was skipped (workflow_dispatch).
+    if: always() && (needs.validate-ref.result == 'success' || needs.validate-ref.result == 'skipped')
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+          fetch-depth: 0           # Nerdbank.GitVersioning needs full history
+          submodules: recursive    # vendor/vs-solutionpersistence
       - name: 'Cache: .fallout/temp, ~/.nuget/packages'
         uses: actions/cache@v4
         with:
@@ -63,34 +82,130 @@ jobs:
           global-json-file: global.json
       - name: 'Restore: dotnet tools'
         run: dotnet tool restore
-      - name: 'Run: Test, Pack, Publish'
-        run: dotnet fallout Test Pack Publish
-        env:
-          # Publish target is nuget.org. NUGET_API_KEY is an API key scoped to
-          # push Fallout.* packages. After #273 lands the secret lives on the
-          # `nuget-org` GitHub Environment (declared above) — the env scoping
-          # is what gates the approval step. Before #273, the same secret name
-          # resolved from the repo-level scope.
-          NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Run: Test + Pack'
+        run: dotnet fallout Test Pack
+      - name: 'Upload: package artifacts'
+        uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: output/packages/*.nupkg
+          retention-days: 7
+          if-no-files-found: error
 
-      # Nuke.* transition-shim packages are intentionally filtered out of the
-      # main Publish step (see Build.cs PushPackageFiles) because that ID
-      # belongs to NUKE's original maintainer on nuget.org. We publish them
-      # here to GitHub Packages instead. #47.
-      - name: 'Publish: Nuke.* transition shims to GH Packages'
-        if: always()  # still push the shims even if a previous Fallout.* push transient-failed
+  # Tier 1 — production. Approval-gated via the nuget-org GitHub Environment.
+  # Only Fallout.* packages go here; Nuke.* shim IDs are owned by the original
+  # NUKE maintainer on nuget.org and are routed to GitHub Packages instead.
+  publish-nuget-org:
+    name: publish → nuget.org
+    runs-on: ubuntu-latest
+    needs: [test-and-pack]
+    environment:
+      name: nuget-org
+      url: https://www.nuget.org/profiles/Fallout
+    steps:
+      - name: 'Setup: .NET SDK'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+      - name: 'Download: package artifacts'
+        uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: output/packages
+      - name: 'Push: Fallout.* to nuget.org'
         run: |
+          set -euo pipefail
+          shopt -s nullglob
+          packages=(output/packages/Fallout.*.nupkg)
+          if [ ${#packages[@]} -eq 0 ]; then
+            echo "::error::No Fallout.* packages found in artifact — nothing to publish."
+            exit 1
+          fi
+          for pkg in "${packages[@]}"; do
+            echo "Pushing $pkg to nuget.org..."
+            dotnet nuget push "$pkg" \
+              --source "https://api.nuget.org/v3/index.json" \
+              --api-key "${{ secrets.NUGET_API_KEY }}" \
+              --skip-duplicate
+          done
+
+  # Tier 2 — bleeding edge / beta. The Nuke.* transition shims live here per
+  # #47 (we don't own the Nuke.* IDs on nuget.org). Future-direction: also
+  # publish Fallout.* beta builds here on a faster cadence than nuget.org.
+  publish-github-packages:
+    name: publish → GitHub Packages
+    runs-on: ubuntu-latest
+    needs: [test-and-pack]
+    permissions:
+      packages: write
+    environment:
+      name: github-packages
+      url: https://github.com/ChrisonSimtian/Fallout/packages
+    steps:
+      - name: 'Setup: .NET SDK'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+      - name: 'Download: package artifacts'
+        uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: output/packages
+      - name: 'Push: Nuke.* transition shims to GitHub Packages'
+        run: |
+          set -euo pipefail
           shopt -s nullglob
           shims=(output/packages/Nuke.*.nupkg)
           if [ ${#shims[@]} -eq 0 ]; then
-            echo "No Nuke.* shim packages found in output/packages — skipping."
+            echo "No Nuke.* shim packages found — skipping."
             exit 0
           fi
           for pkg in "${shims[@]}"; do
-            echo "Pushing $pkg to GH Packages..."
+            echo "Pushing $pkg to GitHub Packages..."
             dotnet nuget push "$pkg" \
               --source "https://nuget.pkg.github.com/ChrisonSimtian/index.json" \
               --api-key "${{ secrets.GITHUB_TOKEN }}" \
               --skip-duplicate
           done
+
+  # Bundled artifact distribution. Attaches all nupkgs to the GitHub Release
+  # for the tag. Idempotent: if the release already exists (workflow_dispatch
+  # retry case), uploads or replaces missing assets via --clobber.
+  publish-github-releases:
+    name: publish → GitHub Releases
+    runs-on: ubuntu-latest
+    needs: [test-and-pack]
+    permissions:
+      contents: write
+    environment:
+      name: github-releases
+      url: https://github.com/ChrisonSimtian/Fallout/releases
+    steps:
+      - uses: actions/checkout@v6
+      - name: 'Download: package artifacts'
+        uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: output/packages
+      - name: 'Create or update GitHub Release with package artifacts'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          echo "Tag: $TAG"
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            echo "Release $TAG already exists — uploading assets with --clobber."
+            gh release upload "$TAG" output/packages/*.nupkg --clobber
+          else
+            echo "Creating new release $TAG."
+            gh release create "$TAG" \
+              --title "$TAG" \
+              --target "$(git rev-parse HEAD)" \
+              --generate-notes \
+              output/packages/*.nupkg
+          fi
