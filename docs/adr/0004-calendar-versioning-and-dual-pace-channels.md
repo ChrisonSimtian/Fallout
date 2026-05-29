@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted (2026-05-29). **Supersedes the versioning section of [ADR-0001](0001-release-branch-model.md) and extends its channel model**; the release-branch + tag-triggered multi-channel CD machinery from ADR-0001 and the nuget.org-opt-in policy from [ADR-0002](0002-v11-off-nuget-by-default.md) remain in force. Discussion thread: _(linked on publish — see References)_.
+Accepted (2026-05-29). **Supersedes the versioning section of [ADR-0001](0001-release-branch-model.md) and extends its channel model**; the release-branch + tag-triggered multi-channel CD machinery from ADR-0001 and the nuget.org-opt-in policy from [ADR-0002](0002-v11-off-nuget-by-default.md) remain in force. Discussion thread: [#302](https://github.com/ChrisonSimtian/Fallout/discussions/302).
 
 ## Context
 
@@ -138,4 +138,4 @@ Make daily builds literally `2026.05.29`.
 - [ADR-0002: v11 off nuget.org by default](0002-v11-off-nuget-by-default.md) — nuget.org-opt-in policy, retained.
 - [docs/branching-and-release.md](../branching-and-release.md) — maintainer runbook (updated for this model).
 - [docs/agents/release-and-versioning.md](../agents/release-and-versioning.md) — agent-facing branching/versioning/PR-flow reference (updated for this model).
-- Discussion thread: _(GitHub Discussions — linked on publish)_.
+- Discussion thread: [#302 — Calendar versioning + dual-pace channels (feedback)](https://github.com/ChrisonSimtian/Fallout/discussions/302).

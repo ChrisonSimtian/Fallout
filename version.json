@@ -1,8 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/main/src/NerdBank.GitVersioning/version.schema.json",
-  "version": "11.0",
+  "version": "2026.1.0-edge.{height}",
   "publicReleaseRefSpec": [
-    "^refs/heads/main$"
+    "^refs/heads/release/\\d{4}$",
+    "^refs/heads/release/v\\d+$"
   ],
   "pathFilters": [
     ":/",
@@ -16,7 +17,7 @@
   },
   "release": {
     "versionIncrement": "minor",
-    "firstUnstableTag": "preview",
-    "branchName": "release/v{version}"
+    "firstUnstableTag": "edge",
+    "branchName": "release/{version}"
   }
 }
