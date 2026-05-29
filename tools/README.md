@@ -30,4 +30,7 @@ Operational helper scripts that support repo maintenance but are **not** part of
 ]
 ```
 
-Generate ad-hoc as needed; commit if the operation is worth keeping as a historical record. See [`unlist-10.3.40-47.json`](unlist-10.3.40-47.json) — the 102-entry batch used to unlist the 10.3.x patch versions that shipped breaking changes before the v11 semver-policy fix (#220, #222).
+Generate ad-hoc as needed; commit if the operation is worth keeping as a historical record.
+
+- [`unlist-10.3.24-47.json`](unlist-10.3.24-47.json) — **the complete batch (256 entries).** Every published `10.3.x` patch that carries v11 breaking changes. The contamination boundary is exact: `10.3.24` (commit `ef837961`, the System.Text.Json migration that dropped the Newtonsoft surface) is the first breaking patch; everything `≥ 10.3.24` is contaminated, `≤ 10.3.23` is clean. These all shipped under a `10.3` label before the v11 semver-policy fix (#220, #222) caught up. `release/v10.3` is parked at `10.3.23` (the last clean commit) as the maintenance line.
+- [`unlist-10.3.40-47.json`](unlist-10.3.40-47.json) — the original 102-entry batch (#224). **Incomplete** — it only covered the `10.3.40`–`10.3.47` tail (the CLI-rename churn) and missed `10.3.24`–`10.3.39`, including the entire STJ breaking migration. Superseded by the `24-47` file above; kept as the historical record of what was first identified.
