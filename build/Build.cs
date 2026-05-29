@@ -115,9 +115,14 @@ partial class Build
 
     [Parameter] [Secret] readonly string NuGetApiKey;
 
-    // Publishing to nuget.org now that the Fallout.* rename has landed (#54).
-    // Requires NUGET_API_KEY in repo secrets — see release.yml.
-    string IPublish.NuGetSource => "https://api.nuget.org/v3/index.json";
+    // v11 publishes to GitHub Packages, NOT nuget.org (milestone #13). While v11
+    // churns through the rebrand + plugin-foundation work, releases stay on the
+    // GH Packages feed so nothing premature/unstable reaches the nuget.org
+    // userbase. nuget.org is reserved for the maintenance 10.x line and a future
+    // stabilised v11. The feed switch lives here (not just in release.yml) so the
+    // Publish target can never reach nuget.org by accident. NuGetApiKey is fed the
+    // GITHUB_TOKEN in release.yml. Revisit when v11 stabilises.
+    string IPublish.NuGetSource => "https://nuget.pkg.github.com/ChrisonSimtian/index.json";
     string IPublish.NuGetApiKey => NuGetApiKey;
 
     Target IPublish.Publish => _ => _
@@ -126,10 +131,13 @@ partial class Build
         .Requires(() => GitRepository.IsOnMainBranch() && Host is GitHubActions && GitHubActions.Workflow == ReleaseWorkflow)
         .WhenSkipped(DependencyBehavior.Execute);
 
-    // Filter `Nuke.*` shim packages out of the nuget.org push — that ID is owned by
-    // the original NUKE maintainer. The shims still build and pack as artifacts; they
-    // are pushed to GitHub Packages by a follow-up step in .github/workflows/release.yml
-    // (#47).
+    // Filter `Nuke.*` shim packages out of this push. The shims still build and pack
+    // as artifacts; they are pushed to GitHub Packages by a follow-up step in
+    // .github/workflows/release.yml (#47). Both pushes now target the same GH Packages
+    // feed (see NuGetSource above), so this split is bookkeeping rather than feed-routing
+    // while v11 is GH-only — keeping the step separate preserves its if:always() retry
+    // semantics. Originally the filter existed because `Nuke.*` belongs to the upstream
+    // maintainer on nuget.org; that constraint is moot on GH Packages.
     IEnumerable<AbsolutePath> IPublish.PushPackageFiles
         => From<IPack>().PackagesDirectory.GlobFiles("*.nupkg")
             .Where(x => !x.NameWithoutExtension.StartsWith("Nuke.", StringComparison.OrdinalIgnoreCase));
