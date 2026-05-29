@@ -19,11 +19,14 @@ public class ArchitectureFitnessTests
     [Fact]
     public void Core_has_no_io_process_console_or_logging_dependency()
     {
-        // Precise type/namespace tokens — matching the issue's wording — rather than the broad
-        // "System.Diagnostics" namespace, which NetArchTest false-positives on generic types.
-        // The generated ThisAssembly (Nerdbank.GitVersioning) is excluded as build-tool noise.
+        // Scope to our own Fallout.* types only. This excludes build-tool noise injected into the
+        // assembly that we don't author and can't keep pure: the generated `ThisAssembly`
+        // (Nerdbank.GitVersioning, no namespace) and `Coverlet.Core.Instrumentation.Tracker.*`
+        // (coverage instrumentation under `./build.ps1 Test`, which legitimately touches System.IO).
+        // Precise tokens (e.g. "System.Diagnostics.Process") rather than the broad "System.Diagnostics"
+        // namespace also avoid NetArchTest false-positives on generic types.
         var result = Types.InAssembly(CoreAssembly)
-            .That().DoNotHaveNameStartingWith("ThisAssembly")
+            .That().ResideInNamespaceStartingWith("Fallout")
             .Should()
             .NotHaveDependencyOnAny(
                 "System.IO",
@@ -40,6 +43,7 @@ public class ArchitectureFitnessTests
     public void Core_does_not_depend_on_higher_fallout_layers()
     {
         var result = Types.InAssembly(CoreAssembly)
+            .That().ResideInNamespaceStartingWith("Fallout")
             .Should()
             .NotHaveDependencyOnAny(
                 "Fallout.Build",
