@@ -40,11 +40,12 @@ This replaces the old "any breaking change bumps the major in the same PR, any t
 
 `main` stops being publish-silent and becomes the **edge** channel.
 
-- Every push to `main` (or a daily build) produces a date-stamped prerelease: `YYYY.MINOR.PATCH-edge.<YYYYMMDD>.<height>`. The **core targets the *next* planned version** (e.g. if `2026.1.0` is the current stable, edge builds `2026.2.0-edge.…`), so edge prereleases sort *above* current stable and consumers actually resolve them.
+- Every push to `main` produces an `-edge` prerelease whose identifier lives in the prerelease segment (not the version core). The **core targets the *next* planned version**, so edge prereleases sort *above* the current stable line and consumers actually resolve them.
+  > **Implementation note (2026-05-30):** as built, `main`'s `version.json` is `2026.1.0-edge.{height}` and `main` is a non-public NB.GV ref, so the actual edge version is **`2026.1.0-edge.<height>.g<commit>`** (e.g. `2026.1.0-edge.42.gfbb83ef`) — NB.GV-native height + commit, not a literal `<YYYYMMDD>` date. This satisfies the same goal (sortable, build-identifying, in the prerelease segment); a literal date stamp was not implemented because NB.GV does not produce one natively and the commit identifier is more precise. The original date-stamped examples in this ADR are illustrative of the *intent*, not the shipped string.
 - Edge publishes to **GitHub Packages only — never nuget.org.** This is consistent with *why* `main` was made non-publishing in ADR-0001: the pain was nuget.org Dependabot fan-out into every consumer repo. GitHub Packages is opt-in (consumers add the feed), so edge causes none of that fan-out.
 - Edge is **intentionally unstable.** This is the AI crowd's lane.
 
-> The date belongs in the **prerelease segment**, not the version core. A core of `2026.05.29` would parse as year 2026 / minor 5 / patch 29 — a *stable* release under this scheme, not a nightly. `2026.2.0-edge.20260529.7` is the correct shape.
+> The build identifier belongs in the **prerelease segment**, not the version core. A core of `2026.05.29` would parse as year 2026 / minor 5 / patch 29 — a *stable* release under this scheme, not a nightly. The prerelease-segment form is correct (see the implementation note above for the as-built `…-edge.<height>.g<commit>` string).
 
 ### 3. `release/YYYY` = the stable train
 
@@ -77,7 +78,7 @@ The net property: **the fast lane never blocks on slow review, and the slow lane
 
 | Channel | Built from | Cadence | Version shape | Publishes to | Review tier |
 |---|---|---|---|---|---|
-| **edge** | `main` | per-commit / daily | `2026.2.0-edge.20260529.<h>` | GitHub Packages | light/fast |
+| **edge** | `main` | per-commit | `2026.1.0-edge.<height>.g<commit>` (see §1 implementation note) | GitHub Packages | light/fast |
 | **preview / rc** | `release/YYYY` pre-GA | per cut | `2026.0.0-rc.2` | GitHub Packages | rigorous |
 | **stable** | `release/YYYY` tags | yearly major + non-breaking minor/patch | `2026.1.3` | nuget.org (opt-in) + GH Packages + GH Releases | rigorous |
 | **legacy** | `release/v10` (+ `hotfix/v10.x`) | security/critical only | `10.x` (semver) | nuget.org (opt-in) + GH Packages | rigorous |
@@ -130,7 +131,7 @@ Dennis's suggestion: `develop` for integration, `main` for stable, `release/*` +
 
 Make daily builds literally `2026.05.29`.
 
-**Rejected because** it collides with the CalVer core semantics — `2026.05.29` reads as a *stable* `MAJOR.MINOR.PATCH`, not a nightly — and there's no room left for minor/patch within a year. The date lives in the **prerelease segment** instead (`2026.2.0-edge.20260529.7`).
+**Rejected because** it collides with the CalVer core semantics — `2026.05.29` reads as a *stable* `MAJOR.MINOR.PATCH`, not a nightly — and there's no room left for minor/patch within a year. The build identifier lives in the **prerelease segment** instead (the `…-edge.…` form — see the §1 implementation note for the as-built string).
 
 ## References
 

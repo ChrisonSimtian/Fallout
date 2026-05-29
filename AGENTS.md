@@ -13,7 +13,7 @@ Originally NUKE by [matkoch](https://github.com/matkoch); under new maintenance 
 **Rebrand status:** the structural rename has landed — namespaces (`Fallout.*`), package IDs, project filenames, and the global tool name (`dotnet fallout`) are all in place. Legacy `Nuke.*` lives on only as the consumer transition shims under `src/Shims/`. See [docs/rebrand-plan.md](docs/rebrand-plan.md) for the locked namespace mapping.
 
 **Versioning & channels (calendar versioning, dual-pace — [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md)).** The project ships on **calendar versions `YYYY.MINOR.PATCH`** (mechanically valid semver; major = year). Two paces run in parallel:
-- **`main` = the edge channel** — fast/AI-assisted, intentionally unstable, daily date-stamped prereleases (`2026.2.0-edge.<YYYYMMDD>.<h>`) to **GitHub Packages only**. Light/fast review.
+- **`main` = the edge channel** — fast/AI-assisted, intentionally unstable, per-commit prereleases (`2026.1.0-edge.<height>.g<commit>`, NB.GV-native) to **GitHub Packages only**. Light/fast review.
 - **`release/YYYY` = the stable train** — hardened deliberately, non-breaking minors/patches only after the cut, rigorous review. Stable tags publish to nuget.org (opt-in) + GitHub Packages + GitHub Releases.
 - **Breaking changes are batched to the yearly major cut** — they accumulate on `main` and ship as next year's `YYYY+1.0.0`. Mid-year stable is strictly non-breaking.
 - **Legacy `release/v10`** (+ `hotfix/v10.x`) stays on semver `10.x`, security/critical fixes only. **`release/v11` is retired** (nothing clean shipped; its work re-homed onto the 2026 line).

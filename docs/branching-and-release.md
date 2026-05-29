@@ -22,7 +22,7 @@ Releases fire to multiple channels, each with its own GitHub Environment:
 
 | Channel | Built from | Cadence | Gating | Version shape |
 |---|---|---|---|---|
-| **edge** → `github-packages` env | `main` | Per-commit / daily | None | `2026.2.0-edge.<YYYYMMDD>.<h>` |
+| **edge** → `github-packages` env | `main` | Per-commit | None | `2026.1.0-edge.<height>.g<commit>` |
 | **stable** → `nuget-org` env | `release/YYYY` tags | Slow, deliberate | **Flag opt-in + approval-gated** | `2026.1.3` (CalVer) |
 | **stable/legacy** → `github-packages` env | `release/YYYY`, `release/v10` tags | Every tag | None | CalVer / `10.x` |
 | **legacy** → `nuget-org` env | `release/v10` tags | Security/critical only | **Flag opt-in + approval-gated** | `10.x` (semver) |

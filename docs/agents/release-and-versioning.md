@@ -8,7 +8,7 @@ The branch/channel/versioning model is defined by [ADR-0004](../adr/0004-calenda
 
 Long-lived branches:
 
-- `main` — integration trunk **and the published `edge` channel**. PRs target here. Every push (or a daily build) publishes a date-stamped prerelease `YYYY.MINOR.PATCH-edge.<YYYYMMDD>.<h>` to **GitHub Packages only** (never nuget.org). Edge is intentionally unstable — the fast/AI-assisted lane. Light/fast review.
+- `main` — integration trunk **and the published `edge` channel**. PRs target here. Every push publishes an NB.GV-native prerelease `YYYY.MINOR.PATCH-edge.<height>.g<commit>` (e.g. `2026.1.0-edge.42.gfbb83ef`) to **GitHub Packages only** (never nuget.org). Edge is intentionally unstable — the fast/AI-assisted lane. Light/fast review.
 - `release/YYYY` (e.g. `release/2026`) — the **stable train** for the calendar year. Cut from `main`; hardened deliberately (slow crowd's domain, rigorous review). After the cut it takes **non-breaking minors + patches only** — never a breaking change. Tag-triggered releases fire from here. Protected per the policy below.
 - `release/v10` (+ `hotfix/v10.1`, `hotfix/v10.2`) — **legacy semver maintenance line**, `10.x`, **security and critical fixes only, no new features**. Not renumbered into CalVer. This line coexists indefinitely.
 - `release/v11` — **retired.** Nothing clean shipped under it (the `11.0.x` packages were unlisted); its rebrand/plugin work re-homed onto the `2026` line. Kept for archaeology, marked EoL — not a release target.
@@ -46,7 +46,7 @@ Apply by mirroring `main`'s protection JSON to the new branch via the GitHub API
 
 - **`MAJOR` = year**, hand-set in `version.json` at the yearly cut. **`MINOR`** = feature drop within the year. **`PATCH`** = git-height fixes.
 - Per-branch via `version.json`. `main` carries the **next** planned version with an `-edge` prerelease tag (so edge builds sort above current stable). Each `release/YYYY` carries `"version": "YYYY.x"`; `release/v10` keeps `"version": "10.x"`. `publicReleaseRefSpec` matches **both** `^refs/heads/release/\d{4}$` and `^refs/heads/release/v\d+$`.
-- Edge builds put the date in the **prerelease segment** (`2026.2.0-edge.20260529.<h>`), never the version core — a core of `2026.05.29` would be a *stable* release, not a nightly.
+- Edge builds carry the height + commit in the **prerelease segment** (`2026.1.0-edge.<height>.g<commit>`), never the version core — a core like `2026.05.29` would parse as a *stable* `MAJOR.MINOR.PATCH` release, not a nightly. (`main`'s `version.json` is `2026.1.0-edge.{height}` and `main` is intentionally a non-public ref, so NB.GV appends the `.g<commit>` suffix.)
 
 GitVersion is still installed as a transitional helper for `MajorMinorPatchVersion` in `Build.cs`; full removal is a follow-up.
 
@@ -97,7 +97,7 @@ If you only discover the breaking nature mid-review, apply all relevant steps be
 
 ### Edge channel (from `main`)
 
-Pushes to `main` publish **edge prereleases** (`YYYY.MINOR.PATCH-edge.<YYYYMMDD>.<h>`) to **GitHub Packages only** — never nuget.org, never a GitHub Release. This is the fast/AI-assisted lane; it is intentionally unstable and causes no nuget.org Dependabot fan-out into consumer repos (the reason `main` was made non-publishing in ADR-0001 — GitHub Packages is opt-in for consumers). _(Wiring tracked alongside ADR-0004 — see the milestone for the PR that adds the `main`-trigger edge job.)_
+Pushes to `main` publish **edge prereleases** (`YYYY.MINOR.PATCH-edge.<height>.g<commit>`) to **GitHub Packages only** — never nuget.org, never a GitHub Release. This is the fast/AI-assisted lane; it is intentionally unstable and causes no nuget.org Dependabot fan-out into consumer repos (the reason `main` was made non-publishing in ADR-0001 — GitHub Packages is opt-in for consumers). Implemented in `.github/workflows/edge.yml`.
 
 ### Why nuget.org stays opt-in
 
