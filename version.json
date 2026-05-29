@@ -2,7 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/main/src/NerdBank.GitVersioning/version.schema.json",
   "version": "11.0",
   "publicReleaseRefSpec": [
-    "^refs/heads/main$"
+    "^refs/heads/main$",
+    "^refs/heads/release/v11$"
   ],
   "pathFilters": [
     ":/",
