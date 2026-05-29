@@ -38,4 +38,22 @@
     </When>
   </Choose>
 
+  <!-- Nerdbank.GitVersioning emits its Git*/NBGV_* cloud-build variables (and build number)
+       to $GITHUB_ENV once per project. In a parallel multi-project build these concurrent,
+       unsynchronized appends race and can tear a line — e.g. the CalVer version "2026.1.0"
+       fragmenting so the tail "6.1.0" lands on its own line — which the GitHub Actions runner
+       rejects with "Unable to process file command 'env' … Invalid format". The version is
+       read via ThisAssembly at compile time and no workflow consumes these variables, so
+       suppress the emission by clearing the items/property NBGV's writer targets are gated on.
+       Order-independent: relies on BeforeTargets scheduling, not import order. See ADR-0004. -->
+  <Target Name="FalloutDisableNbgvCloudVars"
+          BeforeTargets="SetCloudBuildVersionVars;SetCloudBuildNumberWithVersion">
+    <ItemGroup>
+      <CloudBuildVersionVars Remove="@(CloudBuildVersionVars)" />
+    </ItemGroup>
+    <PropertyGroup>
+      <CloudBuildNumber></CloudBuildNumber>
+    </PropertyGroup>
+  </Target>
+
 </Project>
