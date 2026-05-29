@@ -73,7 +73,25 @@ If you only discover the breaking nature mid-review, apply all relevant steps be
 
 ## Release pipeline
 
-`.github/workflows/release.yml` — currently `workflow_dispatch`-triggered only (stopgap per [#268](https://github.com/ChrisonSimtian/Fallout/pull/268) while the tag-triggered shape lands under [#274](https://github.com/ChrisonSimtian/Fallout/issues/274)). Manual runs go via Actions → `release` → "Run workflow". Once #274 ships, the trigger flips to `push: tags: v*` on `release/v*` branches with three GitHub Environments (`nuget-org`, `github-packages`, `github-releases`). Either shape runs the same three-step body (`actions/setup-dotnet` → `dotnet tool restore` → `dotnet fallout Test Pack Publish`). **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` secret (currently a repo secret; will move to the `nuget-org` environment per [#273](https://github.com/ChrisonSimtian/Fallout/issues/273)). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
+`.github/workflows/release.yml` is **tag-triggered**: pushing a `v*` tag on a `release/v*` branch fires the pipeline. The workflow validates the tag is reachable from a `release/v*` branch, then fans out a Test+Pack job to three parallel publish jobs, one per GitHub Environment / channel tier:
+
+| Job | Environment | Channel | What ships | Gating |
+|---|---|---|---|---|
+| `publish-nuget-org` | `nuget-org` | Tier 1 — production | `Fallout.*.nupkg` to https://api.nuget.org/v3/index.json | Approval-gated (maintainer reviewer) |
+| `publish-github-packages` | `github-packages` | Tier 2 — bleeding edge | `Nuke.*.nupkg` transition shims to https://nuget.pkg.github.com/ChrisonSimtian/index.json | None |
+| `publish-github-releases` | `github-releases` | Bundled artifacts | All `*.nupkg` attached to a GitHub Release on the tag, auto-generated notes | None |
+
+`Nuke.*` shim packages are routed to GitHub Packages, not nuget.org — those package IDs are owned by the original NUKE maintainer on nuget.org (see [#47](https://github.com/ChrisonSimtian/Fallout/issues/47)).
+
+Each `dotnet nuget push` uses `--skip-duplicate`, so re-runs of a partial publish (one channel failed transiently) are idempotent on the channels that already succeeded.
+
+**Tag protection.** `v*` tags are protected via a repository ruleset (rules: creation, deletion, update). Bypass actors: repo admins only. Non-admins cannot create release tags — combined with the env approval gate on `nuget-org`, this gates "who can fire a production release" at two layers.
+
+**Fallback trigger: `workflow_dispatch`.** Manual runs accept an existing-tag input — used to re-run the publish fan-out after a transient API failure. The workflow checks out the specified tag and re-runs the publish chain. `--skip-duplicate` keeps the re-run safe.
+
+**Channel philosophy** (per [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267)): nuget.org is slow/stable/production; GitHub Packages is faster/beta/bleeding-edge; GitHub Releases bundles artifacts on the tag. A planned Tier 3 (Docker-based local NuGet server for pre-merge testing) is tracked in [#279](https://github.com/ChrisonSimtian/Fallout/issues/279).
+
+`NUGET_API_KEY` is scoped to the `nuget-org` GitHub Environment (per [#273](https://github.com/ChrisonSimtian/Fallout/issues/273)) — only resolves in the gated job. Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
 ## Adding a new `Fallout.X` package — first-publish gotcha
 

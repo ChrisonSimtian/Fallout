@@ -8,7 +8,7 @@ Fallout welcomes contributions. As a community, we want to help each other, prov
 
 - Discuss non-trivial changes in an [issue](https://github.com/ChrisonSimtian/Fallout/issues) first.
 - Small fixes (typos, broken links, tool wrapper additions) can go straight to a PR against `main`.
-- We're trunk-based: branch from `main`, open a PR against `main`. No `develop` or `release/*` branches.
+- Branch from `main`, open a PR against `main`. The trunk integrates everything; **releases ship from `release/vN` branches** (see [Branching and release flow](docs/branching-and-release.md) for the full model). The only time you target a release branch directly is for a maintainer-driven hotfix cherry-pick — and even then, the fix lands on `main` first.
 
 ## Baseline contributions
 
@@ -73,7 +73,7 @@ Tool wrapper JSON lives under `src/Fallout.Common/Tools/<Tool>/<Tool>.json`. Whe
 
 ### After opening a PR
 
-- The PR gate is `ubuntu-latest` only (docs-only PRs hit a noop workflow). `windows-latest` and `macos-latest` run post-merge on `main` as release validation.
+- The PR gate is `ubuntu-latest` only — fires on PRs against `main` or any `release/vN` branch. Docs-only PRs hit a no-op shim workflow that reports the same status check name. `windows-latest` and `macos-latest` run post-merge on `main` for cross-platform validation (with `release/v*` push triggers tracked in [#293](https://github.com/ChrisonSimtian/Fallout/issues/293) as a parity follow-up).
 - Address review feedback in additional commits rather than force-pushing — easier to review the changes.
 - If CI fails on something unrelated to your change, ping a maintainer.
 
@@ -86,3 +86,14 @@ The repo allows both **squash** and **rebase** merge buttons; plain merge commit
 - If you're using rebase, run `git rebase -i` to squash "address review feedback" / "fix typo" commits before requesting final approval — every commit landing on `main` is a bisect target.
 
 The merger (typically a CODEOWNER) picks the button; the PR description can request a preference but isn't binding.
+
+## Releases
+
+Merging to `main` doesn't publish anything — it's the integration trunk. Releases fire from `release/vN` branches via tag push, with a multi-channel publish fan-out (nuget.org, GitHub Packages, GitHub Releases). The full lifecycle is documented in [docs/branching-and-release.md](docs/branching-and-release.md):
+
+- How releases happen (tag a `release/vN` branch, three parallel publish jobs)
+- The channel taxonomy (Tier 1 nuget.org, Tier 2 GitHub Packages, Tier 3 Docker local for pre-merge)
+- Hotfix flow (cherry-pick from `main` to `release/vN`)
+- When to cut a new `release/vN`
+
+Contributors don't usually need to do any of this — releases are maintainer-driven. But if you're filing a PR labelled `target/v<N>` where N is older than the current major, expect the maintainer to cherry-pick it to `release/vN` after merging to `main`.
