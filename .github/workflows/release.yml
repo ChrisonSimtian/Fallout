@@ -4,14 +4,21 @@
 
 name: release
 
+# RELEASE-BRANCH MODEL (milestone #13, RFC #267): this workflow lives on the
+# release/v10.3 maintenance line and publishes the 10.3.x channel. It fires on
+# merge to release/v10.3 — releases here are rare (maintenance + the clean
+# 10.3.48 marker), so the per-merge auto-publish that was disabled on `main`
+# (Dependabot noise) is fine on this branch. The first publish from this branch
+# is the 10.3.48 clean marker — the inaugural test of release-from-release/vN.
 on:
   push:
     branches:
-      - main
+      - release/v10.3
     paths-ignore:
       - 'docs/**'
       - '.assets/**'
       - '**/*.md'
+  workflow_dispatch: {}
 
 permissions:
   contents: write     # for ICreateGitHubRelease (tag + GitHub release)
@@ -21,6 +28,15 @@ jobs:
   release:
     name: release
     runs-on: ubuntu-latest
+    # Deploys to the `nuget-org` GitHub Environment (mirrors main, #273/#280):
+    #   - resolves secrets.NUGET_API_KEY from the env-scoped secret (the
+    #     repo-scoped one is being retired);
+    #   - fires the environment's required-reviewer approval before publish.
+    # NOTE: the env may carry a deployment-branch policy — if release/v10.3
+    # isn't in its allowed list, this job is blocked until it's added.
+    environment:
+      name: nuget-org
+      url: https://www.nuget.org/profiles/Fallout
     steps:
       - uses: actions/checkout@v6
         with:
@@ -37,8 +53,8 @@ jobs:
         run: ./build.cmd Test Pack Publish
         env:
           # Publish target is nuget.org now that Fallout.* rename has landed (#54).
-          # NUGET_API_KEY is an API key scoped to push Fallout.* packages, set in
-          # repo Settings → Secrets and variables → Actions.
+          # NUGET_API_KEY is scoped to push Fallout.* packages; it resolves from
+          # the `nuget-org` GitHub Environment declared on this job (#273).
           NuGetApiKey: ${{ secrets.NUGET_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
