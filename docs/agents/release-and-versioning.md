@@ -73,23 +73,42 @@ If you only discover the breaking nature mid-review, apply all relevant steps be
 
 ## Release pipeline
 
-`.github/workflows/release.yml` is **tag-triggered**: pushing a `v*` tag on a `release/v*` branch fires the pipeline. The workflow validates the tag is reachable from a `release/v*` branch, then fans out a Test+Pack job to three parallel publish jobs, one per GitHub Environment / channel tier:
+`.github/workflows/release.yml` is **tag-triggered**: pushing a `v*` tag on a `release/v*` branch fires the pipeline. The workflow validates the tag is reachable from a `release/v*` branch, then fans out a Test+Pack job to three parallel publish jobs:
 
-| Job | Environment | Channel | What ships | Gating |
+| Job | Environment | Fires on tag push? | What ships | Gating |
 |---|---|---|---|---|
-| `publish-nuget-org` | `nuget-org` | Tier 1 — production | `Fallout.*.nupkg` to https://api.nuget.org/v3/index.json | Approval-gated (maintainer reviewer) |
-| `publish-github-packages` | `github-packages` | Tier 2 — bleeding edge | `Nuke.*.nupkg` transition shims to https://nuget.pkg.github.com/ChrisonSimtian/index.json | None |
-| `publish-github-releases` | `github-releases` | Bundled artifacts | All `*.nupkg` attached to a GitHub Release on the tag, auto-generated notes | None |
+| `publish-nuget-org` | `nuget-org` | **No — opt-in only** via `workflow_dispatch` flag | `Fallout.*.nupkg` to https://api.nuget.org/v3/index.json | Workflow flag + approval-gated env |
+| `publish-github-packages` | `github-packages` | Yes | **All** `*.nupkg` (Fallout.* + Nuke.*) to https://nuget.pkg.github.com/ChrisonSimtian/index.json | None |
+| `publish-github-releases` | `github-releases` | Yes | All `*.nupkg` attached to a GitHub Release on the tag, auto-generated notes | None |
 
-`Nuke.*` shim packages are routed to GitHub Packages, not nuget.org — those package IDs are owned by the original NUKE maintainer on nuget.org (see [#47](https://github.com/ChrisonSimtian/Fallout/issues/47)).
+### Why nuget.org is opt-in for v11
 
-Each `dotnet nuget push` uses `--skip-duplicate`, so re-runs of a partial publish (one channel failed transiently) are idempotent on the channels that already succeeded.
+For v11, **GitHub Packages is the de-facto release channel.** nuget.org is reserved for v10.x maintenance lines and a future "stabilised" v11. To publish Fallout.* to nuget.org you must run `workflow_dispatch` with `publish-to-nugetorg=true` — a conscious "this release is ready for nuget.org" switch. Tag pushes alone publish to GitHub Packages + GitHub Releases only.
 
-**Tag protection.** `v*` tags are protected via a repository ruleset (rules: creation, deletion, update). Bypass actors: repo admins only. Non-admins cannot create release tags — combined with the env approval gate on `nuget-org`, this gates "who can fire a production release" at two layers.
+Two layers of protection on the nuget.org path: the input flag opt-in, plus the `nuget-org` environment's required-reviewer rule.
 
-**Fallback trigger: `workflow_dispatch`.** Manual runs accept an existing-tag input — used to re-run the publish fan-out after a transient API failure. The workflow checks out the specified tag and re-runs the publish chain. `--skip-duplicate` keeps the re-run safe.
+### Nuke.* shims
 
-**Channel philosophy** (per [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267)): nuget.org is slow/stable/production; GitHub Packages is faster/beta/bleeding-edge; GitHub Releases bundles artifacts on the tag. A planned Tier 3 (Docker-based local NuGet server for pre-merge testing) is tracked in [#279](https://github.com/ChrisonSimtian/Fallout/issues/279).
+`Nuke.*` transition-shim package IDs are owned by the original NUKE maintainer on nuget.org (see [#47](https://github.com/ChrisonSimtian/Fallout/issues/47)) — they're permanently routed to GitHub Packages, never nuget.org, regardless of the input flag.
+
+### Re-runs
+
+Each `dotnet nuget push` uses `--skip-duplicate`, so re-runs of a partial publish (one channel failed transiently) are idempotent on packages that already succeeded.
+
+### Tag protection
+
+`v*` tags are protected via a repository ruleset (rules: creation, deletion, update). Bypass actors: repo admins only. Combined with the workflow-dispatch flag and env approval, the nuget.org path has *three* layers (tag-creation + flag opt-in + env approval).
+
+### `workflow_dispatch` inputs
+
+- `tag` (required) — existing tag to (re-)release.
+- `publish-to-nugetorg` (boolean, default `false`) — opt into the nuget.org publish job for this run.
+
+Common use cases: re-running a transient-failed publish (`tag` only), or shipping a stabilised release to nuget.org (`tag` + `publish-to-nugetorg=true`).
+
+### Channel philosophy
+
+Per [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267): nuget.org = production-grade & slow; GitHub Packages = faster cadence (currently the v11 release channel); GitHub Releases = bundled artifacts. A planned Tier 3 (Docker-based local NuGet server for pre-merge testing) shipped via [#279](https://github.com/ChrisonSimtian/Fallout/issues/279) — see `tests/integration/docker-compose.yml`.
 
 `NUGET_API_KEY` is scoped to the `nuget-org` GitHub Environment (per [#273](https://github.com/ChrisonSimtian/Fallout/issues/273)) — only resolves in the gated job. Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
