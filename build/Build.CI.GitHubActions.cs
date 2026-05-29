@@ -1,15 +1,17 @@
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Components;
 
-// macOS and Windows runs are reserved for main-branch validation (post-merge
-// and release pipelines). PRs and feature-branch pushes get Linux-only for
-// fast, cheap feedback.
+// macOS and Windows runs are reserved for post-merge validation on the
+// long-lived branches (main and release/vN). PRs and feature-branch pushes
+// get Linux-only for fast, cheap feedback. Cross-platform regressions on a
+// release branch surface as a red commit on release/v* — same fail-fast
+// model as main.
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
-    OnPushBranches = new[] { MainBranch },
+    OnPushBranches = new[] { MainBranch, ReleaseBranchPattern },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 [GitHubActions(
@@ -17,7 +19,7 @@ using Fallout.Components;
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
-    OnPushBranches = new[] { MainBranch },
+    OnPushBranches = new[] { MainBranch, ReleaseBranchPattern },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 // pull_request only — same-repo branches would otherwise fire both push and
@@ -32,7 +34,9 @@ using Fallout.Components;
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
     CheckoutRef = "${{ github.head_ref }}",
-    OnPullRequestBranches = new[] { MainBranch },
+    // Trigger for PRs targeting main OR any release/vN branch — both are
+    // long-lived and protected; both require the ubuntu-latest status check.
+    OnPullRequestBranches = new[] { MainBranch, ReleaseBranchPattern },
     OnPullRequestExcludePaths = new[] { "docs/**", ".assets/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]

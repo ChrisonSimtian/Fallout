@@ -77,7 +77,44 @@ If you only discover the breaking nature mid-review, apply all relevant steps be
 
 ## Release pipeline
 
-`.github/workflows/release.yml` — currently `workflow_dispatch`-triggered only (stopgap per [#268](https://github.com/ChrisonSimtian/Fallout/pull/268) while the tag-triggered shape lands under [#274](https://github.com/ChrisonSimtian/Fallout/issues/274)). Manual runs go via Actions → `release` → "Run workflow". Once #274 ships, the trigger flips to `push: tags: v*` on `release/v*` branches with three GitHub Environments (`nuget-org`, `github-packages`, `github-releases`). Either shape runs the same three-step body (`actions/setup-dotnet` → `dotnet tool restore` → `dotnet fallout Test Pack Publish`). **Publishes to nuget.org** (`https://api.nuget.org/v3/index.json`) under the `Fallout.*` package ID prefix, using the `NUGET_API_KEY` secret (currently a repo secret; will move to the `nuget-org` environment per [#273](https://github.com/ChrisonSimtian/Fallout/issues/273)). Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
+`.github/workflows/release.yml` is **tag-triggered**: pushing a `v*` tag on a `release/v*` branch fires the pipeline. The workflow validates the tag is reachable from a `release/v*` branch, then fans out a Test+Pack job to three parallel publish jobs:
+
+| Job | Environment | Fires on tag push? | What ships | Gating |
+|---|---|---|---|---|
+| `publish-nuget-org` | `nuget-org` | **No — opt-in only** via `workflow_dispatch` flag | `Fallout.*.nupkg` to https://api.nuget.org/v3/index.json | Workflow flag + approval-gated env |
+| `publish-github-packages` | `github-packages` | Yes | **All** `*.nupkg` (Fallout.* + Nuke.*) to https://nuget.pkg.github.com/ChrisonSimtian/index.json | None |
+| `publish-github-releases` | `github-releases` | Yes | All `*.nupkg` attached to a GitHub Release on the tag, auto-generated notes | None |
+
+### Why nuget.org is opt-in for v11
+
+For v11, **GitHub Packages is the de-facto release channel.** nuget.org is reserved for v10.x maintenance lines and a future "stabilised" v11. To publish Fallout.* to nuget.org you must run `workflow_dispatch` with `publish-to-nugetorg=true` — a conscious "this release is ready for nuget.org" switch. Tag pushes alone publish to GitHub Packages + GitHub Releases only.
+
+Two layers of protection on the nuget.org path: the input flag opt-in, plus the `nuget-org` environment's required-reviewer rule.
+
+### Nuke.* shims
+
+`Nuke.*` transition-shim package IDs are owned by the original NUKE maintainer on nuget.org (see [#47](https://github.com/ChrisonSimtian/Fallout/issues/47)) — they're permanently routed to GitHub Packages, never nuget.org, regardless of the input flag.
+
+### Re-runs
+
+Each `dotnet nuget push` uses `--skip-duplicate`, so re-runs of a partial publish (one channel failed transiently) are idempotent on packages that already succeeded.
+
+### Tag protection
+
+`v*` tags are protected via a repository ruleset (rules: creation, deletion, update). Bypass actors: repo admins only. Combined with the workflow-dispatch flag and env approval, the nuget.org path has *three* layers (tag-creation + flag opt-in + env approval).
+
+### `workflow_dispatch` inputs
+
+- `tag` (required) — existing tag to (re-)release.
+- `publish-to-nugetorg` (boolean, default `false`) — opt into the nuget.org publish job for this run.
+
+Common use cases: re-running a transient-failed publish (`tag` only), or shipping a stabilised release to nuget.org (`tag` + `publish-to-nugetorg=true`).
+
+### Channel philosophy
+
+Per [RFC #267](https://github.com/ChrisonSimtian/Fallout/issues/267): nuget.org = production-grade & slow; GitHub Packages = faster cadence (currently the v11 release channel); GitHub Releases = bundled artifacts. A planned Tier 3 (Docker-based local NuGet server for pre-merge testing) shipped via [#279](https://github.com/ChrisonSimtian/Fallout/issues/279) — see `tests/integration/docker-compose.yml`.
+
+`NUGET_API_KEY` is scoped to the `nuget-org` GitHub Environment (per [#273](https://github.com/ChrisonSimtian/Fallout/issues/273)) — only resolves in the gated job. Prefix reservation tracked in [#33](https://github.com/ChrisonSimtian/Fallout/issues/33).
 
 ## Adding a new `Fallout.X` package — first-publish gotcha
 
