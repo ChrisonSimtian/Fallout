@@ -97,6 +97,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - **`main`'s `version.json` major** stays at 11 for now ([#271](https://github.com/ChrisonSimtian/Fallout/issues/271) deferred until v12 work begins).
   - **Tier 3 Docker local NuGet server** ([#279](https://github.com/ChrisonSimtian/Fallout/issues/279)) — pre-merge testing channel — landed as a separate work item; initial setup in PR [#287](https://github.com/ChrisonSimtian/Fallout/pull/287).
 
+- **nuget.org publish is now opt-in for v11; GitHub Packages is the default release channel.** Tag pushes on `release/v11` publish to GitHub Packages + GitHub Releases only; the `publish-nuget-org` job is skipped unless `workflow_dispatch` is invoked with `publish-to-nugetorg=true` (and the existing `nuget-org` env approval gate still fires). `publish-github-packages` now pushes **all** `*.nupkg` (Fallout.* + Nuke.*), not just Nuke.* shims — GitHub Packages is the de-facto v11 release channel during stabilisation. nuget.org is reserved for v10.x maintenance lines and a future stabilised v11. Decision recorded in [`docs/adr/0002-v11-off-nuget-by-default.md`](docs/adr/0002-v11-off-nuget-by-default.md); maintainer runbook updated in [`docs/branching-and-release.md`](docs/branching-and-release.md). This *modifies* the routing originally documented in the milestone #13 umbrella entry above — the branching model and CD shape are unchanged, only the routing policy.
+
 ## [10.2.0] / 2026-05-21
 The NUKE → Fallout hard fork. Originally NUKE by [@matkoch](https://github.com/matkoch) and contributors; under new maintenance and rebranded to Fallout.
 

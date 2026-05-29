@@ -2,20 +2,30 @@
 # rationale (lets us bridge GitHub's NUGET_API_KEY secret to Fallout's
 # NuGetApiKey parameter, which would otherwise have to share a name).
 #
-# Shape (post #274, milestone #13):
+# Shape:
 #   - Trigger: tag push `v*` on a `release/v*` branch. Tag protection ruleset
 #     restricts who can create those tags to repo admins.
 #   - Optional fallback: workflow_dispatch with an existing-tag input, for
-#     re-runs after a transient publish-API failure.
+#     re-runs after a transient publish-API failure, OR to opt into a
+#     nuget.org publish (see below).
 #   - validate-ref → test-and-pack → fan out to three publish jobs in
-#     parallel, one per GitHub Environment / Tier:
-#       - publish-nuget-org   (Tier 1, approval-gated, Fallout.* only)
-#       - publish-github-packages (Tier 2, Nuke.* transition shims)
+#     parallel:
+#       - publish-nuget-org   (Tier 1, opt-in via workflow_dispatch flag, approval-gated)
+#       - publish-github-packages (Tier 2, all packages — Fallout.* + Nuke.*)
 #       - publish-github-releases (artifact bundling on the tag's GH Release)
 #
-# Tier philosophy (RFC #267): nuget.org = production-grade & slow,
-# GitHub Packages = bleeding edge / beta, GitHub Releases = bundled artifacts.
-# Channel decisions encoded in the per-job `dotnet nuget push` glob patterns.
+# Channel routing for v11+ (current direction):
+#   - nuget.org is reserved for v10.x and (eventually) "stabilised" v11. Tag
+#     pushes do NOT auto-publish to nuget.org. To publish Fallout.* to
+#     nuget.org you must invoke workflow_dispatch with publish-to-nugetorg=true
+#     — a conscious "this release is stabilised enough for nuget.org" switch.
+#   - GitHub Packages gets every Fallout.* and Nuke.* build via tag push.
+#     This is the de-facto release channel during v11 prerelease/stabilisation.
+#   - GitHub Releases bundles nupkgs on the tag's release page regardless.
+#
+# When v11 stabilises (or for cutting v10.x maintenance patches), use the
+# workflow_dispatch path with publish-to-nugetorg=true. See
+# docs/branching-and-release.md for the full runbook.
 
 name: release
 
@@ -23,14 +33,23 @@ on:
   push:
     tags:
       - 'v*'
-  # Fallback for re-running a partial publish after a transient API failure.
-  # Pick an existing tag — the workflow checks it out and re-runs the publish
-  # fan-out. `--skip-duplicate` on each push makes re-runs idempotent.
+  # Manual fallback for two scenarios:
+  #   1. Re-running a partial publish after a transient API failure (pick the
+  #      tag, leave publish-to-nugetorg at its default).
+  #   2. Opting into a nuget.org publish for a stabilised release (pick the
+  #      tag, set publish-to-nugetorg to true). Still gated by the nuget-org
+  #      env approval before the actual push.
+  # `--skip-duplicate` on each push makes re-runs idempotent.
   workflow_dispatch:
     inputs:
       tag:
         description: 'Existing tag to (re-)release (e.g. v11.0.5)'
         required: true
+      publish-to-nugetorg:
+        description: 'Publish Fallout.* to nuget.org? Default false — opt-in for stabilised releases only.'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -92,13 +111,19 @@ jobs:
           retention-days: 7
           if-no-files-found: error
 
-  # Tier 1 — production. Approval-gated via the nuget-org GitHub Environment.
-  # Only Fallout.* packages go here; Nuke.* shim IDs are owned by the original
-  # NUKE maintainer on nuget.org and are routed to GitHub Packages instead.
+  # Tier 1 — production / nuget.org. **OPT-IN ONLY.** Tag pushes do NOT trigger
+  # this job; you must invoke workflow_dispatch with publish-to-nugetorg=true.
+  # The env approval gate on `nuget-org` is the second layer — even after opting
+  # in via the input flag, you still approve the deployment.
+  #
+  # The opt-in defaults to false because v11 is currently published to GitHub
+  # Packages only (see header comment). When v11 "stabilises" — or for cutting
+  # a v10.x maintenance patch — invoke workflow_dispatch with the flag set.
   publish-nuget-org:
     name: publish → nuget.org
     runs-on: ubuntu-latest
     needs: [test-and-pack]
+    if: github.event_name == 'workflow_dispatch' && inputs.publish-to-nugetorg == true
     environment:
       name: nuget-org
       url: https://www.nuget.org/profiles/Fallout
@@ -129,9 +154,11 @@ jobs:
               --skip-duplicate
           done
 
-  # Tier 2 — bleeding edge / beta. The Nuke.* transition shims live here per
-  # #47 (we don't own the Nuke.* IDs on nuget.org). Future-direction: also
-  # publish Fallout.* beta builds here on a faster cadence than nuget.org.
+  # Tier 2 — GitHub Packages. The de-facto release channel for v11. Pushes
+  # both Fallout.* AND Nuke.* transition shims. The Nuke.* shim IDs are owned
+  # by the original NUKE maintainer on nuget.org (#47) — GitHub Packages is
+  # their permanent home. Fallout.* is here because v11 is "off nuget.org" by
+  # default (see header).
   publish-github-packages:
     name: publish → GitHub Packages
     runs-on: ubuntu-latest
@@ -151,16 +178,16 @@ jobs:
         with:
           name: packages
           path: output/packages
-      - name: 'Push: Nuke.* transition shims to GitHub Packages'
+      - name: 'Push: all *.nupkg to GitHub Packages'
         run: |
           set -euo pipefail
           shopt -s nullglob
-          shims=(output/packages/Nuke.*.nupkg)
-          if [ ${#shims[@]} -eq 0 ]; then
-            echo "No Nuke.* shim packages found — skipping."
-            exit 0
+          packages=(output/packages/*.nupkg)
+          if [ ${#packages[@]} -eq 0 ]; then
+            echo "::error::No packages found in artifact — nothing to publish."
+            exit 1
           fi
-          for pkg in "${shims[@]}"; do
+          for pkg in "${packages[@]}"; do
             echo "Pushing $pkg to GitHub Packages..."
             dotnet nuget push "$pkg" \
               --source "https://nuget.pkg.github.com/ChrisonSimtian/index.json" \

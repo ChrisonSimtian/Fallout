@@ -17,22 +17,22 @@ Maintainer reference for how Fallout branches, ships releases, hotfixes older ma
 
 ## Channel taxonomy
 
-Releases fire to three independent channels, each with its own GitHub Environment:
+Releases fire to multiple channels, each with its own GitHub Environment:
 
-| Tier | Channel | Cadence | Gating | Versioning |
-|---|---|---|---|---|
-| **1** | `nuget-org` env → nuget.org | Slow, deliberate | **Approval-gated** (maintainer reviewer) | Clean semver (`11.0.0`, `11.0.1`, ...) |
-| **2** | `github-packages` env → GitHub Packages | Faster — betas, previews | None | Prereleases or NB.GV builds |
-| **3** | (planned) Docker local NuGet server | Per-PR / per-commit | None (ephemeral) | PR-derived |
-| (bundled) | `github-releases` env → GitHub Release with nupkgs attached | Same tag as the package publish | None | Same as the tag |
+| Tier | Channel | Cadence | Gating | Versioning | Current v11 use |
+|---|---|---|---|---|---|
+| **1** | `nuget-org` env → nuget.org | Slow, deliberate | **Workflow flag opt-in + approval-gated** | Clean semver (`11.0.0`, `11.0.1`, ...) | Reserved for v10.x maintenance + stabilised v11 (opt-in) |
+| **2** | `github-packages` env → GitHub Packages | Faster — every tag | None | NB.GV-derived | **De-facto v11 release channel** (all tags publish here) |
+| **3** | Docker local NuGet server | Per-PR / per-commit | None (local) | PR-derived | Available via `tests/integration/docker-compose.yml` |
+| (bundled) | `github-releases` env → GitHub Release with nupkgs attached | Same tag as the package publish | None | Same as the tag | Every tag |
 
-Tier 3 setup is tracked in [#279](https://github.com/ChrisonSimtian/Fallout/issues/279). See [`reference_release_channels` in agent memory](https://github.com/ChrisonSimtian/Fallout/issues/267#issuecomment-4570408325) for the design discussion.
+For v11 specifically: GitHub Packages is the default destination on every tag push. nuget.org is opt-in via the `workflow_dispatch` `publish-to-nugetorg` flag — used when a release is stabilised enough to ship to the broader consumer audience. See [`project_release_channels` in agent memory](https://github.com/ChrisonSimtian/Fallout/issues/267#issuecomment-4570408325) and the v11-off-nuget direction memory.
 
 ## Cutting a release
 
-The release pipeline fires on **tag push** to a `release/vN` branch. The tag must match `v*` and must point at a commit reachable from `release/v*` (the `validate-ref` job enforces this).
+### Routine v11 release (GitHub Packages only)
 
-### Step-by-step
+The default path. Pushing a `v11.0.X` tag to `release/v11` publishes to GitHub Packages + GitHub Releases. nuget.org is **not** touched.
 
 ```bash
 # 1. Make sure your local release/vN is up to date
@@ -50,29 +50,49 @@ gh release create v11.0.X \
     --generate-notes
 ```
 
-`gh release create` publishes a tag + a GitHub Release in one call. That tag push triggers `.github/workflows/release.yml`, which:
+That tag push triggers `.github/workflows/release.yml`:
 
 1. **`validate-ref`** confirms the tag points at a commit reachable from `release/v*`.
 2. **`test-and-pack`** runs `dotnet fallout Test Pack`, uploads `output/packages/*.nupkg` as an artifact.
-3. **Three parallel publish jobs** consume the artifact and fan out per channel:
-   - `publish-nuget-org` → pushes `Fallout.*.nupkg` to nuget.org (**pauses for your approval**)
-   - `publish-github-packages` → pushes `Nuke.*.nupkg` transition shims to GitHub Packages
-   - `publish-github-releases` → attaches all `*.nupkg` to the GitHub Release page
+3. Three parallel publish jobs consume the artifact:
+   - `publish-nuget-org` — **skipped** (not opt-in by default)
+   - `publish-github-packages` — pushes **all** `*.nupkg` (Fallout.* + Nuke.*) to GitHub Packages
+   - `publish-github-releases` — attaches all `*.nupkg` to the GitHub Release page
 
-### Approving the `nuget-org` publish
+### Stabilised release (nuget.org publish)
 
-When `publish-nuget-org` starts, it pauses for an environment-protection approval. You'll get a GitHub notification (and an entry on the run page). Click "Review deployments" → check `nuget-org` → "Approve and deploy". This is the production-grade gate — review what's about to publish before approving.
+When a v11 release is stabilised enough for nuget.org, or for cutting a v10.x maintenance patch, use `workflow_dispatch` with the opt-in flag:
+
+```bash
+# Option A: via gh CLI
+gh workflow run release.yml \
+    -f tag=v11.0.X \
+    -f publish-to-nugetorg=true
+
+# Option B: via Actions UI → release → "Run workflow" → set publish-to-nugetorg to true
+```
+
+The workflow:
+
+1. Skips `validate-ref` (workflow_dispatch doesn't auto-validate the ref; you took the action consciously).
+2. Re-runs `test-and-pack` against the named tag.
+3. **`publish-nuget-org` fires** — pauses for approval at the `nuget-org` env gate (notification + entry on the run page; click "Review deployments" → check `nuget-org` → "Approve and deploy"). Then pushes Fallout.* to nuget.org.
+4. `publish-github-packages` re-runs idempotently (`--skip-duplicate` skips what's already there).
+5. `publish-github-releases` re-runs idempotently (uses `--clobber` for asset replacement if the GH Release already exists).
+
+Two layers of safety on the nuget.org path: the flag opt-in + the env approval. You can also test the wiring without burning a release — set the flag, get the approval prompt, then cancel without approving.
 
 ### If a publish fails partway through
 
-Each `dotnet nuget push` uses `--skip-duplicate`, so re-running a publish job is idempotent on packages that already made it through. If nuget.org transient-fails on one of fifteen packages:
+Each `dotnet nuget push` uses `--skip-duplicate`. Re-running a publish job is idempotent on packages already pushed. For a transient failure mid-publish:
 
 ```bash
-# Re-run the workflow against the same tag
+# Routine re-run — leave publish-to-nugetorg false
 gh workflow run release.yml -f tag=v11.0.X
-```
 
-The `workflow_dispatch` fallback re-checks out the tag and re-runs all three publish jobs. `--skip-duplicate` skips anything that already published.
+# Stabilised re-run — include the flag if you want to retry the nuget.org push
+gh workflow run release.yml -f tag=v11.0.X -f publish-to-nugetorg=true
+```
 
 ## Hotfixing an older major
 
