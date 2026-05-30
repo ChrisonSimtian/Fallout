@@ -101,6 +101,8 @@ jobs:
             .fallout/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-release-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props', 'version.json') }}
+          restore-keys: |
+            ${{ runner.os }}-release-
       - name: 'Setup: .NET SDK'
         uses: actions/setup-dotnet@v4
         with:
