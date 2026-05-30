@@ -27,7 +27,7 @@
 > [!IMPORTANT]
 > **Rebrand in progress + roadmap published.** This repository is being renamed from **NUKE** to **Fallout** as part of a hard fork. URLs, package names, and namespaces are migrating in stages.
 >
-> **Versioning & channels.** Fallout ships on **calendar versions** (`YYYY.MINOR.PATCH`; the major is the year). `main` is the fast, intentionally-unstable **edge** channel; the `release/YYYY` **stable train** carries non-breaking minors/patches after the yearly cut. See [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md) and [docs/branching-and-release.md](docs/branching-and-release.md).
+> **Versioning & channels.** Fallout ships on **calendar versions** (`YYYY.MINOR.PATCH`; the major is the year) via a maturity ladder: `experimental` is the fast, intentionally-unstable **alpha** lane; `main` is the deliberate **preview** trunk; the `release/YYYY` **production line** carries non-breaking minors/patches after the yearly cut. GitHub Packages = test/preview; nuget.org = production. See [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md) and [docs/branching-and-release.md](docs/branching-and-release.md).
 >
 > **What's next:** the rebrand completes and the internal foundation for a plugin architecture lands on the 2026 line; a later major ships the public `Fallout.Plugin.Sdk`. The full plan is in [**docs/roadmap.md**](docs/roadmap.md). Five RFCs are open now to shape the SDK — your input matters most before it firms up.
 >
@@ -67,7 +67,7 @@ The CLI installs as `fallout`. Verify with `fallout --help`.
 For per-repo manifest pinning (`.config/dotnet-tools.json`), project setup, and shell completion, see the [Installation guide on docs.fallout.build](https://docs.fallout.build/getting-started/installation).
 
 > [!NOTE]
-> **Channels.** Stable releases ship on **calendar versions** (`YYYY.MINOR.PATCH`, e.g. `2026.1.3`; the major is the year) from the `release/YYYY` train — published to GitHub Packages, with nuget.org publishing opt-in per release. A faster, intentionally-unstable **edge** prerelease (`2026.MINOR.PATCH-edge.…`) is published from `main` to **GitHub Packages only**; opt in by adding the GitHub Packages feed if you want to track the bleeding edge. The legacy NUKE `10.x` line stays on semver and receives security/critical fixes only. See [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md) and [docs/branching-and-release.md](docs/branching-and-release.md) for the full model.
+> **Channels.** Stable releases ship on **calendar versions** (`YYYY.MINOR.PATCH`, e.g. `2026.1.3`; the major is the year) from the `release/YYYY` production line — published to GitHub Packages, with nuget.org publishing opt-in per release. Two faster, intentionally-unstable test lanes publish to **GitHub Packages only**: `experimental` → `…-alpha.…` (bleeding edge) and `main` → `…-preview.…`; opt in by adding the GitHub Packages feed and a prerelease version range. The legacy NUKE `10.x` line (`support/v10`) stays on semver and receives security/critical fixes only. See [ADR-0004](docs/adr/0004-calendar-versioning-and-dual-pace-channels.md) and [docs/branching-and-release.md](docs/branching-and-release.md) for the full model.
 
 ## Table of Contents
 

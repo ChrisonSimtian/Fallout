@@ -6,30 +6,39 @@ Maintainer reference for how Fallout branches, ships releases, hotfixes older li
 
 ## Branches at a glance
 
+A three-tier maturity ladder feeding the production line (amended [ADR-0004](adr/0004-calendar-versioning-and-dual-pace-channels.md), 2026-05-30):
+
 | Branch | Purpose | Lifetime | Protected | Source of releases? |
 |---|---|---|---|---|
-| `main` | Integration trunk **+ `edge` channel**. Every PR lands here; pushes publish `…-edge` prereleases to GitHub Packages. | Long-lived | Yes | **Edge only** (GitHub Packages, no nuget.org / no GH Release) |
-| `release/YYYY` | Stable train for the calendar year (e.g. `release/2026`). Non-breaking minors/patches only after the cut. | Long-lived per year | Yes | **Yes** — tags pushed here fire the full release pipeline |
-| `release/v10` (+ `hotfix/v10.1`, `hotfix/v10.2`) | **Legacy** semver `10.x` maintenance line — security/critical fixes only. | Long-lived | Yes | Yes — tags fire the pipeline (nuget.org opt-in) |
-| `release/v11` | **Retired** — nothing clean shipped; work re-homed onto `2026`. Kept for archaeology, marked EoL. | Frozen | Yes | No |
+| `experimental` | **Fast / AI lane.** Per-commit `…-alpha` prereleases to GitHub Packages. Intentionally unstable; breaking work accumulates here for the yearly major. | Long-lived | Yes | **Alpha only** (GitHub Packages, no nuget.org / no GH Release) |
+| `main` | **Integration trunk + `-preview` channel.** Default branch. Deliberate improvements + bug fixes land here; non-breaking work is promoted up from `experimental`. Pushes publish `…-preview` prereleases to GitHub Packages. **Never nuget.org.** | Long-lived | Yes | **Preview only** (GitHub Packages, no nuget.org / no GH Release) |
+| `release/YYYY` | **Production line** for the calendar year (e.g. `release/2026`), cut from `main`. `-rc.N` → GA. Non-breaking minors/patches only after the cut. | Long-lived per year | Yes | **Yes** — tags pushed here fire the full release pipeline (nuget.org opt-in) |
+| `support/v10` (+ `hotfix/v10.1`, `hotfix/v10.2`) | **Legacy** semver `10.x` maintenance line — security/critical fixes only. (Renamed from `release/v10`.) | Long-lived | Yes | Yes — tags fire the pipeline (nuget.org opt-in) |
+| `support/YYYY` | **Retired** year production line (e.g. `support/2026` once 2027 supersedes it). Security/critical fixes only. | Long-lived | Yes | Yes — tags fire the pipeline (nuget.org opt-in) |
+| `release/v11` | **Retired** — nothing clean shipped; work re-homed onto `2026`. Kept for archaeology, marked EoL. Not renamed to `support/` (not a maintained line). | Frozen | Yes | No |
 | `feature/<slug>`, `bugfix/<slug>`, `chore/<slug>`, `docs/<slug>`, `pr/<num>-<slug>` | Working branches | Short-lived; PR-and-merge then deleted | No | No |
 
-`develop` and `master` are not used. Breaking changes land on `main` only and are batched to the yearly major cut. Fixes that apply to both `main` and a stable train land on `main` first, then cherry-pick to `release/YYYY` — see the [hotfix flow](#hotfixing-an-older-line) below.
+This *is* gitflow with the project's vocabulary: `experimental` ≈ `develop`, `main` ≈ the stable trunk, `release/YYYY` ≈ `release/*` (long-lived per year), `support/*` ≈ legacy/retired lines. The one deviation: **`main` is not the production/nuget.org line** — `release/YYYY` + `support/*` are. `main` is a `-preview` test channel that production is cut from.
+
+`develop` (literal) and `master` are not used. **Breaking changes land on `experimental` only** and are batched to the yearly major cut. Non-breaking work is promoted **forward-only** `experimental → main → release/YYYY`. A stable-urgent fix lands on `main` (or the production branch) and is **forward-ported to `experimental`** so the fast lane never regresses — see the [promotion + hotfix flow](#promotion-and-hotfixing) below.
 
 ## Channel taxonomy
 
 Releases fire to multiple channels, each with its own GitHub Environment:
 
+**GitHub Packages = the test/preview channels; nuget.org = production.** The version ladder orders cleanly under SemVer: `…-alpha.N` < `…-preview.N` < `…-rc.N` < `…` (GA).
+
 | Channel | Built from | Cadence | Gating | Version shape |
 |---|---|---|---|---|
-| **edge** → `github-packages` env | `main` | Per-commit | None | `2026.1.0-edge.<height>.g<commit>` |
+| **alpha** → `github-packages` env | `experimental` | Per-commit | None | `2026.1.0-alpha.<height>.g<commit>` |
+| **preview** → `github-packages` env | `main` | Per-commit | None | `2026.1.0-preview.<height>.g<commit>` |
 | **stable** → `nuget-org` env | `release/YYYY` tags | Slow, deliberate | **Flag opt-in + approval-gated** | `2026.1.3` (CalVer) |
-| **stable/legacy** → `github-packages` env | `release/YYYY`, `release/v10` tags | Every tag | None | CalVer / `10.x` |
-| **legacy** → `nuget-org` env | `release/v10` tags | Security/critical only | **Flag opt-in + approval-gated** | `10.x` (semver) |
-| `github-releases` env (bundled) | `release/*` tags | Same tag as the package publish | None | Same as the tag |
+| **stable/legacy** → `github-packages` env | `release/YYYY`, `support/*` tags | Every tag | None | CalVer / `10.x` |
+| **legacy** → `nuget-org` env | `support/v10`, `support/YYYY` tags | Security/critical only | **Flag opt-in + approval-gated** | `10.x` / `YYYY.x` |
+| `github-releases` env (bundled) | `release/*`, `support/*` tags | Same tag as the package publish | None | Same as the tag |
 | Docker local NuGet server | Per-PR / per-commit | None (local) | PR-derived | Available via `tests/integration/docker-compose.yml` |
 
-**Defaults:** edge publishes from `main` to GitHub Packages only (no nuget.org, no GH Release). Stable/legacy tag pushes publish to GitHub Packages + GitHub Releases. nuget.org is **always opt-in** via the `workflow_dispatch` `publish-to-nugetorg` flag — used when a `release/YYYY` is stabilised enough for the broader consumer audience, or for a `release/v10` security patch. See [`project_release_channels` in agent memory](https://github.com/ChrisonSimtian/Fallout/issues/267#issuecomment-4570408325) and [ADR-0004](adr/0004-calendar-versioning-and-dual-pace-channels.md).
+**Defaults:** `experimental` (alpha) and `main` (preview) publish to GitHub Packages only — **never nuget.org, never a GH Release**. Production tag pushes (`release/YYYY`, `support/*`) publish to GitHub Packages + GitHub Releases. nuget.org is **always opt-in** via the `workflow_dispatch` `publish-to-nugetorg` flag — used when a `release/YYYY` is stabilised enough for the broader consumer audience, or for a `support/v10` security patch. See [`project_release_channels` in agent memory](https://github.com/ChrisonSimtian/Fallout/issues/267#issuecomment-4570408325) and [ADR-0004](adr/0004-calendar-versioning-and-dual-pace-channels.md).
 
 ## Cutting a release
 
@@ -55,7 +64,7 @@ gh release create v2026.1.X \
 
 That tag push triggers `.github/workflows/release.yml`:
 
-1. **`validate-ref`** confirms the tag points at a commit reachable from `release/v*`.
+1. **`validate-ref`** confirms the tag points at a commit reachable from a production branch (`release/YYYY` or `support/*`).
 2. **`test-and-pack`** runs `dotnet fallout Test Pack`, uploads `output/packages/*.nupkg` as an artifact.
 3. Three parallel publish jobs consume the artifact:
    - `publish-nuget-org` — **skipped** (not opt-in by default)
@@ -64,7 +73,7 @@ That tag push triggers `.github/workflows/release.yml`:
 
 ### Stabilised release (nuget.org publish)
 
-When a `release/2026` release is stabilised enough for nuget.org, or for cutting a `release/v10` legacy security patch, use `workflow_dispatch` with the opt-in flag:
+When a `release/2026` release is stabilised enough for nuget.org, or for cutting a `support/v10` legacy security patch, use `workflow_dispatch` with the opt-in flag:
 
 ```bash
 # Option A: via gh CLI
@@ -97,74 +106,96 @@ gh workflow run release.yml -f tag=v2026.1.X
 gh workflow run release.yml -f tag=v2026.1.X -f publish-to-nugetorg=true
 ```
 
-## Hotfixing an older line
+## Promotion and hotfixing
 
-Two cases: a fix for the **current stable train** (`release/2026`), or a security/critical fix for the **legacy line** (`release/v10`).
+The ladder flows **forward-only**: `experimental → main → release/YYYY`. Two routine directions plus the legacy case.
 
-For a fix that also applies to `main`: it lands on `main` first via a normal PR, then is cherry-picked to the target release branch, then tagged.
+### Promoting non-breaking work `experimental → main`
+
+Most work lands on `experimental` (the fast lane). Non-breaking changes that are ready for the deliberate trunk are promoted to `main` — cherry-pick the relevant commits (or merge, if `experimental` carries only non-breaking work since the last promotion) onto a branch and PR it against `main`. Breaking work is **not** promoted mid-year; it waits on `experimental` for the yearly cut.
 
 ```bash
-# 1. Fix lands on main via standard PR flow
-gh pr create --base main ...
-# (review, merge to main)
-
-# 2. Cherry-pick to the target release branch (release/2026 here; release/v10 for legacy)
 git fetch
-git switch release/2026
-git pull --ff-only
-git cherry-pick <fix-sha-on-main>
+git switch -c promote-XXXX-to-main main
+git cherry-pick <non-breaking-sha-on-experimental> [<sha> …]
+git push origin HEAD
+gh pr create --base main ...   # ordinary review tier
+```
 
-# 3. Open a PR against the release branch with the cherry-picked commit
-# (yes, even a one-commit cherry-pick goes through a PR — branch protection
-# blocks direct pushes and requires the ubuntu-latest status check)
-git push origin HEAD:cherry-pick-XXXX-to-2026
-gh pr create --base release/2026 ...
+### Promoting `main → release/YYYY` (a stable patch/minor)
 
-# 4. Once that PR merges, tag a new patch
+A stabilised non-breaking change on `main` is promoted to the production line, then tagged.
+
+```bash
+git fetch
+git switch -c promote-XXXX-to-2026 release/2026
+git cherry-pick <sha-on-main> [<sha> …]
+git push origin HEAD
+gh pr create --base release/2026 ...   # rigorous review tier
+# once merged:
 gh release create v2026.1.X+1 --target release/2026 --generate-notes
 ```
 
-Cherry-pick-first guarantees forward compatibility: any fix in `release/2026` is also in `main`. A **legacy `release/v10` security fix** that doesn't apply to `main` (the code has moved on) lands directly on `release/v10` (or the relevant `hotfix/v10.x`) via PR — that's the expected path for a frozen line, not the exception. Such a release is the nuget.org case (use the opt-in flag).
+### Forward-porting a stable-urgent fix
 
-### When direct-PR-to-release-branch is OK
-
-For `release/2026`, the cherry-pick-first flow is the default. In rare cases — security-incident fixes where `main` has diverged, or prod-down emergencies — a PR can target the stable train directly. Apply the `hotfix-direct` label and get explicit maintainer sign-off in the PR description. (For the frozen `release/v10` legacy line, direct-PR is the *normal* path, since `main` no longer carries v10 code.)
-
-## Cutting a new `release/YYYY`
-
-At the yearly major cut, when the next year's line is about to ship from `main`:
+If a fix must land on the production line first (prod-down), land it on `release/2026` (or `main`), then **forward-port** to `main` and `experimental` so the upper lanes never regress:
 
 ```bash
-# 1. Make sure main is at the commit you want to start the new year from
+git switch -c forward-port-XXXX experimental
+git cherry-pick <fix-sha>
+git push origin HEAD
+gh pr create --base experimental ...
+```
+
+### Legacy `support/v10`
+
+A `support/v10` security/critical fix that doesn't apply to the current line (the code has moved on) lands **directly** on `support/v10` (or the relevant `hotfix/v10.x`) via PR — the expected path for a maintenance line, not the exception. Such a release is the nuget.org case (use the opt-in flag). The same applies to a retired `support/YYYY` line.
+
+> Even one-commit cherry-picks go through a PR — branch protection blocks direct pushes and requires the `ubuntu-latest` status check on every protected branch.
+
+## Cutting a new year (the yearly major)
+
+At the yearly major cut, the outgoing year's production line is retired to `support/YYYY` and a new `release/YYYY` is cut from `main`. The accumulated breaking work on `experimental` becomes the new year's major.
+
+```bash
+# 1. Retire the outgoing production line: rename release/2026 → support/2026
+#    (GitHub Settings → Branches → rename, or via API). It keeps taking
+#    security/critical fixes only from here on.
+
+# 2. Cut the new production line from main
 git fetch
 git switch main
 git pull --ff-only
-
-# 2. Create the branch
 git switch -c release/2027 main
 git push -u origin release/2027
 
-# 3. Apply branch protection (see docs/agents/release-and-versioning.md → Branch protection on release/YYYY
-#    for the canonical settings)
+# 3. Apply branch protection (mirror main's profile — see
+#    docs/agents/release-and-versioning.md → Branch protection on release/YYYY).
+#    NOTE: scripts/release-branch-protection.json does not exist yet; capture
+#    main's live protection JSON into it (or apply via repo Settings → Branches).
 gh api -X PUT repos/ChrisonSimtian/Fallout/branches/release/2027/protection \
-    --input scripts/release-branch-protection.json   # mirror main's profile
+    --input scripts/release-branch-protection.json
 
-# 4. On release/2027 (the branch itself), set version.json "version": "2027.0" and add
-#    itself to publicReleaseRefSpec so NB.GV produces clean versions, not git-sha-suffixed:
-#    publicReleaseRefSpec already matches "^refs/heads/release/\\d{4}$" — confirm it resolves.
+# 4. On release/2027 (the branch itself), set version.json "version": "2027.0".
+#    publicReleaseRefSpec already matches "^refs/heads/release/\\d{4}$" — confirm
+#    it resolves so NB.GV produces clean versions, not git-sha-suffixed.
 #    Commit via PR targeting release/2027.
 
-# 5. Bump main's version.json to the next year's edge target (e.g. "2027.1") so edge
-#    builds sort above the new stable line.
+# 5. Roll the test lanes forward so their prereleases sort above the new production
+#    line. Merge experimental's accumulated breaking work into main, then bump cores:
+#      - main/version.json         → "2027.1.0-preview.{height}"
+#      - experimental/version.json → "2027.1.0-alpha.{height}"   (or further ahead)
+#    Keep experimental and main on the SAME core (see ADR-0004 §2) so
+#    alpha < preview ordering stays honest.
 ```
 
 ### Step 4 — why on `release/2027`, not `main`
 
-`publicReleaseRefSpec` is per-branch. The CalVer ref pattern (`^refs/heads/release/\d{4}$`) matches `release/2027` automatically, but the `"version"` field is per-branch: `release/2027` pins `"2027.0"` while `main` moves on to the next edge target. Editing the version pin on `release/2027` keeps the stable line's number stable and avoids a patch-height collision with `main`.
+`publicReleaseRefSpec` is per-branch. The CalVer ref pattern (`^refs/heads/release/\d{4}$`) matches `release/2027` automatically, but the `"version"` field is per-branch: `release/2027` pins `"2027.0"` (a public ref → clean versions) while `main`/`experimental` move on to the next preview/alpha target. This keeps the production line's number stable and avoids a patch-height collision with the test lanes.
 
-## Deprecating an old `release/YYYY` (or the legacy line)
+## Deprecating a `support/*` line
 
-Once a year's line (or `release/v10`) hits end-of-life:
+Once a `support/YYYY` or `support/v10` line hits end-of-life:
 
 1. Final patch release.
 2. Announce EoL in the README + CHANGELOG.
