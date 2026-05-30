@@ -19,8 +19,10 @@ name: windows-latest
 on:
   push:
     branches:
+      - experimental
       - main
       - 'release/*'
+      - 'support/*'
 
 jobs:
   windows-latest:

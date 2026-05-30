@@ -19,7 +19,7 @@ What changed:
 
 The sections below are revised to this model; the original wording is preserved in git history. The trade this accepts (a bounded amount of `experimental → main` divergence) is discussed in [Consequences](#negative) and [Alternative A](#a-a-separate-long-lived-experimental--edge-branch).
 
-**Rollout status (2026-05-30):** this amendment lands the *decision + documentation* first. The mechanics follow in a separate PR + maintainer steps — create the `experimental` branch, rename `release/v10` → `support/v10`, relabel `main`'s channel `-edge` → `-preview` (`edge.yml` → `preview.yml`), add the `experimental` `-alpha` workflow, extend `validate-ref` + the generated CI branch triggers, and set per-branch `version.json`. **Until those land, `main` still publishes `-edge` per the original decision.**
+**Rollout status (2026-05-30):** the *decision + documentation* landed first; the *CI + versioning mechanics* followed — `main`'s channel relabelled `-edge` → `-preview` (`edge.yml` → `preview.yml`), the `experimental` `-alpha` workflow added, `validate-ref` + the generated CI branch triggers extended to `experimental`/`support/*`, and `version.json` set to `2026.1.0-preview.{height}` with `support/*` in `publicReleaseRefSpec`. **Remaining (maintainer branch ops):** create the `experimental` branch from `main` and set its `version.json` to `…-alpha.{height}`; rename `release/v10` → `support/v10` (and update its `version.json` `publicReleaseRefSpec`); apply branch protection to `experimental` + `support/v10`. Until `experimental` exists, `experimental.yml` simply doesn't fire.
 
 ## Context
 

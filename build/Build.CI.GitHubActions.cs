@@ -2,16 +2,15 @@ using Fallout.Common.CI.GitHubActions;
 using Fallout.Components;
 
 // macOS and Windows runs are reserved for post-merge validation on the
-// long-lived branches (main and release/vN). PRs and feature-branch pushes
-// get Linux-only for fast, cheap feedback. Cross-platform regressions on a
-// release branch surface as a red commit on release/v* — same fail-fast
-// model as main.
+// long-lived branches (experimental, main, release/YYYY, support/*). PRs and
+// feature-branch pushes get Linux-only for fast, cheap feedback. Cross-platform
+// regressions on those branches surface as a red commit — same fail-fast model.
 [GitHubActions(
     "macos-latest",
     GitHubActionsImage.MacOsLatest,
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
-    OnPushBranches = new[] { MainBranch, ReleaseBranchPattern },
+    OnPushBranches = new[] { ExperimentalBranch, MainBranch, ReleaseBranchPattern, SupportBranchPattern },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 [GitHubActions(
@@ -19,7 +18,7 @@ using Fallout.Components;
     GitHubActionsImage.WindowsLatest,
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
-    OnPushBranches = new[] { MainBranch, ReleaseBranchPattern },
+    OnPushBranches = new[] { ExperimentalBranch, MainBranch, ReleaseBranchPattern, SupportBranchPattern },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
 // pull_request only — same-repo branches would otherwise fire both push and
@@ -34,9 +33,9 @@ using Fallout.Components;
     FetchDepth = 0,
     Submodules = GitHubActionsSubmodules.Recursive,
     CheckoutRef = "${{ github.head_ref }}",
-    // Trigger for PRs targeting main OR any release/vN branch — both are
-    // long-lived and protected; both require the ubuntu-latest status check.
-    OnPullRequestBranches = new[] { MainBranch, ReleaseBranchPattern },
+    // Trigger for PRs targeting experimental, main, or any release/YYYY / support/*
+    // branch — all are long-lived and protected; all require the ubuntu-latest check.
+    OnPullRequestBranches = new[] { ExperimentalBranch, MainBranch, ReleaseBranchPattern, SupportBranchPattern },
     OnPullRequestExcludePaths = new[] { "docs/**", ".assets/**", "**/*.md" },
     InvokedTargets = new[] { nameof(ITest.Test), nameof(IPack.Pack) },
     PublishArtifacts = false)]
