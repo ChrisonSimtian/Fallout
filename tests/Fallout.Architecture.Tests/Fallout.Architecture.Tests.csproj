@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetArchTest.Rules" />
+  </ItemGroup>
+
+  <!-- References every ring so the onion dependency rules can be asserted across them. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Tooling\Fallout.Tooling.csproj" />
+  </ItemGroup>
+
+</Project>

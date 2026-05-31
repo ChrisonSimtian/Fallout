@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Fallout.Common.Utilities;
-using Fallout.Application.Tooling;
 using Fallout.Common;
 
-namespace Fallout.Infrastructure.Tooling;
+namespace Fallout.Application.Tooling;
 
 [DebuggerStepThrough]
 [DebuggerNonUserCode]

@@ -4,7 +4,6 @@ using System.Reflection;
 using NuGet.Versioning;
 using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
-using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Application.Tooling;
 
@@ -19,7 +18,7 @@ public class LatestNpmVersionAttribute : ValueInjectionAttributeBase
 
     public override object GetValue(MemberInfo member, object instance)
     {
-        var version = NpmVersionResolver.GetLatestVersion(_packageId).GetAwaiter().GetResult();
+        var version = ToolingServices.Versions.GetLatestNpmVersion(_packageId).GetAwaiter().GetResult();
         return member.GetMemberType() == typeof(string)
             ? version
             : SemanticVersion.Parse(version);

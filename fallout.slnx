@@ -34,6 +34,7 @@
   <Project Path="src\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
   <Project Path="src\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
   <Project Path="src\Fallout.Utilities\Fallout.Utilities.csproj" />
+  <Project Path="tests\Fallout.Architecture.Tests\Fallout.Architecture.Tests.csproj" />
   <Project Path="tests\Fallout.Build.Tests\Fallout.Build.Tests.csproj" />
   <Project Path="tests\Fallout.Common.Tests\Fallout.Common.Tests.csproj" />
   <Project Path="tests\Fallout.Components.Tests\Fallout.Components.Tests.csproj" />

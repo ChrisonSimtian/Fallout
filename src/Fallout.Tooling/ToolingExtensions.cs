@@ -6,6 +6,7 @@ using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Events;
 using Fallout.Common;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Infrastructure.Tooling;
 

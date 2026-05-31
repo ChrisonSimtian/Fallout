@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Utilities.Collections;
-using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Application.Tooling;
 
@@ -91,7 +90,7 @@ public static class ConfigureExtensions
         finally
         {
             invocations
-                .Where(x => x.Options.ProcessOutputLogging ?? ProcessTasks.DefaultLogOutput)
+                .Where(x => x.Options.ProcessOutputLogging ?? ToolingServices.Process.DefaultLogOutput)
                 .SelectMany(x =>
                 {
                     var (_, logger, result, exception) = x;

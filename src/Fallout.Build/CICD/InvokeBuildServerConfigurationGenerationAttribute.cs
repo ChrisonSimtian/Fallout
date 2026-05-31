@@ -6,7 +6,7 @@ using Serilog;
 using static Fallout.Application.CI.BuildServerConfigurationGeneration;
 using Fallout.Application.Execution;
 using Fallout.Application;
-using Fallout.Infrastructure.Tooling;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Application.CI;
 
@@ -44,7 +44,7 @@ public class InvokeBuildServerConfigurationGenerationAttribute
             .WhereFileExists()
             .ToDictionary(x => x, x => x.GetFileHash());
 
-        ProcessTasks.StartProcess(
+        ToolingServices.Process.StartProcess(
                 Build.BuildAssemblyFile,
                 $"--{ConfigurationParameterName} {generator.Id} --host {generator.HostName}",
                 logInvocation: false,

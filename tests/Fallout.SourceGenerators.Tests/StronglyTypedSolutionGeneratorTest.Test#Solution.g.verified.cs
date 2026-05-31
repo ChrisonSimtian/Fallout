@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Solutions.Solution(model, path)
 {
     public Fallout.Solutions.Project _build => this.GetProject("_build");
+    public Fallout.Solutions.Project Fallout_Architecture_Tests => this.GetProject("Fallout.Architecture.Tests");
     public Fallout.Solutions.Project Fallout_Build => this.GetProject("Fallout.Build");
     public Fallout.Solutions.Project Fallout_Build_Shared => this.GetProject("Fallout.Build.Shared");
     public Fallout.Solutions.Project Fallout_Build_Tests => this.GetProject("Fallout.Build.Tests");

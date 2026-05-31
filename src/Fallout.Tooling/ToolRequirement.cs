@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Application.Tooling;
 
@@ -27,13 +26,13 @@ public class PathToolRequirement(string pathExecutable) : ToolRequirement
 public class NuGetPackageRequirement(string packageId, string version = null) : ToolRequirement
 {
     public string PackageId { get; init; } = packageId;
-    public string Version { get; init; } = version ?? NuGetVersionResolver.GetLatestVersion(packageId, includePrereleases: false).GetAwaiter().GetResult();
+    public string Version { get; init; } = version ?? ToolingServices.Versions.GetLatestNuGetVersion(packageId, includePrereleases: false).GetAwaiter().GetResult();
 }
 
 public class NpmPackageRequirement(string packageId, string version = null) : ToolRequirement
 {
     public string PackageId { get; init; } = packageId;
-    public string Version { get; init; } = version ?? NpmVersionResolver.GetLatestVersion(packageId).GetAwaiter().GetResult();
+    public string Version { get; init; } = version ?? ToolingServices.Versions.GetLatestNpmVersion(packageId).GetAwaiter().GetResult();
 }
 
 public class AptGetPackageRequirement(string packageId) : ToolRequirement

@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using Fallout.Common.Utilities;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Common;
 
 namespace Fallout.Application.Tooling;
@@ -21,7 +20,7 @@ public abstract partial class ToolTasks
         if (options?.ProcessToolPath != null)
             return options.ProcessToolPath;
 
-        if (ToolPathResolver.TryGetEnvironmentExecutable(ToolPathOverrideVariableName) is { } environmentExecutable)
+        if (ToolingServices.ToolPaths.TryGetEnvironmentExecutable(ToolPathOverrideVariableName) is { } environmentExecutable)
             return environmentExecutable;
 
         return GetToolPath(options);
@@ -61,7 +60,7 @@ public class PathToolAttribute : ToolAttribute
 
     internal override string GetToolPath(ToolOptions options)
     {
-        return ToolPathResolver.GetPathExecutable(Executable);
+        return ToolingServices.ToolPaths.GetPathExecutable(Executable);
     }
 
     internal override ToolRequirement GetRequirement(string version = null)
@@ -77,7 +76,7 @@ public class NpmToolAttribute : ToolAttribute
 
     internal override string GetToolPath(ToolOptions options)
     {
-        return NpmToolPathResolver.GetNpmExecutable(Executable);
+        return ToolingServices.ToolPaths.GetNpmExecutable(Executable);
     }
 
     internal override ToolRequirement GetRequirement(string version = null)
@@ -110,7 +109,7 @@ public class NuGetToolAttribute : ToolAttribute
     {
         // ReSharper disable once SuspiciousTypeConversion.Global
         var framework = (options as IToolOptionsWithFramework)?.Framework;
-        return NuGetToolPathResolver.GetPackageExecutable(Id, Executable, framework: framework);
+        return ToolingServices.ToolPaths.GetPackageExecutable(Id, Executable, framework: framework);
     }
 
     internal override ToolRequirement GetRequirement(string version = null)

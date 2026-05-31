@@ -1,6 +1,5 @@
 using Fallout.Common.Utilities;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Common;
 
 namespace Fallout.Application.Tools.DotCover;
@@ -9,7 +8,7 @@ partial class DotCoverTasks
 {
     protected override string GetToolPath(ToolOptions options = null)
     {
-        return NuGetToolPathResolver.GetPackageExecutable(
+        return ToolingServices.ToolPaths.GetPackageExecutable(
             PackageId,
             EnvironmentInfo.IsWin ? "dotCover.exe" : "dotCover.sh|dotCover.dll");
     }

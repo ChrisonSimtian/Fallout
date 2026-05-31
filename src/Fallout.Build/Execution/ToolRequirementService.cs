@@ -8,7 +8,6 @@ using Serilog;
 using Fallout.Application;
 using Fallout.Common;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Application.Execution;
 
@@ -30,8 +29,8 @@ internal static class ToolRequirementService
             return;
 
         var projectFile = build.TemporaryDirectory / "nuget.csproj";
-        NuGetToolPathResolver.NuGetPackagesConfigFile = projectFile;
-        NuGetToolPathResolver.NuGetAssetsConfigFile = projectFile.Parent / "obj" / "project.assets.json";
+        ToolingServices.ToolPaths.NuGetPackagesConfigFile = projectFile;
+        ToolingServices.ToolPaths.NuGetAssetsConfigFile = projectFile.Parent / "obj" / "project.assets.json";
 
         var packages = requirements.OrderBy(x => x.PackageId).ThenBy(x => x.Version).ToList();
         var groupedPackages = packages.GroupBy(x => x.PackageId, x => $"[{x.Version}]");
@@ -69,7 +68,7 @@ internal static class ToolRequirementService
             return;
 
         var packageJsonFile = build.TemporaryDirectory / "package.json";
-        NpmToolPathResolver.NpmPackageJsonFile = packageJsonFile;
+        ToolingServices.ToolPaths.NpmPackageJsonFile = packageJsonFile;
 
         var packages = requirements.OrderBy(x => x.PackageId).ToList();
 
@@ -115,6 +114,6 @@ internal static class ToolRequirementService
         packages.ForEach(x => Log.Verbose("Installing {Id}...", x.PackageId));
 
         installScript.WriteAllText(content);
-        ProcessTasks.StartShell($"sudo {installScript}", logInvocation: false, logOutput: false).AssertZeroExitCode();
+        ToolingServices.Process.StartShell($"sudo {installScript}", logInvocation: false, logOutput: false).AssertZeroExitCode();
     }
 }

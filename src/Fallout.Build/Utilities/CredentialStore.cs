@@ -3,7 +3,6 @@ using System.Linq;
 using Fallout.Application;
 using Fallout.Common;
 using Fallout.Common.Utilities;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tooling;
 
 namespace Fallout.Application.Utilities;
@@ -15,7 +14,7 @@ public static class CredentialStore
         switch (EnvironmentInfo.Platform)
         {
             case PlatformFamily.OSX:
-                ProcessTasks.StartProcess(
+                ToolingServices.Process.StartProcess(
                     Security,
                     $"delete-generic-password -a {EnvironmentInfo.Variables["LOGNAME"]} -s {name.DoubleQuoteIfNeeded()}",
                     logInvocation: false,
@@ -31,7 +30,7 @@ public static class CredentialStore
         switch (EnvironmentInfo.Platform)
         {
             case PlatformFamily.OSX:
-                ProcessTasks.StartProcess(
+                ToolingServices.Process.StartProcess(
                     Security,
                     $"add-generic-password -T \"\" -a {EnvironmentInfo.Variables["LOGNAME"]} -s {name.DoubleQuoteIfNeeded()} -w {password}",
                     logInvocation: false,
@@ -47,7 +46,7 @@ public static class CredentialStore
         switch (EnvironmentInfo.Platform)
         {
             case PlatformFamily.OSX:
-                var process = ProcessTasks.StartProcess(
+                var process = ToolingServices.Process.StartProcess(
                     Security,
                     $"find-generic-password -w -a {EnvironmentInfo.Variables["LOGNAME"]} -s {name.DoubleQuoteIfNeeded()}",
                     logInvocation: false,
@@ -61,7 +60,7 @@ public static class CredentialStore
         }
     }
 
-    private static string Security => ToolPathResolver.GetPathExecutable("security");
+    private static string Security => ToolingServices.ToolPaths.GetPathExecutable("security");
 
     public static string GetPassword(string profile, string rootDirectory)
     {

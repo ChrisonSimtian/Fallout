@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Common;
 
 namespace Fallout.Application.Tools.Xunit;
@@ -10,7 +9,7 @@ partial class XunitTasks
 {
     protected override string GetToolPath(ToolOptions options = null)
     {
-        return NuGetToolPathResolver.GetPackageExecutable(
+        return ToolingServices.ToolPaths.GetPackageExecutable(
             packageId: PackageId,
             packageExecutable: EnvironmentInfo.Is64Bit ? "xunit.console.exe" : "xunit.console.x86.exe",
             framework: (options as IToolOptionsWithFramework)?.Framework);

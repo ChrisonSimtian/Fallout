@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Application.Tooling;
 
@@ -18,7 +17,7 @@ partial class ToolTasks
         string Filter(string text) => secrets.Aggregate(text, (str, s) => str.Replace(s, "[REDACTED]"));
 
         options = PreProcess(options);
-        using var process = ProcessTasks.StartProcess(
+        using var process = ToolingServices.Process.StartProcess(
             GetToolPathInternal(options),
             options.GetArguments().JoinSpace(),
             options.ProcessWorkingDirectory,
@@ -90,7 +89,7 @@ partial class ToolTasks
         Action<OutputType, string> logger,
         Func<string, string> outputFilter = null)
     {
-        return ProcessTasks.StartProcess(
+        return ToolingServices.Process.StartProcess(
             GetToolPathInternal(),
             arguments,
             workingDirectory,

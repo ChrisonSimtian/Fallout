@@ -1,6 +1,5 @@
 using System;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Common;
 
 namespace Fallout.Application.Tools.Codecov;
@@ -9,7 +8,7 @@ partial class CodecovTasks
 {
     protected override string GetToolPath(ToolOptions options = null)
     {
-        return NuGetToolPathResolver.GetPackageExecutable(
+        return ToolingServices.ToolPaths.GetPackageExecutable(
             packageId: PackageId,
             packageExecutable: EnvironmentInfo.Platform switch
             {

@@ -12,7 +12,6 @@ using Fallout.Application.ValueInjection;
 using Fallout.Application.CI;
 using Fallout.Application.Execution.Extensions;
 using Fallout.Common;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tooling;
 
 // ReSharper disable VirtualMemberNeverOverridden.Global
@@ -154,7 +153,7 @@ public abstract partial class FalloutBuild : IFalloutBuild
 
     protected internal virtual string NuGetPackagesConfigFile =>
         BuildProjectDirectory != null
-            ? NuGetPackageResolver.GetPackagesConfigFile(BuildProjectDirectory)
+            ? ToolingServices.ToolPaths.GetPackagesConfigFile(BuildProjectDirectory)
             : null;
 
     protected internal virtual string NuGetAssetsConfigFile =>

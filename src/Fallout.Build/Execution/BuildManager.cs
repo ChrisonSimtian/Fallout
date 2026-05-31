@@ -11,7 +11,6 @@ using Fallout.Domain.Execution;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 #pragma warning disable CA2255
 
 namespace Fallout.Application.Execution;
@@ -53,10 +52,10 @@ internal static class BuildManager
             build.ExecutableTargets = ExecutableTargetFactory.CreateAll(build, defaultTargetExpressions);
             build.ExecuteExtension<IOnBuildCreated>(x => x.OnBuildCreated(build.ExecutableTargets));
 
-            NuGetToolPathResolver.EmbeddedPackagesDirectory = build.EmbeddedPackagesDirectory;
-            NuGetToolPathResolver.NuGetPackagesConfigFile = build.NuGetPackagesConfigFile;
-            NuGetToolPathResolver.NuGetAssetsConfigFile = build.NuGetAssetsConfigFile;
-            NpmToolPathResolver.NpmPackageJsonFile = build.NpmPackageJsonFile;
+            ToolingServices.ToolPaths.EmbeddedPackagesDirectory = build.EmbeddedPackagesDirectory;
+            ToolingServices.ToolPaths.NuGetPackagesConfigFile = build.NuGetPackagesConfigFile;
+            ToolingServices.ToolPaths.NuGetAssetsConfigFile = build.NuGetAssetsConfigFile;
+            ToolingServices.ToolPaths.NpmPackageJsonFile = build.NpmPackageJsonFile;
 
             if (!build.NoLogo)
                 build.WriteLogo();

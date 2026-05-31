@@ -13,7 +13,6 @@ using Fallout.Application;
 using Fallout.Application.Execution;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Common;
 
 namespace Fallout.Application.Tools.Docker;
@@ -103,7 +102,7 @@ public static class DockerTargetDefinitionExtensions
                     .When(!settings.Rm.HasValue, _ => _
                         .EnableRm())
                     .AddVolume($"{build.RootDirectory}:{rootDirectory}")
-                    .AddVolume($"{NuGetPackageResolver.GetPackagesDirectory(NuGetToolPathResolver.NuGetPackagesConfigFile)}:{nugetDirectory}")
+                    .AddVolume($"{ToolingServices.ToolPaths.GetNuGetPackagesDirectory()}:{nugetDirectory}")
                     .SetPlatform(settings.Platform)
                     .SetWorkdir(rootDirectory)
                     .SetEnvFile(envFile)
