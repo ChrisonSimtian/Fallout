@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using Fallout.Common.Utilities;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
+using Fallout.Kernel;
 
 namespace Fallout.Common.CI.TeamCity.Configuration;
 

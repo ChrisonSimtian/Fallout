@@ -4,17 +4,17 @@ using Fallout.Common;
 using Fallout.Common.CI;
 using Fallout.Common.Execution;
 using Fallout.Common.Git;                                                                          // GIT
-using Fallout.Common.IO;
+using Fallout.Kernel.IO;
 using Fallout.Solutions;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;                                                                 // DOTNET
 using Fallout.Common.Tools.GitVersion;                                                             // GITVERSION
 using Fallout.Common.Tools.MSBuild;                                                                // MSBUILD
 using Fallout.Common.Tools.NuGet;                                                                  // NUGET && MSBUILD
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
 using static Fallout.Common.ChangeLog.ChangelogTasks;                                              // CHANGELOG
 using static Fallout.Common.EnvironmentInfo;
-using static Fallout.Common.IO.PathConstruction;
+using static Fallout.Kernel.IO.PathConstruction;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;                                              // DOTNET
 using static Fallout.Common.Tools.MSBuild.MSBuildTasks;                                            // MSBUILD
 using static Fallout.Common.Tools.NuGet.NuGetTasks;                                                // NUGET && MSBUILD

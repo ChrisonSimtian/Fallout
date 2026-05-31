@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Fallout.CodeGeneration.Model;
-using Fallout.Common.Utilities;
+using Fallout.Kernel;
 
 namespace Fallout.CodeGeneration.Writers;
 

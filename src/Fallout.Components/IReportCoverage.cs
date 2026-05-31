@@ -2,15 +2,15 @@ using System;
 using System.IO;
 using System.Linq;
 using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using static Fallout.Application.Tools.Codecov.CodecovTasks;
 using static Fallout.Application.Tools.ReportGenerator.ReportGeneratorTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.Codecov;
 using Fallout.Application.Tools.ReportGenerator;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Components;
 

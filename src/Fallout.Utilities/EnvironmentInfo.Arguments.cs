@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Fallout.Common.Utilities;
+using Fallout.Kernel;
 
 namespace Fallout.Common;
 

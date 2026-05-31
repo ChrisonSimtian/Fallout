@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common;
-using Fallout.Common.IO;
 using Xunit.Abstractions;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests;
 

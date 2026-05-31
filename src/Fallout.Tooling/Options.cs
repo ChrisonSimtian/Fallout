@@ -7,9 +7,9 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Tooling;
 

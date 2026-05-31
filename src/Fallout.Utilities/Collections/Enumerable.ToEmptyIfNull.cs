@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Fallout.Common.Utilities.Collections;
+namespace Fallout.Kernel.Collections;
 
 public static partial class EnumerableExtensions
 {

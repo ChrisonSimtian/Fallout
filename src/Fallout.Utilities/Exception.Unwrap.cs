@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 [DebuggerNonUserCode]
 [DebuggerStepThrough]

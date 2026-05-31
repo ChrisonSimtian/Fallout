@@ -1,6 +1,6 @@
-﻿using System.IO;
+using System.IO;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 partial class AbsolutePathExtensions
 {

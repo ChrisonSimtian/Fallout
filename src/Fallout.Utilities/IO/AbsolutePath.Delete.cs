@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 partial class AbsolutePathExtensions
 {

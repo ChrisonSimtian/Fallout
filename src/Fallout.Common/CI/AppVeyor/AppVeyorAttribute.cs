@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.CI.AppVeyor.Configuration;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.CI.AppVeyor;
 

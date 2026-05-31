@@ -2,13 +2,13 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
+using Fallout.Kernel;
 using VerifyXunit;
 using Xunit;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.IO;
 
 #pragma warning disable CS0169 // Field is never used
 

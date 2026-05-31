@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -7,9 +7,10 @@ using ICSharpCode.SharpZipLib.BZip2;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 using ICSharpCode.SharpZipLib.Zip;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 public static class CompressionExtensions
 {

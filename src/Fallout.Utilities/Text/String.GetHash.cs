@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static partial class StringExtensions
 {

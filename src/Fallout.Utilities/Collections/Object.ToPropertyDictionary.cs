@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Fallout.Common.Utilities.Collections;
+namespace Fallout.Kernel.Collections;
 
 partial class EnumerableExtensions
 {

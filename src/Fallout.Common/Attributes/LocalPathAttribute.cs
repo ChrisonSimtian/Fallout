@@ -2,9 +2,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.IO;
 using Fallout.Application.Tooling;
 using Fallout.Common;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Application.Tooling;
 

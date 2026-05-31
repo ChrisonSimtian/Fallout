@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Fallout.Common.Utilities.Collections;
+namespace Fallout.Kernel.Collections;
 
 [SuppressMessage("ReSharper", "MissingXmlDoc")]
 [DebuggerNonUserCode]

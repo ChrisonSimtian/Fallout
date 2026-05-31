@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Fallout.Common.Utilities;
 using Serilog.Sinks.SystemConsole.Themes;
 using Fallout.Application.Execution.Theming;
+using Fallout.Kernel;
 
 namespace Fallout.Common.CI.AzurePipelines;
 

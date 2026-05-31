@@ -16,6 +16,7 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities;
 using Fallout.Application.Git;
+using Fallout.Kernel.IO;
 
 namespace Nuke.Common.Shim.Tests;
 
@@ -23,7 +24,7 @@ namespace Nuke.Common.Shim.Tests;
 // uses the canonical Fallout types via `Fallout.Common.Target` (shim doesn't
 // bridge delegates; that's `fallout-migrate`'s job). The [GlobbingOptions(...)]
 // attribute resolves through the shim now that the canonical is un-sealed.
-[GlobbingOptions(Fallout.Common.IO.GlobbingCaseSensitivity.CaseInsensitive)]
+[GlobbingOptions(Fallout.Kernel.IO.GlobbingCaseSensitivity.CaseInsensitive)]
 public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
 {
     [Parameter("Configuration to build")] readonly string Configuration;

@@ -6,16 +6,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Fallout.Common.CI.TeamCity.Configuration;
-using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.IO.PathConstruction;
+using static Fallout.Kernel.IO.PathConstruction;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
 using Fallout.Application.ValueInjection;
 using Fallout.Application;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Common.CI.TeamCity;
 

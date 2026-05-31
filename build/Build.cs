@@ -4,9 +4,7 @@ using System.Linq;
 using NuGet.Packaging;
 using Fallout.Common;
 using Fallout.Common.CI.GitHubActions;
-using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
@@ -18,6 +16,8 @@ using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tools.GitHub;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]

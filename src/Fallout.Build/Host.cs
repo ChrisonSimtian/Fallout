@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using Fallout.Domain.Execution;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -12,6 +10,8 @@ using Serilog.Sinks.SystemConsole.Themes;
 using Fallout.Application.Execution.Theming;
 using Fallout.Application.Execution;
 using Fallout.Common;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application;
 

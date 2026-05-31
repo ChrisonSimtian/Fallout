@@ -4,8 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application;
 using Fallout.Application.Git;
 using Fallout.Application.ValueInjection;
@@ -13,6 +11,8 @@ using Fallout.Application.CI;
 using Fallout.Common;
 using Fallout.Application.Tooling;
 using Fallout.Infrastructure.Tooling;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Execution;
 

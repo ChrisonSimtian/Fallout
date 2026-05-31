@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Fallout.Common.Utilities;
 using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.MSBuild;
 

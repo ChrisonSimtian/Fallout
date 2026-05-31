@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Common;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tooling;
 

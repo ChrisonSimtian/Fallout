@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities;
 using VerifyXunit;
 using Xunit;
+using Fallout.Kernel;
 
 namespace Fallout.Cli.Tests;
 

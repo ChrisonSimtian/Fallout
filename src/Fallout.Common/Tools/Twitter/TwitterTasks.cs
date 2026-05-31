@@ -8,9 +8,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Common;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.Twitter;
 

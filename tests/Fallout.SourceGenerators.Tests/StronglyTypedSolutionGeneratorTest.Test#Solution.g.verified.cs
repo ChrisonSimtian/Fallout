@@ -3,7 +3,7 @@
 
 using Fallout.Persistence.Solution.Model;
 using Fallout.Solutions;
-using Fallout.Common.IO;
+using Fallout.Kernel.IO;
 using System.Runtime.CompilerServices;
 
 internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Solutions.Solution(model, path)

@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 partial class AbsolutePathExtensions
 {

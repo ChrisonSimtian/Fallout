@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.ValueInjection;
 

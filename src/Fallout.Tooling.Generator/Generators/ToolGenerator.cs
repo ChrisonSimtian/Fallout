@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Fallout.CodeGeneration.Model;
 using Fallout.CodeGeneration.Writers;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
 
 // ReSharper disable UnusedMethodReturnValue.Local
 
@@ -61,7 +61,7 @@ public static class ToolGenerator
                    "Fallout.Common",
                    "Fallout.Common.Tooling",
                    "Fallout.Common.Tools",
-                   "Fallout.Common.Utilities.Collections",
+                   "Fallout.Kernel.Collections",
                    "System",
                    "System.Collections.Generic",
                    "System.Collections.ObjectModel",

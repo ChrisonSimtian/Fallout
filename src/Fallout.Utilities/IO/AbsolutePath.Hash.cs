@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 partial class AbsolutePathExtensions
 {

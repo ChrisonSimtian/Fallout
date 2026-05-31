@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.IO;
 using Fallout.Solutions;
 using Xunit;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests;
 

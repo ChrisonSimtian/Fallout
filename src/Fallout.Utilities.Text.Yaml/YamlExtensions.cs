@@ -1,9 +1,9 @@
 using System;
-using Fallout.Common.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Fallout.Kernel.IO;
 
-namespace Fallout.Utilities.Text.Yaml;
+namespace Fallout.Kernel.Text.Yaml;
 
 public static class YamlExtensions
 {

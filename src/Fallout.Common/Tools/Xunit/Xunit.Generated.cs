@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/Xunit/Xunit.json
 
 using Fallout.Common;
-using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Tools.Xunit;
 

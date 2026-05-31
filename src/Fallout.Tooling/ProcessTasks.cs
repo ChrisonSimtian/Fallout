@@ -5,12 +5,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Events;
 using Fallout.Application.Tooling;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Infrastructure.Tooling;
 

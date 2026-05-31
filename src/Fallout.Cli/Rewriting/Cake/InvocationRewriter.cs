@@ -4,7 +4,6 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
-using Fallout.Common.IO;
 using Serilog;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Fallout.Application;

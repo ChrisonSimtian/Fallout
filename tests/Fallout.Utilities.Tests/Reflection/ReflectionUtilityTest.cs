@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using FluentAssertions;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Xunit;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests.Execution;
 

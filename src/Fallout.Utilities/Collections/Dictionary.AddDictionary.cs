@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Fallout.Common.Utilities.Collections;
+namespace Fallout.Kernel.Collections;
 
 public static partial class DictionaryExtensions
 {

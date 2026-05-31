@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace Fallout.Common.Utilities.Net;
+namespace Fallout.Kernel.Net;
 
 public static partial class HttpRequestExtensions
 {

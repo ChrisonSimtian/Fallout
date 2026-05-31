@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 partial class ObjectExtensions
 {

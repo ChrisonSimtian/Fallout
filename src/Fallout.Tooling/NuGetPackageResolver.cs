@@ -6,10 +6,10 @@ using System.Text.Json.Nodes;
 using System.Xml.Linq;
 using NuGet.Packaging;
 using NuGet.Versioning;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Common;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Infrastructure.Tooling;
 

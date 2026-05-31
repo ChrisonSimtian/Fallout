@@ -4,13 +4,13 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
-using Fallout.Common.IO;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tools.MSBuild;
 using Fallout.Application.Tools.SignTool;
 using Fallout.Application.Tools.NuGet;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Cli.Rewriting.Cake;
 
@@ -31,13 +31,13 @@ internal class ClassRewriter : SafeSyntaxRewriter
             "System.Xml",
             "Fallout.Common",
             "Fallout.Common.Execution",
-            "Fallout.Common.IO",
+            "Fallout.Kernel.IO",
             "Fallout.Solutions",
             "Fallout.Common.Tooling",
             "Fallout.Common.Tools.DotNet",
             "Fallout.Common.Tools.GitVersion",
             "Fallout.Common.Tools.SignTool",
-            "Fallout.Common.Utilities.Collections",
+            "Fallout.Kernel.Collections",
         };
 
     private static Type[] StaticClassImports =>

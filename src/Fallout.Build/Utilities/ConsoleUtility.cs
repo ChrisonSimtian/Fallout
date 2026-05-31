@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Fallout.Application;
 using Fallout.Common;
-using Fallout.Common.Utilities;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Utilities;
 

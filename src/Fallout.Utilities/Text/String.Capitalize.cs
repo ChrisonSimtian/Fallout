@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Globalization;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 [DebuggerNonUserCode]
 [DebuggerStepThrough]

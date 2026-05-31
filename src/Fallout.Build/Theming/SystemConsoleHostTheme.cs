@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Fallout.Common.Utilities;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Execution.Theming;
 

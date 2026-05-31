@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using FluentAssertions;
 using Fallout.Domain.Execution;
-using Fallout.Common.Utilities.Collections;
 using Xunit;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Common.Tests.Execution;
 

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Locator;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Serilog;
 #pragma warning disable CA2255
 
 using Fallout.Common;
 using Fallout.Application.Tooling;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Solutions;
 

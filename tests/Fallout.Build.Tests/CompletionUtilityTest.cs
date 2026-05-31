@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
+using Fallout.Kernel;
 using VerifyTests;
 using VerifyXunit;
 using Xunit;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests;
 

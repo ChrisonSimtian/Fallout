@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
-using Fallout.Utilities.Text.Yaml;
+using Fallout.Kernel;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.Git.GitTasks;
 using Fallout.Application;
 using Fallout.Application.Git;
 using Fallout.Application.Tools.Git;
 using Fallout.Application.Tools.GitHub;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Text.Yaml;
 
 partial class Build
 {

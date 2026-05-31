@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static partial class ReflectionUtility
 {

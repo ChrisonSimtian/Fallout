@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.Utilities;
 using Xunit;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

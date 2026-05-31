@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Fallout.CodeGeneration.Model;
 using Fallout.Common;
-using Fallout.Common.Utilities.Net;
 using Serilog;
+using Fallout.Kernel.Net;
 
 namespace Fallout.CodeGeneration;
 

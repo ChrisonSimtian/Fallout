@@ -5,8 +5,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 public static class HttpTasks
 {

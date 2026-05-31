@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.IO;
 using static Fallout.Common.Constants;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Cli;
 

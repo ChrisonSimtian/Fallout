@@ -4,8 +4,8 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Fallout.Common;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Build.Shared;
 

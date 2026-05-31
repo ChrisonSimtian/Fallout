@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 // TODO: document
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Fallout.Application.Tooling;
 using Fallout.Common;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.OctoVersion;
 

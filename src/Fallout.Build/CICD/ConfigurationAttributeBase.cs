@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using static Fallout.Application.CI.BuildServerConfigurationGeneration;
 using Fallout.Application;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Application.CI;
 

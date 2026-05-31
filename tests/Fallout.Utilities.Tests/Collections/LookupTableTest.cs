@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.Utilities.Collections;
 using Xunit;
+using Fallout.Kernel.Collections;
 
 // ReSharper disable ArgumentsStyleLiteral
 

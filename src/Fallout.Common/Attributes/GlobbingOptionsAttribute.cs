@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Fallout.Application.Execution;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 /// <summary>
 /// Allows to configure the case-sensitivity used for globbing operations in <see cref="PathConstruction"/>.

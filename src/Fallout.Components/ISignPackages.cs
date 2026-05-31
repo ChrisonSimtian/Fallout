@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities.Collections;
 using static Fallout.Application.Tools.SignPath.SignPathTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.SignPath;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Components;
 

@@ -3,8 +3,8 @@ using System.Linq;
 using NuGet.Versioning;
 using Fallout.Common;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
 using Fallout.Infrastructure.Tooling;
+using Fallout.Kernel;
 
 namespace Fallout.Cli;
 

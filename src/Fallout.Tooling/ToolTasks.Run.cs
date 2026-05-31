@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Tooling;
 

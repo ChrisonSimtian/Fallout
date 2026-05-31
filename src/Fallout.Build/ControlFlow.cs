@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities;
 using Serilog;
 using Fallout.Common;
+using Fallout.Kernel;
 #pragma warning disable CS0618
 
 // ReSharper disable CompareNonConstrainedGenericWithNull

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities.Collections;
 using Xunit;
-using static Fallout.Common.Utilities.ReflectionUtility;
+using static Fallout.Kernel.ReflectionUtility;
 using Fallout.Application;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests;
 

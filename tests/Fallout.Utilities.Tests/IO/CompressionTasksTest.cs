@@ -2,9 +2,9 @@ using System;
 using System.IO;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.IO;
 using Xunit;
 using Xunit.Abstractions;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests;
 

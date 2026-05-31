@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Infrastructure.Tooling;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.CI.TeamCity;
 

@@ -1,4 +1,3 @@
-using Fallout.Common.IO;
 using Fallout.Solutions;  // was Fallout.Common.ProjectModel; — renamed in #254 (persistence layering + namespace cleanup)
 using Fallout.Application;
 

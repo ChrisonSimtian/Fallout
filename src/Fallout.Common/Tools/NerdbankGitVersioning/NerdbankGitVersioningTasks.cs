@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application.Tooling;
 using Fallout.Infrastructure.Tooling;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.NerdbankGitVersioning;
 

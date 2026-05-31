@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Net;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.Net;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.Mastodon;
 

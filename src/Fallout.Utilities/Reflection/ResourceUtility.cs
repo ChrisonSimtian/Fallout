@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static class ResourceUtility
 {

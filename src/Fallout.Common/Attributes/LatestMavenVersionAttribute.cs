@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Reflection;
 using NuGet.Versioning;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Application.Tooling;
 

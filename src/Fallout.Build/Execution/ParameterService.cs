@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Common.Utilities;
 using Serilog;
-using static Fallout.Common.Utilities.ReflectionUtility;
+using static Fallout.Kernel.ReflectionUtility;
 using Fallout.Common;
 using Fallout.Application.Tooling;
+using Fallout.Kernel;
 
 namespace Fallout.Application;
 

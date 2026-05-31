@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,12 +8,12 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
-using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Scriban;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.SourceGenerators;
 
@@ -56,7 +56,7 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
 
                     using Fallout.Persistence.Solution.Model;
                     using Fallout.Solutions;
-                    using Fallout.Common.IO;
+                    using Fallout.Kernel.IO;
                     using System.Runtime.CompilerServices;
 
                     {declaration}

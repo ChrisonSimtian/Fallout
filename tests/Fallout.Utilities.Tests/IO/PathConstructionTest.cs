@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.IO;
 using Xunit;
-using static Fallout.Common.IO.PathConstruction;
+using static Fallout.Kernel.IO.PathConstruction;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests;
 

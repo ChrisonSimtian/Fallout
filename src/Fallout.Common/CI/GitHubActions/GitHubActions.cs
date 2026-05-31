@@ -7,11 +7,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Nodes;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Tooling;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.CI.GitHubActions;
 

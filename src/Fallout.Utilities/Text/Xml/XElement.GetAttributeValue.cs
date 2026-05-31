@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Xml.Linq;
+using Fallout.Common;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static partial class XElementExtensions
 {

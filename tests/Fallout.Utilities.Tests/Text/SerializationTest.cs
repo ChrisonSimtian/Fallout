@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Utilities.Text.Yaml;
 using Xunit;
+using Fallout.Kernel;
+using Fallout.Kernel.Text.Yaml;
 
 namespace Fallout.Common.Tests;
 

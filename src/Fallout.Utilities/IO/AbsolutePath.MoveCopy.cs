@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 [Flags]
 public enum ExistsPolicy

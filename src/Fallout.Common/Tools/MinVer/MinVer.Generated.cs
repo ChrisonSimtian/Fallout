@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/MinVer/MinVer.json
 
 using Fallout.Common;
-using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

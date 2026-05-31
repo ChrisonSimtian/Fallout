@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
+using Fallout.Common;
 
 // ReSharper disable ArrangeMethodOrOperatorBody
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 /// <summary>
 /// <p>Provides an abstraction for generating Windows/Unix/UNC-compliant

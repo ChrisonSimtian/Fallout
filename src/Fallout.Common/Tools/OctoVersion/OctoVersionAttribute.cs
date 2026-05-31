@@ -4,13 +4,13 @@ using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application;
 using Fallout.Application.Tooling;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Application.Tools.OctoVersion;
 

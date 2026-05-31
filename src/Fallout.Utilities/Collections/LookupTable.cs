@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Fallout.Common;
 
-namespace Fallout.Common.Utilities.Collections;
+namespace Fallout.Kernel.Collections;
 
 [Serializable]
 public class LookupTable<TKey, TValue>(Dictionary<TKey, List<TValue>> dictionary) : ILookup<TKey, TValue>

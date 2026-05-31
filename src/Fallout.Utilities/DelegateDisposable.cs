@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 /// <summary>
 /// Represents an <see cref="IDisposable"/> that executes a delegate upon <see cref="Dispose"/>.

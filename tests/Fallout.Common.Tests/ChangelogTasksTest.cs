@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Fallout.Common.ChangeLog;
-using Fallout.Common.IO;
 using VerifyXunit;
 using Xunit;
+using Fallout.Kernel.IO;
 
 // ReSharper disable ReturnValueOfPureMethodIsNotUsed
 

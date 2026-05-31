@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Execution;
 

@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
 using Fallout.Application;
 using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Application.CI;
 

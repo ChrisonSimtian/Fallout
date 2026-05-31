@@ -5,8 +5,8 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Cli.Rewriting.Cake;
 

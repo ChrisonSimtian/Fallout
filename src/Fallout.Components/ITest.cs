@@ -5,15 +5,15 @@ using System.Linq;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
 using Fallout.Application.Tools.Coverlet;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Components;
 

@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Text;
 using Fallout.Common;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using static Fallout.Application.Tools.Git.GitTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.Git;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 partial class Build
 {

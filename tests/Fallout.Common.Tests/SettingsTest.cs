@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
 using FluentAssertions;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using VerifyXunit;
 using Xunit;
 using Fallout.Application.Tools.DotNet;
@@ -17,6 +15,8 @@ using Fallout.Application.Tools.CorFlags;
 using Fallout.Application.Tools.Docker;
 using Fallout.Application.Tools.Discord;
 using Fallout.Application.Tools.Kubernetes;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

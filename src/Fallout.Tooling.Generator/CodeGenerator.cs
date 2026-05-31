@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using Fallout.CodeGeneration.Generators;
 using Fallout.CodeGeneration.Model;
 using Fallout.Common;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.CodeGeneration;
 

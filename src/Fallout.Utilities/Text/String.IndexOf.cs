@@ -1,6 +1,6 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static partial class StringExtensions
 {

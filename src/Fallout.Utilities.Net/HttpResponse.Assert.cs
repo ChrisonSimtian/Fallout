@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
 
-namespace Fallout.Common.Utilities.Net;
+namespace Fallout.Kernel.Net;
 
 public static partial class HttpResponseExtensions
 {

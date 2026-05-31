@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Fallout.Application.Git;
 using Fallout.Application.Tools.Git;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Cli;
 

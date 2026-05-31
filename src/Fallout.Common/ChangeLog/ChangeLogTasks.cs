@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using NuGet.Versioning;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Serilog;
 using Fallout.Application.Git;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 // ReSharper disable ArgumentsStyleLiteral
 namespace Fallout.Common.ChangeLog;

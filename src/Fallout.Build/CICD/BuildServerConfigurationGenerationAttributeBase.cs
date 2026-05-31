@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.CI;
 

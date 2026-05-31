@@ -4,7 +4,6 @@ using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.Utilities;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
@@ -12,6 +11,7 @@ using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application.Tooling;
 using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.GitVersion;
 

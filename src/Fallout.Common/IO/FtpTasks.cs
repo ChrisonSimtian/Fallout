@@ -6,7 +6,7 @@ using Serilog;
 using Fallout.Application;
 #pragma warning disable SYSLIB0014
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 public static class FtpTasks
 {

@@ -3,8 +3,8 @@ using System.Linq;
 using Microsoft.Build.Framework;
 using Fallout.CodeGeneration;
 using Fallout.CodeGeneration.Model;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities.Collections;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.MSBuildTasks;
 

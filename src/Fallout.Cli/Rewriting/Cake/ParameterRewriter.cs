@@ -3,9 +3,9 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Cli.Rewriting.Cake;
 

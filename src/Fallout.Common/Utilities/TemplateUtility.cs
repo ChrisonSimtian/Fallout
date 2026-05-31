@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel.IO;
+using Fallout.Common;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static class TemplateUtility
 {

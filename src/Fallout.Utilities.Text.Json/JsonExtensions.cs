@@ -2,9 +2,9 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using Fallout.Common.IO;
+using Fallout.Kernel.IO;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static class JsonExtensions
 {

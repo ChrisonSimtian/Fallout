@@ -1,7 +1,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities.Net;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.Net;
 
 namespace Fallout.Application.Tools.Discord;
 

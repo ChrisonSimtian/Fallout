@@ -1,6 +1,6 @@
-﻿using Fallout.Common.Utilities;
 
 using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Solutions;
 

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application;
 using Fallout.Application.CI;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Common.CI.AzurePipelines;
 

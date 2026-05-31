@@ -3,13 +3,13 @@ using System.IO;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Fallout.Common;
-using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Utilities;
 using static Fallout.Common.Constants;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Cli;
 

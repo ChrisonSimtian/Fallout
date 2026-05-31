@@ -6,10 +6,10 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Net;
 using Fallout.Application.Tooling;
 using Fallout.Common;
+using Fallout.Kernel.Net;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.Slack;
 

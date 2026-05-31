@@ -2,9 +2,9 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Fallout.Common.IO;
+using Fallout.Kernel.IO;
 
-namespace Fallout.Common.Utilities.Net;
+namespace Fallout.Kernel.Net;
 
 public static partial class HttpResponseExtensions
 {

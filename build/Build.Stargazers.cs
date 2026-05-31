@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 partial class Build
 {

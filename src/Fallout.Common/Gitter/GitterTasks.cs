@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities.Net;
+using Fallout.Kernel.Net;
 
 namespace Fallout.Common.Gitter;
 //

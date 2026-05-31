@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 [DebuggerNonUserCode]
 [DebuggerStepThrough]

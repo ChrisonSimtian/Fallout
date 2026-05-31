@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Versioning;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Infrastructure.Tooling;
 

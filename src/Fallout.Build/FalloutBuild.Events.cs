@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Fallout.Application.Execution;
+using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application;
 

@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using static Fallout.Common.IO.PathConstruction;
+using static Fallout.Kernel.IO.PathConstruction;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 /// <summary>
 /// Represents a relative path with the Windows separator (backward slash).

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 [DebuggerNonUserCode]
 [DebuggerStepThrough]

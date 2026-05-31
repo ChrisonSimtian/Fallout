@@ -4,13 +4,13 @@ using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Tools.DotCover;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Common.CI.TeamCity;
 

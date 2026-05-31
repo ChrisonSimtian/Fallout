@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
-using Fallout.Common.Utilities;
+using Fallout.Kernel;
 
 namespace Fallout.Common;
 

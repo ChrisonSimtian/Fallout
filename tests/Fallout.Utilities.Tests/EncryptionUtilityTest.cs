@@ -1,7 +1,7 @@
 using System;
-using Fallout.Common.Utilities;
 using FluentAssertions;
 using Xunit;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

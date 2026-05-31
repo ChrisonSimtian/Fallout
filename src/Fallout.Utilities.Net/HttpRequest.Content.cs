@@ -6,7 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
-namespace Fallout.Common.Utilities.Net;
+namespace Fallout.Kernel.Net;
 
 public static partial class HttpRequestExtensions
 {

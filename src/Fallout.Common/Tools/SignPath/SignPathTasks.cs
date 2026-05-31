@@ -8,12 +8,12 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Application.Tools.SignPath;
 

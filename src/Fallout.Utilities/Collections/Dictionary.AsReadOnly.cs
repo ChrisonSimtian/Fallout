@@ -1,11 +1,11 @@
-﻿#if NETSTANDARD2_0
+#if NETSTANDARD2_0
 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Fallout.Common.Utilities.Collections;
+namespace Fallout.Kernel.Collections;
 
 public static partial class DictionaryExtensions
 {

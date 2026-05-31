@@ -1,9 +1,9 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Net;
+using Fallout.Kernel.Net;
+using Fallout.Kernel;
 
 namespace Fallout.Common.CI.GitHubActions;
 

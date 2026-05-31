@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Utilities;
 using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tooling;
 

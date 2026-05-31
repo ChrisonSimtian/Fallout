@@ -1,5 +1,5 @@
-using Fallout.Common.Utilities;
 using Fallout.Application.Tooling;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.OpenCover;
 

@@ -8,13 +8,13 @@ using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.IO;
 using VerifyXunit;
 using Xunit;
 using Fallout.Application.Execution;
 using Fallout.Application.CI;
 using Fallout.Application;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Tests.CI;
 

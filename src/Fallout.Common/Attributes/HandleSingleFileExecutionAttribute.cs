@@ -6,12 +6,12 @@ using System.Reflection;
 using System.Text.Json.Nodes;
 using ICSharpCode.SharpZipLib.Zip;
 using NuGet.Packaging;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Serilog;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
 using Fallout.Infrastructure.Tooling;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
 
 namespace Fallout.Common.Execution;
 

@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Fallout.Common.Utilities;
 using Fallout.Application;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

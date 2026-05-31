@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
+using Fallout.Common;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 public static partial class JsonNodeExtensions
 {

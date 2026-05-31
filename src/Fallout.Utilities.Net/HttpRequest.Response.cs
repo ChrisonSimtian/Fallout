@@ -1,8 +1,8 @@
-﻿using System.Net.Http;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fallout.Common.Utilities.Net;
+namespace Fallout.Kernel.Net;
 
 public static partial class HttpRequestExtensions
 {

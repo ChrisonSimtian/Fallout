@@ -1,7 +1,7 @@
 using FluentAssertions;
-using Fallout.Common.IO;
 using Xunit;
 using Fallout.Application.Tooling;
+using Fallout.Kernel.IO;
 
 // ReSharper disable StringLiteralAsInterpolationArgument
 

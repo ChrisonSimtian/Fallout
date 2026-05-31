@@ -1,9 +1,10 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using static Fallout.Common.IO.PathConstruction;
+using static Fallout.Kernel.IO.PathConstruction;
+using Fallout.Common;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 /// <summary>
 /// Represents a relative path with the separator of the current operating system.

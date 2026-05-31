@@ -5,17 +5,17 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Fallout.Common;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Spectre.Console;
 using static Fallout.Common.Constants;
 using static Fallout.Common.EnvironmentInfo;
 using static Fallout.Infrastructure.Tooling.ProcessTasks;
-using static Fallout.Common.Utilities.TemplateUtility;
+using static Fallout.Kernel.TemplateUtility;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Infrastructure.Tooling;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Cli;
 

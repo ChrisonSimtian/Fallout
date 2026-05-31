@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -15,6 +12,9 @@ using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Execution;
 using Fallout.Common;
+using Fallout.Kernel;
+using Fallout.Kernel.IO;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Application.Execution;
 

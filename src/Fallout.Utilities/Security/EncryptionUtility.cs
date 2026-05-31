@@ -4,8 +4,9 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Fallout.Common;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Kernel;
 
 /// <summary>
 /// Symmetric encryption for the <c>fallout :secrets</c> flow. Two ciphertext formats are recognised:

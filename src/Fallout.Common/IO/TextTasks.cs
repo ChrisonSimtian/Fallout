@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Fallout.Common.IO;
+namespace Fallout.Kernel.IO;
 
 public static class TextTasks
 {

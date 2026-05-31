@@ -4,9 +4,9 @@
 // https://github.com/ChrisonSimtian/Fallout/blob/main/LICENSE
 
 using FluentAssertions;
-using Fallout.Common.Utilities;
 using Xunit;
 using Fallout.Application.Tools.GitVersion;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

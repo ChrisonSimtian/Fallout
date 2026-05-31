@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Fallout.Common;
 using Fallout.Common.ChangeLog;
 using Fallout.Common.CI.GitHubActions;
-using Fallout.Common.IO;
-using Fallout.Common.Utilities;
 using Octokit;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
+using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Components;
 

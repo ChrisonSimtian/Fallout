@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 using Fallout.Application.Utilities;
+using Fallout.Kernel;
+using Fallout.Kernel.Collections;
 
 namespace Fallout.Common.CI.SpaceAutomation.Configuration;
 
