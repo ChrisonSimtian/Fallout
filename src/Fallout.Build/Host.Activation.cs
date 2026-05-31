@@ -16,9 +16,8 @@ public partial class Host
         AvailableTypes
             .OrderBy(x => x.IsAssignableTo(typeof(Terminal)))
             .ThenBy(x => x == typeof(Terminal))
-            .Where(IsRunning)
             .Select(CreateHost)
-            .First();
+            .First(x => x.IsActive);
 
     internal static IEnumerable<Type> AvailableTypes
         => AppDomain.CurrentDomain.GetAssemblies()
@@ -26,7 +25,15 @@ public partial class Host
             .Where(x => x.IsPublic)
             .Where(x => x.IsSubclassOf(typeof(Host)));
 
-    private static bool IsRunning(Type hostType)
+    // ADR-0005 (#3): discovery probes this overridable member instead of reflecting for a
+    // magic-string `IsRunning{TypeName}` static. The default falls back to that legacy convention,
+    // so every existing host keeps working unchanged; a new adapter just overrides IsActive (no
+    // static, no name-matching). Host constructors are side-effect-free, so probing by construction
+    // is cheap, and because First() stops at the active host it is the last constructed — and so
+    // remains Host.Instance (set in the base ctor).
+    protected internal virtual bool IsActive => IsRunningByConvention(GetType());
+
+    private static bool IsRunningByConvention(Type hostType)
     {
         var propertyName = $"IsRunning{hostType.Name}";
         var member = hostType.GetProperty(propertyName, ReflectionUtility.Static)

@@ -93,9 +93,18 @@ Acting on the spike's open question (and a maintainer's gut feeling), the single
 - `GitHubActions.BuildHost.cs` reduced to context-only; reporting overrides stay in `GitHubActions.Theming.cs`, untouched.
 - Validation: `Fallout.Common` builds clean; **105** Build.Tests + the new Common.Tests port check pass; generated workflows unchanged.
 
+## Discovery generalization (same day) — #3 done
+
+Host discovery no longer hinges on the magic-string `IsRunning{TypeName}` convention:
+
+- Added `protected internal virtual bool Host.IsActive`; `Host.Default` now probes `IsActive` instead of reflecting for `IsRunning{TypeName}`.
+- The default `IsActive` **falls back** to the legacy convention, so all eleven existing hosts work unchanged; a new adapter just overrides `IsActive` (no static, no name-matching) — which is how the upcoming Forgejo adapter will declare its detection.
+- Safe by construction: every host ctor is side-effect-free (verified), and because `First()` stops at the active host it is the last constructed and remains `Host.Instance`.
+- Tests (`HostActivationTest`) cover both paths: override-needs-no-static, and default-falls-back-to-convention. **107** Build.Tests + full Common.Tests green.
+
 **Recommended next moves (in order):**
 1. Promote ADR-0005 `Proposed` → `Accepted` (maintainer call, via PR review) and lock the two-port shape + names (`IBuildHost` / `IBuildReporter`).
 2. Separate doc PR (targets `main`, non-breaking) for ADR-0005 + this spike.
-3. **Generalize host discovery** to key off the ports rather than the `IsRunning{Name}` reflection convention on `Host` subclasses.
-4. **Add a second adapter** to prove the shape generalizes — Forgejo (its Actions are GitHub-workflow-compatible) or Azure DevOps.
+3. ~~Generalize host discovery~~ **done** (above).
+4. **Add the Forgejo adapter** — first adapter to use the clean `IsActive` override + both ports; its Actions are GitHub-workflow-compatible, so it stress-tests config generation too. Dogfood once the instance is live.
 5. Roll the ports across the other adapters; then consider exposing the seam for milestone #7. Mark the ports `[Experimental("FALLOUT0xx")]` when they near consumer-facing exposure.
