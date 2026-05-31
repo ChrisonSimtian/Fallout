@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.CI.AppVeyor;
+namespace Fallout.Infrastructure.CI.AppVeyor;
 
 /// <summary>
 /// See <a href="https://www.appveyor.com/docs/build-environment/">Build environment</a>

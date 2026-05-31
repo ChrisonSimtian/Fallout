@@ -1,7 +1,7 @@
 using System;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.TravisCI;
+namespace Fallout.Infrastructure.CI.TravisCI;
 
 public partial class TravisCI
 {

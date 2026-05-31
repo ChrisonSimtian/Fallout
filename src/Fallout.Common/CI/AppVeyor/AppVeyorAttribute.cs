@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.CI.AppVeyor.Configuration;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel.IO;
+using Fallout.Infrastructure.CI.AppVeyor.Configuration;
 
-namespace Fallout.Common.CI.AppVeyor;
+namespace Fallout.Infrastructure.CI.AppVeyor;
 
 /// <summary>
 /// Interface according to the <a href="https://www.appveyor.com/docs/">official website</a>.

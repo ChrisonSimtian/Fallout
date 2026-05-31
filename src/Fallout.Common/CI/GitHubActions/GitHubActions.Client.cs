@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Fallout.Kernel.Net;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 public partial class GitHubActions
 {

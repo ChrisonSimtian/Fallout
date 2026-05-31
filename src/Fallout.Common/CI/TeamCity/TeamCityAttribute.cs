@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Common.CI.TeamCity.Configuration;
 using Fallout.Solutions;
 using static Fallout.Kernel.IO.PathConstruction;
 using Fallout.Application.CI;
@@ -16,8 +15,10 @@ using Fallout.Application;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.TeamCity.Configuration;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.TeamCity;
+namespace Fallout.Infrastructure.CI.TeamCity;
 
 public class TeamCityAttribute : ChainedConfigurationAttributeBase
 {

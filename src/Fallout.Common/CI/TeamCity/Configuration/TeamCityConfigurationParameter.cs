@@ -4,7 +4,7 @@ using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.TeamCity.Configuration;
+namespace Fallout.Infrastructure.CI.TeamCity.Configuration;
 
 public class TeamCityConfigurationParameter : TeamCityParameter
 {

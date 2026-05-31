@@ -6,8 +6,9 @@ using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.AppVeyor;
+namespace Fallout.Infrastructure.CI.AppVeyor;
 // 
 // [Headers("Accept: application/json")]
 // public interface IAppVeyorRestClient
@@ -28,7 +29,7 @@ public enum AppVeyorMessageCategory
 /// Interface according to the <a href="https://www.appveyor.com/docs/environment-variables/">official website</a>.
 /// </summary>
 [ExcludeFromCodeCoverage]
-public partial class AppVeyor : Host, IBuildServer
+public partial class AppVeyor : Host, IBuildServer, IAppVeyor
 {
     public new static AppVeyor Instance => Host.Instance as AppVeyor;
 

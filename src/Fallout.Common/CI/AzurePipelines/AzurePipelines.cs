@@ -6,15 +6,16 @@ using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.AzurePipelines;
+namespace Fallout.Infrastructure.CI.AzurePipelines;
 
 /// <summary>
 /// Interface according to the <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&amp;tabs=yaml">official website</a>.
 /// <a href="https://github.com/Microsoft/azure-pipelines-tasks/blob/master/docs/authoring/commands.md">Azure Pipeline Tasks Documentation</a>
 /// </summary>
 [ExcludeFromCodeCoverage]
-public partial class AzurePipelines : Host, IBuildServer
+public partial class AzurePipelines : Host, IBuildServer, IAzurePipelines
 {
     public new static AzurePipelines Instance => Host.Instance as AzurePipelines;
 

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.AzurePipelines.Configuration;
 using static Fallout.Kernel.IO.PathConstruction;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
@@ -11,8 +10,10 @@ using Fallout.Application.Tooling;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.AzurePipelines.Configuration;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.AzurePipelines;
+namespace Fallout.Infrastructure.CI.AzurePipelines;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class AzurePipelinesAttribute : ChainedConfigurationAttributeBase

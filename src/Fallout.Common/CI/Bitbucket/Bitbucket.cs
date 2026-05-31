@@ -3,8 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.Bitbucket;
+namespace Fallout.Infrastructure.CI.Bitbucket;
 
 /// <summary>
 /// Interface according to the <a href="https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/">official website</a>.

@@ -4,8 +4,9 @@ using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application;
 using Fallout.Kernel;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.GitLab;
+namespace Fallout.Infrastructure.CI.GitLab;
 
 /// <summary>
 ///     Interface according to the <a href="https://docs.gitlab.com/ce/ci/variables/README.html">official website</a>.

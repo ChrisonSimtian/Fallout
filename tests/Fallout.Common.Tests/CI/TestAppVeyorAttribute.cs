@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.AppVeyor;
+using Fallout.Infrastructure.CI.AppVeyor;
 
 namespace Fallout.Common.Tests.CI;
 

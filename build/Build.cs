@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
 using Fallout.Common;
-using Fallout.Common.CI.GitHubActions;
 using Fallout.Solutions;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
@@ -18,6 +17,7 @@ using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tools.GitHub;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.GitHubActions;
 
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]

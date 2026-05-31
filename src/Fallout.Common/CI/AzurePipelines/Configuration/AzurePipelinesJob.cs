@@ -5,8 +5,9 @@ using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
+using Fallout.Infrastructure.CI.AzurePipelines;
 
-namespace Fallout.Common.CI.AzurePipelines.Configuration;
+namespace Fallout.Infrastructure.CI.AzurePipelines.Configuration;
 
 public class AzurePipelinesJob : ConfigurationEntity
 {

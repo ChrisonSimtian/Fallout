@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.GitHubActions.Configuration;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
@@ -10,8 +9,10 @@ using Fallout.Application.Tooling;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.GitHubActions.Configuration;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 /// <summary>
 /// Interface according to the <a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions">official website</a>.

@@ -11,14 +11,15 @@ using Fallout.Application.Tools.DotCover;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.TeamCity;
+namespace Fallout.Infrastructure.CI.TeamCity;
 
 /// <summary>
 /// Interface according to the <a href="https://confluence.jetbrains.com/display/TCDL/Build+Script+Interaction+with+TeamCity">official website</a>.
 /// </summary>
 [ExcludeFromCodeCoverage]
-public partial class TeamCity : Host, IBuildServer
+public partial class TeamCity : Host, IBuildServer, ITeamCity
 {
     public new static TeamCity Instance => Host.Instance as TeamCity;
 

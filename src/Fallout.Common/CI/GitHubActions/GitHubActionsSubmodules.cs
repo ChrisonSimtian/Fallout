@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 public enum GitHubActionsSubmodules
 {

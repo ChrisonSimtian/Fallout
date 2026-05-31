@@ -23,27 +23,23 @@ static class Runner
     // across rings type-by-type uses `TypeOverrides` (full-name → target ns), which beats the prefix rule.
     record struct Rule(string Old, string New, string[] SourceAssemblies);
 
-    // Step 5a — Fallout.Kernel: the shared utility/IO layer (pure helpers, collections, reflection, string,
-    // AbsolutePath + filesystem ops, EnvironmentInfo, globbing, net, compression) moves to Fallout.Kernel.*,
-    // the innermost shared ring. Wholesale namespace move (no per-type split) — gate-safe since Kernel is
-    // inner. Pushing the genuinely-EXTERNAL adapters (HTTP/FTP/compression) further out to Infrastructure is
-    // deferred: the Application ring uses them pervasively, so it needs the same ports call as the
-    // filesystem API. SourceAssemblies = every project declaring these namespaces. (Physical project rename
-    // Fallout.Utilities → Fallout.Kernel rides the deferred project-rename step, as with 4a/4b.)
-    static readonly string[] KernelSources =
-    [
-        "Fallout.Utilities", "Fallout.Common", "Fallout.Utilities.Net", "Fallout.Utilities.Text.Json",
-        "Fallout.Utilities.IO.Compression", "Fallout.Utilities.IO.Globbing", "Fallout.Utilities.Text.Yaml",
-    ];
+    // Step 5b — CI host providers → Infrastructure. The concrete CI provider classes (AppVeyor,
+    // AzurePipelines, TeamCity, GitHubActions, … : Host) and their config generators move from
+    // Fallout.Common.CI.* to Fallout.Infrastructure.CI.*. The Application ring reaches the provider-specific
+    // capabilities it needs through ports (IAppVeyor/IAzurePipelines/ITeamCity/IGitHubActions + CiHost) that
+    // were added in Fallout.Application.CI; consumers were already rewritten to CiHost, so this move doesn't
+    // add any Infrastructure using to the Application ring (gate stays green). The two enums the port methods
+    // expose are vocabulary → Fallout.Application.CI (per-type override).
     static readonly Rule[] Rules =
     [
-        new("Fallout.Common.Utilities",   "Fallout.Kernel",           KernelSources),
-        new("Fallout.Common.IO",          "Fallout.Kernel.IO",        KernelSources),
-        new("Fallout.Utilities.Text.Yaml", "Fallout.Kernel.Text.Yaml", KernelSources),
+        new("Fallout.Common.CI", "Fallout.Infrastructure.CI", ["Fallout.Common"]),
     ];
 
-    // No per-type splits in 5a (wholesale namespace moves).
-    static readonly Dictionary<string, string> TypeOverrides = new();
+    static readonly Dictionary<string, string> TypeOverrides = new()
+    {
+        ["Fallout.Common.CI.AzurePipelines.AzurePipelinesTestResultsType"] = "Fallout.Application.CI",
+        ["Fallout.Common.CI.AzurePipelines.AzurePipelinesCodeCoverageToolType"] = "Fallout.Application.CI",
+    };
 
     static bool Matches(Rule r, string ns) => ns == r.Old || ns.StartsWith(r.Old + ".");
     static bool IsMovable(string ns) => Rules.Any(r => Matches(r, ns));

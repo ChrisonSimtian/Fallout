@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.SpaceAutomation;
+using Fallout.Infrastructure.CI.SpaceAutomation;
 
 namespace Fallout.Common.Tests.CI;
 

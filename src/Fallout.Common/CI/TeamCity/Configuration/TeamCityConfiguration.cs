@@ -5,7 +5,7 @@ using Fallout.Application.Utilities;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
 
-namespace Fallout.Common.CI.TeamCity.Configuration;
+namespace Fallout.Infrastructure.CI.TeamCity.Configuration;
 
 public class TeamCityConfiguration : ConfigurationEntity
 {

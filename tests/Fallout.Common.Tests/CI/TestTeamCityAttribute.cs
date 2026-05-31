@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.TeamCity;
+using Fallout.Infrastructure.CI.TeamCity;
 
 namespace Fallout.Common.Tests.CI;
 

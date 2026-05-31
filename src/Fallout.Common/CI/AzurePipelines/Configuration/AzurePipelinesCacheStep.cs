@@ -3,8 +3,9 @@ using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.AzurePipelines;
 
-namespace Fallout.Common.CI.AzurePipelines.Configuration;
+namespace Fallout.Infrastructure.CI.AzurePipelines.Configuration;
 
 // https://docs.microsoft.com/en-us/azure/devops/pipelines/release/caching
 public class AzurePipelinesCacheStep : AzurePipelinesStep

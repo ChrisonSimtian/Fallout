@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Fallout.Common.CI.TeamCity.Configuration;
+namespace Fallout.Infrastructure.CI.TeamCity.Configuration;
 
 public enum TeamCityParameterType
 {

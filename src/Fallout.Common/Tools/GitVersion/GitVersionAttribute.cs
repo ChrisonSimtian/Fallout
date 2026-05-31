@@ -1,9 +1,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.TeamCity;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
@@ -13,6 +10,7 @@ using Fallout.Application.Tooling;
 using Fallout.Common;
 using Fallout.Kernel;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Tools.GitVersion;
 
 /// <summary>
@@ -46,17 +44,17 @@ public class GitVersionAttribute : ValueInjectionAttributeBase
                 .SetNoCache(NoCache)
                 .DisableProcessOutputLogging()
                 .SetUpdateAssemblyInfo(UpdateAssemblyInfo)
-                .When(TeamCity.Instance is { IsPullRequest: true } && !EnvironmentInfo.Variables.ContainsKey("Git_Branch"), _ => _
+                .When(CiHost.TeamCity is { IsPullRequest: true } && !EnvironmentInfo.Variables.ContainsKey("Git_Branch"), _ => _
                     .AddProcessEnvironmentVariable(
                         "Git_Branch",
-                        TeamCity.Instance.ConfigurationProperties.Single(x => x.Key.StartsWith("teamcity.build.vcs.branch")).Value)))
+                        CiHost.TeamCity.ConfigurationProperties.Single(x => x.Key.StartsWith("teamcity.build.vcs.branch")).Value)))
             .Result;
 
         if (UpdateBuildNumber)
         {
-            AzurePipelines.Instance?.UpdateBuildNumber(gitVersion.FullSemVer);
-            TeamCity.Instance?.SetBuildNumber(gitVersion.FullSemVer);
-            AppVeyor.Instance?.UpdateBuildVersion($"{gitVersion.FullSemVer}.build.{AppVeyor.Instance.BuildNumber}");
+            CiHost.AzurePipelines?.UpdateBuildNumber(gitVersion.FullSemVer);
+            CiHost.TeamCity?.SetBuildNumber(gitVersion.FullSemVer);
+            CiHost.AppVeyor?.UpdateBuildVersion($"{gitVersion.FullSemVer}.build.{CiHost.AppVeyor.BuildNumber}");
         }
 
         return gitVersion;

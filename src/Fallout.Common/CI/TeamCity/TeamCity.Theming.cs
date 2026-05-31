@@ -3,7 +3,7 @@ using Fallout.Application.Execution.Theming;
 using Fallout.Application.Execution;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.TeamCity;
+namespace Fallout.Infrastructure.CI.TeamCity;
 
 public partial class TeamCity
 {

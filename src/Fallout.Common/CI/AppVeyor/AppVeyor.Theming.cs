@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Serilog.Sinks.SystemConsole.Themes;
 using Fallout.Application.Execution.Theming;
 
-namespace Fallout.Common.CI.AppVeyor;
+namespace Fallout.Infrastructure.CI.AppVeyor;
 
 public partial class AppVeyor
 {

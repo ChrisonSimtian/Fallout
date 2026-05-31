@@ -5,13 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fallout.Common;
 using Fallout.Common.ChangeLog;
-using Fallout.Common.CI.GitHubActions;
 using Octokit;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Components;
 
 [ParameterPrefix(GitHubRelease)]
@@ -19,7 +19,7 @@ public interface ICreateGitHubRelease : IHasGitRepository, IHasChangelog
 {
     public const string GitHubRelease = nameof(GitHubRelease);
 
-    [Parameter] [Secret] string GitHubToken => TryGetValue(() => GitHubToken) ?? GitHubActions.Instance?.Token;
+    [Parameter] [Secret] string GitHubToken => TryGetValue(() => GitHubToken) ?? CiHost.GitHubActions?.Token;
 
     string Name { get; }
     bool Prerelease => false;

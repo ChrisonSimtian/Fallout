@@ -4,8 +4,9 @@ using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
+using Fallout.Infrastructure.CI.GitHubActions;
 
-namespace Fallout.Common.CI.GitHubActions.Configuration;
+namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;
 
 public class GitHubActionsVcsTrigger : GitHubActionsDetailedTrigger
 {

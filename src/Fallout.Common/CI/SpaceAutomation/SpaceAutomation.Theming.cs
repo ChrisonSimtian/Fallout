@@ -1,6 +1,6 @@
 using Fallout.Application.Execution;
 
-namespace Fallout.Common.CI.SpaceAutomation;
+namespace Fallout.Infrastructure.CI.SpaceAutomation;
 
 public partial class SpaceAutomation
 {

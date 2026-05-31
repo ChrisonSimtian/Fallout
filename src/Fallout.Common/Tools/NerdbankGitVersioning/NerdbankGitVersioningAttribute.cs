@@ -1,11 +1,9 @@
 using System;
 using System.Reflection;
-using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.TeamCity;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Tooling;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Tools.NerdbankGitVersioning;
 
 /// <summary>
@@ -24,9 +22,9 @@ public class NerdbankGitVersioningAttribute : ValueInjectionAttributeBase
 
         if (UpdateBuildNumber)
         {
-            AzurePipelines.Instance?.UpdateBuildNumber(version.SemVer2);
-            TeamCity.Instance?.SetBuildNumber(version.SemVer2);
-            AppVeyor.Instance?.UpdateBuildVersion($"{version.SemVer2}.build.{AppVeyor.Instance.BuildNumber}");
+            CiHost.AzurePipelines?.UpdateBuildNumber(version.SemVer2);
+            CiHost.TeamCity?.SetBuildNumber(version.SemVer2);
+            CiHost.AppVeyor?.UpdateBuildVersion($"{version.SemVer2}.build.{CiHost.AppVeyor.BuildNumber}");
         }
 
         return version;

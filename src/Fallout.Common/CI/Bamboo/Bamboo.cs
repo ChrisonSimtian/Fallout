@@ -2,8 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Fallout.Application.CI;
 using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.Bamboo;
+namespace Fallout.Infrastructure.CI.Bamboo;
 
 /// <summary>
 /// Interface according to the <a href="https://confluence.atlassian.com/bamboo/bamboo-variables-289277087.html">official website</a>.

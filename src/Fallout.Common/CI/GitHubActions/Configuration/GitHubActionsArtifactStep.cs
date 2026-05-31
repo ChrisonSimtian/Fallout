@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.GitHubActions.Configuration;
+namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;
 
 public class GitHubActionsArtifactStep : GitHubActionsStep
 {

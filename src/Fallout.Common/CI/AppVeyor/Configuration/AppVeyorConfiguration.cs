@@ -6,8 +6,9 @@ using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.AppVeyor;
 
-namespace Fallout.Common.CI.AppVeyor.Configuration;
+namespace Fallout.Infrastructure.CI.AppVeyor.Configuration;
 
 public class AppVeyorConfiguration : ConfigurationEntity
 {

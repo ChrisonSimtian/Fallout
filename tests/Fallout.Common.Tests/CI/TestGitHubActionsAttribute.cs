@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.GitHubActions;
+using Fallout.Infrastructure.CI.GitHubActions;
 
 namespace Fallout.Common.Tests.CI;
 

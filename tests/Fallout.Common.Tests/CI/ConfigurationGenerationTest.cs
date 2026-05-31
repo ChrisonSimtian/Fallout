@@ -4,10 +4,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.GitHubActions;
-using Fallout.Common.CI.TeamCity;
 using VerifyXunit;
 using Xunit;
 using Fallout.Application.Execution;
@@ -15,6 +11,10 @@ using Fallout.Application.CI;
 using Fallout.Application;
 using Fallout.Application.Tooling;
 using Fallout.Kernel.IO;
+using Fallout.Infrastructure.CI.AppVeyor;
+using Fallout.Infrastructure.CI.TeamCity;
+using Fallout.Infrastructure.CI.AzurePipelines;
+using Fallout.Infrastructure.CI.GitHubActions;
 
 namespace Fallout.Common.Tests.CI;
 

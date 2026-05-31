@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.AppVeyor.Configuration;
+namespace Fallout.Infrastructure.CI.AppVeyor.Configuration;
 
 public static class AppVeyorCustomWriterExtensions
 {

@@ -2,7 +2,7 @@ using System;
 using Fallout.Application.Execution.Theming;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.GitLab;
+namespace Fallout.Infrastructure.CI.GitLab;
 
 public partial class GitLab
 {

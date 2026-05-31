@@ -1,6 +1,6 @@
 using Fallout.Application.Utilities;
 
-namespace Fallout.Common.CI.AzurePipelines.Configuration;
+namespace Fallout.Infrastructure.CI.AzurePipelines.Configuration;
 
 // https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/pipeline-options-for-git?view=azure-devops&tabs=yaml#checkout-submodules
 public class AzurePipelineCheckoutStep : AzurePipelinesStep

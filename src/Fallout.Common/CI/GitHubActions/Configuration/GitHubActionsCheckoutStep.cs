@@ -2,8 +2,9 @@ using System;
 using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.GitHubActions;
 
-namespace Fallout.Common.CI.GitHubActions.Configuration;
+namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;
 
 public class GitHubActionsCheckoutStep : GitHubActionsStep
 {

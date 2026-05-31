@@ -1,12 +1,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.TeamCity;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Tooling;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Tools.MinVer;
 
 /// <summary>
@@ -26,9 +24,9 @@ public class MinVerAttribute : ValueInjectionAttributeBase
 
         if (UpdateBuildNumber)
         {
-            AzurePipelines.Instance?.UpdateBuildNumber(version.Version);
-            TeamCity.Instance?.SetBuildNumber(version.Version);
-            AppVeyor.Instance?.UpdateBuildVersion(version.Version);
+            CiHost.AzurePipelines?.UpdateBuildNumber(version.Version);
+            CiHost.TeamCity?.SetBuildNumber(version.Version);
+            CiHost.AppVeyor?.UpdateBuildVersion(version.Version);
         }
 
         return version;

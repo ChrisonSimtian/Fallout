@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.CI.TeamCity;
+namespace Fallout.Infrastructure.CI.TeamCity;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class TeamCityTokenAttribute : Attribute

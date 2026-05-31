@@ -4,7 +4,7 @@ using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.TeamCity.Configuration;
+namespace Fallout.Infrastructure.CI.TeamCity.Configuration;
 
 public class TeamCityProject : ConfigurationEntity
 {

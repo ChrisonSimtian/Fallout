@@ -1,9 +1,6 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.TeamCity;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application;
@@ -12,6 +9,7 @@ using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Tools.OctoVersion;
 
 /// <summary>
@@ -150,9 +148,9 @@ public class OctoVersionAttribute : ValueInjectionAttributeBase
 
         if (UpdateBuildNumber)
         {
-            AzurePipelines.Instance?.UpdateBuildNumber(version.FullSemVer);
-            TeamCity.Instance?.SetBuildNumber(version.FullSemVer);
-            AppVeyor.Instance?.UpdateBuildVersion(version.FullSemVer);
+            CiHost.AzurePipelines?.UpdateBuildNumber(version.FullSemVer);
+            CiHost.TeamCity?.SetBuildNumber(version.FullSemVer);
+            CiHost.AppVeyor?.UpdateBuildVersion(version.FullSemVer);
         }
 
         return version;

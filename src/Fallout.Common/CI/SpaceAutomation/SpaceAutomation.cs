@@ -3,8 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.SpaceAutomation;
+namespace Fallout.Infrastructure.CI.SpaceAutomation;
 
 /// <summary>
 /// Interface according to the <a href="https://www.jetbrains.com/help/space/automation.html">official website</a>.

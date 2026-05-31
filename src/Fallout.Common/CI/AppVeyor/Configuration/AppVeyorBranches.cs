@@ -4,7 +4,7 @@ using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Kernel.Collections;
 
-namespace Fallout.Common.CI.AppVeyor.Configuration;
+namespace Fallout.Infrastructure.CI.AppVeyor.Configuration;
 
 public class AppVeyorBranches : ConfigurationEntity
 {

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.CI.GitLab;
+namespace Fallout.Infrastructure.CI.GitLab;
 
 public enum GitLabProjectVisibility
 {

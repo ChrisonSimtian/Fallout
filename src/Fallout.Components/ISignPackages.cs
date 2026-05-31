@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.AppVeyor;
 using static Fallout.Application.Tools.SignPath.SignPathTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.SignPath;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Components;
 
 /// <summary>
@@ -63,7 +63,7 @@ public interface ISignPackages : IFalloutBuild
     IEnumerable<AbsolutePath> SignPathPackages { get; }
     bool SignPathReplacePackages => true;
 
-    private AppVeyor AppVeyor => AppVeyor.Instance;
+    private IAppVeyor AppVeyor => CiHost.AppVeyor;
 
     Target SignPackages => _ => _
         .TryDependsOn<IPack>()

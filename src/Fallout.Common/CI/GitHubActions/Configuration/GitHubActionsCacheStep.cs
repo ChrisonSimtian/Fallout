@@ -4,7 +4,7 @@ using Fallout.Application.Utilities;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
 
-namespace Fallout.Common.CI.GitHubActions.Configuration;
+namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;
 
 // https://github.com/actions/cache
 public class GitHubActionsCacheStep : GitHubActionsStep

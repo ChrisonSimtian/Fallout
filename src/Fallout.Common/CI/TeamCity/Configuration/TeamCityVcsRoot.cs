@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 
-namespace Fallout.Common.CI.TeamCity.Configuration;
+namespace Fallout.Infrastructure.CI.TeamCity.Configuration;
 
 public class TeamCityVcsRoot : ConfigurationEntity
 {

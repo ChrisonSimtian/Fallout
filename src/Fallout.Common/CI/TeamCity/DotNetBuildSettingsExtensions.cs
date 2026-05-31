@@ -3,8 +3,9 @@ using System.Linq;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel.IO;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.TeamCity;
+namespace Fallout.Infrastructure.CI.TeamCity;
 
 public static class DotNetBuildSettingsExtensions
 {

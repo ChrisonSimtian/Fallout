@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.AzurePipelines;
 using static Fallout.Application.Tools.Codecov.CodecovTasks;
 using static Fallout.Application.Tools.ReportGenerator.ReportGeneratorTasks;
 using Fallout.Application;
@@ -12,6 +11,7 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Components;
 
 public interface IReportCoverage : ITest, IHasReports, IHasGitRepository
@@ -72,7 +72,7 @@ public interface IReportCoverage : ITest, IHasReports, IHasGitRepository
     void UploadCoverageData()
     {
         TestResultDirectory.GlobFiles("*.xml").ForEach(x =>
-            AzurePipelines.Instance?.PublishCodeCoverage(
+            CiHost.AzurePipelines?.PublishCodeCoverage(
                 AzurePipelinesCodeCoverageToolType.Cobertura,
                 x,
                 CoverageReportDirectory));

@@ -12,14 +12,15 @@ using Fallout.Application.CI;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 /// <summary>
 /// Interface according to the <a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables">official website</a>.
 /// </summary>
 [ExcludeFromCodeCoverage]
-public partial class GitHubActions : Host, IBuildServer
+public partial class GitHubActions : Host, IBuildServer, IGitHubActions
 {
     internal static bool IsRunningGitHubActions => EnvironmentInfo.HasVariable("GITHUB_ACTIONS");
 

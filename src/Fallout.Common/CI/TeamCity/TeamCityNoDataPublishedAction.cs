@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Fallout.Common.CI.TeamCity;
+namespace Fallout.Infrastructure.CI.TeamCity;
 
 public enum TeamCityNoDataPublishedAction
 {

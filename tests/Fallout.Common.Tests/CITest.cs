@@ -4,15 +4,15 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using Fallout.Common.CI.AppVeyor;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.Bitrise;
-using Fallout.Common.CI.GitLab;
-using Fallout.Common.CI.Jenkins;
-using Fallout.Common.CI.TeamCity;
-using Fallout.Common.CI.TravisCI;
 using Xunit;
 using Fallout.Application.CI;
+using Fallout.Infrastructure.CI.AppVeyor;
+using Fallout.Infrastructure.CI.Bitrise;
+using Fallout.Infrastructure.CI.TeamCity;
+using Fallout.Infrastructure.CI.AzurePipelines;
+using Fallout.Infrastructure.CI.Jenkins;
+using Fallout.Infrastructure.CI.TravisCI;
+using Fallout.Infrastructure.CI.GitLab;
 
 namespace Fallout.Common.Tests;
 

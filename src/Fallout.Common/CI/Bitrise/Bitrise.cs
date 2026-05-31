@@ -3,8 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application;
 using Fallout.Application.CI;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.Bitrise;
+namespace Fallout.Infrastructure.CI.Bitrise;
 
 /// <summary>
 /// Interface according to the <a href="http://devcenter.bitrise.io/faq/available-environment-variables/#exposed-by-bitriseio">official website</a>.

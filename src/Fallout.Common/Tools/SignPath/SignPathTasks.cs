@@ -7,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Fallout.Common.CI.AppVeyor;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
@@ -15,6 +14,7 @@ using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Tools.SignPath;
 
 public static class SignPathTasks
@@ -58,11 +58,11 @@ public static class SignPathTasks
             var contentType = "application/json";
             var content = new
                           {
-                              AppVeyor.Instance.AccountName,
-                              AppVeyor.Instance.ProjectSlug,
-                              AppVeyor.Instance.BuildVersion,
-                              AppVeyor.Instance.BuildId,
-                              AppVeyor.Instance.JobId
+                              CiHost.AppVeyor.AccountName,
+                              CiHost.AppVeyor.ProjectSlug,
+                              CiHost.AppVeyor.BuildVersion,
+                              CiHost.AppVeyor.BuildId,
+                              CiHost.AppVeyor.JobId
                           };
 
             using var httpClient = CreateAuthorizedHttpClient(authToken, DefaultHttpClientTimeout);

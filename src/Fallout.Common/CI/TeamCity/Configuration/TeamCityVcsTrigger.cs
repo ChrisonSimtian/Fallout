@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Utilities;
 
-namespace Fallout.Common.CI.TeamCity.Configuration;
+namespace Fallout.Infrastructure.CI.TeamCity.Configuration;
 
 public class TeamCityVcsTrigger : TeamCityTrigger
 {

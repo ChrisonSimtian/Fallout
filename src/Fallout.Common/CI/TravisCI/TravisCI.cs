@@ -3,8 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application;
 using Fallout.Application.CI;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.TravisCI;
+namespace Fallout.Infrastructure.CI.TravisCI;
 
 /// <summary>
 /// Interface according to the <a href="https://docs.travis-ci.com/user/environment-variables/">official website</a>.

@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.AzurePipelines.Configuration;
+namespace Fallout.Infrastructure.CI.AzurePipelines.Configuration;
 
 public class AzurePipelinesPublishStep : AzurePipelinesStep
 {

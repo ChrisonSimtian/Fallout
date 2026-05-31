@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.SpaceAutomation.Configuration;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Infrastructure.CI.SpaceAutomation.Configuration;
 
-namespace Fallout.Common.CI.SpaceAutomation;
+namespace Fallout.Infrastructure.CI.SpaceAutomation;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class SpaceAutomationAttribute : ConfigurationAttributeBase

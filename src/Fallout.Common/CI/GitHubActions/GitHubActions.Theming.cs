@@ -2,7 +2,7 @@ using System;
 using Fallout.Application.Execution.Theming;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 public partial class GitHubActions
 {

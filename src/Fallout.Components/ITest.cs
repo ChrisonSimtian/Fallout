@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.AzurePipelines;
-using Fallout.Common.CI.GitHubActions;
-using Fallout.Common.CI.TeamCity;
 using Fallout.Solutions;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
@@ -15,6 +12,7 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 
+using Fallout.Application.CI;
 namespace Fallout.Application.Components;
 
 public interface ITest : ICompile, IHasArtifacts
@@ -50,9 +48,9 @@ public interface ITest : ICompile, IHasArtifacts
     void ReportTestResults()
     {
         TestResultDirectory.GlobFiles("*.trx").ForEach(x =>
-            AzurePipelines.Instance?.PublishTestResults(
+            CiHost.AzurePipelines?.PublishTestResults(
                 type: AzurePipelinesTestResultsType.VSTest,
-                title: $"{Path.GetFileNameWithoutExtension(x)} ({AzurePipelines.Instance.StageDisplayName})",
+                title: $"{Path.GetFileNameWithoutExtension(x)} ({CiHost.AzurePipelines.StageDisplayName})",
                 files: new string[] { x }));
     }
 
@@ -87,7 +85,7 @@ public interface ITest : ICompile, IHasArtifacts
             .EnableCollectCoverage()
             .SetCoverletOutputFormat(CoverletOutputFormat.cobertura)
             .SetExcludeByFile("*.Generated.cs")
-            .When(TeamCity.Instance is not null, _ => _
+            .When(CiHost.TeamCity is not null, _ => _
                 .SetCoverletOutputFormat($"\\\"{CoverletOutputFormat.cobertura},{CoverletOutputFormat.teamcity}\\\""))
             .When(IsServerBuild, _ => _
                 .EnableUseSourceLink()));
@@ -95,10 +93,10 @@ public interface ITest : ICompile, IHasArtifacts
     sealed Configure<DotNetTestSettings, Project> TestProjectSettingsBase => (_, v) => _
         .SetProjectFile(v)
         // https://github.com/Tyrrrz/GitHubActionsTestLogger
-        .When(GitHubActions.Instance is not null && v.HasPackageReference("GitHubActionsTestLogger"), _ => _
+        .When(CiHost.GitHubActions is not null && v.HasPackageReference("GitHubActionsTestLogger"), _ => _
             .AddLoggers("GitHubActions;report-warnings=false"))
         // https://github.com/JetBrains/TeamCity.VSTest.TestAdapter
-        .When(TeamCity.Instance is not null && v.HasPackageReference("TeamCity.VSTest.TestAdapter"), _ => _
+        .When(CiHost.TeamCity is not null && v.HasPackageReference("TeamCity.VSTest.TestAdapter"), _ => _
             .AddLoggers("TeamCity")
             // https://github.com/xunit/visualstudio.xunit/pull/108
             .AddRunSetting("RunConfiguration.NoAutoReporters", bool.TrueString))

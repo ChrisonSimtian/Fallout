@@ -4,7 +4,7 @@ using Serilog.Sinks.SystemConsole.Themes;
 using Fallout.Application.Execution.Theming;
 using Fallout.Kernel;
 
-namespace Fallout.Common.CI.AzurePipelines;
+namespace Fallout.Infrastructure.CI.AzurePipelines;
 
 public partial class AzurePipelines
 {

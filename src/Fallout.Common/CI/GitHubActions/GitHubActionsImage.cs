@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 /// <summary>
 /// See <a href="https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners">Virtual environments for GitHub Actions</a>

@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Utilities;
 
-namespace Fallout.Common.CI.GitHubActions.Configuration;
+namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;
 
 public class GitHubActionsScheduledTrigger : GitHubActionsDetailedTrigger
 {

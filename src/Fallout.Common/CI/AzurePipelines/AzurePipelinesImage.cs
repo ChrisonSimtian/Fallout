@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.CI.AzurePipelines;
+namespace Fallout.Infrastructure.CI.AzurePipelines;
 
 /// <summary>
 /// See <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted">Microsoft-hosted agents</a>

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Fallout.Common.CI.AppVeyor;
+namespace Fallout.Infrastructure.CI.AppVeyor;
 
 /// <summary>
 ///

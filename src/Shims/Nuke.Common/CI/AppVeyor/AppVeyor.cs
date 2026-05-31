@@ -1,3 +1,4 @@
+using Fallout.Infrastructure.CI.AppVeyor;
 // Hand-written transition shim for the framework-injected CI host singleton.
 // The TransitionShimGenerator can't bridge these because consumers receive
 // canonical-typed instances from Host.Instance (which can't be cast to a shim
@@ -10,12 +11,12 @@ namespace Nuke.Common.CI.AppVeyor;
 
 public static class AppVeyor
 {
-    public static global::Fallout.Common.CI.AppVeyor.AppVeyor Instance
-        => global::Fallout.Common.CI.AppVeyor.AppVeyor.Instance;
+    public static global::Fallout.Infrastructure.CI.AppVeyor.AppVeyor Instance
+        => global::Fallout.Infrastructure.CI.AppVeyor.AppVeyor.Instance;
 
     public static int MessageLimit
     {
-        get => global::Fallout.Common.CI.AppVeyor.AppVeyor.MessageLimit;
-        set => global::Fallout.Common.CI.AppVeyor.AppVeyor.MessageLimit = value;
+        get => global::Fallout.Infrastructure.CI.AppVeyor.AppVeyor.MessageLimit;
+        set => global::Fallout.Infrastructure.CI.AppVeyor.AppVeyor.MessageLimit = value;
     }
 }

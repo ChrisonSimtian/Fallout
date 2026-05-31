@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.CI.GitHubActions;
+namespace Fallout.Infrastructure.CI.GitHubActions;
 
 public enum GitHubActionsTrigger
 {

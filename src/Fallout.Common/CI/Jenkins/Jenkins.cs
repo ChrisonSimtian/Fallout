@@ -3,8 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.CI.Jenkins;
+namespace Fallout.Infrastructure.CI.Jenkins;
 
 /// <summary>
 /// Interface according to the <a href="https://wiki.jenkins.io/display/JENKINS/Building+a+software+project">official website</a>.

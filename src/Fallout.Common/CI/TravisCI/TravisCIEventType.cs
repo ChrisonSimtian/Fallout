@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 
 // ReSharper disable InconsistentNaming
 
-namespace Fallout.Common.CI.TravisCI;
+namespace Fallout.Infrastructure.CI.TravisCI;
 
 public enum TravisCIEventType
 {

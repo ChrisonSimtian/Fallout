@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI.AzurePipelines;
+using Fallout.Infrastructure.CI.AzurePipelines;
 
 namespace Fallout.Common.Tests.CI;
 
