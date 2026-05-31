@@ -19,7 +19,7 @@ The project + namespace structure is inherited verbatim from NUKE: the rebrand (
 `docs/rebrand-plan.md` explicitly **defers** "realigning project ↔ namespace" to "a future major version after the shim packages have sunset," citing the type-forwarding bridge as the blocker. This ADR **amends that deferral** on two grounds:
 
 - **The bridge is not a blocker.** The rebrand-plan deferred this work *because* it assumed a rigid `[TypeForwardedTo]` bridge. The actual machinery is the `TransitionShimGenerator` (`ShimAllPublicTypesUnder(from, to)`), a *prefix-remappable* subclass generator — so restructuring `Fallout.*` doesn't orphan the `Nuke.*` surface in principle. We nonetheless **defer the migration strategy wholesale** (see Decision §"Migration & shim strategy") rather than re-point ring-by-ring; the point here is only that the stated blocker doesn't bind.
-- **ADR-0004 gives a clean home.** Namespace realignment is breaking → it lands on `experimental` and is **batched to the `2027.0.0` yearly major**. The work happens in 2026; native `Fallout.*` consumers are carried by re-pointed shims + the `Fallout.Migrate` codefix. Old `Fallout.*` namespaces are deleted at the cut, not dragged.
+- **ADR-0004 gives a clean home.** Namespace realignment is breaking → it lands on `experimental` and is **batched to the next yearly major cut**. The `2026` major has **not cut yet** (no calendar-version GA tag exists; CHANGELOG `[Unreleased] — 2026.0` is still accumulating breaking changes), so this work can ride the **2026** cut and ship this year. Rings that aren't done before `2026.0.0` cuts roll to `2027`. Either way native `Fallout.*` consumers are carried by the deferred migration phase; old `Fallout.*` namespaces are deleted at the cut, not dragged.
 
 (The rebrand-plan is a transient maintainer-owned doc; this is a deliberate, recorded reversal of one of its deferrals, not a silent contradiction.)
 
@@ -41,7 +41,7 @@ The project + namespace structure is inherited verbatim from NUKE: the rebrand (
 **Rules:**
 1. **`namespace == project == layer`.** No project declares a namespace rooted outside its layer. `Fallout.Common` is **dissolved**.
 2. **Onion dependency rule, fitness-enforced.** Domain references no other Fallout assembly; Application references only Domain; Infrastructure references Application/Domain; only the Cli composition root references Infrastructure. One architecture-test per ring, added as each ring lands (extends the ADR-0005 boundary-test pattern).
-3. **Breaking → `experimental` → `2027.0.0`** (ADR-0004). A breaking PR targets `experimental` only and carries `target/2027` + `breaking-change` + a `CHANGELOG.md` migration entry.
+3. **Breaking → `experimental` → the next yearly major** (ADR-0004). The `2026` major is still unreleased, so rings ride the **2026** cut (`target/2026`) until it closes; anything after rolls to `2027`. A breaking PR targets `experimental` only and carries `target/<year>` + `breaking-change` + a `CHANGELOG.md` entry under that major.
 4. **Ring-by-ring migration**, inner to outer — each ring is its own PR on `experimental`. The spike (0002) proves the mechanics on the Domain ring before the larger rings.
 5. **Migration/shim strategy is deferred wholesale** — see below.
 
@@ -49,7 +49,7 @@ The project + namespace structure is inherited verbatim from NUKE: the rebrand (
 
 The `Nuke.*` transition shims (and any native-`Fallout.*` migration aid) are **explicitly out of scope for the rearchitecture rings.** Rationale: there's no point re-pointing the existing `TransitionShimGenerator` ring-by-ring toward a target that's still moving. Instead — once the final layered shape has settled — we design a **fresh migration/shim strategy that fits whatever we ended up with**, as its own phase and its own ADR. The existing bridge is re-pointable (it's a prefix-remappable subclass generator, not raw `[TypeForwardedTo]`), so this deferral costs us no future optionality; it's a sequencing choice, not a capability loss.
 
-Consequence during the work: on `experimental`, `Nuke.*` shim parity is **not maintained** while the rings land. That's acceptable — `experimental` is the unstable lane, and `2027.0.0` is the only deadline that matters; the new migration story is built before the cut. `Fallout.Migrate` likewise gets revisited then, not incrementally.
+Consequence during the work: on `experimental`, `Nuke.*` shim parity is **not maintained** while the rings land. That's acceptable — `experimental` is the unstable lane, and the only deadline that matters is the major cut the rings target; the new migration story is built before that cut. `Fallout.Migrate` likewise gets revisited then, not incrementally.
 
 ### Sequence (each step a PR on `experimental`, with its own ring fitness test)
 
@@ -76,7 +76,7 @@ Migration/shim strategy is redesigned after step 5, before the cut (deferred, ab
 
 ### Negative
 - **Large, breaking, multi-PR.** Touches nearly every file's `namespace`/`using`. Mitigated by ring-by-ring sequencing, re-pointed shims, the migrate codefix, and batching to one yearly major.
-- **Consumer churn** for native `Fallout.*` users, and a window on `experimental` where `Nuke.*` shim parity lapses. Both are carried by the deferred migration phase (a fresh strategy + CHANGELOG migration guide), built before the `2027.0.0` cut — not during the rings.
+- **Consumer churn** for native `Fallout.*` users, and a window on `experimental` where `Nuke.*` shim parity lapses. Both are carried by the deferred migration phase (a fresh strategy + CHANGELOG migration guide), built before the target major cut — not during the rings.
 
 ## Alternatives considered
 
