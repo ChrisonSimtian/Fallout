@@ -1,9 +1,9 @@
 using System.Linq;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.CI.GitHubActions.Configuration;
 

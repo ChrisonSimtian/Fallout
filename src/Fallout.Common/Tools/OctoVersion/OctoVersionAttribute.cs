@@ -5,13 +5,14 @@ using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.OctoVersion;
+namespace Fallout.Application.Tools.OctoVersion;
 
 /// <summary>
 /// Injects an instance of <see cref="OctoVersion"/> based on the local repository.

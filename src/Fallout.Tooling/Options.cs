@@ -9,8 +9,9 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public interface IOptions
 {

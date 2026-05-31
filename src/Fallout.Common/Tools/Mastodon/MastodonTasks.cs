@@ -3,11 +3,11 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Net;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Mastodon;
+namespace Fallout.Application.Tools.Mastodon;
 
 public static class MastodonTasks
 {

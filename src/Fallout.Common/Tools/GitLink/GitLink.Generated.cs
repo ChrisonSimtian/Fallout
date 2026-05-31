@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/GitLink/GitLink.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.GitLink;
+namespace Fallout.Application.Tools.GitLink;
 
 /// <summary><p>GitLink makes symbol servers obsolete which saves you both time with uploading source files with symbols and the user no longer has to specify custom symbol servers (such as symbolsource.org). The advantage of GitLink is that it is fully customized for Git. It also works with GitHub or BitBucket urls so it does not require a local git repository to work. This makes it perfectly usable in continuous integration servers such as Continua CI. Updating all the pdb files is very fast. A solution with over 85 projects will be handled in less than 30 seconds. When using GitLink, the user no longer has to specify symbol servers. The only requirement is to ensure the check the Enable source server support option in Visual Studio.</p><p>For more details, visit the <a href="https://github.com/GitTools/GitLink/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,20 +28,20 @@ public partial class GitLinkTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>GitLink makes symbol servers obsolete which saves you both time with uploading source files with symbols and the user no longer has to specify custom symbol servers (such as symbolsource.org). The advantage of GitLink is that it is fully customized for Git. It also works with GitHub or BitBucket urls so it does not require a local git repository to work. This makes it perfectly usable in continuous integration servers such as Continua CI. Updating all the pdb files is very fast. A solution with over 85 projects will be handled in less than 30 seconds. When using GitLink, the user no longer has to specify symbol servers. The only requirement is to ensure the check the Enable source server support option in Visual Studio.</p><p>For more details, visit the <a href="https://github.com/GitTools/GitLink/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;solutionDirectory&gt;</c> via <see cref="GitLink2Settings.SolutionDirectory"/></li><li><c>-b</c> via <see cref="GitLink2Settings.BranchName"/></li><li><c>-c</c> via <see cref="GitLink2Settings.Configuration"/></li><li><c>-d</c> via <see cref="GitLink2Settings.PdbDirectory"/></li><li><c>-debug</c> via <see cref="GitLink2Settings.Debug"/></li><li><c>-errorsaswarnings</c> via <see cref="GitLink2Settings.ErrorsAsWarnings"/></li><li><c>-f</c> via <see cref="GitLink2Settings.File"/></li><li><c>-l</c> via <see cref="GitLink2Settings.LogFile"/></li><li><c>-p</c> via <see cref="GitLink2Settings.Platform"/></li><li><c>-powershell</c> via <see cref="GitLink2Settings.UsePowershell"/></li><li><c>-s</c> via <see cref="GitLink2Settings.CommitSha"/></li><li><c>-skipverify</c> via <see cref="GitLink2Settings.SkipVerification"/></li><li><c>-u</c> via <see cref="GitLink2Settings.RepositoryUrl"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitLink2(GitLink2Settings options = null) => new GitLinkTasks().Run<GitLink2Settings>(options);
-    /// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Common.Tools.GitLink.GitLink2Settings)"/>
+    /// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Application.Tools.GitLink.GitLink2Settings)"/>
     public static IReadOnlyCollection<Output> GitLink2(Configure<GitLink2Settings> configurator) => new GitLinkTasks().Run<GitLink2Settings>(configurator.Invoke(new GitLink2Settings()));
-    /// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Common.Tools.GitLink.GitLink2Settings)"/>
+    /// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Application.Tools.GitLink.GitLink2Settings)"/>
     public static IEnumerable<(GitLink2Settings Settings, IReadOnlyCollection<Output> Output)> GitLink2(CombinatorialConfigure<GitLink2Settings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitLink2, degreeOfParallelism, completeOnFailure);
     /// <summary><p>GitLink makes symbol servers obsolete which saves you both time with uploading source files with symbols and the user no longer has to specify custom symbol servers (such as symbolsource.org). The advantage of GitLink is that it is fully customized for Git. It also works with GitHub or BitBucket urls so it does not require a local git repository to work. This makes it perfectly usable in continuous integration servers such as Continua CI. Updating all the pdb files is very fast. A solution with over 85 projects will be handled in less than 30 seconds. When using GitLink, the user no longer has to specify symbol servers. The only requirement is to ensure the check the Enable source server support option in Visual Studio.</p><p>For more details, visit the <a href="https://github.com/GitTools/GitLink/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;pdbFile&gt;</c> via <see cref="GitLink3Settings.PdbFile"/></li><li><c>--baseDir</c> via <see cref="GitLink3Settings.BaseDirectory"/></li><li><c>--commit</c> via <see cref="GitLink3Settings.CommitSha"/></li><li><c>--method</c> via <see cref="GitLink3Settings.Method"/></li><li><c>--skipVerify</c> via <see cref="GitLink3Settings.SkipVerification"/></li><li><c>--url</c> via <see cref="GitLink3Settings.RepositoryUrl"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitLink3(GitLink3Settings options = null) => new GitLinkTasks().Run<GitLink3Settings>(options);
-    /// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Common.Tools.GitLink.GitLink3Settings)"/>
+    /// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Application.Tools.GitLink.GitLink3Settings)"/>
     public static IReadOnlyCollection<Output> GitLink3(Configure<GitLink3Settings> configurator) => new GitLinkTasks().Run<GitLink3Settings>(configurator.Invoke(new GitLink3Settings()));
-    /// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Common.Tools.GitLink.GitLink3Settings)"/>
+    /// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Application.Tools.GitLink.GitLink3Settings)"/>
     public static IEnumerable<(GitLink3Settings Settings, IReadOnlyCollection<Output> Output)> GitLink3(CombinatorialConfigure<GitLink3Settings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitLink3, degreeOfParallelism, completeOnFailure);
 }
 #region GitLink2Settings
-/// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Common.Tools.GitLink.GitLink2Settings)"/>
+/// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Application.Tools.GitLink.GitLink2Settings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitLinkTasks), Command = nameof(GitLinkTasks.GitLink2))]
 public partial class GitLink2Settings : ToolOptions
@@ -75,7 +75,7 @@ public partial class GitLink2Settings : ToolOptions
 }
 #endregion
 #region GitLink3Settings
-/// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Common.Tools.GitLink.GitLink3Settings)"/>
+/// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Application.Tools.GitLink.GitLink3Settings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitLinkTasks), Command = nameof(GitLinkTasks.GitLink3))]
 public partial class GitLink3Settings : ToolOptions
@@ -95,7 +95,7 @@ public partial class GitLink3Settings : ToolOptions
 }
 #endregion
 #region GitLink2SettingsExtensions
-/// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Common.Tools.GitLink.GitLink2Settings)"/>
+/// <inheritdoc cref="GitLinkTasks.GitLink2(Fallout.Application.Tools.GitLink.GitLink2Settings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitLink2SettingsExtensions
 {
@@ -242,7 +242,7 @@ public static partial class GitLink2SettingsExtensions
 }
 #endregion
 #region GitLink3SettingsExtensions
-/// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Common.Tools.GitLink.GitLink3Settings)"/>
+/// <inheritdoc cref="GitLinkTasks.GitLink3(Fallout.Application.Tools.GitLink.GitLink3Settings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitLink3SettingsExtensions
 {

@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/VSTest/VSTest.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.VSTest;
+namespace Fallout.Application.Tools.VSTest;
 
 /// <summary><p>VSTest.Console.exe is the command-line command that is used to run tests. You can specify several options in any order on the VSTest.Console.exe command line.</p><p>For more details, visit the <a href="https://msdn.microsoft.com/en-us/library/jj155796.aspx">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +28,13 @@ public partial class VSTestTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>VSTest.Console.exe is the command-line command that is used to run tests. You can specify several options in any order on the VSTest.Console.exe command line.</p><p>For more details, visit the <a href="https://msdn.microsoft.com/en-us/library/jj155796.aspx">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;testAssemblies&gt;</c> via <see cref="VSTestSettings.TestAssemblies"/></li><li><c>/Diag</c> via <see cref="VSTestSettings.DiagnosticsFile"/></li><li><c>/EnableCodeCoverage</c> via <see cref="VSTestSettings.EnableCodeCoverage"/></li><li><c>/Framework</c> via <see cref="VSTestSettings.Framework"/></li><li><c>/InIsolation</c> via <see cref="VSTestSettings.InIsolation"/></li><li><c>/ListDiscoverers</c> via <see cref="VSTestSettings.ListDiscoverers"/></li><li><c>/ListExecutors</c> via <see cref="VSTestSettings.ListExecutors"/></li><li><c>/ListLoggers</c> via <see cref="VSTestSettings.ListLoggers"/></li><li><c>/ListSettingsProviders</c> via <see cref="VSTestSettings.ListSettingsProviders"/></li><li><c>/ListTests</c> via <see cref="VSTestSettings.ListTests"/></li><li><c>/Logger</c> via <see cref="VSTestSettings.Logger"/></li><li><c>/Parallel</c> via <see cref="VSTestSettings.Parallel"/></li><li><c>/Platform</c> via <see cref="VSTestSettings.Platform"/></li><li><c>/Settings</c> via <see cref="VSTestSettings.SettingsFile"/></li><li><c>/TestAdapterPath</c> via <see cref="VSTestSettings.TestAdapterPath"/></li><li><c>/TestCaseFilter</c> via <see cref="VSTestSettings.TestCaseFilters"/></li><li><c>/Tests</c> via <see cref="VSTestSettings.Tests"/></li><li><c>/UseVsixExtensions</c> via <see cref="VSTestSettings.UseVsixExtensions"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> VSTest(VSTestSettings options = null) => new VSTestTasks().Run<VSTestSettings>(options);
-    /// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Common.Tools.VSTest.VSTestSettings)"/>
+    /// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Application.Tools.VSTest.VSTestSettings)"/>
     public static IReadOnlyCollection<Output> VSTest(Configure<VSTestSettings> configurator) => new VSTestTasks().Run<VSTestSettings>(configurator.Invoke(new VSTestSettings()));
-    /// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Common.Tools.VSTest.VSTestSettings)"/>
+    /// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Application.Tools.VSTest.VSTestSettings)"/>
     public static IEnumerable<(VSTestSettings Settings, IReadOnlyCollection<Output> Output)> VSTest(CombinatorialConfigure<VSTestSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(VSTest, degreeOfParallelism, completeOnFailure);
 }
 #region VSTestSettings
-/// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Common.Tools.VSTest.VSTestSettings)"/>
+/// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Application.Tools.VSTest.VSTestSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(VSTestTasks), Command = nameof(VSTestTasks.VSTest))]
 public partial class VSTestSettings : ToolOptions
@@ -78,7 +78,7 @@ public partial class VSTestSettings : ToolOptions
 }
 #endregion
 #region VSTestSettingsExtensions
-/// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Common.Tools.VSTest.VSTestSettings)"/>
+/// <inheritdoc cref="VSTestTasks.VSTest(Fallout.Application.Tools.VSTest.VSTestSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class VSTestSettingsExtensions
 {

@@ -9,8 +9,9 @@ using NuGet.Versioning;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 public static class NuGetPackageResolver
 {

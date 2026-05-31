@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Linq;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.SignTool;
+namespace Fallout.Application.Tools.SignTool;
 
 partial class SignToolTasks
 {

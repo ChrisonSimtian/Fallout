@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>
 ///     Injects a delegate for process execution. The executable name is derived from the member name or can be

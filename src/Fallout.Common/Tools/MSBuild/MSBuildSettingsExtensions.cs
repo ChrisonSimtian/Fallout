@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Fallout.Common.Tools.MSBuild;
+namespace Fallout.Application.Tools.MSBuild;
 
 public static partial class MSBuildSettingsExtensions
 {

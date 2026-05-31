@@ -4,10 +4,10 @@ using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.Tooling;
 using Fallout.Application.ValueInjection;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.MinVer;
+namespace Fallout.Application.Tools.MinVer;
 
 /// <summary>
 /// Injects an instance of <see cref="MinVer"/> based on the local repository.

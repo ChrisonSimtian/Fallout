@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 
-namespace Fallout.Common.Tools.MSBuild;
+namespace Fallout.Application.Tools.MSBuild;
 
 public class MSBuildProject : DynamicObject
 {

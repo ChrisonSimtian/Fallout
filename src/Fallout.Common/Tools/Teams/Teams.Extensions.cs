@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Teams;
+namespace Fallout.Application.Tools.Teams;
 
 public partial class TeamsMessage
 {

@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.Teams;
+namespace Fallout.Application.Tools.Teams;
 
 public static class TeamsTasks
 {

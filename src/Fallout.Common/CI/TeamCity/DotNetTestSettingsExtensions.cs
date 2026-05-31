@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Common.CI.TeamCity;
 

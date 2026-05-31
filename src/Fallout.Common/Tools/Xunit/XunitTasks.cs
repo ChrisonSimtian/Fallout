@@ -1,8 +1,10 @@
 using System;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.Xunit;
+namespace Fallout.Application.Tools.Xunit;
 
 partial class XunitTasks
 {

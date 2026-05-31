@@ -1,4 +1,3 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Docker;
+namespace Fallout.Application.Tools.Docker;
 
 /// <summary><p>Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -25,1315 +25,1315 @@ public partial class DockerTasks : ToolTasks, IRequirePathTool
     /// <summary><p>Remove one or more configs.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configs&gt;</c> via <see cref="DockerConfigRmSettings.Configs"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerConfigRm(DockerConfigRmSettings options = null) => new DockerTasks().Run<DockerConfigRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Common.Tools.Docker.DockerConfigRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Application.Tools.Docker.DockerConfigRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerConfigRm(Configure<DockerConfigRmSettings> configurator) => new DockerTasks().Run<DockerConfigRmSettings>(configurator.Invoke(new DockerConfigRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Common.Tools.Docker.DockerConfigRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Application.Tools.Docker.DockerConfigRmSettings)"/>
     public static IEnumerable<(DockerConfigRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerConfigRm(CombinatorialConfigure<DockerConfigRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerConfigRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Load an image from a tar archive or STDIN.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--input</c> via <see cref="DockerLoadSettings.Input"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerLoadSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerLoad(DockerLoadSettings options = null) => new DockerTasks().Run<DockerLoadSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Common.Tools.Docker.DockerLoadSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Application.Tools.Docker.DockerLoadSettings)"/>
     public static IReadOnlyCollection<Output> DockerLoad(Configure<DockerLoadSettings> configurator) => new DockerTasks().Run<DockerLoadSettings>(configurator.Invoke(new DockerLoadSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Common.Tools.Docker.DockerLoadSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Application.Tools.Docker.DockerLoadSettings)"/>
     public static IEnumerable<(DockerLoadSettings Settings, IReadOnlyCollection<Output> Output)> DockerLoad(CombinatorialConfigure<DockerLoadSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerLoad, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove all stopped containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerContainerPruneSettings.Filter"/></li><li><c>--force</c> via <see cref="DockerContainerPruneSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerPrune(DockerContainerPruneSettings options = null) => new DockerTasks().Run<DockerContainerPruneSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Common.Tools.Docker.DockerContainerPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Application.Tools.Docker.DockerContainerPruneSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerPrune(Configure<DockerContainerPruneSettings> configurator) => new DockerTasks().Run<DockerContainerPruneSettings>(configurator.Invoke(new DockerContainerPruneSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Common.Tools.Docker.DockerContainerPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Application.Tools.Docker.DockerContainerPruneSettings)"/>
     public static IEnumerable<(DockerContainerPruneSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerPrune(CombinatorialConfigure<DockerContainerPruneSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerPrune, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage trust on Docker images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrust(DockerTrustSettings options = null) => new DockerTasks().Run<DockerTrustSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Common.Tools.Docker.DockerTrustSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Application.Tools.Docker.DockerTrustSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrust(Configure<DockerTrustSettings> configurator) => new DockerTasks().Run<DockerTrustSettings>(configurator.Invoke(new DockerTrustSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Common.Tools.Docker.DockerTrustSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Application.Tools.Docker.DockerTrustSettings)"/>
     public static IEnumerable<(DockerTrustSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrust(CombinatorialConfigure<DockerTrustSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrust, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Docker stacks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--kubeconfig</c> via <see cref="DockerStackSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--orchestrator</c> via <see cref="DockerStackSettings.Orchestrator"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStack(DockerStackSettings options = null) => new DockerTasks().Run<DockerStackSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Common.Tools.Docker.DockerStackSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Application.Tools.Docker.DockerStackSettings)"/>
     public static IReadOnlyCollection<Output> DockerStack(Configure<DockerStackSettings> configurator) => new DockerTasks().Run<DockerStackSettings>(configurator.Invoke(new DockerStackSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Common.Tools.Docker.DockerStackSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Application.Tools.Docker.DockerStackSettings)"/>
     public static IEnumerable<(DockerStackSettings Settings, IReadOnlyCollection<Output> Output)> DockerStack(CombinatorialConfigure<DockerStackSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStack, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pull an image or a repository from a registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerPullSettings.Name"/></li><li><c>--all-tags</c> via <see cref="DockerPullSettings.AllTags"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerPullSettings.DisableContentTrust"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--platform</c> via <see cref="DockerPullSettings.Platform"/></li><li><c>--quiet</c> via <see cref="DockerPullSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPull(DockerPullSettings options = null) => new DockerTasks().Run<DockerPullSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Common.Tools.Docker.DockerPullSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Application.Tools.Docker.DockerPullSettings)"/>
     public static IReadOnlyCollection<Output> DockerPull(Configure<DockerPullSettings> configurator) => new DockerTasks().Run<DockerPullSettings>(configurator.Invoke(new DockerPullSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Common.Tools.Docker.DockerPullSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Application.Tools.Docker.DockerPullSettings)"/>
     public static IEnumerable<(DockerPullSettings Settings, IReadOnlyCollection<Output> Output)> DockerPull(CombinatorialConfigure<DockerPullSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPull, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Sign an image.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustSign(DockerTrustSignSettings options = null) => new DockerTasks().Run<DockerTrustSignSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Common.Tools.Docker.DockerTrustSignSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Application.Tools.Docker.DockerTrustSignSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustSign(Configure<DockerTrustSignSettings> configurator) => new DockerTasks().Run<DockerTrustSignSettings>(configurator.Invoke(new DockerTrustSignSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Common.Tools.Docker.DockerTrustSignSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Application.Tools.Docker.DockerTrustSignSettings)"/>
     public static IEnumerable<(DockerTrustSignSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustSign(CombinatorialConfigure<DockerTrustSignSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustSign, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage checkpoints.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerCheckpoint(DockerCheckpointSettings options = null) => new DockerTasks().Run<DockerCheckpointSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Common.Tools.Docker.DockerCheckpointSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Application.Tools.Docker.DockerCheckpointSettings)"/>
     public static IReadOnlyCollection<Output> DockerCheckpoint(Configure<DockerCheckpointSettings> configurator) => new DockerTasks().Run<DockerCheckpointSettings>(configurator.Invoke(new DockerCheckpointSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Common.Tools.Docker.DockerCheckpointSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Application.Tools.Docker.DockerCheckpointSettings)"/>
     public static IEnumerable<(DockerCheckpointSettings Settings, IReadOnlyCollection<Output> Output)> DockerCheckpoint(CombinatorialConfigure<DockerCheckpointSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerCheckpoint, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage entities who can sign Docker images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustSigner(DockerTrustSignerSettings options = null) => new DockerTasks().Run<DockerTrustSignerSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Common.Tools.Docker.DockerTrustSignerSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Application.Tools.Docker.DockerTrustSignerSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustSigner(Configure<DockerTrustSignerSettings> configurator) => new DockerTasks().Run<DockerTrustSignerSettings>(configurator.Invoke(new DockerTrustSignerSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Common.Tools.Docker.DockerTrustSignerSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Application.Tools.Docker.DockerTrustSignerSettings)"/>
     public static IEnumerable<(DockerTrustSignerSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustSigner(CombinatorialConfigure<DockerTrustSignerSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustSigner, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more configs.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configs&gt;</c> via <see cref="DockerConfigInspectSettings.Configs"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerConfigInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--pretty</c> via <see cref="DockerConfigInspectSettings.Pretty"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerConfigInspect(DockerConfigInspectSettings options = null) => new DockerTasks().Run<DockerConfigInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Common.Tools.Docker.DockerConfigInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Application.Tools.Docker.DockerConfigInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerConfigInspect(Configure<DockerConfigInspectSettings> configurator) => new DockerTasks().Run<DockerConfigInspectSettings>(configurator.Invoke(new DockerConfigInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Common.Tools.Docker.DockerConfigInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Application.Tools.Docker.DockerConfigInspectSettings)"/>
     public static IEnumerable<(DockerConfigInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerConfigInspect(CombinatorialConfigure<DockerConfigInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerConfigInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage services.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerService(DockerServiceSettings options = null) => new DockerTasks().Run<DockerServiceSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerService(Fallout.Common.Tools.Docker.DockerServiceSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerService(Fallout.Application.Tools.Docker.DockerServiceSettings)"/>
     public static IReadOnlyCollection<Output> DockerService(Configure<DockerServiceSettings> configurator) => new DockerTasks().Run<DockerServiceSettings>(configurator.Invoke(new DockerServiceSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerService(Fallout.Common.Tools.Docker.DockerServiceSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerService(Fallout.Application.Tools.Docker.DockerServiceSettings)"/>
     public static IEnumerable<(DockerServiceSettings Settings, IReadOnlyCollection<Output> Output)> DockerService(CombinatorialConfigure<DockerServiceSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerService, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Generate and load a signing key-pair.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerTrustKeyGenerateSettings.Name"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustKeyGenerate(DockerTrustKeyGenerateSettings options = null) => new DockerTasks().Run<DockerTrustKeyGenerateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Common.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Application.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustKeyGenerate(Configure<DockerTrustKeyGenerateSettings> configurator) => new DockerTasks().Run<DockerTrustKeyGenerateSettings>(configurator.Invoke(new DockerTrustKeyGenerateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Common.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Application.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
     public static IEnumerable<(DockerTrustKeyGenerateSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustKeyGenerate(CombinatorialConfigure<DockerTrustKeyGenerateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustKeyGenerate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Docker.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSystem(DockerSystemSettings options = null) => new DockerTasks().Run<DockerSystemSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Common.Tools.Docker.DockerSystemSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Application.Tools.Docker.DockerSystemSettings)"/>
     public static IReadOnlyCollection<Output> DockerSystem(Configure<DockerSystemSettings> configurator) => new DockerTasks().Run<DockerSystemSettings>(configurator.Invoke(new DockerSystemSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Common.Tools.Docker.DockerSystemSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Application.Tools.Docker.DockerSystemSettings)"/>
     public static IEnumerable<(DockerSystemSettings Settings, IReadOnlyCollection<Output> Output)> DockerSystem(CombinatorialConfigure<DockerSystemSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSystem, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List configs.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerConfigLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerConfigLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerConfigLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerConfigLs(DockerConfigLsSettings options = null) => new DockerTasks().Run<DockerConfigLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Common.Tools.Docker.DockerConfigLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Application.Tools.Docker.DockerConfigLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerConfigLs(Configure<DockerConfigLsSettings> configurator) => new DockerTasks().Run<DockerConfigLsSettings>(configurator.Invoke(new DockerConfigLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Common.Tools.Docker.DockerConfigLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Application.Tools.Docker.DockerConfigLsSettings)"/>
     public static IEnumerable<(DockerConfigLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerConfigLs(CombinatorialConfigure<DockerConfigLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerConfigLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update a context.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;context&gt;</c> via <see cref="DockerContextUpdateSettings.Context"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--default-stack-orchestrator</c> via <see cref="DockerContextUpdateSettings.DefaultStackOrchestrator"/></li><li><c>--description</c> via <see cref="DockerContextUpdateSettings.Description"/></li><li><c>--docker</c> via <see cref="DockerContextUpdateSettings.Docker"/></li><li><c>--kubernetes</c> via <see cref="DockerContextUpdateSettings.Kubernetes"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextUpdate(DockerContextUpdateSettings options = null) => new DockerTasks().Run<DockerContextUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Common.Tools.Docker.DockerContextUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Application.Tools.Docker.DockerContextUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextUpdate(Configure<DockerContextUpdateSettings> configurator) => new DockerTasks().Run<DockerContextUpdateSettings>(configurator.Invoke(new DockerContextUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Common.Tools.Docker.DockerContextUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Application.Tools.Docker.DockerContextUpdateSettings)"/>
     public static IEnumerable<(DockerContextUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextUpdate(CombinatorialConfigure<DockerContextUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List the services in the stack.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stack&gt;</c> via <see cref="DockerStackServicesSettings.Stack"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerStackServicesSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerStackServicesSettings.Format"/></li><li><c>--kubeconfig</c> via <see cref="DockerStackSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--namespace</c> via <see cref="DockerStackServicesSettings.Namespace"/></li><li><c>--orchestrator</c> via <see cref="DockerStackSettings.Orchestrator"/></li><li><c>--quiet</c> via <see cref="DockerStackServicesSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStackServices(DockerStackServicesSettings options = null) => new DockerTasks().Run<DockerStackServicesSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Common.Tools.Docker.DockerStackServicesSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Application.Tools.Docker.DockerStackServicesSettings)"/>
     public static IReadOnlyCollection<Output> DockerStackServices(Configure<DockerStackServicesSettings> configurator) => new DockerTasks().Run<DockerStackServicesSettings>(configurator.Invoke(new DockerStackServicesSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Common.Tools.Docker.DockerStackServicesSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Application.Tools.Docker.DockerStackServicesSettings)"/>
     public static IEnumerable<(DockerStackServicesSettings Settings, IReadOnlyCollection<Output> Output)> DockerStackServices(CombinatorialConfigure<DockerStackServicesSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStackServices, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List port mappings or a specific mapping for the container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerPortSettings.Container"/></li><li><c>&lt;privatePort&gt;</c> via <see cref="DockerContainerPortSettings.PrivatePort"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerPort(DockerContainerPortSettings options = null) => new DockerTasks().Run<DockerContainerPortSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Common.Tools.Docker.DockerContainerPortSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Application.Tools.Docker.DockerContainerPortSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerPort(Configure<DockerContainerPortSettings> configurator) => new DockerTasks().Run<DockerContainerPortSettings>(configurator.Invoke(new DockerContainerPortSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Common.Tools.Docker.DockerContainerPortSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Application.Tools.Docker.DockerContainerPortSettings)"/>
     public static IEnumerable<(DockerContainerPortSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerPort(CombinatorialConfigure<DockerContainerPortSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerPort, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Rename a container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerRenameSettings.Container"/></li><li><c>&lt;newName&gt;</c> via <see cref="DockerRenameSettings.NewName"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerRename(DockerRenameSettings options = null) => new DockerTasks().Run<DockerRenameSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Common.Tools.Docker.DockerRenameSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Application.Tools.Docker.DockerRenameSettings)"/>
     public static IReadOnlyCollection<Output> DockerRename(Configure<DockerRenameSettings> configurator) => new DockerTasks().Run<DockerRenameSettings>(configurator.Invoke(new DockerRenameSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Common.Tools.Docker.DockerRenameSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Application.Tools.Docker.DockerRenameSettings)"/>
     public static IEnumerable<(DockerRenameSettings Settings, IReadOnlyCollection<Output> Output)> DockerRename(CombinatorialConfigure<DockerRenameSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerRename, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;sourceImage&gt;</c> via <see cref="DockerTagSettings.SourceImage"/></li><li><c>&lt;targetImage&gt;</c> via <see cref="DockerTagSettings.TargetImage"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTag(DockerTagSettings options = null) => new DockerTasks().Run<DockerTagSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Common.Tools.Docker.DockerTagSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Application.Tools.Docker.DockerTagSettings)"/>
     public static IReadOnlyCollection<Output> DockerTag(Configure<DockerTagSettings> configurator) => new DockerTasks().Run<DockerTagSettings>(configurator.Invoke(new DockerTagSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Common.Tools.Docker.DockerTagSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Application.Tools.Docker.DockerTagSettings)"/>
     public static IEnumerable<(DockerTagSettings Settings, IReadOnlyCollection<Output> Output)> DockerTag(CombinatorialConfigure<DockerTagSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTag, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more secrets.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;secrets&gt;</c> via <see cref="DockerSecretInspectSettings.Secrets"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerSecretInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--pretty</c> via <see cref="DockerSecretInspectSettings.Pretty"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSecretInspect(DockerSecretInspectSettings options = null) => new DockerTasks().Run<DockerSecretInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Common.Tools.Docker.DockerSecretInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Application.Tools.Docker.DockerSecretInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerSecretInspect(Configure<DockerSecretInspectSettings> configurator) => new DockerTasks().Run<DockerSecretInspectSettings>(configurator.Invoke(new DockerSecretInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Common.Tools.Docker.DockerSecretInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Application.Tools.Docker.DockerSecretInspectSettings)"/>
     public static IEnumerable<(DockerSecretInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerSecretInspect(CombinatorialConfigure<DockerSecretInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSecretInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Docker secrets.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSecret(DockerSecretSettings options = null) => new DockerTasks().Run<DockerSecretSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Common.Tools.Docker.DockerSecretSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Application.Tools.Docker.DockerSecretSettings)"/>
     public static IReadOnlyCollection<Output> DockerSecret(Configure<DockerSecretSettings> configurator) => new DockerTasks().Run<DockerSecretSettings>(configurator.Invoke(new DockerSecretSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Common.Tools.Docker.DockerSecretSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Application.Tools.Docker.DockerSecretSettings)"/>
     public static IEnumerable<(DockerSecretSettings Settings, IReadOnlyCollection<Output> Output)> DockerSecret(CombinatorialConfigure<DockerSecretSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSecret, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Export a container's filesystem as a tar archive.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerExportSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--output</c> via <see cref="DockerContainerExportSettings.Output"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerExport(DockerContainerExportSettings options = null) => new DockerTasks().Run<DockerContainerExportSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Common.Tools.Docker.DockerContainerExportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Application.Tools.Docker.DockerContainerExportSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerExport(Configure<DockerContainerExportSettings> configurator) => new DockerTasks().Run<DockerContainerExportSettings>(configurator.Invoke(new DockerContainerExportSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Common.Tools.Docker.DockerContainerExportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Application.Tools.Docker.DockerContainerExportSettings)"/>
     public static IEnumerable<(DockerContainerExportSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerExport(CombinatorialConfigure<DockerContainerExportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerExport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Show the history of an image.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;image&gt;</c> via <see cref="DockerHistorySettings.Image"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerHistorySettings.Format"/></li><li><c>--human</c> via <see cref="DockerHistorySettings.Human"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerHistorySettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerHistorySettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerHistory(DockerHistorySettings options = null) => new DockerTasks().Run<DockerHistorySettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Common.Tools.Docker.DockerHistorySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Application.Tools.Docker.DockerHistorySettings)"/>
     public static IReadOnlyCollection<Output> DockerHistory(Configure<DockerHistorySettings> configurator) => new DockerTasks().Run<DockerHistorySettings>(configurator.Invoke(new DockerHistorySettings()));
-    /// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Common.Tools.Docker.DockerHistorySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Application.Tools.Docker.DockerHistorySettings)"/>
     public static IEnumerable<(DockerHistorySettings Settings, IReadOnlyCollection<Output> Output)> DockerHistory(CombinatorialConfigure<DockerHistorySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerHistory, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a new service.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerServiceCreateSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerServiceCreateSettings.Command"/></li><li><c>&lt;image&gt;</c> via <see cref="DockerServiceCreateSettings.Image"/></li><li><c>--config</c> via <see cref="DockerServiceCreateSettings.Config"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--constraint</c> via <see cref="DockerServiceCreateSettings.Constraint"/></li><li><c>--container-label</c> via <see cref="DockerServiceCreateSettings.ContainerLabel"/></li><li><c>--credential-spec</c> via <see cref="DockerServiceCreateSettings.CredentialSpec"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerServiceCreateSettings.Detach"/></li><li><c>--dns</c> via <see cref="DockerServiceCreateSettings.Dns"/></li><li><c>--dns-option</c> via <see cref="DockerServiceCreateSettings.DnsOption"/></li><li><c>--dns-search</c> via <see cref="DockerServiceCreateSettings.DnsSearch"/></li><li><c>--endpoint-mode</c> via <see cref="DockerServiceCreateSettings.EndpointMode"/></li><li><c>--entrypoint</c> via <see cref="DockerServiceCreateSettings.Entrypoint"/></li><li><c>--env</c> via <see cref="DockerServiceCreateSettings.Env"/></li><li><c>--env-file</c> via <see cref="DockerServiceCreateSettings.EnvFile"/></li><li><c>--generic-resource</c> via <see cref="DockerServiceCreateSettings.GenericResource"/></li><li><c>--group</c> via <see cref="DockerServiceCreateSettings.Group"/></li><li><c>--health-cmd</c> via <see cref="DockerServiceCreateSettings.HealthCmd"/></li><li><c>--health-interval</c> via <see cref="DockerServiceCreateSettings.HealthInterval"/></li><li><c>--health-retries</c> via <see cref="DockerServiceCreateSettings.HealthRetries"/></li><li><c>--health-start-period</c> via <see cref="DockerServiceCreateSettings.HealthStartPeriod"/></li><li><c>--health-timeout</c> via <see cref="DockerServiceCreateSettings.HealthTimeout"/></li><li><c>--host</c> via <see cref="DockerServiceCreateSettings.Host"/></li><li><c>--hostname</c> via <see cref="DockerServiceCreateSettings.Hostname"/></li><li><c>--init</c> via <see cref="DockerServiceCreateSettings.Init"/></li><li><c>--isolation</c> via <see cref="DockerServiceCreateSettings.Isolation"/></li><li><c>--label</c> via <see cref="DockerServiceCreateSettings.Label"/></li><li><c>--limit-cpu</c> via <see cref="DockerServiceCreateSettings.LimitCpu"/></li><li><c>--limit-memory</c> via <see cref="DockerServiceCreateSettings.LimitMemory"/></li><li><c>--log-driver</c> via <see cref="DockerServiceCreateSettings.LogDriver"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--log-opt</c> via <see cref="DockerServiceCreateSettings.LogOpt"/></li><li><c>--mode</c> via <see cref="DockerServiceCreateSettings.Mode"/></li><li><c>--mount</c> via <see cref="DockerServiceCreateSettings.Mount"/></li><li><c>--name</c> via <see cref="DockerServiceCreateSettings.Name"/></li><li><c>--network</c> via <see cref="DockerServiceCreateSettings.Network"/></li><li><c>--no-healthcheck</c> via <see cref="DockerServiceCreateSettings.NoHealthcheck"/></li><li><c>--no-resolve-image</c> via <see cref="DockerServiceCreateSettings.NoResolveImage"/></li><li><c>--placement-pref</c> via <see cref="DockerServiceCreateSettings.PlacementPref"/></li><li><c>--publish</c> via <see cref="DockerServiceCreateSettings.Publish"/></li><li><c>--quiet</c> via <see cref="DockerServiceCreateSettings.Quiet"/></li><li><c>--read-only</c> via <see cref="DockerServiceCreateSettings.ReadOnly"/></li><li><c>--replicas</c> via <see cref="DockerServiceCreateSettings.Replicas"/></li><li><c>--replicas-max-per-node</c> via <see cref="DockerServiceCreateSettings.ReplicasMaxPerNode"/></li><li><c>--reserve-cpu</c> via <see cref="DockerServiceCreateSettings.ReserveCpu"/></li><li><c>--reserve-memory</c> via <see cref="DockerServiceCreateSettings.ReserveMemory"/></li><li><c>--restart-condition</c> via <see cref="DockerServiceCreateSettings.RestartCondition"/></li><li><c>--restart-delay</c> via <see cref="DockerServiceCreateSettings.RestartDelay"/></li><li><c>--restart-max-attempts</c> via <see cref="DockerServiceCreateSettings.RestartMaxAttempts"/></li><li><c>--restart-window</c> via <see cref="DockerServiceCreateSettings.RestartWindow"/></li><li><c>--rollback-delay</c> via <see cref="DockerServiceCreateSettings.RollbackDelay"/></li><li><c>--rollback-failure-action</c> via <see cref="DockerServiceCreateSettings.RollbackFailureAction"/></li><li><c>--rollback-max-failure-ratio</c> via <see cref="DockerServiceCreateSettings.RollbackMaxFailureRatio"/></li><li><c>--rollback-monitor</c> via <see cref="DockerServiceCreateSettings.RollbackMonitor"/></li><li><c>--rollback-order</c> via <see cref="DockerServiceCreateSettings.RollbackOrder"/></li><li><c>--rollback-parallelism</c> via <see cref="DockerServiceCreateSettings.RollbackParallelism"/></li><li><c>--secret</c> via <see cref="DockerServiceCreateSettings.Secret"/></li><li><c>--stop-grace-period</c> via <see cref="DockerServiceCreateSettings.StopGracePeriod"/></li><li><c>--stop-signal</c> via <see cref="DockerServiceCreateSettings.StopSignal"/></li><li><c>--sysctl</c> via <see cref="DockerServiceCreateSettings.Sysctl"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tty</c> via <see cref="DockerServiceCreateSettings.Tty"/></li><li><c>--update-delay</c> via <see cref="DockerServiceCreateSettings.UpdateDelay"/></li><li><c>--update-failure-action</c> via <see cref="DockerServiceCreateSettings.UpdateFailureAction"/></li><li><c>--update-max-failure-ratio</c> via <see cref="DockerServiceCreateSettings.UpdateMaxFailureRatio"/></li><li><c>--update-monitor</c> via <see cref="DockerServiceCreateSettings.UpdateMonitor"/></li><li><c>--update-order</c> via <see cref="DockerServiceCreateSettings.UpdateOrder"/></li><li><c>--update-parallelism</c> via <see cref="DockerServiceCreateSettings.UpdateParallelism"/></li><li><c>--user</c> via <see cref="DockerServiceCreateSettings.User"/></li><li><c>--with-registry-auth</c> via <see cref="DockerServiceCreateSettings.WithRegistryAuth"/></li><li><c>--workdir</c> via <see cref="DockerServiceCreateSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceCreate(DockerServiceCreateSettings options = null) => new DockerTasks().Run<DockerServiceCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Common.Tools.Docker.DockerServiceCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Application.Tools.Docker.DockerServiceCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceCreate(Configure<DockerServiceCreateSettings> configurator) => new DockerTasks().Run<DockerServiceCreateSettings>(configurator.Invoke(new DockerServiceCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Common.Tools.Docker.DockerServiceCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Application.Tools.Docker.DockerServiceCreateSettings)"/>
     public static IEnumerable<(DockerServiceCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceCreate(CombinatorialConfigure<DockerServiceCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List the tasks of one or more services.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;services&gt;</c> via <see cref="DockerServicePsSettings.Services"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerServicePsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerServicePsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-resolve</c> via <see cref="DockerServicePsSettings.NoResolve"/></li><li><c>--no-trunc</c> via <see cref="DockerServicePsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerServicePsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServicePs(DockerServicePsSettings options = null) => new DockerTasks().Run<DockerServicePsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Common.Tools.Docker.DockerServicePsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Application.Tools.Docker.DockerServicePsSettings)"/>
     public static IReadOnlyCollection<Output> DockerServicePs(Configure<DockerServicePsSettings> configurator) => new DockerTasks().Run<DockerServicePsSettings>(configurator.Invoke(new DockerServicePsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Common.Tools.Docker.DockerServicePsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Application.Tools.Docker.DockerServicePsSettings)"/>
     public static IEnumerable<(DockerServicePsSettings Settings, IReadOnlyCollection<Output> Output)> DockerServicePs(CombinatorialConfigure<DockerServicePsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServicePs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Stop one or more running containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerStopSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--time</c> via <see cref="DockerStopSettings.Time"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStop(DockerStopSettings options = null) => new DockerTasks().Run<DockerStopSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Common.Tools.Docker.DockerStopSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Application.Tools.Docker.DockerStopSettings)"/>
     public static IReadOnlyCollection<Output> DockerStop(Configure<DockerStopSettings> configurator) => new DockerTasks().Run<DockerStopSettings>(configurator.Invoke(new DockerStopSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Common.Tools.Docker.DockerStopSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Application.Tools.Docker.DockerStopSettings)"/>
     public static IEnumerable<(DockerStopSettings Settings, IReadOnlyCollection<Output> Output)> DockerStop(CombinatorialConfigure<DockerStopSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStop, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Swarm nodes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNode(DockerNodeSettings options = null) => new DockerTasks().Run<DockerNodeSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Common.Tools.Docker.DockerNodeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Application.Tools.Docker.DockerNodeSettings)"/>
     public static IReadOnlyCollection<Output> DockerNode(Configure<DockerNodeSettings> configurator) => new DockerTasks().Run<DockerNodeSettings>(configurator.Invoke(new DockerNodeSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Common.Tools.Docker.DockerNodeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Application.Tools.Docker.DockerNodeSettings)"/>
     public static IEnumerable<(DockerNodeSettings Settings, IReadOnlyCollection<Output> Output)> DockerNode(CombinatorialConfigure<DockerNodeSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNode, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update configuration of one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerUpdateSettings.Containers"/></li><li><c>--blkio-weight</c> via <see cref="DockerUpdateSettings.BlkioWeight"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-period</c> via <see cref="DockerUpdateSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerUpdateSettings.CpuQuota"/></li><li><c>--cpu-rt-period</c> via <see cref="DockerUpdateSettings.CpuRtPeriod"/></li><li><c>--cpu-rt-runtime</c> via <see cref="DockerUpdateSettings.CpuRtRuntime"/></li><li><c>--cpu-shares</c> via <see cref="DockerUpdateSettings.CpuShares"/></li><li><c>--cpus</c> via <see cref="DockerUpdateSettings.Cpus"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerUpdateSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerUpdateSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--kernel-memory</c> via <see cref="DockerUpdateSettings.KernelMemory"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--memory</c> via <see cref="DockerUpdateSettings.Memory"/></li><li><c>--memory-reservation</c> via <see cref="DockerUpdateSettings.MemoryReservation"/></li><li><c>--memory-swap</c> via <see cref="DockerUpdateSettings.MemorySwap"/></li><li><c>--pids-limit</c> via <see cref="DockerUpdateSettings.PidsLimit"/></li><li><c>--restart</c> via <see cref="DockerUpdateSettings.Restart"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerUpdate(DockerUpdateSettings options = null) => new DockerTasks().Run<DockerUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Common.Tools.Docker.DockerUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Application.Tools.Docker.DockerUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerUpdate(Configure<DockerUpdateSettings> configurator) => new DockerTasks().Run<DockerUpdateSettings>(configurator.Invoke(new DockerUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Common.Tools.Docker.DockerUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Application.Tools.Docker.DockerUpdateSettings)"/>
     public static IEnumerable<(DockerUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerUpdate(CombinatorialConfigure<DockerUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginCreateSettings.Plugin"/></li><li><c>&lt;pluginDataDir&gt;</c> via <see cref="DockerPluginCreateSettings.PluginDataDir"/></li><li><c>--compress</c> via <see cref="DockerPluginCreateSettings.Compress"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginCreate(DockerPluginCreateSettings options = null) => new DockerTasks().Run<DockerPluginCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Common.Tools.Docker.DockerPluginCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Application.Tools.Docker.DockerPluginCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginCreate(Configure<DockerPluginCreateSettings> configurator) => new DockerTasks().Run<DockerPluginCreateSettings>(configurator.Invoke(new DockerPluginCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Common.Tools.Docker.DockerPluginCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Application.Tools.Docker.DockerPluginCreateSettings)"/>
     public static IEnumerable<(DockerPluginCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginCreate(CombinatorialConfigure<DockerPluginCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display system-wide information.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerSystemInfoSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSystemInfo(DockerSystemInfoSettings options = null) => new DockerTasks().Run<DockerSystemInfoSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Common.Tools.Docker.DockerSystemInfoSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Application.Tools.Docker.DockerSystemInfoSettings)"/>
     public static IReadOnlyCollection<Output> DockerSystemInfo(Configure<DockerSystemInfoSettings> configurator) => new DockerTasks().Run<DockerSystemInfoSettings>(configurator.Invoke(new DockerSystemInfoSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Common.Tools.Docker.DockerSystemInfoSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Application.Tools.Docker.DockerSystemInfoSettings)"/>
     public static IEnumerable<(DockerSystemInfoSettings Settings, IReadOnlyCollection<Output> Output)> DockerSystemInfo(CombinatorialConfigure<DockerSystemInfoSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSystemInfo, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove all unused local volumes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerVolumePruneSettings.Filter"/></li><li><c>--force</c> via <see cref="DockerVolumePruneSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVolumePrune(DockerVolumePruneSettings options = null) => new DockerTasks().Run<DockerVolumePruneSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Common.Tools.Docker.DockerVolumePruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Application.Tools.Docker.DockerVolumePruneSettings)"/>
     public static IReadOnlyCollection<Output> DockerVolumePrune(Configure<DockerVolumePruneSettings> configurator) => new DockerTasks().Run<DockerVolumePruneSettings>(configurator.Invoke(new DockerVolumePruneSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Common.Tools.Docker.DockerVolumePruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Application.Tools.Docker.DockerVolumePruneSettings)"/>
     public static IEnumerable<(DockerVolumePruneSettings Settings, IReadOnlyCollection<Output> Output)> DockerVolumePrune(CombinatorialConfigure<DockerVolumePruneSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVolumePrune, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Upgrade an existing plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginUpgradeSettings.Plugin"/></li><li><c>&lt;remote&gt;</c> via <see cref="DockerPluginUpgradeSettings.Remote"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerPluginUpgradeSettings.DisableContentTrust"/></li><li><c>--grant-all-permissions</c> via <see cref="DockerPluginUpgradeSettings.GrantAllPermissions"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--skip-remote-check</c> via <see cref="DockerPluginUpgradeSettings.SkipRemoteCheck"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginUpgrade(DockerPluginUpgradeSettings options = null) => new DockerTasks().Run<DockerPluginUpgradeSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Common.Tools.Docker.DockerPluginUpgradeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Application.Tools.Docker.DockerPluginUpgradeSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginUpgrade(Configure<DockerPluginUpgradeSettings> configurator) => new DockerTasks().Run<DockerPluginUpgradeSettings>(configurator.Invoke(new DockerPluginUpgradeSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Common.Tools.Docker.DockerPluginUpgradeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Application.Tools.Docker.DockerPluginUpgradeSettings)"/>
     public static IEnumerable<(DockerPluginUpgradeSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginUpgrade(CombinatorialConfigure<DockerPluginUpgradeSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginUpgrade, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove build cache.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerBuilderPrune(DockerBuilderPruneSettings options = null) => new DockerTasks().Run<DockerBuilderPruneSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Common.Tools.Docker.DockerBuilderPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Application.Tools.Docker.DockerBuilderPruneSettings)"/>
     public static IReadOnlyCollection<Output> DockerBuilderPrune(Configure<DockerBuilderPruneSettings> configurator) => new DockerTasks().Run<DockerBuilderPruneSettings>(configurator.Invoke(new DockerBuilderPruneSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Common.Tools.Docker.DockerBuilderPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Application.Tools.Docker.DockerBuilderPruneSettings)"/>
     public static IEnumerable<(DockerBuilderPruneSettings Settings, IReadOnlyCollection<Output> Output)> DockerBuilderPrune(CombinatorialConfigure<DockerBuilderPruneSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerBuilderPrune, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage join tokens.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;worker&gt;</c> via <see cref="DockerSwarmJoinTokenSettings.Worker"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerSwarmJoinTokenSettings.Quiet"/></li><li><c>--rotate</c> via <see cref="DockerSwarmJoinTokenSettings.Rotate"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmJoinToken(DockerSwarmJoinTokenSettings options = null) => new DockerTasks().Run<DockerSwarmJoinTokenSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Common.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Application.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmJoinToken(Configure<DockerSwarmJoinTokenSettings> configurator) => new DockerTasks().Run<DockerSwarmJoinTokenSettings>(configurator.Invoke(new DockerSwarmJoinTokenSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Common.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Application.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
     public static IEnumerable<(DockerSwarmJoinTokenSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmJoinToken(CombinatorialConfigure<DockerSwarmJoinTokenSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmJoinToken, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update a node.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;node&gt;</c> via <see cref="DockerNodeUpdateSettings.Node"/></li><li><c>--availability</c> via <see cref="DockerNodeUpdateSettings.Availability"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--label-add</c> via <see cref="DockerNodeUpdateSettings.LabelAdd"/></li><li><c>--label-rm</c> via <see cref="DockerNodeUpdateSettings.LabelRm"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--role</c> via <see cref="DockerNodeUpdateSettings.Role"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodeUpdate(DockerNodeUpdateSettings options = null) => new DockerTasks().Run<DockerNodeUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Common.Tools.Docker.DockerNodeUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Application.Tools.Docker.DockerNodeUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodeUpdate(Configure<DockerNodeUpdateSettings> configurator) => new DockerTasks().Run<DockerNodeUpdateSettings>(configurator.Invoke(new DockerNodeUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Common.Tools.Docker.DockerNodeUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Application.Tools.Docker.DockerNodeUpdateSettings)"/>
     public static IEnumerable<(DockerNodeUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodeUpdate(CombinatorialConfigure<DockerNodeUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodeUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Add a signer.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerTrustSignerAddSettings.Name"/></li><li><c>&lt;options&gt;</c> via <see cref="DockerTrustSignerAddSettings.Options"/></li><li><c>&lt;repositories&gt;</c> via <see cref="DockerTrustSignerAddSettings.Repositories"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustSignerAdd(DockerTrustSignerAddSettings options = null) => new DockerTasks().Run<DockerTrustSignerAddSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Common.Tools.Docker.DockerTrustSignerAddSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Application.Tools.Docker.DockerTrustSignerAddSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustSignerAdd(Configure<DockerTrustSignerAddSettings> configurator) => new DockerTasks().Run<DockerTrustSignerAddSettings>(configurator.Invoke(new DockerTrustSignerAddSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Common.Tools.Docker.DockerTrustSignerAddSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Application.Tools.Docker.DockerTrustSignerAddSettings)"/>
     public static IEnumerable<(DockerTrustSignerAddSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustSignerAdd(CombinatorialConfigure<DockerTrustSignerAddSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustSignerAdd, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update the swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--autolock</c> via <see cref="DockerSwarmUpdateSettings.Autolock"/></li><li><c>--cert-expiry</c> via <see cref="DockerSwarmUpdateSettings.CertExpiry"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--dispatcher-heartbeat</c> via <see cref="DockerSwarmUpdateSettings.DispatcherHeartbeat"/></li><li><c>--external-ca</c> via <see cref="DockerSwarmUpdateSettings.ExternalCa"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--max-snapshots</c> via <see cref="DockerSwarmUpdateSettings.MaxSnapshots"/></li><li><c>--snapshot-interval</c> via <see cref="DockerSwarmUpdateSettings.SnapshotInterval"/></li><li><c>--task-history-limit</c> via <see cref="DockerSwarmUpdateSettings.TaskHistoryLimit"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmUpdate(DockerSwarmUpdateSettings options = null) => new DockerTasks().Run<DockerSwarmUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Common.Tools.Docker.DockerSwarmUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Application.Tools.Docker.DockerSwarmUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmUpdate(Configure<DockerSwarmUpdateSettings> configurator) => new DockerTasks().Run<DockerSwarmUpdateSettings>(configurator.Invoke(new DockerSwarmUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Common.Tools.Docker.DockerSwarmUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Application.Tools.Docker.DockerSwarmUpdateSettings)"/>
     public static IEnumerable<(DockerSwarmUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmUpdate(CombinatorialConfigure<DockerSwarmUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Fetch the logs of a service or task.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;service&gt;</c> via <see cref="DockerServiceLogsSettings.Service"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--details</c> via <see cref="DockerServiceLogsSettings.Details"/></li><li><c>--follow</c> via <see cref="DockerServiceLogsSettings.Follow"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-resolve</c> via <see cref="DockerServiceLogsSettings.NoResolve"/></li><li><c>--no-task-ids</c> via <see cref="DockerServiceLogsSettings.NoTaskIds"/></li><li><c>--no-trunc</c> via <see cref="DockerServiceLogsSettings.NoTrunc"/></li><li><c>--raw</c> via <see cref="DockerServiceLogsSettings.Raw"/></li><li><c>--since</c> via <see cref="DockerServiceLogsSettings.Since"/></li><li><c>--tail</c> via <see cref="DockerServiceLogsSettings.Tail"/></li><li><c>--timestamps</c> via <see cref="DockerServiceLogsSettings.Timestamps"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceLogs(DockerServiceLogsSettings options = null) => new DockerTasks().Run<DockerServiceLogsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Common.Tools.Docker.DockerServiceLogsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Application.Tools.Docker.DockerServiceLogsSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceLogs(Configure<DockerServiceLogsSettings> configurator) => new DockerTasks().Run<DockerServiceLogsSettings>(configurator.Invoke(new DockerServiceLogsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Common.Tools.Docker.DockerServiceLogsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Application.Tools.Docker.DockerServiceLogsSettings)"/>
     public static IEnumerable<(DockerServiceLogsSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceLogs(CombinatorialConfigure<DockerServiceLogsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceLogs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List services.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerServiceLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerServiceLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerServiceLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceLs(DockerServiceLsSettings options = null) => new DockerTasks().Run<DockerServiceLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Common.Tools.Docker.DockerServiceLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Application.Tools.Docker.DockerServiceLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceLs(Configure<DockerServiceLsSettings> configurator) => new DockerTasks().Run<DockerServiceLsSettings>(configurator.Invoke(new DockerServiceLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Common.Tools.Docker.DockerServiceLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Application.Tools.Docker.DockerServiceLsSettings)"/>
     public static IEnumerable<(DockerServiceLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceLs(CombinatorialConfigure<DockerServiceLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Unlock swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmUnlock(DockerSwarmUnlockSettings options = null) => new DockerTasks().Run<DockerSwarmUnlockSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Common.Tools.Docker.DockerSwarmUnlockSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Application.Tools.Docker.DockerSwarmUnlockSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmUnlock(Configure<DockerSwarmUnlockSettings> configurator) => new DockerTasks().Run<DockerSwarmUnlockSettings>(configurator.Invoke(new DockerSwarmUnlockSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Common.Tools.Docker.DockerSwarmUnlockSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Application.Tools.Docker.DockerSwarmUnlockSettings)"/>
     public static IEnumerable<(DockerSwarmUnlockSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmUnlock(CombinatorialConfigure<DockerSwarmUnlockSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmUnlock, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List networks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerNetworkLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerNetworkLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerNetworkLsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerNetworkLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkLs(DockerNetworkLsSettings options = null) => new DockerTasks().Run<DockerNetworkLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Common.Tools.Docker.DockerNetworkLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Application.Tools.Docker.DockerNetworkLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkLs(Configure<DockerNetworkLsSettings> configurator) => new DockerTasks().Run<DockerNetworkLsSettings>(configurator.Invoke(new DockerNetworkLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Common.Tools.Docker.DockerNetworkLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Application.Tools.Docker.DockerNetworkLsSettings)"/>
     public static IEnumerable<(DockerNetworkLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkLs(CombinatorialConfigure<DockerNetworkLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List plugins.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerPluginLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerPluginLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerPluginLsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerPluginLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginLs(DockerPluginLsSettings options = null) => new DockerTasks().Run<DockerPluginLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Common.Tools.Docker.DockerPluginLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Application.Tools.Docker.DockerPluginLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginLs(Configure<DockerPluginLsSettings> configurator) => new DockerTasks().Run<DockerPluginLsSettings>(configurator.Invoke(new DockerPluginLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Common.Tools.Docker.DockerPluginLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Application.Tools.Docker.DockerPluginLsSettings)"/>
     public static IEnumerable<(DockerPluginLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginLs(CombinatorialConfigure<DockerPluginLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more plugins.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugins&gt;</c> via <see cref="DockerPluginRmSettings.Plugins"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerPluginRmSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginRm(DockerPluginRmSettings options = null) => new DockerTasks().Run<DockerPluginRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Common.Tools.Docker.DockerPluginRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Application.Tools.Docker.DockerPluginRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginRm(Configure<DockerPluginRmSettings> configurator) => new DockerTasks().Run<DockerPluginRmSettings>(configurator.Invoke(new DockerPluginRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Common.Tools.Docker.DockerPluginRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Application.Tools.Docker.DockerPluginRmSettings)"/>
     public static IEnumerable<(DockerPluginRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginRm(CombinatorialConfigure<DockerPluginRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Build an image from a Dockerfile.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;path&gt;</c> via <see cref="DockerImageBuildSettings.Path"/></li><li><c>--add-host</c> via <see cref="DockerImageBuildSettings.AddHost"/></li><li><c>--build-arg</c> via <see cref="DockerImageBuildSettings.BuildArg"/></li><li><c>--cache-from</c> via <see cref="DockerImageBuildSettings.CacheFrom"/></li><li><c>--cgroup-parent</c> via <see cref="DockerImageBuildSettings.CgroupParent"/></li><li><c>--compress</c> via <see cref="DockerImageBuildSettings.Compress"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-period</c> via <see cref="DockerImageBuildSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerImageBuildSettings.CpuQuota"/></li><li><c>--cpu-shares</c> via <see cref="DockerImageBuildSettings.CpuShares"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerImageBuildSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerImageBuildSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerImageBuildSettings.DisableContentTrust"/></li><li><c>--file</c> via <see cref="DockerImageBuildSettings.File"/></li><li><c>--force-rm</c> via <see cref="DockerImageBuildSettings.ForceRm"/></li><li><c>--iidfile</c> via <see cref="DockerImageBuildSettings.Iidfile"/></li><li><c>--isolation</c> via <see cref="DockerImageBuildSettings.Isolation"/></li><li><c>--label</c> via <see cref="DockerImageBuildSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--memory</c> via <see cref="DockerImageBuildSettings.Memory"/></li><li><c>--memory-swap</c> via <see cref="DockerImageBuildSettings.MemorySwap"/></li><li><c>--network</c> via <see cref="DockerImageBuildSettings.Network"/></li><li><c>--no-cache</c> via <see cref="DockerImageBuildSettings.NoCache"/></li><li><c>--output</c> via <see cref="DockerImageBuildSettings.Output"/></li><li><c>--platform</c> via <see cref="DockerImageBuildSettings.Platform"/></li><li><c>--progress</c> via <see cref="DockerImageBuildSettings.Progress"/></li><li><c>--pull</c> via <see cref="DockerImageBuildSettings.Pull"/></li><li><c>--quiet</c> via <see cref="DockerImageBuildSettings.Quiet"/></li><li><c>--rm</c> via <see cref="DockerImageBuildSettings.Rm"/></li><li><c>--secret</c> via <see cref="DockerImageBuildSettings.Secret"/></li><li><c>--security-opt</c> via <see cref="DockerImageBuildSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerImageBuildSettings.ShmSize"/></li><li><c>--squash</c> via <see cref="DockerImageBuildSettings.Squash"/></li><li><c>--ssh</c> via <see cref="DockerImageBuildSettings.Ssh"/></li><li><c>--stream</c> via <see cref="DockerImageBuildSettings.Stream"/></li><li><c>--tag</c> via <see cref="DockerImageBuildSettings.Tag"/></li><li><c>--target</c> via <see cref="DockerImageBuildSettings.Target"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--ulimit</c> via <see cref="DockerImageBuildSettings.Ulimit"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageBuild(DockerImageBuildSettings options = null) => new DockerTasks().Run<DockerImageBuildSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Common.Tools.Docker.DockerImageBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Application.Tools.Docker.DockerImageBuildSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageBuild(Configure<DockerImageBuildSettings> configurator) => new DockerTasks().Run<DockerImageBuildSettings>(configurator.Invoke(new DockerImageBuildSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Common.Tools.Docker.DockerImageBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Application.Tools.Docker.DockerImageBuildSettings)"/>
     public static IEnumerable<(DockerImageBuildSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageBuild(CombinatorialConfigure<DockerImageBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageBuild, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove trust for an image.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;image&gt;</c> via <see cref="DockerTrustRevokeSettings.Image"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--yes</c> via <see cref="DockerTrustRevokeSettings.Yes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustRevoke(DockerTrustRevokeSettings options = null) => new DockerTasks().Run<DockerTrustRevokeSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Common.Tools.Docker.DockerTrustRevokeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Application.Tools.Docker.DockerTrustRevokeSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustRevoke(Configure<DockerTrustRevokeSettings> configurator) => new DockerTasks().Run<DockerTrustRevokeSettings>(configurator.Invoke(new DockerTrustRevokeSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Common.Tools.Docker.DockerTrustRevokeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Application.Tools.Docker.DockerTrustRevokeSettings)"/>
     public static IEnumerable<(DockerTrustRevokeSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustRevoke(CombinatorialConfigure<DockerTrustRevokeSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustRevoke, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;images&gt;</c> via <see cref="DockerRmiSettings.Images"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerRmiSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-prune</c> via <see cref="DockerRmiSettings.NoPrune"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerRmi(DockerRmiSettings options = null) => new DockerTasks().Run<DockerRmiSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Common.Tools.Docker.DockerRmiSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Application.Tools.Docker.DockerRmiSettings)"/>
     public static IReadOnlyCollection<Output> DockerRmi(Configure<DockerRmiSettings> configurator) => new DockerTasks().Run<DockerRmiSettings>(configurator.Invoke(new DockerRmiSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Common.Tools.Docker.DockerRmiSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Application.Tools.Docker.DockerRmiSettings)"/>
     public static IEnumerable<(DockerRmiSettings Settings, IReadOnlyCollection<Output> Output)> DockerRmi(CombinatorialConfigure<DockerRmiSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerRmi, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more networks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;networks&gt;</c> via <see cref="DockerNetworkRmSettings.Networks"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkRm(DockerNetworkRmSettings options = null) => new DockerTasks().Run<DockerNetworkRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Common.Tools.Docker.DockerNetworkRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Application.Tools.Docker.DockerNetworkRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkRm(Configure<DockerNetworkRmSettings> configurator) => new DockerTasks().Run<DockerNetworkRmSettings>(configurator.Invoke(new DockerNetworkRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Common.Tools.Docker.DockerNetworkRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Application.Tools.Docker.DockerNetworkRmSettings)"/>
     public static IEnumerable<(DockerNetworkRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkRm(CombinatorialConfigure<DockerNetworkRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Show the Docker version information.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerVersionSettings.Format"/></li><li><c>--kubeconfig</c> via <see cref="DockerVersionSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVersion(DockerVersionSettings options = null) => new DockerTasks().Run<DockerVersionSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Common.Tools.Docker.DockerVersionSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Application.Tools.Docker.DockerVersionSettings)"/>
     public static IReadOnlyCollection<Output> DockerVersion(Configure<DockerVersionSettings> configurator) => new DockerTasks().Run<DockerVersionSettings>(configurator.Invoke(new DockerVersionSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Common.Tools.Docker.DockerVersionSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Application.Tools.Docker.DockerVersionSettings)"/>
     public static IEnumerable<(DockerVersionSettings Settings, IReadOnlyCollection<Output> Output)> DockerVersion(CombinatorialConfigure<DockerVersionSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVersion, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a secret from a file or STDIN as content.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;file&gt;</c> via <see cref="DockerSecretCreateSettings.File"/></li><li><c>&lt;secret&gt;</c> via <see cref="DockerSecretCreateSettings.Secret"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--driver</c> via <see cref="DockerSecretCreateSettings.Driver"/></li><li><c>--label</c> via <see cref="DockerSecretCreateSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--template-driver</c> via <see cref="DockerSecretCreateSettings.TemplateDriver"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSecretCreate(DockerSecretCreateSettings options = null) => new DockerTasks().Run<DockerSecretCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Common.Tools.Docker.DockerSecretCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Application.Tools.Docker.DockerSecretCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerSecretCreate(Configure<DockerSecretCreateSettings> configurator) => new DockerTasks().Run<DockerSecretCreateSettings>(configurator.Invoke(new DockerSecretCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Common.Tools.Docker.DockerSecretCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Application.Tools.Docker.DockerSecretCreateSettings)"/>
     public static IEnumerable<(DockerSecretCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerSecretCreate(CombinatorialConfigure<DockerSecretCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSecretCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more services.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;services&gt;</c> via <see cref="DockerServiceRmSettings.Services"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceRm(DockerServiceRmSettings options = null) => new DockerTasks().Run<DockerServiceRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Common.Tools.Docker.DockerServiceRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Application.Tools.Docker.DockerServiceRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceRm(Configure<DockerServiceRmSettings> configurator) => new DockerTasks().Run<DockerServiceRmSettings>(configurator.Invoke(new DockerServiceRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Common.Tools.Docker.DockerServiceRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Application.Tools.Docker.DockerServiceRmSettings)"/>
     public static IEnumerable<(DockerServiceRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceRm(CombinatorialConfigure<DockerServiceRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Load a private key file for signing.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;keyfile&gt;</c> via <see cref="DockerTrustKeyLoadSettings.Keyfile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--name</c> via <see cref="DockerTrustKeyLoadSettings.Name"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustKeyLoad(DockerTrustKeyLoadSettings options = null) => new DockerTasks().Run<DockerTrustKeyLoadSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Common.Tools.Docker.DockerTrustKeyLoadSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Application.Tools.Docker.DockerTrustKeyLoadSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustKeyLoad(Configure<DockerTrustKeyLoadSettings> configurator) => new DockerTasks().Run<DockerTrustKeyLoadSettings>(configurator.Invoke(new DockerTrustKeyLoadSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Common.Tools.Docker.DockerTrustKeyLoadSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Application.Tools.Docker.DockerTrustKeyLoadSettings)"/>
     public static IEnumerable<(DockerTrustKeyLoadSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustKeyLoad(CombinatorialConfigure<DockerTrustKeyLoadSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustKeyLoad, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more secrets.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;secrets&gt;</c> via <see cref="DockerSecretRmSettings.Secrets"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSecretRm(DockerSecretRmSettings options = null) => new DockerTasks().Run<DockerSecretRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Common.Tools.Docker.DockerSecretRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Application.Tools.Docker.DockerSecretRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerSecretRm(Configure<DockerSecretRmSettings> configurator) => new DockerTasks().Run<DockerSecretRmSettings>(configurator.Invoke(new DockerSecretRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Common.Tools.Docker.DockerSecretRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Application.Tools.Docker.DockerSecretRmSettings)"/>
     public static IEnumerable<(DockerSecretRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerSecretRm(CombinatorialConfigure<DockerSecretRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSecretRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;images&gt;</c> via <see cref="DockerImageInspectSettings.Images"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerImageInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageInspect(DockerImageInspectSettings options = null) => new DockerTasks().Run<DockerImageInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Common.Tools.Docker.DockerImageInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Application.Tools.Docker.DockerImageInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageInspect(Configure<DockerImageInspectSettings> configurator) => new DockerTasks().Run<DockerImageInspectSettings>(configurator.Invoke(new DockerImageInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Common.Tools.Docker.DockerImageInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Application.Tools.Docker.DockerImageInspectSettings)"/>
     public static IEnumerable<(DockerImageInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageInspect(CombinatorialConfigure<DockerImageInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Save one or more images to a tar archive (streamed to STDOUT by default).</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;images&gt;</c> via <see cref="DockerImageSaveSettings.Images"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--output</c> via <see cref="DockerImageSaveSettings.Output"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageSave(DockerImageSaveSettings options = null) => new DockerTasks().Run<DockerImageSaveSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Common.Tools.Docker.DockerImageSaveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Application.Tools.Docker.DockerImageSaveSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageSave(Configure<DockerImageSaveSettings> configurator) => new DockerTasks().Run<DockerImageSaveSettings>(configurator.Invoke(new DockerImageSaveSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Common.Tools.Docker.DockerImageSaveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Application.Tools.Docker.DockerImageSaveSettings)"/>
     public static IEnumerable<(DockerImageSaveSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageSave(CombinatorialConfigure<DockerImageSaveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageSave, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage keys for signing Docker images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustKey(DockerTrustKeySettings options = null) => new DockerTasks().Run<DockerTrustKeySettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Common.Tools.Docker.DockerTrustKeySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Application.Tools.Docker.DockerTrustKeySettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustKey(Configure<DockerTrustKeySettings> configurator) => new DockerTasks().Run<DockerTrustKeySettings>(configurator.Invoke(new DockerTrustKeySettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Common.Tools.Docker.DockerTrustKeySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Application.Tools.Docker.DockerTrustKeySettings)"/>
     public static IEnumerable<(DockerTrustKeySettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustKey(CombinatorialConfigure<DockerTrustKeySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustKey, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Attach local standard input, output, and error streams to a running container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerAttachSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach-keys</c> via <see cref="DockerContainerAttachSettings.DetachKeys"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-stdin</c> via <see cref="DockerContainerAttachSettings.NoStdin"/></li><li><c>--sig-proxy</c> via <see cref="DockerContainerAttachSettings.SigProxy"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerAttach(DockerContainerAttachSettings options = null) => new DockerTasks().Run<DockerContainerAttachSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Common.Tools.Docker.DockerContainerAttachSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Application.Tools.Docker.DockerContainerAttachSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerAttach(Configure<DockerContainerAttachSettings> configurator) => new DockerTasks().Run<DockerContainerAttachSettings>(configurator.Invoke(new DockerContainerAttachSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Common.Tools.Docker.DockerContainerAttachSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Application.Tools.Docker.DockerContainerAttachSettings)"/>
     public static IEnumerable<(DockerContainerAttachSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerAttach(CombinatorialConfigure<DockerContainerAttachSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerAttach, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a context.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;context&gt;</c> via <see cref="DockerContextCreateSettings.Context"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--default-stack-orchestrator</c> via <see cref="DockerContextCreateSettings.DefaultStackOrchestrator"/></li><li><c>--description</c> via <see cref="DockerContextCreateSettings.Description"/></li><li><c>--docker</c> via <see cref="DockerContextCreateSettings.Docker"/></li><li><c>--from</c> via <see cref="DockerContextCreateSettings.From"/></li><li><c>--kubernetes</c> via <see cref="DockerContextCreateSettings.Kubernetes"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextCreate(DockerContextCreateSettings options = null) => new DockerTasks().Run<DockerContextCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Common.Tools.Docker.DockerContextCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Application.Tools.Docker.DockerContextCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextCreate(Configure<DockerContextCreateSettings> configurator) => new DockerTasks().Run<DockerContextCreateSettings>(configurator.Invoke(new DockerContextCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Common.Tools.Docker.DockerContextCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Application.Tools.Docker.DockerContextCreateSettings)"/>
     public static IEnumerable<(DockerContextCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextCreate(CombinatorialConfigure<DockerContextCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a config from a file or STDIN.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;config&gt;</c> via <see cref="DockerConfigCreateSettings.Config"/></li><li><c>&lt;file&gt;</c> via <see cref="DockerConfigCreateSettings.File"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--label</c> via <see cref="DockerConfigCreateSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--template-driver</c> via <see cref="DockerConfigCreateSettings.TemplateDriver"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerConfigCreate(DockerConfigCreateSettings options = null) => new DockerTasks().Run<DockerConfigCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Common.Tools.Docker.DockerConfigCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Application.Tools.Docker.DockerConfigCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerConfigCreate(Configure<DockerConfigCreateSettings> configurator) => new DockerTasks().Run<DockerConfigCreateSettings>(configurator.Invoke(new DockerConfigCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Common.Tools.Docker.DockerConfigCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Application.Tools.Docker.DockerConfigCreateSettings)"/>
     public static IEnumerable<(DockerConfigCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerConfigCreate(CombinatorialConfigure<DockerConfigCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerConfigCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more volumes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;volumes&gt;</c> via <see cref="DockerVolumeInspectSettings.Volumes"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerVolumeInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVolumeInspect(DockerVolumeInspectSettings options = null) => new DockerTasks().Run<DockerVolumeInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Common.Tools.Docker.DockerVolumeInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Application.Tools.Docker.DockerVolumeInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerVolumeInspect(Configure<DockerVolumeInspectSettings> configurator) => new DockerTasks().Run<DockerVolumeInspectSettings>(configurator.Invoke(new DockerVolumeInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Common.Tools.Docker.DockerVolumeInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Application.Tools.Docker.DockerVolumeInspectSettings)"/>
     public static IEnumerable<(DockerVolumeInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerVolumeInspect(CombinatorialConfigure<DockerVolumeInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVolumeInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Stop one or more running containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerStopSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--time</c> via <see cref="DockerContainerStopSettings.Time"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerStop(DockerContainerStopSettings options = null) => new DockerTasks().Run<DockerContainerStopSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Common.Tools.Docker.DockerContainerStopSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Application.Tools.Docker.DockerContainerStopSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerStop(Configure<DockerContainerStopSettings> configurator) => new DockerTasks().Run<DockerContainerStopSettings>(configurator.Invoke(new DockerContainerStopSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Common.Tools.Docker.DockerContainerStopSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Application.Tools.Docker.DockerContainerStopSettings)"/>
     public static IEnumerable<(DockerContainerStopSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerStop(CombinatorialConfigure<DockerContainerStopSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerStop, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove all unused networks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerNetworkPruneSettings.Filter"/></li><li><c>--force</c> via <see cref="DockerNetworkPruneSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkPrune(DockerNetworkPruneSettings options = null) => new DockerTasks().Run<DockerNetworkPruneSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Common.Tools.Docker.DockerNetworkPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Application.Tools.Docker.DockerNetworkPruneSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkPrune(Configure<DockerNetworkPruneSettings> configurator) => new DockerTasks().Run<DockerNetworkPruneSettings>(configurator.Invoke(new DockerNetworkPruneSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Common.Tools.Docker.DockerNetworkPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Application.Tools.Docker.DockerNetworkPruneSettings)"/>
     public static IEnumerable<(DockerNetworkPruneSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkPrune(CombinatorialConfigure<DockerNetworkPruneSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkPrune, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display an image manifest, or manifest list.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;manifest&gt;</c> via <see cref="DockerManifestInspectSettings.Manifest"/></li><li><c>&lt;manifestList&gt;</c> via <see cref="DockerManifestInspectSettings.ManifestList"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--insecure</c> via <see cref="DockerManifestInspectSettings.Insecure"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--verbose</c> via <see cref="DockerManifestInspectSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerManifestInspect(DockerManifestInspectSettings options = null) => new DockerTasks().Run<DockerManifestInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Common.Tools.Docker.DockerManifestInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Application.Tools.Docker.DockerManifestInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerManifestInspect(Configure<DockerManifestInspectSettings> configurator) => new DockerTasks().Run<DockerManifestInspectSettings>(configurator.Invoke(new DockerManifestInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Common.Tools.Docker.DockerManifestInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Application.Tools.Docker.DockerManifestInspectSettings)"/>
     public static IEnumerable<(DockerManifestInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerManifestInspect(CombinatorialConfigure<DockerManifestInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerManifestInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display system-wide information.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerInfoSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerInfo(DockerInfoSettings options = null) => new DockerTasks().Run<DockerInfoSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Common.Tools.Docker.DockerInfoSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Application.Tools.Docker.DockerInfoSettings)"/>
     public static IReadOnlyCollection<Output> DockerInfo(Configure<DockerInfoSettings> configurator) => new DockerTasks().Run<DockerInfoSettings>(configurator.Invoke(new DockerInfoSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Common.Tools.Docker.DockerInfoSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Application.Tools.Docker.DockerInfoSettings)"/>
     public static IEnumerable<(DockerInfoSettings Settings, IReadOnlyCollection<Output> Output)> DockerInfo(CombinatorialConfigure<DockerInfoSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerInfo, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a new image from a container's changes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerCommitSettings.Container"/></li><li><c>&lt;repository&gt;</c> via <see cref="DockerCommitSettings.Repository"/></li><li><c>--author</c> via <see cref="DockerCommitSettings.Author"/></li><li><c>--change</c> via <see cref="DockerCommitSettings.Change"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--message</c> via <see cref="DockerCommitSettings.Message"/></li><li><c>--pause</c> via <see cref="DockerCommitSettings.Pause"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerCommit(DockerCommitSettings options = null) => new DockerTasks().Run<DockerCommitSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Common.Tools.Docker.DockerCommitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Application.Tools.Docker.DockerCommitSettings)"/>
     public static IReadOnlyCollection<Output> DockerCommit(Configure<DockerCommitSettings> configurator) => new DockerTasks().Run<DockerCommitSettings>(configurator.Invoke(new DockerCommitSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Common.Tools.Docker.DockerCommitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Application.Tools.Docker.DockerCommitSettings)"/>
     public static IEnumerable<(DockerCommitSettings Settings, IReadOnlyCollection<Output> Output)> DockerCommit(CombinatorialConfigure<DockerCommitSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerCommit, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Deploy a new stack or update an existing stack.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stack&gt;</c> via <see cref="DockerStackDeploySettings.Stack"/></li><li><c>--bundle-file</c> via <see cref="DockerStackDeploySettings.BundleFile"/></li><li><c>--compose-file</c> via <see cref="DockerStackDeploySettings.ComposeFile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--namespace</c> via <see cref="DockerStackDeploySettings.Namespace"/></li><li><c>--prune</c> via <see cref="DockerStackDeploySettings.Prune"/></li><li><c>--resolve-image</c> via <see cref="DockerStackDeploySettings.ResolveImage"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--with-registry-auth</c> via <see cref="DockerStackDeploySettings.WithRegistryAuth"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStackDeploy(DockerStackDeploySettings options = null) => new DockerTasks().Run<DockerStackDeploySettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Common.Tools.Docker.DockerStackDeploySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Application.Tools.Docker.DockerStackDeploySettings)"/>
     public static IReadOnlyCollection<Output> DockerStackDeploy(Configure<DockerStackDeploySettings> configurator) => new DockerTasks().Run<DockerStackDeploySettings>(configurator.Invoke(new DockerStackDeploySettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Common.Tools.Docker.DockerStackDeploySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Application.Tools.Docker.DockerStackDeploySettings)"/>
     public static IEnumerable<(DockerStackDeploySettings Settings, IReadOnlyCollection<Output> Output)> DockerStackDeploy(CombinatorialConfigure<DockerStackDeploySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStackDeploy, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Scale one or multiple replicated services.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;serviceReplicas&gt;</c> via <see cref="DockerServiceScaleSettings.ServiceReplicas"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceScale(DockerServiceScaleSettings options = null) => new DockerTasks().Run<DockerServiceScaleSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Common.Tools.Docker.DockerServiceScaleSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Application.Tools.Docker.DockerServiceScaleSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceScale(Configure<DockerServiceScaleSettings> configurator) => new DockerTasks().Run<DockerServiceScaleSettings>(configurator.Invoke(new DockerServiceScaleSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Common.Tools.Docker.DockerServiceScaleSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Application.Tools.Docker.DockerServiceScaleSettings)"/>
     public static IEnumerable<(DockerServiceScaleSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceScale(CombinatorialConfigure<DockerServiceScaleSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceScale, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Run a command in a new container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerRunSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerRunSettings.Command"/></li><li><c>&lt;image&gt;</c> via <see cref="DockerRunSettings.Image"/></li><li><c>--add-host</c> via <see cref="DockerRunSettings.AddHost"/></li><li><c>--attach</c> via <see cref="DockerRunSettings.Attach"/></li><li><c>--blkio-weight</c> via <see cref="DockerRunSettings.BlkioWeight"/></li><li><c>--blkio-weight-device</c> via <see cref="DockerRunSettings.BlkioWeightDevice"/></li><li><c>--cap-add</c> via <see cref="DockerRunSettings.CapAdd"/></li><li><c>--cap-drop</c> via <see cref="DockerRunSettings.CapDrop"/></li><li><c>--cgroup-parent</c> via <see cref="DockerRunSettings.CgroupParent"/></li><li><c>--cidfile</c> via <see cref="DockerRunSettings.Cidfile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-count</c> via <see cref="DockerRunSettings.CpuCount"/></li><li><c>--cpu-percent</c> via <see cref="DockerRunSettings.CpuPercent"/></li><li><c>--cpu-period</c> via <see cref="DockerRunSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerRunSettings.CpuQuota"/></li><li><c>--cpu-rt-period</c> via <see cref="DockerRunSettings.CpuRtPeriod"/></li><li><c>--cpu-rt-runtime</c> via <see cref="DockerRunSettings.CpuRtRuntime"/></li><li><c>--cpu-shares</c> via <see cref="DockerRunSettings.CpuShares"/></li><li><c>--cpus</c> via <see cref="DockerRunSettings.Cpus"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerRunSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerRunSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerRunSettings.Detach"/></li><li><c>--detach-keys</c> via <see cref="DockerRunSettings.DetachKeys"/></li><li><c>--device</c> via <see cref="DockerRunSettings.Device"/></li><li><c>--device-cgroup-rule</c> via <see cref="DockerRunSettings.DeviceCgroupRule"/></li><li><c>--device-read-bps</c> via <see cref="DockerRunSettings.DeviceReadBps"/></li><li><c>--device-read-iops</c> via <see cref="DockerRunSettings.DeviceReadIops"/></li><li><c>--device-write-bps</c> via <see cref="DockerRunSettings.DeviceWriteBps"/></li><li><c>--device-write-iops</c> via <see cref="DockerRunSettings.DeviceWriteIops"/></li><li><c>--disable-content-trust</c> via <see cref="DockerRunSettings.DisableContentTrust"/></li><li><c>--dns</c> via <see cref="DockerRunSettings.Dns"/></li><li><c>--dns-opt</c> via <see cref="DockerRunSettings.DnsOpt"/></li><li><c>--dns-option</c> via <see cref="DockerRunSettings.DnsOption"/></li><li><c>--dns-search</c> via <see cref="DockerRunSettings.DnsSearch"/></li><li><c>--domainname</c> via <see cref="DockerRunSettings.Domainname"/></li><li><c>--entrypoint</c> via <see cref="DockerRunSettings.Entrypoint"/></li><li><c>--env</c> via <see cref="DockerRunSettings.Env"/></li><li><c>--env-file</c> via <see cref="DockerRunSettings.EnvFile"/></li><li><c>--expose</c> via <see cref="DockerRunSettings.Expose"/></li><li><c>--gpus</c> via <see cref="DockerRunSettings.Gpus"/></li><li><c>--group-add</c> via <see cref="DockerRunSettings.GroupAdd"/></li><li><c>--health-cmd</c> via <see cref="DockerRunSettings.HealthCmd"/></li><li><c>--health-interval</c> via <see cref="DockerRunSettings.HealthInterval"/></li><li><c>--health-retries</c> via <see cref="DockerRunSettings.HealthRetries"/></li><li><c>--health-start-period</c> via <see cref="DockerRunSettings.HealthStartPeriod"/></li><li><c>--health-timeout</c> via <see cref="DockerRunSettings.HealthTimeout"/></li><li><c>--help</c> via <see cref="DockerRunSettings.Help"/></li><li><c>--hostname</c> via <see cref="DockerRunSettings.Hostname"/></li><li><c>--init</c> via <see cref="DockerRunSettings.Init"/></li><li><c>--interactive</c> via <see cref="DockerRunSettings.Interactive"/></li><li><c>--io-maxbandwidth</c> via <see cref="DockerRunSettings.IoMaxbandwidth"/></li><li><c>--io-maxiops</c> via <see cref="DockerRunSettings.IoMaxiops"/></li><li><c>--ip</c> via <see cref="DockerRunSettings.Ip"/></li><li><c>--ip6</c> via <see cref="DockerRunSettings.Ip6"/></li><li><c>--ipc</c> via <see cref="DockerRunSettings.Ipc"/></li><li><c>--isolation</c> via <see cref="DockerRunSettings.Isolation"/></li><li><c>--kernel-memory</c> via <see cref="DockerRunSettings.KernelMemory"/></li><li><c>--label</c> via <see cref="DockerRunSettings.Label"/></li><li><c>--label-file</c> via <see cref="DockerRunSettings.LabelFile"/></li><li><c>--link</c> via <see cref="DockerRunSettings.Link"/></li><li><c>--link-local-ip</c> via <see cref="DockerRunSettings.LinkLocalIp"/></li><li><c>--log-driver</c> via <see cref="DockerRunSettings.LogDriver"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--log-opt</c> via <see cref="DockerRunSettings.LogOpt"/></li><li><c>--mac-address</c> via <see cref="DockerRunSettings.MacAddress"/></li><li><c>--memory</c> via <see cref="DockerRunSettings.Memory"/></li><li><c>--memory-reservation</c> via <see cref="DockerRunSettings.MemoryReservation"/></li><li><c>--memory-swap</c> via <see cref="DockerRunSettings.MemorySwap"/></li><li><c>--memory-swappiness</c> via <see cref="DockerRunSettings.MemorySwappiness"/></li><li><c>--mount</c> via <see cref="DockerRunSettings.Mount"/></li><li><c>--name</c> via <see cref="DockerRunSettings.Name"/></li><li><c>--net</c> via <see cref="DockerRunSettings.Net"/></li><li><c>--net-alias</c> via <see cref="DockerRunSettings.NetAlias"/></li><li><c>--network</c> via <see cref="DockerRunSettings.Network"/></li><li><c>--network-alias</c> via <see cref="DockerRunSettings.NetworkAlias"/></li><li><c>--no-healthcheck</c> via <see cref="DockerRunSettings.NoHealthcheck"/></li><li><c>--oom-kill-disable</c> via <see cref="DockerRunSettings.OomKillDisable"/></li><li><c>--oom-score-adj</c> via <see cref="DockerRunSettings.OomScoreAdj"/></li><li><c>--pid</c> via <see cref="DockerRunSettings.Pid"/></li><li><c>--pids-limit</c> via <see cref="DockerRunSettings.PidsLimit"/></li><li><c>--platform</c> via <see cref="DockerRunSettings.Platform"/></li><li><c>--privileged</c> via <see cref="DockerRunSettings.Privileged"/></li><li><c>--publish</c> via <see cref="DockerRunSettings.Publish"/></li><li><c>--publish-all</c> via <see cref="DockerRunSettings.PublishAll"/></li><li><c>--read-only</c> via <see cref="DockerRunSettings.ReadOnly"/></li><li><c>--restart</c> via <see cref="DockerRunSettings.Restart"/></li><li><c>--rm</c> via <see cref="DockerRunSettings.Rm"/></li><li><c>--runtime</c> via <see cref="DockerRunSettings.Runtime"/></li><li><c>--security-opt</c> via <see cref="DockerRunSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerRunSettings.ShmSize"/></li><li><c>--sig-proxy</c> via <see cref="DockerRunSettings.SigProxy"/></li><li><c>--stop-signal</c> via <see cref="DockerRunSettings.StopSignal"/></li><li><c>--stop-timeout</c> via <see cref="DockerRunSettings.StopTimeout"/></li><li><c>--storage-opt</c> via <see cref="DockerRunSettings.StorageOpt"/></li><li><c>--sysctl</c> via <see cref="DockerRunSettings.Sysctl"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tmpfs</c> via <see cref="DockerRunSettings.Tmpfs"/></li><li><c>--tty</c> via <see cref="DockerRunSettings.Tty"/></li><li><c>--ulimit</c> via <see cref="DockerRunSettings.Ulimit"/></li><li><c>--user</c> via <see cref="DockerRunSettings.User"/></li><li><c>--userns</c> via <see cref="DockerRunSettings.Userns"/></li><li><c>--uts</c> via <see cref="DockerRunSettings.Uts"/></li><li><c>--volume</c> via <see cref="DockerRunSettings.Volume"/></li><li><c>--volume-driver</c> via <see cref="DockerRunSettings.VolumeDriver"/></li><li><c>--volumes-from</c> via <see cref="DockerRunSettings.VolumesFrom"/></li><li><c>--workdir</c> via <see cref="DockerRunSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerRun(DockerRunSettings options = null) => new DockerTasks().Run<DockerRunSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Common.Tools.Docker.DockerRunSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Application.Tools.Docker.DockerRunSettings)"/>
     public static IReadOnlyCollection<Output> DockerRun(Configure<DockerRunSettings> configurator) => new DockerTasks().Run<DockerRunSettings>(configurator.Invoke(new DockerRunSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Common.Tools.Docker.DockerRunSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Application.Tools.Docker.DockerRunSettings)"/>
     public static IEnumerable<(DockerRunSettings Settings, IReadOnlyCollection<Output> Output)> DockerRun(CombinatorialConfigure<DockerRunSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerRun, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a new container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerCreateSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerCreateSettings.Command"/></li><li><c>&lt;image&gt;</c> via <see cref="DockerCreateSettings.Image"/></li><li><c>--add-host</c> via <see cref="DockerCreateSettings.AddHost"/></li><li><c>--attach</c> via <see cref="DockerCreateSettings.Attach"/></li><li><c>--blkio-weight</c> via <see cref="DockerCreateSettings.BlkioWeight"/></li><li><c>--blkio-weight-device</c> via <see cref="DockerCreateSettings.BlkioWeightDevice"/></li><li><c>--cap-add</c> via <see cref="DockerCreateSettings.CapAdd"/></li><li><c>--cap-drop</c> via <see cref="DockerCreateSettings.CapDrop"/></li><li><c>--cgroup-parent</c> via <see cref="DockerCreateSettings.CgroupParent"/></li><li><c>--cidfile</c> via <see cref="DockerCreateSettings.Cidfile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-count</c> via <see cref="DockerCreateSettings.CpuCount"/></li><li><c>--cpu-percent</c> via <see cref="DockerCreateSettings.CpuPercent"/></li><li><c>--cpu-period</c> via <see cref="DockerCreateSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerCreateSettings.CpuQuota"/></li><li><c>--cpu-rt-period</c> via <see cref="DockerCreateSettings.CpuRtPeriod"/></li><li><c>--cpu-rt-runtime</c> via <see cref="DockerCreateSettings.CpuRtRuntime"/></li><li><c>--cpu-shares</c> via <see cref="DockerCreateSettings.CpuShares"/></li><li><c>--cpus</c> via <see cref="DockerCreateSettings.Cpus"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerCreateSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerCreateSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--device</c> via <see cref="DockerCreateSettings.Device"/></li><li><c>--device-cgroup-rule</c> via <see cref="DockerCreateSettings.DeviceCgroupRule"/></li><li><c>--device-read-bps</c> via <see cref="DockerCreateSettings.DeviceReadBps"/></li><li><c>--device-read-iops</c> via <see cref="DockerCreateSettings.DeviceReadIops"/></li><li><c>--device-write-bps</c> via <see cref="DockerCreateSettings.DeviceWriteBps"/></li><li><c>--device-write-iops</c> via <see cref="DockerCreateSettings.DeviceWriteIops"/></li><li><c>--disable-content-trust</c> via <see cref="DockerCreateSettings.DisableContentTrust"/></li><li><c>--dns</c> via <see cref="DockerCreateSettings.Dns"/></li><li><c>--dns-opt</c> via <see cref="DockerCreateSettings.DnsOpt"/></li><li><c>--dns-option</c> via <see cref="DockerCreateSettings.DnsOption"/></li><li><c>--dns-search</c> via <see cref="DockerCreateSettings.DnsSearch"/></li><li><c>--domainname</c> via <see cref="DockerCreateSettings.Domainname"/></li><li><c>--entrypoint</c> via <see cref="DockerCreateSettings.Entrypoint"/></li><li><c>--env</c> via <see cref="DockerCreateSettings.Env"/></li><li><c>--env-file</c> via <see cref="DockerCreateSettings.EnvFile"/></li><li><c>--expose</c> via <see cref="DockerCreateSettings.Expose"/></li><li><c>--gpus</c> via <see cref="DockerCreateSettings.Gpus"/></li><li><c>--group-add</c> via <see cref="DockerCreateSettings.GroupAdd"/></li><li><c>--health-cmd</c> via <see cref="DockerCreateSettings.HealthCmd"/></li><li><c>--health-interval</c> via <see cref="DockerCreateSettings.HealthInterval"/></li><li><c>--health-retries</c> via <see cref="DockerCreateSettings.HealthRetries"/></li><li><c>--health-start-period</c> via <see cref="DockerCreateSettings.HealthStartPeriod"/></li><li><c>--health-timeout</c> via <see cref="DockerCreateSettings.HealthTimeout"/></li><li><c>--help</c> via <see cref="DockerCreateSettings.Help"/></li><li><c>--hostname</c> via <see cref="DockerCreateSettings.Hostname"/></li><li><c>--init</c> via <see cref="DockerCreateSettings.Init"/></li><li><c>--interactive</c> via <see cref="DockerCreateSettings.Interactive"/></li><li><c>--io-maxbandwidth</c> via <see cref="DockerCreateSettings.IoMaxbandwidth"/></li><li><c>--io-maxiops</c> via <see cref="DockerCreateSettings.IoMaxiops"/></li><li><c>--ip</c> via <see cref="DockerCreateSettings.Ip"/></li><li><c>--ip6</c> via <see cref="DockerCreateSettings.Ip6"/></li><li><c>--ipc</c> via <see cref="DockerCreateSettings.Ipc"/></li><li><c>--isolation</c> via <see cref="DockerCreateSettings.Isolation"/></li><li><c>--kernel-memory</c> via <see cref="DockerCreateSettings.KernelMemory"/></li><li><c>--label</c> via <see cref="DockerCreateSettings.Label"/></li><li><c>--label-file</c> via <see cref="DockerCreateSettings.LabelFile"/></li><li><c>--link</c> via <see cref="DockerCreateSettings.Link"/></li><li><c>--link-local-ip</c> via <see cref="DockerCreateSettings.LinkLocalIp"/></li><li><c>--log-driver</c> via <see cref="DockerCreateSettings.LogDriver"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--log-opt</c> via <see cref="DockerCreateSettings.LogOpt"/></li><li><c>--mac-address</c> via <see cref="DockerCreateSettings.MacAddress"/></li><li><c>--memory</c> via <see cref="DockerCreateSettings.Memory"/></li><li><c>--memory-reservation</c> via <see cref="DockerCreateSettings.MemoryReservation"/></li><li><c>--memory-swap</c> via <see cref="DockerCreateSettings.MemorySwap"/></li><li><c>--memory-swappiness</c> via <see cref="DockerCreateSettings.MemorySwappiness"/></li><li><c>--mount</c> via <see cref="DockerCreateSettings.Mount"/></li><li><c>--name</c> via <see cref="DockerCreateSettings.Name"/></li><li><c>--net</c> via <see cref="DockerCreateSettings.Net"/></li><li><c>--net-alias</c> via <see cref="DockerCreateSettings.NetAlias"/></li><li><c>--network</c> via <see cref="DockerCreateSettings.Network"/></li><li><c>--network-alias</c> via <see cref="DockerCreateSettings.NetworkAlias"/></li><li><c>--no-healthcheck</c> via <see cref="DockerCreateSettings.NoHealthcheck"/></li><li><c>--oom-kill-disable</c> via <see cref="DockerCreateSettings.OomKillDisable"/></li><li><c>--oom-score-adj</c> via <see cref="DockerCreateSettings.OomScoreAdj"/></li><li><c>--pid</c> via <see cref="DockerCreateSettings.Pid"/></li><li><c>--pids-limit</c> via <see cref="DockerCreateSettings.PidsLimit"/></li><li><c>--platform</c> via <see cref="DockerCreateSettings.Platform"/></li><li><c>--privileged</c> via <see cref="DockerCreateSettings.Privileged"/></li><li><c>--publish</c> via <see cref="DockerCreateSettings.Publish"/></li><li><c>--publish-all</c> via <see cref="DockerCreateSettings.PublishAll"/></li><li><c>--read-only</c> via <see cref="DockerCreateSettings.ReadOnly"/></li><li><c>--restart</c> via <see cref="DockerCreateSettings.Restart"/></li><li><c>--rm</c> via <see cref="DockerCreateSettings.Rm"/></li><li><c>--runtime</c> via <see cref="DockerCreateSettings.Runtime"/></li><li><c>--security-opt</c> via <see cref="DockerCreateSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerCreateSettings.ShmSize"/></li><li><c>--stop-signal</c> via <see cref="DockerCreateSettings.StopSignal"/></li><li><c>--stop-timeout</c> via <see cref="DockerCreateSettings.StopTimeout"/></li><li><c>--storage-opt</c> via <see cref="DockerCreateSettings.StorageOpt"/></li><li><c>--sysctl</c> via <see cref="DockerCreateSettings.Sysctl"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tmpfs</c> via <see cref="DockerCreateSettings.Tmpfs"/></li><li><c>--tty</c> via <see cref="DockerCreateSettings.Tty"/></li><li><c>--ulimit</c> via <see cref="DockerCreateSettings.Ulimit"/></li><li><c>--user</c> via <see cref="DockerCreateSettings.User"/></li><li><c>--userns</c> via <see cref="DockerCreateSettings.Userns"/></li><li><c>--uts</c> via <see cref="DockerCreateSettings.Uts"/></li><li><c>--volume</c> via <see cref="DockerCreateSettings.Volume"/></li><li><c>--volume-driver</c> via <see cref="DockerCreateSettings.VolumeDriver"/></li><li><c>--volumes-from</c> via <see cref="DockerCreateSettings.VolumesFrom"/></li><li><c>--workdir</c> via <see cref="DockerCreateSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerCreate(DockerCreateSettings options = null) => new DockerTasks().Run<DockerCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Common.Tools.Docker.DockerCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Application.Tools.Docker.DockerCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerCreate(Configure<DockerCreateSettings> configurator) => new DockerTasks().Run<DockerCreateSettings>(configurator.Invoke(new DockerCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Common.Tools.Docker.DockerCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Application.Tools.Docker.DockerCreateSettings)"/>
     public static IEnumerable<(DockerCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerCreate(CombinatorialConfigure<DockerCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update a service.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;service&gt;</c> via <see cref="DockerServiceUpdateSettings.Service"/></li><li><c>--args</c> via <see cref="DockerServiceUpdateSettings.Args"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--config-add</c> via <see cref="DockerServiceUpdateSettings.ConfigAdd"/></li><li><c>--config-rm</c> via <see cref="DockerServiceUpdateSettings.ConfigRm"/></li><li><c>--constraint-add</c> via <see cref="DockerServiceUpdateSettings.ConstraintAdd"/></li><li><c>--constraint-rm</c> via <see cref="DockerServiceUpdateSettings.ConstraintRm"/></li><li><c>--container-label-add</c> via <see cref="DockerServiceUpdateSettings.ContainerLabelAdd"/></li><li><c>--container-label-rm</c> via <see cref="DockerServiceUpdateSettings.ContainerLabelRm"/></li><li><c>--credential-spec</c> via <see cref="DockerServiceUpdateSettings.CredentialSpec"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerServiceUpdateSettings.Detach"/></li><li><c>--dns-add</c> via <see cref="DockerServiceUpdateSettings.DnsAdd"/></li><li><c>--dns-option-add</c> via <see cref="DockerServiceUpdateSettings.DnsOptionAdd"/></li><li><c>--dns-option-rm</c> via <see cref="DockerServiceUpdateSettings.DnsOptionRm"/></li><li><c>--dns-rm</c> via <see cref="DockerServiceUpdateSettings.DnsRm"/></li><li><c>--dns-search-add</c> via <see cref="DockerServiceUpdateSettings.DnsSearchAdd"/></li><li><c>--dns-search-rm</c> via <see cref="DockerServiceUpdateSettings.DnsSearchRm"/></li><li><c>--endpoint-mode</c> via <see cref="DockerServiceUpdateSettings.EndpointMode"/></li><li><c>--entrypoint</c> via <see cref="DockerServiceUpdateSettings.Entrypoint"/></li><li><c>--env-add</c> via <see cref="DockerServiceUpdateSettings.EnvAdd"/></li><li><c>--env-rm</c> via <see cref="DockerServiceUpdateSettings.EnvRm"/></li><li><c>--force</c> via <see cref="DockerServiceUpdateSettings.Force"/></li><li><c>--generic-resource-add</c> via <see cref="DockerServiceUpdateSettings.GenericResourceAdd"/></li><li><c>--generic-resource-rm</c> via <see cref="DockerServiceUpdateSettings.GenericResourceRm"/></li><li><c>--group-add</c> via <see cref="DockerServiceUpdateSettings.GroupAdd"/></li><li><c>--group-rm</c> via <see cref="DockerServiceUpdateSettings.GroupRm"/></li><li><c>--health-cmd</c> via <see cref="DockerServiceUpdateSettings.HealthCmd"/></li><li><c>--health-interval</c> via <see cref="DockerServiceUpdateSettings.HealthInterval"/></li><li><c>--health-retries</c> via <see cref="DockerServiceUpdateSettings.HealthRetries"/></li><li><c>--health-start-period</c> via <see cref="DockerServiceUpdateSettings.HealthStartPeriod"/></li><li><c>--health-timeout</c> via <see cref="DockerServiceUpdateSettings.HealthTimeout"/></li><li><c>--host-add</c> via <see cref="DockerServiceUpdateSettings.HostAdd"/></li><li><c>--host-rm</c> via <see cref="DockerServiceUpdateSettings.HostRm"/></li><li><c>--hostname</c> via <see cref="DockerServiceUpdateSettings.Hostname"/></li><li><c>--image</c> via <see cref="DockerServiceUpdateSettings.Image"/></li><li><c>--init</c> via <see cref="DockerServiceUpdateSettings.Init"/></li><li><c>--isolation</c> via <see cref="DockerServiceUpdateSettings.Isolation"/></li><li><c>--label-add</c> via <see cref="DockerServiceUpdateSettings.LabelAdd"/></li><li><c>--label-rm</c> via <see cref="DockerServiceUpdateSettings.LabelRm"/></li><li><c>--limit-cpu</c> via <see cref="DockerServiceUpdateSettings.LimitCpu"/></li><li><c>--limit-memory</c> via <see cref="DockerServiceUpdateSettings.LimitMemory"/></li><li><c>--log-driver</c> via <see cref="DockerServiceUpdateSettings.LogDriver"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--log-opt</c> via <see cref="DockerServiceUpdateSettings.LogOpt"/></li><li><c>--mount-add</c> via <see cref="DockerServiceUpdateSettings.MountAdd"/></li><li><c>--mount-rm</c> via <see cref="DockerServiceUpdateSettings.MountRm"/></li><li><c>--network-add</c> via <see cref="DockerServiceUpdateSettings.NetworkAdd"/></li><li><c>--network-rm</c> via <see cref="DockerServiceUpdateSettings.NetworkRm"/></li><li><c>--no-healthcheck</c> via <see cref="DockerServiceUpdateSettings.NoHealthcheck"/></li><li><c>--no-resolve-image</c> via <see cref="DockerServiceUpdateSettings.NoResolveImage"/></li><li><c>--placement-pref-add</c> via <see cref="DockerServiceUpdateSettings.PlacementPrefAdd"/></li><li><c>--placement-pref-rm</c> via <see cref="DockerServiceUpdateSettings.PlacementPrefRm"/></li><li><c>--publish-add</c> via <see cref="DockerServiceUpdateSettings.PublishAdd"/></li><li><c>--publish-rm</c> via <see cref="DockerServiceUpdateSettings.PublishRm"/></li><li><c>--quiet</c> via <see cref="DockerServiceUpdateSettings.Quiet"/></li><li><c>--read-only</c> via <see cref="DockerServiceUpdateSettings.ReadOnly"/></li><li><c>--replicas</c> via <see cref="DockerServiceUpdateSettings.Replicas"/></li><li><c>--replicas-max-per-node</c> via <see cref="DockerServiceUpdateSettings.ReplicasMaxPerNode"/></li><li><c>--reserve-cpu</c> via <see cref="DockerServiceUpdateSettings.ReserveCpu"/></li><li><c>--reserve-memory</c> via <see cref="DockerServiceUpdateSettings.ReserveMemory"/></li><li><c>--restart-condition</c> via <see cref="DockerServiceUpdateSettings.RestartCondition"/></li><li><c>--restart-delay</c> via <see cref="DockerServiceUpdateSettings.RestartDelay"/></li><li><c>--restart-max-attempts</c> via <see cref="DockerServiceUpdateSettings.RestartMaxAttempts"/></li><li><c>--restart-window</c> via <see cref="DockerServiceUpdateSettings.RestartWindow"/></li><li><c>--rollback</c> via <see cref="DockerServiceUpdateSettings.Rollback"/></li><li><c>--rollback-delay</c> via <see cref="DockerServiceUpdateSettings.RollbackDelay"/></li><li><c>--rollback-failure-action</c> via <see cref="DockerServiceUpdateSettings.RollbackFailureAction"/></li><li><c>--rollback-max-failure-ratio</c> via <see cref="DockerServiceUpdateSettings.RollbackMaxFailureRatio"/></li><li><c>--rollback-monitor</c> via <see cref="DockerServiceUpdateSettings.RollbackMonitor"/></li><li><c>--rollback-order</c> via <see cref="DockerServiceUpdateSettings.RollbackOrder"/></li><li><c>--rollback-parallelism</c> via <see cref="DockerServiceUpdateSettings.RollbackParallelism"/></li><li><c>--secret-add</c> via <see cref="DockerServiceUpdateSettings.SecretAdd"/></li><li><c>--secret-rm</c> via <see cref="DockerServiceUpdateSettings.SecretRm"/></li><li><c>--stop-grace-period</c> via <see cref="DockerServiceUpdateSettings.StopGracePeriod"/></li><li><c>--stop-signal</c> via <see cref="DockerServiceUpdateSettings.StopSignal"/></li><li><c>--sysctl-add</c> via <see cref="DockerServiceUpdateSettings.SysctlAdd"/></li><li><c>--sysctl-rm</c> via <see cref="DockerServiceUpdateSettings.SysctlRm"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tty</c> via <see cref="DockerServiceUpdateSettings.Tty"/></li><li><c>--update-delay</c> via <see cref="DockerServiceUpdateSettings.UpdateDelay"/></li><li><c>--update-failure-action</c> via <see cref="DockerServiceUpdateSettings.UpdateFailureAction"/></li><li><c>--update-max-failure-ratio</c> via <see cref="DockerServiceUpdateSettings.UpdateMaxFailureRatio"/></li><li><c>--update-monitor</c> via <see cref="DockerServiceUpdateSettings.UpdateMonitor"/></li><li><c>--update-order</c> via <see cref="DockerServiceUpdateSettings.UpdateOrder"/></li><li><c>--update-parallelism</c> via <see cref="DockerServiceUpdateSettings.UpdateParallelism"/></li><li><c>--user</c> via <see cref="DockerServiceUpdateSettings.User"/></li><li><c>--with-registry-auth</c> via <see cref="DockerServiceUpdateSettings.WithRegistryAuth"/></li><li><c>--workdir</c> via <see cref="DockerServiceUpdateSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceUpdate(DockerServiceUpdateSettings options = null) => new DockerTasks().Run<DockerServiceUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Common.Tools.Docker.DockerServiceUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Application.Tools.Docker.DockerServiceUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceUpdate(Configure<DockerServiceUpdateSettings> configurator) => new DockerTasks().Run<DockerServiceUpdateSettings>(configurator.Invoke(new DockerServiceUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Common.Tools.Docker.DockerServiceUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Application.Tools.Docker.DockerServiceUpdateSettings)"/>
     public static IEnumerable<(DockerServiceUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceUpdate(CombinatorialConfigure<DockerServiceUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List port mappings or a specific mapping for the container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerPortSettings.Container"/></li><li><c>&lt;privatePort&gt;</c> via <see cref="DockerPortSettings.PrivatePort"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPort(DockerPortSettings options = null) => new DockerTasks().Run<DockerPortSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Common.Tools.Docker.DockerPortSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Application.Tools.Docker.DockerPortSettings)"/>
     public static IReadOnlyCollection<Output> DockerPort(Configure<DockerPortSettings> configurator) => new DockerTasks().Run<DockerPortSettings>(configurator.Invoke(new DockerPortSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Common.Tools.Docker.DockerPortSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Application.Tools.Docker.DockerPortSettings)"/>
     public static IEnumerable<(DockerPortSettings Settings, IReadOnlyCollection<Output> Output)> DockerPort(CombinatorialConfigure<DockerPortSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPort, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainer(DockerContainerSettings options = null) => new DockerTasks().Run<DockerContainerSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Common.Tools.Docker.DockerContainerSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Application.Tools.Docker.DockerContainerSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainer(Configure<DockerContainerSettings> configurator) => new DockerTasks().Run<DockerContainerSettings>(configurator.Invoke(new DockerContainerSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Common.Tools.Docker.DockerContainerSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Application.Tools.Docker.DockerContainerSettings)"/>
     public static IEnumerable<(DockerContainerSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainer(CombinatorialConfigure<DockerContainerSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainer, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Push an image or a repository to a registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerImagePushSettings.Name"/></li><li><c>--all-tags</c> via <see cref="DockerImagePushSettings.AllTags"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerImagePushSettings.DisableContentTrust"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImagePush(DockerImagePushSettings options = null) => new DockerTasks().Run<DockerImagePushSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Common.Tools.Docker.DockerImagePushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Application.Tools.Docker.DockerImagePushSettings)"/>
     public static IReadOnlyCollection<Output> DockerImagePush(Configure<DockerImagePushSettings> configurator) => new DockerTasks().Run<DockerImagePushSettings>(configurator.Invoke(new DockerImagePushSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Common.Tools.Docker.DockerImagePushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Application.Tools.Docker.DockerImagePushSettings)"/>
     public static IEnumerable<(DockerImagePushSettings Settings, IReadOnlyCollection<Output> Output)> DockerImagePush(CombinatorialConfigure<DockerImagePushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImagePush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more services.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;services&gt;</c> via <see cref="DockerServiceInspectSettings.Services"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerServiceInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--pretty</c> via <see cref="DockerServiceInspectSettings.Pretty"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceInspect(DockerServiceInspectSettings options = null) => new DockerTasks().Run<DockerServiceInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Common.Tools.Docker.DockerServiceInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Application.Tools.Docker.DockerServiceInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceInspect(Configure<DockerServiceInspectSettings> configurator) => new DockerTasks().Run<DockerServiceInspectSettings>(configurator.Invoke(new DockerServiceInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Common.Tools.Docker.DockerServiceInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Application.Tools.Docker.DockerServiceInspectSettings)"/>
     public static IEnumerable<(DockerServiceInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceInspect(CombinatorialConfigure<DockerServiceInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Connect a container to a network.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerNetworkConnectSettings.Container"/></li><li><c>&lt;network&gt;</c> via <see cref="DockerNetworkConnectSettings.Network"/></li><li><c>--alias</c> via <see cref="DockerNetworkConnectSettings.Alias"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--driver-opt</c> via <see cref="DockerNetworkConnectSettings.DriverOpt"/></li><li><c>--ip</c> via <see cref="DockerNetworkConnectSettings.Ip"/></li><li><c>--ip6</c> via <see cref="DockerNetworkConnectSettings.Ip6"/></li><li><c>--link</c> via <see cref="DockerNetworkConnectSettings.Link"/></li><li><c>--link-local-ip</c> via <see cref="DockerNetworkConnectSettings.LinkLocalIp"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkConnect(DockerNetworkConnectSettings options = null) => new DockerTasks().Run<DockerNetworkConnectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Common.Tools.Docker.DockerNetworkConnectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Application.Tools.Docker.DockerNetworkConnectSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkConnect(Configure<DockerNetworkConnectSettings> configurator) => new DockerTasks().Run<DockerNetworkConnectSettings>(configurator.Invoke(new DockerNetworkConnectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Common.Tools.Docker.DockerNetworkConnectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Application.Tools.Docker.DockerNetworkConnectSettings)"/>
     public static IEnumerable<(DockerNetworkConnectSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkConnect(CombinatorialConfigure<DockerNetworkConnectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkConnect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List secrets.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerSecretLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerSecretLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerSecretLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSecretLs(DockerSecretLsSettings options = null) => new DockerTasks().Run<DockerSecretLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Common.Tools.Docker.DockerSecretLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Application.Tools.Docker.DockerSecretLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerSecretLs(Configure<DockerSecretLsSettings> configurator) => new DockerTasks().Run<DockerSecretLsSettings>(configurator.Invoke(new DockerSecretLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Common.Tools.Docker.DockerSecretLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Application.Tools.Docker.DockerSecretLsSettings)"/>
     public static IEnumerable<(DockerSecretLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerSecretLs(CombinatorialConfigure<DockerSecretLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSecretLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Leave the swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerSwarmLeaveSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmLeave(DockerSwarmLeaveSettings options = null) => new DockerTasks().Run<DockerSwarmLeaveSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Common.Tools.Docker.DockerSwarmLeaveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Application.Tools.Docker.DockerSwarmLeaveSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmLeave(Configure<DockerSwarmLeaveSettings> configurator) => new DockerTasks().Run<DockerSwarmLeaveSettings>(configurator.Invoke(new DockerSwarmLeaveSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Common.Tools.Docker.DockerSwarmLeaveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Application.Tools.Docker.DockerSwarmLeaveSettings)"/>
     public static IEnumerable<(DockerSwarmLeaveSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmLeave(CombinatorialConfigure<DockerSwarmLeaveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmLeave, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;repository&gt;</c> via <see cref="DockerImagesSettings.Repository"/></li><li><c>--all</c> via <see cref="DockerImagesSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--digests</c> via <see cref="DockerImagesSettings.Digests"/></li><li><c>--filter</c> via <see cref="DockerImagesSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerImagesSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerImagesSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerImagesSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImages(DockerImagesSettings options = null) => new DockerTasks().Run<DockerImagesSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Common.Tools.Docker.DockerImagesSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Application.Tools.Docker.DockerImagesSettings)"/>
     public static IReadOnlyCollection<Output> DockerImages(Configure<DockerImagesSettings> configurator) => new DockerTasks().Run<DockerImagesSettings>(configurator.Invoke(new DockerImagesSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Common.Tools.Docker.DockerImagesSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Application.Tools.Docker.DockerImagesSettings)"/>
     public static IEnumerable<(DockerImagesSettings Settings, IReadOnlyCollection<Output> Output)> DockerImages(CombinatorialConfigure<DockerImagesSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImages, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update a local engine.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--containerd</c> via <see cref="DockerEngineUpdateSettings.Containerd"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--engine-image</c> via <see cref="DockerEngineUpdateSettings.EngineImage"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--registry-prefix</c> via <see cref="DockerEngineUpdateSettings.RegistryPrefix"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--version</c> via <see cref="DockerEngineUpdateSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerEngineUpdate(DockerEngineUpdateSettings options = null) => new DockerTasks().Run<DockerEngineUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Common.Tools.Docker.DockerEngineUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Application.Tools.Docker.DockerEngineUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerEngineUpdate(Configure<DockerEngineUpdateSettings> configurator) => new DockerTasks().Run<DockerEngineUpdateSettings>(configurator.Invoke(new DockerEngineUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Common.Tools.Docker.DockerEngineUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Application.Tools.Docker.DockerEngineUpdateSettings)"/>
     public static IEnumerable<(DockerEngineUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerEngineUpdate(CombinatorialConfigure<DockerEngineUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerEngineUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Get real time events from the server.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerSystemEventsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerSystemEventsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--since</c> via <see cref="DockerSystemEventsSettings.Since"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--until</c> via <see cref="DockerSystemEventsSettings.Until"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSystemEvents(DockerSystemEventsSettings options = null) => new DockerTasks().Run<DockerSystemEventsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Common.Tools.Docker.DockerSystemEventsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Application.Tools.Docker.DockerSystemEventsSettings)"/>
     public static IReadOnlyCollection<Output> DockerSystemEvents(Configure<DockerSystemEventsSettings> configurator) => new DockerTasks().Run<DockerSystemEventsSettings>(configurator.Invoke(new DockerSystemEventsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Common.Tools.Docker.DockerSystemEventsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Application.Tools.Docker.DockerSystemEventsSettings)"/>
     public static IEnumerable<(DockerSystemEventsSettings Settings, IReadOnlyCollection<Output> Output)> DockerSystemEvents(CombinatorialConfigure<DockerSystemEventsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSystemEvents, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Return low-level information on Docker objects.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;names&gt;</c> via <see cref="DockerInspectSettings.Names"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--size</c> via <see cref="DockerInspectSettings.Size"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--type</c> via <see cref="DockerInspectSettings.Type"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerInspect(DockerInspectSettings options = null) => new DockerTasks().Run<DockerInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Common.Tools.Docker.DockerInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Application.Tools.Docker.DockerInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerInspect(Configure<DockerInspectSettings> configurator) => new DockerTasks().Run<DockerInspectSettings>(configurator.Invoke(new DockerInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Common.Tools.Docker.DockerInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Application.Tools.Docker.DockerInspectSettings)"/>
     public static IEnumerable<(DockerInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerInspect(CombinatorialConfigure<DockerInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Check for available engine updates.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--containerd</c> via <see cref="DockerEngineCheckSettings.Containerd"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--downgrades</c> via <see cref="DockerEngineCheckSettings.Downgrades"/></li><li><c>--engine-image</c> via <see cref="DockerEngineCheckSettings.EngineImage"/></li><li><c>--format</c> via <see cref="DockerEngineCheckSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--pre-releases</c> via <see cref="DockerEngineCheckSettings.PreReleases"/></li><li><c>--quiet</c> via <see cref="DockerEngineCheckSettings.Quiet"/></li><li><c>--registry-prefix</c> via <see cref="DockerEngineCheckSettings.RegistryPrefix"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--upgrades</c> via <see cref="DockerEngineCheckSettings.Upgrades"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerEngineCheck(DockerEngineCheckSettings options = null) => new DockerTasks().Run<DockerEngineCheckSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Common.Tools.Docker.DockerEngineCheckSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Application.Tools.Docker.DockerEngineCheckSettings)"/>
     public static IReadOnlyCollection<Output> DockerEngineCheck(Configure<DockerEngineCheckSettings> configurator) => new DockerTasks().Run<DockerEngineCheckSettings>(configurator.Invoke(new DockerEngineCheckSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Common.Tools.Docker.DockerEngineCheckSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Application.Tools.Docker.DockerEngineCheckSettings)"/>
     public static IEnumerable<(DockerEngineCheckSettings Settings, IReadOnlyCollection<Output> Output)> DockerEngineCheck(CombinatorialConfigure<DockerEngineCheckSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerEngineCheck, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Attach local standard input, output, and error streams to a running container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerAttachSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach-keys</c> via <see cref="DockerAttachSettings.DetachKeys"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-stdin</c> via <see cref="DockerAttachSettings.NoStdin"/></li><li><c>--sig-proxy</c> via <see cref="DockerAttachSettings.SigProxy"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerAttach(DockerAttachSettings options = null) => new DockerTasks().Run<DockerAttachSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Common.Tools.Docker.DockerAttachSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Application.Tools.Docker.DockerAttachSettings)"/>
     public static IReadOnlyCollection<Output> DockerAttach(Configure<DockerAttachSettings> configurator) => new DockerTasks().Run<DockerAttachSettings>(configurator.Invoke(new DockerAttachSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Common.Tools.Docker.DockerAttachSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Application.Tools.Docker.DockerAttachSettings)"/>
     public static IEnumerable<(DockerAttachSettings Settings, IReadOnlyCollection<Output> Output)> DockerAttach(CombinatorialConfigure<DockerAttachSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerAttach, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Block until one or more containers stop, then print their exit codes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerWaitSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerWait(DockerContainerWaitSettings options = null) => new DockerTasks().Run<DockerContainerWaitSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Common.Tools.Docker.DockerContainerWaitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Application.Tools.Docker.DockerContainerWaitSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerWait(Configure<DockerContainerWaitSettings> configurator) => new DockerTasks().Run<DockerContainerWaitSettings>(configurator.Invoke(new DockerContainerWaitSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Common.Tools.Docker.DockerContainerWaitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Application.Tools.Docker.DockerContainerWaitSettings)"/>
     public static IEnumerable<(DockerContainerWaitSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerWait(CombinatorialConfigure<DockerContainerWaitSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerWait, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display and rotate the root CA.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--ca-cert</c> via <see cref="DockerSwarmCaSettings.CaCert"/></li><li><c>--ca-key</c> via <see cref="DockerSwarmCaSettings.CaKey"/></li><li><c>--cert-expiry</c> via <see cref="DockerSwarmCaSettings.CertExpiry"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerSwarmCaSettings.Detach"/></li><li><c>--external-ca</c> via <see cref="DockerSwarmCaSettings.ExternalCa"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerSwarmCaSettings.Quiet"/></li><li><c>--rotate</c> via <see cref="DockerSwarmCaSettings.Rotate"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmCa(DockerSwarmCaSettings options = null) => new DockerTasks().Run<DockerSwarmCaSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Common.Tools.Docker.DockerSwarmCaSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Application.Tools.Docker.DockerSwarmCaSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmCa(Configure<DockerSwarmCaSettings> configurator) => new DockerTasks().Run<DockerSwarmCaSettings>(configurator.Invoke(new DockerSwarmCaSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Common.Tools.Docker.DockerSwarmCaSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Application.Tools.Docker.DockerSwarmCaSettings)"/>
     public static IEnumerable<(DockerSwarmCaSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmCa(CombinatorialConfigure<DockerSwarmCaSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmCa, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage the docker engine.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;command&gt;</c> via <see cref="DockerEngineSettings.Command"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerEngine(DockerEngineSettings options = null) => new DockerTasks().Run<DockerEngineSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Common.Tools.Docker.DockerEngineSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Application.Tools.Docker.DockerEngineSettings)"/>
     public static IReadOnlyCollection<Output> DockerEngine(Configure<DockerEngineSettings> configurator) => new DockerTasks().Run<DockerEngineSettings>(configurator.Invoke(new DockerEngineSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Common.Tools.Docker.DockerEngineSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Application.Tools.Docker.DockerEngineSettings)"/>
     public static IEnumerable<(DockerEngineSettings Settings, IReadOnlyCollection<Output> Output)> DockerEngine(CombinatorialConfigure<DockerEngineSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerEngine, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove unused data.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--all</c> via <see cref="DockerSystemPruneSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerSystemPruneSettings.Filter"/></li><li><c>--force</c> via <see cref="DockerSystemPruneSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--volumes</c> via <see cref="DockerSystemPruneSettings.Volumes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSystemPrune(DockerSystemPruneSettings options = null) => new DockerTasks().Run<DockerSystemPruneSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Common.Tools.Docker.DockerSystemPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Application.Tools.Docker.DockerSystemPruneSettings)"/>
     public static IReadOnlyCollection<Output> DockerSystemPrune(Configure<DockerSystemPruneSettings> configurator) => new DockerTasks().Run<DockerSystemPruneSettings>(configurator.Invoke(new DockerSystemPruneSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Common.Tools.Docker.DockerSystemPruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Application.Tools.Docker.DockerSystemPruneSettings)"/>
     public static IEnumerable<(DockerSystemPruneSettings Settings, IReadOnlyCollection<Output> Output)> DockerSystemPrune(CombinatorialConfigure<DockerSystemPruneSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSystemPrune, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage builds.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerBuilder(DockerBuilderSettings options = null) => new DockerTasks().Run<DockerBuilderSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Common.Tools.Docker.DockerBuilderSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Application.Tools.Docker.DockerBuilderSettings)"/>
     public static IReadOnlyCollection<Output> DockerBuilder(Configure<DockerBuilderSettings> configurator) => new DockerTasks().Run<DockerBuilderSettings>(configurator.Invoke(new DockerBuilderSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Common.Tools.Docker.DockerBuilderSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Application.Tools.Docker.DockerBuilderSettings)"/>
     public static IEnumerable<(DockerBuilderSettings Settings, IReadOnlyCollection<Output> Output)> DockerBuilder(CombinatorialConfigure<DockerBuilderSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerBuilder, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pause all processes within one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerPauseSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerPause(DockerContainerPauseSettings options = null) => new DockerTasks().Run<DockerContainerPauseSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Common.Tools.Docker.DockerContainerPauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Application.Tools.Docker.DockerContainerPauseSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerPause(Configure<DockerContainerPauseSettings> configurator) => new DockerTasks().Run<DockerContainerPauseSettings>(configurator.Invoke(new DockerContainerPauseSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Common.Tools.Docker.DockerContainerPauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Application.Tools.Docker.DockerContainerPauseSettings)"/>
     public static IEnumerable<(DockerContainerPauseSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerPause(CombinatorialConfigure<DockerContainerPauseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerPause, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a new image from a container's changes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerCommitSettings.Container"/></li><li><c>&lt;repository&gt;</c> via <see cref="DockerContainerCommitSettings.Repository"/></li><li><c>--author</c> via <see cref="DockerContainerCommitSettings.Author"/></li><li><c>--change</c> via <see cref="DockerContainerCommitSettings.Change"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--message</c> via <see cref="DockerContainerCommitSettings.Message"/></li><li><c>--pause</c> via <see cref="DockerContainerCommitSettings.Pause"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerCommit(DockerContainerCommitSettings options = null) => new DockerTasks().Run<DockerContainerCommitSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Common.Tools.Docker.DockerContainerCommitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Application.Tools.Docker.DockerContainerCommitSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerCommit(Configure<DockerContainerCommitSettings> configurator) => new DockerTasks().Run<DockerContainerCommitSettings>(configurator.Invoke(new DockerContainerCommitSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Common.Tools.Docker.DockerContainerCommitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Application.Tools.Docker.DockerContainerCommitSettings)"/>
     public static IEnumerable<(DockerContainerCommitSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerCommit(CombinatorialConfigure<DockerContainerCommitSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerCommit, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List contexts.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerContextLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerContextLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextLs(DockerContextLsSettings options = null) => new DockerTasks().Run<DockerContextLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Common.Tools.Docker.DockerContextLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Application.Tools.Docker.DockerContextLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextLs(Configure<DockerContextLsSettings> configurator) => new DockerTasks().Run<DockerContextLsSettings>(configurator.Invoke(new DockerContextLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Common.Tools.Docker.DockerContextLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Application.Tools.Docker.DockerContextLsSettings)"/>
     public static IEnumerable<(DockerContextLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextLs(CombinatorialConfigure<DockerContextLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more contexts.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;contexts&gt;</c> via <see cref="DockerContextRmSettings.Contexts"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextRm(DockerContextRmSettings options = null) => new DockerTasks().Run<DockerContextRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Common.Tools.Docker.DockerContextRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Application.Tools.Docker.DockerContextRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextRm(Configure<DockerContextRmSettings> configurator) => new DockerTasks().Run<DockerContextRmSettings>(configurator.Invoke(new DockerContextRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Common.Tools.Docker.DockerContextRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Application.Tools.Docker.DockerContextRmSettings)"/>
     public static IEnumerable<(DockerContextRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextRm(CombinatorialConfigure<DockerContextRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List the tasks in the stack.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stack&gt;</c> via <see cref="DockerStackPsSettings.Stack"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerStackPsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerStackPsSettings.Format"/></li><li><c>--kubeconfig</c> via <see cref="DockerStackSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--namespace</c> via <see cref="DockerStackPsSettings.Namespace"/></li><li><c>--no-resolve</c> via <see cref="DockerStackPsSettings.NoResolve"/></li><li><c>--no-trunc</c> via <see cref="DockerStackPsSettings.NoTrunc"/></li><li><c>--orchestrator</c> via <see cref="DockerStackSettings.Orchestrator"/></li><li><c>--quiet</c> via <see cref="DockerStackPsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStackPs(DockerStackPsSettings options = null) => new DockerTasks().Run<DockerStackPsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Common.Tools.Docker.DockerStackPsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Application.Tools.Docker.DockerStackPsSettings)"/>
     public static IReadOnlyCollection<Output> DockerStackPs(Configure<DockerStackPsSettings> configurator) => new DockerTasks().Run<DockerStackPsSettings>(configurator.Invoke(new DockerStackPsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Common.Tools.Docker.DockerStackPsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Application.Tools.Docker.DockerStackPsSettings)"/>
     public static IEnumerable<(DockerStackPsSettings Settings, IReadOnlyCollection<Output> Output)> DockerStackPs(CombinatorialConfigure<DockerStackPsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStackPs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a new container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerContainerCreateSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerContainerCreateSettings.Command"/></li><li><c>&lt;image&gt;</c> via <see cref="DockerContainerCreateSettings.Image"/></li><li><c>--add-host</c> via <see cref="DockerContainerCreateSettings.AddHost"/></li><li><c>--attach</c> via <see cref="DockerContainerCreateSettings.Attach"/></li><li><c>--blkio-weight</c> via <see cref="DockerContainerCreateSettings.BlkioWeight"/></li><li><c>--blkio-weight-device</c> via <see cref="DockerContainerCreateSettings.BlkioWeightDevice"/></li><li><c>--cap-add</c> via <see cref="DockerContainerCreateSettings.CapAdd"/></li><li><c>--cap-drop</c> via <see cref="DockerContainerCreateSettings.CapDrop"/></li><li><c>--cgroup-parent</c> via <see cref="DockerContainerCreateSettings.CgroupParent"/></li><li><c>--cidfile</c> via <see cref="DockerContainerCreateSettings.Cidfile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-count</c> via <see cref="DockerContainerCreateSettings.CpuCount"/></li><li><c>--cpu-percent</c> via <see cref="DockerContainerCreateSettings.CpuPercent"/></li><li><c>--cpu-period</c> via <see cref="DockerContainerCreateSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerContainerCreateSettings.CpuQuota"/></li><li><c>--cpu-rt-period</c> via <see cref="DockerContainerCreateSettings.CpuRtPeriod"/></li><li><c>--cpu-rt-runtime</c> via <see cref="DockerContainerCreateSettings.CpuRtRuntime"/></li><li><c>--cpu-shares</c> via <see cref="DockerContainerCreateSettings.CpuShares"/></li><li><c>--cpus</c> via <see cref="DockerContainerCreateSettings.Cpus"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerContainerCreateSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerContainerCreateSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--device</c> via <see cref="DockerContainerCreateSettings.Device"/></li><li><c>--device-cgroup-rule</c> via <see cref="DockerContainerCreateSettings.DeviceCgroupRule"/></li><li><c>--device-read-bps</c> via <see cref="DockerContainerCreateSettings.DeviceReadBps"/></li><li><c>--device-read-iops</c> via <see cref="DockerContainerCreateSettings.DeviceReadIops"/></li><li><c>--device-write-bps</c> via <see cref="DockerContainerCreateSettings.DeviceWriteBps"/></li><li><c>--device-write-iops</c> via <see cref="DockerContainerCreateSettings.DeviceWriteIops"/></li><li><c>--disable-content-trust</c> via <see cref="DockerContainerCreateSettings.DisableContentTrust"/></li><li><c>--dns</c> via <see cref="DockerContainerCreateSettings.Dns"/></li><li><c>--dns-opt</c> via <see cref="DockerContainerCreateSettings.DnsOpt"/></li><li><c>--dns-option</c> via <see cref="DockerContainerCreateSettings.DnsOption"/></li><li><c>--dns-search</c> via <see cref="DockerContainerCreateSettings.DnsSearch"/></li><li><c>--domainname</c> via <see cref="DockerContainerCreateSettings.Domainname"/></li><li><c>--entrypoint</c> via <see cref="DockerContainerCreateSettings.Entrypoint"/></li><li><c>--env</c> via <see cref="DockerContainerCreateSettings.Env"/></li><li><c>--env-file</c> via <see cref="DockerContainerCreateSettings.EnvFile"/></li><li><c>--expose</c> via <see cref="DockerContainerCreateSettings.Expose"/></li><li><c>--gpus</c> via <see cref="DockerContainerCreateSettings.Gpus"/></li><li><c>--group-add</c> via <see cref="DockerContainerCreateSettings.GroupAdd"/></li><li><c>--health-cmd</c> via <see cref="DockerContainerCreateSettings.HealthCmd"/></li><li><c>--health-interval</c> via <see cref="DockerContainerCreateSettings.HealthInterval"/></li><li><c>--health-retries</c> via <see cref="DockerContainerCreateSettings.HealthRetries"/></li><li><c>--health-start-period</c> via <see cref="DockerContainerCreateSettings.HealthStartPeriod"/></li><li><c>--health-timeout</c> via <see cref="DockerContainerCreateSettings.HealthTimeout"/></li><li><c>--help</c> via <see cref="DockerContainerCreateSettings.Help"/></li><li><c>--hostname</c> via <see cref="DockerContainerCreateSettings.Hostname"/></li><li><c>--init</c> via <see cref="DockerContainerCreateSettings.Init"/></li><li><c>--interactive</c> via <see cref="DockerContainerCreateSettings.Interactive"/></li><li><c>--io-maxbandwidth</c> via <see cref="DockerContainerCreateSettings.IoMaxbandwidth"/></li><li><c>--io-maxiops</c> via <see cref="DockerContainerCreateSettings.IoMaxiops"/></li><li><c>--ip</c> via <see cref="DockerContainerCreateSettings.Ip"/></li><li><c>--ip6</c> via <see cref="DockerContainerCreateSettings.Ip6"/></li><li><c>--ipc</c> via <see cref="DockerContainerCreateSettings.Ipc"/></li><li><c>--isolation</c> via <see cref="DockerContainerCreateSettings.Isolation"/></li><li><c>--kernel-memory</c> via <see cref="DockerContainerCreateSettings.KernelMemory"/></li><li><c>--label</c> via <see cref="DockerContainerCreateSettings.Label"/></li><li><c>--label-file</c> via <see cref="DockerContainerCreateSettings.LabelFile"/></li><li><c>--link</c> via <see cref="DockerContainerCreateSettings.Link"/></li><li><c>--link-local-ip</c> via <see cref="DockerContainerCreateSettings.LinkLocalIp"/></li><li><c>--log-driver</c> via <see cref="DockerContainerCreateSettings.LogDriver"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--log-opt</c> via <see cref="DockerContainerCreateSettings.LogOpt"/></li><li><c>--mac-address</c> via <see cref="DockerContainerCreateSettings.MacAddress"/></li><li><c>--memory</c> via <see cref="DockerContainerCreateSettings.Memory"/></li><li><c>--memory-reservation</c> via <see cref="DockerContainerCreateSettings.MemoryReservation"/></li><li><c>--memory-swap</c> via <see cref="DockerContainerCreateSettings.MemorySwap"/></li><li><c>--memory-swappiness</c> via <see cref="DockerContainerCreateSettings.MemorySwappiness"/></li><li><c>--mount</c> via <see cref="DockerContainerCreateSettings.Mount"/></li><li><c>--name</c> via <see cref="DockerContainerCreateSettings.Name"/></li><li><c>--net</c> via <see cref="DockerContainerCreateSettings.Net"/></li><li><c>--net-alias</c> via <see cref="DockerContainerCreateSettings.NetAlias"/></li><li><c>--network</c> via <see cref="DockerContainerCreateSettings.Network"/></li><li><c>--network-alias</c> via <see cref="DockerContainerCreateSettings.NetworkAlias"/></li><li><c>--no-healthcheck</c> via <see cref="DockerContainerCreateSettings.NoHealthcheck"/></li><li><c>--oom-kill-disable</c> via <see cref="DockerContainerCreateSettings.OomKillDisable"/></li><li><c>--oom-score-adj</c> via <see cref="DockerContainerCreateSettings.OomScoreAdj"/></li><li><c>--pid</c> via <see cref="DockerContainerCreateSettings.Pid"/></li><li><c>--pids-limit</c> via <see cref="DockerContainerCreateSettings.PidsLimit"/></li><li><c>--platform</c> via <see cref="DockerContainerCreateSettings.Platform"/></li><li><c>--privileged</c> via <see cref="DockerContainerCreateSettings.Privileged"/></li><li><c>--publish</c> via <see cref="DockerContainerCreateSettings.Publish"/></li><li><c>--publish-all</c> via <see cref="DockerContainerCreateSettings.PublishAll"/></li><li><c>--read-only</c> via <see cref="DockerContainerCreateSettings.ReadOnly"/></li><li><c>--restart</c> via <see cref="DockerContainerCreateSettings.Restart"/></li><li><c>--rm</c> via <see cref="DockerContainerCreateSettings.Rm"/></li><li><c>--runtime</c> via <see cref="DockerContainerCreateSettings.Runtime"/></li><li><c>--security-opt</c> via <see cref="DockerContainerCreateSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerContainerCreateSettings.ShmSize"/></li><li><c>--stop-signal</c> via <see cref="DockerContainerCreateSettings.StopSignal"/></li><li><c>--stop-timeout</c> via <see cref="DockerContainerCreateSettings.StopTimeout"/></li><li><c>--storage-opt</c> via <see cref="DockerContainerCreateSettings.StorageOpt"/></li><li><c>--sysctl</c> via <see cref="DockerContainerCreateSettings.Sysctl"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tmpfs</c> via <see cref="DockerContainerCreateSettings.Tmpfs"/></li><li><c>--tty</c> via <see cref="DockerContainerCreateSettings.Tty"/></li><li><c>--ulimit</c> via <see cref="DockerContainerCreateSettings.Ulimit"/></li><li><c>--user</c> via <see cref="DockerContainerCreateSettings.User"/></li><li><c>--userns</c> via <see cref="DockerContainerCreateSettings.Userns"/></li><li><c>--uts</c> via <see cref="DockerContainerCreateSettings.Uts"/></li><li><c>--volume</c> via <see cref="DockerContainerCreateSettings.Volume"/></li><li><c>--volume-driver</c> via <see cref="DockerContainerCreateSettings.VolumeDriver"/></li><li><c>--volumes-from</c> via <see cref="DockerContainerCreateSettings.VolumesFrom"/></li><li><c>--workdir</c> via <see cref="DockerContainerCreateSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerCreate(DockerContainerCreateSettings options = null) => new DockerTasks().Run<DockerContainerCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Common.Tools.Docker.DockerContainerCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Application.Tools.Docker.DockerContainerCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerCreate(Configure<DockerContainerCreateSettings> configurator) => new DockerTasks().Run<DockerContainerCreateSettings>(configurator.Invoke(new DockerContainerCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Common.Tools.Docker.DockerContainerCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Application.Tools.Docker.DockerContainerCreateSettings)"/>
     public static IEnumerable<(DockerContainerCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerCreate(CombinatorialConfigure<DockerContainerCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a volume.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;volume&gt;</c> via <see cref="DockerVolumeCreateSettings.Volume"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--driver</c> via <see cref="DockerVolumeCreateSettings.Driver"/></li><li><c>--label</c> via <see cref="DockerVolumeCreateSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--name</c> via <see cref="DockerVolumeCreateSettings.Name"/></li><li><c>--opt</c> via <see cref="DockerVolumeCreateSettings.Opt"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVolumeCreate(DockerVolumeCreateSettings options = null) => new DockerTasks().Run<DockerVolumeCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Common.Tools.Docker.DockerVolumeCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Application.Tools.Docker.DockerVolumeCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerVolumeCreate(Configure<DockerVolumeCreateSettings> configurator) => new DockerTasks().Run<DockerVolumeCreateSettings>(configurator.Invoke(new DockerVolumeCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Common.Tools.Docker.DockerVolumeCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Application.Tools.Docker.DockerVolumeCreateSettings)"/>
     public static IEnumerable<(DockerVolumeCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerVolumeCreate(CombinatorialConfigure<DockerVolumeCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVolumeCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage plugins.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPlugin(DockerPluginSettings options = null) => new DockerTasks().Run<DockerPluginSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Common.Tools.Docker.DockerPluginSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Application.Tools.Docker.DockerPluginSettings)"/>
     public static IReadOnlyCollection<Output> DockerPlugin(Configure<DockerPluginSettings> configurator) => new DockerTasks().Run<DockerPluginSettings>(configurator.Invoke(new DockerPluginSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Common.Tools.Docker.DockerPluginSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Application.Tools.Docker.DockerPluginSettings)"/>
     public static IEnumerable<(DockerPluginSettings Settings, IReadOnlyCollection<Output> Output)> DockerPlugin(CombinatorialConfigure<DockerPluginSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPlugin, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Log in to a Docker registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;server&gt;</c> via <see cref="DockerLoginSettings.Server"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--password</c> via <see cref="DockerLoginSettings.Password"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--username</c> via <see cref="DockerLoginSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerLogin(DockerLoginSettings options = null) => new DockerTasks().Run<DockerLoginSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Common.Tools.Docker.DockerLoginSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Application.Tools.Docker.DockerLoginSettings)"/>
     public static IReadOnlyCollection<Output> DockerLogin(Configure<DockerLoginSettings> configurator) => new DockerTasks().Run<DockerLoginSettings>(configurator.Invoke(new DockerLoginSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Common.Tools.Docker.DockerLoginSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Application.Tools.Docker.DockerLoginSettings)"/>
     public static IEnumerable<(DockerLoginSettings Settings, IReadOnlyCollection<Output> Output)> DockerLogin(CombinatorialConfigure<DockerLoginSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerLogin, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage the unlock key.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerSwarmUnlockKeySettings.Quiet"/></li><li><c>--rotate</c> via <see cref="DockerSwarmUnlockKeySettings.Rotate"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmUnlockKey(DockerSwarmUnlockKeySettings options = null) => new DockerTasks().Run<DockerSwarmUnlockKeySettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Common.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Application.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmUnlockKey(Configure<DockerSwarmUnlockKeySettings> configurator) => new DockerTasks().Run<DockerSwarmUnlockKeySettings>(configurator.Invoke(new DockerSwarmUnlockKeySettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Common.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Application.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
     public static IEnumerable<(DockerSwarmUnlockKeySettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmUnlockKey(CombinatorialConfigure<DockerSwarmUnlockKeySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmUnlockKey, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Start one or more stopped containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerStartSettings.Containers"/></li><li><c>--attach</c> via <see cref="DockerStartSettings.Attach"/></li><li><c>--checkpoint</c> via <see cref="DockerStartSettings.Checkpoint"/></li><li><c>--checkpoint-dir</c> via <see cref="DockerStartSettings.CheckpointDir"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach-keys</c> via <see cref="DockerStartSettings.DetachKeys"/></li><li><c>--interactive</c> via <see cref="DockerStartSettings.Interactive"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStart(DockerStartSettings options = null) => new DockerTasks().Run<DockerStartSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Common.Tools.Docker.DockerStartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Application.Tools.Docker.DockerStartSettings)"/>
     public static IReadOnlyCollection<Output> DockerStart(Configure<DockerStartSettings> configurator) => new DockerTasks().Run<DockerStartSettings>(configurator.Invoke(new DockerStartSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Common.Tools.Docker.DockerStartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Application.Tools.Docker.DockerStartSettings)"/>
     public static IEnumerable<(DockerStartSettings Settings, IReadOnlyCollection<Output> Output)> DockerStart(CombinatorialConfigure<DockerStartSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStart, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Initialize a swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--advertise-addr</c> via <see cref="DockerSwarmInitSettings.AdvertiseAddr"/></li><li><c>--autolock</c> via <see cref="DockerSwarmInitSettings.Autolock"/></li><li><c>--availability</c> via <see cref="DockerSwarmInitSettings.Availability"/></li><li><c>--cert-expiry</c> via <see cref="DockerSwarmInitSettings.CertExpiry"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--data-path-addr</c> via <see cref="DockerSwarmInitSettings.DataPathAddr"/></li><li><c>--data-path-port</c> via <see cref="DockerSwarmInitSettings.DataPathPort"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--default-addr-pool</c> via <see cref="DockerSwarmInitSettings.DefaultAddrPool"/></li><li><c>--default-addr-pool-mask-length</c> via <see cref="DockerSwarmInitSettings.DefaultAddrPoolMaskLength"/></li><li><c>--dispatcher-heartbeat</c> via <see cref="DockerSwarmInitSettings.DispatcherHeartbeat"/></li><li><c>--external-ca</c> via <see cref="DockerSwarmInitSettings.ExternalCa"/></li><li><c>--force-new-cluster</c> via <see cref="DockerSwarmInitSettings.ForceNewCluster"/></li><li><c>--listen-addr</c> via <see cref="DockerSwarmInitSettings.ListenAddr"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--max-snapshots</c> via <see cref="DockerSwarmInitSettings.MaxSnapshots"/></li><li><c>--snapshot-interval</c> via <see cref="DockerSwarmInitSettings.SnapshotInterval"/></li><li><c>--task-history-limit</c> via <see cref="DockerSwarmInitSettings.TaskHistoryLimit"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmInit(DockerSwarmInitSettings options = null) => new DockerTasks().Run<DockerSwarmInitSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Common.Tools.Docker.DockerSwarmInitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Application.Tools.Docker.DockerSwarmInitSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmInit(Configure<DockerSwarmInitSettings> configurator) => new DockerTasks().Run<DockerSwarmInitSettings>(configurator.Invoke(new DockerSwarmInitSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Common.Tools.Docker.DockerSwarmInitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Application.Tools.Docker.DockerSwarmInitSettings)"/>
     public static IEnumerable<(DockerSwarmInitSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmInit(CombinatorialConfigure<DockerSwarmInitSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmInit, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Inspect changes to files or directories on a container's filesystem.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerDiffSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerDiff(DockerContainerDiffSettings options = null) => new DockerTasks().Run<DockerContainerDiffSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Common.Tools.Docker.DockerContainerDiffSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Application.Tools.Docker.DockerContainerDiffSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerDiff(Configure<DockerContainerDiffSettings> configurator) => new DockerTasks().Run<DockerContainerDiffSettings>(configurator.Invoke(new DockerContainerDiffSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Common.Tools.Docker.DockerContainerDiffSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Application.Tools.Docker.DockerContainerDiffSettings)"/>
     public static IEnumerable<(DockerContainerDiffSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerDiff(CombinatorialConfigure<DockerContainerDiffSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerDiff, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Restart one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerRestartSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--time</c> via <see cref="DockerContainerRestartSettings.Time"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerRestart(DockerContainerRestartSettings options = null) => new DockerTasks().Run<DockerContainerRestartSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Common.Tools.Docker.DockerContainerRestartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Application.Tools.Docker.DockerContainerRestartSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerRestart(Configure<DockerContainerRestartSettings> configurator) => new DockerTasks().Run<DockerContainerRestartSettings>(configurator.Invoke(new DockerContainerRestartSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Common.Tools.Docker.DockerContainerRestartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Application.Tools.Docker.DockerContainerRestartSettings)"/>
     public static IEnumerable<(DockerContainerRestartSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerRestart(CombinatorialConfigure<DockerContainerRestartSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerRestart, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Docker configs.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerConfig(DockerConfigSettings options = null) => new DockerTasks().Run<DockerConfigSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Common.Tools.Docker.DockerConfigSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Application.Tools.Docker.DockerConfigSettings)"/>
     public static IReadOnlyCollection<Output> DockerConfig(Configure<DockerConfigSettings> configurator) => new DockerTasks().Run<DockerConfigSettings>(configurator.Invoke(new DockerConfigSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Common.Tools.Docker.DockerConfigSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Application.Tools.Docker.DockerConfigSettings)"/>
     public static IEnumerable<(DockerConfigSettings Settings, IReadOnlyCollection<Output> Output)> DockerConfig(CombinatorialConfigure<DockerConfigSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerConfig, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Disable a plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginDisableSettings.Plugin"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerPluginDisableSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginDisable(DockerPluginDisableSettings options = null) => new DockerTasks().Run<DockerPluginDisableSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Common.Tools.Docker.DockerPluginDisableSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Application.Tools.Docker.DockerPluginDisableSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginDisable(Configure<DockerPluginDisableSettings> configurator) => new DockerTasks().Run<DockerPluginDisableSettings>(configurator.Invoke(new DockerPluginDisableSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Common.Tools.Docker.DockerPluginDisableSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Application.Tools.Docker.DockerPluginDisableSettings)"/>
     public static IEnumerable<(DockerPluginDisableSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginDisable(CombinatorialConfigure<DockerPluginDisableSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginDisable, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Unpause all processes within one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerUnpauseSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerUnpause(DockerContainerUnpauseSettings options = null) => new DockerTasks().Run<DockerContainerUnpauseSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Common.Tools.Docker.DockerContainerUnpauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Application.Tools.Docker.DockerContainerUnpauseSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerUnpause(Configure<DockerContainerUnpauseSettings> configurator) => new DockerTasks().Run<DockerContainerUnpauseSettings>(configurator.Invoke(new DockerContainerUnpauseSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Common.Tools.Docker.DockerContainerUnpauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Application.Tools.Docker.DockerContainerUnpauseSettings)"/>
     public static IEnumerable<(DockerContainerUnpauseSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerUnpause(CombinatorialConfigure<DockerContainerUnpauseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerUnpause, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Import a context from a tar or zip file.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;context&gt;</c> via <see cref="DockerContextImportSettings.Context"/></li><li><c>&lt;file&gt;</c> via <see cref="DockerContextImportSettings.File"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextImport(DockerContextImportSettings options = null) => new DockerTasks().Run<DockerContextImportSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Common.Tools.Docker.DockerContextImportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Application.Tools.Docker.DockerContextImportSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextImport(Configure<DockerContextImportSettings> configurator) => new DockerTasks().Run<DockerContextImportSettings>(configurator.Invoke(new DockerContextImportSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Common.Tools.Docker.DockerContextImportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Application.Tools.Docker.DockerContextImportSettings)"/>
     public static IEnumerable<(DockerContextImportSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextImport(CombinatorialConfigure<DockerContextImportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextImport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerRmSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerRmSettings.Force"/></li><li><c>--link</c> via <see cref="DockerRmSettings.Link"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--volumes</c> via <see cref="DockerRmSettings.Volumes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerRm(DockerRmSettings options = null) => new DockerTasks().Run<DockerRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Common.Tools.Docker.DockerRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Application.Tools.Docker.DockerRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerRm(Configure<DockerRmSettings> configurator) => new DockerTasks().Run<DockerRmSettings>(configurator.Invoke(new DockerRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Common.Tools.Docker.DockerRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Application.Tools.Docker.DockerRmSettings)"/>
     public static IEnumerable<(DockerRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerRm(CombinatorialConfigure<DockerRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Deploy a new stack or update an existing stack.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stack&gt;</c> via <see cref="DockerDeploySettings.Stack"/></li><li><c>--bundle-file</c> via <see cref="DockerDeploySettings.BundleFile"/></li><li><c>--compose-file</c> via <see cref="DockerDeploySettings.ComposeFile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--namespace</c> via <see cref="DockerDeploySettings.Namespace"/></li><li><c>--prune</c> via <see cref="DockerDeploySettings.Prune"/></li><li><c>--resolve-image</c> via <see cref="DockerDeploySettings.ResolveImage"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--with-registry-auth</c> via <see cref="DockerDeploySettings.WithRegistryAuth"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerDeploy(DockerDeploySettings options = null) => new DockerTasks().Run<DockerDeploySettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Common.Tools.Docker.DockerDeploySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Application.Tools.Docker.DockerDeploySettings)"/>
     public static IReadOnlyCollection<Output> DockerDeploy(Configure<DockerDeploySettings> configurator) => new DockerTasks().Run<DockerDeploySettings>(configurator.Invoke(new DockerDeploySettings()));
-    /// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Common.Tools.Docker.DockerDeploySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Application.Tools.Docker.DockerDeploySettings)"/>
     public static IEnumerable<(DockerDeploySettings Settings, IReadOnlyCollection<Output> Output)> DockerDeploy(CombinatorialConfigure<DockerDeploySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerDeploy, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more nodes from the swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;nodes&gt;</c> via <see cref="DockerNodeRmSettings.Nodes"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerNodeRmSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodeRm(DockerNodeRmSettings options = null) => new DockerTasks().Run<DockerNodeRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Common.Tools.Docker.DockerNodeRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Application.Tools.Docker.DockerNodeRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodeRm(Configure<DockerNodeRmSettings> configurator) => new DockerTasks().Run<DockerNodeRmSettings>(configurator.Invoke(new DockerNodeRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Common.Tools.Docker.DockerNodeRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Application.Tools.Docker.DockerNodeRmSettings)"/>
     public static IEnumerable<(DockerNodeRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodeRm(CombinatorialConfigure<DockerNodeRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodeRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove a checkpoint.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;checkpoint&gt;</c> via <see cref="DockerCheckpointRmSettings.Checkpoint"/></li><li><c>&lt;container&gt;</c> via <see cref="DockerCheckpointRmSettings.Container"/></li><li><c>--checkpoint-dir</c> via <see cref="DockerCheckpointRmSettings.CheckpointDir"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerCheckpointRm(DockerCheckpointRmSettings options = null) => new DockerTasks().Run<DockerCheckpointRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Common.Tools.Docker.DockerCheckpointRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Application.Tools.Docker.DockerCheckpointRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerCheckpointRm(Configure<DockerCheckpointRmSettings> configurator) => new DockerTasks().Run<DockerCheckpointRmSettings>(configurator.Invoke(new DockerCheckpointRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Common.Tools.Docker.DockerCheckpointRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Application.Tools.Docker.DockerCheckpointRmSettings)"/>
     public static IEnumerable<(DockerCheckpointRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerCheckpointRm(CombinatorialConfigure<DockerCheckpointRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerCheckpointRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Push an image or a repository to a registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerPushSettings.Name"/></li><li><c>--all-tags</c> via <see cref="DockerPushSettings.AllTags"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerPushSettings.DisableContentTrust"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPush(DockerPushSettings options = null) => new DockerTasks().Run<DockerPushSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Common.Tools.Docker.DockerPushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Application.Tools.Docker.DockerPushSettings)"/>
     public static IReadOnlyCollection<Output> DockerPush(Configure<DockerPushSettings> configurator) => new DockerTasks().Run<DockerPushSettings>(configurator.Invoke(new DockerPushSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Common.Tools.Docker.DockerPushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Application.Tools.Docker.DockerPushSettings)"/>
     public static IEnumerable<(DockerPushSettings Settings, IReadOnlyCollection<Output> Output)> DockerPush(CombinatorialConfigure<DockerPushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a network.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;network&gt;</c> via <see cref="DockerNetworkCreateSettings.Network"/></li><li><c>--attachable</c> via <see cref="DockerNetworkCreateSettings.Attachable"/></li><li><c>--aux-address</c> via <see cref="DockerNetworkCreateSettings.AuxAddress"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--config-from</c> via <see cref="DockerNetworkCreateSettings.ConfigFrom"/></li><li><c>--config-only</c> via <see cref="DockerNetworkCreateSettings.ConfigOnly"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--driver</c> via <see cref="DockerNetworkCreateSettings.Driver"/></li><li><c>--gateway</c> via <see cref="DockerNetworkCreateSettings.Gateway"/></li><li><c>--ingress</c> via <see cref="DockerNetworkCreateSettings.Ingress"/></li><li><c>--internal</c> via <see cref="DockerNetworkCreateSettings.Internal"/></li><li><c>--ip-range</c> via <see cref="DockerNetworkCreateSettings.IpRange"/></li><li><c>--ipam-driver</c> via <see cref="DockerNetworkCreateSettings.IpamDriver"/></li><li><c>--ipam-opt</c> via <see cref="DockerNetworkCreateSettings.IpamOpt"/></li><li><c>--ipv6</c> via <see cref="DockerNetworkCreateSettings.Ipv6"/></li><li><c>--label</c> via <see cref="DockerNetworkCreateSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--opt</c> via <see cref="DockerNetworkCreateSettings.Opt"/></li><li><c>--scope</c> via <see cref="DockerNetworkCreateSettings.Scope"/></li><li><c>--subnet</c> via <see cref="DockerNetworkCreateSettings.Subnet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkCreate(DockerNetworkCreateSettings options = null) => new DockerTasks().Run<DockerNetworkCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Common.Tools.Docker.DockerNetworkCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Application.Tools.Docker.DockerNetworkCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkCreate(Configure<DockerNetworkCreateSettings> configurator) => new DockerTasks().Run<DockerNetworkCreateSettings>(configurator.Invoke(new DockerNetworkCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Common.Tools.Docker.DockerNetworkCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Application.Tools.Docker.DockerNetworkCreateSettings)"/>
     public static IEnumerable<(DockerNetworkCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkCreate(CombinatorialConfigure<DockerNetworkCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List volumes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerVolumeLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerVolumeLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerVolumeLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVolumeLs(DockerVolumeLsSettings options = null) => new DockerTasks().Run<DockerVolumeLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Common.Tools.Docker.DockerVolumeLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Application.Tools.Docker.DockerVolumeLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerVolumeLs(Configure<DockerVolumeLsSettings> configurator) => new DockerTasks().Run<DockerVolumeLsSettings>(configurator.Invoke(new DockerVolumeLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Common.Tools.Docker.DockerVolumeLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Application.Tools.Docker.DockerVolumeLsSettings)"/>
     public static IEnumerable<(DockerVolumeLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerVolumeLs(CombinatorialConfigure<DockerVolumeLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVolumeLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Return low-level information about keys and signatures.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;images&gt;</c> via <see cref="DockerTrustInspectSettings.Images"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustInspect(DockerTrustInspectSettings options = null) => new DockerTasks().Run<DockerTrustInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Common.Tools.Docker.DockerTrustInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Application.Tools.Docker.DockerTrustInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustInspect(Configure<DockerTrustInspectSettings> configurator) => new DockerTasks().Run<DockerTrustInspectSettings>(configurator.Invoke(new DockerTrustInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Common.Tools.Docker.DockerTrustInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Application.Tools.Docker.DockerTrustInspectSettings)"/>
     public static IEnumerable<(DockerTrustInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustInspect(CombinatorialConfigure<DockerTrustInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more networks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;networks&gt;</c> via <see cref="DockerNetworkInspectSettings.Networks"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerNetworkInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--verbose</c> via <see cref="DockerNetworkInspectSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkInspect(DockerNetworkInspectSettings options = null) => new DockerTasks().Run<DockerNetworkInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Common.Tools.Docker.DockerNetworkInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Application.Tools.Docker.DockerNetworkInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkInspect(Configure<DockerNetworkInspectSettings> configurator) => new DockerTasks().Run<DockerNetworkInspectSettings>(configurator.Invoke(new DockerNetworkInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Common.Tools.Docker.DockerNetworkInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Application.Tools.Docker.DockerNetworkInspectSettings)"/>
     public static IEnumerable<(DockerNetworkInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkInspect(CombinatorialConfigure<DockerNetworkInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Activate Enterprise Edition.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--containerd</c> via <see cref="DockerEngineActivateSettings.Containerd"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--display-only</c> via <see cref="DockerEngineActivateSettings.DisplayOnly"/></li><li><c>--engine-image</c> via <see cref="DockerEngineActivateSettings.EngineImage"/></li><li><c>--format</c> via <see cref="DockerEngineActivateSettings.Format"/></li><li><c>--license</c> via <see cref="DockerEngineActivateSettings.License"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerEngineActivateSettings.Quiet"/></li><li><c>--registry-prefix</c> via <see cref="DockerEngineActivateSettings.RegistryPrefix"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--version</c> via <see cref="DockerEngineActivateSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerEngineActivate(DockerEngineActivateSettings options = null) => new DockerTasks().Run<DockerEngineActivateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Common.Tools.Docker.DockerEngineActivateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Application.Tools.Docker.DockerEngineActivateSettings)"/>
     public static IReadOnlyCollection<Output> DockerEngineActivate(Configure<DockerEngineActivateSettings> configurator) => new DockerTasks().Run<DockerEngineActivateSettings>(configurator.Invoke(new DockerEngineActivateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Common.Tools.Docker.DockerEngineActivateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Application.Tools.Docker.DockerEngineActivateSettings)"/>
     public static IEnumerable<(DockerEngineActivateSettings Settings, IReadOnlyCollection<Output> Output)> DockerEngineActivate(CombinatorialConfigure<DockerEngineActivateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerEngineActivate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Set the current docker context.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;context&gt;</c> via <see cref="DockerContextUseSettings.Context"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextUse(DockerContextUseSettings options = null) => new DockerTasks().Run<DockerContextUseSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Common.Tools.Docker.DockerContextUseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Application.Tools.Docker.DockerContextUseSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextUse(Configure<DockerContextUseSettings> configurator) => new DockerTasks().Run<DockerContextUseSettings>(configurator.Invoke(new DockerContextUseSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Common.Tools.Docker.DockerContextUseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Application.Tools.Docker.DockerContextUseSettings)"/>
     public static IEnumerable<(DockerContextUseSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextUse(CombinatorialConfigure<DockerContextUseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextUse, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more volumes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;volumes&gt;</c> via <see cref="DockerVolumeRmSettings.Volumes"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerVolumeRmSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVolumeRm(DockerVolumeRmSettings options = null) => new DockerTasks().Run<DockerVolumeRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Common.Tools.Docker.DockerVolumeRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Application.Tools.Docker.DockerVolumeRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerVolumeRm(Configure<DockerVolumeRmSettings> configurator) => new DockerTasks().Run<DockerVolumeRmSettings>(configurator.Invoke(new DockerVolumeRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Common.Tools.Docker.DockerVolumeRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Application.Tools.Docker.DockerVolumeRmSettings)"/>
     public static IEnumerable<(DockerVolumeRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerVolumeRm(CombinatorialConfigure<DockerVolumeRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVolumeRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a local manifest list for annotating and pushing to a registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;manifestList&gt;</c> via <see cref="DockerManifestCreateSettings.ManifestList"/></li><li><c>&lt;manifests&gt;</c> via <see cref="DockerManifestCreateSettings.Manifests"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerManifestCreate(DockerManifestCreateSettings options = null) => new DockerTasks().Run<DockerManifestCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Common.Tools.Docker.DockerManifestCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Application.Tools.Docker.DockerManifestCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerManifestCreate(Configure<DockerManifestCreateSettings> configurator) => new DockerTasks().Run<DockerManifestCreateSettings>(configurator.Invoke(new DockerManifestCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Common.Tools.Docker.DockerManifestCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Application.Tools.Docker.DockerManifestCreateSettings)"/>
     public static IEnumerable<(DockerManifestCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerManifestCreate(CombinatorialConfigure<DockerManifestCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerManifestCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Push a manifest list to a repository.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;manifestList&gt;</c> via <see cref="DockerManifestPushSettings.ManifestList"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--insecure</c> via <see cref="DockerManifestPushSettings.Insecure"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--purge</c> via <see cref="DockerManifestPushSettings.Purge"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerManifestPush(DockerManifestPushSettings options = null) => new DockerTasks().Run<DockerManifestPushSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Common.Tools.Docker.DockerManifestPushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Application.Tools.Docker.DockerManifestPushSettings)"/>
     public static IReadOnlyCollection<Output> DockerManifestPush(Configure<DockerManifestPushSettings> configurator) => new DockerTasks().Run<DockerManifestPushSettings>(configurator.Invoke(new DockerManifestPushSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Common.Tools.Docker.DockerManifestPushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Application.Tools.Docker.DockerManifestPushSettings)"/>
     public static IEnumerable<(DockerManifestPushSettings Settings, IReadOnlyCollection<Output> Output)> DockerManifestPush(CombinatorialConfigure<DockerManifestPushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerManifestPush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Enable a plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginEnableSettings.Plugin"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--timeout</c> via <see cref="DockerPluginEnableSettings.Timeout"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginEnable(DockerPluginEnableSettings options = null) => new DockerTasks().Run<DockerPluginEnableSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Common.Tools.Docker.DockerPluginEnableSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Application.Tools.Docker.DockerPluginEnableSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginEnable(Configure<DockerPluginEnableSettings> configurator) => new DockerTasks().Run<DockerPluginEnableSettings>(configurator.Invoke(new DockerPluginEnableSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Common.Tools.Docker.DockerPluginEnableSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Application.Tools.Docker.DockerPluginEnableSettings)"/>
     public static IEnumerable<(DockerPluginEnableSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginEnable(CombinatorialConfigure<DockerPluginEnableSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginEnable, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Import the contents from a tarball to create a filesystem image.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;file&gt;</c> via <see cref="DockerImportSettings.File"/></li><li><c>&lt;repository&gt;</c> via <see cref="DockerImportSettings.Repository"/></li><li><c>--change</c> via <see cref="DockerImportSettings.Change"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--message</c> via <see cref="DockerImportSettings.Message"/></li><li><c>--platform</c> via <see cref="DockerImportSettings.Platform"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImport(DockerImportSettings options = null) => new DockerTasks().Run<DockerImportSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Common.Tools.Docker.DockerImportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Application.Tools.Docker.DockerImportSettings)"/>
     public static IReadOnlyCollection<Output> DockerImport(Configure<DockerImportSettings> configurator) => new DockerTasks().Run<DockerImportSettings>(configurator.Invoke(new DockerImportSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Common.Tools.Docker.DockerImportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Application.Tools.Docker.DockerImportSettings)"/>
     public static IEnumerable<(DockerImportSettings Settings, IReadOnlyCollection<Output> Output)> DockerImport(CombinatorialConfigure<DockerImportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Run a command in a new container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerContainerRunSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerContainerRunSettings.Command"/></li><li><c>&lt;image&gt;</c> via <see cref="DockerContainerRunSettings.Image"/></li><li><c>--add-host</c> via <see cref="DockerContainerRunSettings.AddHost"/></li><li><c>--attach</c> via <see cref="DockerContainerRunSettings.Attach"/></li><li><c>--blkio-weight</c> via <see cref="DockerContainerRunSettings.BlkioWeight"/></li><li><c>--blkio-weight-device</c> via <see cref="DockerContainerRunSettings.BlkioWeightDevice"/></li><li><c>--cap-add</c> via <see cref="DockerContainerRunSettings.CapAdd"/></li><li><c>--cap-drop</c> via <see cref="DockerContainerRunSettings.CapDrop"/></li><li><c>--cgroup-parent</c> via <see cref="DockerContainerRunSettings.CgroupParent"/></li><li><c>--cidfile</c> via <see cref="DockerContainerRunSettings.Cidfile"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-count</c> via <see cref="DockerContainerRunSettings.CpuCount"/></li><li><c>--cpu-percent</c> via <see cref="DockerContainerRunSettings.CpuPercent"/></li><li><c>--cpu-period</c> via <see cref="DockerContainerRunSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerContainerRunSettings.CpuQuota"/></li><li><c>--cpu-rt-period</c> via <see cref="DockerContainerRunSettings.CpuRtPeriod"/></li><li><c>--cpu-rt-runtime</c> via <see cref="DockerContainerRunSettings.CpuRtRuntime"/></li><li><c>--cpu-shares</c> via <see cref="DockerContainerRunSettings.CpuShares"/></li><li><c>--cpus</c> via <see cref="DockerContainerRunSettings.Cpus"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerContainerRunSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerContainerRunSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerContainerRunSettings.Detach"/></li><li><c>--detach-keys</c> via <see cref="DockerContainerRunSettings.DetachKeys"/></li><li><c>--device</c> via <see cref="DockerContainerRunSettings.Device"/></li><li><c>--device-cgroup-rule</c> via <see cref="DockerContainerRunSettings.DeviceCgroupRule"/></li><li><c>--device-read-bps</c> via <see cref="DockerContainerRunSettings.DeviceReadBps"/></li><li><c>--device-read-iops</c> via <see cref="DockerContainerRunSettings.DeviceReadIops"/></li><li><c>--device-write-bps</c> via <see cref="DockerContainerRunSettings.DeviceWriteBps"/></li><li><c>--device-write-iops</c> via <see cref="DockerContainerRunSettings.DeviceWriteIops"/></li><li><c>--disable-content-trust</c> via <see cref="DockerContainerRunSettings.DisableContentTrust"/></li><li><c>--dns</c> via <see cref="DockerContainerRunSettings.Dns"/></li><li><c>--dns-opt</c> via <see cref="DockerContainerRunSettings.DnsOpt"/></li><li><c>--dns-option</c> via <see cref="DockerContainerRunSettings.DnsOption"/></li><li><c>--dns-search</c> via <see cref="DockerContainerRunSettings.DnsSearch"/></li><li><c>--domainname</c> via <see cref="DockerContainerRunSettings.Domainname"/></li><li><c>--entrypoint</c> via <see cref="DockerContainerRunSettings.Entrypoint"/></li><li><c>--env</c> via <see cref="DockerContainerRunSettings.Env"/></li><li><c>--env-file</c> via <see cref="DockerContainerRunSettings.EnvFile"/></li><li><c>--expose</c> via <see cref="DockerContainerRunSettings.Expose"/></li><li><c>--gpus</c> via <see cref="DockerContainerRunSettings.Gpus"/></li><li><c>--group-add</c> via <see cref="DockerContainerRunSettings.GroupAdd"/></li><li><c>--health-cmd</c> via <see cref="DockerContainerRunSettings.HealthCmd"/></li><li><c>--health-interval</c> via <see cref="DockerContainerRunSettings.HealthInterval"/></li><li><c>--health-retries</c> via <see cref="DockerContainerRunSettings.HealthRetries"/></li><li><c>--health-start-period</c> via <see cref="DockerContainerRunSettings.HealthStartPeriod"/></li><li><c>--health-timeout</c> via <see cref="DockerContainerRunSettings.HealthTimeout"/></li><li><c>--help</c> via <see cref="DockerContainerRunSettings.Help"/></li><li><c>--hostname</c> via <see cref="DockerContainerRunSettings.Hostname"/></li><li><c>--init</c> via <see cref="DockerContainerRunSettings.Init"/></li><li><c>--interactive</c> via <see cref="DockerContainerRunSettings.Interactive"/></li><li><c>--io-maxbandwidth</c> via <see cref="DockerContainerRunSettings.IoMaxbandwidth"/></li><li><c>--io-maxiops</c> via <see cref="DockerContainerRunSettings.IoMaxiops"/></li><li><c>--ip</c> via <see cref="DockerContainerRunSettings.Ip"/></li><li><c>--ip6</c> via <see cref="DockerContainerRunSettings.Ip6"/></li><li><c>--ipc</c> via <see cref="DockerContainerRunSettings.Ipc"/></li><li><c>--isolation</c> via <see cref="DockerContainerRunSettings.Isolation"/></li><li><c>--kernel-memory</c> via <see cref="DockerContainerRunSettings.KernelMemory"/></li><li><c>--label</c> via <see cref="DockerContainerRunSettings.Label"/></li><li><c>--label-file</c> via <see cref="DockerContainerRunSettings.LabelFile"/></li><li><c>--link</c> via <see cref="DockerContainerRunSettings.Link"/></li><li><c>--link-local-ip</c> via <see cref="DockerContainerRunSettings.LinkLocalIp"/></li><li><c>--log-driver</c> via <see cref="DockerContainerRunSettings.LogDriver"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--log-opt</c> via <see cref="DockerContainerRunSettings.LogOpt"/></li><li><c>--mac-address</c> via <see cref="DockerContainerRunSettings.MacAddress"/></li><li><c>--memory</c> via <see cref="DockerContainerRunSettings.Memory"/></li><li><c>--memory-reservation</c> via <see cref="DockerContainerRunSettings.MemoryReservation"/></li><li><c>--memory-swap</c> via <see cref="DockerContainerRunSettings.MemorySwap"/></li><li><c>--memory-swappiness</c> via <see cref="DockerContainerRunSettings.MemorySwappiness"/></li><li><c>--mount</c> via <see cref="DockerContainerRunSettings.Mount"/></li><li><c>--name</c> via <see cref="DockerContainerRunSettings.Name"/></li><li><c>--net</c> via <see cref="DockerContainerRunSettings.Net"/></li><li><c>--net-alias</c> via <see cref="DockerContainerRunSettings.NetAlias"/></li><li><c>--network</c> via <see cref="DockerContainerRunSettings.Network"/></li><li><c>--network-alias</c> via <see cref="DockerContainerRunSettings.NetworkAlias"/></li><li><c>--no-healthcheck</c> via <see cref="DockerContainerRunSettings.NoHealthcheck"/></li><li><c>--oom-kill-disable</c> via <see cref="DockerContainerRunSettings.OomKillDisable"/></li><li><c>--oom-score-adj</c> via <see cref="DockerContainerRunSettings.OomScoreAdj"/></li><li><c>--pid</c> via <see cref="DockerContainerRunSettings.Pid"/></li><li><c>--pids-limit</c> via <see cref="DockerContainerRunSettings.PidsLimit"/></li><li><c>--platform</c> via <see cref="DockerContainerRunSettings.Platform"/></li><li><c>--privileged</c> via <see cref="DockerContainerRunSettings.Privileged"/></li><li><c>--publish</c> via <see cref="DockerContainerRunSettings.Publish"/></li><li><c>--publish-all</c> via <see cref="DockerContainerRunSettings.PublishAll"/></li><li><c>--read-only</c> via <see cref="DockerContainerRunSettings.ReadOnly"/></li><li><c>--restart</c> via <see cref="DockerContainerRunSettings.Restart"/></li><li><c>--rm</c> via <see cref="DockerContainerRunSettings.Rm"/></li><li><c>--runtime</c> via <see cref="DockerContainerRunSettings.Runtime"/></li><li><c>--security-opt</c> via <see cref="DockerContainerRunSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerContainerRunSettings.ShmSize"/></li><li><c>--sig-proxy</c> via <see cref="DockerContainerRunSettings.SigProxy"/></li><li><c>--stop-signal</c> via <see cref="DockerContainerRunSettings.StopSignal"/></li><li><c>--stop-timeout</c> via <see cref="DockerContainerRunSettings.StopTimeout"/></li><li><c>--storage-opt</c> via <see cref="DockerContainerRunSettings.StorageOpt"/></li><li><c>--sysctl</c> via <see cref="DockerContainerRunSettings.Sysctl"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tmpfs</c> via <see cref="DockerContainerRunSettings.Tmpfs"/></li><li><c>--tty</c> via <see cref="DockerContainerRunSettings.Tty"/></li><li><c>--ulimit</c> via <see cref="DockerContainerRunSettings.Ulimit"/></li><li><c>--user</c> via <see cref="DockerContainerRunSettings.User"/></li><li><c>--userns</c> via <see cref="DockerContainerRunSettings.Userns"/></li><li><c>--uts</c> via <see cref="DockerContainerRunSettings.Uts"/></li><li><c>--volume</c> via <see cref="DockerContainerRunSettings.Volume"/></li><li><c>--volume-driver</c> via <see cref="DockerContainerRunSettings.VolumeDriver"/></li><li><c>--volumes-from</c> via <see cref="DockerContainerRunSettings.VolumesFrom"/></li><li><c>--workdir</c> via <see cref="DockerContainerRunSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerRun(DockerContainerRunSettings options = null) => new DockerTasks().Run<DockerContainerRunSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Common.Tools.Docker.DockerContainerRunSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Application.Tools.Docker.DockerContainerRunSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerRun(Configure<DockerContainerRunSettings> configurator) => new DockerTasks().Run<DockerContainerRunSettings>(configurator.Invoke(new DockerContainerRunSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Common.Tools.Docker.DockerContainerRunSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Application.Tools.Docker.DockerContainerRunSettings)"/>
     public static IEnumerable<(DockerContainerRunSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerRun(CombinatorialConfigure<DockerContainerRunSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerRun, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more nodes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;selves&gt;</c> via <see cref="DockerNodeInspectSettings.Selves"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerNodeInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--pretty</c> via <see cref="DockerNodeInspectSettings.Pretty"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodeInspect(DockerNodeInspectSettings options = null) => new DockerTasks().Run<DockerNodeInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Common.Tools.Docker.DockerNodeInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Application.Tools.Docker.DockerNodeInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodeInspect(Configure<DockerNodeInspectSettings> configurator) => new DockerTasks().Run<DockerNodeInspectSettings>(configurator.Invoke(new DockerNodeInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Common.Tools.Docker.DockerNodeInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Application.Tools.Docker.DockerNodeInspectSettings)"/>
     public static IEnumerable<(DockerNodeInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodeInspect(CombinatorialConfigure<DockerNodeInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodeInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Save one or more images to a tar archive (streamed to STDOUT by default).</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;images&gt;</c> via <see cref="DockerSaveSettings.Images"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--output</c> via <see cref="DockerSaveSettings.Output"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSave(DockerSaveSettings options = null) => new DockerTasks().Run<DockerSaveSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Common.Tools.Docker.DockerSaveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Application.Tools.Docker.DockerSaveSettings)"/>
     public static IReadOnlyCollection<Output> DockerSave(Configure<DockerSaveSettings> configurator) => new DockerTasks().Run<DockerSaveSettings>(configurator.Invoke(new DockerSaveSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Common.Tools.Docker.DockerSaveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Application.Tools.Docker.DockerSaveSettings)"/>
     public static IEnumerable<(DockerSaveSettings Settings, IReadOnlyCollection<Output> Output)> DockerSave(CombinatorialConfigure<DockerSaveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSave, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display a live stream of container(s) resource usage statistics.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerStatsSettings.Containers"/></li><li><c>--all</c> via <see cref="DockerContainerStatsSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerContainerStatsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-stream</c> via <see cref="DockerContainerStatsSettings.NoStream"/></li><li><c>--no-trunc</c> via <see cref="DockerContainerStatsSettings.NoTrunc"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerStats(DockerContainerStatsSettings options = null) => new DockerTasks().Run<DockerContainerStatsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Common.Tools.Docker.DockerContainerStatsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Application.Tools.Docker.DockerContainerStatsSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerStats(Configure<DockerContainerStatsSettings> configurator) => new DockerTasks().Run<DockerContainerStatsSettings>(configurator.Invoke(new DockerContainerStatsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Common.Tools.Docker.DockerContainerStatsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Application.Tools.Docker.DockerContainerStatsSettings)"/>
     public static IEnumerable<(DockerContainerStatsSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerStats(CombinatorialConfigure<DockerContainerStatsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerStats, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Run a command in a running container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerContainerExecSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerContainerExecSettings.Command"/></li><li><c>&lt;container&gt;</c> via <see cref="DockerContainerExecSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerContainerExecSettings.Detach"/></li><li><c>--detach-keys</c> via <see cref="DockerContainerExecSettings.DetachKeys"/></li><li><c>--env</c> via <see cref="DockerContainerExecSettings.Env"/></li><li><c>--interactive</c> via <see cref="DockerContainerExecSettings.Interactive"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--privileged</c> via <see cref="DockerContainerExecSettings.Privileged"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tty</c> via <see cref="DockerContainerExecSettings.Tty"/></li><li><c>--user</c> via <see cref="DockerContainerExecSettings.User"/></li><li><c>--workdir</c> via <see cref="DockerContainerExecSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerExec(DockerContainerExecSettings options = null) => new DockerTasks().Run<DockerContainerExecSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Common.Tools.Docker.DockerContainerExecSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Application.Tools.Docker.DockerContainerExecSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerExec(Configure<DockerContainerExecSettings> configurator) => new DockerTasks().Run<DockerContainerExecSettings>(configurator.Invoke(new DockerContainerExecSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Common.Tools.Docker.DockerContainerExecSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Application.Tools.Docker.DockerContainerExecSettings)"/>
     public static IEnumerable<(DockerContainerExecSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerExec(CombinatorialConfigure<DockerContainerExecSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerExec, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List nodes in the swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerNodeLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerNodeLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerNodeLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodeLs(DockerNodeLsSettings options = null) => new DockerTasks().Run<DockerNodeLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Common.Tools.Docker.DockerNodeLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Application.Tools.Docker.DockerNodeLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodeLs(Configure<DockerNodeLsSettings> configurator) => new DockerTasks().Run<DockerNodeLsSettings>(configurator.Invoke(new DockerNodeLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Common.Tools.Docker.DockerNodeLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Application.Tools.Docker.DockerNodeLsSettings)"/>
     public static IEnumerable<(DockerNodeLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodeLs(CombinatorialConfigure<DockerNodeLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodeLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Join a swarm as a node and/or manager.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--advertise-addr</c> via <see cref="DockerSwarmJoinSettings.AdvertiseAddr"/></li><li><c>--availability</c> via <see cref="DockerSwarmJoinSettings.Availability"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--data-path-addr</c> via <see cref="DockerSwarmJoinSettings.DataPathAddr"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--listen-addr</c> via <see cref="DockerSwarmJoinSettings.ListenAddr"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--token</c> via <see cref="DockerSwarmJoinSettings.Token"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarmJoin(DockerSwarmJoinSettings options = null) => new DockerTasks().Run<DockerSwarmJoinSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Common.Tools.Docker.DockerSwarmJoinSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Application.Tools.Docker.DockerSwarmJoinSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarmJoin(Configure<DockerSwarmJoinSettings> configurator) => new DockerTasks().Run<DockerSwarmJoinSettings>(configurator.Invoke(new DockerSwarmJoinSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Common.Tools.Docker.DockerSwarmJoinSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Application.Tools.Docker.DockerSwarmJoinSettings)"/>
     public static IEnumerable<(DockerSwarmJoinSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarmJoin(CombinatorialConfigure<DockerSwarmJoinSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarmJoin, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Fetch the logs of a container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerLogsSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--details</c> via <see cref="DockerContainerLogsSettings.Details"/></li><li><c>--follow</c> via <see cref="DockerContainerLogsSettings.Follow"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--since</c> via <see cref="DockerContainerLogsSettings.Since"/></li><li><c>--tail</c> via <see cref="DockerContainerLogsSettings.Tail"/></li><li><c>--timestamps</c> via <see cref="DockerContainerLogsSettings.Timestamps"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--until</c> via <see cref="DockerContainerLogsSettings.Until"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerLogs(DockerContainerLogsSettings options = null) => new DockerTasks().Run<DockerContainerLogsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Common.Tools.Docker.DockerContainerLogsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Application.Tools.Docker.DockerContainerLogsSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerLogs(Configure<DockerContainerLogsSettings> configurator) => new DockerTasks().Run<DockerContainerLogsSettings>(configurator.Invoke(new DockerContainerLogsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Common.Tools.Docker.DockerContainerLogsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Application.Tools.Docker.DockerContainerLogsSettings)"/>
     public static IEnumerable<(DockerContainerLogsSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerLogs(CombinatorialConfigure<DockerContainerLogsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerLogs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List checkpoints for a container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerCheckpointLsSettings.Container"/></li><li><c>--checkpoint-dir</c> via <see cref="DockerCheckpointLsSettings.CheckpointDir"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerCheckpointLs(DockerCheckpointLsSettings options = null) => new DockerTasks().Run<DockerCheckpointLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Common.Tools.Docker.DockerCheckpointLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Application.Tools.Docker.DockerCheckpointLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerCheckpointLs(Configure<DockerCheckpointLsSettings> configurator) => new DockerTasks().Run<DockerCheckpointLsSettings>(configurator.Invoke(new DockerCheckpointLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Common.Tools.Docker.DockerCheckpointLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Application.Tools.Docker.DockerCheckpointLsSettings)"/>
     public static IEnumerable<(DockerCheckpointLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerCheckpointLs(CombinatorialConfigure<DockerCheckpointLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerCheckpointLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Kill one or more running containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerKillSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--signal</c> via <see cref="DockerContainerKillSettings.Signal"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerKill(DockerContainerKillSettings options = null) => new DockerTasks().Run<DockerContainerKillSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Common.Tools.Docker.DockerContainerKillSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Application.Tools.Docker.DockerContainerKillSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerKill(Configure<DockerContainerKillSettings> configurator) => new DockerTasks().Run<DockerContainerKillSettings>(configurator.Invoke(new DockerContainerKillSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Common.Tools.Docker.DockerContainerKillSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Application.Tools.Docker.DockerContainerKillSettings)"/>
     public static IEnumerable<(DockerContainerKillSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerKill(CombinatorialConfigure<DockerContainerKillSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerKill, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Install a plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;keyValues&gt;</c> via <see cref="DockerPluginInstallSettings.KeyValues"/></li><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginInstallSettings.Plugin"/></li><li><c>--alias</c> via <see cref="DockerPluginInstallSettings.Alias"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable</c> via <see cref="DockerPluginInstallSettings.Disable"/></li><li><c>--disable-content-trust</c> via <see cref="DockerPluginInstallSettings.DisableContentTrust"/></li><li><c>--grant-all-permissions</c> via <see cref="DockerPluginInstallSettings.GrantAllPermissions"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginInstall(DockerPluginInstallSettings options = null) => new DockerTasks().Run<DockerPluginInstallSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Common.Tools.Docker.DockerPluginInstallSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Application.Tools.Docker.DockerPluginInstallSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginInstall(Configure<DockerPluginInstallSettings> configurator) => new DockerTasks().Run<DockerPluginInstallSettings>(configurator.Invoke(new DockerPluginInstallSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Common.Tools.Docker.DockerPluginInstallSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Application.Tools.Docker.DockerPluginInstallSettings)"/>
     public static IEnumerable<(DockerPluginInstallSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginInstall(CombinatorialConfigure<DockerPluginInstallSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginInstall, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove unused images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--all</c> via <see cref="DockerImagePruneSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerImagePruneSettings.Filter"/></li><li><c>--force</c> via <see cref="DockerImagePruneSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImagePrune(DockerImagePruneSettings options = null) => new DockerTasks().Run<DockerImagePruneSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Common.Tools.Docker.DockerImagePruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Application.Tools.Docker.DockerImagePruneSettings)"/>
     public static IReadOnlyCollection<Output> DockerImagePrune(Configure<DockerImagePruneSettings> configurator) => new DockerTasks().Run<DockerImagePruneSettings>(configurator.Invoke(new DockerImagePruneSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Common.Tools.Docker.DockerImagePruneSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Application.Tools.Docker.DockerImagePruneSettings)"/>
     public static IEnumerable<(DockerImagePruneSettings Settings, IReadOnlyCollection<Output> Output)> DockerImagePrune(CombinatorialConfigure<DockerImagePruneSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImagePrune, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Import the contents from a tarball to create a filesystem image.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;file&gt;</c> via <see cref="DockerImageImportSettings.File"/></li><li><c>&lt;repository&gt;</c> via <see cref="DockerImageImportSettings.Repository"/></li><li><c>--change</c> via <see cref="DockerImageImportSettings.Change"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--message</c> via <see cref="DockerImageImportSettings.Message"/></li><li><c>--platform</c> via <see cref="DockerImageImportSettings.Platform"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageImport(DockerImageImportSettings options = null) => new DockerTasks().Run<DockerImageImportSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Common.Tools.Docker.DockerImageImportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Application.Tools.Docker.DockerImageImportSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageImport(Configure<DockerImageImportSettings> configurator) => new DockerTasks().Run<DockerImageImportSettings>(configurator.Invoke(new DockerImageImportSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Common.Tools.Docker.DockerImageImportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Application.Tools.Docker.DockerImageImportSettings)"/>
     public static IEnumerable<(DockerImageImportSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageImport(CombinatorialConfigure<DockerImageImportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageImport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Inspect changes to files or directories on a container's filesystem.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerDiffSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerDiff(DockerDiffSettings options = null) => new DockerTasks().Run<DockerDiffSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Common.Tools.Docker.DockerDiffSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Application.Tools.Docker.DockerDiffSettings)"/>
     public static IReadOnlyCollection<Output> DockerDiff(Configure<DockerDiffSettings> configurator) => new DockerTasks().Run<DockerDiffSettings>(configurator.Invoke(new DockerDiffSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Common.Tools.Docker.DockerDiffSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Application.Tools.Docker.DockerDiffSettings)"/>
     public static IEnumerable<(DockerDiffSettings Settings, IReadOnlyCollection<Output> Output)> DockerDiff(CombinatorialConfigure<DockerDiffSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerDiff, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Unpause all processes within one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerUnpauseSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerUnpause(DockerUnpauseSettings options = null) => new DockerTasks().Run<DockerUnpauseSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Common.Tools.Docker.DockerUnpauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Application.Tools.Docker.DockerUnpauseSettings)"/>
     public static IReadOnlyCollection<Output> DockerUnpause(Configure<DockerUnpauseSettings> configurator) => new DockerTasks().Run<DockerUnpauseSettings>(configurator.Invoke(new DockerUnpauseSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Common.Tools.Docker.DockerUnpauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Application.Tools.Docker.DockerUnpauseSettings)"/>
     public static IEnumerable<(DockerUnpauseSettings Settings, IReadOnlyCollection<Output> Output)> DockerUnpause(CombinatorialConfigure<DockerUnpauseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerUnpause, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--all</c> via <see cref="DockerContainerLsSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerContainerLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerContainerLsSettings.Format"/></li><li><c>--last</c> via <see cref="DockerContainerLsSettings.Last"/></li><li><c>--latest</c> via <see cref="DockerContainerLsSettings.Latest"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerContainerLsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerContainerLsSettings.Quiet"/></li><li><c>--size</c> via <see cref="DockerContainerLsSettings.Size"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerLs(DockerContainerLsSettings options = null) => new DockerTasks().Run<DockerContainerLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Common.Tools.Docker.DockerContainerLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Application.Tools.Docker.DockerContainerLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerLs(Configure<DockerContainerLsSettings> configurator) => new DockerTasks().Run<DockerContainerLsSettings>(configurator.Invoke(new DockerContainerLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Common.Tools.Docker.DockerContainerLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Application.Tools.Docker.DockerContainerLsSettings)"/>
     public static IEnumerable<(DockerContainerLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerLs(CombinatorialConfigure<DockerContainerLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List tasks running on one or more nodes, defaults to current node.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;nodes&gt;</c> via <see cref="DockerNodePsSettings.Nodes"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerNodePsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerNodePsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-resolve</c> via <see cref="DockerNodePsSettings.NoResolve"/></li><li><c>--no-trunc</c> via <see cref="DockerNodePsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerNodePsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodePs(DockerNodePsSettings options = null) => new DockerTasks().Run<DockerNodePsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Common.Tools.Docker.DockerNodePsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Application.Tools.Docker.DockerNodePsSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodePs(Configure<DockerNodePsSettings> configurator) => new DockerTasks().Run<DockerNodePsSettings>(configurator.Invoke(new DockerNodePsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Common.Tools.Docker.DockerNodePsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Application.Tools.Docker.DockerNodePsSettings)"/>
     public static IEnumerable<(DockerNodePsSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodePs(CombinatorialConfigure<DockerNodePsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodePs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display the running processes of a container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerTopSettings.Container"/></li><li><c>&lt;options&gt;</c> via <see cref="DockerContainerTopSettings.Options"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerTop(DockerContainerTopSettings options = null) => new DockerTasks().Run<DockerContainerTopSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Common.Tools.Docker.DockerContainerTopSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Application.Tools.Docker.DockerContainerTopSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerTop(Configure<DockerContainerTopSettings> configurator) => new DockerTasks().Run<DockerContainerTopSettings>(configurator.Invoke(new DockerContainerTopSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Common.Tools.Docker.DockerContainerTopSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Application.Tools.Docker.DockerContainerTopSettings)"/>
     public static IEnumerable<(DockerContainerTopSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerTop(CombinatorialConfigure<DockerContainerTopSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerTop, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Rename a container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerContainerRenameSettings.Container"/></li><li><c>&lt;newName&gt;</c> via <see cref="DockerContainerRenameSettings.NewName"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerRename(DockerContainerRenameSettings options = null) => new DockerTasks().Run<DockerContainerRenameSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Common.Tools.Docker.DockerContainerRenameSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Application.Tools.Docker.DockerContainerRenameSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerRename(Configure<DockerContainerRenameSettings> configurator) => new DockerTasks().Run<DockerContainerRenameSettings>(configurator.Invoke(new DockerContainerRenameSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Common.Tools.Docker.DockerContainerRenameSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Application.Tools.Docker.DockerContainerRenameSettings)"/>
     public static IEnumerable<(DockerContainerRenameSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerRename(CombinatorialConfigure<DockerContainerRenameSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerRename, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Show the history of an image.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;image&gt;</c> via <see cref="DockerImageHistorySettings.Image"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerImageHistorySettings.Format"/></li><li><c>--human</c> via <see cref="DockerImageHistorySettings.Human"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerImageHistorySettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerImageHistorySettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageHistory(DockerImageHistorySettings options = null) => new DockerTasks().Run<DockerImageHistorySettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Common.Tools.Docker.DockerImageHistorySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Application.Tools.Docker.DockerImageHistorySettings)"/>
     public static IReadOnlyCollection<Output> DockerImageHistory(Configure<DockerImageHistorySettings> configurator) => new DockerTasks().Run<DockerImageHistorySettings>(configurator.Invoke(new DockerImageHistorySettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Common.Tools.Docker.DockerImageHistorySettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Application.Tools.Docker.DockerImageHistorySettings)"/>
     public static IEnumerable<(DockerImageHistorySettings Settings, IReadOnlyCollection<Output> Output)> DockerImageHistory(CombinatorialConfigure<DockerImageHistorySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageHistory, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--all</c> via <see cref="DockerPsSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerPsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerPsSettings.Format"/></li><li><c>--last</c> via <see cref="DockerPsSettings.Last"/></li><li><c>--latest</c> via <see cref="DockerPsSettings.Latest"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerPsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerPsSettings.Quiet"/></li><li><c>--size</c> via <see cref="DockerPsSettings.Size"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPs(DockerPsSettings options = null) => new DockerTasks().Run<DockerPsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Common.Tools.Docker.DockerPsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Application.Tools.Docker.DockerPsSettings)"/>
     public static IReadOnlyCollection<Output> DockerPs(Configure<DockerPsSettings> configurator) => new DockerTasks().Run<DockerPsSettings>(configurator.Invoke(new DockerPsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Common.Tools.Docker.DockerPsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Application.Tools.Docker.DockerPsSettings)"/>
     public static IEnumerable<(DockerPsSettings Settings, IReadOnlyCollection<Output> Output)> DockerPs(CombinatorialConfigure<DockerPsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;sourceImage&gt;</c> via <see cref="DockerImageTagSettings.SourceImage"/></li><li><c>&lt;targetImage&gt;</c> via <see cref="DockerImageTagSettings.TargetImage"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageTag(DockerImageTagSettings options = null) => new DockerTasks().Run<DockerImageTagSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Common.Tools.Docker.DockerImageTagSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Application.Tools.Docker.DockerImageTagSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageTag(Configure<DockerImageTagSettings> configurator) => new DockerTasks().Run<DockerImageTagSettings>(configurator.Invoke(new DockerImageTagSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Common.Tools.Docker.DockerImageTagSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Application.Tools.Docker.DockerImageTagSettings)"/>
     public static IEnumerable<(DockerImageTagSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageTag(CombinatorialConfigure<DockerImageTagSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageTag, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Export a container's filesystem as a tar archive.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerExportSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--output</c> via <see cref="DockerExportSettings.Output"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerExport(DockerExportSettings options = null) => new DockerTasks().Run<DockerExportSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Common.Tools.Docker.DockerExportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Application.Tools.Docker.DockerExportSettings)"/>
     public static IReadOnlyCollection<Output> DockerExport(Configure<DockerExportSettings> configurator) => new DockerTasks().Run<DockerExportSettings>(configurator.Invoke(new DockerExportSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Common.Tools.Docker.DockerExportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Application.Tools.Docker.DockerExportSettings)"/>
     public static IEnumerable<(DockerExportSettings Settings, IReadOnlyCollection<Output> Output)> DockerExport(CombinatorialConfigure<DockerExportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerExport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Disconnect a container from a network.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerNetworkDisconnectSettings.Container"/></li><li><c>&lt;network&gt;</c> via <see cref="DockerNetworkDisconnectSettings.Network"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerNetworkDisconnectSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetworkDisconnect(DockerNetworkDisconnectSettings options = null) => new DockerTasks().Run<DockerNetworkDisconnectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Common.Tools.Docker.DockerNetworkDisconnectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Application.Tools.Docker.DockerNetworkDisconnectSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetworkDisconnect(Configure<DockerNetworkDisconnectSettings> configurator) => new DockerTasks().Run<DockerNetworkDisconnectSettings>(configurator.Invoke(new DockerNetworkDisconnectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Common.Tools.Docker.DockerNetworkDisconnectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Application.Tools.Docker.DockerNetworkDisconnectSettings)"/>
     public static IEnumerable<(DockerNetworkDisconnectSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetworkDisconnect(CombinatorialConfigure<DockerNetworkDisconnectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetworkDisconnect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Build an image from a Dockerfile.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;path&gt;</c> via <see cref="DockerBuilderBuildSettings.Path"/></li><li><c>--add-host</c> via <see cref="DockerBuilderBuildSettings.AddHost"/></li><li><c>--build-arg</c> via <see cref="DockerBuilderBuildSettings.BuildArg"/></li><li><c>--cache-from</c> via <see cref="DockerBuilderBuildSettings.CacheFrom"/></li><li><c>--cgroup-parent</c> via <see cref="DockerBuilderBuildSettings.CgroupParent"/></li><li><c>--compress</c> via <see cref="DockerBuilderBuildSettings.Compress"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-period</c> via <see cref="DockerBuilderBuildSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerBuilderBuildSettings.CpuQuota"/></li><li><c>--cpu-shares</c> via <see cref="DockerBuilderBuildSettings.CpuShares"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerBuilderBuildSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerBuilderBuildSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerBuilderBuildSettings.DisableContentTrust"/></li><li><c>--file</c> via <see cref="DockerBuilderBuildSettings.File"/></li><li><c>--force-rm</c> via <see cref="DockerBuilderBuildSettings.ForceRm"/></li><li><c>--iidfile</c> via <see cref="DockerBuilderBuildSettings.Iidfile"/></li><li><c>--isolation</c> via <see cref="DockerBuilderBuildSettings.Isolation"/></li><li><c>--label</c> via <see cref="DockerBuilderBuildSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--memory</c> via <see cref="DockerBuilderBuildSettings.Memory"/></li><li><c>--memory-swap</c> via <see cref="DockerBuilderBuildSettings.MemorySwap"/></li><li><c>--network</c> via <see cref="DockerBuilderBuildSettings.Network"/></li><li><c>--no-cache</c> via <see cref="DockerBuilderBuildSettings.NoCache"/></li><li><c>--output</c> via <see cref="DockerBuilderBuildSettings.Output"/></li><li><c>--platform</c> via <see cref="DockerBuilderBuildSettings.Platform"/></li><li><c>--progress</c> via <see cref="DockerBuilderBuildSettings.Progress"/></li><li><c>--pull</c> via <see cref="DockerBuilderBuildSettings.Pull"/></li><li><c>--quiet</c> via <see cref="DockerBuilderBuildSettings.Quiet"/></li><li><c>--rm</c> via <see cref="DockerBuilderBuildSettings.Rm"/></li><li><c>--secret</c> via <see cref="DockerBuilderBuildSettings.Secret"/></li><li><c>--security-opt</c> via <see cref="DockerBuilderBuildSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerBuilderBuildSettings.ShmSize"/></li><li><c>--squash</c> via <see cref="DockerBuilderBuildSettings.Squash"/></li><li><c>--ssh</c> via <see cref="DockerBuilderBuildSettings.Ssh"/></li><li><c>--stream</c> via <see cref="DockerBuilderBuildSettings.Stream"/></li><li><c>--tag</c> via <see cref="DockerBuilderBuildSettings.Tag"/></li><li><c>--target</c> via <see cref="DockerBuilderBuildSettings.Target"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--ulimit</c> via <see cref="DockerBuilderBuildSettings.Ulimit"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerBuilderBuild(DockerBuilderBuildSettings options = null) => new DockerTasks().Run<DockerBuilderBuildSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Common.Tools.Docker.DockerBuilderBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Application.Tools.Docker.DockerBuilderBuildSettings)"/>
     public static IReadOnlyCollection<Output> DockerBuilderBuild(Configure<DockerBuilderBuildSettings> configurator) => new DockerTasks().Run<DockerBuilderBuildSettings>(configurator.Invoke(new DockerBuilderBuildSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Common.Tools.Docker.DockerBuilderBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Application.Tools.Docker.DockerBuilderBuildSettings)"/>
     public static IEnumerable<(DockerBuilderBuildSettings Settings, IReadOnlyCollection<Output> Output)> DockerBuilderBuild(CombinatorialConfigure<DockerBuilderBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerBuilderBuild, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Build an image from a Dockerfile using Docker Buildx plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;path&gt;</c> via <see cref="DockerBuildxBuildSettings.Path"/></li><li><c>--add-host</c> via <see cref="DockerBuildxBuildSettings.AddHost"/></li><li><c>--allow</c> via <see cref="DockerBuildxBuildSettings.Allow"/></li><li><c>--build-arg</c> via <see cref="DockerBuildxBuildSettings.BuildArg"/></li><li><c>--builder</c> via <see cref="DockerBuildxBuildSettings.Builder"/></li><li><c>--cache-from</c> via <see cref="DockerBuildxBuildSettings.CacheFrom"/></li><li><c>--cache-to</c> via <see cref="DockerBuildxBuildSettings.CacheTo"/></li><li><c>--cgroup-parent</c> via <see cref="DockerBuildxBuildSettings.CgroupParent"/></li><li><c>--compress</c> via <see cref="DockerBuildxBuildSettings.Compress"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-period</c> via <see cref="DockerBuildxBuildSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerBuildxBuildSettings.CpuQuota"/></li><li><c>--cpu-shares</c> via <see cref="DockerBuildxBuildSettings.CpuShares"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerBuildxBuildSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerBuildxBuildSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--file</c> via <see cref="DockerBuildxBuildSettings.File"/></li><li><c>--iidfile</c> via <see cref="DockerBuildxBuildSettings.Iidfile"/></li><li><c>--isolation</c> via <see cref="DockerBuildxBuildSettings.Isolation"/></li><li><c>--label</c> via <see cref="DockerBuildxBuildSettings.Label"/></li><li><c>--load</c> via <see cref="DockerBuildxBuildSettings.Load"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--memory</c> via <see cref="DockerBuildxBuildSettings.Memory"/></li><li><c>--memory-swap</c> via <see cref="DockerBuildxBuildSettings.MemorySwap"/></li><li><c>--network</c> via <see cref="DockerBuildxBuildSettings.Network"/></li><li><c>--no-cache</c> via <see cref="DockerBuildxBuildSettings.NoCache"/></li><li><c>--output</c> via <see cref="DockerBuildxBuildSettings.Output"/></li><li><c>--platform</c> via <see cref="DockerBuildxBuildSettings.Platform"/></li><li><c>--progress</c> via <see cref="DockerBuildxBuildSettings.Progress"/></li><li><c>--pull</c> via <see cref="DockerBuildxBuildSettings.Pull"/></li><li><c>--push</c> via <see cref="DockerBuildxBuildSettings.Push"/></li><li><c>--quiet</c> via <see cref="DockerBuildxBuildSettings.Quiet"/></li><li><c>--rm</c> via <see cref="DockerBuildxBuildSettings.Rm"/></li><li><c>--secret</c> via <see cref="DockerBuildxBuildSettings.Secret"/></li><li><c>--security-opt</c> via <see cref="DockerBuildxBuildSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerBuildxBuildSettings.ShmSize"/></li><li><c>--ssh</c> via <see cref="DockerBuildxBuildSettings.Ssh"/></li><li><c>--tag</c> via <see cref="DockerBuildxBuildSettings.Tag"/></li><li><c>--target</c> via <see cref="DockerBuildxBuildSettings.Target"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--ulimit</c> via <see cref="DockerBuildxBuildSettings.Ulimit"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerBuildxBuild(DockerBuildxBuildSettings options = null) => new DockerTasks().Run<DockerBuildxBuildSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Common.Tools.Docker.DockerBuildxBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Application.Tools.Docker.DockerBuildxBuildSettings)"/>
     public static IReadOnlyCollection<Output> DockerBuildxBuild(Configure<DockerBuildxBuildSettings> configurator) => new DockerTasks().Run<DockerBuildxBuildSettings>(configurator.Invoke(new DockerBuildxBuildSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Common.Tools.Docker.DockerBuildxBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Application.Tools.Docker.DockerBuildxBuildSettings)"/>
     public static IEnumerable<(DockerBuildxBuildSettings Settings, IReadOnlyCollection<Output> Output)> DockerBuildxBuild(CombinatorialConfigure<DockerBuildxBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerBuildxBuild, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a new builder instance using Docker Buildx plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--append</c> via <see cref="DockerBuildxCreateSettings.Append"/></li><li><c>--bootstrap</c> via <see cref="DockerBuildxCreateSettings.Bootstrap"/></li><li><c>--buildkitd-flags</c> via <see cref="DockerBuildxCreateSettings.BuildKitDaemonFlags"/></li><li><c>--buildkitd-flags</c> via <see cref="DockerBuildxCreateSettings.BuildKitDFlags"/></li><li><c>--config</c> via <see cref="DockerBuildxCreateSettings.Config"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--driver</c> via <see cref="DockerBuildxCreateSettings.Driver"/></li><li><c>--driver-opt</c> via <see cref="DockerBuildxCreateSettings.DriverOpt"/></li><li><c>--leave</c> via <see cref="DockerBuildxCreateSettings.Leave"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--name</c> via <see cref="DockerBuildxCreateSettings.Name"/></li><li><c>--node</c> via <see cref="DockerBuildxCreateSettings.Node"/></li><li><c>--platform</c> via <see cref="DockerBuildxCreateSettings.Platform"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--use</c> via <see cref="DockerBuildxCreateSettings.Use"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerBuildxCreate(DockerBuildxCreateSettings options = null) => new DockerTasks().Run<DockerBuildxCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Common.Tools.Docker.DockerBuildxCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Application.Tools.Docker.DockerBuildxCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerBuildxCreate(Configure<DockerBuildxCreateSettings> configurator) => new DockerTasks().Run<DockerBuildxCreateSettings>(configurator.Invoke(new DockerBuildxCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Common.Tools.Docker.DockerBuildxCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Application.Tools.Docker.DockerBuildxCreateSettings)"/>
     public static IEnumerable<(DockerBuildxCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerBuildxCreate(CombinatorialConfigure<DockerBuildxCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerBuildxCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display a live stream of container(s) resource usage statistics.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerStatsSettings.Containers"/></li><li><c>--all</c> via <see cref="DockerStatsSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerStatsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-stream</c> via <see cref="DockerStatsSettings.NoStream"/></li><li><c>--no-trunc</c> via <see cref="DockerStatsSettings.NoTrunc"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStats(DockerStatsSettings options = null) => new DockerTasks().Run<DockerStatsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Common.Tools.Docker.DockerStatsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Application.Tools.Docker.DockerStatsSettings)"/>
     public static IReadOnlyCollection<Output> DockerStats(Configure<DockerStatsSettings> configurator) => new DockerTasks().Run<DockerStatsSettings>(configurator.Invoke(new DockerStatsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Common.Tools.Docker.DockerStatsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Application.Tools.Docker.DockerStatsSettings)"/>
     public static IEnumerable<(DockerStatsSettings Settings, IReadOnlyCollection<Output> Output)> DockerStats(CombinatorialConfigure<DockerStatsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStats, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Search the Docker Hub for images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;term&gt;</c> via <see cref="DockerSearchSettings.Term"/></li><li><c>--automated</c> via <see cref="DockerSearchSettings.Automated"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerSearchSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerSearchSettings.Format"/></li><li><c>--limit</c> via <see cref="DockerSearchSettings.Limit"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerSearchSettings.NoTrunc"/></li><li><c>--stars</c> via <see cref="DockerSearchSettings.Stars"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSearch(DockerSearchSettings options = null) => new DockerTasks().Run<DockerSearchSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Common.Tools.Docker.DockerSearchSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Application.Tools.Docker.DockerSearchSettings)"/>
     public static IReadOnlyCollection<Output> DockerSearch(Configure<DockerSearchSettings> configurator) => new DockerTasks().Run<DockerSearchSettings>(configurator.Invoke(new DockerSearchSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Common.Tools.Docker.DockerSearchSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Application.Tools.Docker.DockerSearchSettings)"/>
     public static IEnumerable<(DockerSearchSettings Settings, IReadOnlyCollection<Output> Output)> DockerSearch(CombinatorialConfigure<DockerSearchSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSearch, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Docker image manifests and manifest lists.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;command&gt;</c> via <see cref="DockerManifestSettings.Command"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerManifest(DockerManifestSettings options = null) => new DockerTasks().Run<DockerManifestSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Common.Tools.Docker.DockerManifestSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Application.Tools.Docker.DockerManifestSettings)"/>
     public static IReadOnlyCollection<Output> DockerManifest(Configure<DockerManifestSettings> configurator) => new DockerTasks().Run<DockerManifestSettings>(configurator.Invoke(new DockerManifestSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Common.Tools.Docker.DockerManifestSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Application.Tools.Docker.DockerManifestSettings)"/>
     public static IEnumerable<(DockerManifestSettings Settings, IReadOnlyCollection<Output> Output)> DockerManifest(CombinatorialConfigure<DockerManifestSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerManifest, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Push a plugin to a registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginPushSettings.Plugin"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerPluginPushSettings.DisableContentTrust"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginPush(DockerPluginPushSettings options = null) => new DockerTasks().Run<DockerPluginPushSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Common.Tools.Docker.DockerPluginPushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Application.Tools.Docker.DockerPluginPushSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginPush(Configure<DockerPluginPushSettings> configurator) => new DockerTasks().Run<DockerPluginPushSettings>(configurator.Invoke(new DockerPluginPushSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Common.Tools.Docker.DockerPluginPushSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Application.Tools.Docker.DockerPluginPushSettings)"/>
     public static IEnumerable<(DockerPluginPushSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginPush(CombinatorialConfigure<DockerPluginPushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginPush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Load an image from a tar archive or STDIN.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--input</c> via <see cref="DockerImageLoadSettings.Input"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerImageLoadSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageLoad(DockerImageLoadSettings options = null) => new DockerTasks().Run<DockerImageLoadSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Common.Tools.Docker.DockerImageLoadSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Application.Tools.Docker.DockerImageLoadSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageLoad(Configure<DockerImageLoadSettings> configurator) => new DockerTasks().Run<DockerImageLoadSettings>(configurator.Invoke(new DockerImageLoadSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Common.Tools.Docker.DockerImageLoadSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Application.Tools.Docker.DockerImageLoadSettings)"/>
     public static IEnumerable<(DockerImageLoadSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageLoad(CombinatorialConfigure<DockerImageLoadSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageLoad, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage Swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSwarm(DockerSwarmSettings options = null) => new DockerTasks().Run<DockerSwarmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Common.Tools.Docker.DockerSwarmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Application.Tools.Docker.DockerSwarmSettings)"/>
     public static IReadOnlyCollection<Output> DockerSwarm(Configure<DockerSwarmSettings> configurator) => new DockerTasks().Run<DockerSwarmSettings>(configurator.Invoke(new DockerSwarmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Common.Tools.Docker.DockerSwarmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Application.Tools.Docker.DockerSwarmSettings)"/>
     public static IEnumerable<(DockerSwarmSettings Settings, IReadOnlyCollection<Output> Output)> DockerSwarm(CombinatorialConfigure<DockerSwarmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSwarm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerRmSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerContainerRmSettings.Force"/></li><li><c>--link</c> via <see cref="DockerContainerRmSettings.Link"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--volumes</c> via <see cref="DockerContainerRmSettings.Volumes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerRm(DockerContainerRmSettings options = null) => new DockerTasks().Run<DockerContainerRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Common.Tools.Docker.DockerContainerRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Application.Tools.Docker.DockerContainerRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerRm(Configure<DockerContainerRmSettings> configurator) => new DockerTasks().Run<DockerContainerRmSettings>(configurator.Invoke(new DockerContainerRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Common.Tools.Docker.DockerContainerRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Application.Tools.Docker.DockerContainerRmSettings)"/>
     public static IEnumerable<(DockerContainerRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerRm(CombinatorialConfigure<DockerContainerRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Update configuration of one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerUpdateSettings.Containers"/></li><li><c>--blkio-weight</c> via <see cref="DockerContainerUpdateSettings.BlkioWeight"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-period</c> via <see cref="DockerContainerUpdateSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerContainerUpdateSettings.CpuQuota"/></li><li><c>--cpu-rt-period</c> via <see cref="DockerContainerUpdateSettings.CpuRtPeriod"/></li><li><c>--cpu-rt-runtime</c> via <see cref="DockerContainerUpdateSettings.CpuRtRuntime"/></li><li><c>--cpu-shares</c> via <see cref="DockerContainerUpdateSettings.CpuShares"/></li><li><c>--cpus</c> via <see cref="DockerContainerUpdateSettings.Cpus"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerContainerUpdateSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerContainerUpdateSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--kernel-memory</c> via <see cref="DockerContainerUpdateSettings.KernelMemory"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--memory</c> via <see cref="DockerContainerUpdateSettings.Memory"/></li><li><c>--memory-reservation</c> via <see cref="DockerContainerUpdateSettings.MemoryReservation"/></li><li><c>--memory-swap</c> via <see cref="DockerContainerUpdateSettings.MemorySwap"/></li><li><c>--pids-limit</c> via <see cref="DockerContainerUpdateSettings.PidsLimit"/></li><li><c>--restart</c> via <see cref="DockerContainerUpdateSettings.Restart"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerUpdate(DockerContainerUpdateSettings options = null) => new DockerTasks().Run<DockerContainerUpdateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Common.Tools.Docker.DockerContainerUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Application.Tools.Docker.DockerContainerUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerUpdate(Configure<DockerContainerUpdateSettings> configurator) => new DockerTasks().Run<DockerContainerUpdateSettings>(configurator.Invoke(new DockerContainerUpdateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Common.Tools.Docker.DockerContainerUpdateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Application.Tools.Docker.DockerContainerUpdateSettings)"/>
     public static IEnumerable<(DockerContainerUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerUpdate(CombinatorialConfigure<DockerContainerUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Change settings for a plugin.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;keyValues&gt;</c> via <see cref="DockerPluginSetSettings.KeyValues"/></li><li><c>&lt;plugin&gt;</c> via <see cref="DockerPluginSetSettings.Plugin"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginSet(DockerPluginSetSettings options = null) => new DockerTasks().Run<DockerPluginSetSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Common.Tools.Docker.DockerPluginSetSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Application.Tools.Docker.DockerPluginSetSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginSet(Configure<DockerPluginSetSettings> configurator) => new DockerTasks().Run<DockerPluginSetSettings>(configurator.Invoke(new DockerPluginSetSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Common.Tools.Docker.DockerPluginSetSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Application.Tools.Docker.DockerPluginSetSettings)"/>
     public static IEnumerable<(DockerPluginSetSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginSet(CombinatorialConfigure<DockerPluginSetSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginSet, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Block until one or more containers stop, then print their exit codes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerWaitSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerWait(DockerWaitSettings options = null) => new DockerTasks().Run<DockerWaitSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Common.Tools.Docker.DockerWaitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Application.Tools.Docker.DockerWaitSettings)"/>
     public static IReadOnlyCollection<Output> DockerWait(Configure<DockerWaitSettings> configurator) => new DockerTasks().Run<DockerWaitSettings>(configurator.Invoke(new DockerWaitSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Common.Tools.Docker.DockerWaitSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Application.Tools.Docker.DockerWaitSettings)"/>
     public static IEnumerable<(DockerWaitSettings Settings, IReadOnlyCollection<Output> Output)> DockerWait(CombinatorialConfigure<DockerWaitSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerWait, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Export a context to a tar or kubeconfig file.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;context&gt;</c> via <see cref="DockerContextExportSettings.Context"/></li><li><c>&lt;file&gt;</c> via <see cref="DockerContextExportSettings.File"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--kubeconfig</c> via <see cref="DockerContextExportSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextExport(DockerContextExportSettings options = null) => new DockerTasks().Run<DockerContextExportSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Common.Tools.Docker.DockerContextExportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Application.Tools.Docker.DockerContextExportSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextExport(Configure<DockerContextExportSettings> configurator) => new DockerTasks().Run<DockerContextExportSettings>(configurator.Invoke(new DockerContextExportSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Common.Tools.Docker.DockerContextExportSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Application.Tools.Docker.DockerContextExportSettings)"/>
     public static IEnumerable<(DockerContextExportSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextExport(CombinatorialConfigure<DockerContextExportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextExport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Add additional information to a local image manifest.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;manifest&gt;</c> via <see cref="DockerManifestAnnotateSettings.Manifest"/></li><li><c>&lt;manifestList&gt;</c> via <see cref="DockerManifestAnnotateSettings.ManifestList"/></li><li><c>--arch</c> via <see cref="DockerManifestAnnotateSettings.Arch"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--os</c> via <see cref="DockerManifestAnnotateSettings.Os"/></li><li><c>--os-features</c> via <see cref="DockerManifestAnnotateSettings.OsFeatures"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--variant</c> via <see cref="DockerManifestAnnotateSettings.Variant"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerManifestAnnotate(DockerManifestAnnotateSettings options = null) => new DockerTasks().Run<DockerManifestAnnotateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Common.Tools.Docker.DockerManifestAnnotateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Application.Tools.Docker.DockerManifestAnnotateSettings)"/>
     public static IReadOnlyCollection<Output> DockerManifestAnnotate(Configure<DockerManifestAnnotateSettings> configurator) => new DockerTasks().Run<DockerManifestAnnotateSettings>(configurator.Invoke(new DockerManifestAnnotateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Common.Tools.Docker.DockerManifestAnnotateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Application.Tools.Docker.DockerManifestAnnotateSettings)"/>
     public static IEnumerable<(DockerManifestAnnotateSettings Settings, IReadOnlyCollection<Output> Output)> DockerManifestAnnotate(CombinatorialConfigure<DockerManifestAnnotateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerManifestAnnotate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pull an image or a repository from a registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerImagePullSettings.Name"/></li><li><c>--all-tags</c> via <see cref="DockerImagePullSettings.AllTags"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerImagePullSettings.DisableContentTrust"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--platform</c> via <see cref="DockerImagePullSettings.Platform"/></li><li><c>--quiet</c> via <see cref="DockerImagePullSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImagePull(DockerImagePullSettings options = null) => new DockerTasks().Run<DockerImagePullSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Common.Tools.Docker.DockerImagePullSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Application.Tools.Docker.DockerImagePullSettings)"/>
     public static IReadOnlyCollection<Output> DockerImagePull(Configure<DockerImagePullSettings> configurator) => new DockerTasks().Run<DockerImagePullSettings>(configurator.Invoke(new DockerImagePullSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Common.Tools.Docker.DockerImagePullSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Application.Tools.Docker.DockerImagePullSettings)"/>
     public static IEnumerable<(DockerImagePullSettings Settings, IReadOnlyCollection<Output> Output)> DockerImagePull(CombinatorialConfigure<DockerImagePullSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImagePull, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Get real time events from the server.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--filter</c> via <see cref="DockerEventsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerEventsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--since</c> via <see cref="DockerEventsSettings.Since"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--until</c> via <see cref="DockerEventsSettings.Until"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerEvents(DockerEventsSettings options = null) => new DockerTasks().Run<DockerEventsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Common.Tools.Docker.DockerEventsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Application.Tools.Docker.DockerEventsSettings)"/>
     public static IReadOnlyCollection<Output> DockerEvents(Configure<DockerEventsSettings> configurator) => new DockerTasks().Run<DockerEventsSettings>(configurator.Invoke(new DockerEventsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Common.Tools.Docker.DockerEventsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Application.Tools.Docker.DockerEventsSettings)"/>
     public static IEnumerable<(DockerEventsSettings Settings, IReadOnlyCollection<Output> Output)> DockerEvents(CombinatorialConfigure<DockerEventsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerEvents, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List stacks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--all-namespaces</c> via <see cref="DockerStackLsSettings.AllNamespaces"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerStackLsSettings.Format"/></li><li><c>--kubeconfig</c> via <see cref="DockerStackSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--namespace</c> via <see cref="DockerStackLsSettings.Namespace"/></li><li><c>--orchestrator</c> via <see cref="DockerStackSettings.Orchestrator"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStackLs(DockerStackLsSettings options = null) => new DockerTasks().Run<DockerStackLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Common.Tools.Docker.DockerStackLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Application.Tools.Docker.DockerStackLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerStackLs(Configure<DockerStackLsSettings> configurator) => new DockerTasks().Run<DockerStackLsSettings>(configurator.Invoke(new DockerStackLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Common.Tools.Docker.DockerStackLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Application.Tools.Docker.DockerStackLsSettings)"/>
     public static IEnumerable<(DockerStackLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerStackLs(CombinatorialConfigure<DockerStackLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStackLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerInspectSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerContainerInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--size</c> via <see cref="DockerContainerInspectSettings.Size"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerInspect(DockerContainerInspectSettings options = null) => new DockerTasks().Run<DockerContainerInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Common.Tools.Docker.DockerContainerInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Application.Tools.Docker.DockerContainerInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerInspect(Configure<DockerContainerInspectSettings> configurator) => new DockerTasks().Run<DockerContainerInspectSettings>(configurator.Invoke(new DockerContainerInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Common.Tools.Docker.DockerContainerInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Application.Tools.Docker.DockerContainerInspectSettings)"/>
     public static IEnumerable<(DockerContainerInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerInspect(CombinatorialConfigure<DockerContainerInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Kill one or more running containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerKillSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--signal</c> via <see cref="DockerKillSettings.Signal"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerKill(DockerKillSettings options = null) => new DockerTasks().Run<DockerKillSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Common.Tools.Docker.DockerKillSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Application.Tools.Docker.DockerKillSettings)"/>
     public static IReadOnlyCollection<Output> DockerKill(Configure<DockerKillSettings> configurator) => new DockerTasks().Run<DockerKillSettings>(configurator.Invoke(new DockerKillSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Common.Tools.Docker.DockerKillSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Application.Tools.Docker.DockerKillSettings)"/>
     public static IEnumerable<(DockerKillSettings Settings, IReadOnlyCollection<Output> Output)> DockerKill(CombinatorialConfigure<DockerKillSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerKill, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Create a checkpoint from a running container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;checkpoint&gt;</c> via <see cref="DockerCheckpointCreateSettings.Checkpoint"/></li><li><c>&lt;container&gt;</c> via <see cref="DockerCheckpointCreateSettings.Container"/></li><li><c>--checkpoint-dir</c> via <see cref="DockerCheckpointCreateSettings.CheckpointDir"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--leave-running</c> via <see cref="DockerCheckpointCreateSettings.LeaveRunning"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerCheckpointCreate(DockerCheckpointCreateSettings options = null) => new DockerTasks().Run<DockerCheckpointCreateSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Common.Tools.Docker.DockerCheckpointCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Application.Tools.Docker.DockerCheckpointCreateSettings)"/>
     public static IReadOnlyCollection<Output> DockerCheckpointCreate(Configure<DockerCheckpointCreateSettings> configurator) => new DockerTasks().Run<DockerCheckpointCreateSettings>(configurator.Invoke(new DockerCheckpointCreateSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Common.Tools.Docker.DockerCheckpointCreateSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Application.Tools.Docker.DockerCheckpointCreateSettings)"/>
     public static IEnumerable<(DockerCheckpointCreateSettings Settings, IReadOnlyCollection<Output> Output)> DockerCheckpointCreate(CombinatorialConfigure<DockerCheckpointCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerCheckpointCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pause all processes within one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerPauseSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPause(DockerPauseSettings options = null) => new DockerTasks().Run<DockerPauseSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Common.Tools.Docker.DockerPauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Application.Tools.Docker.DockerPauseSettings)"/>
     public static IReadOnlyCollection<Output> DockerPause(Configure<DockerPauseSettings> configurator) => new DockerTasks().Run<DockerPauseSettings>(configurator.Invoke(new DockerPauseSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Common.Tools.Docker.DockerPauseSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Application.Tools.Docker.DockerPauseSettings)"/>
     public static IEnumerable<(DockerPauseSettings Settings, IReadOnlyCollection<Output> Output)> DockerPause(CombinatorialConfigure<DockerPauseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPause, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Fetch the logs of a container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;container&gt;</c> via <see cref="DockerLogsSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--details</c> via <see cref="DockerLogsSettings.Details"/></li><li><c>--follow</c> via <see cref="DockerLogsSettings.Follow"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--since</c> via <see cref="DockerLogsSettings.Since"/></li><li><c>--tail</c> via <see cref="DockerLogsSettings.Tail"/></li><li><c>--timestamps</c> via <see cref="DockerLogsSettings.Timestamps"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--until</c> via <see cref="DockerLogsSettings.Until"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerLogs(DockerLogsSettings options = null) => new DockerTasks().Run<DockerLogsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Common.Tools.Docker.DockerLogsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Application.Tools.Docker.DockerLogsSettings)"/>
     public static IReadOnlyCollection<Output> DockerLogs(Configure<DockerLogsSettings> configurator) => new DockerTasks().Run<DockerLogsSettings>(configurator.Invoke(new DockerLogsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Common.Tools.Docker.DockerLogsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Application.Tools.Docker.DockerLogsSettings)"/>
     public static IEnumerable<(DockerLogsSettings Settings, IReadOnlyCollection<Output> Output)> DockerLogs(CombinatorialConfigure<DockerLogsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerLogs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more contexts.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;context&gt;</c> via <see cref="DockerContextInspectSettings.Context"/></li><li><c>&lt;contexts&gt;</c> via <see cref="DockerContextInspectSettings.Contexts"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerContextInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContextInspect(DockerContextInspectSettings options = null) => new DockerTasks().Run<DockerContextInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Common.Tools.Docker.DockerContextInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Application.Tools.Docker.DockerContextInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerContextInspect(Configure<DockerContextInspectSettings> configurator) => new DockerTasks().Run<DockerContextInspectSettings>(configurator.Invoke(new DockerContextInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Common.Tools.Docker.DockerContextInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Application.Tools.Docker.DockerContextInspectSettings)"/>
     public static IEnumerable<(DockerContextInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerContextInspect(CombinatorialConfigure<DockerContextInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContextInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Promote one or more nodes to manager in the swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;nodes&gt;</c> via <see cref="DockerNodePromoteSettings.Nodes"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodePromote(DockerNodePromoteSettings options = null) => new DockerTasks().Run<DockerNodePromoteSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Common.Tools.Docker.DockerNodePromoteSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Application.Tools.Docker.DockerNodePromoteSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodePromote(Configure<DockerNodePromoteSettings> configurator) => new DockerTasks().Run<DockerNodePromoteSettings>(configurator.Invoke(new DockerNodePromoteSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Common.Tools.Docker.DockerNodePromoteSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Application.Tools.Docker.DockerNodePromoteSettings)"/>
     public static IEnumerable<(DockerNodePromoteSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodePromote(CombinatorialConfigure<DockerNodePromoteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodePromote, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Demote one or more nodes from manager in the swarm.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;nodes&gt;</c> via <see cref="DockerNodeDemoteSettings.Nodes"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNodeDemote(DockerNodeDemoteSettings options = null) => new DockerTasks().Run<DockerNodeDemoteSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Common.Tools.Docker.DockerNodeDemoteSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Application.Tools.Docker.DockerNodeDemoteSettings)"/>
     public static IReadOnlyCollection<Output> DockerNodeDemote(Configure<DockerNodeDemoteSettings> configurator) => new DockerTasks().Run<DockerNodeDemoteSettings>(configurator.Invoke(new DockerNodeDemoteSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Common.Tools.Docker.DockerNodeDemoteSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Application.Tools.Docker.DockerNodeDemoteSettings)"/>
     public static IEnumerable<(DockerNodeDemoteSettings Settings, IReadOnlyCollection<Output> Output)> DockerNodeDemote(CombinatorialConfigure<DockerNodeDemoteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNodeDemote, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Run a command in a running container.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;args&gt;</c> via <see cref="DockerExecSettings.Args"/></li><li><c>&lt;command&gt;</c> via <see cref="DockerExecSettings.Command"/></li><li><c>&lt;container&gt;</c> via <see cref="DockerExecSettings.Container"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerExecSettings.Detach"/></li><li><c>--detach-keys</c> via <see cref="DockerExecSettings.DetachKeys"/></li><li><c>--env</c> via <see cref="DockerExecSettings.Env"/></li><li><c>--interactive</c> via <see cref="DockerExecSettings.Interactive"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--privileged</c> via <see cref="DockerExecSettings.Privileged"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--tty</c> via <see cref="DockerExecSettings.Tty"/></li><li><c>--user</c> via <see cref="DockerExecSettings.User"/></li><li><c>--workdir</c> via <see cref="DockerExecSettings.Workdir"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerExec(DockerExecSettings options = null) => new DockerTasks().Run<DockerExecSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Common.Tools.Docker.DockerExecSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Application.Tools.Docker.DockerExecSettings)"/>
     public static IReadOnlyCollection<Output> DockerExec(Configure<DockerExecSettings> configurator) => new DockerTasks().Run<DockerExecSettings>(configurator.Invoke(new DockerExecSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Common.Tools.Docker.DockerExecSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Application.Tools.Docker.DockerExecSettings)"/>
     public static IEnumerable<(DockerExecSettings Settings, IReadOnlyCollection<Output> Output)> DockerExec(CombinatorialConfigure<DockerExecSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerExec, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;images&gt;</c> via <see cref="DockerImageRmSettings.Images"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerImageRmSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-prune</c> via <see cref="DockerImageRmSettings.NoPrune"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageRm(DockerImageRmSettings options = null) => new DockerTasks().Run<DockerImageRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Common.Tools.Docker.DockerImageRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Application.Tools.Docker.DockerImageRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageRm(Configure<DockerImageRmSettings> configurator) => new DockerTasks().Run<DockerImageRmSettings>(configurator.Invoke(new DockerImageRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Common.Tools.Docker.DockerImageRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Application.Tools.Docker.DockerImageRmSettings)"/>
     public static IEnumerable<(DockerImageRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageRm(CombinatorialConfigure<DockerImageRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImage(DockerImageSettings options = null) => new DockerTasks().Run<DockerImageSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Common.Tools.Docker.DockerImageSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Application.Tools.Docker.DockerImageSettings)"/>
     public static IReadOnlyCollection<Output> DockerImage(Configure<DockerImageSettings> configurator) => new DockerTasks().Run<DockerImageSettings>(configurator.Invoke(new DockerImageSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Common.Tools.Docker.DockerImageSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Application.Tools.Docker.DockerImageSettings)"/>
     public static IEnumerable<(DockerImageSettings Settings, IReadOnlyCollection<Output> Output)> DockerImage(CombinatorialConfigure<DockerImageSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImage, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage contexts.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContext(DockerContextSettings options = null) => new DockerTasks().Run<DockerContextSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Common.Tools.Docker.DockerContextSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Application.Tools.Docker.DockerContextSettings)"/>
     public static IReadOnlyCollection<Output> DockerContext(Configure<DockerContextSettings> configurator) => new DockerTasks().Run<DockerContextSettings>(configurator.Invoke(new DockerContextSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Common.Tools.Docker.DockerContextSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Application.Tools.Docker.DockerContextSettings)"/>
     public static IEnumerable<(DockerContextSettings Settings, IReadOnlyCollection<Output> Output)> DockerContext(CombinatorialConfigure<DockerContextSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContext, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage volumes.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;command&gt;</c> via <see cref="DockerVolumeSettings.Command"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerVolume(DockerVolumeSettings options = null) => new DockerTasks().Run<DockerVolumeSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Common.Tools.Docker.DockerVolumeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Application.Tools.Docker.DockerVolumeSettings)"/>
     public static IReadOnlyCollection<Output> DockerVolume(Configure<DockerVolumeSettings> configurator) => new DockerTasks().Run<DockerVolumeSettings>(configurator.Invoke(new DockerVolumeSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Common.Tools.Docker.DockerVolumeSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Application.Tools.Docker.DockerVolumeSettings)"/>
     public static IEnumerable<(DockerVolumeSettings Settings, IReadOnlyCollection<Output> Output)> DockerVolume(CombinatorialConfigure<DockerVolumeSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerVolume, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Start one or more stopped containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerContainerStartSettings.Containers"/></li><li><c>--attach</c> via <see cref="DockerContainerStartSettings.Attach"/></li><li><c>--checkpoint</c> via <see cref="DockerContainerStartSettings.Checkpoint"/></li><li><c>--checkpoint-dir</c> via <see cref="DockerContainerStartSettings.CheckpointDir"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach-keys</c> via <see cref="DockerContainerStartSettings.DetachKeys"/></li><li><c>--interactive</c> via <see cref="DockerContainerStartSettings.Interactive"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerContainerStart(DockerContainerStartSettings options = null) => new DockerTasks().Run<DockerContainerStartSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Common.Tools.Docker.DockerContainerStartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Application.Tools.Docker.DockerContainerStartSettings)"/>
     public static IReadOnlyCollection<Output> DockerContainerStart(Configure<DockerContainerStartSettings> configurator) => new DockerTasks().Run<DockerContainerStartSettings>(configurator.Invoke(new DockerContainerStartSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Common.Tools.Docker.DockerContainerStartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Application.Tools.Docker.DockerContainerStartSettings)"/>
     public static IEnumerable<(DockerContainerStartSettings Settings, IReadOnlyCollection<Output> Output)> DockerContainerStart(CombinatorialConfigure<DockerContainerStartSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerContainerStart, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Display detailed information on one or more plugins.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;plugins&gt;</c> via <see cref="DockerPluginInspectSettings.Plugins"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerPluginInspectSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerPluginInspect(DockerPluginInspectSettings options = null) => new DockerTasks().Run<DockerPluginInspectSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Common.Tools.Docker.DockerPluginInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Application.Tools.Docker.DockerPluginInspectSettings)"/>
     public static IReadOnlyCollection<Output> DockerPluginInspect(Configure<DockerPluginInspectSettings> configurator) => new DockerTasks().Run<DockerPluginInspectSettings>(configurator.Invoke(new DockerPluginInspectSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Common.Tools.Docker.DockerPluginInspectSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Application.Tools.Docker.DockerPluginInspectSettings)"/>
     public static IEnumerable<(DockerPluginInspectSettings Settings, IReadOnlyCollection<Output> Output)> DockerPluginInspect(CombinatorialConfigure<DockerPluginInspectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerPluginInspect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Log out from a Docker registry.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;server&gt;</c> via <see cref="DockerLogoutSettings.Server"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerLogout(DockerLogoutSettings options = null) => new DockerTasks().Run<DockerLogoutSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Common.Tools.Docker.DockerLogoutSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Application.Tools.Docker.DockerLogoutSettings)"/>
     public static IReadOnlyCollection<Output> DockerLogout(Configure<DockerLogoutSettings> configurator) => new DockerTasks().Run<DockerLogoutSettings>(configurator.Invoke(new DockerLogoutSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Common.Tools.Docker.DockerLogoutSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Application.Tools.Docker.DockerLogoutSettings)"/>
     public static IEnumerable<(DockerLogoutSettings Settings, IReadOnlyCollection<Output> Output)> DockerLogout(CombinatorialConfigure<DockerLogoutSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerLogout, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Manage networks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerNetwork(DockerNetworkSettings options = null) => new DockerTasks().Run<DockerNetworkSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Common.Tools.Docker.DockerNetworkSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Application.Tools.Docker.DockerNetworkSettings)"/>
     public static IReadOnlyCollection<Output> DockerNetwork(Configure<DockerNetworkSettings> configurator) => new DockerTasks().Run<DockerNetworkSettings>(configurator.Invoke(new DockerNetworkSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Common.Tools.Docker.DockerNetworkSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Application.Tools.Docker.DockerNetworkSettings)"/>
     public static IEnumerable<(DockerNetworkSettings Settings, IReadOnlyCollection<Output> Output)> DockerNetwork(CombinatorialConfigure<DockerNetworkSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerNetwork, degreeOfParallelism, completeOnFailure);
     /// <summary><p>List images.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;repository&gt;</c> via <see cref="DockerImageLsSettings.Repository"/></li><li><c>--all</c> via <see cref="DockerImageLsSettings.All"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--digests</c> via <see cref="DockerImageLsSettings.Digests"/></li><li><c>--filter</c> via <see cref="DockerImageLsSettings.Filter"/></li><li><c>--format</c> via <see cref="DockerImageLsSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--no-trunc</c> via <see cref="DockerImageLsSettings.NoTrunc"/></li><li><c>--quiet</c> via <see cref="DockerImageLsSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerImageLs(DockerImageLsSettings options = null) => new DockerTasks().Run<DockerImageLsSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Common.Tools.Docker.DockerImageLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Application.Tools.Docker.DockerImageLsSettings)"/>
     public static IReadOnlyCollection<Output> DockerImageLs(Configure<DockerImageLsSettings> configurator) => new DockerTasks().Run<DockerImageLsSettings>(configurator.Invoke(new DockerImageLsSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Common.Tools.Docker.DockerImageLsSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Application.Tools.Docker.DockerImageLsSettings)"/>
     public static IEnumerable<(DockerImageLsSettings Settings, IReadOnlyCollection<Output> Output)> DockerImageLs(CombinatorialConfigure<DockerImageLsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerImageLs, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Show docker disk usage.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--format</c> via <see cref="DockerSystemDfSettings.Format"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--verbose</c> via <see cref="DockerSystemDfSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerSystemDf(DockerSystemDfSettings options = null) => new DockerTasks().Run<DockerSystemDfSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Common.Tools.Docker.DockerSystemDfSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Application.Tools.Docker.DockerSystemDfSettings)"/>
     public static IReadOnlyCollection<Output> DockerSystemDf(Configure<DockerSystemDfSettings> configurator) => new DockerTasks().Run<DockerSystemDfSettings>(configurator.Invoke(new DockerSystemDfSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Common.Tools.Docker.DockerSystemDfSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Application.Tools.Docker.DockerSystemDfSettings)"/>
     public static IEnumerable<(DockerSystemDfSettings Settings, IReadOnlyCollection<Output> Output)> DockerSystemDf(CombinatorialConfigure<DockerSystemDfSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerSystemDf, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Revert changes to a service's configuration.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;service&gt;</c> via <see cref="DockerServiceRollbackSettings.Service"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--detach</c> via <see cref="DockerServiceRollbackSettings.Detach"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--quiet</c> via <see cref="DockerServiceRollbackSettings.Quiet"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerServiceRollback(DockerServiceRollbackSettings options = null) => new DockerTasks().Run<DockerServiceRollbackSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Common.Tools.Docker.DockerServiceRollbackSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Application.Tools.Docker.DockerServiceRollbackSettings)"/>
     public static IReadOnlyCollection<Output> DockerServiceRollback(Configure<DockerServiceRollbackSettings> configurator) => new DockerTasks().Run<DockerServiceRollbackSettings>(configurator.Invoke(new DockerServiceRollbackSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Common.Tools.Docker.DockerServiceRollbackSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Application.Tools.Docker.DockerServiceRollbackSettings)"/>
     public static IEnumerable<(DockerServiceRollbackSettings Settings, IReadOnlyCollection<Output> Output)> DockerServiceRollback(CombinatorialConfigure<DockerServiceRollbackSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerServiceRollback, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Restart one or more containers.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;containers&gt;</c> via <see cref="DockerRestartSettings.Containers"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--time</c> via <see cref="DockerRestartSettings.Time"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerRestart(DockerRestartSettings options = null) => new DockerTasks().Run<DockerRestartSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Common.Tools.Docker.DockerRestartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Application.Tools.Docker.DockerRestartSettings)"/>
     public static IReadOnlyCollection<Output> DockerRestart(Configure<DockerRestartSettings> configurator) => new DockerTasks().Run<DockerRestartSettings>(configurator.Invoke(new DockerRestartSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Common.Tools.Docker.DockerRestartSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Application.Tools.Docker.DockerRestartSettings)"/>
     public static IEnumerable<(DockerRestartSettings Settings, IReadOnlyCollection<Output> Output)> DockerRestart(CombinatorialConfigure<DockerRestartSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerRestart, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove a signer.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DockerTrustSignerRemoveSettings.Name"/></li><li><c>&lt;repositories&gt;</c> via <see cref="DockerTrustSignerRemoveSettings.Repositories"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--force</c> via <see cref="DockerTrustSignerRemoveSettings.Force"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerTrustSignerRemove(DockerTrustSignerRemoveSettings options = null) => new DockerTasks().Run<DockerTrustSignerRemoveSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Common.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Application.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
     public static IReadOnlyCollection<Output> DockerTrustSignerRemove(Configure<DockerTrustSignerRemoveSettings> configurator) => new DockerTasks().Run<DockerTrustSignerRemoveSettings>(configurator.Invoke(new DockerTrustSignerRemoveSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Common.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Application.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
     public static IEnumerable<(DockerTrustSignerRemoveSettings Settings, IReadOnlyCollection<Output> Output)> DockerTrustSignerRemove(CombinatorialConfigure<DockerTrustSignerRemoveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerTrustSignerRemove, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Remove one or more stacks.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stacks&gt;</c> via <see cref="DockerStackRmSettings.Stacks"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--kubeconfig</c> via <see cref="DockerStackSettings.Kubeconfig"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--namespace</c> via <see cref="DockerStackRmSettings.Namespace"/></li><li><c>--orchestrator</c> via <see cref="DockerStackSettings.Orchestrator"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerStackRm(DockerStackRmSettings options = null) => new DockerTasks().Run<DockerStackRmSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Common.Tools.Docker.DockerStackRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Application.Tools.Docker.DockerStackRmSettings)"/>
     public static IReadOnlyCollection<Output> DockerStackRm(Configure<DockerStackRmSettings> configurator) => new DockerTasks().Run<DockerStackRmSettings>(configurator.Invoke(new DockerStackRmSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Common.Tools.Docker.DockerStackRmSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Application.Tools.Docker.DockerStackRmSettings)"/>
     public static IEnumerable<(DockerStackRmSettings Settings, IReadOnlyCollection<Output> Output)> DockerStackRm(CombinatorialConfigure<DockerStackRmSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerStackRm, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Build an image from a Dockerfile.</p><p>For more details, visit the <a href="https://www.docker.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;path&gt;</c> via <see cref="DockerBuildSettings.Path"/></li><li><c>--add-host</c> via <see cref="DockerBuildSettings.AddHost"/></li><li><c>--build-arg</c> via <see cref="DockerBuildSettings.BuildArg"/></li><li><c>--cache-from</c> via <see cref="DockerBuildSettings.CacheFrom"/></li><li><c>--cgroup-parent</c> via <see cref="DockerBuildSettings.CgroupParent"/></li><li><c>--compress</c> via <see cref="DockerBuildSettings.Compress"/></li><li><c>--config</c> via <see cref="DockerOptionsBase.Config"/></li><li><c>--cpu-period</c> via <see cref="DockerBuildSettings.CpuPeriod"/></li><li><c>--cpu-quota</c> via <see cref="DockerBuildSettings.CpuQuota"/></li><li><c>--cpu-shares</c> via <see cref="DockerBuildSettings.CpuShares"/></li><li><c>--cpuset-cpus</c> via <see cref="DockerBuildSettings.CpusetCpus"/></li><li><c>--cpuset-mems</c> via <see cref="DockerBuildSettings.CpusetMems"/></li><li><c>--debug</c> via <see cref="DockerOptionsBase.Debug"/></li><li><c>--disable-content-trust</c> via <see cref="DockerBuildSettings.DisableContentTrust"/></li><li><c>--file</c> via <see cref="DockerBuildSettings.File"/></li><li><c>--force-rm</c> via <see cref="DockerBuildSettings.ForceRm"/></li><li><c>--iidfile</c> via <see cref="DockerBuildSettings.Iidfile"/></li><li><c>--isolation</c> via <see cref="DockerBuildSettings.Isolation"/></li><li><c>--label</c> via <see cref="DockerBuildSettings.Label"/></li><li><c>--log-level</c> via <see cref="DockerOptionsBase.LogLevel"/></li><li><c>--memory</c> via <see cref="DockerBuildSettings.Memory"/></li><li><c>--memory-swap</c> via <see cref="DockerBuildSettings.MemorySwap"/></li><li><c>--network</c> via <see cref="DockerBuildSettings.Network"/></li><li><c>--no-cache</c> via <see cref="DockerBuildSettings.NoCache"/></li><li><c>--output</c> via <see cref="DockerBuildSettings.Output"/></li><li><c>--platform</c> via <see cref="DockerBuildSettings.Platform"/></li><li><c>--progress</c> via <see cref="DockerBuildSettings.Progress"/></li><li><c>--pull</c> via <see cref="DockerBuildSettings.Pull"/></li><li><c>--quiet</c> via <see cref="DockerBuildSettings.Quiet"/></li><li><c>--rm</c> via <see cref="DockerBuildSettings.Rm"/></li><li><c>--secret</c> via <see cref="DockerBuildSettings.Secret"/></li><li><c>--security-opt</c> via <see cref="DockerBuildSettings.SecurityOpt"/></li><li><c>--shm-size</c> via <see cref="DockerBuildSettings.ShmSize"/></li><li><c>--squash</c> via <see cref="DockerBuildSettings.Squash"/></li><li><c>--ssh</c> via <see cref="DockerBuildSettings.Ssh"/></li><li><c>--stream</c> via <see cref="DockerBuildSettings.Stream"/></li><li><c>--tag</c> via <see cref="DockerBuildSettings.Tag"/></li><li><c>--target</c> via <see cref="DockerBuildSettings.Target"/></li><li><c>--tls</c> via <see cref="DockerOptionsBase.TLS"/></li><li><c>--tlscacert</c> via <see cref="DockerOptionsBase.TLSCaCert"/></li><li><c>--tlscert</c> via <see cref="DockerOptionsBase.TLSCert"/></li><li><c>--tlskey</c> via <see cref="DockerOptionsBase.TLSKey"/></li><li><c>--tlsverify</c> via <see cref="DockerOptionsBase.TLSVerify"/></li><li><c>--ulimit</c> via <see cref="DockerBuildSettings.Ulimit"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DockerBuild(DockerBuildSettings options = null) => new DockerTasks().Run<DockerBuildSettings>(options);
-    /// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Common.Tools.Docker.DockerBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Application.Tools.Docker.DockerBuildSettings)"/>
     public static IReadOnlyCollection<Output> DockerBuild(Configure<DockerBuildSettings> configurator) => new DockerTasks().Run<DockerBuildSettings>(configurator.Invoke(new DockerBuildSettings()));
-    /// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Common.Tools.Docker.DockerBuildSettings)"/>
+    /// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Application.Tools.Docker.DockerBuildSettings)"/>
     public static IEnumerable<(DockerBuildSettings Settings, IReadOnlyCollection<Output> Output)> DockerBuild(CombinatorialConfigure<DockerBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DockerBuild, degreeOfParallelism, completeOnFailure);
 }
 #region DockerConfigRmSettings
-/// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Common.Tools.Docker.DockerConfigRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Application.Tools.Docker.DockerConfigRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerConfigRm), Arguments = "config rm")]
 public partial class DockerConfigRmSettings : DockerOptionsBase
@@ -1343,7 +1343,7 @@ public partial class DockerConfigRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerLoadSettings
-/// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Common.Tools.Docker.DockerLoadSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Application.Tools.Docker.DockerLoadSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerLoad), Arguments = "load")]
 public partial class DockerLoadSettings : DockerOptionsBase
@@ -1355,7 +1355,7 @@ public partial class DockerLoadSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerPruneSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Common.Tools.Docker.DockerContainerPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Application.Tools.Docker.DockerContainerPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerPrune), Arguments = "container prune")]
 public partial class DockerContainerPruneSettings : DockerOptionsBase
@@ -1367,7 +1367,7 @@ public partial class DockerContainerPruneSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustSettings
-/// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Common.Tools.Docker.DockerTrustSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Application.Tools.Docker.DockerTrustSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrust), Arguments = "trust")]
 public partial class DockerTrustSettings : DockerOptionsBase
@@ -1375,7 +1375,7 @@ public partial class DockerTrustSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStackSettings
-/// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Common.Tools.Docker.DockerStackSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Application.Tools.Docker.DockerStackSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStack), Arguments = "stack")]
 public partial class DockerStackSettings : DockerOptionsBase
@@ -1387,7 +1387,7 @@ public partial class DockerStackSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPullSettings
-/// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Common.Tools.Docker.DockerPullSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Application.Tools.Docker.DockerPullSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPull), Arguments = "pull")]
 public partial class DockerPullSettings : DockerOptionsBase
@@ -1405,7 +1405,7 @@ public partial class DockerPullSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustSignSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Common.Tools.Docker.DockerTrustSignSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Application.Tools.Docker.DockerTrustSignSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustSign), Arguments = "trust sign IMAGE:TAG")]
 public partial class DockerTrustSignSettings : DockerOptionsBase
@@ -1413,7 +1413,7 @@ public partial class DockerTrustSignSettings : DockerOptionsBase
 }
 #endregion
 #region DockerCheckpointSettings
-/// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Common.Tools.Docker.DockerCheckpointSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Application.Tools.Docker.DockerCheckpointSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerCheckpoint), Arguments = "checkpoint")]
 public partial class DockerCheckpointSettings : DockerOptionsBase
@@ -1421,7 +1421,7 @@ public partial class DockerCheckpointSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustSignerSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Common.Tools.Docker.DockerTrustSignerSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Application.Tools.Docker.DockerTrustSignerSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustSigner), Arguments = "trust signer")]
 public partial class DockerTrustSignerSettings : DockerOptionsBase
@@ -1429,7 +1429,7 @@ public partial class DockerTrustSignerSettings : DockerOptionsBase
 }
 #endregion
 #region DockerConfigInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Common.Tools.Docker.DockerConfigInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Application.Tools.Docker.DockerConfigInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerConfigInspect), Arguments = "config inspect")]
 public partial class DockerConfigInspectSettings : DockerOptionsBase
@@ -1443,7 +1443,7 @@ public partial class DockerConfigInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceSettings
-/// <inheritdoc cref="DockerTasks.DockerService(Fallout.Common.Tools.Docker.DockerServiceSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerService(Fallout.Application.Tools.Docker.DockerServiceSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerService), Arguments = "service")]
 public partial class DockerServiceSettings : DockerOptionsBase
@@ -1451,7 +1451,7 @@ public partial class DockerServiceSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustKeyGenerateSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Common.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Application.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustKeyGenerate), Arguments = "trust key generate")]
 public partial class DockerTrustKeyGenerateSettings : DockerOptionsBase
@@ -1461,7 +1461,7 @@ public partial class DockerTrustKeyGenerateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSystemSettings
-/// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Common.Tools.Docker.DockerSystemSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Application.Tools.Docker.DockerSystemSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSystem), Arguments = "system")]
 public partial class DockerSystemSettings : DockerOptionsBase
@@ -1469,7 +1469,7 @@ public partial class DockerSystemSettings : DockerOptionsBase
 }
 #endregion
 #region DockerConfigLsSettings
-/// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Common.Tools.Docker.DockerConfigLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Application.Tools.Docker.DockerConfigLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerConfigLs), Arguments = "config ls")]
 public partial class DockerConfigLsSettings : DockerOptionsBase
@@ -1483,7 +1483,7 @@ public partial class DockerConfigLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Common.Tools.Docker.DockerContextUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Application.Tools.Docker.DockerContextUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextUpdate), Arguments = "context update")]
 public partial class DockerContextUpdateSettings : DockerOptionsBase
@@ -1501,7 +1501,7 @@ public partial class DockerContextUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStackServicesSettings
-/// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Common.Tools.Docker.DockerStackServicesSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Application.Tools.Docker.DockerStackServicesSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStackServices), Arguments = "stack services")]
 public partial class DockerStackServicesSettings : DockerStackSettings
@@ -1519,7 +1519,7 @@ public partial class DockerStackServicesSettings : DockerStackSettings
 }
 #endregion
 #region DockerContainerPortSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Common.Tools.Docker.DockerContainerPortSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Application.Tools.Docker.DockerContainerPortSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerPort), Arguments = "container port")]
 public partial class DockerContainerPortSettings : DockerOptionsBase
@@ -1531,7 +1531,7 @@ public partial class DockerContainerPortSettings : DockerOptionsBase
 }
 #endregion
 #region DockerRenameSettings
-/// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Common.Tools.Docker.DockerRenameSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Application.Tools.Docker.DockerRenameSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerRename), Arguments = "rename")]
 public partial class DockerRenameSettings : DockerOptionsBase
@@ -1543,7 +1543,7 @@ public partial class DockerRenameSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTagSettings
-/// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Common.Tools.Docker.DockerTagSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Application.Tools.Docker.DockerTagSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTag), Arguments = "tag")]
 public partial class DockerTagSettings : DockerOptionsBase
@@ -1555,7 +1555,7 @@ public partial class DockerTagSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSecretInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Common.Tools.Docker.DockerSecretInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Application.Tools.Docker.DockerSecretInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSecretInspect), Arguments = "secret inspect")]
 public partial class DockerSecretInspectSettings : DockerOptionsBase
@@ -1569,7 +1569,7 @@ public partial class DockerSecretInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSecretSettings
-/// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Common.Tools.Docker.DockerSecretSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Application.Tools.Docker.DockerSecretSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSecret), Arguments = "secret")]
 public partial class DockerSecretSettings : DockerOptionsBase
@@ -1577,7 +1577,7 @@ public partial class DockerSecretSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerExportSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Common.Tools.Docker.DockerContainerExportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Application.Tools.Docker.DockerContainerExportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerExport), Arguments = "container export")]
 public partial class DockerContainerExportSettings : DockerOptionsBase
@@ -1589,7 +1589,7 @@ public partial class DockerContainerExportSettings : DockerOptionsBase
 }
 #endregion
 #region DockerHistorySettings
-/// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Common.Tools.Docker.DockerHistorySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Application.Tools.Docker.DockerHistorySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerHistory), Arguments = "history")]
 public partial class DockerHistorySettings : DockerOptionsBase
@@ -1607,7 +1607,7 @@ public partial class DockerHistorySettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Common.Tools.Docker.DockerServiceCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Application.Tools.Docker.DockerServiceCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceCreate), Arguments = "service create")]
 public partial class DockerServiceCreateSettings : DockerOptionsBase
@@ -1753,7 +1753,7 @@ public partial class DockerServiceCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServicePsSettings
-/// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Common.Tools.Docker.DockerServicePsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Application.Tools.Docker.DockerServicePsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServicePs), Arguments = "service ps")]
 public partial class DockerServicePsSettings : DockerOptionsBase
@@ -1773,7 +1773,7 @@ public partial class DockerServicePsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStopSettings
-/// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Common.Tools.Docker.DockerStopSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Application.Tools.Docker.DockerStopSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStop), Arguments = "stop")]
 public partial class DockerStopSettings : DockerOptionsBase
@@ -1785,7 +1785,7 @@ public partial class DockerStopSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodeSettings
-/// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Common.Tools.Docker.DockerNodeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Application.Tools.Docker.DockerNodeSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNode), Arguments = "node")]
 public partial class DockerNodeSettings : DockerOptionsBase
@@ -1793,7 +1793,7 @@ public partial class DockerNodeSettings : DockerOptionsBase
 }
 #endregion
 #region DockerUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Common.Tools.Docker.DockerUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Application.Tools.Docker.DockerUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerUpdate), Arguments = "update")]
 public partial class DockerUpdateSettings : DockerOptionsBase
@@ -1833,7 +1833,7 @@ public partial class DockerUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Common.Tools.Docker.DockerPluginCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Application.Tools.Docker.DockerPluginCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginCreate), Arguments = "plugin create")]
 public partial class DockerPluginCreateSettings : DockerOptionsBase
@@ -1847,7 +1847,7 @@ public partial class DockerPluginCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSystemInfoSettings
-/// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Common.Tools.Docker.DockerSystemInfoSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Application.Tools.Docker.DockerSystemInfoSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSystemInfo), Arguments = "system info")]
 public partial class DockerSystemInfoSettings : DockerOptionsBase
@@ -1857,7 +1857,7 @@ public partial class DockerSystemInfoSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVolumePruneSettings
-/// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Common.Tools.Docker.DockerVolumePruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Application.Tools.Docker.DockerVolumePruneSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVolumePrune), Arguments = "volume prune")]
 public partial class DockerVolumePruneSettings : DockerOptionsBase
@@ -1869,7 +1869,7 @@ public partial class DockerVolumePruneSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginUpgradeSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Common.Tools.Docker.DockerPluginUpgradeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Application.Tools.Docker.DockerPluginUpgradeSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginUpgrade), Arguments = "plugin upgrade")]
 public partial class DockerPluginUpgradeSettings : DockerOptionsBase
@@ -1887,7 +1887,7 @@ public partial class DockerPluginUpgradeSettings : DockerOptionsBase
 }
 #endregion
 #region DockerBuilderPruneSettings
-/// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Common.Tools.Docker.DockerBuilderPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Application.Tools.Docker.DockerBuilderPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerBuilderPrune), Arguments = "builder prune")]
 public partial class DockerBuilderPruneSettings : DockerOptionsBase
@@ -1895,7 +1895,7 @@ public partial class DockerBuilderPruneSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmJoinTokenSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Common.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Application.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmJoinToken), Arguments = "swarm join-token")]
 public partial class DockerSwarmJoinTokenSettings : DockerOptionsBase
@@ -1909,7 +1909,7 @@ public partial class DockerSwarmJoinTokenSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodeUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Common.Tools.Docker.DockerNodeUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Application.Tools.Docker.DockerNodeUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodeUpdate), Arguments = "node update")]
 public partial class DockerNodeUpdateSettings : DockerOptionsBase
@@ -1927,7 +1927,7 @@ public partial class DockerNodeUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustSignerAddSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Common.Tools.Docker.DockerTrustSignerAddSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Application.Tools.Docker.DockerTrustSignerAddSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustSignerAdd), Arguments = "trust signer add")]
 public partial class DockerTrustSignerAddSettings : DockerOptionsBase
@@ -1941,7 +1941,7 @@ public partial class DockerTrustSignerAddSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Common.Tools.Docker.DockerSwarmUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Application.Tools.Docker.DockerSwarmUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmUpdate), Arguments = "swarm update")]
 public partial class DockerSwarmUpdateSettings : DockerOptionsBase
@@ -1963,7 +1963,7 @@ public partial class DockerSwarmUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceLogsSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Common.Tools.Docker.DockerServiceLogsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Application.Tools.Docker.DockerServiceLogsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceLogs), Arguments = "service logs")]
 public partial class DockerServiceLogsSettings : DockerOptionsBase
@@ -1991,7 +1991,7 @@ public partial class DockerServiceLogsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceLsSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Common.Tools.Docker.DockerServiceLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Application.Tools.Docker.DockerServiceLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceLs), Arguments = "service ls")]
 public partial class DockerServiceLsSettings : DockerOptionsBase
@@ -2005,7 +2005,7 @@ public partial class DockerServiceLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmUnlockSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Common.Tools.Docker.DockerSwarmUnlockSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Application.Tools.Docker.DockerSwarmUnlockSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmUnlock), Arguments = "swarm unlock")]
 public partial class DockerSwarmUnlockSettings : DockerOptionsBase
@@ -2013,7 +2013,7 @@ public partial class DockerSwarmUnlockSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkLsSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Common.Tools.Docker.DockerNetworkLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Application.Tools.Docker.DockerNetworkLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkLs), Arguments = "network ls")]
 public partial class DockerNetworkLsSettings : DockerOptionsBase
@@ -2029,7 +2029,7 @@ public partial class DockerNetworkLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginLsSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Common.Tools.Docker.DockerPluginLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Application.Tools.Docker.DockerPluginLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginLs), Arguments = "plugin ls")]
 public partial class DockerPluginLsSettings : DockerOptionsBase
@@ -2045,7 +2045,7 @@ public partial class DockerPluginLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginRmSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Common.Tools.Docker.DockerPluginRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Application.Tools.Docker.DockerPluginRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginRm), Arguments = "plugin rm")]
 public partial class DockerPluginRmSettings : DockerOptionsBase
@@ -2057,7 +2057,7 @@ public partial class DockerPluginRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageBuildSettings
-/// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Common.Tools.Docker.DockerImageBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Application.Tools.Docker.DockerImageBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageBuild), Arguments = "image build")]
 public partial class DockerImageBuildSettings : DockerOptionsBase
@@ -2137,7 +2137,7 @@ public partial class DockerImageBuildSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustRevokeSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Common.Tools.Docker.DockerTrustRevokeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Application.Tools.Docker.DockerTrustRevokeSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustRevoke), Arguments = "trust revoke")]
 public partial class DockerTrustRevokeSettings : DockerOptionsBase
@@ -2149,7 +2149,7 @@ public partial class DockerTrustRevokeSettings : DockerOptionsBase
 }
 #endregion
 #region DockerRmiSettings
-/// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Common.Tools.Docker.DockerRmiSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Application.Tools.Docker.DockerRmiSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerRmi), Arguments = "rmi")]
 public partial class DockerRmiSettings : DockerOptionsBase
@@ -2163,7 +2163,7 @@ public partial class DockerRmiSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkRmSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Common.Tools.Docker.DockerNetworkRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Application.Tools.Docker.DockerNetworkRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkRm), Arguments = "network rm")]
 public partial class DockerNetworkRmSettings : DockerOptionsBase
@@ -2173,7 +2173,7 @@ public partial class DockerNetworkRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVersionSettings
-/// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Common.Tools.Docker.DockerVersionSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Application.Tools.Docker.DockerVersionSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVersion), Arguments = "version")]
 public partial class DockerVersionSettings : DockerOptionsBase
@@ -2185,7 +2185,7 @@ public partial class DockerVersionSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSecretCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Common.Tools.Docker.DockerSecretCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Application.Tools.Docker.DockerSecretCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSecretCreate), Arguments = "secret create")]
 public partial class DockerSecretCreateSettings : DockerOptionsBase
@@ -2203,7 +2203,7 @@ public partial class DockerSecretCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceRmSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Common.Tools.Docker.DockerServiceRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Application.Tools.Docker.DockerServiceRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceRm), Arguments = "service rm")]
 public partial class DockerServiceRmSettings : DockerOptionsBase
@@ -2213,7 +2213,7 @@ public partial class DockerServiceRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustKeyLoadSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Common.Tools.Docker.DockerTrustKeyLoadSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Application.Tools.Docker.DockerTrustKeyLoadSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustKeyLoad), Arguments = "trust key load")]
 public partial class DockerTrustKeyLoadSettings : DockerOptionsBase
@@ -2225,7 +2225,7 @@ public partial class DockerTrustKeyLoadSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSecretRmSettings
-/// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Common.Tools.Docker.DockerSecretRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Application.Tools.Docker.DockerSecretRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSecretRm), Arguments = "secret rm")]
 public partial class DockerSecretRmSettings : DockerOptionsBase
@@ -2235,7 +2235,7 @@ public partial class DockerSecretRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Common.Tools.Docker.DockerImageInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Application.Tools.Docker.DockerImageInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageInspect), Arguments = "image inspect")]
 public partial class DockerImageInspectSettings : DockerOptionsBase
@@ -2247,7 +2247,7 @@ public partial class DockerImageInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageSaveSettings
-/// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Common.Tools.Docker.DockerImageSaveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Application.Tools.Docker.DockerImageSaveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageSave), Arguments = "image save")]
 public partial class DockerImageSaveSettings : DockerOptionsBase
@@ -2259,7 +2259,7 @@ public partial class DockerImageSaveSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustKeySettings
-/// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Common.Tools.Docker.DockerTrustKeySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Application.Tools.Docker.DockerTrustKeySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustKey), Arguments = "trust key")]
 public partial class DockerTrustKeySettings : DockerOptionsBase
@@ -2267,7 +2267,7 @@ public partial class DockerTrustKeySettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerAttachSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Common.Tools.Docker.DockerContainerAttachSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Application.Tools.Docker.DockerContainerAttachSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerAttach), Arguments = "container attach")]
 public partial class DockerContainerAttachSettings : DockerOptionsBase
@@ -2283,7 +2283,7 @@ public partial class DockerContainerAttachSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Common.Tools.Docker.DockerContextCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Application.Tools.Docker.DockerContextCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextCreate), Arguments = "context create")]
 public partial class DockerContextCreateSettings : DockerOptionsBase
@@ -2303,7 +2303,7 @@ public partial class DockerContextCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerConfigCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Common.Tools.Docker.DockerConfigCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Application.Tools.Docker.DockerConfigCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerConfigCreate), Arguments = "config create")]
 public partial class DockerConfigCreateSettings : DockerOptionsBase
@@ -2319,7 +2319,7 @@ public partial class DockerConfigCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVolumeInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Common.Tools.Docker.DockerVolumeInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Application.Tools.Docker.DockerVolumeInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVolumeInspect), Arguments = "volume inspect")]
 public partial class DockerVolumeInspectSettings : DockerOptionsBase
@@ -2331,7 +2331,7 @@ public partial class DockerVolumeInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerStopSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Common.Tools.Docker.DockerContainerStopSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Application.Tools.Docker.DockerContainerStopSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerStop), Arguments = "container stop")]
 public partial class DockerContainerStopSettings : DockerOptionsBase
@@ -2343,7 +2343,7 @@ public partial class DockerContainerStopSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkPruneSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Common.Tools.Docker.DockerNetworkPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Application.Tools.Docker.DockerNetworkPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkPrune), Arguments = "network prune")]
 public partial class DockerNetworkPruneSettings : DockerOptionsBase
@@ -2355,7 +2355,7 @@ public partial class DockerNetworkPruneSettings : DockerOptionsBase
 }
 #endregion
 #region DockerManifestInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Common.Tools.Docker.DockerManifestInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Application.Tools.Docker.DockerManifestInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerManifestInspect), Arguments = "manifest inspect")]
 public partial class DockerManifestInspectSettings : DockerOptionsBase
@@ -2371,7 +2371,7 @@ public partial class DockerManifestInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerInfoSettings
-/// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Common.Tools.Docker.DockerInfoSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Application.Tools.Docker.DockerInfoSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerInfo), Arguments = "info")]
 public partial class DockerInfoSettings : DockerOptionsBase
@@ -2381,7 +2381,7 @@ public partial class DockerInfoSettings : DockerOptionsBase
 }
 #endregion
 #region DockerCommitSettings
-/// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Common.Tools.Docker.DockerCommitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Application.Tools.Docker.DockerCommitSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerCommit), Arguments = "commit")]
 public partial class DockerCommitSettings : DockerOptionsBase
@@ -2401,7 +2401,7 @@ public partial class DockerCommitSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStackDeploySettings
-/// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Common.Tools.Docker.DockerStackDeploySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Application.Tools.Docker.DockerStackDeploySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStackDeploy), Arguments = "stack deploy")]
 public partial class DockerStackDeploySettings : DockerOptionsBase
@@ -2423,7 +2423,7 @@ public partial class DockerStackDeploySettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceScaleSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Common.Tools.Docker.DockerServiceScaleSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Application.Tools.Docker.DockerServiceScaleSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceScale), Arguments = "service scale")]
 public partial class DockerServiceScaleSettings : DockerOptionsBase
@@ -2433,7 +2433,7 @@ public partial class DockerServiceScaleSettings : DockerOptionsBase
 }
 #endregion
 #region DockerRunSettings
-/// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Common.Tools.Docker.DockerRunSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Application.Tools.Docker.DockerRunSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerRun), Arguments = "run")]
 public partial class DockerRunSettings : DockerOptionsBase
@@ -2649,7 +2649,7 @@ public partial class DockerRunSettings : DockerOptionsBase
 }
 #endregion
 #region DockerCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Common.Tools.Docker.DockerCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Application.Tools.Docker.DockerCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerCreate), Arguments = "create")]
 public partial class DockerCreateSettings : DockerOptionsBase
@@ -2859,7 +2859,7 @@ public partial class DockerCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Common.Tools.Docker.DockerServiceUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Application.Tools.Docker.DockerServiceUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceUpdate), Arguments = "service update")]
 public partial class DockerServiceUpdateSettings : DockerOptionsBase
@@ -3037,7 +3037,7 @@ public partial class DockerServiceUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPortSettings
-/// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Common.Tools.Docker.DockerPortSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Application.Tools.Docker.DockerPortSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPort), Arguments = "port")]
 public partial class DockerPortSettings : DockerOptionsBase
@@ -3049,7 +3049,7 @@ public partial class DockerPortSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerSettings
-/// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Common.Tools.Docker.DockerContainerSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Application.Tools.Docker.DockerContainerSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainer), Arguments = "container")]
 public partial class DockerContainerSettings : DockerOptionsBase
@@ -3057,7 +3057,7 @@ public partial class DockerContainerSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImagePushSettings
-/// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Common.Tools.Docker.DockerImagePushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Application.Tools.Docker.DockerImagePushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImagePush), Arguments = "image push")]
 public partial class DockerImagePushSettings : DockerOptionsBase
@@ -3071,7 +3071,7 @@ public partial class DockerImagePushSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Common.Tools.Docker.DockerServiceInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Application.Tools.Docker.DockerServiceInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceInspect), Arguments = "service inspect")]
 public partial class DockerServiceInspectSettings : DockerOptionsBase
@@ -3085,7 +3085,7 @@ public partial class DockerServiceInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkConnectSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Common.Tools.Docker.DockerNetworkConnectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Application.Tools.Docker.DockerNetworkConnectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkConnect), Arguments = "network connect")]
 public partial class DockerNetworkConnectSettings : DockerOptionsBase
@@ -3109,7 +3109,7 @@ public partial class DockerNetworkConnectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSecretLsSettings
-/// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Common.Tools.Docker.DockerSecretLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Application.Tools.Docker.DockerSecretLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSecretLs), Arguments = "secret ls")]
 public partial class DockerSecretLsSettings : DockerOptionsBase
@@ -3123,7 +3123,7 @@ public partial class DockerSecretLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmLeaveSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Common.Tools.Docker.DockerSwarmLeaveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Application.Tools.Docker.DockerSwarmLeaveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmLeave), Arguments = "swarm leave")]
 public partial class DockerSwarmLeaveSettings : DockerOptionsBase
@@ -3133,7 +3133,7 @@ public partial class DockerSwarmLeaveSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImagesSettings
-/// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Common.Tools.Docker.DockerImagesSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Application.Tools.Docker.DockerImagesSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImages), Arguments = "images")]
 public partial class DockerImagesSettings : DockerOptionsBase
@@ -3155,7 +3155,7 @@ public partial class DockerImagesSettings : DockerOptionsBase
 }
 #endregion
 #region DockerEngineUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Common.Tools.Docker.DockerEngineUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Application.Tools.Docker.DockerEngineUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerEngineUpdate), Arguments = "engine update")]
 public partial class DockerEngineUpdateSettings : DockerOptionsBase
@@ -3171,7 +3171,7 @@ public partial class DockerEngineUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSystemEventsSettings
-/// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Common.Tools.Docker.DockerSystemEventsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Application.Tools.Docker.DockerSystemEventsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSystemEvents), Arguments = "system events")]
 public partial class DockerSystemEventsSettings : DockerOptionsBase
@@ -3187,7 +3187,7 @@ public partial class DockerSystemEventsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Common.Tools.Docker.DockerInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Application.Tools.Docker.DockerInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerInspect), Arguments = "inspect")]
 public partial class DockerInspectSettings : DockerOptionsBase
@@ -3203,7 +3203,7 @@ public partial class DockerInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerEngineCheckSettings
-/// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Common.Tools.Docker.DockerEngineCheckSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Application.Tools.Docker.DockerEngineCheckSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerEngineCheck), Arguments = "engine check")]
 public partial class DockerEngineCheckSettings : DockerOptionsBase
@@ -3227,7 +3227,7 @@ public partial class DockerEngineCheckSettings : DockerOptionsBase
 }
 #endregion
 #region DockerAttachSettings
-/// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Common.Tools.Docker.DockerAttachSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Application.Tools.Docker.DockerAttachSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerAttach), Arguments = "attach")]
 public partial class DockerAttachSettings : DockerOptionsBase
@@ -3243,7 +3243,7 @@ public partial class DockerAttachSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerWaitSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Common.Tools.Docker.DockerContainerWaitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Application.Tools.Docker.DockerContainerWaitSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerWait), Arguments = "container wait")]
 public partial class DockerContainerWaitSettings : DockerOptionsBase
@@ -3253,7 +3253,7 @@ public partial class DockerContainerWaitSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmCaSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Common.Tools.Docker.DockerSwarmCaSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Application.Tools.Docker.DockerSwarmCaSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmCa), Arguments = "swarm ca")]
 public partial class DockerSwarmCaSettings : DockerOptionsBase
@@ -3275,7 +3275,7 @@ public partial class DockerSwarmCaSettings : DockerOptionsBase
 }
 #endregion
 #region DockerEngineSettings
-/// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Common.Tools.Docker.DockerEngineSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Application.Tools.Docker.DockerEngineSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerEngine), Arguments = "engine")]
 public partial class DockerEngineSettings : DockerOptionsBase
@@ -3285,7 +3285,7 @@ public partial class DockerEngineSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSystemPruneSettings
-/// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Common.Tools.Docker.DockerSystemPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Application.Tools.Docker.DockerSystemPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSystemPrune), Arguments = "system prune")]
 public partial class DockerSystemPruneSettings : DockerOptionsBase
@@ -3301,7 +3301,7 @@ public partial class DockerSystemPruneSettings : DockerOptionsBase
 }
 #endregion
 #region DockerBuilderSettings
-/// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Common.Tools.Docker.DockerBuilderSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Application.Tools.Docker.DockerBuilderSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerBuilder), Arguments = "builder")]
 public partial class DockerBuilderSettings : DockerOptionsBase
@@ -3309,7 +3309,7 @@ public partial class DockerBuilderSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerPauseSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Common.Tools.Docker.DockerContainerPauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Application.Tools.Docker.DockerContainerPauseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerPause), Arguments = "container pause")]
 public partial class DockerContainerPauseSettings : DockerOptionsBase
@@ -3319,7 +3319,7 @@ public partial class DockerContainerPauseSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerCommitSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Common.Tools.Docker.DockerContainerCommitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Application.Tools.Docker.DockerContainerCommitSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerCommit), Arguments = "container commit")]
 public partial class DockerContainerCommitSettings : DockerOptionsBase
@@ -3339,7 +3339,7 @@ public partial class DockerContainerCommitSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextLsSettings
-/// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Common.Tools.Docker.DockerContextLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Application.Tools.Docker.DockerContextLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextLs), Arguments = "context ls")]
 public partial class DockerContextLsSettings : DockerOptionsBase
@@ -3351,7 +3351,7 @@ public partial class DockerContextLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextRmSettings
-/// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Common.Tools.Docker.DockerContextRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Application.Tools.Docker.DockerContextRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextRm), Arguments = "context rm")]
 public partial class DockerContextRmSettings : DockerOptionsBase
@@ -3361,7 +3361,7 @@ public partial class DockerContextRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStackPsSettings
-/// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Common.Tools.Docker.DockerStackPsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Application.Tools.Docker.DockerStackPsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStackPs), Arguments = "stack ps")]
 public partial class DockerStackPsSettings : DockerStackSettings
@@ -3383,7 +3383,7 @@ public partial class DockerStackPsSettings : DockerStackSettings
 }
 #endregion
 #region DockerContainerCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Common.Tools.Docker.DockerContainerCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Application.Tools.Docker.DockerContainerCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerCreate), Arguments = "container create")]
 public partial class DockerContainerCreateSettings : DockerOptionsBase
@@ -3593,7 +3593,7 @@ public partial class DockerContainerCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVolumeCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Common.Tools.Docker.DockerVolumeCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Application.Tools.Docker.DockerVolumeCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVolumeCreate), Arguments = "volume create")]
 public partial class DockerVolumeCreateSettings : DockerOptionsBase
@@ -3611,7 +3611,7 @@ public partial class DockerVolumeCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginSettings
-/// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Common.Tools.Docker.DockerPluginSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Application.Tools.Docker.DockerPluginSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPlugin), Arguments = "plugin")]
 public partial class DockerPluginSettings : DockerOptionsBase
@@ -3619,7 +3619,7 @@ public partial class DockerPluginSettings : DockerOptionsBase
 }
 #endregion
 #region DockerLoginSettings
-/// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Common.Tools.Docker.DockerLoginSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Application.Tools.Docker.DockerLoginSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerLogin), Arguments = "login")]
 public partial class DockerLoginSettings : DockerOptionsBase
@@ -3633,7 +3633,7 @@ public partial class DockerLoginSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmUnlockKeySettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Common.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Application.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmUnlockKey), Arguments = "swarm unlock-key")]
 public partial class DockerSwarmUnlockKeySettings : DockerOptionsBase
@@ -3645,7 +3645,7 @@ public partial class DockerSwarmUnlockKeySettings : DockerOptionsBase
 }
 #endregion
 #region DockerStartSettings
-/// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Common.Tools.Docker.DockerStartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Application.Tools.Docker.DockerStartSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStart), Arguments = "start")]
 public partial class DockerStartSettings : DockerOptionsBase
@@ -3665,7 +3665,7 @@ public partial class DockerStartSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmInitSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Common.Tools.Docker.DockerSwarmInitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Application.Tools.Docker.DockerSwarmInitSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmInit), Arguments = "swarm init")]
 public partial class DockerSwarmInitSettings : DockerOptionsBase
@@ -3703,7 +3703,7 @@ public partial class DockerSwarmInitSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerDiffSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Common.Tools.Docker.DockerContainerDiffSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Application.Tools.Docker.DockerContainerDiffSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerDiff), Arguments = "container diff")]
 public partial class DockerContainerDiffSettings : DockerOptionsBase
@@ -3713,7 +3713,7 @@ public partial class DockerContainerDiffSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerRestartSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Common.Tools.Docker.DockerContainerRestartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Application.Tools.Docker.DockerContainerRestartSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerRestart), Arguments = "container restart")]
 public partial class DockerContainerRestartSettings : DockerOptionsBase
@@ -3725,7 +3725,7 @@ public partial class DockerContainerRestartSettings : DockerOptionsBase
 }
 #endregion
 #region DockerConfigSettings
-/// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Common.Tools.Docker.DockerConfigSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Application.Tools.Docker.DockerConfigSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerConfig), Arguments = "config")]
 public partial class DockerConfigSettings : DockerOptionsBase
@@ -3733,7 +3733,7 @@ public partial class DockerConfigSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginDisableSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Common.Tools.Docker.DockerPluginDisableSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Application.Tools.Docker.DockerPluginDisableSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginDisable), Arguments = "plugin disable")]
 public partial class DockerPluginDisableSettings : DockerOptionsBase
@@ -3745,7 +3745,7 @@ public partial class DockerPluginDisableSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerUnpauseSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Common.Tools.Docker.DockerContainerUnpauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Application.Tools.Docker.DockerContainerUnpauseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerUnpause), Arguments = "container unpause")]
 public partial class DockerContainerUnpauseSettings : DockerOptionsBase
@@ -3755,7 +3755,7 @@ public partial class DockerContainerUnpauseSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextImportSettings
-/// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Common.Tools.Docker.DockerContextImportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Application.Tools.Docker.DockerContextImportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextImport), Arguments = "context import")]
 public partial class DockerContextImportSettings : DockerOptionsBase
@@ -3767,7 +3767,7 @@ public partial class DockerContextImportSettings : DockerOptionsBase
 }
 #endregion
 #region DockerRmSettings
-/// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Common.Tools.Docker.DockerRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Application.Tools.Docker.DockerRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerRm), Arguments = "rm")]
 public partial class DockerRmSettings : DockerOptionsBase
@@ -3783,7 +3783,7 @@ public partial class DockerRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerDeploySettings
-/// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Common.Tools.Docker.DockerDeploySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Application.Tools.Docker.DockerDeploySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerDeploy), Arguments = "deploy")]
 public partial class DockerDeploySettings : DockerOptionsBase
@@ -3805,7 +3805,7 @@ public partial class DockerDeploySettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodeRmSettings
-/// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Common.Tools.Docker.DockerNodeRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Application.Tools.Docker.DockerNodeRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodeRm), Arguments = "node rm")]
 public partial class DockerNodeRmSettings : DockerOptionsBase
@@ -3817,7 +3817,7 @@ public partial class DockerNodeRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerCheckpointRmSettings
-/// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Common.Tools.Docker.DockerCheckpointRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Application.Tools.Docker.DockerCheckpointRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerCheckpointRm), Arguments = "checkpoint rm")]
 public partial class DockerCheckpointRmSettings : DockerOptionsBase
@@ -3831,7 +3831,7 @@ public partial class DockerCheckpointRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPushSettings
-/// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Common.Tools.Docker.DockerPushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Application.Tools.Docker.DockerPushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPush), Arguments = "push")]
 public partial class DockerPushSettings : DockerOptionsBase
@@ -3845,7 +3845,7 @@ public partial class DockerPushSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Common.Tools.Docker.DockerNetworkCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Application.Tools.Docker.DockerNetworkCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkCreate), Arguments = "network create")]
 public partial class DockerNetworkCreateSettings : DockerOptionsBase
@@ -3887,7 +3887,7 @@ public partial class DockerNetworkCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVolumeLsSettings
-/// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Common.Tools.Docker.DockerVolumeLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Application.Tools.Docker.DockerVolumeLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVolumeLs), Arguments = "volume ls")]
 public partial class DockerVolumeLsSettings : DockerOptionsBase
@@ -3901,7 +3901,7 @@ public partial class DockerVolumeLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Common.Tools.Docker.DockerTrustInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Application.Tools.Docker.DockerTrustInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustInspect), Arguments = "trust inspect")]
 public partial class DockerTrustInspectSettings : DockerOptionsBase
@@ -3911,7 +3911,7 @@ public partial class DockerTrustInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Common.Tools.Docker.DockerNetworkInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Application.Tools.Docker.DockerNetworkInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkInspect), Arguments = "network inspect")]
 public partial class DockerNetworkInspectSettings : DockerOptionsBase
@@ -3925,7 +3925,7 @@ public partial class DockerNetworkInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerEngineActivateSettings
-/// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Common.Tools.Docker.DockerEngineActivateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Application.Tools.Docker.DockerEngineActivateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerEngineActivate), Arguments = "engine activate")]
 public partial class DockerEngineActivateSettings : DockerOptionsBase
@@ -3949,7 +3949,7 @@ public partial class DockerEngineActivateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextUseSettings
-/// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Common.Tools.Docker.DockerContextUseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Application.Tools.Docker.DockerContextUseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextUse), Arguments = "context use")]
 public partial class DockerContextUseSettings : DockerOptionsBase
@@ -3959,7 +3959,7 @@ public partial class DockerContextUseSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVolumeRmSettings
-/// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Common.Tools.Docker.DockerVolumeRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Application.Tools.Docker.DockerVolumeRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVolumeRm), Arguments = "volume rm")]
 public partial class DockerVolumeRmSettings : DockerOptionsBase
@@ -3971,7 +3971,7 @@ public partial class DockerVolumeRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerManifestCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Common.Tools.Docker.DockerManifestCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Application.Tools.Docker.DockerManifestCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerManifestCreate), Arguments = "manifest create")]
 public partial class DockerManifestCreateSettings : DockerOptionsBase
@@ -3983,7 +3983,7 @@ public partial class DockerManifestCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerManifestPushSettings
-/// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Common.Tools.Docker.DockerManifestPushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Application.Tools.Docker.DockerManifestPushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerManifestPush), Arguments = "manifest push")]
 public partial class DockerManifestPushSettings : DockerOptionsBase
@@ -3997,7 +3997,7 @@ public partial class DockerManifestPushSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginEnableSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Common.Tools.Docker.DockerPluginEnableSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Application.Tools.Docker.DockerPluginEnableSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginEnable), Arguments = "plugin enable")]
 public partial class DockerPluginEnableSettings : DockerOptionsBase
@@ -4009,7 +4009,7 @@ public partial class DockerPluginEnableSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImportSettings
-/// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Common.Tools.Docker.DockerImportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Application.Tools.Docker.DockerImportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImport), Arguments = "import")]
 public partial class DockerImportSettings : DockerOptionsBase
@@ -4027,7 +4027,7 @@ public partial class DockerImportSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerRunSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Common.Tools.Docker.DockerContainerRunSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Application.Tools.Docker.DockerContainerRunSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerRun), Arguments = "container run")]
 public partial class DockerContainerRunSettings : DockerOptionsBase
@@ -4243,7 +4243,7 @@ public partial class DockerContainerRunSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodeInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Common.Tools.Docker.DockerNodeInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Application.Tools.Docker.DockerNodeInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodeInspect), Arguments = "node inspect")]
 public partial class DockerNodeInspectSettings : DockerOptionsBase
@@ -4257,7 +4257,7 @@ public partial class DockerNodeInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSaveSettings
-/// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Common.Tools.Docker.DockerSaveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Application.Tools.Docker.DockerSaveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSave), Arguments = "save")]
 public partial class DockerSaveSettings : DockerOptionsBase
@@ -4269,7 +4269,7 @@ public partial class DockerSaveSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerStatsSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Common.Tools.Docker.DockerContainerStatsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Application.Tools.Docker.DockerContainerStatsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerStats), Arguments = "container stats")]
 public partial class DockerContainerStatsSettings : DockerOptionsBase
@@ -4287,7 +4287,7 @@ public partial class DockerContainerStatsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerExecSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Common.Tools.Docker.DockerContainerExecSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Application.Tools.Docker.DockerContainerExecSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerExec), Arguments = "container exec")]
 public partial class DockerContainerExecSettings : DockerOptionsBase
@@ -4317,7 +4317,7 @@ public partial class DockerContainerExecSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodeLsSettings
-/// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Common.Tools.Docker.DockerNodeLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Application.Tools.Docker.DockerNodeLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodeLs), Arguments = "node ls")]
 public partial class DockerNodeLsSettings : DockerOptionsBase
@@ -4331,7 +4331,7 @@ public partial class DockerNodeLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmJoinSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Common.Tools.Docker.DockerSwarmJoinSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Application.Tools.Docker.DockerSwarmJoinSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarmJoin), Arguments = "swarm join")]
 public partial class DockerSwarmJoinSettings : DockerOptionsBase
@@ -4349,7 +4349,7 @@ public partial class DockerSwarmJoinSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerLogsSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Common.Tools.Docker.DockerContainerLogsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Application.Tools.Docker.DockerContainerLogsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerLogs), Arguments = "container logs")]
 public partial class DockerContainerLogsSettings : DockerOptionsBase
@@ -4371,7 +4371,7 @@ public partial class DockerContainerLogsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerCheckpointLsSettings
-/// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Common.Tools.Docker.DockerCheckpointLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Application.Tools.Docker.DockerCheckpointLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerCheckpointLs), Arguments = "checkpoint ls")]
 public partial class DockerCheckpointLsSettings : DockerOptionsBase
@@ -4383,7 +4383,7 @@ public partial class DockerCheckpointLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerKillSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Common.Tools.Docker.DockerContainerKillSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Application.Tools.Docker.DockerContainerKillSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerKill), Arguments = "container kill")]
 public partial class DockerContainerKillSettings : DockerOptionsBase
@@ -4395,7 +4395,7 @@ public partial class DockerContainerKillSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginInstallSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Common.Tools.Docker.DockerPluginInstallSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Application.Tools.Docker.DockerPluginInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginInstall), Arguments = "plugin install")]
 public partial class DockerPluginInstallSettings : DockerOptionsBase
@@ -4415,7 +4415,7 @@ public partial class DockerPluginInstallSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImagePruneSettings
-/// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Common.Tools.Docker.DockerImagePruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Application.Tools.Docker.DockerImagePruneSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImagePrune), Arguments = "image prune")]
 public partial class DockerImagePruneSettings : DockerOptionsBase
@@ -4429,7 +4429,7 @@ public partial class DockerImagePruneSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageImportSettings
-/// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Common.Tools.Docker.DockerImageImportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Application.Tools.Docker.DockerImageImportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageImport), Arguments = "image import")]
 public partial class DockerImageImportSettings : DockerOptionsBase
@@ -4447,7 +4447,7 @@ public partial class DockerImageImportSettings : DockerOptionsBase
 }
 #endregion
 #region DockerDiffSettings
-/// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Common.Tools.Docker.DockerDiffSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Application.Tools.Docker.DockerDiffSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerDiff), Arguments = "diff")]
 public partial class DockerDiffSettings : DockerOptionsBase
@@ -4457,7 +4457,7 @@ public partial class DockerDiffSettings : DockerOptionsBase
 }
 #endregion
 #region DockerUnpauseSettings
-/// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Common.Tools.Docker.DockerUnpauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Application.Tools.Docker.DockerUnpauseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerUnpause), Arguments = "unpause")]
 public partial class DockerUnpauseSettings : DockerOptionsBase
@@ -4467,7 +4467,7 @@ public partial class DockerUnpauseSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerLsSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Common.Tools.Docker.DockerContainerLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Application.Tools.Docker.DockerContainerLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerLs), Arguments = "container ls")]
 public partial class DockerContainerLsSettings : DockerOptionsBase
@@ -4491,7 +4491,7 @@ public partial class DockerContainerLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodePsSettings
-/// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Common.Tools.Docker.DockerNodePsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Application.Tools.Docker.DockerNodePsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodePs), Arguments = "node ps")]
 public partial class DockerNodePsSettings : DockerOptionsBase
@@ -4511,7 +4511,7 @@ public partial class DockerNodePsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerTopSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Common.Tools.Docker.DockerContainerTopSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Application.Tools.Docker.DockerContainerTopSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerTop), Arguments = "container top [ps")]
 public partial class DockerContainerTopSettings : DockerOptionsBase
@@ -4523,7 +4523,7 @@ public partial class DockerContainerTopSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerRenameSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Common.Tools.Docker.DockerContainerRenameSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Application.Tools.Docker.DockerContainerRenameSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerRename), Arguments = "container rename")]
 public partial class DockerContainerRenameSettings : DockerOptionsBase
@@ -4535,7 +4535,7 @@ public partial class DockerContainerRenameSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageHistorySettings
-/// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Common.Tools.Docker.DockerImageHistorySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Application.Tools.Docker.DockerImageHistorySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageHistory), Arguments = "image history")]
 public partial class DockerImageHistorySettings : DockerOptionsBase
@@ -4553,7 +4553,7 @@ public partial class DockerImageHistorySettings : DockerOptionsBase
 }
 #endregion
 #region DockerPsSettings
-/// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Common.Tools.Docker.DockerPsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Application.Tools.Docker.DockerPsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPs), Arguments = "ps")]
 public partial class DockerPsSettings : DockerOptionsBase
@@ -4577,7 +4577,7 @@ public partial class DockerPsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageTagSettings
-/// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Common.Tools.Docker.DockerImageTagSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Application.Tools.Docker.DockerImageTagSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageTag), Arguments = "image tag")]
 public partial class DockerImageTagSettings : DockerOptionsBase
@@ -4589,7 +4589,7 @@ public partial class DockerImageTagSettings : DockerOptionsBase
 }
 #endregion
 #region DockerExportSettings
-/// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Common.Tools.Docker.DockerExportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Application.Tools.Docker.DockerExportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerExport), Arguments = "export")]
 public partial class DockerExportSettings : DockerOptionsBase
@@ -4601,7 +4601,7 @@ public partial class DockerExportSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkDisconnectSettings
-/// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Common.Tools.Docker.DockerNetworkDisconnectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Application.Tools.Docker.DockerNetworkDisconnectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetworkDisconnect), Arguments = "network disconnect")]
 public partial class DockerNetworkDisconnectSettings : DockerOptionsBase
@@ -4615,7 +4615,7 @@ public partial class DockerNetworkDisconnectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerBuilderBuildSettings
-/// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Common.Tools.Docker.DockerBuilderBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Application.Tools.Docker.DockerBuilderBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerBuilderBuild), Arguments = "builder build")]
 public partial class DockerBuilderBuildSettings : DockerOptionsBase
@@ -4695,7 +4695,7 @@ public partial class DockerBuilderBuildSettings : DockerOptionsBase
 }
 #endregion
 #region DockerBuildxBuildSettings
-/// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Common.Tools.Docker.DockerBuildxBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Application.Tools.Docker.DockerBuildxBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerBuildxBuild), Arguments = "buildx build")]
 public partial class DockerBuildxBuildSettings : DockerOptionsBase
@@ -4777,7 +4777,7 @@ public partial class DockerBuildxBuildSettings : DockerOptionsBase
 }
 #endregion
 #region DockerBuildxCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Common.Tools.Docker.DockerBuildxCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Application.Tools.Docker.DockerBuildxCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerBuildxCreate), Arguments = "buildx create")]
 public partial class DockerBuildxCreateSettings : DockerOptionsBase
@@ -4809,7 +4809,7 @@ public partial class DockerBuildxCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStatsSettings
-/// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Common.Tools.Docker.DockerStatsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Application.Tools.Docker.DockerStatsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStats), Arguments = "stats")]
 public partial class DockerStatsSettings : DockerOptionsBase
@@ -4827,7 +4827,7 @@ public partial class DockerStatsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSearchSettings
-/// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Common.Tools.Docker.DockerSearchSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Application.Tools.Docker.DockerSearchSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSearch), Arguments = "search")]
 public partial class DockerSearchSettings : DockerOptionsBase
@@ -4849,7 +4849,7 @@ public partial class DockerSearchSettings : DockerOptionsBase
 }
 #endregion
 #region DockerManifestSettings
-/// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Common.Tools.Docker.DockerManifestSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Application.Tools.Docker.DockerManifestSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerManifest), Arguments = "manifest")]
 public partial class DockerManifestSettings : DockerOptionsBase
@@ -4859,7 +4859,7 @@ public partial class DockerManifestSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginPushSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Common.Tools.Docker.DockerPluginPushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Application.Tools.Docker.DockerPluginPushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginPush), Arguments = "plugin push")]
 public partial class DockerPluginPushSettings : DockerOptionsBase
@@ -4871,7 +4871,7 @@ public partial class DockerPluginPushSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageLoadSettings
-/// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Common.Tools.Docker.DockerImageLoadSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Application.Tools.Docker.DockerImageLoadSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageLoad), Arguments = "image load")]
 public partial class DockerImageLoadSettings : DockerOptionsBase
@@ -4883,7 +4883,7 @@ public partial class DockerImageLoadSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSwarmSettings
-/// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Common.Tools.Docker.DockerSwarmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Application.Tools.Docker.DockerSwarmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSwarm), Arguments = "swarm")]
 public partial class DockerSwarmSettings : DockerOptionsBase
@@ -4891,7 +4891,7 @@ public partial class DockerSwarmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerRmSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Common.Tools.Docker.DockerContainerRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Application.Tools.Docker.DockerContainerRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerRm), Arguments = "container rm")]
 public partial class DockerContainerRmSettings : DockerOptionsBase
@@ -4907,7 +4907,7 @@ public partial class DockerContainerRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerUpdateSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Common.Tools.Docker.DockerContainerUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Application.Tools.Docker.DockerContainerUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerUpdate), Arguments = "container update")]
 public partial class DockerContainerUpdateSettings : DockerOptionsBase
@@ -4947,7 +4947,7 @@ public partial class DockerContainerUpdateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginSetSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Common.Tools.Docker.DockerPluginSetSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Application.Tools.Docker.DockerPluginSetSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginSet), Arguments = "plugin set")]
 public partial class DockerPluginSetSettings : DockerOptionsBase
@@ -4959,7 +4959,7 @@ public partial class DockerPluginSetSettings : DockerOptionsBase
 }
 #endregion
 #region DockerWaitSettings
-/// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Common.Tools.Docker.DockerWaitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Application.Tools.Docker.DockerWaitSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerWait), Arguments = "wait")]
 public partial class DockerWaitSettings : DockerOptionsBase
@@ -4969,7 +4969,7 @@ public partial class DockerWaitSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextExportSettings
-/// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Common.Tools.Docker.DockerContextExportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Application.Tools.Docker.DockerContextExportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextExport), Arguments = "context export")]
 public partial class DockerContextExportSettings : DockerOptionsBase
@@ -4983,7 +4983,7 @@ public partial class DockerContextExportSettings : DockerOptionsBase
 }
 #endregion
 #region DockerManifestAnnotateSettings
-/// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Common.Tools.Docker.DockerManifestAnnotateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Application.Tools.Docker.DockerManifestAnnotateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerManifestAnnotate), Arguments = "manifest annotate")]
 public partial class DockerManifestAnnotateSettings : DockerOptionsBase
@@ -5003,7 +5003,7 @@ public partial class DockerManifestAnnotateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImagePullSettings
-/// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Common.Tools.Docker.DockerImagePullSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Application.Tools.Docker.DockerImagePullSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImagePull), Arguments = "image pull")]
 public partial class DockerImagePullSettings : DockerOptionsBase
@@ -5021,7 +5021,7 @@ public partial class DockerImagePullSettings : DockerOptionsBase
 }
 #endregion
 #region DockerEventsSettings
-/// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Common.Tools.Docker.DockerEventsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Application.Tools.Docker.DockerEventsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerEvents), Arguments = "events")]
 public partial class DockerEventsSettings : DockerOptionsBase
@@ -5037,7 +5037,7 @@ public partial class DockerEventsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStackLsSettings
-/// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Common.Tools.Docker.DockerStackLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Application.Tools.Docker.DockerStackLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStackLs), Arguments = "stack ls")]
 public partial class DockerStackLsSettings : DockerStackSettings
@@ -5051,7 +5051,7 @@ public partial class DockerStackLsSettings : DockerStackSettings
 }
 #endregion
 #region DockerContainerInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Common.Tools.Docker.DockerContainerInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Application.Tools.Docker.DockerContainerInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerInspect), Arguments = "container inspect")]
 public partial class DockerContainerInspectSettings : DockerOptionsBase
@@ -5065,7 +5065,7 @@ public partial class DockerContainerInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerKillSettings
-/// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Common.Tools.Docker.DockerKillSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Application.Tools.Docker.DockerKillSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerKill), Arguments = "kill")]
 public partial class DockerKillSettings : DockerOptionsBase
@@ -5077,7 +5077,7 @@ public partial class DockerKillSettings : DockerOptionsBase
 }
 #endregion
 #region DockerCheckpointCreateSettings
-/// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Common.Tools.Docker.DockerCheckpointCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Application.Tools.Docker.DockerCheckpointCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerCheckpointCreate), Arguments = "checkpoint create")]
 public partial class DockerCheckpointCreateSettings : DockerOptionsBase
@@ -5093,7 +5093,7 @@ public partial class DockerCheckpointCreateSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPauseSettings
-/// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Common.Tools.Docker.DockerPauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Application.Tools.Docker.DockerPauseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPause), Arguments = "pause")]
 public partial class DockerPauseSettings : DockerOptionsBase
@@ -5103,7 +5103,7 @@ public partial class DockerPauseSettings : DockerOptionsBase
 }
 #endregion
 #region DockerLogsSettings
-/// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Common.Tools.Docker.DockerLogsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Application.Tools.Docker.DockerLogsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerLogs), Arguments = "logs")]
 public partial class DockerLogsSettings : DockerOptionsBase
@@ -5125,7 +5125,7 @@ public partial class DockerLogsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Common.Tools.Docker.DockerContextInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Application.Tools.Docker.DockerContextInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContextInspect), Arguments = "context inspect")]
 public partial class DockerContextInspectSettings : DockerOptionsBase
@@ -5139,7 +5139,7 @@ public partial class DockerContextInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodePromoteSettings
-/// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Common.Tools.Docker.DockerNodePromoteSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Application.Tools.Docker.DockerNodePromoteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodePromote), Arguments = "node promote")]
 public partial class DockerNodePromoteSettings : DockerOptionsBase
@@ -5149,7 +5149,7 @@ public partial class DockerNodePromoteSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNodeDemoteSettings
-/// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Common.Tools.Docker.DockerNodeDemoteSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Application.Tools.Docker.DockerNodeDemoteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNodeDemote), Arguments = "node demote")]
 public partial class DockerNodeDemoteSettings : DockerOptionsBase
@@ -5159,7 +5159,7 @@ public partial class DockerNodeDemoteSettings : DockerOptionsBase
 }
 #endregion
 #region DockerExecSettings
-/// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Common.Tools.Docker.DockerExecSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Application.Tools.Docker.DockerExecSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerExec), Arguments = "exec")]
 public partial class DockerExecSettings : DockerOptionsBase
@@ -5189,7 +5189,7 @@ public partial class DockerExecSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageRmSettings
-/// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Common.Tools.Docker.DockerImageRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Application.Tools.Docker.DockerImageRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageRm), Arguments = "image rm")]
 public partial class DockerImageRmSettings : DockerOptionsBase
@@ -5203,7 +5203,7 @@ public partial class DockerImageRmSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageSettings
-/// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Common.Tools.Docker.DockerImageSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Application.Tools.Docker.DockerImageSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImage), Arguments = "image")]
 public partial class DockerImageSettings : DockerOptionsBase
@@ -5211,7 +5211,7 @@ public partial class DockerImageSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContextSettings
-/// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Common.Tools.Docker.DockerContextSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Application.Tools.Docker.DockerContextSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContext), Arguments = "context")]
 public partial class DockerContextSettings : DockerOptionsBase
@@ -5219,7 +5219,7 @@ public partial class DockerContextSettings : DockerOptionsBase
 }
 #endregion
 #region DockerVolumeSettings
-/// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Common.Tools.Docker.DockerVolumeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Application.Tools.Docker.DockerVolumeSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerVolume), Arguments = "volume")]
 public partial class DockerVolumeSettings : DockerOptionsBase
@@ -5229,7 +5229,7 @@ public partial class DockerVolumeSettings : DockerOptionsBase
 }
 #endregion
 #region DockerContainerStartSettings
-/// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Common.Tools.Docker.DockerContainerStartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Application.Tools.Docker.DockerContainerStartSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerContainerStart), Arguments = "container start")]
 public partial class DockerContainerStartSettings : DockerOptionsBase
@@ -5249,7 +5249,7 @@ public partial class DockerContainerStartSettings : DockerOptionsBase
 }
 #endregion
 #region DockerPluginInspectSettings
-/// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Common.Tools.Docker.DockerPluginInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Application.Tools.Docker.DockerPluginInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerPluginInspect), Arguments = "plugin inspect")]
 public partial class DockerPluginInspectSettings : DockerOptionsBase
@@ -5261,7 +5261,7 @@ public partial class DockerPluginInspectSettings : DockerOptionsBase
 }
 #endregion
 #region DockerLogoutSettings
-/// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Common.Tools.Docker.DockerLogoutSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Application.Tools.Docker.DockerLogoutSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerLogout), Arguments = "logout")]
 public partial class DockerLogoutSettings : DockerOptionsBase
@@ -5271,7 +5271,7 @@ public partial class DockerLogoutSettings : DockerOptionsBase
 }
 #endregion
 #region DockerNetworkSettings
-/// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Common.Tools.Docker.DockerNetworkSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Application.Tools.Docker.DockerNetworkSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerNetwork), Arguments = "network")]
 public partial class DockerNetworkSettings : DockerOptionsBase
@@ -5279,7 +5279,7 @@ public partial class DockerNetworkSettings : DockerOptionsBase
 }
 #endregion
 #region DockerImageLsSettings
-/// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Common.Tools.Docker.DockerImageLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Application.Tools.Docker.DockerImageLsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerImageLs), Arguments = "image ls")]
 public partial class DockerImageLsSettings : DockerOptionsBase
@@ -5301,7 +5301,7 @@ public partial class DockerImageLsSettings : DockerOptionsBase
 }
 #endregion
 #region DockerSystemDfSettings
-/// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Common.Tools.Docker.DockerSystemDfSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Application.Tools.Docker.DockerSystemDfSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerSystemDf), Arguments = "system df")]
 public partial class DockerSystemDfSettings : DockerOptionsBase
@@ -5313,7 +5313,7 @@ public partial class DockerSystemDfSettings : DockerOptionsBase
 }
 #endregion
 #region DockerServiceRollbackSettings
-/// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Common.Tools.Docker.DockerServiceRollbackSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Application.Tools.Docker.DockerServiceRollbackSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerServiceRollback), Arguments = "service rollback")]
 public partial class DockerServiceRollbackSettings : DockerOptionsBase
@@ -5327,7 +5327,7 @@ public partial class DockerServiceRollbackSettings : DockerOptionsBase
 }
 #endregion
 #region DockerRestartSettings
-/// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Common.Tools.Docker.DockerRestartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Application.Tools.Docker.DockerRestartSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerRestart), Arguments = "restart")]
 public partial class DockerRestartSettings : DockerOptionsBase
@@ -5339,7 +5339,7 @@ public partial class DockerRestartSettings : DockerOptionsBase
 }
 #endregion
 #region DockerTrustSignerRemoveSettings
-/// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Common.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Application.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerTrustSignerRemove), Arguments = "trust signer remove")]
 public partial class DockerTrustSignerRemoveSettings : DockerOptionsBase
@@ -5353,7 +5353,7 @@ public partial class DockerTrustSignerRemoveSettings : DockerOptionsBase
 }
 #endregion
 #region DockerStackRmSettings
-/// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Common.Tools.Docker.DockerStackRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Application.Tools.Docker.DockerStackRmSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerStackRm), Arguments = "stack rm")]
 public partial class DockerStackRmSettings : DockerStackSettings
@@ -5365,7 +5365,7 @@ public partial class DockerStackRmSettings : DockerStackSettings
 }
 #endregion
 #region DockerBuildSettings
-/// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Common.Tools.Docker.DockerBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Application.Tools.Docker.DockerBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DockerTasks), Command = nameof(DockerTasks.DockerBuild), Arguments = "build")]
 public partial class DockerBuildSettings : DockerOptionsBase
@@ -5489,7 +5489,7 @@ public partial class DockerRunTargetSettings : DockerRunSettings
 }
 #endregion
 #region DockerConfigRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Common.Tools.Docker.DockerConfigRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigRm(Fallout.Application.Tools.Docker.DockerConfigRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerConfigRmSettingsExtensions
 {
@@ -5519,7 +5519,7 @@ public static partial class DockerConfigRmSettingsExtensions
 }
 #endregion
 #region DockerLoadSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Common.Tools.Docker.DockerLoadSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLoad(Fallout.Application.Tools.Docker.DockerLoadSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerLoadSettingsExtensions
 {
@@ -5551,7 +5551,7 @@ public static partial class DockerLoadSettingsExtensions
 }
 #endregion
 #region DockerContainerPruneSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Common.Tools.Docker.DockerContainerPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerPrune(Fallout.Application.Tools.Docker.DockerContainerPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerPruneSettingsExtensions
 {
@@ -5583,14 +5583,14 @@ public static partial class DockerContainerPruneSettingsExtensions
 }
 #endregion
 #region DockerTrustSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Common.Tools.Docker.DockerTrustSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrust(Fallout.Application.Tools.Docker.DockerTrustSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustSettingsExtensions
 {
 }
 #endregion
 #region DockerStackSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Common.Tools.Docker.DockerStackSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStack(Fallout.Application.Tools.Docker.DockerStackSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStackSettingsExtensions
 {
@@ -5613,7 +5613,7 @@ public static partial class DockerStackSettingsExtensions
 }
 #endregion
 #region DockerPullSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Common.Tools.Docker.DockerPullSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPull(Fallout.Application.Tools.Docker.DockerPullSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPullSettingsExtensions
 {
@@ -5687,28 +5687,28 @@ public static partial class DockerPullSettingsExtensions
 }
 #endregion
 #region DockerTrustSignSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Common.Tools.Docker.DockerTrustSignSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSign(Fallout.Application.Tools.Docker.DockerTrustSignSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustSignSettingsExtensions
 {
 }
 #endregion
 #region DockerCheckpointSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Common.Tools.Docker.DockerCheckpointSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpoint(Fallout.Application.Tools.Docker.DockerCheckpointSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerCheckpointSettingsExtensions
 {
 }
 #endregion
 #region DockerTrustSignerSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Common.Tools.Docker.DockerTrustSignerSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSigner(Fallout.Application.Tools.Docker.DockerTrustSignerSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustSignerSettingsExtensions
 {
 }
 #endregion
 #region DockerConfigInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Common.Tools.Docker.DockerConfigInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigInspect(Fallout.Application.Tools.Docker.DockerConfigInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerConfigInspectSettingsExtensions
 {
@@ -5763,14 +5763,14 @@ public static partial class DockerConfigInspectSettingsExtensions
 }
 #endregion
 #region DockerServiceSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerService(Fallout.Common.Tools.Docker.DockerServiceSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerService(Fallout.Application.Tools.Docker.DockerServiceSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceSettingsExtensions
 {
 }
 #endregion
 #region DockerTrustKeyGenerateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Common.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustKeyGenerate(Fallout.Application.Tools.Docker.DockerTrustKeyGenerateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustKeyGenerateSettingsExtensions
 {
@@ -5785,14 +5785,14 @@ public static partial class DockerTrustKeyGenerateSettingsExtensions
 }
 #endregion
 #region DockerSystemSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Common.Tools.Docker.DockerSystemSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystem(Fallout.Application.Tools.Docker.DockerSystemSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSystemSettingsExtensions
 {
 }
 #endregion
 #region DockerConfigLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Common.Tools.Docker.DockerConfigLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigLs(Fallout.Application.Tools.Docker.DockerConfigLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerConfigLsSettingsExtensions
 {
@@ -5832,7 +5832,7 @@ public static partial class DockerConfigLsSettingsExtensions
 }
 #endregion
 #region DockerContextUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Common.Tools.Docker.DockerContextUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextUpdate(Fallout.Application.Tools.Docker.DockerContextUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextUpdateSettingsExtensions
 {
@@ -5879,7 +5879,7 @@ public static partial class DockerContextUpdateSettingsExtensions
 }
 #endregion
 #region DockerStackServicesSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Common.Tools.Docker.DockerStackServicesSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackServices(Fallout.Application.Tools.Docker.DockerStackServicesSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStackServicesSettingsExtensions
 {
@@ -5935,7 +5935,7 @@ public static partial class DockerStackServicesSettingsExtensions
 }
 #endregion
 #region DockerContainerPortSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Common.Tools.Docker.DockerContainerPortSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerPort(Fallout.Application.Tools.Docker.DockerContainerPortSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerPortSettingsExtensions
 {
@@ -5958,7 +5958,7 @@ public static partial class DockerContainerPortSettingsExtensions
 }
 #endregion
 #region DockerRenameSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Common.Tools.Docker.DockerRenameSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRename(Fallout.Application.Tools.Docker.DockerRenameSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerRenameSettingsExtensions
 {
@@ -5981,7 +5981,7 @@ public static partial class DockerRenameSettingsExtensions
 }
 #endregion
 #region DockerTagSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Common.Tools.Docker.DockerTagSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTag(Fallout.Application.Tools.Docker.DockerTagSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTagSettingsExtensions
 {
@@ -6004,7 +6004,7 @@ public static partial class DockerTagSettingsExtensions
 }
 #endregion
 #region DockerSecretInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Common.Tools.Docker.DockerSecretInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretInspect(Fallout.Application.Tools.Docker.DockerSecretInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSecretInspectSettingsExtensions
 {
@@ -6059,14 +6059,14 @@ public static partial class DockerSecretInspectSettingsExtensions
 }
 #endregion
 #region DockerSecretSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Common.Tools.Docker.DockerSecretSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecret(Fallout.Application.Tools.Docker.DockerSecretSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSecretSettingsExtensions
 {
 }
 #endregion
 #region DockerContainerExportSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Common.Tools.Docker.DockerContainerExportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerExport(Fallout.Application.Tools.Docker.DockerContainerExportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerExportSettingsExtensions
 {
@@ -6089,7 +6089,7 @@ public static partial class DockerContainerExportSettingsExtensions
 }
 #endregion
 #region DockerHistorySettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Common.Tools.Docker.DockerHistorySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerHistory(Fallout.Application.Tools.Docker.DockerHistorySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerHistorySettingsExtensions
 {
@@ -6163,7 +6163,7 @@ public static partial class DockerHistorySettingsExtensions
 }
 #endregion
 #region DockerServiceCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Common.Tools.Docker.DockerServiceCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceCreate(Fallout.Application.Tools.Docker.DockerServiceCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceCreateSettingsExtensions
 {
@@ -7004,7 +7004,7 @@ public static partial class DockerServiceCreateSettingsExtensions
 }
 #endregion
 #region DockerServicePsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Common.Tools.Docker.DockerServicePsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServicePs(Fallout.Application.Tools.Docker.DockerServicePsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServicePsSettingsExtensions
 {
@@ -7101,7 +7101,7 @@ public static partial class DockerServicePsSettingsExtensions
 }
 #endregion
 #region DockerStopSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Common.Tools.Docker.DockerStopSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStop(Fallout.Application.Tools.Docker.DockerStopSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStopSettingsExtensions
 {
@@ -7139,14 +7139,14 @@ public static partial class DockerStopSettingsExtensions
 }
 #endregion
 #region DockerNodeSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Common.Tools.Docker.DockerNodeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNode(Fallout.Application.Tools.Docker.DockerNodeSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodeSettingsExtensions
 {
 }
 #endregion
 #region DockerUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Common.Tools.Docker.DockerUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerUpdate(Fallout.Application.Tools.Docker.DockerUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerUpdateSettingsExtensions
 {
@@ -7296,7 +7296,7 @@ public static partial class DockerUpdateSettingsExtensions
 }
 #endregion
 #region DockerPluginCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Common.Tools.Docker.DockerPluginCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginCreate(Fallout.Application.Tools.Docker.DockerPluginCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginCreateSettingsExtensions
 {
@@ -7336,7 +7336,7 @@ public static partial class DockerPluginCreateSettingsExtensions
 }
 #endregion
 #region DockerSystemInfoSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Common.Tools.Docker.DockerSystemInfoSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemInfo(Fallout.Application.Tools.Docker.DockerSystemInfoSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSystemInfoSettingsExtensions
 {
@@ -7351,7 +7351,7 @@ public static partial class DockerSystemInfoSettingsExtensions
 }
 #endregion
 #region DockerVolumePruneSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Common.Tools.Docker.DockerVolumePruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumePrune(Fallout.Application.Tools.Docker.DockerVolumePruneSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVolumePruneSettingsExtensions
 {
@@ -7383,7 +7383,7 @@ public static partial class DockerVolumePruneSettingsExtensions
 }
 #endregion
 #region DockerPluginUpgradeSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Common.Tools.Docker.DockerPluginUpgradeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginUpgrade(Fallout.Application.Tools.Docker.DockerPluginUpgradeSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginUpgradeSettingsExtensions
 {
@@ -7457,14 +7457,14 @@ public static partial class DockerPluginUpgradeSettingsExtensions
 }
 #endregion
 #region DockerBuilderPruneSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Common.Tools.Docker.DockerBuilderPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuilderPrune(Fallout.Application.Tools.Docker.DockerBuilderPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerBuilderPruneSettingsExtensions
 {
 }
 #endregion
 #region DockerSwarmJoinTokenSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Common.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmJoinToken(Fallout.Application.Tools.Docker.DockerSwarmJoinTokenSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmJoinTokenSettingsExtensions
 {
@@ -7513,7 +7513,7 @@ public static partial class DockerSwarmJoinTokenSettingsExtensions
 }
 #endregion
 #region DockerNodeUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Common.Tools.Docker.DockerNodeUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeUpdate(Fallout.Application.Tools.Docker.DockerNodeUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodeUpdateSettingsExtensions
 {
@@ -7590,7 +7590,7 @@ public static partial class DockerNodeUpdateSettingsExtensions
 }
 #endregion
 #region DockerTrustSignerAddSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Common.Tools.Docker.DockerTrustSignerAddSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSignerAdd(Fallout.Application.Tools.Docker.DockerTrustSignerAddSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustSignerAddSettingsExtensions
 {
@@ -7636,7 +7636,7 @@ public static partial class DockerTrustSignerAddSettingsExtensions
 }
 #endregion
 #region DockerSwarmUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Common.Tools.Docker.DockerSwarmUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmUpdate(Fallout.Application.Tools.Docker.DockerSwarmUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmUpdateSettingsExtensions
 {
@@ -7708,7 +7708,7 @@ public static partial class DockerSwarmUpdateSettingsExtensions
 }
 #endregion
 #region DockerServiceLogsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Common.Tools.Docker.DockerServiceLogsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceLogs(Fallout.Application.Tools.Docker.DockerServiceLogsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceLogsSettingsExtensions
 {
@@ -7858,7 +7858,7 @@ public static partial class DockerServiceLogsSettingsExtensions
 }
 #endregion
 #region DockerServiceLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Common.Tools.Docker.DockerServiceLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceLs(Fallout.Application.Tools.Docker.DockerServiceLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceLsSettingsExtensions
 {
@@ -7898,14 +7898,14 @@ public static partial class DockerServiceLsSettingsExtensions
 }
 #endregion
 #region DockerSwarmUnlockSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Common.Tools.Docker.DockerSwarmUnlockSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmUnlock(Fallout.Application.Tools.Docker.DockerSwarmUnlockSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmUnlockSettingsExtensions
 {
 }
 #endregion
 #region DockerNetworkLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Common.Tools.Docker.DockerNetworkLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkLs(Fallout.Application.Tools.Docker.DockerNetworkLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkLsSettingsExtensions
 {
@@ -7962,7 +7962,7 @@ public static partial class DockerNetworkLsSettingsExtensions
 }
 #endregion
 #region DockerPluginLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Common.Tools.Docker.DockerPluginLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginLs(Fallout.Application.Tools.Docker.DockerPluginLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginLsSettingsExtensions
 {
@@ -8019,7 +8019,7 @@ public static partial class DockerPluginLsSettingsExtensions
 }
 #endregion
 #region DockerPluginRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Common.Tools.Docker.DockerPluginRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginRm(Fallout.Application.Tools.Docker.DockerPluginRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginRmSettingsExtensions
 {
@@ -8066,7 +8066,7 @@ public static partial class DockerPluginRmSettingsExtensions
 }
 #endregion
 #region DockerImageBuildSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Common.Tools.Docker.DockerImageBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageBuild(Fallout.Application.Tools.Docker.DockerImageBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageBuildSettingsExtensions
 {
@@ -8532,7 +8532,7 @@ public static partial class DockerImageBuildSettingsExtensions
 }
 #endregion
 #region DockerTrustRevokeSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Common.Tools.Docker.DockerTrustRevokeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustRevoke(Fallout.Application.Tools.Docker.DockerTrustRevokeSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustRevokeSettingsExtensions
 {
@@ -8564,7 +8564,7 @@ public static partial class DockerTrustRevokeSettingsExtensions
 }
 #endregion
 #region DockerRmiSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Common.Tools.Docker.DockerRmiSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRmi(Fallout.Application.Tools.Docker.DockerRmiSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerRmiSettingsExtensions
 {
@@ -8628,7 +8628,7 @@ public static partial class DockerRmiSettingsExtensions
 }
 #endregion
 #region DockerNetworkRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Common.Tools.Docker.DockerNetworkRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkRm(Fallout.Application.Tools.Docker.DockerNetworkRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkRmSettingsExtensions
 {
@@ -8658,7 +8658,7 @@ public static partial class DockerNetworkRmSettingsExtensions
 }
 #endregion
 #region DockerVersionSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Common.Tools.Docker.DockerVersionSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVersion(Fallout.Application.Tools.Docker.DockerVersionSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVersionSettingsExtensions
 {
@@ -8681,7 +8681,7 @@ public static partial class DockerVersionSettingsExtensions
 }
 #endregion
 #region DockerSecretCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Common.Tools.Docker.DockerSecretCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretCreate(Fallout.Application.Tools.Docker.DockerSecretCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSecretCreateSettingsExtensions
 {
@@ -8743,7 +8743,7 @@ public static partial class DockerSecretCreateSettingsExtensions
 }
 #endregion
 #region DockerServiceRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Common.Tools.Docker.DockerServiceRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceRm(Fallout.Application.Tools.Docker.DockerServiceRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceRmSettingsExtensions
 {
@@ -8773,7 +8773,7 @@ public static partial class DockerServiceRmSettingsExtensions
 }
 #endregion
 #region DockerTrustKeyLoadSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Common.Tools.Docker.DockerTrustKeyLoadSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustKeyLoad(Fallout.Application.Tools.Docker.DockerTrustKeyLoadSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustKeyLoadSettingsExtensions
 {
@@ -8796,7 +8796,7 @@ public static partial class DockerTrustKeyLoadSettingsExtensions
 }
 #endregion
 #region DockerSecretRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Common.Tools.Docker.DockerSecretRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretRm(Fallout.Application.Tools.Docker.DockerSecretRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSecretRmSettingsExtensions
 {
@@ -8826,7 +8826,7 @@ public static partial class DockerSecretRmSettingsExtensions
 }
 #endregion
 #region DockerImageInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Common.Tools.Docker.DockerImageInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageInspect(Fallout.Application.Tools.Docker.DockerImageInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageInspectSettingsExtensions
 {
@@ -8864,7 +8864,7 @@ public static partial class DockerImageInspectSettingsExtensions
 }
 #endregion
 #region DockerImageSaveSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Common.Tools.Docker.DockerImageSaveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageSave(Fallout.Application.Tools.Docker.DockerImageSaveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageSaveSettingsExtensions
 {
@@ -8902,14 +8902,14 @@ public static partial class DockerImageSaveSettingsExtensions
 }
 #endregion
 #region DockerTrustKeySettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Common.Tools.Docker.DockerTrustKeySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustKey(Fallout.Application.Tools.Docker.DockerTrustKeySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustKeySettingsExtensions
 {
 }
 #endregion
 #region DockerContainerAttachSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Common.Tools.Docker.DockerContainerAttachSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerAttach(Fallout.Application.Tools.Docker.DockerContainerAttachSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerAttachSettingsExtensions
 {
@@ -8966,7 +8966,7 @@ public static partial class DockerContainerAttachSettingsExtensions
 }
 #endregion
 #region DockerContextCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Common.Tools.Docker.DockerContextCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextCreate(Fallout.Application.Tools.Docker.DockerContextCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextCreateSettingsExtensions
 {
@@ -9021,7 +9021,7 @@ public static partial class DockerContextCreateSettingsExtensions
 }
 #endregion
 #region DockerConfigCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Common.Tools.Docker.DockerConfigCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfigCreate(Fallout.Application.Tools.Docker.DockerConfigCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerConfigCreateSettingsExtensions
 {
@@ -9075,7 +9075,7 @@ public static partial class DockerConfigCreateSettingsExtensions
 }
 #endregion
 #region DockerVolumeInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Common.Tools.Docker.DockerVolumeInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeInspect(Fallout.Application.Tools.Docker.DockerVolumeInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVolumeInspectSettingsExtensions
 {
@@ -9113,7 +9113,7 @@ public static partial class DockerVolumeInspectSettingsExtensions
 }
 #endregion
 #region DockerContainerStopSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Common.Tools.Docker.DockerContainerStopSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerStop(Fallout.Application.Tools.Docker.DockerContainerStopSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerStopSettingsExtensions
 {
@@ -9151,7 +9151,7 @@ public static partial class DockerContainerStopSettingsExtensions
 }
 #endregion
 #region DockerNetworkPruneSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Common.Tools.Docker.DockerNetworkPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkPrune(Fallout.Application.Tools.Docker.DockerNetworkPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkPruneSettingsExtensions
 {
@@ -9183,7 +9183,7 @@ public static partial class DockerNetworkPruneSettingsExtensions
 }
 #endregion
 #region DockerManifestInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Common.Tools.Docker.DockerManifestInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestInspect(Fallout.Application.Tools.Docker.DockerManifestInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerManifestInspectSettingsExtensions
 {
@@ -9240,7 +9240,7 @@ public static partial class DockerManifestInspectSettingsExtensions
 }
 #endregion
 #region DockerInfoSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Common.Tools.Docker.DockerInfoSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerInfo(Fallout.Application.Tools.Docker.DockerInfoSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerInfoSettingsExtensions
 {
@@ -9255,7 +9255,7 @@ public static partial class DockerInfoSettingsExtensions
 }
 #endregion
 #region DockerCommitSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Common.Tools.Docker.DockerCommitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCommit(Fallout.Application.Tools.Docker.DockerCommitSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerCommitSettingsExtensions
 {
@@ -9334,7 +9334,7 @@ public static partial class DockerCommitSettingsExtensions
 }
 #endregion
 #region DockerStackDeploySettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Common.Tools.Docker.DockerStackDeploySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackDeploy(Fallout.Application.Tools.Docker.DockerStackDeploySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStackDeploySettingsExtensions
 {
@@ -9430,7 +9430,7 @@ public static partial class DockerStackDeploySettingsExtensions
 }
 #endregion
 #region DockerServiceScaleSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Common.Tools.Docker.DockerServiceScaleSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceScale(Fallout.Application.Tools.Docker.DockerServiceScaleSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceScaleSettingsExtensions
 {
@@ -9454,7 +9454,7 @@ public static partial class DockerServiceScaleSettingsExtensions
 }
 #endregion
 #region DockerRunSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Common.Tools.Docker.DockerRunSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRun(Fallout.Application.Tools.Docker.DockerRunSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerRunSettingsExtensions
 {
@@ -10914,7 +10914,7 @@ public static partial class DockerRunSettingsExtensions
 }
 #endregion
 #region DockerCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Common.Tools.Docker.DockerCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCreate(Fallout.Application.Tools.Docker.DockerCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerCreateSettingsExtensions
 {
@@ -12332,7 +12332,7 @@ public static partial class DockerCreateSettingsExtensions
 }
 #endregion
 #region DockerServiceUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Common.Tools.Docker.DockerServiceUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceUpdate(Fallout.Application.Tools.Docker.DockerServiceUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceUpdateSettingsExtensions
 {
@@ -13514,7 +13514,7 @@ public static partial class DockerServiceUpdateSettingsExtensions
 }
 #endregion
 #region DockerPortSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Common.Tools.Docker.DockerPortSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPort(Fallout.Application.Tools.Docker.DockerPortSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPortSettingsExtensions
 {
@@ -13537,14 +13537,14 @@ public static partial class DockerPortSettingsExtensions
 }
 #endregion
 #region DockerContainerSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Common.Tools.Docker.DockerContainerSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainer(Fallout.Application.Tools.Docker.DockerContainerSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerSettingsExtensions
 {
 }
 #endregion
 #region DockerImagePushSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Common.Tools.Docker.DockerImagePushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImagePush(Fallout.Application.Tools.Docker.DockerImagePushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImagePushSettingsExtensions
 {
@@ -13593,7 +13593,7 @@ public static partial class DockerImagePushSettingsExtensions
 }
 #endregion
 #region DockerServiceInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Common.Tools.Docker.DockerServiceInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceInspect(Fallout.Application.Tools.Docker.DockerServiceInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceInspectSettingsExtensions
 {
@@ -13648,7 +13648,7 @@ public static partial class DockerServiceInspectSettingsExtensions
 }
 #endregion
 #region DockerNetworkConnectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Common.Tools.Docker.DockerNetworkConnectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkConnect(Fallout.Application.Tools.Docker.DockerNetworkConnectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkConnectSettingsExtensions
 {
@@ -13779,7 +13779,7 @@ public static partial class DockerNetworkConnectSettingsExtensions
 }
 #endregion
 #region DockerSecretLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Common.Tools.Docker.DockerSecretLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSecretLs(Fallout.Application.Tools.Docker.DockerSecretLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSecretLsSettingsExtensions
 {
@@ -13819,7 +13819,7 @@ public static partial class DockerSecretLsSettingsExtensions
 }
 #endregion
 #region DockerSwarmLeaveSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Common.Tools.Docker.DockerSwarmLeaveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmLeave(Fallout.Application.Tools.Docker.DockerSwarmLeaveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmLeaveSettingsExtensions
 {
@@ -13843,7 +13843,7 @@ public static partial class DockerSwarmLeaveSettingsExtensions
 }
 #endregion
 #region DockerImagesSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Common.Tools.Docker.DockerImagesSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImages(Fallout.Application.Tools.Docker.DockerImagesSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImagesSettingsExtensions
 {
@@ -13942,7 +13942,7 @@ public static partial class DockerImagesSettingsExtensions
 }
 #endregion
 #region DockerEngineUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Common.Tools.Docker.DockerEngineUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngineUpdate(Fallout.Application.Tools.Docker.DockerEngineUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerEngineUpdateSettingsExtensions
 {
@@ -13981,7 +13981,7 @@ public static partial class DockerEngineUpdateSettingsExtensions
 }
 #endregion
 #region DockerSystemEventsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Common.Tools.Docker.DockerSystemEventsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemEvents(Fallout.Application.Tools.Docker.DockerSystemEventsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSystemEventsSettingsExtensions
 {
@@ -14020,7 +14020,7 @@ public static partial class DockerSystemEventsSettingsExtensions
 }
 #endregion
 #region DockerInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Common.Tools.Docker.DockerInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerInspect(Fallout.Application.Tools.Docker.DockerInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerInspectSettingsExtensions
 {
@@ -14083,7 +14083,7 @@ public static partial class DockerInspectSettingsExtensions
 }
 #endregion
 #region DockerEngineCheckSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Common.Tools.Docker.DockerEngineCheckSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngineCheck(Fallout.Application.Tools.Docker.DockerEngineCheckSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerEngineCheckSettingsExtensions
 {
@@ -14190,7 +14190,7 @@ public static partial class DockerEngineCheckSettingsExtensions
 }
 #endregion
 #region DockerAttachSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Common.Tools.Docker.DockerAttachSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerAttach(Fallout.Application.Tools.Docker.DockerAttachSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerAttachSettingsExtensions
 {
@@ -14247,7 +14247,7 @@ public static partial class DockerAttachSettingsExtensions
 }
 #endregion
 #region DockerContainerWaitSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Common.Tools.Docker.DockerContainerWaitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerWait(Fallout.Application.Tools.Docker.DockerContainerWaitSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerWaitSettingsExtensions
 {
@@ -14277,7 +14277,7 @@ public static partial class DockerContainerWaitSettingsExtensions
 }
 #endregion
 #region DockerSwarmCaSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Common.Tools.Docker.DockerSwarmCaSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmCa(Fallout.Application.Tools.Docker.DockerSwarmCaSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmCaSettingsExtensions
 {
@@ -14367,7 +14367,7 @@ public static partial class DockerSwarmCaSettingsExtensions
 }
 #endregion
 #region DockerEngineSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Common.Tools.Docker.DockerEngineSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngine(Fallout.Application.Tools.Docker.DockerEngineSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerEngineSettingsExtensions
 {
@@ -14382,7 +14382,7 @@ public static partial class DockerEngineSettingsExtensions
 }
 #endregion
 #region DockerSystemPruneSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Common.Tools.Docker.DockerSystemPruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemPrune(Fallout.Application.Tools.Docker.DockerSystemPruneSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSystemPruneSettingsExtensions
 {
@@ -14448,14 +14448,14 @@ public static partial class DockerSystemPruneSettingsExtensions
 }
 #endregion
 #region DockerBuilderSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Common.Tools.Docker.DockerBuilderSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuilder(Fallout.Application.Tools.Docker.DockerBuilderSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerBuilderSettingsExtensions
 {
 }
 #endregion
 #region DockerContainerPauseSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Common.Tools.Docker.DockerContainerPauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerPause(Fallout.Application.Tools.Docker.DockerContainerPauseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerPauseSettingsExtensions
 {
@@ -14485,7 +14485,7 @@ public static partial class DockerContainerPauseSettingsExtensions
 }
 #endregion
 #region DockerContainerCommitSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Common.Tools.Docker.DockerContainerCommitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerCommit(Fallout.Application.Tools.Docker.DockerContainerCommitSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerCommitSettingsExtensions
 {
@@ -14564,7 +14564,7 @@ public static partial class DockerContainerCommitSettingsExtensions
 }
 #endregion
 #region DockerContextLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Common.Tools.Docker.DockerContextLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextLs(Fallout.Application.Tools.Docker.DockerContextLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextLsSettingsExtensions
 {
@@ -14596,7 +14596,7 @@ public static partial class DockerContextLsSettingsExtensions
 }
 #endregion
 #region DockerContextRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Common.Tools.Docker.DockerContextRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextRm(Fallout.Application.Tools.Docker.DockerContextRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextRmSettingsExtensions
 {
@@ -14626,7 +14626,7 @@ public static partial class DockerContextRmSettingsExtensions
 }
 #endregion
 #region DockerStackPsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Common.Tools.Docker.DockerStackPsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackPs(Fallout.Application.Tools.Docker.DockerStackPsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStackPsSettingsExtensions
 {
@@ -14716,7 +14716,7 @@ public static partial class DockerStackPsSettingsExtensions
 }
 #endregion
 #region DockerContainerCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Common.Tools.Docker.DockerContainerCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerCreate(Fallout.Application.Tools.Docker.DockerContainerCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerCreateSettingsExtensions
 {
@@ -16134,7 +16134,7 @@ public static partial class DockerContainerCreateSettingsExtensions
 }
 #endregion
 #region DockerVolumeCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Common.Tools.Docker.DockerVolumeCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeCreate(Fallout.Application.Tools.Docker.DockerVolumeCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVolumeCreateSettingsExtensions
 {
@@ -16205,14 +16205,14 @@ public static partial class DockerVolumeCreateSettingsExtensions
 }
 #endregion
 #region DockerPluginSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Common.Tools.Docker.DockerPluginSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPlugin(Fallout.Application.Tools.Docker.DockerPluginSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginSettingsExtensions
 {
 }
 #endregion
 #region DockerLoginSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Common.Tools.Docker.DockerLoginSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLogin(Fallout.Application.Tools.Docker.DockerLoginSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerLoginSettingsExtensions
 {
@@ -16243,7 +16243,7 @@ public static partial class DockerLoginSettingsExtensions
 }
 #endregion
 #region DockerSwarmUnlockKeySettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Common.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmUnlockKey(Fallout.Application.Tools.Docker.DockerSwarmUnlockKeySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmUnlockKeySettingsExtensions
 {
@@ -16284,7 +16284,7 @@ public static partial class DockerSwarmUnlockKeySettingsExtensions
 }
 #endregion
 #region DockerStartSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Common.Tools.Docker.DockerStartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStart(Fallout.Application.Tools.Docker.DockerStartSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStartSettingsExtensions
 {
@@ -16372,7 +16372,7 @@ public static partial class DockerStartSettingsExtensions
 }
 #endregion
 #region DockerSwarmInitSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Common.Tools.Docker.DockerSwarmInitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmInit(Fallout.Application.Tools.Docker.DockerSwarmInitSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmInitSettingsExtensions
 {
@@ -16517,7 +16517,7 @@ public static partial class DockerSwarmInitSettingsExtensions
 }
 #endregion
 #region DockerContainerDiffSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Common.Tools.Docker.DockerContainerDiffSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerDiff(Fallout.Application.Tools.Docker.DockerContainerDiffSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerDiffSettingsExtensions
 {
@@ -16532,7 +16532,7 @@ public static partial class DockerContainerDiffSettingsExtensions
 }
 #endregion
 #region DockerContainerRestartSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Common.Tools.Docker.DockerContainerRestartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRestart(Fallout.Application.Tools.Docker.DockerContainerRestartSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerRestartSettingsExtensions
 {
@@ -16570,14 +16570,14 @@ public static partial class DockerContainerRestartSettingsExtensions
 }
 #endregion
 #region DockerConfigSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Common.Tools.Docker.DockerConfigSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerConfig(Fallout.Application.Tools.Docker.DockerConfigSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerConfigSettingsExtensions
 {
 }
 #endregion
 #region DockerPluginDisableSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Common.Tools.Docker.DockerPluginDisableSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginDisable(Fallout.Application.Tools.Docker.DockerPluginDisableSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginDisableSettingsExtensions
 {
@@ -16609,7 +16609,7 @@ public static partial class DockerPluginDisableSettingsExtensions
 }
 #endregion
 #region DockerContainerUnpauseSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Common.Tools.Docker.DockerContainerUnpauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerUnpause(Fallout.Application.Tools.Docker.DockerContainerUnpauseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerUnpauseSettingsExtensions
 {
@@ -16639,7 +16639,7 @@ public static partial class DockerContainerUnpauseSettingsExtensions
 }
 #endregion
 #region DockerContextImportSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Common.Tools.Docker.DockerContextImportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextImport(Fallout.Application.Tools.Docker.DockerContextImportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextImportSettingsExtensions
 {
@@ -16662,7 +16662,7 @@ public static partial class DockerContextImportSettingsExtensions
 }
 #endregion
 #region DockerRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Common.Tools.Docker.DockerRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRm(Fallout.Application.Tools.Docker.DockerRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerRmSettingsExtensions
 {
@@ -16743,7 +16743,7 @@ public static partial class DockerRmSettingsExtensions
 }
 #endregion
 #region DockerDeploySettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Common.Tools.Docker.DockerDeploySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerDeploy(Fallout.Application.Tools.Docker.DockerDeploySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerDeploySettingsExtensions
 {
@@ -16839,7 +16839,7 @@ public static partial class DockerDeploySettingsExtensions
 }
 #endregion
 #region DockerNodeRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Common.Tools.Docker.DockerNodeRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeRm(Fallout.Application.Tools.Docker.DockerNodeRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodeRmSettingsExtensions
 {
@@ -16886,7 +16886,7 @@ public static partial class DockerNodeRmSettingsExtensions
 }
 #endregion
 #region DockerCheckpointRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Common.Tools.Docker.DockerCheckpointRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpointRm(Fallout.Application.Tools.Docker.DockerCheckpointRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerCheckpointRmSettingsExtensions
 {
@@ -16917,7 +16917,7 @@ public static partial class DockerCheckpointRmSettingsExtensions
 }
 #endregion
 #region DockerPushSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Common.Tools.Docker.DockerPushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPush(Fallout.Application.Tools.Docker.DockerPushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPushSettingsExtensions
 {
@@ -16966,7 +16966,7 @@ public static partial class DockerPushSettingsExtensions
 }
 #endregion
 #region DockerNetworkCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Common.Tools.Docker.DockerNetworkCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkCreate(Fallout.Application.Tools.Docker.DockerNetworkCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkCreateSettingsExtensions
 {
@@ -17241,7 +17241,7 @@ public static partial class DockerNetworkCreateSettingsExtensions
 }
 #endregion
 #region DockerVolumeLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Common.Tools.Docker.DockerVolumeLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeLs(Fallout.Application.Tools.Docker.DockerVolumeLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVolumeLsSettingsExtensions
 {
@@ -17281,7 +17281,7 @@ public static partial class DockerVolumeLsSettingsExtensions
 }
 #endregion
 #region DockerTrustInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Common.Tools.Docker.DockerTrustInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustInspect(Fallout.Application.Tools.Docker.DockerTrustInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustInspectSettingsExtensions
 {
@@ -17311,7 +17311,7 @@ public static partial class DockerTrustInspectSettingsExtensions
 }
 #endregion
 #region DockerNetworkInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Common.Tools.Docker.DockerNetworkInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkInspect(Fallout.Application.Tools.Docker.DockerNetworkInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkInspectSettingsExtensions
 {
@@ -17366,7 +17366,7 @@ public static partial class DockerNetworkInspectSettingsExtensions
 }
 #endregion
 #region DockerEngineActivateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Common.Tools.Docker.DockerEngineActivateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEngineActivate(Fallout.Application.Tools.Docker.DockerEngineActivateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerEngineActivateSettingsExtensions
 {
@@ -17455,7 +17455,7 @@ public static partial class DockerEngineActivateSettingsExtensions
 }
 #endregion
 #region DockerContextUseSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Common.Tools.Docker.DockerContextUseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextUse(Fallout.Application.Tools.Docker.DockerContextUseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextUseSettingsExtensions
 {
@@ -17470,7 +17470,7 @@ public static partial class DockerContextUseSettingsExtensions
 }
 #endregion
 #region DockerVolumeRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Common.Tools.Docker.DockerVolumeRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolumeRm(Fallout.Application.Tools.Docker.DockerVolumeRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVolumeRmSettingsExtensions
 {
@@ -17517,7 +17517,7 @@ public static partial class DockerVolumeRmSettingsExtensions
 }
 #endregion
 #region DockerManifestCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Common.Tools.Docker.DockerManifestCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestCreate(Fallout.Application.Tools.Docker.DockerManifestCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerManifestCreateSettingsExtensions
 {
@@ -17555,7 +17555,7 @@ public static partial class DockerManifestCreateSettingsExtensions
 }
 #endregion
 #region DockerManifestPushSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Common.Tools.Docker.DockerManifestPushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestPush(Fallout.Application.Tools.Docker.DockerManifestPushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerManifestPushSettingsExtensions
 {
@@ -17604,7 +17604,7 @@ public static partial class DockerManifestPushSettingsExtensions
 }
 #endregion
 #region DockerPluginEnableSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Common.Tools.Docker.DockerPluginEnableSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginEnable(Fallout.Application.Tools.Docker.DockerPluginEnableSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginEnableSettingsExtensions
 {
@@ -17627,7 +17627,7 @@ public static partial class DockerPluginEnableSettingsExtensions
 }
 #endregion
 #region DockerImportSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Common.Tools.Docker.DockerImportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImport(Fallout.Application.Tools.Docker.DockerImportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImportSettingsExtensions
 {
@@ -17689,7 +17689,7 @@ public static partial class DockerImportSettingsExtensions
 }
 #endregion
 #region DockerContainerRunSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Common.Tools.Docker.DockerContainerRunSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRun(Fallout.Application.Tools.Docker.DockerContainerRunSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerRunSettingsExtensions
 {
@@ -19149,7 +19149,7 @@ public static partial class DockerContainerRunSettingsExtensions
 }
 #endregion
 #region DockerNodeInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Common.Tools.Docker.DockerNodeInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeInspect(Fallout.Application.Tools.Docker.DockerNodeInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodeInspectSettingsExtensions
 {
@@ -19204,7 +19204,7 @@ public static partial class DockerNodeInspectSettingsExtensions
 }
 #endregion
 #region DockerSaveSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Common.Tools.Docker.DockerSaveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSave(Fallout.Application.Tools.Docker.DockerSaveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSaveSettingsExtensions
 {
@@ -19242,7 +19242,7 @@ public static partial class DockerSaveSettingsExtensions
 }
 #endregion
 #region DockerContainerStatsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Common.Tools.Docker.DockerContainerStatsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerStats(Fallout.Application.Tools.Docker.DockerContainerStatsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerStatsSettingsExtensions
 {
@@ -19331,7 +19331,7 @@ public static partial class DockerContainerStatsSettingsExtensions
 }
 #endregion
 #region DockerContainerExecSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Common.Tools.Docker.DockerContainerExecSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerExec(Fallout.Application.Tools.Docker.DockerContainerExecSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerExecSettingsExtensions
 {
@@ -19492,7 +19492,7 @@ public static partial class DockerContainerExecSettingsExtensions
 }
 #endregion
 #region DockerNodeLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Common.Tools.Docker.DockerNodeLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeLs(Fallout.Application.Tools.Docker.DockerNodeLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodeLsSettingsExtensions
 {
@@ -19532,7 +19532,7 @@ public static partial class DockerNodeLsSettingsExtensions
 }
 #endregion
 #region DockerSwarmJoinSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Common.Tools.Docker.DockerSwarmJoinSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarmJoin(Fallout.Application.Tools.Docker.DockerSwarmJoinSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmJoinSettingsExtensions
 {
@@ -19579,7 +19579,7 @@ public static partial class DockerSwarmJoinSettingsExtensions
 }
 #endregion
 #region DockerContainerLogsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Common.Tools.Docker.DockerContainerLogsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerLogs(Fallout.Application.Tools.Docker.DockerContainerLogsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerLogsSettingsExtensions
 {
@@ -19669,7 +19669,7 @@ public static partial class DockerContainerLogsSettingsExtensions
 }
 #endregion
 #region DockerCheckpointLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Common.Tools.Docker.DockerCheckpointLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpointLs(Fallout.Application.Tools.Docker.DockerCheckpointLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerCheckpointLsSettingsExtensions
 {
@@ -19692,7 +19692,7 @@ public static partial class DockerCheckpointLsSettingsExtensions
 }
 #endregion
 #region DockerContainerKillSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Common.Tools.Docker.DockerContainerKillSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerKill(Fallout.Application.Tools.Docker.DockerContainerKillSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerKillSettingsExtensions
 {
@@ -19730,7 +19730,7 @@ public static partial class DockerContainerKillSettingsExtensions
 }
 #endregion
 #region DockerPluginInstallSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Common.Tools.Docker.DockerPluginInstallSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginInstall(Fallout.Application.Tools.Docker.DockerPluginInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginInstallSettingsExtensions
 {
@@ -19821,7 +19821,7 @@ public static partial class DockerPluginInstallSettingsExtensions
 }
 #endregion
 #region DockerImagePruneSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Common.Tools.Docker.DockerImagePruneSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImagePrune(Fallout.Application.Tools.Docker.DockerImagePruneSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImagePruneSettingsExtensions
 {
@@ -19870,7 +19870,7 @@ public static partial class DockerImagePruneSettingsExtensions
 }
 #endregion
 #region DockerImageImportSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Common.Tools.Docker.DockerImageImportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageImport(Fallout.Application.Tools.Docker.DockerImageImportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageImportSettingsExtensions
 {
@@ -19932,7 +19932,7 @@ public static partial class DockerImageImportSettingsExtensions
 }
 #endregion
 #region DockerDiffSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Common.Tools.Docker.DockerDiffSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerDiff(Fallout.Application.Tools.Docker.DockerDiffSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerDiffSettingsExtensions
 {
@@ -19947,7 +19947,7 @@ public static partial class DockerDiffSettingsExtensions
 }
 #endregion
 #region DockerUnpauseSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Common.Tools.Docker.DockerUnpauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerUnpause(Fallout.Application.Tools.Docker.DockerUnpauseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerUnpauseSettingsExtensions
 {
@@ -19977,7 +19977,7 @@ public static partial class DockerUnpauseSettingsExtensions
 }
 #endregion
 #region DockerContainerLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Common.Tools.Docker.DockerContainerLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerLs(Fallout.Application.Tools.Docker.DockerContainerLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerLsSettingsExtensions
 {
@@ -20093,7 +20093,7 @@ public static partial class DockerContainerLsSettingsExtensions
 }
 #endregion
 #region DockerNodePsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Common.Tools.Docker.DockerNodePsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodePs(Fallout.Application.Tools.Docker.DockerNodePsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodePsSettingsExtensions
 {
@@ -20190,7 +20190,7 @@ public static partial class DockerNodePsSettingsExtensions
 }
 #endregion
 #region DockerContainerTopSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Common.Tools.Docker.DockerContainerTopSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerTop(Fallout.Application.Tools.Docker.DockerContainerTopSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerTopSettingsExtensions
 {
@@ -20213,7 +20213,7 @@ public static partial class DockerContainerTopSettingsExtensions
 }
 #endregion
 #region DockerContainerRenameSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Common.Tools.Docker.DockerContainerRenameSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRename(Fallout.Application.Tools.Docker.DockerContainerRenameSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerRenameSettingsExtensions
 {
@@ -20236,7 +20236,7 @@ public static partial class DockerContainerRenameSettingsExtensions
 }
 #endregion
 #region DockerImageHistorySettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Common.Tools.Docker.DockerImageHistorySettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageHistory(Fallout.Application.Tools.Docker.DockerImageHistorySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageHistorySettingsExtensions
 {
@@ -20310,7 +20310,7 @@ public static partial class DockerImageHistorySettingsExtensions
 }
 #endregion
 #region DockerPsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Common.Tools.Docker.DockerPsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPs(Fallout.Application.Tools.Docker.DockerPsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPsSettingsExtensions
 {
@@ -20426,7 +20426,7 @@ public static partial class DockerPsSettingsExtensions
 }
 #endregion
 #region DockerImageTagSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Common.Tools.Docker.DockerImageTagSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageTag(Fallout.Application.Tools.Docker.DockerImageTagSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageTagSettingsExtensions
 {
@@ -20449,7 +20449,7 @@ public static partial class DockerImageTagSettingsExtensions
 }
 #endregion
 #region DockerExportSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Common.Tools.Docker.DockerExportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerExport(Fallout.Application.Tools.Docker.DockerExportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerExportSettingsExtensions
 {
@@ -20472,7 +20472,7 @@ public static partial class DockerExportSettingsExtensions
 }
 #endregion
 #region DockerNetworkDisconnectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Common.Tools.Docker.DockerNetworkDisconnectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetworkDisconnect(Fallout.Application.Tools.Docker.DockerNetworkDisconnectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkDisconnectSettingsExtensions
 {
@@ -20512,7 +20512,7 @@ public static partial class DockerNetworkDisconnectSettingsExtensions
 }
 #endregion
 #region DockerBuilderBuildSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Common.Tools.Docker.DockerBuilderBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuilderBuild(Fallout.Application.Tools.Docker.DockerBuilderBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerBuilderBuildSettingsExtensions
 {
@@ -20978,7 +20978,7 @@ public static partial class DockerBuilderBuildSettingsExtensions
 }
 #endregion
 #region DockerBuildxBuildSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Common.Tools.Docker.DockerBuildxBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuildxBuild(Fallout.Application.Tools.Docker.DockerBuildxBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerBuildxBuildSettingsExtensions
 {
@@ -21464,7 +21464,7 @@ public static partial class DockerBuildxBuildSettingsExtensions
 }
 #endregion
 #region DockerBuildxCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Common.Tools.Docker.DockerBuildxCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuildxCreate(Fallout.Application.Tools.Docker.DockerBuildxCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerBuildxCreateSettingsExtensions
 {
@@ -21603,7 +21603,7 @@ public static partial class DockerBuildxCreateSettingsExtensions
 }
 #endregion
 #region DockerStatsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Common.Tools.Docker.DockerStatsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStats(Fallout.Application.Tools.Docker.DockerStatsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStatsSettingsExtensions
 {
@@ -21692,7 +21692,7 @@ public static partial class DockerStatsSettingsExtensions
 }
 #endregion
 #region DockerSearchSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Common.Tools.Docker.DockerSearchSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSearch(Fallout.Application.Tools.Docker.DockerSearchSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSearchSettingsExtensions
 {
@@ -21773,7 +21773,7 @@ public static partial class DockerSearchSettingsExtensions
 }
 #endregion
 #region DockerManifestSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Common.Tools.Docker.DockerManifestSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifest(Fallout.Application.Tools.Docker.DockerManifestSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerManifestSettingsExtensions
 {
@@ -21788,7 +21788,7 @@ public static partial class DockerManifestSettingsExtensions
 }
 #endregion
 #region DockerPluginPushSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Common.Tools.Docker.DockerPluginPushSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginPush(Fallout.Application.Tools.Docker.DockerPluginPushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginPushSettingsExtensions
 {
@@ -21820,7 +21820,7 @@ public static partial class DockerPluginPushSettingsExtensions
 }
 #endregion
 #region DockerImageLoadSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Common.Tools.Docker.DockerImageLoadSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageLoad(Fallout.Application.Tools.Docker.DockerImageLoadSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageLoadSettingsExtensions
 {
@@ -21852,14 +21852,14 @@ public static partial class DockerImageLoadSettingsExtensions
 }
 #endregion
 #region DockerSwarmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Common.Tools.Docker.DockerSwarmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSwarm(Fallout.Application.Tools.Docker.DockerSwarmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSwarmSettingsExtensions
 {
 }
 #endregion
 #region DockerContainerRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Common.Tools.Docker.DockerContainerRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerRm(Fallout.Application.Tools.Docker.DockerContainerRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerRmSettingsExtensions
 {
@@ -21940,7 +21940,7 @@ public static partial class DockerContainerRmSettingsExtensions
 }
 #endregion
 #region DockerContainerUpdateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Common.Tools.Docker.DockerContainerUpdateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerUpdate(Fallout.Application.Tools.Docker.DockerContainerUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerUpdateSettingsExtensions
 {
@@ -22090,7 +22090,7 @@ public static partial class DockerContainerUpdateSettingsExtensions
 }
 #endregion
 #region DockerPluginSetSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Common.Tools.Docker.DockerPluginSetSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginSet(Fallout.Application.Tools.Docker.DockerPluginSetSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginSetSettingsExtensions
 {
@@ -22122,7 +22122,7 @@ public static partial class DockerPluginSetSettingsExtensions
 }
 #endregion
 #region DockerWaitSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Common.Tools.Docker.DockerWaitSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerWait(Fallout.Application.Tools.Docker.DockerWaitSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerWaitSettingsExtensions
 {
@@ -22152,7 +22152,7 @@ public static partial class DockerWaitSettingsExtensions
 }
 #endregion
 #region DockerContextExportSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Common.Tools.Docker.DockerContextExportSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextExport(Fallout.Application.Tools.Docker.DockerContextExportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextExportSettingsExtensions
 {
@@ -22192,7 +22192,7 @@ public static partial class DockerContextExportSettingsExtensions
 }
 #endregion
 #region DockerManifestAnnotateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Common.Tools.Docker.DockerManifestAnnotateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerManifestAnnotate(Fallout.Application.Tools.Docker.DockerManifestAnnotateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerManifestAnnotateSettingsExtensions
 {
@@ -22262,7 +22262,7 @@ public static partial class DockerManifestAnnotateSettingsExtensions
 }
 #endregion
 #region DockerImagePullSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Common.Tools.Docker.DockerImagePullSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImagePull(Fallout.Application.Tools.Docker.DockerImagePullSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImagePullSettingsExtensions
 {
@@ -22336,7 +22336,7 @@ public static partial class DockerImagePullSettingsExtensions
 }
 #endregion
 #region DockerEventsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Common.Tools.Docker.DockerEventsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerEvents(Fallout.Application.Tools.Docker.DockerEventsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerEventsSettingsExtensions
 {
@@ -22375,7 +22375,7 @@ public static partial class DockerEventsSettingsExtensions
 }
 #endregion
 #region DockerStackLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Common.Tools.Docker.DockerStackLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackLs(Fallout.Application.Tools.Docker.DockerStackLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStackLsSettingsExtensions
 {
@@ -22430,7 +22430,7 @@ public static partial class DockerStackLsSettingsExtensions
 }
 #endregion
 #region DockerContainerInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Common.Tools.Docker.DockerContainerInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerInspect(Fallout.Application.Tools.Docker.DockerContainerInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerInspectSettingsExtensions
 {
@@ -22485,7 +22485,7 @@ public static partial class DockerContainerInspectSettingsExtensions
 }
 #endregion
 #region DockerKillSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Common.Tools.Docker.DockerKillSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerKill(Fallout.Application.Tools.Docker.DockerKillSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerKillSettingsExtensions
 {
@@ -22523,7 +22523,7 @@ public static partial class DockerKillSettingsExtensions
 }
 #endregion
 #region DockerCheckpointCreateSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Common.Tools.Docker.DockerCheckpointCreateSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerCheckpointCreate(Fallout.Application.Tools.Docker.DockerCheckpointCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerCheckpointCreateSettingsExtensions
 {
@@ -22571,7 +22571,7 @@ public static partial class DockerCheckpointCreateSettingsExtensions
 }
 #endregion
 #region DockerPauseSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Common.Tools.Docker.DockerPauseSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPause(Fallout.Application.Tools.Docker.DockerPauseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPauseSettingsExtensions
 {
@@ -22601,7 +22601,7 @@ public static partial class DockerPauseSettingsExtensions
 }
 #endregion
 #region DockerLogsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Common.Tools.Docker.DockerLogsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLogs(Fallout.Application.Tools.Docker.DockerLogsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerLogsSettingsExtensions
 {
@@ -22691,7 +22691,7 @@ public static partial class DockerLogsSettingsExtensions
 }
 #endregion
 #region DockerContextInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Common.Tools.Docker.DockerContextInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContextInspect(Fallout.Application.Tools.Docker.DockerContextInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextInspectSettingsExtensions
 {
@@ -22737,7 +22737,7 @@ public static partial class DockerContextInspectSettingsExtensions
 }
 #endregion
 #region DockerNodePromoteSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Common.Tools.Docker.DockerNodePromoteSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodePromote(Fallout.Application.Tools.Docker.DockerNodePromoteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodePromoteSettingsExtensions
 {
@@ -22767,7 +22767,7 @@ public static partial class DockerNodePromoteSettingsExtensions
 }
 #endregion
 #region DockerNodeDemoteSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Common.Tools.Docker.DockerNodeDemoteSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNodeDemote(Fallout.Application.Tools.Docker.DockerNodeDemoteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNodeDemoteSettingsExtensions
 {
@@ -22797,7 +22797,7 @@ public static partial class DockerNodeDemoteSettingsExtensions
 }
 #endregion
 #region DockerExecSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Common.Tools.Docker.DockerExecSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerExec(Fallout.Application.Tools.Docker.DockerExecSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerExecSettingsExtensions
 {
@@ -22958,7 +22958,7 @@ public static partial class DockerExecSettingsExtensions
 }
 #endregion
 #region DockerImageRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Common.Tools.Docker.DockerImageRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageRm(Fallout.Application.Tools.Docker.DockerImageRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageRmSettingsExtensions
 {
@@ -23022,21 +23022,21 @@ public static partial class DockerImageRmSettingsExtensions
 }
 #endregion
 #region DockerImageSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Common.Tools.Docker.DockerImageSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImage(Fallout.Application.Tools.Docker.DockerImageSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageSettingsExtensions
 {
 }
 #endregion
 #region DockerContextSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Common.Tools.Docker.DockerContextSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContext(Fallout.Application.Tools.Docker.DockerContextSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContextSettingsExtensions
 {
 }
 #endregion
 #region DockerVolumeSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Common.Tools.Docker.DockerVolumeSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerVolume(Fallout.Application.Tools.Docker.DockerVolumeSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerVolumeSettingsExtensions
 {
@@ -23051,7 +23051,7 @@ public static partial class DockerVolumeSettingsExtensions
 }
 #endregion
 #region DockerContainerStartSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Common.Tools.Docker.DockerContainerStartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerContainerStart(Fallout.Application.Tools.Docker.DockerContainerStartSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerContainerStartSettingsExtensions
 {
@@ -23139,7 +23139,7 @@ public static partial class DockerContainerStartSettingsExtensions
 }
 #endregion
 #region DockerPluginInspectSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Common.Tools.Docker.DockerPluginInspectSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerPluginInspect(Fallout.Application.Tools.Docker.DockerPluginInspectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerPluginInspectSettingsExtensions
 {
@@ -23177,7 +23177,7 @@ public static partial class DockerPluginInspectSettingsExtensions
 }
 #endregion
 #region DockerLogoutSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Common.Tools.Docker.DockerLogoutSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerLogout(Fallout.Application.Tools.Docker.DockerLogoutSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerLogoutSettingsExtensions
 {
@@ -23192,14 +23192,14 @@ public static partial class DockerLogoutSettingsExtensions
 }
 #endregion
 #region DockerNetworkSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Common.Tools.Docker.DockerNetworkSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerNetwork(Fallout.Application.Tools.Docker.DockerNetworkSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerNetworkSettingsExtensions
 {
 }
 #endregion
 #region DockerImageLsSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Common.Tools.Docker.DockerImageLsSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerImageLs(Fallout.Application.Tools.Docker.DockerImageLsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerImageLsSettingsExtensions
 {
@@ -23298,7 +23298,7 @@ public static partial class DockerImageLsSettingsExtensions
 }
 #endregion
 #region DockerSystemDfSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Common.Tools.Docker.DockerSystemDfSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerSystemDf(Fallout.Application.Tools.Docker.DockerSystemDfSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerSystemDfSettingsExtensions
 {
@@ -23330,7 +23330,7 @@ public static partial class DockerSystemDfSettingsExtensions
 }
 #endregion
 #region DockerServiceRollbackSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Common.Tools.Docker.DockerServiceRollbackSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerServiceRollback(Fallout.Application.Tools.Docker.DockerServiceRollbackSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerServiceRollbackSettingsExtensions
 {
@@ -23379,7 +23379,7 @@ public static partial class DockerServiceRollbackSettingsExtensions
 }
 #endregion
 #region DockerRestartSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Common.Tools.Docker.DockerRestartSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerRestart(Fallout.Application.Tools.Docker.DockerRestartSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerRestartSettingsExtensions
 {
@@ -23417,7 +23417,7 @@ public static partial class DockerRestartSettingsExtensions
 }
 #endregion
 #region DockerTrustSignerRemoveSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Common.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerTrustSignerRemove(Fallout.Application.Tools.Docker.DockerTrustSignerRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerTrustSignerRemoveSettingsExtensions
 {
@@ -23472,7 +23472,7 @@ public static partial class DockerTrustSignerRemoveSettingsExtensions
 }
 #endregion
 #region DockerStackRmSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Common.Tools.Docker.DockerStackRmSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerStackRm(Fallout.Application.Tools.Docker.DockerStackRmSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerStackRmSettingsExtensions
 {
@@ -23510,7 +23510,7 @@ public static partial class DockerStackRmSettingsExtensions
 }
 #endregion
 #region DockerBuildSettingsExtensions
-/// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Common.Tools.Docker.DockerBuildSettings)"/>
+/// <inheritdoc cref="DockerTasks.DockerBuild(Fallout.Application.Tools.Docker.DockerBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DockerBuildSettingsExtensions
 {

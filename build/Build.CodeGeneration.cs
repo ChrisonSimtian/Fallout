@@ -1,11 +1,12 @@
 using System;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.CodeGeneration.CodeGenerator;
 using static Fallout.CodeGeneration.ReferenceUpdater;
-using static Fallout.Common.Tools.Git.GitTasks;
+using static Fallout.Application.Tools.Git.GitTasks;
 using Fallout.Application;
+using Fallout.Application.Tools.Git;
+using Fallout.Application.Tools.GitHub;
 
 partial class Build
 {

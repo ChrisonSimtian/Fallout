@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Reflection;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class ToolOptions
 {

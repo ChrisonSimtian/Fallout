@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class ToolOptions
 {

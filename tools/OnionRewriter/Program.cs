@@ -16,31 +16,52 @@ return await Runner.RunAsync(args);
 
 static class Runner
 {
-    // A move rule: types declared in `SourceAssembly` under namespace `Old` (exact or `.`-prefixed) are
-    // moved to the corresponding `New` namespace. The rule table is the multi-rule map ADR-0006 step 4–5
-    // need — edit it per onion step (step 1 Domain and step 2 Application are already landed, so their
-    // rules are gone). Multiple rules may share a SourceAssembly; first matching rule wins for MapNs.
-    record struct Rule(string Old, string New, string SourceAssembly);
+    // A move rule: types declared in any of `SourceAssemblies` under namespace `Old` (exact or
+    // `.`-prefixed) move to the corresponding `New` namespace. The rule table is the multi-rule map
+    // ADR-0006 steps 4–5 need — edit it per onion step (steps 1–2 + 4a are landed, so their rules are
+    // gone). First matching rule wins for the namespace mapping. A single namespace that must split
+    // across rings type-by-type uses `TypeOverrides` (full-name → target ns), which beats the prefix rule.
+    record struct Rule(string Old, string New, string[] SourceAssemblies);
 
-    // Step 4a — Components → Application (the clean, isolated move; single namespace, no Tooling tangle).
+    // Step 4b — Tool vocabulary → Application; the impure executor that shares Fallout.Common.Tooling →
+    // Infrastructure (user-chosen "true homes": ToolTasks(App) → ProcessTasks(Infra) is a tracked onion
+    // violation until the resolver/process ports land). Tools.* and the Tooling vocabulary fold into the
+    // Application ring; the 13 executor types below are carved out by name.
     static readonly Rule[] Rules =
     [
-        new("Fallout.Components", "Fallout.Application.Components", "Fallout.Components"),
+        new("Fallout.Common.Tools",   "Fallout.Application.Tools",   ["Fallout.Common"]),
+        new("Fallout.Common.Tooling", "Fallout.Application.Tooling", ["Fallout.Tooling", "Fallout.Common"]),
     ];
+
+    // Impure executor types (process start, filesystem/HTTP tool & package resolution) that live in the
+    // Fallout.Common.Tooling namespace alongside the vocabulary — carved to Infrastructure by full name.
+    // Ports (IProcess, IProcessRunner), the exception type, attributes, and the rest stay vocabulary →
+    // Application; Infrastructure depending on Application is the correct (inward) onion direction.
+    const string InfraTooling = "Fallout.Infrastructure.Tooling";
+    static readonly Dictionary<string, string> TypeOverrides = new[]
+    {
+        "ProcessTasks", "SystemProcessRunner", "Process2", "ProcessExtensions", "ToolExecutor",
+        "ToolPathResolver", "NuGetToolPathResolver", "NpmToolPathResolver",
+        "NuGetVersionResolver", "NpmVersionResolver", "NuGetPackageResolver", "PaketPackageResolver",
+        "ToolingExtensions",
+    }.ToDictionary(n => $"Fallout.Common.Tooling.{n}", _ => InfraTooling);
 
     static bool Matches(Rule r, string ns) => ns == r.Old || ns.StartsWith(r.Old + ".");
     static bool IsMovable(string ns) => Rules.Any(r => Matches(r, ns));
-    static string MapNs(string ns)
+    // New namespace for a moved type, by full name + declaring namespace. Per-type override beats the
+    // prefix rule; returns null if nothing moves it.
+    static string? TargetNs(string fullName, string ns)
     {
+        if (TypeOverrides.TryGetValue(fullName, out var t)) return t;
         foreach (var r in Rules)
             if (Matches(r, ns)) return r.New + ns[r.Old.Length..];
-        return ns;
+        return null;
     }
     // Does assembly `asm` declare a type under namespace `ns` that a rule moves? (Gates moved-type
-    // membership and namespace-decl rewriting to the rule's own source assembly — a type with the same
+    // membership and namespace-decl rewriting to the rule's own source assemblies — a type with the same
     // namespace in another assembly is NOT moved.)
-    static bool IsSourceFor(string asm, string ns) => Rules.Any(r => r.SourceAssembly == asm && Matches(r, ns));
-    static readonly HashSet<string> SourceAssemblies = Rules.Select(r => r.SourceAssembly).ToHashSet();
+    static bool IsSourceFor(string asm, string ns) => Rules.Any(r => r.SourceAssemblies.Contains(asm) && Matches(r, ns));
+    static readonly HashSet<string> SourceAssemblies = Rules.SelectMany(r => r.SourceAssemblies).ToHashSet();
 
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static async Task<int> RunAsync(string[] args)
@@ -86,22 +107,23 @@ static class Runner
         }
         Console.WriteLine($"Moved types (declared in [{string.Join(", ", SourceAssemblies)}], movable ns): {movedFullNames.Count}");
 
-        // Match by assembly NAME + the moved-type set (resolves correctly across projects — a referenced
-        // project's assembly symbol is a different instance per compilation, so identity comparison fails
-        // cross-project). Pinned package consumers (Consumer.NuGet/Nuke.Consumer) may carry a source
-        // assembly via their published package, but those projects are skipped entirely in the doc loop.
-        // A nested type's ContainingNamespace is its enclosing NAMESPACE (not its outer type), so a member
-        // keyed by `{ns}.{Name}` would miss the moved-set (which holds top-level names only) and be
-        // misclassified as residual — adding a dangling `using` to a namespace this move evacuates. A
-        // nested type moves iff its OUTERMOST enclosing type moves, so classify by that top-level type.
-        bool IsMovedType(INamedTypeSymbol t)
+        // New namespace for a moved type, or null if it doesn't move. Match by assembly NAME + the
+        // moved-type set (resolves correctly across projects — a referenced project's assembly symbol is a
+        // different instance per compilation, so identity comparison fails cross-project). Pinned package
+        // consumers (Consumer.NuGet/Nuke.Consumer) may carry a source assembly via their published
+        // package, but those projects are skipped entirely in the doc loop. A nested type's
+        // ContainingNamespace is its enclosing NAMESPACE (not its outer type), so a member keyed by
+        // `{ns}.{Name}` would miss the moved-set (top-level names only) and be misclassified as residual —
+        // adding a dangling `using` to a namespace this move evacuates. A nested type moves iff its
+        // OUTERMOST enclosing type moves (and to that type's target), so classify by that top-level type.
+        string? TargetNsForType(INamedTypeSymbol t)
         {
             var top = t.OriginalDefinition;
             while (top.ContainingType is not null) top = top.ContainingType;
             var ns = top.ContainingNamespace?.ToDisplayString() ?? "";
             var asm = top.ContainingAssembly?.Name ?? "";
-            return IsSourceFor(asm, ns)
-                && movedFullNames.Contains($"{ns}.{top.Name}");
+            var full = $"{ns}.{top.Name}";
+            return IsSourceFor(asm, ns) && movedFullNames.Contains(full) ? TargetNs(full, ns) : null;
         }
 
         // Movable namespaces still declared OUTSIDE every source project (so they survive the move). A
@@ -140,7 +162,7 @@ static class Runner
                 var root = await doc.GetSyntaxRootAsync();
                 if (model is null || root is null) continue;
 
-                var (newRoot, c) = DocumentRewriter.Rewrite(root, model, isSource, IsMovable, MapNs, IsMovedType, survivingMovableNs);
+                var (newRoot, c) = DocumentRewriter.Rewrite(root, model, isSource, IsMovable, TargetNsForType, survivingMovableNs);
                 if (c.Changed)
                 {
                     filesChanged++; refsRewritten += c.Refs; usingsAdded += c.Added; usingsDropped += c.Dropped; nsDecls += c.NsDecls;

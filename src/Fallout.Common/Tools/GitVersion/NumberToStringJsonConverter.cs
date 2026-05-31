@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.GitVersion;
+namespace Fallout.Application.Tools.GitVersion;
 
 /// <summary>
 /// Deserializes a JSON string <em>or</em> JSON number as a C# <see langword="string"/>.

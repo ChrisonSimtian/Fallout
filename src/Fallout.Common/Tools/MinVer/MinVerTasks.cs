@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.MinVer;
+namespace Fallout.Application.Tools.MinVer;
 
 partial class MinVerTasks
 {

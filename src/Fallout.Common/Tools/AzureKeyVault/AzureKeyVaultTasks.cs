@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+namespace Fallout.Application.Tools.AzureKeyVault
 {
     public static class AzureKeyVaultTasks
     {

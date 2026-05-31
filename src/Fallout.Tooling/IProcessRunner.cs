@@ -1,7 +1,8 @@
 using System;
 using System.Diagnostics;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>
 /// The process-execution port (ADR-0006 step 3). Abstracts the single impure step of running a tool —

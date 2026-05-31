@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,8 +6,9 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 public static class NuGetToolPathResolver
 {

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tools.VSWhere;
+namespace Fallout.Application.Tools.VSWhere;
 
 partial class VSWhereTasks
 {

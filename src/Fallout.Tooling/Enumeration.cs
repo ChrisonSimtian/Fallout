@@ -5,8 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 [AttributeUsage(AttributeTargets.Field)]
 public class EnumValueAttribute : Attribute

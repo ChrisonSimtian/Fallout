@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 // TODO: rename to TaskOptions / CommandOptions ?
 public abstract partial class ToolOptions : Options

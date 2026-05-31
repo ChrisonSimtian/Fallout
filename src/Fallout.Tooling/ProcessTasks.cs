@@ -9,8 +9,10 @@ using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Events;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 public static class ProcessTasks
 {

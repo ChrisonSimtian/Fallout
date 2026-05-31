@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tools.NerdbankGitVersioning;
+namespace Fallout.Application.Tools.NerdbankGitVersioning;
 
 partial class NerdbankGitVersioningTasks
 {

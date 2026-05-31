@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tools.GitVersion;
+namespace Fallout.Application.Tools.GitVersion;
 
 partial class GitVersionTasks
 {

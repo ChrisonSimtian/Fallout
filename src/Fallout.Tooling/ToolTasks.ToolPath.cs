@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Reflection;
 using Fallout.Common.Utilities;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>Marks a class as CLI tool wrapper.</summary>
 [AttributeUsage(AttributeTargets.Class)]

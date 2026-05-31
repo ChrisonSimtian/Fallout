@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -6,7 +6,7 @@ using Fallout.Common.Utilities;
 using Serilog;
 using Serilog.Events;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class LogErrorAsStandard : Attribute;
 

@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/MakeNsis/MakeNSIS.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.MakeNSIS;
+namespace Fallout.Application.Tools.MakeNSIS;
 
 /// <summary><p>NSIS creates installers that are capable of installing, uninstalling, setting system settings, extracting files, etc. Because it's based on script files you can fully control every part of your installer.</p><p>For more details, visit the <a href="https://nsis.sourceforge.io/Docs/Contents.html">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -27,13 +27,13 @@ public partial class MakeNSISTasks : ToolTasks, IRequirePathTool
     /// <summary><p>NSIS creates installers that are capable of installing, uninstalling, setting system settings, extracting files, etc. Because it's based on script files you can fully control every part of your installer.</p><p>For more details, visit the <a href="https://nsis.sourceforge.io/Docs/Contents.html">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;scriptFile&gt;</c> via <see cref="MakeNSISSettings.ScriptFile"/></li><li><c>/D</c> via <see cref="MakeNSISSettings.DefinedSymbols"/></li><li><c>/INPUTCHARSET</c> via <see cref="MakeNSISSettings.InputCharset"/></li><li><c>/NOCD</c> via <see cref="MakeNSISSettings.NoCurrentDirectoryChange"/></li><li><c>/NOCONFIG</c> via <see cref="MakeNSISSettings.NoConfig"/></li><li><c>/O</c> via <see cref="MakeNSISSettings.LogOutputFile"/></li><li><c>/OUTPUTCHARSET</c> via <see cref="MakeNSISSettings.OutputCharset"/></li><li><c>/P</c> via <see cref="MakeNSISSettings.CompilerPriority"/></li><li><c>/PPO</c> via <see cref="MakeNSISSettings.OnlyRunPreprocessor"/></li><li><c>/SAFEPPO</c> via <see cref="MakeNSISSettings.OnlyRunSaveVersionPreprocessor"/></li><li><c>/V</c> via <see cref="MakeNSISSettings.Verbosity"/></li><li><c>/WX</c> via <see cref="MakeNSISSettings.TreatWarningsAsErrors"/></li><li><c>/X</c> via <see cref="MakeNSISSettings.PreExecutionCodes"/></li><li><c>/X</c> via <see cref="MakeNSISSettings.PostExecutionCodes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MakeNSIS(MakeNSISSettings options = null) => new MakeNSISTasks().Run<MakeNSISSettings>(options);
-    /// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Common.Tools.MakeNSIS.MakeNSISSettings)"/>
+    /// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Application.Tools.MakeNSIS.MakeNSISSettings)"/>
     public static IReadOnlyCollection<Output> MakeNSIS(Configure<MakeNSISSettings> configurator) => new MakeNSISTasks().Run<MakeNSISSettings>(configurator.Invoke(new MakeNSISSettings()));
-    /// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Common.Tools.MakeNSIS.MakeNSISSettings)"/>
+    /// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Application.Tools.MakeNSIS.MakeNSISSettings)"/>
     public static IEnumerable<(MakeNSISSettings Settings, IReadOnlyCollection<Output> Output)> MakeNSIS(CombinatorialConfigure<MakeNSISSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MakeNSIS, degreeOfParallelism, completeOnFailure);
 }
 #region MakeNSISSettings
-/// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Common.Tools.MakeNSIS.MakeNSISSettings)"/>
+/// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Application.Tools.MakeNSIS.MakeNSISSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MakeNSISTasks), Command = nameof(MakeNSISTasks.MakeNSIS))]
 public partial class MakeNSISSettings : ToolOptions
@@ -69,7 +69,7 @@ public partial class MakeNSISSettings : ToolOptions
 }
 #endregion
 #region MakeNSISSettingsExtensions
-/// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Common.Tools.MakeNSIS.MakeNSISSettings)"/>
+/// <inheritdoc cref="MakeNSISTasks.MakeNSIS(Fallout.Application.Tools.MakeNSIS.MakeNSISSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class MakeNSISSettingsExtensions
 {

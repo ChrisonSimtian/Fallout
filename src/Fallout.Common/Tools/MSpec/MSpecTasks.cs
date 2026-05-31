@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.MSpec;
+namespace Fallout.Application.Tools.MSpec;
 
 partial class MSpecTasks
 {

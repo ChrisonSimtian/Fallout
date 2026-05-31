@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using Serilog.Events;
 // ReSharper disable ArrangeMethodOrOperatorBody
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class ToolOptions
 {

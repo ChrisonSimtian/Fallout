@@ -1,8 +1,7 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.OpenCover;
+namespace Fallout.Application.Tools.OpenCover;
 
 public class OpenCoverVerbosityMappingAttribute : VerbosityMappingAttribute
 {

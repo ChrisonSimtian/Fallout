@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
+using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.MSBuildTasks;
 

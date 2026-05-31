@@ -1,4 +1,3 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.GitVersion;
+namespace Fallout.Application.Tools.GitVersion;
 
 /// <summary><p>GitVersion is a tool to help you achieve Semantic Versioning on your project.</p><p>For more details, visit the <a href="http://gitversion.readthedocs.io/en/stable/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -26,13 +26,13 @@ public partial class GitVersionTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>GitVersion is a tool to help you achieve Semantic Versioning on your project.</p><p>For more details, visit the <a href="http://gitversion.readthedocs.io/en/stable/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="GitVersionSettings.TargetPath"/></li><li><c>/b</c> via <see cref="GitVersionSettings.Branch"/></li><li><c>/c</c> via <see cref="GitVersionSettings.Commit"/></li><li><c>/diag</c> via <see cref="GitVersionSettings.Diagnostics"/></li><li><c>/dynamicRepoLocation</c> via <see cref="GitVersionSettings.DynamicRepositoryLocation"/></li><li><c>/ensureassemblyinfo</c> via <see cref="GitVersionSettings.EnsureAssemblyInfo"/></li><li><c>/exec</c> via <see cref="GitVersionSettings.Executable"/></li><li><c>/execargs</c> via <see cref="GitVersionSettings.ExecutableArguments"/></li><li><c>/l</c> via <see cref="GitVersionSettings.LogFile"/></li><li><c>/nocache</c> via <see cref="GitVersionSettings.NoCache"/></li><li><c>/nofetch</c> via <see cref="GitVersionSettings.NoFetch"/></li><li><c>/output</c> via <see cref="GitVersionSettings.Output"/></li><li><c>/overrideconfig</c> via <see cref="GitVersionSettings.ConfigurationOverride"/></li><li><c>/p</c> via <see cref="GitVersionSettings.Password"/></li><li><c>/proj</c> via <see cref="GitVersionSettings.MSBuildProject"/></li><li><c>/projargs</c> via <see cref="GitVersionSettings.MSBuildProjectArguments"/></li><li><c>/showconfig</c> via <see cref="GitVersionSettings.ShowConfig"/></li><li><c>/showvariable</c> via <see cref="GitVersionSettings.ShowVariable"/></li><li><c>/u</c> via <see cref="GitVersionSettings.Username"/></li><li><c>/updateassemblyinfo</c> via <see cref="GitVersionSettings.UpdateAssemblyInfo"/></li><li><c>/updateassemblyinfofilename</c> via <see cref="GitVersionSettings.UpdateAssemblyInfoFileNames"/></li><li><c>/url</c> via <see cref="GitVersionSettings.Url"/></li><li><c>/verbosity</c> via <see cref="GitVersionSettings.Verbosity"/></li><li><c>/version</c> via <see cref="GitVersionSettings.Version"/></li></ul></remarks>
     public static (GitVersion Result, IReadOnlyCollection<Output> Output) GitVersion(GitVersionSettings options = null) => new GitVersionTasks().Run<GitVersionSettings, GitVersion>(options);
-    /// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Common.Tools.GitVersion.GitVersionSettings)"/>
+    /// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Application.Tools.GitVersion.GitVersionSettings)"/>
     public static (GitVersion Result, IReadOnlyCollection<Output> Output) GitVersion(Configure<GitVersionSettings> configurator) => new GitVersionTasks().Run<GitVersionSettings, GitVersion>(configurator.Invoke(new GitVersionSettings()));
-    /// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Common.Tools.GitVersion.GitVersionSettings)"/>
+    /// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Application.Tools.GitVersion.GitVersionSettings)"/>
     public static IEnumerable<(GitVersionSettings Settings, GitVersion Result, IReadOnlyCollection<Output> Output)> GitVersion(CombinatorialConfigure<GitVersionSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitVersion, degreeOfParallelism, completeOnFailure);
 }
 #region GitVersionSettings
-/// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Common.Tools.GitVersion.GitVersionSettings)"/>
+/// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Application.Tools.GitVersion.GitVersionSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitVersionTasks), Command = nameof(GitVersionTasks.GitVersion))]
 public partial class GitVersionSettings : ToolOptions, IToolOptionsWithFramework
@@ -88,7 +88,7 @@ public partial class GitVersionSettings : ToolOptions, IToolOptionsWithFramework
 }
 #endregion
 #region GitVersionSettingsExtensions
-/// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Common.Tools.GitVersion.GitVersionSettings)"/>
+/// <inheritdoc cref="GitVersionTasks.GitVersion(Fallout.Application.Tools.GitVersion.GitVersionSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitVersionSettingsExtensions
 {

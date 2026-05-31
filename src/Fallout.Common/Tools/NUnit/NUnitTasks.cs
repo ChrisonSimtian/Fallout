@@ -1,6 +1,6 @@
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.NUnit;
+namespace Fallout.Application.Tools.NUnit;
 
 public class NUnitVerbosityMappingAttribute : VerbosityMappingAttribute
 {

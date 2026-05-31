@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public static class DelegateHelper
 {

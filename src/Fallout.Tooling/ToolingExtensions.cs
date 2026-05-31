@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Linq;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Events;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 public static class ToolingExtensions
 {

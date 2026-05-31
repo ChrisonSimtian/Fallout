@@ -3,10 +3,10 @@ using System.Linq;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Application.Tools.DotNet;
 
 namespace Fallout.Cli;
 

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 // ReSharper disable ArrangeMethodOrOperatorBody
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class ToolOptionsExtensions
 {

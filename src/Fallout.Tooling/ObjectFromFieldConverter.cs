@@ -4,8 +4,9 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>
 /// Redirects (de)serialization of a type through one of its non-public fields.

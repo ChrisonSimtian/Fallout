@@ -1,4 +1,3 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Paket;
+namespace Fallout.Application.Tools.Paket;
 
 /// <summary><p>Paket is a dependency manager for .NET and mono projects, which is designed to work well with <a href="https://www.nuget.org/">NuGet</a> packages and also enables referencing files directly from <a href="https://fsprojects.github.io/Paket/git-dependencies.html">Git repositories</a> or any <a href="https://fsprojects.github.io/Paket/http-dependencies.html">HTTP resource</a>. It enables precise and predictable control over what packages the projects within your application reference.</p><p>If you want to learn how to use Paket then read the <a href="https://fsprojects.github.io/Paket/getting-started.html"><em>Getting started</em> tutorial</a> and take a look at the <a href="https://fsprojects.github.io/Paket/faq.html">FAQs</a>.</p><p>If you are already using NuGet for package management in your solution then you can learn about the upgrade process in the <a href="https://fsprojects.github.io/Paket/getting-started.html#Automatic-NuGet-conversion">convert from NuGet</a> section.</p><p>For more details, visit the <a href="https://fsprojects.github.io/paket">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -26,34 +26,34 @@ public partial class PaketTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Paket is a dependency manager for .NET and mono projects, which is designed to work well with <a href="https://www.nuget.org/">NuGet</a> packages and also enables referencing files directly from <a href="https://fsprojects.github.io/Paket/git-dependencies.html">Git repositories</a> or any <a href="https://fsprojects.github.io/Paket/http-dependencies.html">HTTP resource</a>. It enables precise and predictable control over what packages the projects within your application reference.</p><p>If you want to learn how to use Paket then read the <a href="https://fsprojects.github.io/Paket/getting-started.html"><em>Getting started</em> tutorial</a> and take a look at the <a href="https://fsprojects.github.io/Paket/faq.html">FAQs</a>.</p><p>If you are already using NuGet for package management in your solution then you can learn about the upgrade process in the <a href="https://fsprojects.github.io/Paket/getting-started.html#Automatic-NuGet-conversion">convert from NuGet</a> section.</p><p>For more details, visit the <a href="https://fsprojects.github.io/paket">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageId&gt;</c> via <see cref="PaketUpdateSettings.PackageId"/></li><li><c>--clean-redirects</c> via <see cref="PaketUpdateSettings.CleanRedirects"/></li><li><c>--create-new-binding-files</c> via <see cref="PaketUpdateSettings.CreateNewBindingFiles"/></li><li><c>--filter</c> via <see cref="PaketUpdateSettings.Filter"/></li><li><c>--force</c> via <see cref="PaketUpdateSettings.Force"/></li><li><c>--from-bootstrapper</c> via <see cref="PaketUpdateSettings.FromBootstrapper"/></li><li><c>--group</c> via <see cref="PaketUpdateSettings.DependencyGroup"/></li><li><c>--keep-major</c> via <see cref="PaketUpdateSettings.KeepMajor"/></li><li><c>--keep-minor</c> via <see cref="PaketUpdateSettings.KeepMinor"/></li><li><c>--keep-patch</c> via <see cref="PaketUpdateSettings.KeepPatch"/></li><li><c>--log-file</c> via <see cref="PaketUpdateSettings.LogFile"/></li><li><c>--no-install</c> via <see cref="PaketUpdateSettings.NoInstall"/></li><li><c>--redirects</c> via <see cref="PaketUpdateSettings.Redirects"/></li><li><c>--silent</c> via <see cref="PaketUpdateSettings.Silent"/></li><li><c>--touch-affected-refs</c> via <see cref="PaketUpdateSettings.TouchAffectedReferences"/></li><li><c>--verbose</c> via <see cref="PaketUpdateSettings.Verbose"/></li><li><c>--version</c> via <see cref="PaketUpdateSettings.PackageVersion"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PaketUpdate(PaketUpdateSettings options = null) => new PaketTasks().Run<PaketUpdateSettings>(options);
-    /// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Common.Tools.Paket.PaketUpdateSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Application.Tools.Paket.PaketUpdateSettings)"/>
     public static IReadOnlyCollection<Output> PaketUpdate(Configure<PaketUpdateSettings> configurator) => new PaketTasks().Run<PaketUpdateSettings>(configurator.Invoke(new PaketUpdateSettings()));
-    /// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Common.Tools.Paket.PaketUpdateSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Application.Tools.Paket.PaketUpdateSettings)"/>
     public static IEnumerable<(PaketUpdateSettings Settings, IReadOnlyCollection<Output> Output)> PaketUpdate(CombinatorialConfigure<PaketUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PaketUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Paket is a dependency manager for .NET and mono projects, which is designed to work well with <a href="https://www.nuget.org/">NuGet</a> packages and also enables referencing files directly from <a href="https://fsprojects.github.io/Paket/git-dependencies.html">Git repositories</a> or any <a href="https://fsprojects.github.io/Paket/http-dependencies.html">HTTP resource</a>. It enables precise and predictable control over what packages the projects within your application reference.</p><p>If you want to learn how to use Paket then read the <a href="https://fsprojects.github.io/Paket/getting-started.html"><em>Getting started</em> tutorial</a> and take a look at the <a href="https://fsprojects.github.io/Paket/faq.html">FAQs</a>.</p><p>If you are already using NuGet for package management in your solution then you can learn about the upgrade process in the <a href="https://fsprojects.github.io/Paket/getting-started.html#Automatic-NuGet-conversion">convert from NuGet</a> section.</p><p>For more details, visit the <a href="https://fsprojects.github.io/paket">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--fail-on-checks</c> via <see cref="PaketRestoreSettings.FailOnChecks"/></li><li><c>--force</c> via <see cref="PaketRestoreSettings.Force"/></li><li><c>--from-bootstrapper</c> via <see cref="PaketRestoreSettings.FromBootstrapper"/></li><li><c>--group</c> via <see cref="PaketRestoreSettings.DependencyGroup"/></li><li><c>--ignore-checks</c> via <see cref="PaketRestoreSettings.IgnoreChecks"/></li><li><c>--log-file</c> via <see cref="PaketRestoreSettings.LogFile"/></li><li><c>--only-referenced</c> via <see cref="PaketRestoreSettings.OnlyReferenced"/></li><li><c>--project</c> via <see cref="PaketRestoreSettings.ProjectFile"/></li><li><c>--references-files</c> via <see cref="PaketRestoreSettings.ReferencesFiles"/></li><li><c>--silent</c> via <see cref="PaketRestoreSettings.Silent"/></li><li><c>--target-framework</c> via <see cref="PaketRestoreSettings.TargetFramework"/></li><li><c>--touch-affected-refs</c> via <see cref="PaketRestoreSettings.TouchAffectedRefs"/></li><li><c>--verbose</c> via <see cref="PaketRestoreSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PaketRestore(PaketRestoreSettings options = null) => new PaketTasks().Run<PaketRestoreSettings>(options);
-    /// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Common.Tools.Paket.PaketRestoreSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Application.Tools.Paket.PaketRestoreSettings)"/>
     public static IReadOnlyCollection<Output> PaketRestore(Configure<PaketRestoreSettings> configurator) => new PaketTasks().Run<PaketRestoreSettings>(configurator.Invoke(new PaketRestoreSettings()));
-    /// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Common.Tools.Paket.PaketRestoreSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Application.Tools.Paket.PaketRestoreSettings)"/>
     public static IEnumerable<(PaketRestoreSettings Settings, IReadOnlyCollection<Output> Output)> PaketRestore(CombinatorialConfigure<PaketRestoreSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PaketRestore, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Paket is a dependency manager for .NET and mono projects, which is designed to work well with <a href="https://www.nuget.org/">NuGet</a> packages and also enables referencing files directly from <a href="https://fsprojects.github.io/Paket/git-dependencies.html">Git repositories</a> or any <a href="https://fsprojects.github.io/Paket/http-dependencies.html">HTTP resource</a>. It enables precise and predictable control over what packages the projects within your application reference.</p><p>If you want to learn how to use Paket then read the <a href="https://fsprojects.github.io/Paket/getting-started.html"><em>Getting started</em> tutorial</a> and take a look at the <a href="https://fsprojects.github.io/Paket/faq.html">FAQs</a>.</p><p>If you are already using NuGet for package management in your solution then you can learn about the upgrade process in the <a href="https://fsprojects.github.io/Paket/getting-started.html#Automatic-NuGet-conversion">convert from NuGet</a> section.</p><p>For more details, visit the <a href="https://fsprojects.github.io/paket">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--api-key</c> via <see cref="PaketPushSettings.ApiKey"/></li><li><c>--endpoint</c> via <see cref="PaketPushSettings.Endpoint"/></li><li><c>--from-bootstrapper</c> via <see cref="PaketPushSettings.FromBootstrapper"/></li><li><c>--log-file</c> via <see cref="PaketPushSettings.LogFile"/></li><li><c>--silent</c> via <see cref="PaketPushSettings.Silent"/></li><li><c>--url</c> via <see cref="PaketPushSettings.Url"/></li><li><c>--verbose</c> via <see cref="PaketPushSettings.Verbose"/></li><li><c>file</c> via <see cref="PaketPushSettings.File"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PaketPush(PaketPushSettings options = null) => new PaketTasks().Run<PaketPushSettings>(options);
-    /// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Common.Tools.Paket.PaketPushSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Application.Tools.Paket.PaketPushSettings)"/>
     public static IReadOnlyCollection<Output> PaketPush(Configure<PaketPushSettings> configurator) => new PaketTasks().Run<PaketPushSettings>(configurator.Invoke(new PaketPushSettings()));
-    /// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Common.Tools.Paket.PaketPushSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Application.Tools.Paket.PaketPushSettings)"/>
     public static IEnumerable<(PaketPushSettings Settings, IReadOnlyCollection<Output> Output)> PaketPush(CombinatorialConfigure<PaketPushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PaketPush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Paket is a dependency manager for .NET and mono projects, which is designed to work well with <a href="https://www.nuget.org/">NuGet</a> packages and also enables referencing files directly from <a href="https://fsprojects.github.io/Paket/git-dependencies.html">Git repositories</a> or any <a href="https://fsprojects.github.io/Paket/http-dependencies.html">HTTP resource</a>. It enables precise and predictable control over what packages the projects within your application reference.</p><p>If you want to learn how to use Paket then read the <a href="https://fsprojects.github.io/Paket/getting-started.html"><em>Getting started</em> tutorial</a> and take a look at the <a href="https://fsprojects.github.io/Paket/faq.html">FAQs</a>.</p><p>If you are already using NuGet for package management in your solution then you can learn about the upgrade process in the <a href="https://fsprojects.github.io/Paket/getting-started.html#Automatic-NuGet-conversion">convert from NuGet</a> section.</p><p>For more details, visit the <a href="https://fsprojects.github.io/paket">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;outputDirectory&gt;</c> via <see cref="PaketPackSettings.OutputDirectory"/></li><li><c>--build-config</c> via <see cref="PaketPackSettings.BuildConfiguration"/></li><li><c>--build-platform</c> via <see cref="PaketPackSettings.BuildPlatform"/></li><li><c>--exclude</c> via <see cref="PaketPackSettings.Exclude"/></li><li><c>--from-bootstrapper</c> via <see cref="PaketPackSettings.FromBootstrapper"/></li><li><c>--include-referenced-projects</c> via <see cref="PaketPackSettings.IncludeReferencedProjects"/></li><li><c>--lock-dependencies</c> via <see cref="PaketPackSettings.LockDependencies"/></li><li><c>--log-file</c> via <see cref="PaketPackSettings.LogFile"/></li><li><c>--minimum-from-lock-file</c> via <see cref="PaketPackSettings.MinimumFromLockFile"/></li><li><c>--pin-project-references</c> via <see cref="PaketPackSettings.PinProjectReferences"/></li><li><c>--project-url</c> via <see cref="PaketPackSettings.ProjectUrl"/></li><li><c>--release-notes</c> via <see cref="PaketPackSettings.ReleaseNotes"/></li><li><c>--silent</c> via <see cref="PaketPackSettings.Silent"/></li><li><c>--specific-version</c> via <see cref="PaketPackSettings.SpecificVersions"/></li><li><c>--symbols</c> via <see cref="PaketPackSettings.Symbols"/></li><li><c>--template</c> via <see cref="PaketPackSettings.TemplateFile"/></li><li><c>--verbose</c> via <see cref="PaketPackSettings.Verbose"/></li><li><c>--version</c> via <see cref="PaketPackSettings.PackageVersion"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PaketPack(PaketPackSettings options = null) => new PaketTasks().Run<PaketPackSettings>(options);
-    /// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Common.Tools.Paket.PaketPackSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Application.Tools.Paket.PaketPackSettings)"/>
     public static IReadOnlyCollection<Output> PaketPack(Configure<PaketPackSettings> configurator) => new PaketTasks().Run<PaketPackSettings>(configurator.Invoke(new PaketPackSettings()));
-    /// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Common.Tools.Paket.PaketPackSettings)"/>
+    /// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Application.Tools.Paket.PaketPackSettings)"/>
     public static IEnumerable<(PaketPackSettings Settings, IReadOnlyCollection<Output> Output)> PaketPack(CombinatorialConfigure<PaketPackSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PaketPack, degreeOfParallelism, completeOnFailure);
 }
 #region PaketUpdateSettings
-/// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Common.Tools.Paket.PaketUpdateSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Application.Tools.Paket.PaketUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PaketTasks), Command = nameof(PaketTasks.PaketUpdate), Arguments = "update")]
 public partial class PaketUpdateSettings : ToolOptions
@@ -95,7 +95,7 @@ public partial class PaketUpdateSettings : ToolOptions
 }
 #endregion
 #region PaketRestoreSettings
-/// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Common.Tools.Paket.PaketRestoreSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Application.Tools.Paket.PaketRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PaketTasks), Command = nameof(PaketTasks.PaketRestore), Arguments = "restore")]
 public partial class PaketRestoreSettings : ToolOptions
@@ -129,7 +129,7 @@ public partial class PaketRestoreSettings : ToolOptions
 }
 #endregion
 #region PaketPushSettings
-/// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Common.Tools.Paket.PaketPushSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Application.Tools.Paket.PaketPushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PaketTasks), Command = nameof(PaketTasks.PaketPush), Arguments = "push")]
 public partial class PaketPushSettings : ToolOptions
@@ -153,7 +153,7 @@ public partial class PaketPushSettings : ToolOptions
 }
 #endregion
 #region PaketPackSettings
-/// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Common.Tools.Paket.PaketPackSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Application.Tools.Paket.PaketPackSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PaketTasks), Command = nameof(PaketTasks.PaketPack), Arguments = "pack")]
 public partial class PaketPackSettings : ToolOptions
@@ -197,7 +197,7 @@ public partial class PaketPackSettings : ToolOptions
 }
 #endregion
 #region PaketUpdateSettingsExtensions
-/// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Common.Tools.Paket.PaketUpdateSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketUpdate(Fallout.Application.Tools.Paket.PaketUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PaketUpdateSettingsExtensions
 {
@@ -457,7 +457,7 @@ public static partial class PaketUpdateSettingsExtensions
 }
 #endregion
 #region PaketRestoreSettingsExtensions
-/// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Common.Tools.Paket.PaketRestoreSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketRestore(Fallout.Application.Tools.Paket.PaketRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PaketRestoreSettingsExtensions
 {
@@ -655,7 +655,7 @@ public static partial class PaketRestoreSettingsExtensions
 }
 #endregion
 #region PaketPushSettingsExtensions
-/// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Common.Tools.Paket.PaketPushSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketPush(Fallout.Application.Tools.Paket.PaketPushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PaketPushSettingsExtensions
 {
@@ -753,7 +753,7 @@ public static partial class PaketPushSettingsExtensions
 }
 #endregion
 #region PaketPackSettingsExtensions
-/// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Common.Tools.Paket.PaketPackSettings)"/>
+/// <inheritdoc cref="PaketTasks.PaketPack(Fallout.Application.Tools.Paket.PaketPackSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PaketPackSettingsExtensions
 {

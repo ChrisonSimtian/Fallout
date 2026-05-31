@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.IO;
 

@@ -3,10 +3,10 @@ using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.Tooling;
 using Fallout.Application.ValueInjection;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.NerdbankGitVersioning;
+namespace Fallout.Application.Tools.NerdbankGitVersioning;
 
 /// <summary>
 /// Injects an instance of <see cref="NerdbankGitVersioning"/> based on the local repository.

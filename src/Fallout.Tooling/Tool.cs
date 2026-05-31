@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 #if NET6_0_OR_GREATER
 public delegate IReadOnlyCollection<Output> Tool(

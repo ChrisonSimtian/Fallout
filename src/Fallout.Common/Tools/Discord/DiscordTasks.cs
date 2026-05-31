@@ -1,9 +1,9 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Discord;
+namespace Fallout.Application.Tools.Discord;
 
 public static class DiscordTasks
 {

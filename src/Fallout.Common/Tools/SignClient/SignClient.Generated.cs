@@ -1,4 +1,3 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.SignClient;
+namespace Fallout.Application.Tools.SignClient;
 
 /// <summary><p>Code Signing client for Authenticode, NuGet, VSIX, and more</p><p>For more details, visit the <a href="https://discoverdot.net/projects/sign-service">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -26,13 +26,13 @@ public partial class SignClientTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Code Signing client for Authenticode, NuGet, VSIX, and more</p><p>For more details, visit the <a href="https://discoverdot.net/projects/sign-service">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--baseDirectory</c> via <see cref="SignClientSignSettings.BaseDirectory"/></li><li><c>--config</c> via <see cref="SignClientSignSettings.Config"/></li><li><c>--description</c> via <see cref="SignClientSignSettings.Description"/></li><li><c>--descriptionUrl</c> via <see cref="SignClientSignSettings.DescriptionUrl"/></li><li><c>--fileList</c> via <see cref="SignClientSignSettings.FileList"/></li><li><c>--input</c> via <see cref="SignClientSignSettings.Input"/></li><li><c>--maxConcurrency</c> via <see cref="SignClientSignSettings.MaxConcurrency"/></li><li><c>--name</c> via <see cref="SignClientSignSettings.Name"/></li><li><c>--output</c> via <see cref="SignClientSignSettings.Output"/></li><li><c>--secret</c> via <see cref="SignClientSignSettings.Secret"/></li><li><c>--user</c> via <see cref="SignClientSignSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SignClientSign(SignClientSignSettings options = null) => new SignClientTasks().Run<SignClientSignSettings>(options);
-    /// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Common.Tools.SignClient.SignClientSignSettings)"/>
+    /// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Application.Tools.SignClient.SignClientSignSettings)"/>
     public static IReadOnlyCollection<Output> SignClientSign(Configure<SignClientSignSettings> configurator) => new SignClientTasks().Run<SignClientSignSettings>(configurator.Invoke(new SignClientSignSettings()));
-    /// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Common.Tools.SignClient.SignClientSignSettings)"/>
+    /// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Application.Tools.SignClient.SignClientSignSettings)"/>
     public static IEnumerable<(SignClientSignSettings Settings, IReadOnlyCollection<Output> Output)> SignClientSign(CombinatorialConfigure<SignClientSignSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SignClientSign, degreeOfParallelism, completeOnFailure);
 }
 #region SignClientSignSettings
-/// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Common.Tools.SignClient.SignClientSignSettings)"/>
+/// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Application.Tools.SignClient.SignClientSignSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SignClientTasks), Command = nameof(SignClientTasks.SignClientSign), Arguments = "sign")]
 public partial class SignClientSignSettings : ToolOptions
@@ -62,7 +62,7 @@ public partial class SignClientSignSettings : ToolOptions
 }
 #endregion
 #region SignClientSignSettingsExtensions
-/// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Common.Tools.SignClient.SignClientSignSettings)"/>
+/// <inheritdoc cref="SignClientTasks.SignClientSign(Fallout.Application.Tools.SignClient.SignClientSignSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SignClientSignSettingsExtensions
 {

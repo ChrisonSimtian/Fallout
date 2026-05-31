@@ -4,15 +4,16 @@ using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.GitVersion;
+namespace Fallout.Application.Tools.GitVersion;
 
 /// <summary>
 /// Injects an instance of <see cref="GitVersion"/> based on the local repository.

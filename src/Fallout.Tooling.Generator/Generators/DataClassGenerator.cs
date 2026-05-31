@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using Fallout.CodeGeneration.Model;
 using Fallout.CodeGeneration.Writers;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
+using Fallout.Application.Tooling;
 
 // ReSharper disable UnusedMethodReturnValue.Local
 

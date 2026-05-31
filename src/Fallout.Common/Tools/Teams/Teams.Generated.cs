@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/Teams/Teams.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Teams;
+namespace Fallout.Application.Tools.Teams;
 
 #region TeamsMessage
 /// <summary>Used within <see cref="TeamsTasks"/>.</summary>

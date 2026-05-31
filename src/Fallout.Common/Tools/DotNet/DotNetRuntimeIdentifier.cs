@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.DotNet;
+namespace Fallout.Application.Tools.DotNet;
 
 [TypeConverter(typeof(TypeConverter<DotNetRuntimeIdentifier>))]
 public class DotNetRuntimeIdentifier : Enumeration

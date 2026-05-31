@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.MSBuild;
+namespace Fallout.Application.Tools.MSBuild;
 
 public static class MSBuildToolPathResolver
 {

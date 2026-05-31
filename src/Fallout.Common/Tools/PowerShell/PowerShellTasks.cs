@@ -1,7 +1,9 @@
-﻿using System;
-using Fallout.Common.Tooling;
+using System;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.PowerShell;
+namespace Fallout.Application.Tools.PowerShell;
 
 partial class PowerShellTasks
 {

@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.MSBuild;
+namespace Fallout.Application.Tools.MSBuild;
 
 public class MSBuildVerbosityMappingAttribute : VerbosityMappingAttribute
 {

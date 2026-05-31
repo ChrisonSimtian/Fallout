@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using Fallout.Common.Tools.NerdbankGitVersioning;
 using Fallout.Application;
+using Fallout.Application.Tools.NerdbankGitVersioning;
 
 namespace Fallout.Application.Components;
 

@@ -13,8 +13,9 @@ using Fallout.Common.Utilities;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.SignPath;
+namespace Fallout.Application.Tools.SignPath;
 
 public static class SignPathTasks
 {

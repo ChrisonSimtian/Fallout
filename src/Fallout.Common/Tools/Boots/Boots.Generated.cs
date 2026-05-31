@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/Boots/Boots.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Boots;
+namespace Fallout.Application.Tools.Boots;
 
 /// <summary><p>boots is a .NET global tool for <c>bootstrapping</c> <c>vsix</c> and <c>pkg</c> files.</p><p>For more details, visit the <a href="https://github.com/jonathanpeppers/boots">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +28,13 @@ public partial class BootsTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>boots is a .NET global tool for <c>bootstrapping</c> <c>vsix</c> and <c>pkg</c> files.</p><p>For more details, visit the <a href="https://github.com/jonathanpeppers/boots">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--file-type</c> via <see cref="BootsSettings.FileType"/></li><li><c>--preview</c> via <see cref="BootsSettings.Preview"/></li><li><c>--read-write-timeout</c> via <see cref="BootsSettings.ReadWriteTimeout"/></li><li><c>--retries</c> via <see cref="BootsSettings.Retries"/></li><li><c>--stable</c> via <see cref="BootsSettings.Stable"/></li><li><c>--timeout</c> via <see cref="BootsSettings.Timeout"/></li><li><c>--url</c> via <see cref="BootsSettings.Url"/></li><li><c>--version</c> via <see cref="BootsSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Boots(BootsSettings options = null) => new BootsTasks().Run<BootsSettings>(options);
-    /// <inheritdoc cref="BootsTasks.Boots(Fallout.Common.Tools.Boots.BootsSettings)"/>
+    /// <inheritdoc cref="BootsTasks.Boots(Fallout.Application.Tools.Boots.BootsSettings)"/>
     public static IReadOnlyCollection<Output> Boots(Configure<BootsSettings> configurator) => new BootsTasks().Run<BootsSettings>(configurator.Invoke(new BootsSettings()));
-    /// <inheritdoc cref="BootsTasks.Boots(Fallout.Common.Tools.Boots.BootsSettings)"/>
+    /// <inheritdoc cref="BootsTasks.Boots(Fallout.Application.Tools.Boots.BootsSettings)"/>
     public static IEnumerable<(BootsSettings Settings, IReadOnlyCollection<Output> Output)> Boots(CombinatorialConfigure<BootsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Boots, degreeOfParallelism, completeOnFailure);
 }
 #region BootsSettings
-/// <inheritdoc cref="BootsTasks.Boots(Fallout.Common.Tools.Boots.BootsSettings)"/>
+/// <inheritdoc cref="BootsTasks.Boots(Fallout.Application.Tools.Boots.BootsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(BootsTasks), Command = nameof(BootsTasks.Boots))]
 public partial class BootsSettings : ToolOptions
@@ -58,7 +58,7 @@ public partial class BootsSettings : ToolOptions
 }
 #endregion
 #region BootsSettingsExtensions
-/// <inheritdoc cref="BootsTasks.Boots(Fallout.Common.Tools.Boots.BootsSettings)"/>
+/// <inheritdoc cref="BootsTasks.Boots(Fallout.Application.Tools.Boots.BootsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class BootsSettingsExtensions
 {

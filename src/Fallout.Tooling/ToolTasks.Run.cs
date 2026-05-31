@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class ToolTasks
 {

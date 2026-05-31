@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.Tools.DotNet;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
+using Fallout.Application.Tools.DotNet;
 
 namespace Fallout.Application.Components;
 

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Serilog;
 using static Fallout.Application.CI.BuildServerConfigurationGeneration;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Application.CI;
 

@@ -6,8 +6,9 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class CommandAttribute : Attribute
 {

@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using NuGet.Versioning;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using Serilog;
 using Fallout.Application.Git;
 using Fallout.Application;
+using Fallout.Application.Tools.GitHub;
 
 // ReSharper disable ArgumentsStyleLiteral
 namespace Fallout.Common.ChangeLog;

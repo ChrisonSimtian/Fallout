@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Reflection;
 
-namespace Fallout.Common.Tools.CorFlags;
+namespace Fallout.Application.Tools.CorFlags;
 
 partial class CorFlagsSettings
 {

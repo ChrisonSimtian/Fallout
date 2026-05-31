@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class OptionsExtensions
 {

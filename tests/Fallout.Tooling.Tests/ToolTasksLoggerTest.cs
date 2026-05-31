@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.Tooling;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Xunit;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.Tests;
 

@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public static class ToolResolver
 {

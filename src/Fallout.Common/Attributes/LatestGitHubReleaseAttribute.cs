@@ -3,12 +3,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using NuGet.Versioning;
-using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
+using Fallout.Application.Tools.GitHub;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class LatestGitHubReleaseAttribute : ValueInjectionAttributeBase
 {

@@ -5,8 +5,9 @@ using System.Linq;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.Tools.SignPath.SignPathTasks;
+using static Fallout.Application.Tools.SignPath.SignPathTasks;
 using Fallout.Application;
+using Fallout.Application.Tools.SignPath;
 
 namespace Fallout.Application.Components;
 

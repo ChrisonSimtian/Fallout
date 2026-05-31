@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using FluentAssertions;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
 using Xunit;
 using Fallout.Application.Git;
+using Fallout.Application.Tools.GitHub;
 
 namespace Fallout.Common.Tests;
 

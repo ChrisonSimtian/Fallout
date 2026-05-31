@@ -1,4 +1,3 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Unity;
+namespace Fallout.Application.Tools.Unity;
 
 /// <summary><p>Unity is usually launched by double-clicking its icon from the desktop. However, it is also possible to run it from the command line (from the macOS Terminal or the Windows Command Prompt). When launched in this way, Unity can receive commands and information on startup, which can be very useful for test suites, automated builds and other production tasks.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -23,41 +23,41 @@ public partial class UnityTasks : ToolTasks
     /// <summary><p>(2018.2+) Exports the currently activated license to the path of the Unity executable or either the default Unity license location, see the logs or <a href="https://docs.unity3d.com/Manual/ActivationFAQ.html">Activation FAQ</a> for more information.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityCreateManualActivationFileSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityCreateManualActivationFileSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityCreateManualActivationFileSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityCreateManualActivationFileSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityCreateManualActivationFileSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityCreateManualActivationFileSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityCreateManualActivationFileSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityCreateManualActivationFile(UnityCreateManualActivationFileSettings options = null) => new UnityTasks().Run<UnityCreateManualActivationFileSettings>(options);
-    /// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Common.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Application.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
     public static IReadOnlyCollection<Output> UnityCreateManualActivationFile(Configure<UnityCreateManualActivationFileSettings> configurator) => new UnityTasks().Run<UnityCreateManualActivationFileSettings>(configurator.Invoke(new UnityCreateManualActivationFileSettings()));
-    /// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Common.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Application.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
     public static IEnumerable<(UnityCreateManualActivationFileSettings Settings, IReadOnlyCollection<Output> Output)> UnityCreateManualActivationFile(CombinatorialConfigure<UnityCreateManualActivationFileSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityCreateManualActivationFile, degreeOfParallelism, completeOnFailure);
     /// <summary><p>(2018.2+) Activates Unity with a license file.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityManualLicenseFileSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-manualLicenseFile</c> via <see cref="UnityManualLicenseFileSettings.LicenseFile"/></li><li><c>-nographics</c> via <see cref="UnityManualLicenseFileSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityManualLicenseFileSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityManualLicenseFileSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityManualLicenseFileSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityManualLicenseFileSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityManualLicenseFileSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityManualLicenseFile(UnityManualLicenseFileSettings options = null) => new UnityTasks().Run<UnityManualLicenseFileSettings>(options);
-    /// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Common.Tools.Unity.UnityManualLicenseFileSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Application.Tools.Unity.UnityManualLicenseFileSettings)"/>
     public static IReadOnlyCollection<Output> UnityManualLicenseFile(Configure<UnityManualLicenseFileSettings> configurator) => new UnityTasks().Run<UnityManualLicenseFileSettings>(configurator.Invoke(new UnityManualLicenseFileSettings()));
-    /// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Common.Tools.Unity.UnityManualLicenseFileSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Application.Tools.Unity.UnityManualLicenseFileSettings)"/>
     public static IEnumerable<(UnityManualLicenseFileSettings Settings, IReadOnlyCollection<Output> Output)> UnityManualLicenseFile(CombinatorialConfigure<UnityManualLicenseFileSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityManualLicenseFile, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Execute Unity.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;customArguments&gt;</c> via <see cref="UnityProjectOptions.CustomArguments"/></li><li><c>-accept-apiupdate</c> via <see cref="UnityProjectOptions.AcceptApiUpdate"/></li><li><c>-assetServerUpdate</c> via <see cref="UnityProjectOptions.AssetServerUpdate"/></li><li><c>-batchmode</c> via <see cref="UnitySettings.BatchMode"/></li><li><c>-buildLinux32Player</c> via <see cref="UnitySettings.BuildLinux32Player"/></li><li><c>-buildLinux64Player</c> via <see cref="UnitySettings.BuildLinux64Player"/></li><li><c>-buildLinuxUniversalPlayer</c> via <see cref="UnitySettings.BuildLinuxUniversalPlayer"/></li><li><c>-buildOSX64Player</c> via <see cref="UnitySettings.BuildOSX64Player"/></li><li><c>-buildOSXPlayer</c> via <see cref="UnitySettings.BuildOSXPlayer"/></li><li><c>-buildOSXUniversalPlayer</c> via <see cref="UnitySettings.BuildOSXUniversalPlayer"/></li><li><c>-buildTarget</c> via <see cref="UnityProjectOptions.BuildTarget"/></li><li><c>-buildWindows64Player</c> via <see cref="UnitySettings.BuildWindows64Player"/></li><li><c>-buildWindowsPlayer</c> via <see cref="UnitySettings.BuildWindowsPlayer"/></li><li><c>-cacheServerIPAddress</c> via <see cref="UnityProjectOptions.CacheServerIPAddress"/></li><li><c>-createProject</c> via <see cref="UnitySettings.CreateProject"/></li><li><c>-disable-assembly-updater</c> via <see cref="UnityProjectOptions.DisableAssemblyUpdater"/></li><li><c>-editorTestsCategories</c> via <see cref="UnitySettings.EditorTestsCategories"/></li><li><c>-editorTestsFilter</c> via <see cref="UnitySettings.EditorTestsFilter"/></li><li><c>-editorTestsResultFile</c> via <see cref="UnitySettings.EditorTestsResultFile"/></li><li><c>-executeMethod</c> via <see cref="UnitySettings.ExecuteMethod"/></li><li><c>-exportPackage</c> via <see cref="UnitySettings.ExportPackage"/></li><li><c>-force-clamped</c> via <see cref="UnityProjectOptions.ForceClamped"/></li><li><c>-force-d3d11</c> via <see cref="UnityProjectOptions.ForceD3d11"/></li><li><c>-force-device-index</c> via <see cref="UnityProjectOptions.ForceDeviceIndex"/></li><li><c>-force-gfx-metal</c> via <see cref="UnityProjectOptions.ForceGfxMetal"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCore"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCoreXY"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLES"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLESXY"/></li><li><c>-force-low-power-device</c> via <see cref="UnityProjectOptions.ForceLowPowerDevice"/></li><li><c>-importPackage</c> via <see cref="UnitySettings.ImportPackage"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnitySettings.NoGraphics"/></li><li><c>-noUpm</c> via <see cref="UnityProjectOptions.NoUpm"/></li><li><c>-password</c> via <see cref="UnitySettings.Password"/></li><li><c>-projectPath</c> via <see cref="UnityProjectOptions.ProjectPath"/></li><li><c>-quit</c> via <see cref="UnitySettings.Quit"/></li><li><c>-runEditorTests</c> via <see cref="UnitySettings.RunEditorTests"/></li><li><c>-serial</c> via <see cref="UnitySettings.Serial"/></li><li><c>-setDefaultPlatformTextureFormat</c> via <see cref="UnityProjectOptions.DefaultPlatformTextureFormat"/></li><li><c>-silent-crashes</c> via <see cref="UnitySettings.SilentCrashes"/></li><li><c>-stackTraceLogType</c> via <see cref="UnityProjectOptions.StackTraceLogType"/></li><li><c>-username</c> via <see cref="UnitySettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Unity(UnitySettings options = null) => new UnityTasks().Run<UnitySettings>(options);
-    /// <inheritdoc cref="UnityTasks.Unity(Fallout.Common.Tools.Unity.UnitySettings)"/>
+    /// <inheritdoc cref="UnityTasks.Unity(Fallout.Application.Tools.Unity.UnitySettings)"/>
     public static IReadOnlyCollection<Output> Unity(Configure<UnitySettings> configurator) => new UnityTasks().Run<UnitySettings>(configurator.Invoke(new UnitySettings()));
-    /// <inheritdoc cref="UnityTasks.Unity(Fallout.Common.Tools.Unity.UnitySettings)"/>
+    /// <inheritdoc cref="UnityTasks.Unity(Fallout.Application.Tools.Unity.UnitySettings)"/>
     public static IEnumerable<(UnitySettings Settings, IReadOnlyCollection<Output> Output)> Unity(CombinatorialConfigure<UnitySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Unity, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Return the currenlty activated Unity license.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-batchmode</c> via <see cref="UnityReturnLicenseSettings.BatchMode"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityReturnLicenseSettings.NoGraphics"/></li><li><c>-password</c> via <see cref="UnityReturnLicenseSettings.Password"/></li><li><c>-quit</c> via <see cref="UnityReturnLicenseSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityReturnLicenseSettings.Serial"/></li><li><c>-silent-crashes</c> via <see cref="UnityReturnLicenseSettings.SilentCrashes"/></li><li><c>-username</c> via <see cref="UnityReturnLicenseSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityReturnLicense(UnityReturnLicenseSettings options = null) => new UnityTasks().Run<UnityReturnLicenseSettings>(options);
-    /// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Common.Tools.Unity.UnityReturnLicenseSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Application.Tools.Unity.UnityReturnLicenseSettings)"/>
     public static IReadOnlyCollection<Output> UnityReturnLicense(Configure<UnityReturnLicenseSettings> configurator) => new UnityTasks().Run<UnityReturnLicenseSettings>(configurator.Invoke(new UnityReturnLicenseSettings()));
-    /// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Common.Tools.Unity.UnityReturnLicenseSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Application.Tools.Unity.UnityReturnLicenseSettings)"/>
     public static IEnumerable<(UnityReturnLicenseSettings Settings, IReadOnlyCollection<Output> Output)> UnityReturnLicense(CombinatorialConfigure<UnityReturnLicenseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityReturnLicense, degreeOfParallelism, completeOnFailure);
     /// <summary><p>(2019.2+) Run tests in the project using Unity Test Framework. This argument requires the <c>projectPath</c>, and it's good practice to run it with <c>batchmode</c> argument. <c>quit</c> is not required, because the Editor automatically closes down after the run is finished.</p><p>For more details, visit the <a href="https://unity3d.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;customArguments&gt;</c> via <see cref="UnityProjectOptions.CustomArguments"/></li><li><c>-accept-apiupdate</c> via <see cref="UnityProjectOptions.AcceptApiUpdate"/></li><li><c>-assetServerUpdate</c> via <see cref="UnityProjectOptions.AssetServerUpdate"/></li><li><c>-batchmode</c> via <see cref="UnityRunTestsSettings.BatchMode"/></li><li><c>-buildTarget</c> via <see cref="UnityProjectOptions.BuildTarget"/></li><li><c>-cacheServerIPAddress</c> via <see cref="UnityProjectOptions.CacheServerIPAddress"/></li><li><c>-disable-assembly-updater</c> via <see cref="UnityProjectOptions.DisableAssemblyUpdater"/></li><li><c>-force-clamped</c> via <see cref="UnityProjectOptions.ForceClamped"/></li><li><c>-force-d3d11</c> via <see cref="UnityProjectOptions.ForceD3d11"/></li><li><c>-force-device-index</c> via <see cref="UnityProjectOptions.ForceDeviceIndex"/></li><li><c>-force-gfx-metal</c> via <see cref="UnityProjectOptions.ForceGfxMetal"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCore"/></li><li><c>-force-glcore</c> via <see cref="UnityProjectOptions.ForceGLCoreXY"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLES"/></li><li><c>-force-gles</c> via <see cref="UnityProjectOptions.ForceGLESXY"/></li><li><c>-force-low-power-device</c> via <see cref="UnityProjectOptions.ForceLowPowerDevice"/></li><li><c>-logFile</c> via <see cref="UnityOptionsBase.LogFile"/></li><li><c>-nographics</c> via <see cref="UnityRunTestsSettings.NoGraphics"/></li><li><c>-noUpm</c> via <see cref="UnityProjectOptions.NoUpm"/></li><li><c>-password</c> via <see cref="UnityRunTestsSettings.Password"/></li><li><c>-projectPath</c> via <see cref="UnityProjectOptions.ProjectPath"/></li><li><c>-quit</c> via <see cref="UnityRunTestsSettings.Quit"/></li><li><c>-serial</c> via <see cref="UnityRunTestsSettings.Serial"/></li><li><c>-setDefaultPlatformTextureFormat</c> via <see cref="UnityProjectOptions.DefaultPlatformTextureFormat"/></li><li><c>-silent-crashes</c> via <see cref="UnityRunTestsSettings.SilentCrashes"/></li><li><c>-stackTraceLogType</c> via <see cref="UnityProjectOptions.StackTraceLogType"/></li><li><c>-testCategory</c> via <see cref="UnityRunTestsSettings.TestCategories"/></li><li><c>-testFilter</c> via <see cref="UnityRunTestsSettings.TestFilters"/></li><li><c>-testPlatform</c> via <see cref="UnityRunTestsSettings.TestPlatform"/></li><li><c>-testResults</c> via <see cref="UnityRunTestsSettings.TestResultFile"/></li><li><c>-username</c> via <see cref="UnityRunTestsSettings.Username"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> UnityRunTests(UnityRunTestsSettings options = null) => new UnityTasks().Run<UnityRunTestsSettings>(options);
-    /// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Common.Tools.Unity.UnityRunTestsSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Application.Tools.Unity.UnityRunTestsSettings)"/>
     public static IReadOnlyCollection<Output> UnityRunTests(Configure<UnityRunTestsSettings> configurator) => new UnityTasks().Run<UnityRunTestsSettings>(configurator.Invoke(new UnityRunTestsSettings()));
-    /// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Common.Tools.Unity.UnityRunTestsSettings)"/>
+    /// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Application.Tools.Unity.UnityRunTestsSettings)"/>
     public static IEnumerable<(UnityRunTestsSettings Settings, IReadOnlyCollection<Output> Output)> UnityRunTests(CombinatorialConfigure<UnityRunTestsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(UnityRunTests, degreeOfParallelism, completeOnFailure);
 }
 #region UnityCreateManualActivationFileSettings
-/// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Common.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Application.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(UnityTasks), Command = nameof(UnityTasks.UnityCreateManualActivationFile), Arguments = "-createManualActivationFile")]
 public partial class UnityCreateManualActivationFileSettings : UnityOptionsBase
@@ -79,7 +79,7 @@ public partial class UnityCreateManualActivationFileSettings : UnityOptionsBase
 }
 #endregion
 #region UnityManualLicenseFileSettings
-/// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Common.Tools.Unity.UnityManualLicenseFileSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Application.Tools.Unity.UnityManualLicenseFileSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(UnityTasks), Command = nameof(UnityTasks.UnityManualLicenseFile))]
 public partial class UnityManualLicenseFileSettings : UnityOptionsBase
@@ -103,7 +103,7 @@ public partial class UnityManualLicenseFileSettings : UnityOptionsBase
 }
 #endregion
 #region UnitySettings
-/// <inheritdoc cref="UnityTasks.Unity(Fallout.Common.Tools.Unity.UnitySettings)"/>
+/// <inheritdoc cref="UnityTasks.Unity(Fallout.Application.Tools.Unity.UnitySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(UnityTasks), Command = nameof(UnityTasks.Unity))]
 public partial class UnitySettings : UnityProjectOptions
@@ -157,7 +157,7 @@ public partial class UnitySettings : UnityProjectOptions
 }
 #endregion
 #region UnityReturnLicenseSettings
-/// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Common.Tools.Unity.UnityReturnLicenseSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Application.Tools.Unity.UnityReturnLicenseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(UnityTasks), Command = nameof(UnityTasks.UnityReturnLicense), Arguments = "-returnlicense")]
 public partial class UnityReturnLicenseSettings : UnityOptionsBase
@@ -179,7 +179,7 @@ public partial class UnityReturnLicenseSettings : UnityOptionsBase
 }
 #endregion
 #region UnityRunTestsSettings
-/// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Common.Tools.Unity.UnityRunTestsSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Application.Tools.Unity.UnityRunTestsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(UnityTasks), Command = nameof(UnityTasks.UnityRunTests), Arguments = "-runTests")]
 public partial class UnityRunTestsSettings : UnityProjectOptions
@@ -269,7 +269,7 @@ public partial class UnityProjectOptions : UnityOptionsBase
 }
 #endregion
 #region UnityCreateManualActivationFileSettingsExtensions
-/// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Common.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityCreateManualActivationFile(Fallout.Application.Tools.Unity.UnityCreateManualActivationFileSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class UnityCreateManualActivationFileSettingsExtensions
 {
@@ -368,7 +368,7 @@ public static partial class UnityCreateManualActivationFileSettingsExtensions
 }
 #endregion
 #region UnityManualLicenseFileSettingsExtensions
-/// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Common.Tools.Unity.UnityManualLicenseFileSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityManualLicenseFile(Fallout.Application.Tools.Unity.UnityManualLicenseFileSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class UnityManualLicenseFileSettingsExtensions
 {
@@ -475,7 +475,7 @@ public static partial class UnityManualLicenseFileSettingsExtensions
 }
 #endregion
 #region UnitySettingsExtensions
-/// <inheritdoc cref="UnityTasks.Unity(Fallout.Common.Tools.Unity.UnitySettings)"/>
+/// <inheritdoc cref="UnityTasks.Unity(Fallout.Application.Tools.Unity.UnitySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class UnitySettingsExtensions
 {
@@ -756,7 +756,7 @@ public static partial class UnitySettingsExtensions
 }
 #endregion
 #region UnityReturnLicenseSettingsExtensions
-/// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Common.Tools.Unity.UnityReturnLicenseSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityReturnLicense(Fallout.Application.Tools.Unity.UnityReturnLicenseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class UnityReturnLicenseSettingsExtensions
 {
@@ -855,7 +855,7 @@ public static partial class UnityReturnLicenseSettingsExtensions
 }
 #endregion
 #region UnityRunTestsSettingsExtensions
-/// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Common.Tools.Unity.UnityRunTestsSettings)"/>
+/// <inheritdoc cref="UnityTasks.UnityRunTests(Fallout.Application.Tools.Unity.UnityRunTestsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class UnityRunTestsSettingsExtensions
 {

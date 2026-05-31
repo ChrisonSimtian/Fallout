@@ -4,19 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
 using FluentAssertions;
-using Fallout.Common.Tools.MSBuild;
-using Fallout.Common.Tools.OpenCover;
-using Fallout.Common.Tools.Xunit;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.CorFlags;
-using Fallout.Common.Tools.Discord;
-using Fallout.Common.Tools.Docker;
-using Fallout.Common.Tools.DotNet;
-using Fallout.Common.Tools.Kubernetes;
 using Fallout.Common.Utilities;
 using VerifyXunit;
 using Xunit;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Application.Tooling;
+using Fallout.Application.Tools.MSBuild;
+using Fallout.Application.Tools.Xunit;
+using Fallout.Application.Tools.OpenCover;
+using Fallout.Application.Tools.CorFlags;
+using Fallout.Application.Tools.Docker;
+using Fallout.Application.Tools.Discord;
+using Fallout.Application.Tools.Kubernetes;
 
 namespace Fallout.Common.Tests;
 

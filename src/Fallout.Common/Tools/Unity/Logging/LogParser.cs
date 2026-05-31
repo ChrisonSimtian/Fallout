@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Common.Tools.Unity.Logging;
+namespace Fallout.Application.Tools.Unity.Logging;
 
 internal class LogParser
 {

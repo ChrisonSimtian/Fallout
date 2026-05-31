@@ -4,8 +4,9 @@ using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>
 /// Bridges <see cref="Enumeration"/> subclasses across the System.Text.Json boundary.

@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.Unity.Logging;
+namespace Fallout.Application.Tools.Unity.Logging;
 
 internal class FileWatcher
 {

@@ -5,12 +5,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.DotCover;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.CI;
+using Fallout.Application.Tools.DotCover;
 
 namespace Fallout.Common.CI.TeamCity;
 

@@ -4,8 +4,9 @@ using System.Reflection;
 using NuGet.Versioning;
 using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class LatestNpmVersionAttribute : ValueInjectionAttributeBase
 {

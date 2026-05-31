@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.OctoVersion;
+namespace Fallout.Application.Tools.OctoVersion;
 
 partial class OctoVersionTasks
 {

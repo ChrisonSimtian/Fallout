@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Formatting.Compact.Reader;
-using static Fallout.Common.Tools.Docker.DockerTasks;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Application.Tools.Docker.DockerTasks;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.Execution;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.Docker;
+namespace Fallout.Application.Tools.Docker;
 
 public static class DockerTargetDefinitionExtensions
 {

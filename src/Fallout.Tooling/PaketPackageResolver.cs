@@ -1,8 +1,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 // TODO: Add similar methods to NuGetPackageResolver
 public static class PaketPackageResolver

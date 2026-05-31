@@ -7,10 +7,10 @@ using Fallout.Common;
 using Fallout.Common.ChangeLog;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using Octokit;
 using Fallout.Application;
+using Fallout.Application.Tools.GitHub;
 
 namespace Fallout.Application.Components;
 

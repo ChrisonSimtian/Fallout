@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 partial class ToolOptions
 {

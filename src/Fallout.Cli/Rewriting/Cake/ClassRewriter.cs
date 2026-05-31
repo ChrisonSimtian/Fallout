@@ -5,12 +5,12 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.DotNet;
-using Fallout.Common.Tools.MSBuild;
-using Fallout.Common.Tools.NuGet;
-using Fallout.Common.Tools.SignTool;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Fallout.Application;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Application.Tools.MSBuild;
+using Fallout.Application.Tools.SignTool;
+using Fallout.Application.Tools.NuGet;
 
 namespace Fallout.Cli.Rewriting.Cake;
 

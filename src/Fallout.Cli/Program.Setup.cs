@@ -6,16 +6,16 @@ using System.Reflection;
 using System.Text;
 using Fallout.Common;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Spectre.Console;
 using static Fallout.Common.Constants;
 using static Fallout.Common.EnvironmentInfo;
-using static Fallout.Common.Tooling.ProcessTasks;
+using static Fallout.Infrastructure.Tooling.ProcessTasks;
 using static Fallout.Common.Utilities.TemplateUtility;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Cli;
 

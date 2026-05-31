@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.Tools.InnoSetup;
+namespace Fallout.Application.Tools.InnoSetup;
 
 public partial class InnoSetupSettings
 {

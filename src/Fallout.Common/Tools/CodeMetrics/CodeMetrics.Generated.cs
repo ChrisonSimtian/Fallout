@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/CodeMetrics/CodeMetrics.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.CodeMetrics;
+namespace Fallout.Application.Tools.CodeMetrics;
 
 /// <summary><p>Code metrics is a set of software measures that provide developers better insight into the code they are developing. By taking advantage of code metrics, developers can understand which types and/or methods should be reworked or more thoroughly tested. Development teams can identify potential risks, understand the current state of a project, and track progress during software development.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +28,13 @@ public partial class CodeMetricsTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Code metrics is a set of software measures that provide developers better insight into the code they are developing. By taking advantage of code metrics, developers can understand which types and/or methods should be reworked or more thoroughly tested. Development teams can identify potential risks, understand the current state of a project, and track progress during software development.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>/out</c> via <see cref="CodeMetricsSettings.OutputFile"/></li><li><c>/project</c> via <see cref="CodeMetricsSettings.Project"/></li><li><c>/solution</c> via <see cref="CodeMetricsSettings.Solution"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> CodeMetrics(CodeMetricsSettings options = null) => new CodeMetricsTasks().Run<CodeMetricsSettings>(options);
-    /// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Common.Tools.CodeMetrics.CodeMetricsSettings)"/>
+    /// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Application.Tools.CodeMetrics.CodeMetricsSettings)"/>
     public static IReadOnlyCollection<Output> CodeMetrics(Configure<CodeMetricsSettings> configurator) => new CodeMetricsTasks().Run<CodeMetricsSettings>(configurator.Invoke(new CodeMetricsSettings()));
-    /// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Common.Tools.CodeMetrics.CodeMetricsSettings)"/>
+    /// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Application.Tools.CodeMetrics.CodeMetricsSettings)"/>
     public static IEnumerable<(CodeMetricsSettings Settings, IReadOnlyCollection<Output> Output)> CodeMetrics(CombinatorialConfigure<CodeMetricsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(CodeMetrics, degreeOfParallelism, completeOnFailure);
 }
 #region CodeMetricsSettings
-/// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Common.Tools.CodeMetrics.CodeMetricsSettings)"/>
+/// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Application.Tools.CodeMetrics.CodeMetricsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CodeMetricsTasks), Command = nameof(CodeMetricsTasks.CodeMetrics))]
 public partial class CodeMetricsSettings : ToolOptions
@@ -48,7 +48,7 @@ public partial class CodeMetricsSettings : ToolOptions
 }
 #endregion
 #region CodeMetricsSettingsExtensions
-/// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Common.Tools.CodeMetrics.CodeMetricsSettings)"/>
+/// <inheritdoc cref="CodeMetricsTasks.CodeMetrics(Fallout.Application.Tools.CodeMetrics.CodeMetricsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class CodeMetricsSettingsExtensions
 {

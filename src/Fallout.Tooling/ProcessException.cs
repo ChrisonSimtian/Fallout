@@ -8,7 +8,7 @@ using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Events;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 [Serializable]
 public class ProcessException : Exception

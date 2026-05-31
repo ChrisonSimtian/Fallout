@@ -4,7 +4,7 @@ using System.Linq;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Application.Execution;
 
-namespace Fallout.Common.Tools.DotCover;
+namespace Fallout.Application.Tools.DotCover;
 
 public class TeamCitySetDotCoverHomePathAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {

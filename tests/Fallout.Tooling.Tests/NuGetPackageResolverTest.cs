@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Xunit;
+using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Common.Tests;
 

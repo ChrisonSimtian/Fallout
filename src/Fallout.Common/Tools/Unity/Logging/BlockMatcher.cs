@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Fallout.Common.Tools.Unity.Logging;
+namespace Fallout.Application.Tools.Unity.Logging;
 
 internal class BlockMatcher
 {

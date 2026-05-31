@@ -6,17 +6,18 @@ using Fallout.Common;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
-using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using static Fallout.Application.ControlFlow;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Git;
 using Fallout.Application.Execution;
 using Fallout.Application.Components;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
+using Fallout.Application.Tools.GitHub;
 
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]

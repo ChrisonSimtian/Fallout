@@ -5,7 +5,7 @@ using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Application.ValueInjection;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class LatestMyGetVersionAttribute : ValueInjectionAttributeBase
 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -10,8 +10,9 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.Twitter;
+namespace Fallout.Application.Tools.Twitter;
 
 public static class TwitterTasks
 {

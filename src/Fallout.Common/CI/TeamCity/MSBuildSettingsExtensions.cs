@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Fallout.Common.Tools.MSBuild;
+using Fallout.Application.Tools.MSBuild;
 
 namespace Fallout.Common.CI.TeamCity;
 

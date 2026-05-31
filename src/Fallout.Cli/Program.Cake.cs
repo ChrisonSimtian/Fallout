@@ -6,13 +6,13 @@ using Microsoft.CodeAnalysis.CSharp;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Cli.Rewriting.Cake;
 using static Fallout.Common.Constants;
 using static Fallout.Common.EnvironmentInfo;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Infrastructure.Tooling;
 
 namespace Fallout.Cli;
 

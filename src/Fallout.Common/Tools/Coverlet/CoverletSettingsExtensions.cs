@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Coverlet;
+namespace Fallout.Application.Tools.Coverlet;
 
 public static partial class CoverletSettingsExtensions
 {

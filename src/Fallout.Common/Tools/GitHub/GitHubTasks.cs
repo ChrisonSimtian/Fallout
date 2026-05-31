@@ -8,8 +8,9 @@ using Octokit;
 using static Fallout.Common.IO.PathConstruction;
 using Fallout.Application;
 using Fallout.Application.Git;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.GitHub;
+namespace Fallout.Application.Tools.GitHub;
 
 public enum GitHubItemType
 {

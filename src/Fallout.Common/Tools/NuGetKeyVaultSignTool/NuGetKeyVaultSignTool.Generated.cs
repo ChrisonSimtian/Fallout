@@ -1,4 +1,3 @@
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.NuGetKeyVaultSignTool;
+namespace Fallout.Application.Tools.NuGetKeyVaultSignTool;
 
 /// <summary><p>NuGet Key Vault Sign Tool is similar to <c>nuget sign</c>, with the major difference being that it uses Azure Key Vault for performing the signing process. Similar usage configuration like <c>AzureSignTool</c>, except is used to sign nuget package.</p><p>For more details, visit the <a href="https://github.com/novotnyllc/NuGetKeyVaultSignTool">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -26,13 +26,13 @@ public partial class NuGetKeyVaultSignToolTasks : ToolTasks, IRequireNuGetPackag
     /// <summary><p>NuGet Key Vault Sign Tool is similar to <c>nuget sign</c>, with the major difference being that it uses Azure Key Vault for performing the signing process. Similar usage configuration like <c>AzureSignTool</c>, except is used to sign nuget package.</p><p>For more details, visit the <a href="https://github.com/novotnyllc/NuGetKeyVaultSignTool">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;file&gt;</c> via <see cref="NuGetKeyVaultSignToolSettings.File"/></li><li><c>--azure-key-vault-accesstoken</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultAccessToken"/></li><li><c>--azure-key-vault-certificate</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultCertificateName"/></li><li><c>--azure-key-vault-client-id</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultClientId"/></li><li><c>--azure-key-vault-client-secret</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultClientSecret"/></li><li><c>--azure-key-vault-managed-identity</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultManagedIdentity"/></li><li><c>--azure-key-vault-tenant-id</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultTenantId"/></li><li><c>--azure-key-vault-url</c> via <see cref="NuGetKeyVaultSignToolSettings.KeyVaultUrl"/></li><li><c>--file-digest</c> via <see cref="NuGetKeyVaultSignToolSettings.FileDigest"/></li><li><c>--force</c> via <see cref="NuGetKeyVaultSignToolSettings.Force"/></li><li><c>--output</c> via <see cref="NuGetKeyVaultSignToolSettings.Output"/></li><li><c>--timestamp-digest</c> via <see cref="NuGetKeyVaultSignToolSettings.TimestampDigest"/></li><li><c>--timestamp-rfc3161</c> via <see cref="NuGetKeyVaultSignToolSettings.TimestampRfc3161Url"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetKeyVaultSignTool(NuGetKeyVaultSignToolSettings options = null) => new NuGetKeyVaultSignToolTasks().Run<NuGetKeyVaultSignToolSettings>(options);
-    /// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Common.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
+    /// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Application.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
     public static IReadOnlyCollection<Output> NuGetKeyVaultSignTool(Configure<NuGetKeyVaultSignToolSettings> configurator) => new NuGetKeyVaultSignToolTasks().Run<NuGetKeyVaultSignToolSettings>(configurator.Invoke(new NuGetKeyVaultSignToolSettings()));
-    /// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Common.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
+    /// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Application.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
     public static IEnumerable<(NuGetKeyVaultSignToolSettings Settings, IReadOnlyCollection<Output> Output)> NuGetKeyVaultSignTool(CombinatorialConfigure<NuGetKeyVaultSignToolSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetKeyVaultSignTool, degreeOfParallelism, completeOnFailure);
 }
 #region NuGetKeyVaultSignToolSettings
-/// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Common.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
+/// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Application.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetKeyVaultSignToolTasks), Command = nameof(NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool), Arguments = "sign")]
 public partial class NuGetKeyVaultSignToolSettings : ToolOptions
@@ -66,7 +66,7 @@ public partial class NuGetKeyVaultSignToolSettings : ToolOptions
 }
 #endregion
 #region NuGetKeyVaultSignToolSettingsExtensions
-/// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Common.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
+/// <inheritdoc cref="NuGetKeyVaultSignToolTasks.NuGetKeyVaultSignTool(Fallout.Application.Tools.NuGetKeyVaultSignTool.NuGetKeyVaultSignToolSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetKeyVaultSignToolSettingsExtensions
 {

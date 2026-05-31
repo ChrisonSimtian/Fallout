@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class NpmPackageAttribute : ToolInjectionAttributeBase
 {

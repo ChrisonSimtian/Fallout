@@ -3,8 +3,9 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Application;
 using Fallout.Application.ValueInjection;
+using Fallout.Common;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+namespace Fallout.Application.Tools.AzureKeyVault
 {
     public abstract class AzureKeyVaultAttributeBase : ParameterAttribute
     {

@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.CI.GitHubActions;
 

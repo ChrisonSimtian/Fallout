@@ -9,12 +9,12 @@ using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using VerifyXunit;
 using Xunit;
 using Fallout.Application.Execution;
 using Fallout.Application.CI;
 using Fallout.Application;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.Tests.CI;
 

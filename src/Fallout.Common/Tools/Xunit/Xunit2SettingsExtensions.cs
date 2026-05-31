@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Common.Tools.Xunit;
+namespace Fallout.Application.Tools.Xunit;
 
 partial class Xunit2SettingsExtensions
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public static partial class OptionsExtensions
 {

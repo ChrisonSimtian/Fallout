@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/OctoVersion/OctoVersion.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.OctoVersion;
+namespace Fallout.Application.Tools.OctoVersion;
 
 /// <summary><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,20 +28,20 @@ public partial class OctoVersionTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Gets the version information for a project.</p><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--BuildMetadata</c> via <see cref="OctoVersionGetVersionSettings.BuildMetadata"/></li><li><c>--CurrentBranch</c> via <see cref="OctoVersionGetVersionSettings.CurrentBranch"/></li><li><c>--DetectEnvironment</c> via <see cref="OctoVersionGetVersionSettings.DetectEnvironment"/></li><li><c>--FullSemVer</c> via <see cref="OctoVersionGetVersionSettings.FullSemVer"/></li><li><c>--Major</c> via <see cref="OctoVersionGetVersionSettings.Major"/></li><li><c>--Minor</c> via <see cref="OctoVersionGetVersionSettings.Minor"/></li><li><c>--NonPreReleaseTags</c> via <see cref="OctoVersionGetVersionSettings.NonPreReleaseTags"/></li><li><c>--OutputFormats</c> via <see cref="OctoVersionGetVersionSettings.OutputFormats"/></li><li><c>--OutputJsonFile</c> via <see cref="OctoVersionGetVersionSettings.OutputJsonFile"/></li><li><c>--Patch</c> via <see cref="OctoVersionGetVersionSettings.Patch"/></li><li><c>--PreReleaseTag</c> via <see cref="OctoVersionGetVersionSettings.PreReleaseTag"/></li><li><c>--RepositoryPath</c> via <see cref="OctoVersionGetVersionSettings.RepositoryPath"/></li></ul></remarks>
     public static (OctoVersionInfo Result, IReadOnlyCollection<Output> Output) OctoVersionGetVersion(OctoVersionGetVersionSettings options = null) => new OctoVersionTasks().Run<OctoVersionGetVersionSettings, OctoVersionInfo>(options);
-    /// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Common.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
+    /// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Application.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
     public static (OctoVersionInfo Result, IReadOnlyCollection<Output> Output) OctoVersionGetVersion(Configure<OctoVersionGetVersionSettings> configurator) => new OctoVersionTasks().Run<OctoVersionGetVersionSettings, OctoVersionInfo>(configurator.Invoke(new OctoVersionGetVersionSettings()));
-    /// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Common.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
+    /// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Application.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
     public static IEnumerable<(OctoVersionGetVersionSettings Settings, OctoVersionInfo Result, IReadOnlyCollection<Output> Output)> OctoVersionGetVersion(CombinatorialConfigure<OctoVersionGetVersionSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(OctoVersionGetVersion, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Executes OctoVersion information for a project, without trying to parse the output.</p><p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--BuildMetadata</c> via <see cref="OctoVersionExecuteSettings.BuildMetadata"/></li><li><c>--CurrentBranch</c> via <see cref="OctoVersionExecuteSettings.CurrentBranch"/></li><li><c>--DetectEnvironment</c> via <see cref="OctoVersionExecuteSettings.DetectEnvironment"/></li><li><c>--FullSemVer</c> via <see cref="OctoVersionExecuteSettings.FullSemVer"/></li><li><c>--Major</c> via <see cref="OctoVersionExecuteSettings.Major"/></li><li><c>--Minor</c> via <see cref="OctoVersionExecuteSettings.Minor"/></li><li><c>--NonPreReleaseTags</c> via <see cref="OctoVersionExecuteSettings.NonPreReleaseTags"/></li><li><c>--OutputFormats</c> via <see cref="OctoVersionExecuteSettings.OutputFormats"/></li><li><c>--OutputJsonFile</c> via <see cref="OctoVersionExecuteSettings.OutputJsonFile"/></li><li><c>--Patch</c> via <see cref="OctoVersionExecuteSettings.Patch"/></li><li><c>--PreReleaseTag</c> via <see cref="OctoVersionExecuteSettings.PreReleaseTag"/></li><li><c>--RepositoryPath</c> via <see cref="OctoVersionExecuteSettings.RepositoryPath"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> OctoVersionExecute(OctoVersionExecuteSettings options = null) => new OctoVersionTasks().Run<OctoVersionExecuteSettings>(options);
-    /// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Common.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
+    /// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Application.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
     public static IReadOnlyCollection<Output> OctoVersionExecute(Configure<OctoVersionExecuteSettings> configurator) => new OctoVersionTasks().Run<OctoVersionExecuteSettings>(configurator.Invoke(new OctoVersionExecuteSettings()));
-    /// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Common.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
+    /// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Application.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
     public static IEnumerable<(OctoVersionExecuteSettings Settings, IReadOnlyCollection<Output> Output)> OctoVersionExecute(CombinatorialConfigure<OctoVersionExecuteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(OctoVersionExecute, degreeOfParallelism, completeOnFailure);
 }
 #region OctoVersionGetVersionSettings
-/// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Common.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
+/// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Application.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctoVersionTasks), Command = nameof(OctoVersionTasks.OctoVersionGetVersion), Arguments = "octoversion")]
 public partial class OctoVersionGetVersionSettings : ToolOptions, IToolOptionsWithFramework
@@ -73,7 +73,7 @@ public partial class OctoVersionGetVersionSettings : ToolOptions, IToolOptionsWi
 }
 #endregion
 #region OctoVersionExecuteSettings
-/// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Common.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
+/// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Application.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(OctoVersionTasks), Command = nameof(OctoVersionTasks.OctoVersionExecute), Arguments = "octoversion")]
 public partial class OctoVersionExecuteSettings : ToolOptions, IToolOptionsWithFramework
@@ -105,7 +105,7 @@ public partial class OctoVersionExecuteSettings : ToolOptions, IToolOptionsWithF
 }
 #endregion
 #region OctoVersionGetVersionSettingsExtensions
-/// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Common.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
+/// <inheritdoc cref="OctoVersionTasks.OctoVersionGetVersion(Fallout.Application.Tools.OctoVersion.OctoVersionGetVersionSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class OctoVersionGetVersionSettingsExtensions
 {
@@ -247,7 +247,7 @@ public static partial class OctoVersionGetVersionSettingsExtensions
 }
 #endregion
 #region OctoVersionExecuteSettingsExtensions
-/// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Common.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
+/// <inheritdoc cref="OctoVersionTasks.OctoVersionExecute(Fallout.Application.Tools.OctoVersion.OctoVersionExecuteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class OctoVersionExecuteSettingsExtensions
 {

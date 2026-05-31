@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
+using Fallout.Application.Tooling;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tools.Netlify;
+namespace Fallout.Application.Tools.Netlify;
 
 partial class NetlifyTasks
 {

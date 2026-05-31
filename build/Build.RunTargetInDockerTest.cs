@@ -1,9 +1,9 @@
 using System;
 using Fallout.Common;
-using Fallout.Common.Tools.Docker;
 using Fallout.Common.Utilities;
 using Serilog;
 using Fallout.Application;
+using Fallout.Application.Tools.Docker;
 
 partial class Build
 {

@@ -1,4 +1,4 @@
-﻿#if NET6_0_OR_GREATER
+#if NET6_0_OR_GREATER
 
 using System;
 using System.Collections.Generic;
@@ -6,8 +6,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 [InterpolatedStringHandler]
 public ref struct ArgumentStringHandler

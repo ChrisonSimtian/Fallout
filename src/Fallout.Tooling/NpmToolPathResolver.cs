@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using Fallout.Common.IO;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 public static class NpmToolPathResolver
 {

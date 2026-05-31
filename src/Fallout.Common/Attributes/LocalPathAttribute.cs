@@ -4,8 +4,9 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Common.IO;
 using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>
 ///     Injects a delegate for process execution. The path relative to the root directory is passed as constructor argument.

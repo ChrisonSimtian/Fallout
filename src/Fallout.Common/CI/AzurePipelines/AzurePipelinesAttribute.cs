@@ -4,13 +4,13 @@ using System.IO;
 using System.Linq;
 using Fallout.Common.CI.AzurePipelines.Configuration;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.IO.PathConstruction;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.CI.AzurePipelines;
 

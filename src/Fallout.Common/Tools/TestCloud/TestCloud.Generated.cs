@@ -1,7 +1,6 @@
 // Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/TestCloud/TestCloud.json
 
 using Fallout.Common;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.TestCloud;
+namespace Fallout.Application.Tools.TestCloud;
 
 /// <summary><p>Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.</p><p>For more details, visit the <a href="https://developer.xamarin.com/guides/testcloud/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +28,13 @@ public partial class TestCloudTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.</p><p>For more details, visit the <a href="https://developer.xamarin.com/guides/testcloud/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--assembly-dir</c> via <see cref="TestCloudSettings.AssemblyDirectory"/></li><li><c>--data</c> via <see cref="TestCloudSettings.DataPaths"/></li><li><c>--devices</c> via <see cref="TestCloudSettings.Devices"/></li><li><c>--dsym</c> via <see cref="TestCloudSettings.DsymFile"/></li><li><c>--exclude</c> via <see cref="TestCloudSettings.ExcludeCategories"/></li><li><c>--fixture</c> via <see cref="TestCloudSettings.Fixtures"/></li><li><c>--fixture-chunk</c> via <see cref="TestCloudSettings.FixtureChunk"/></li><li><c>--include</c> via <see cref="TestCloudSettings.IncludeCategories"/></li><li><c>--nunit-xml</c> via <see cref="TestCloudSettings.NunitResultsFile"/></li><li><c>--sign-info</c> via <see cref="TestCloudSettings.SignInfoFile"/></li><li><c>--test-chunk</c> via <see cref="TestCloudSettings.TestChunk"/></li><li><c>--user</c> via <see cref="TestCloudSettings.UserEmail"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> TestCloud(TestCloudSettings options = null) => new TestCloudTasks().Run<TestCloudSettings>(options);
-    /// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Common.Tools.TestCloud.TestCloudSettings)"/>
+    /// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Application.Tools.TestCloud.TestCloudSettings)"/>
     public static IReadOnlyCollection<Output> TestCloud(Configure<TestCloudSettings> configurator) => new TestCloudTasks().Run<TestCloudSettings>(configurator.Invoke(new TestCloudSettings()));
-    /// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Common.Tools.TestCloud.TestCloudSettings)"/>
+    /// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Application.Tools.TestCloud.TestCloudSettings)"/>
     public static IEnumerable<(TestCloudSettings Settings, IReadOnlyCollection<Output> Output)> TestCloud(CombinatorialConfigure<TestCloudSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(TestCloud, degreeOfParallelism, completeOnFailure);
 }
 #region TestCloudSettings
-/// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Common.Tools.TestCloud.TestCloudSettings)"/>
+/// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Application.Tools.TestCloud.TestCloudSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(TestCloudTasks), Command = nameof(TestCloudTasks.TestCloud), Arguments = "submit")]
 public partial class TestCloudSettings : ToolOptions
@@ -66,7 +66,7 @@ public partial class TestCloudSettings : ToolOptions
 }
 #endregion
 #region TestCloudSettingsExtensions
-/// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Common.Tools.TestCloud.TestCloudSettings)"/>
+/// <inheritdoc cref="TestCloudTasks.TestCloud(Fallout.Application.Tools.TestCloud.TestCloudSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class TestCloudSettingsExtensions
 {

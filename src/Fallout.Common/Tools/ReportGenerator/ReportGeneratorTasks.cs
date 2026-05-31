@@ -1,6 +1,6 @@
 using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.ReportGenerator;
+namespace Fallout.Application.Tools.ReportGenerator;
 
 public class ReportGeneratorVerbosityMappingAttribute : VerbosityMappingAttribute
 {

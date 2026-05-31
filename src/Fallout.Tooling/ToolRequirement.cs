@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
+using Fallout.Infrastructure.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public interface IRequireTool;
 public interface IRequireToolWithVersion;

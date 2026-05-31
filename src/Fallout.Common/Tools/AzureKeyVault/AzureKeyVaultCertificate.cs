@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+namespace Fallout.Application.Tools.AzureKeyVault
 {
     public class AzureKeyVaultCertificate
     {

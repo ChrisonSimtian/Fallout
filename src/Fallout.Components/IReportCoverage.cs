@@ -3,14 +3,14 @@ using System.IO;
 using System.Linq;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
-using Fallout.Common.Tools.Codecov;
-using Fallout.Common.Tools.ReportGenerator;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.Tools.Codecov.CodecovTasks;
-using static Fallout.Common.Tools.ReportGenerator.ReportGeneratorTasks;
+using static Fallout.Application.Tools.Codecov.CodecovTasks;
+using static Fallout.Application.Tools.ReportGenerator.ReportGeneratorTasks;
 using Fallout.Application;
+using Fallout.Application.Tools.Codecov;
+using Fallout.Application.Tools.ReportGenerator;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Application.Components;
 

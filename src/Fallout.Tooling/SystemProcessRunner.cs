@@ -1,7 +1,8 @@
 using System;
 using System.Diagnostics;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 /// <summary>
 /// Default <see cref="IProcessRunner"/> — spawns a real OS process. This is the infrastructure adapter

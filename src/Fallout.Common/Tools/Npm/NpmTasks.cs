@@ -1,8 +1,8 @@
-﻿using System;
-using Fallout.Common.Tooling;
+using System;
 using Serilog.Events;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Tools.Npm;
+namespace Fallout.Application.Tools.Npm;
 
 [LogLevelPattern(LogEventLevel.Warning, "^(npmWARN|npm WARN)")]
 [LogLevelPattern(LogEventLevel.Debug, "^(npm notice)")]

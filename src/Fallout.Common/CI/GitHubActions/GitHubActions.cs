@@ -8,10 +8,10 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Nodes;
 using Fallout.Common.IO;
-using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Application;
 using Fallout.Application.CI;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.CI.GitHubActions;
 

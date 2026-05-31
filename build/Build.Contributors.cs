@@ -4,8 +4,9 @@ using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.Tools.Git.GitTasks;
+using static Fallout.Application.Tools.Git.GitTasks;
 using Fallout.Application;
+using Fallout.Application.Tools.Git;
 
 partial class Build
 {

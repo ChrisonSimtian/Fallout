@@ -2,8 +2,10 @@ using System;
 using System.IO;
 using System.Linq;
 using Fallout.Common.Utilities;
+using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Infrastructure.Tooling;
 
 public static class ToolPathResolver
 {

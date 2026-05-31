@@ -2,8 +2,9 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Application.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 /// <summary>
 ///     Injects a delegate for process execution. The path to the executable is resolved in the following order:
