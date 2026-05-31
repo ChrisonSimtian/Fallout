@@ -38,3 +38,4 @@ If you change a decision, do NOT silently rewrite the old ADR — add a new one 
 | [0002](0002-v11-off-nuget-by-default.md) | v11 publishes to GitHub Packages by default; nuget.org opt-in | Accepted |
 | [0003](0003-variables-and-substitution.md) | Variables and `${…}` substitution layer | Proposed |
 | [0004](0004-calendar-versioning-and-dual-pace-channels.md) | Calendar versioning + dual-pace channels (edge/stable) + experimental APIs | Accepted |
+| [0005](0005-ci-host-integration-ports-and-adapters.md) | CI host integration as ports & adapters (hexagonal seam) | Proposed |
