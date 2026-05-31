@@ -1,18 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!-- One-off onion-realignment tool (ADR-0006). Lives under tools/ — outside fallout.slnx and
-       outside version.json's pathFilters. Moves types declared in one project to a new namespace
-       prefix and fixes references repo-wide, resolving the shared-root ambiguity by type identity. -->
+       outside version.json's pathFilters. SEMANTIC mode: loads the real compilations via
+       MSBuildWorkspace and rewrites references by the symbol they actually bind to. Pins its own
+       package versions (central management off) so it doesn't perturb the product's version set. -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.Build.Locator" Version="1.7.8" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.12.0" />
   </ItemGroup>
 
 </Project>

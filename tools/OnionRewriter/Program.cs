@@ -1,172 +1,104 @@
+using System.Runtime.CompilerServices;
+using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-// OnionRewriter — ADR-0006. Moves every type declared in a source project out of an old namespace
-// prefix into a new one, and fixes references across the repo. The hard part it exists for: the old
-// root namespace (Fallout.Common) is shared across several projects, so it disambiguates per file by
-// the *types actually referenced* — adding/keeping/dropping `using`s accordingly. Biased to
-// over-approximate (extra usings are harmless; the compiler catches any genuine miss).
-//
-// Usage:  dotnet run --project tools/OnionRewriter [-- --apply]
-//   (default = dry run: report only, mutate nothing)
+// OnionRewriter (semantic) — ADR-0006. Moves every type declared in a source project out of an old
+// namespace prefix into a new one, and fixes references across the whole workspace by the symbol each
+// reference actually BINDS to (so simple-name collisions across namespaces resolve correctly — no
+// spurious usings, no CS0104). Rewrites: namespace declarations in the source project; qualified
+// references to moved types; and `using` directives (add the new namespace, drop the old where no
+// residual type is still used). Default = dry run (reports, mutates nothing). Pass --apply to write.
 
-var apply = args.Contains("--apply");
-var repo = Directory.GetCurrentDirectory();
-var sourceProj = Path.Combine(repo, "src", "Fallout.Build") + Path.DirectorySeparatorChar;
+MSBuildLocator.RegisterDefaults();
+return await Runner.RunAsync(args);
 
-const string OldRoot = "Fallout.Common";
-const string NewRoot = "Fallout.Application";
-const string OldExt = "Fallout.Build.Execution.Extensions";
-const string NewExt = "Fallout.Application.Execution.Extensions";
-
-bool IsMovable(string ns) => ns == OldRoot || ns.StartsWith(OldRoot + ".") || ns == OldExt || ns.StartsWith(OldExt + ".");
-string MapNs(string ns) =>
-    ns == OldRoot || ns.StartsWith(OldRoot + ".") ? NewRoot + ns[OldRoot.Length..]
-    : ns == OldExt || ns.StartsWith(OldExt + ".") ? NewExt + ns[OldExt.Length..]
-    : ns;
-
-IEnumerable<string> CsFiles(params string[] roots) =>
-    roots.Where(Directory.Exists)
-         .SelectMany(r => Directory.EnumerateFiles(r, "*.cs", SearchOption.AllDirectories))
-         .Where(p => !p.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}")
-                  && !p.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")
-                  && !p.Contains($"{Path.DirectorySeparatorChar}.claude{Path.DirectorySeparatorChar}")
-                  && !p.Contains($"{Path.DirectorySeparatorChar}vendor{Path.DirectorySeparatorChar}"));
-
-static string? NsOf(SyntaxNode n) =>
-    n.Ancestors().OfType<BaseNamespaceDeclarationSyntax>().FirstOrDefault()?.Name.ToString();
-
-// True when a name appears in a type position (so an added `using` is warranted). Excludes the
-// member name in `x.Foo` and the bare call target in `Foo(...)` — the main false-positive sources.
-static bool IsTypePosition(SimpleNameSyntax n) =>
-    !(n.Parent is MemberAccessExpressionSyntax ma && ma.Name == n)
-    && !(n.Parent is InvocationExpressionSyntax inv && inv.Expression == n);
-
-IEnumerable<(string Name, string Ns)> TopLevelTypes(SyntaxNode root)
+static class Runner
 {
-    foreach (var t in root.DescendantNodes().OfType<BaseTypeDeclarationSyntax>())
-        if (t.Parent is BaseNamespaceDeclarationSyntax && NsOf(t) is { } ns)
-            yield return (t.Identifier.Text, ns);
-    foreach (var d in root.DescendantNodes().OfType<DelegateDeclarationSyntax>())
-        if (d.Parent is BaseNamespaceDeclarationSyntax && NsOf(d) is { } ns)
-            yield return (d.Identifier.Text, ns);
-}
+    const string OldRoot = "Fallout.Common";
+    const string NewRoot = "Fallout.Application";
+    const string OldExt = "Fallout.Build.Execution.Extensions";
+    const string NewExt = "Fallout.Application.Execution.Extensions";
+    const string SourceAssembly = "Fallout.Build";
 
-// Pass A — types declared in the source project under a movable namespace (these MOVE).
-var movedTypes = new Dictionary<string, string>();          // simpleName -> new namespace
-var movedNamespaces = new HashSet<string>();                // old movable namespaces actually present
-foreach (var f in CsFiles(sourceProj))
-    foreach (var (name, ns) in TopLevelTypes(CSharpSyntaxTree.ParseText(File.ReadAllText(f)).GetRoot()))
-        if (IsMovable(ns)) { movedTypes[name] = MapNs(ns); movedNamespaces.Add(ns); }
+    static bool IsMovable(string ns) => ns == OldRoot || ns.StartsWith(OldRoot + ".") || ns == OldExt || ns.StartsWith(OldExt + ".");
+    static string MapNs(string ns) =>
+        ns == OldRoot || ns.StartsWith(OldRoot + ".") ? NewRoot + ns[OldRoot.Length..]
+        : ns == OldExt || ns.StartsWith(OldExt + ".") ? NewExt + ns[OldExt.Length..]
+        : ns;
 
-// Pass B — types under Fallout.Common.* declared OUTSIDE the source project (these STAY = residual).
-var residualByNs = new Dictionary<string, HashSet<string>>();
-foreach (var f in CsFiles(Path.Combine(repo, "src")))
-{
-    if (f.StartsWith(sourceProj, StringComparison.Ordinal)) continue;
-    foreach (var (name, ns) in TopLevelTypes(CSharpSyntaxTree.ParseText(File.ReadAllText(f)).GetRoot()))
-        if (ns == OldRoot || ns.StartsWith(OldRoot + "."))
-            (residualByNs.TryGetValue(ns, out var s) ? s : residualByNs[ns] = new()).Add(name);
-}
-
-// Pass C — rewrite references repo-wide.
-int filesChanged = 0, usingsAdded = 0, usingsDropped = 0, nsDecls = 0;
-var samples = new List<string>();
-
-foreach (var f in CsFiles(Path.Combine(repo, "src"), Path.Combine(repo, "tests"), Path.Combine(repo, "build")))
-{
-    var original = File.ReadAllText(f);
-    var cu = (CompilationUnitSyntax)CSharpSyntaxTree.ParseText(original).GetRoot();
-    var isSource = f.StartsWith(sourceProj, StringComparison.Ordinal);
-
-    // (1) Source-project files: rewrite their namespace declarations.
-    if (isSource)
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static async Task<int> RunAsync(string[] args)
     {
-        var before = nsDecls;
-        cu = (CompilationUnitSyntax)new NsRewriter(IsMovable, MapNs, () => nsDecls++).Visit(cu);
-        if (nsDecls > before) { /* counted */ }
-    }
+        var apply = args.Contains("--apply");
+        var repo = Directory.GetCurrentDirectory();
 
-    // (1b) Rewrite fully-qualified references to moved types (e.g. Fallout.Common.Execution.Foo).
-    cu = (CompilationUnitSyntax)new QualNameRewriter(IsMovable, MapNs, movedTypes).Visit(cu);
+        using var ws = Microsoft.CodeAnalysis.MSBuild.MSBuildWorkspace.Create();
+        ws.WorkspaceFailed += (_, e) => { if (e.Diagnostic.Kind == WorkspaceDiagnosticKind.Failure) Console.Error.WriteLine("  ws: " + e.Diagnostic.Message); };
 
-    // (2) All files: fix usings by type identity.
-    //  - DROP decision uses a BROAD reference set (every identifier) so we only ever over-keep — safe.
-    //  - ADD decision uses a TYPE-POSITION-filtered set so we don't add usings for method/property
-    //    names that merely collide with a moved type's simple name.
-    var referencedAll = cu.DescendantNodes().OfType<SimpleNameSyntax>().Select(n => n.Identifier.Text).ToHashSet();
-    var referencedTypes = cu.DescendantNodes().OfType<SimpleNameSyntax>().Where(IsTypePosition).Select(n => n.Identifier.Text).ToHashSet();
-    var fileNs = cu.DescendantNodes().OfType<BaseNamespaceDeclarationSyntax>().FirstOrDefault()?.Name.ToString();
+        var csprojs = Directory.EnumerateFiles(Path.Combine(repo, "src"), "*.csproj", SearchOption.AllDirectories)
+            .Concat(Directory.EnumerateFiles(Path.Combine(repo, "tests"), "*.csproj", SearchOption.AllDirectories))
+            .Concat(Directory.EnumerateFiles(Path.Combine(repo, "build"), "*.csproj", SearchOption.AllDirectories))
+            .Where(p => !p.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") && !p.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}"))
+            .OrderBy(p => p).ToList();
 
-    var keep = new List<UsingDirectiveSyntax>();
-    foreach (var u in cu.Usings)
-    {
-        var name = u.Name?.ToString();
-        if (name != null && movedNamespaces.Contains(name))
+        Console.WriteLine($"Loading {csprojs.Count} projects into the workspace…");
+        foreach (var p in csprojs)
         {
-            var residualUsed = residualByNs.TryGetValue(name, out var set) && set.Overlaps(referencedAll);
-            if (residualUsed) keep.Add(u); else usingsDropped++;   // drop usings now empty of residual types
+            try { await ws.OpenProjectAsync(p); }
+            catch (Exception ex) { Console.Error.WriteLine($"  open failed {Path.GetFileName(p)}: {ex.Message}"); }
         }
-        else keep.Add(u);
-    }
+        var sln = ws.CurrentSolution;
+        Console.WriteLine($"Loaded {sln.Projects.Count()} projects.");
 
-    var needed = referencedTypes.Where(movedTypes.ContainsKey).Select(n => movedTypes[n]).Distinct();
-    foreach (var ns in needed)
-    {
-        if (ns == fileNs) continue;
-        if (keep.Any(u => u.Name?.ToString() == ns)) continue;
-        keep.Add(ParseCompilationUnit($"using {ns};\n").Usings[0]);
-        usingsAdded++;
-    }
+        // Moved types: declared in the source assembly under a movable namespace. Keyed by full name.
+        var sourceProject = sln.Projects.FirstOrDefault(p => p.AssemblyName == SourceAssembly);
+        if (sourceProject is null) { Console.Error.WriteLine($"FATAL: source project {SourceAssembly} not loaded."); return 1; }
+        var sourceComp = await sourceProject.GetCompilationAsync();
+        var movedFullNames = new HashSet<string>();
+        void Collect(INamespaceSymbol nsSym)
+        {
+            foreach (var t in nsSym.GetTypeMembers()) if (IsMovable(nsSym.ToDisplayString())) movedFullNames.Add($"{nsSym.ToDisplayString()}.{t.Name}");
+            foreach (var child in nsSym.GetNamespaceMembers()) Collect(child);
+        }
+        Collect(sourceComp!.Assembly.GlobalNamespace);
+        Console.WriteLine($"Moved types (declared in {SourceAssembly}, movable ns): {movedFullNames.Count}");
 
-    cu = cu.WithUsings(List(keep));
-    var updated = cu.ToFullString();
-    if (updated != original)
-    {
-        filesChanged++;
-        if (samples.Count < 12) samples.Add(Path.GetRelativePath(repo, f));
-        if (apply) File.WriteAllText(f, updated);
-    }
-}
+        bool IsMovedType(INamedTypeSymbol t)
+        {
+            var ns = t.OriginalDefinition.ContainingNamespace?.ToDisplayString() ?? "";
+            return t.OriginalDefinition.ContainingAssembly?.Name == SourceAssembly && IsMovable(ns) && movedFullNames.Contains($"{ns}.{t.OriginalDefinition.Name}");
+        }
 
-Console.WriteLine($"OnionRewriter ({(apply ? "APPLY" : "dry-run")})");
-Console.WriteLine($"  moved types        : {movedTypes.Count}");
-Console.WriteLine($"  moved namespaces   : {string.Join(", ", movedNamespaces.OrderBy(x => x))}");
-Console.WriteLine($"  residual namespaces: {string.Join(", ", residualByNs.Keys.OrderBy(x => x))}");
-Console.WriteLine($"  files changed      : {filesChanged}");
-Console.WriteLine($"  namespace decls    : {nsDecls}");
-Console.WriteLine($"  usings added       : {usingsAdded}");
-Console.WriteLine($"  usings dropped     : {usingsDropped}");
-Console.WriteLine($"  sample files       :\n    {string.Join("\n    ", samples)}");
+        int filesChanged = 0, refsRewritten = 0, usingsAdded = 0, usingsDropped = 0, nsDecls = 0;
+        var samples = new List<string>();
 
-sealed class NsRewriter(Func<string, bool> isMovable, Func<string, string> map, Action onHit) : CSharpSyntaxRewriter
-{
-    public override SyntaxNode? VisitNamespaceDeclaration(NamespaceDeclarationSyntax node) => Rewrite(node, base.VisitNamespaceDeclaration(node));
-    public override SyntaxNode? VisitFileScopedNamespaceDeclaration(FileScopedNamespaceDeclarationSyntax node) => Rewrite(node, base.VisitFileScopedNamespaceDeclaration(node));
+        foreach (var project in sln.Projects)
+        {
+            var isSource = project.AssemblyName == SourceAssembly;
+            foreach (var doc in project.Documents)
+            {
+                if (doc.FilePath is null || !doc.FilePath.EndsWith(".cs") || doc.FilePath.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}")) continue;
+                var model = await doc.GetSemanticModelAsync();
+                var root = await doc.GetSyntaxRootAsync();
+                if (model is null || root is null) continue;
 
-    private SyntaxNode? Rewrite(BaseNamespaceDeclarationSyntax original, SyntaxNode? visited)
-    {
-        var name = original.Name.ToString();
-        if (!isMovable(name) || visited is not BaseNamespaceDeclarationSyntax n) return visited;
-        onHit();
-        return n.WithName(SyntaxFactory.ParseName(map(name)).WithTriviaFrom(original.Name));
-    }
-}
+                var (newRoot, c) = DocumentRewriter.Rewrite(root, model, isSource, IsMovable, MapNs, IsMovedType);
+                if (c.Changed)
+                {
+                    filesChanged++; refsRewritten += c.Refs; usingsAdded += c.Added; usingsDropped += c.Dropped; nsDecls += c.NsDecls;
+                    if (samples.Count < 12) samples.Add(Path.GetRelativePath(repo, doc.FilePath));
+                    if (apply) await File.WriteAllTextAsync(doc.FilePath, newRoot.ToFullString());
+                }
+            }
+        }
 
-// Rewrites fully-qualified references like `Fallout.Common.Execution.Foo` → `Fallout.Application.Execution.Foo`,
-// but only when `Foo` is genuinely a moved type that lived in that namespace (guards against a same-named
-// type from a different moved namespace).
-sealed class QualNameRewriter(Func<string, bool> isMovable, Func<string, string> map, IReadOnlyDictionary<string, string> movedTypes) : CSharpSyntaxRewriter
-{
-    public override SyntaxNode? VisitQualifiedName(QualifiedNameSyntax node)
-    {
-        var visited = (QualifiedNameSyntax)base.VisitQualifiedName(node)!;
-        var left = node.Left.ToString();
-        var right = node.Right.Identifier.Text;
-        if (isMovable(left) && movedTypes.TryGetValue(right, out var newNs) && newNs == map(left))
-            return visited.WithLeft(SyntaxFactory.ParseName(map(left)).WithTriviaFrom(node.Left));
-        return visited;
+        Console.WriteLine($"\nOnionRewriter ({(apply ? "APPLY" : "dry-run")})");
+        Console.WriteLine($"  files changed   : {filesChanged}");
+        Console.WriteLine($"  namespace decls : {nsDecls}");
+        Console.WriteLine($"  qualified refs  : {refsRewritten}");
+        Console.WriteLine($"  usings added    : {usingsAdded}");
+        Console.WriteLine($"  usings dropped  : {usingsDropped}");
+        Console.WriteLine($"  sample files    :\n    {string.Join("\n    ", samples)}");
+        return 0;
     }
 }
