@@ -102,9 +102,22 @@ Host discovery no longer hinges on the magic-string `IsRunning{TypeName}` conven
 - Safe by construction: every host ctor is side-effect-free (verified), and because `First()` stops at the active host it is the last constructed and remains `Host.Instance`.
 - Tests (`HostActivationTest`) cover both paths: override-needs-no-static, and default-falls-back-to-convention. **107** Build.Tests + full Common.Tests green.
 
+## Forgejo adapter (same day) — #4 scaffolded
+
+The first adapter built against the finished seam, validating it generalizes to a new provider:
+
+- **Runtime host** (`Forgejo.cs` + `.BuildHost.cs` + `.Theming.cs`): first user of the #3 detection style — overrides `IsActive` directly, **no `IsRunning{Name}` static**. Implements both ports (`IBuildHost` context via GitHub-compatible `GITHUB_*` vars; `IBuildReporter` reporting via the shared command dialect).
+- **Composition, not coupling** (`ForgejoAttribute.cs`, `WorkflowCommands.cs`): Forgejo reuses the GitHub config *model* (`GitHubActionsConfiguration` + jobs/steps) and a new shared `WorkflowCommands` helper for the `::cmd::` dialect — but is **not** a `GitHubActions`. A fitness test asserts the non-inheritance.
+- Validation: clean build; **46** Common.Tests (4 new) + **107** Build.Tests green; existing `.github` workflows untouched.
+
+**Findings:**
+1. **Config-gen isn't composition-ready at the attribute level.** `ConfigurationAttributeBase.Build` has an `internal set`, so an attribute in `Fallout.Common` can't wire up a composed inner `GitHubActionsAttribute`. Worked around by composing the shared *model* instead. The clean fix is to extract the GH generator's model-building from its file placement so both adapters compose one builder — that's what unlocks full Forgejo parity (caching, artifacts, secrets, detailed triggers), currently a common-case scaffold only.
+2. **`WorkflowCommands` is the dialect composition seam, but GHA still has its own copy.** Deduping GitHubActions onto it touches that adapter's public `WriteCommand` and risks its byte-identical output, so it's deferred — a tracked follow-up, not done here.
+3. **Detection is a naive guess** (`FORGEJO_ACTIONS`). Forgejo sets `GITHUB_ACTIONS=true` for compatibility, so the real distinctive variable (and ordering-vs-GitHub) must be confirmed against the live instance — marked `TODO(forgejo)` in `Forgejo.cs`.
+
 **Recommended next moves (in order):**
 1. Promote ADR-0005 `Proposed` → `Accepted` (maintainer call, via PR review) and lock the two-port shape + names (`IBuildHost` / `IBuildReporter`).
 2. Separate doc PR (targets `main`, non-breaking) for ADR-0005 + this spike.
-3. ~~Generalize host discovery~~ **done** (above).
-4. **Add the Forgejo adapter** — first adapter to use the clean `IsActive` override + both ports; its Actions are GitHub-workflow-compatible, so it stress-tests config generation too. Dogfood once the instance is live.
-5. Roll the ports across the other adapters; then consider exposing the seam for milestone #7. Mark the ports `[Experimental("FALLOUT0xx")]` when they near consumer-facing exposure.
+3. ~~Generalize host discovery~~ **done**. 4. ~~Add the Forgejo adapter~~ **scaffolded** (above).
+5. Confirm Forgejo detection against the live instance; then extract the GH model-builder (finding #1) for full config parity, and dedup `WorkflowCommands` onto GitHubActions (finding #2).
+6. Roll the ports across the other adapters; then consider exposing the seam for milestone #7. Mark the ports `[Experimental("FALLOUT0xx")]` when they near consumer-facing exposure.
