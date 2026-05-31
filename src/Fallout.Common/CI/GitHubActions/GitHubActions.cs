@@ -17,7 +17,7 @@ namespace Fallout.Common.CI.GitHubActions;
 /// Interface according to the <a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables">official website</a>.
 /// </summary>
 [ExcludeFromCodeCoverage]
-public partial class GitHubActions : Host, IBuildServer, IBuildHost
+public partial class GitHubActions : Host, IBuildServer
 {
     internal static bool IsRunningGitHubActions => EnvironmentInfo.HasVariable("GITHUB_ACTIONS");
 

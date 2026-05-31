@@ -37,9 +37,10 @@ For a subsystem whose entire value is *N interchangeable providers behind one co
 | Port | Concern | Status | Lives in |
 |---|---|---|---|
 | **Config-generation port** — `IConfigurationGenerator` | Design-time: emit `.yml`/`.xml`/`.toml` committed to git | **Exists, keep as-is** | `Fallout.Build/CICD/` |
-| **Runtime-host port** — *new, working name `IBuildHost`* | Execution-time: detect host, expose VCS/run facts, emit host annotations & summaries | **Formalize** | `Fallout.Build/CICD/` |
+| **Runtime-host context port** — `IBuildHost` | Execution-time facts: branch, commit, is-PR (universal subset; provider-specific facts stay on the adapter) | **Formalized** | `Fallout.Build/CICD/` |
+| **Runtime-host reporting port** — `IBuildReporter` | Execution-time output: surface warnings/errors/grouping through the host's native channels | **Formalized** | `Fallout.Build/CICD/` |
 
-The runtime-host port subsumes and fattens the anemic `IBuildServer`. It carries the *host integration* contract (environment facts, annotation/log reporting, output/summary writing) and is deliberately **separated from the `Host` logging/theming base** — `Host` may *implement* the port, but the port does not inherit `Host`'s console-rendering responsibilities.
+The runtime-host concern is **two ports, not one** — a refinement the spike (0001) confirmed with a concrete reason: their *implementor sets differ*. Every host reports (so the local `Terminal` is an `IBuildReporter`), but only CI hosts carry run context (so `Terminal` is **not** an `IBuildHost`). `IBuildHost` supersedes the anemic `IBuildServer`. Both are deliberately **separated from the `Host` logging/theming base**: `IBuildReporter` is implemented by the `Host` base (backed by its existing protected-virtual hooks, so adapters override exactly as before), while the port surfaces stay free of `Host`'s console-rendering responsibilities (`WriteLogo`, `WriteTargetOutcome`, …).
 
 **2. The eleven `Fallout.Common.CI.<Provider>` types are adapters.** Document and treat them as such. **Do not relocate or rename them in this work** — naming the role is the deliverable, not moving the files.
 

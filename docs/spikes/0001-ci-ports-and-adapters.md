@@ -78,14 +78,24 @@ Update **Status** to `Done` and append the verdict. Feed the result back into AD
 
 **Findings that shape the real implementation:**
 1. **The boundary already holds structurally.** `Fallout.Build` does not reference `Fallout.Common`, and a `Build → Common` reference would be *circular* (Common already references Build) — so the compiler enforces the inward-only rule for free. The fitness test guards against the subtler case of an indirect/transitive leak, not the gross one.
-2. **The reporting half is entangled with the `Host` base — and exposes a latent gap.** `Host.ReportWarning`/`ReportError` are `protected internal virtual` **no-ops**; `GitHubActions` surfaces annotations via separate public `WriteWarning`/`WriteError`. The `LogEventSink` routes warnings/errors to `Host.ReportWarning` — which on GitHub Actions does **nothing**. So today, sink-routed warnings likely never become `::warning::` annotations. The port had to implement reporting **explicitly** (delegating to `WriteWarning`/`WriteError`) to avoid the protected/public clash. **Implication:** the clean end-state is `IBuildHost` as the *canonical* reporting contract with `Host` (and the sink) delegating *to it* — not the reverse. Wiring the sink through `IBuildHost.ReportWarning` would also fix the dormant-annotation gap. That rewire is a behavior change → out of spike scope, but it's the highest-value follow-up.
+2. **~~The reporting half is entangled with the `Host` base — and exposes a latent gap.~~ CORRECTED (see Refinement round below).** The original finding claimed `Host.ReportWarning`/`ReportError` were no-ops on GitHub Actions and that sink-routed warnings never became `::warning::` annotations. **That was wrong** — it was based on reading only `GitHubActions.cs` and missing the overrides in `GitHubActions.Theming.cs` (and `AzurePipelines`/`TeamCity`/`AppVeyor` likewise). Reporting *is* wired today; there is no bug. The reporting members (`ReportWarning`/`ReportError`/`WriteBlock`) genuinely live on the `Host` base and are overridden per-adapter.
 3. **One port, for now — split not yet justified.** The read/write seam is real (and marked with regions), but the write side is two members. A two-port split (`IBuildHost` context + `IBuildReporter`) earns its keep only once reporting grows (log grouping, job summaries, output variables). Keep one port; revisit at that trigger.
 4. **`IBuildHost` reads well** and the explicit-impl pattern mirrors the existing `IBuildServer` mapping (`Branch => Ref`, `Commit => Sha`). Name validated.
 5. **Discovery untouched.** `Host.Default` still finds adapters via the `IsRunning{Name}` reflection convention. Generalizing discovery to "any `IBuildHost`" is future work, not needed for the seam.
 
+## Refinement round (same day) — two-port split
+
+Acting on the spike's open question (and a maintainer's gut feeling), the single port was split in two, and finding #2 was corrected:
+
+- **`IBuildHost`** rescoped to the **context** half: `Branch`, `Commit`, `IsPullRequest`.
+- **`IBuildReporter`** added for the **reporting** half: `ReportWarning`, `ReportError`, `WriteBlock`. Implemented by the `Host` base (explicit interface impls delegating to the existing protected-virtual hooks), so every host — including the local `Terminal` — is a reporter, and adapters keep overriding exactly as before. **No behavior change.**
+- **The split is justified, not cosmetic:** the implementor sets differ. A fitness test now pins this down — `Terminal` is an `IBuildReporter` but **not** an `IBuildHost`; `GitHubActions` is both. If those sets ever collapse, the test fails and the split has lost its reason.
+- `GitHubActions.BuildHost.cs` reduced to context-only; reporting overrides stay in `GitHubActions.Theming.cs`, untouched.
+- Validation: `Fallout.Common` builds clean; **105** Build.Tests + the new Common.Tests port check pass; generated workflows unchanged.
+
 **Recommended next moves (in order):**
-1. Promote ADR-0005 `Proposed` → `Accepted` (maintainer call, via PR review) and lock the `IBuildHost` name + single-port shape.
+1. Promote ADR-0005 `Proposed` → `Accepted` (maintainer call, via PR review) and lock the two-port shape + names (`IBuildHost` / `IBuildReporter`).
 2. Separate doc PR (targets `main`, non-breaking) for ADR-0005 + this spike.
-3. Make `IBuildHost` the canonical reporting contract and route `Host`/`LogEventSink` through it (fixes finding #2's annotation gap). Behavior change → land on `experimental`, exercise via the dogfood GitHub Actions run.
-4. Roll the port across the other ten adapters once #3's shape is settled.
-5. Only then consider exposing the seam for milestone #7.
+3. **Generalize host discovery** to key off the ports rather than the `IsRunning{Name}` reflection convention on `Host` subclasses.
+4. **Add a second adapter** to prove the shape generalizes — Forgejo (its Actions are GitHub-workflow-compatible) or Azure DevOps.
+5. Roll the ports across the other adapters; then consider exposing the seam for milestone #7. Mark the ports `[Experimental("FALLOUT0xx")]` when they near consumer-facing exposure.

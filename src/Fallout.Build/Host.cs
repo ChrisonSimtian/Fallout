@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using Fallout.Common.CI;
 using Fallout.Common.Execution;
 using Fallout.Common.Execution.Theming;
 using Fallout.Common.Utilities;
@@ -14,8 +15,16 @@ using Serilog.Sinks.SystemConsole.Themes;
 namespace Fallout.Common;
 
 [TypeConverter(typeof(TypeConverter))]
-public partial class Host
+public partial class Host : IBuildReporter
 {
+    // ADR-0005: the Host base is the runtime-host reporting port. The contract is exposed via
+    // IBuildReporter and backed by the existing protected-virtual hooks below, so concrete adapters
+    // keep customising reporting exactly as before (overriding ReportWarning/ReportError/WriteBlock)
+    // — virtual dispatch routes the interface calls to their overrides. No adapter changes required.
+    void IBuildReporter.ReportWarning(string text, string details) => ReportWarning(text, details);
+    void IBuildReporter.ReportError(string text, string details) => ReportError(text, details);
+    IDisposable IBuildReporter.WriteBlock(string text) => WriteBlock(text);
+
     protected Host()
     {
         // TODO: check assertion

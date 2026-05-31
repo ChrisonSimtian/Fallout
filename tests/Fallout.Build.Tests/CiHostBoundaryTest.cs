@@ -1,5 +1,6 @@
 using System.Linq;
 using Fallout.Common.CI;
+using Fallout.Common.Execution;
 using FluentAssertions;
 using Xunit;
 
@@ -23,5 +24,15 @@ public class CiHostBoundaryTest
         portsAssembly.GetReferencedAssemblies()
             .Select(x => x.Name)
             .Should().NotContain("Fallout.Common", "the ports layer must not depend on the adapters layer (ADR-0005)");
+    }
+
+    // The two-port split is justified by differing implementor sets: every Host reports (so Terminal,
+    // the local non-CI host, is an IBuildReporter), but only CI hosts carry run context (so Terminal
+    // is NOT an IBuildHost). If these ever collapse to the same set, the split has lost its reason.
+    [Fact]
+    public void Terminal_IsAReporter_ButNotAContextHost()
+    {
+        typeof(IBuildReporter).IsAssignableFrom(typeof(Terminal)).Should().BeTrue();
+        typeof(IBuildHost).IsAssignableFrom(typeof(Terminal)).Should().BeFalse();
     }
 }
