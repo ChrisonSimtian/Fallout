@@ -18,7 +18,7 @@ The project + namespace structure is inherited verbatim from NUKE: the rebrand (
 
 `docs/rebrand-plan.md` explicitly **defers** "realigning project ↔ namespace" to "a future major version after the shim packages have sunset," citing the type-forwarding bridge as the blocker. This ADR **amends that deferral** on two grounds:
 
-- **The bridge is re-pointable.** It is not raw `[TypeForwardedTo]`; it is the `TransitionShimGenerator` (`ShimAllPublicTypesUnder(from, to)`), a *prefix-remappable* subclass generator. We can restructure the `Fallout.*` namespaces freely and re-point the shim mappings; the `Nuke.*` surface stays frozen and consumers on it are unaffected.
+- **The bridge is not a blocker.** The rebrand-plan deferred this work *because* it assumed a rigid `[TypeForwardedTo]` bridge. The actual machinery is the `TransitionShimGenerator` (`ShimAllPublicTypesUnder(from, to)`), a *prefix-remappable* subclass generator — so restructuring `Fallout.*` doesn't orphan the `Nuke.*` surface in principle. We nonetheless **defer the migration strategy wholesale** (see Decision §"Migration & shim strategy") rather than re-point ring-by-ring; the point here is only that the stated blocker doesn't bind.
 - **ADR-0004 gives a clean home.** Namespace realignment is breaking → it lands on `experimental` and is **batched to the `2027.0.0` yearly major**. The work happens in 2026; native `Fallout.*` consumers are carried by re-pointed shims + the `Fallout.Migrate` codefix. Old `Fallout.*` namespaces are deleted at the cut, not dragged.
 
 (The rebrand-plan is a transient maintainer-owned doc; this is a deliberate, recorded reversal of one of its deferrals, not a silent contradiction.)
@@ -39,13 +39,20 @@ The project + namespace structure is inherited verbatim from NUKE: the rebrand (
 **Rules:**
 1. **`namespace == project == layer`.** No project declares a namespace rooted outside its layer. `Fallout.Common` is **dissolved**.
 2. **Onion dependency rule, fitness-enforced.** Domain references no other Fallout assembly; Application references only Domain; Infrastructure references Application/Domain; only the Cli composition root references Infrastructure. One architecture-test per ring, added as each ring lands (extends the ADR-0005 boundary-test pattern).
-3. **Breaking → `experimental` → `2027.0.0`** (ADR-0004). Re-point the `TransitionShimGenerator` mappings so the `Nuke.*` surface is unchanged; update the `Fallout.Migrate` codefix to rewrite old `Fallout.*` → new `Fallout.*` for native consumers. Per ADR-0004 a breaking PR targets `experimental` only and carries `target/2027` + `breaking-change` + a `CHANGELOG.md` migration entry.
+3. **Breaking → `experimental` → `2027.0.0`** (ADR-0004). A breaking PR targets `experimental` only and carries `target/2027` + `breaking-change` + a `CHANGELOG.md` migration entry.
 4. **Ring-by-ring migration**, inner to outer — each ring is its own PR on `experimental`. The spike (0002) proves the mechanics on the Domain ring before the larger rings.
+5. **Migration/shim strategy is deferred wholesale** — see below.
+
+### Migration & shim strategy: deferred by design
+
+The `Nuke.*` transition shims (and any native-`Fallout.*` migration aid) are **explicitly out of scope for the rearchitecture rings.** Rationale: there's no point re-pointing the existing `TransitionShimGenerator` ring-by-ring toward a target that's still moving. Instead — once the final layered shape has settled — we design a **fresh migration/shim strategy that fits whatever we ended up with**, as its own phase and its own ADR. The existing bridge is re-pointable (it's a prefix-remappable subclass generator, not raw `[TypeForwardedTo]`), so this deferral costs us no future optionality; it's a sequencing choice, not a capability loss.
+
+Consequence during the work: on `experimental`, `Nuke.*` shim parity is **not maintained** while the rings land. That's acceptable — `experimental` is the unstable lane, and `2027.0.0` is the only deadline that matters; the new migration story is built before the cut. `Fallout.Migrate` likewise gets revisited then, not incrementally.
 
 ## Judgment calls (flagged for review — defaults chosen, easily changed)
 
 - **Public API under `.Infrastructure`.** Tool wrappers and CI attributes are consumer-facing yet land under `Fallout.Infrastructure.*` (the hexagonal reading: adapters are infrastructure even when public). Consequence: consumer `using` directives grow (`using Fallout.Infrastructure.Tools.DotNet;`). **Mitigation:** ship a curated set of global usings in the `dotnet fallout` project template so day-to-day build authoring isn't verbose. *Accepted by maintainer; recorded so the ergonomics cost is visible.*
-- **`Fallout.Components`** (the `ICompile`/`IPack`/… mixins) sits on top of Application and is user-facing. Default: keep as `Fallout.Components` (an application-adjacent convenience layer that depends on Application). Alternative: fold into `Fallout.Application.Components`.
+- **`Fallout.Components`** (the `ICompile`/`IPack`/… mixins) is a **recipes layer that sits *outside* Infrastructure**, not inside Application. The mixins call tool wrappers directly (`ICompile.Compile` → `DotNetBuild(...)` from `Fallout.Common.Tools.DotNet`), so `Components → Infrastructure`. It therefore **cannot** be folded into `Application` without inverting the onion (the inner ring would transitively depend on Infrastructure — the exact thing the fitness tests forbid). Default: keep as `Fallout.Components`, an outer recipes layer depending on Application + Infrastructure, near the composition root. *Folding it into `Application` is possible only by first porting tool execution behind an Application-owned tool port (the ADR-0005 move applied to tooling) — a separate, larger future step, not bundled here.*
 - **Utilities as Infrastructure vs shared kernel.** IO/Net/compression are genuinely infrastructure. Pure-algorithmic helpers (collections, reflection, string) are more a shared kernel; default is to keep a minimal shared-kernel that Domain may depend on, rather than forcing it through Infrastructure (which would violate the inner ring). To be pinned during the Application/Infrastructure rings.
 
 ## Consequences
@@ -57,8 +64,7 @@ The project + namespace structure is inherited verbatim from NUKE: the rebrand (
 
 ### Negative
 - **Large, breaking, multi-PR.** Touches nearly every file's `namespace`/`using`. Mitigated by ring-by-ring sequencing, re-pointed shims, the migrate codefix, and batching to one yearly major.
-- **Consumer churn** for native `Fallout.*` users (the `Nuke.*` shim users are insulated). The codefix + a CHANGELOG migration guide carry it.
-- **`Fallout.Migrate`** must learn the intra-Fallout rename map in addition to the Nuke→Fallout one.
+- **Consumer churn** for native `Fallout.*` users, and a window on `experimental` where `Nuke.*` shim parity lapses. Both are carried by the deferred migration phase (a fresh strategy + CHANGELOG migration guide), built before the `2027.0.0` cut — not during the rings.
 
 ## Alternatives considered
 
