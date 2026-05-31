@@ -4,7 +4,7 @@ using Fallout.Common.Git;
 using Fallout.Application;
 using Fallout.Application.Git;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IHasGitRepository : IFalloutBuild
 {

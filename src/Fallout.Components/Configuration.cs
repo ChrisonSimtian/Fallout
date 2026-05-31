@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 [TypeConverter(typeof(TypeConverter<Configuration>))]
 public class Configuration : Enumeration

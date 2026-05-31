@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 /// <summary>
 /// A routable publish destination: a package feed plus the rules deciding which

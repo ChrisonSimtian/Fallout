@@ -12,7 +12,7 @@ using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IPublish : IPack, ITest
 {

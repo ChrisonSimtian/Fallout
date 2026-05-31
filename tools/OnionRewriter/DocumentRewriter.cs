@@ -67,7 +67,8 @@ static class DocumentRewriter
         // Moved types → new-namespace usings. Plus, for SOURCE files that change namespace: residual
         // movable-namespace types they used to see as same-namespace siblings now need an explicit
         // `using` (e.g. ParameterService leaving Fallout.Common still uses Utilities' ArgumentParser).
-        var toAdd = isSource ? usedMovedNewNs.Concat(usedResidualMovableNs) : usedMovedNewNs;
+        // Never re-import a namespace this move fully evacuates (not in `surviving`) — it would dangle.
+        var toAdd = isSource ? usedMovedNewNs.Concat(usedResidualMovableNs.Where(surviving.Contains)) : usedMovedNewNs;
         foreach (var ns in toAdd.Distinct())
         {
             if (ownNs.Contains(ns)) continue;

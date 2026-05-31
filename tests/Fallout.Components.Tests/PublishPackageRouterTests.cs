@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Xunit;
+using Fallout.Application.Components;
 
 namespace Fallout.Components.Tests;
 

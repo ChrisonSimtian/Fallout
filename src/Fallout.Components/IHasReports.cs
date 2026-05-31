@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using Fallout.Common.IO;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IHasReports : IHasArtifacts
 {

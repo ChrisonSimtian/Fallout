@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IHasConfiguration : IFalloutBuild
 {

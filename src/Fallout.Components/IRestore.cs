@@ -5,7 +5,7 @@ using Fallout.Common.Tools.DotNet;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IRestore : IHasSolution, IFalloutBuild
 {

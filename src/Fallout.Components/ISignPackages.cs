@@ -8,7 +8,7 @@ using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.Tools.SignPath.SignPathTasks;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 /// <summary>
 /// This component allows to easily sign NuGet packages with

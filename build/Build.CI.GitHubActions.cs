@@ -1,5 +1,5 @@
 using Fallout.Common.CI.GitHubActions;
-using Fallout.Components;
+using Fallout.Application.Components;
 
 // Cross-platform (macOS/Windows) full Test+Pack is gated to RELEASE INTENT
 // (#318/#326): it runs only on a PR into a production branch (release/YYYY,

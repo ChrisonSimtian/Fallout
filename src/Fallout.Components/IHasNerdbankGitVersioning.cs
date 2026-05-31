@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Common.Tools.NerdbankGitVersioning;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IHasNerdbankGitVersioning : IFalloutBuild
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using static Fallout.Common.ChangeLog.ChangelogTasks;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IHasChangelog : IFalloutBuild
 {

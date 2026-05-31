@@ -12,7 +12,7 @@ using Fallout.Common.Utilities;
 using Octokit;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 [ParameterPrefix(GitHubRelease)]
 public interface ICreateGitHubRelease : IHasGitRepository, IHasChangelog

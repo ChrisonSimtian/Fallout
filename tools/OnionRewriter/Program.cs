@@ -16,17 +16,31 @@ return await Runner.RunAsync(args);
 
 static class Runner
 {
-    const string OldRoot = "Fallout.Common";
-    const string NewRoot = "Fallout.Application";
-    const string OldExt = "Fallout.Build.Execution.Extensions";
-    const string NewExt = "Fallout.Application.Execution.Extensions";
-    const string SourceAssembly = "Fallout.Build";
+    // A move rule: types declared in `SourceAssembly` under namespace `Old` (exact or `.`-prefixed) are
+    // moved to the corresponding `New` namespace. The rule table is the multi-rule map ADR-0006 step 4–5
+    // need — edit it per onion step (step 1 Domain and step 2 Application are already landed, so their
+    // rules are gone). Multiple rules may share a SourceAssembly; first matching rule wins for MapNs.
+    record struct Rule(string Old, string New, string SourceAssembly);
 
-    static bool IsMovable(string ns) => ns == OldRoot || ns.StartsWith(OldRoot + ".") || ns == OldExt || ns.StartsWith(OldExt + ".");
-    static string MapNs(string ns) =>
-        ns == OldRoot || ns.StartsWith(OldRoot + ".") ? NewRoot + ns[OldRoot.Length..]
-        : ns == OldExt || ns.StartsWith(OldExt + ".") ? NewExt + ns[OldExt.Length..]
-        : ns;
+    // Step 4a — Components → Application (the clean, isolated move; single namespace, no Tooling tangle).
+    static readonly Rule[] Rules =
+    [
+        new("Fallout.Components", "Fallout.Application.Components", "Fallout.Components"),
+    ];
+
+    static bool Matches(Rule r, string ns) => ns == r.Old || ns.StartsWith(r.Old + ".");
+    static bool IsMovable(string ns) => Rules.Any(r => Matches(r, ns));
+    static string MapNs(string ns)
+    {
+        foreach (var r in Rules)
+            if (Matches(r, ns)) return r.New + ns[r.Old.Length..];
+        return ns;
+    }
+    // Does assembly `asm` declare a type under namespace `ns` that a rule moves? (Gates moved-type
+    // membership and namespace-decl rewriting to the rule's own source assembly — a type with the same
+    // namespace in another assembly is NOT moved.)
+    static bool IsSourceFor(string asm, string ns) => Rules.Any(r => r.SourceAssembly == asm && Matches(r, ns));
+    static readonly HashSet<string> SourceAssemblies = Rules.Select(r => r.SourceAssembly).ToHashSet();
 
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static async Task<int> RunAsync(string[] args)
@@ -52,39 +66,56 @@ static class Runner
         var sln = ws.CurrentSolution;
         Console.WriteLine($"Loaded {sln.Projects.Count()} projects.");
 
-        // Moved types: declared in the source assembly under a movable namespace. Keyed by full name.
-        var sourceProject = sln.Projects.FirstOrDefault(p => p.AssemblyName == SourceAssembly);
-        if (sourceProject is null) { Console.Error.WriteLine($"FATAL: source project {SourceAssembly} not loaded."); return 1; }
-        var sourceComp = await sourceProject.GetCompilationAsync();
+        // Moved types: declared in a rule's source assembly under that rule's movable namespace. Keyed by
+        // full name. Collected across every source assembly (a step may move types out of several).
+        var sourceProjects = sln.Projects.Where(p => SourceAssemblies.Contains(p.AssemblyName)).ToList();
+        var missing = SourceAssemblies.Except(sourceProjects.Select(p => p.AssemblyName)).ToList();
+        if (missing.Count > 0) { Console.Error.WriteLine($"FATAL: source assemblies not loaded: {string.Join(", ", missing)}"); return 1; }
         var movedFullNames = new HashSet<string>();
-        void Collect(INamespaceSymbol nsSym)
+        foreach (var sp in sourceProjects)
         {
-            foreach (var t in nsSym.GetTypeMembers()) if (IsMovable(nsSym.ToDisplayString())) movedFullNames.Add($"{nsSym.ToDisplayString()}.{t.Name}");
-            foreach (var child in nsSym.GetNamespaceMembers()) Collect(child);
+            var asm = sp.AssemblyName;
+            var comp = await sp.GetCompilationAsync();
+            void Collect(INamespaceSymbol nsSym)
+            {
+                var ns = nsSym.ToDisplayString();
+                foreach (var t in nsSym.GetTypeMembers()) if (IsSourceFor(asm, ns)) movedFullNames.Add($"{ns}.{t.Name}");
+                foreach (var child in nsSym.GetNamespaceMembers()) Collect(child);
+            }
+            Collect(comp!.Assembly.GlobalNamespace);
         }
-        Collect(sourceComp!.Assembly.GlobalNamespace);
-        Console.WriteLine($"Moved types (declared in {SourceAssembly}, movable ns): {movedFullNames.Count}");
+        Console.WriteLine($"Moved types (declared in [{string.Join(", ", SourceAssemblies)}], movable ns): {movedFullNames.Count}");
 
         // Match by assembly NAME + the moved-type set (resolves correctly across projects — a referenced
         // project's assembly symbol is a different instance per compilation, so identity comparison fails
-        // cross-project). The pinned Consumer.NuGet/Nuke.Consumer projects also have a "Fallout.Build"
-        // assembly via their package, but those projects are skipped entirely in the document loop.
+        // cross-project). Pinned package consumers (Consumer.NuGet/Nuke.Consumer) may carry a source
+        // assembly via their published package, but those projects are skipped entirely in the doc loop.
+        // A nested type's ContainingNamespace is its enclosing NAMESPACE (not its outer type), so a member
+        // keyed by `{ns}.{Name}` would miss the moved-set (which holds top-level names only) and be
+        // misclassified as residual — adding a dangling `using` to a namespace this move evacuates. A
+        // nested type moves iff its OUTERMOST enclosing type moves, so classify by that top-level type.
         bool IsMovedType(INamedTypeSymbol t)
         {
-            var ns = t.OriginalDefinition.ContainingNamespace?.ToDisplayString() ?? "";
-            return t.OriginalDefinition.ContainingAssembly?.Name == SourceAssembly
-                && IsMovable(ns)
-                && movedFullNames.Contains($"{ns}.{t.OriginalDefinition.Name}");
+            var top = t.OriginalDefinition;
+            while (top.ContainingType is not null) top = top.ContainingType;
+            var ns = top.ContainingNamespace?.ToDisplayString() ?? "";
+            var asm = top.ContainingAssembly?.Name ?? "";
+            return IsSourceFor(asm, ns)
+                && movedFullNames.Contains($"{ns}.{top.Name}");
         }
 
-        // Movable namespaces still declared OUTSIDE the source project (so they survive the move). A
+        // Movable namespaces still declared OUTSIDE every source project (so they survive the move). A
         // movable `using` whose namespace is NOT here is evacuated and must be dropped even if the file
         // referenced its types only via inference (no explicit type name).
+        var sourceDirs = sourceProjects
+            .Where(p => p.FilePath is not null)
+            .Select(p => Path.GetDirectoryName(p.FilePath)! + Path.DirectorySeparatorChar)
+            .ToList();
         var survivingMovableNs = new HashSet<string>();
         foreach (var f in Directory.EnumerateFiles(Path.Combine(repo, "src"), "*.cs", SearchOption.AllDirectories))
         {
             if (f.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") || f.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")) continue;
-            if (f.StartsWith(Path.Combine(repo, "src", "Fallout.Build") + Path.DirectorySeparatorChar, StringComparison.Ordinal)) continue;
+            if (sourceDirs.Any(d => f.StartsWith(d, StringComparison.Ordinal))) continue;
             foreach (var n in CSharpSyntaxTree.ParseText(File.ReadAllText(f)).GetRoot().DescendantNodes().OfType<BaseNamespaceDeclarationSyntax>())
             {
                 var ns = n.Name.ToString();
@@ -97,7 +128,7 @@ static class Runner
 
         foreach (var project in sln.Projects)
         {
-            var isSource = project.AssemblyName == SourceAssembly;
+            var isSource = SourceAssemblies.Contains(project.AssemblyName);
             foreach (var doc in project.Documents)
             {
                 if (doc.FilePath is null || !doc.FilePath.EndsWith(".cs") || doc.FilePath.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}")) continue;

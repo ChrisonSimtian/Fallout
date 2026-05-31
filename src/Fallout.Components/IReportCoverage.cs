@@ -12,7 +12,7 @@ using static Fallout.Common.Tools.Codecov.CodecovTasks;
 using static Fallout.Common.Tools.ReportGenerator.ReportGeneratorTasks;
 using Fallout.Application;
 
-namespace Fallout.Components;
+namespace Fallout.Application.Components;
 
 public interface IReportCoverage : ITest, IHasReports, IHasGitRepository
 {
