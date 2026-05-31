@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Fallout.Application;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public class PartitionAttribute : ParameterAttribute
 {

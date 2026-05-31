@@ -10,6 +10,7 @@ using Fallout.Common.Tools.MSBuild;
 using Fallout.Common.Tools.NuGet;
 using Fallout.Common.Tools.SignTool;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+using Fallout.Application;
 
 namespace Fallout.Cli.Rewriting.Cake;
 

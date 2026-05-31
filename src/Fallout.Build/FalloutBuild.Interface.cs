@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.Execution;
+using Fallout.Application.ValueInjection;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 public abstract partial class FalloutBuild
 {

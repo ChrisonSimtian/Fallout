@@ -7,8 +7,9 @@ using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Serilog;
 using static Fallout.Common.Utilities.ReflectionUtility;
+using Fallout.Common;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 internal partial class ParameterService
 {

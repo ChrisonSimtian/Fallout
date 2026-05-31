@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Common.Tooling;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
 
 namespace Fallout.Common.Tools.MinVer;
 

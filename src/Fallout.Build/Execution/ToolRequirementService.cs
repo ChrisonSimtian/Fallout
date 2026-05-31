@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -6,8 +6,10 @@ using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Serilog;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal static class ToolRequirementService
 {

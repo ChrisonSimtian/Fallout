@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 [Serializable]
 internal class TargetExecutionException : Exception

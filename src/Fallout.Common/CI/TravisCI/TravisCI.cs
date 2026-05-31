@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Fallout.Application;
+using Fallout.Application.CI;
 
 namespace Fallout.Common.CI.TravisCI;
 

@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using Fallout.Common.Utilities;
+using Fallout.Application.Utilities;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public abstract class ConfigurationEntity
 {

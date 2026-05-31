@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Common.Git;
+using Fallout.Application;
+using Fallout.Application.Git;
 
 namespace Fallout.Components;
 

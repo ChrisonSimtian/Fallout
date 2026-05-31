@@ -3,8 +3,10 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
 using Serilog;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.ValueInjection;
+namespace Fallout.Application.ValueInjection;
 
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
 public abstract class ValueInjectionAttributeBase : Attribute

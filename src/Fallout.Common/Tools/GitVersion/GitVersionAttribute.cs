@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.Git;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
 using Serilog;
-using static Fallout.Common.ControlFlow;
+using static Fallout.Application.ControlFlow;
+using Fallout.Application;
+using Fallout.Application.ValueInjection;
+using Fallout.Application.Git;
 
 namespace Fallout.Common.Tools.GitVersion;
 

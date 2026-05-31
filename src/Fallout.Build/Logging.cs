@@ -1,9 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI;
-using Fallout.Common.Execution.Theming;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
@@ -12,8 +10,13 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
 using Serilog.Sinks.SystemConsole.Themes;
+using Fallout.Application.Execution.Theming;
+using Fallout.Application;
+using Fallout.Application.CI;
+using Fallout.Application.Execution;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 public static class Logging
 {

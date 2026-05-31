@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Fallout.Common.IO;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal class HandleVisualStudioDebuggingAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {

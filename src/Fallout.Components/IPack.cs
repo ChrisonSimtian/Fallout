@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using Fallout.Application;
 
 namespace Fallout.Components;
 

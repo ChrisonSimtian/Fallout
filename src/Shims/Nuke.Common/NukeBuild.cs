@@ -1,3 +1,4 @@
+using Fallout.Application;
 // The TransitionShimGenerator handles namespace prefix swaps (Fallout.* -> Nuke.*)
 // but cannot rename types. NukeBuild -> FalloutBuild and INukeBuild ->
 // IFalloutBuild were renamed during the rebrand (#59), so we hand-write those
@@ -9,13 +10,13 @@ namespace Nuke.Common;
 /// <summary>
 /// Transition shim. Inherits from <see cref="Fallout.Common.FalloutBuild"/>.
 /// </summary>
-public abstract class NukeBuild : Fallout.Common.FalloutBuild
+public abstract class NukeBuild : Fallout.Application.FalloutBuild
 {
 }
 
 /// <summary>
 /// Transition shim. Extends <see cref="Fallout.Common.IFalloutBuild"/>.
 /// </summary>
-public interface INukeBuild : Fallout.Common.IFalloutBuild
+public interface INukeBuild : Fallout.Application.IFalloutBuild
 {
 }

@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Fallout.Common.CI;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
+using Fallout.Application;
+using Fallout.Application.CI;
+using Fallout.Common;
 
-namespace Fallout.Common.Git;
+namespace Fallout.Application.Git;
 
 public enum GitProtocol
 {

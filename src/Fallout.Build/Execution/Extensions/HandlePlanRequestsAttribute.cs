@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.Execution;
 
-namespace Fallout.Build.Execution.Extensions;
+namespace Fallout.Application.Execution.Extensions;
 
 internal class HandlePlanRequestsAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {

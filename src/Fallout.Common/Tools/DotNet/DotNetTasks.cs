@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Common.Tooling;
 using Serilog.Events;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.Tools.DotNet;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Utilities.Collections;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 public class UnsetVisualStudioEnvironmentVariablesAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {

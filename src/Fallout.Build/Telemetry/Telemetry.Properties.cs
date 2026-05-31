@@ -1,17 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Fallout.Common.CI;
-using Fallout.Common.Git;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using Fallout.Common.ValueInjection;
+using Fallout.Application;
+using Fallout.Application.Git;
+using Fallout.Application.ValueInjection;
+using Fallout.Application.CI;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal partial class Telemetry
 {

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common.CI;
+using Fallout.Application.CI;
 
 namespace Fallout.Common.Tests.CI;
 

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using NuGet.Versioning;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
 
 namespace Fallout.Common.Tooling;
 

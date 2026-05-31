@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
-using static Fallout.Common.CI.BuildServerConfigurationGeneration;
+using static Fallout.Application.CI.BuildServerConfigurationGeneration;
+using Fallout.Application;
+using Fallout.Application.Utilities;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 [AttributeUsage(AttributeTargets.Class)]
 public abstract class ConfigurationAttributeBase : Attribute, IConfigurationGenerator

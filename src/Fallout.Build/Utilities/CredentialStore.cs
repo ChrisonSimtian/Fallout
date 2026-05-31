@@ -1,8 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using Fallout.Common.Tooling;
+using Fallout.Application;
+using Fallout.Common;
+using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Application.Utilities;
 
 public static class CredentialStore
 {

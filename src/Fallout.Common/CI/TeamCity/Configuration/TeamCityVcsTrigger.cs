@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Fallout.Common.Utilities;
+using Fallout.Application.Utilities;
 
 namespace Fallout.Common.CI.TeamCity.Configuration;
 

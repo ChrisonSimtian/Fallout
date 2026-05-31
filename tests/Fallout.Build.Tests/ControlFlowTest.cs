@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
+using Fallout.Application;
 
 // ReSharper disable ArgumentsStyleLiteral
 

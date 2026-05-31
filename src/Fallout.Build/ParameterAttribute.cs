@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 /// <summary>
 ///     Injected parameters are resolved case-insensitively in the following order:

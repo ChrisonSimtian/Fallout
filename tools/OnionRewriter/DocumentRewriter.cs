@@ -9,7 +9,8 @@ static class DocumentRewriter
 
     public static (SyntaxNode Root, Counts Counts) Rewrite(
         SyntaxNode root, SemanticModel model, bool isSource,
-        Func<string, bool> isMovable, Func<string, string> mapNs, Func<INamedTypeSymbol, bool> isMoved)
+        Func<string, bool> isMovable, Func<string, string> mapNs, Func<INamedTypeSymbol, bool> isMoved,
+        HashSet<string> surviving)
     {
         var cu = (CompilationUnitSyntax)root;
 
@@ -19,7 +20,15 @@ static class DocumentRewriter
         var usedResidualMovableNs = new HashSet<string>(); // old movable namespaces still needed (residual types)
         foreach (var name in cu.DescendantNodes().OfType<SimpleNameSyntax>())
         {
-            if (model.GetSymbolInfo(name).Symbol is not INamedTypeSymbol t) continue;   // only type-position binds
+            // Type-position binds to a type symbol; an attribute/`new` binds to its constructor; an
+            // extension call (x.NotNull()) binds to the reduced method — take the declaring type in each
+            // case so attributes AND extension-method imports (often same-namespace siblings a moved file
+            // loses) are counted.
+            var sym = model.GetSymbolInfo(name).Symbol;
+            var t = sym as INamedTypeSymbol
+                ?? (sym is IMethodSymbol { MethodKind: MethodKind.Constructor } ctor ? ctor.ContainingType : null)
+                ?? (sym is IMethodSymbol { IsExtensionMethod: true } ext ? (ext.ReducedFrom ?? ext).ContainingType : null);
+            if (t is null) continue;
             var ns = t.OriginalDefinition.ContainingNamespace?.ToDisplayString() ?? "";
             if (!isMovable(ns)) continue;
             if (isMoved(t)) { usedMovedNewNs.Add(mapNs(ns)); usedMovedOldNs.Add(ns); }
@@ -44,15 +53,22 @@ static class DocumentRewriter
             var name = u.Name?.ToString();
             if (u.StaticKeyword.IsKind(SyntaxKind.None) && u.Alias is null && name != null && isMovable(name))
             {
-                // Drop only `using`s orphaned BY THE MOVE — i.e. a moved type was imported from here and
-                // no residual type still is. Leave pre-existing unused usings alone (not our concern).
-                if (usedMovedOldNs.Contains(name) && !usedResidualMovableNs.Contains(name)) dropped++;
+                // Drop a movable `using` when its namespace is fully evacuated (no residual declarations
+                // anywhere — would otherwise dangle), OR when a moved type was imported from here and no
+                // residual type still is. Otherwise keep (residual still used, or a pre-existing unused
+                // using of a surviving namespace — not our concern).
+                var evacuated = !surviving.Contains(name);
+                if (evacuated || (usedMovedOldNs.Contains(name) && !usedResidualMovableNs.Contains(name))) dropped++;
                 else keep.Add(u);
             }
             else keep.Add(u);  // static/alias usings get their type names remapped in Stage 1
         }
         int added = 0;
-        foreach (var ns in usedMovedNewNs)
+        // Moved types → new-namespace usings. Plus, for SOURCE files that change namespace: residual
+        // movable-namespace types they used to see as same-namespace siblings now need an explicit
+        // `using` (e.g. ParameterService leaving Fallout.Common still uses Utilities' ArgumentParser).
+        var toAdd = isSource ? usedMovedNewNs.Concat(usedResidualMovableNs) : usedMovedNewNs;
+        foreach (var ns in toAdd.Distinct())
         {
             if (ownNs.Contains(ns)) continue;
             if (keep.Any(u => u.StaticKeyword.IsKind(SyntaxKind.None) && u.Alias is null && u.Name?.ToString() == ns)) continue;
@@ -88,8 +104,14 @@ static class DocumentRewriter
             if (symbol != null && isMoved(symbol))
             {
                 var ns = symbol.OriginalDefinition.ContainingNamespace!.ToDisplayString();
-                Refs++;
-                return visited.WithLeft(ParseName(mapNs(ns)).WithTriviaFrom(visited.Left));
+                // Only remap when Left is EXACTLY the namespace (direct `Namespace.Type`). For a nested
+                // ref (`Namespace.Outer.Nested`), Left includes the outer type — leave it to the inner
+                // QualifiedName visit, which remaps just the namespace and preserves the outer qualifier.
+                if (node.Left.ToString() == ns)
+                {
+                    Refs++;
+                    return visited.WithLeft(ParseName(mapNs(ns)).WithTriviaFrom(visited.Left));
+                }
             }
             return visited;
         }

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Git;
+namespace Fallout.Application.Git;
 
 public static class GitRepositoryExtensions
 {

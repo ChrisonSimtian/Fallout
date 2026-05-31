@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.CI;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using static Fallout.Common.Constants;
+using Fallout.Application.CI;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal class HandleShellCompletionAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {

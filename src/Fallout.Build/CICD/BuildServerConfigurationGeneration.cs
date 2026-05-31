@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
+using Fallout.Application;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public static class BuildServerConfigurationGeneration
 {

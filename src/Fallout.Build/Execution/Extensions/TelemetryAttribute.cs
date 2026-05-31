@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal class TelemetryAttribute : BuildExtensionAttributeBase, IOnBuildInitialized, IOnTargetSucceeded
 {

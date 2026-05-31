@@ -1,10 +1,6 @@
-//
-// Fallout consumer against this repo's local source. Catches breakage of the
-// public Fallout surface in the current PR.
-
-using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Solutions;  // was Fallout.Common.ProjectModel; — renamed in #254 (persistence layering + namespace cleanup)
+using Fallout.Application;
 
 class Build : FalloutBuild
 {

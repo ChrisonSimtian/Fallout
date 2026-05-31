@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 [TypeConverter(typeof(TypeConverter))]
 public class Partition

@@ -10,10 +10,13 @@ using System.Text.Json.Nodes;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
 using static Fallout.Common.Constants;
+using Fallout.Application;
+using Fallout.Application.ValueInjection;
+using Fallout.Common;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 /// <summary>
 /// Generates a draft-04 JSON Schema for a build's <c>[Parameter]</c>-attributed members so editors

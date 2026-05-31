@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common;
-using Fallout.Common.Git;
 using Fallout.Common.IO;
 using Fallout.Solutions;
 using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using Fallout.Utilities.Text.Yaml;
-using static Fallout.Common.ControlFlow;
+using static Fallout.Application.ControlFlow;
 using static Fallout.Common.Tools.Git.GitTasks;
+using Fallout.Application;
+using Fallout.Application.Git;
 
 partial class Build
 {

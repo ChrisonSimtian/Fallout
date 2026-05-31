@@ -15,6 +15,7 @@ using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities;
+using Fallout.Application.Git;
 
 namespace Nuke.Common.Shim.Tests;
 
@@ -30,7 +31,7 @@ public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
     [Secret] readonly string NuGetApiKey;
     [Solution] readonly Fallout.Solutions.Solution Solution;
     [Solution("path/to/explicit.slnx")] readonly Fallout.Solutions.Solution ExplicitSolution;
-    [GitRepository] readonly Fallout.Common.Git.GitRepository GitRepository;
+    [GitRepository] readonly Fallout.Application.Git.GitRepository GitRepository;
 
     // CI-host shims expose only the static `Instance` accessor. Consumers can
     // still chain into instance members because the returned type is canonical.

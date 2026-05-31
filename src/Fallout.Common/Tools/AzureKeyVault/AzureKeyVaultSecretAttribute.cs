@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
+using Fallout.Application;
 
 namespace Fallout.Common.Tools.AzureKeyVault
 {

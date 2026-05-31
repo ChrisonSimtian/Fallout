@@ -7,6 +7,7 @@ using Fallout.Common;
 using Fallout.Common.IO;
 using Serilog;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+using Fallout.Application;
 
 namespace Fallout.Cli.Rewriting.Cake;
 

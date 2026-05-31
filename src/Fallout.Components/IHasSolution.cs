@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Solutions;
+using Fallout.Application;
 
 namespace Fallout.Components;
 

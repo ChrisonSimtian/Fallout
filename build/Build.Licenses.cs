@@ -1,4 +1,3 @@
-﻿using Fallout.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +5,7 @@ using Fallout.Common.IO;
 using Fallout.Components;
 using Serilog;
 using static Fallout.Common.IO.HttpTasks;
+using Fallout.Application;
 
 partial class Build
 {

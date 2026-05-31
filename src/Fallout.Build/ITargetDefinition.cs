@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 /// <summary>
 ///   Public API for defining targets.

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public interface IConfigurationGenerator
 {

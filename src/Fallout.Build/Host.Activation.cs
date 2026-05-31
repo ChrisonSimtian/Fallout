@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities;
+using Fallout.Application.Execution;
+using Fallout.Common;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 public partial class Host
 {

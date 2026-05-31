@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 [AttributeUsage(AttributeTargets.Property)]
 public class NoConvertAttribute : Attribute

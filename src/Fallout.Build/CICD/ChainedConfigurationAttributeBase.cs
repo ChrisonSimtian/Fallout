@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.Execution;
+using Fallout.Common;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public abstract class ChainedConfigurationAttributeBase : ConfigurationAttributeBase
 {

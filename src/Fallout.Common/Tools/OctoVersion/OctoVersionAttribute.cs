@@ -1,14 +1,15 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.TeamCity;
-using Fallout.Common.Git;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
+using Fallout.Application.Git;
+using Fallout.Application;
 
 namespace Fallout.Common.Tools.OctoVersion;
 

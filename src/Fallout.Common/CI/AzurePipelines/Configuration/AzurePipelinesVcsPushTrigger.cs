@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using Fallout.Common.Utilities;
+using System.Collections.Generic;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.CI;
+using Fallout.Application.Utilities;
 
 namespace Fallout.Common.CI.AzurePipelines.Configuration;
 

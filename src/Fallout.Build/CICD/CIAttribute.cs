@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
 public class CIAttribute : ValueInjectionAttributeBase

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Fallout.Common;
 using Fallout.Solutions;
 using VerifyXunit;
 using Xunit;
+using Fallout.Application;
 
 namespace Fallout.SourceGenerators.Tests;
 

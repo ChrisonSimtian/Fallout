@@ -2,6 +2,8 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Common.Utilities;
+using Fallout.Application.CI;
+using Fallout.Application;
 
 namespace Fallout.Common.CI.GitLab;
 

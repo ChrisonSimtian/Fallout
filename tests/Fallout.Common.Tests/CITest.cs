@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using Fallout.Common.CI;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.Bitrise;
@@ -13,6 +12,7 @@ using Fallout.Common.CI.Jenkins;
 using Fallout.Common.CI.TeamCity;
 using Fallout.Common.CI.TravisCI;
 using Xunit;
+using Fallout.Application.CI;
 
 namespace Fallout.Common.Tests;
 

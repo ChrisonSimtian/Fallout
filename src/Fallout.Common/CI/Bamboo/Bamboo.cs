@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
+using Fallout.Application.CI;
+using Fallout.Application;
 
 namespace Fallout.Common.CI.Bamboo;
 

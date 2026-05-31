@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common.Execution;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 internal class SerializeBuildServerStateAttribute : BuildServerConfigurationGenerationAttributeBase, IOnBuildFinished
 {

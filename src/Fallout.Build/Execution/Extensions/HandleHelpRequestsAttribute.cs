@@ -4,9 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
+using Fallout.Application;
+using Fallout.Application.ValueInjection;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal class HandleHelpRequestsAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {

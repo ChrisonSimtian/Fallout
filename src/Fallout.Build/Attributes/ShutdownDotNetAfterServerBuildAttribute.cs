@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.Tooling;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 /// <summary>
 ///   See <a href="https://github.com/dotnet/cli/issues/11424">dotnet/cli#11424</a>.

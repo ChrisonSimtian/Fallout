@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
 
-namespace Fallout.Common.Execution.Theming;
+namespace Fallout.Application.Execution.Theming;
 
 public interface IHostTheme
 {

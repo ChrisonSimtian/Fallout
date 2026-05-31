@@ -1,4 +1,4 @@
-﻿using Fallout.Common.Tooling;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Common.Tools.NUnit;
 

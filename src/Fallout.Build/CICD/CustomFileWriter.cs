@@ -1,8 +1,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Application.Utilities;
 
 public class CustomFileWriter
 {

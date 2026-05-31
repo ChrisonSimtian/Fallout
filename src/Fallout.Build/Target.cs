@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 /// <summary>
 /// Defines a target.

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -6,6 +6,7 @@ using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Spectre.Console;
+using Fallout.Application;
 
 namespace Fallout.Cli;
 

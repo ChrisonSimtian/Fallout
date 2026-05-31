@@ -7,9 +7,10 @@ using System.Reflection;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
 using Fallout.Domain.Execution;
+using Fallout.Application;
 // ReSharper disable MissingBaseTypeHighlighting
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 [DebuggerDisplay($"{{{nameof(Name)}}} ({{{nameof(Status)}}})")]
 public class ExecutableTarget : ITargetModel

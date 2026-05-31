@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
@@ -12,6 +11,8 @@ using Serilog;
 using Serilog.Formatting.Compact.Reader;
 using static Fallout.Common.Tools.Docker.DockerTasks;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using Fallout.Application;
+using Fallout.Application.Execution;
 
 namespace Fallout.Common.Tools.Docker;
 

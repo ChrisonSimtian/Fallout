@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.Execution;
+using Fallout.Application;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public class BuildServerConfigurationGenerationAttributeBase : BuildExtensionAttributeBase
 {

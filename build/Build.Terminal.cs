@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common;
-using Fallout.Common.Execution;
+using Fallout.Application.Execution;
+using Fallout.Application;
 
 [DisableDefaultOutput<Terminal>(
     DefaultOutput.Logo,

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using NuGet.Versioning;
-using Fallout.Common.Git;
 using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
+using Fallout.Application.Git;
 
 namespace Fallout.Common.Tooling;
 

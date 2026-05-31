@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.CI.TeamCity;
@@ -14,6 +13,7 @@ using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using Fallout.Application;
 
 namespace Fallout.Components;
 

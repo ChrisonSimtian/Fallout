@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.CI.BuildServerConfigurationGeneration;
+using static Fallout.Application.CI.BuildServerConfigurationGeneration;
+using Fallout.Application.Execution;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public class GenerateBuildServerConfigurationsAttribute
     : BuildServerConfigurationGenerationAttributeBase, IOnBuildCreated

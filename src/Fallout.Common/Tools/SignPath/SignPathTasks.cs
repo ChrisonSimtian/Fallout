@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -11,7 +11,8 @@ using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Serilog;
-using static Fallout.Common.ControlFlow;
+using static Fallout.Application.ControlFlow;
+using Fallout.Application;
 
 namespace Fallout.Common.Tools.SignPath;
 

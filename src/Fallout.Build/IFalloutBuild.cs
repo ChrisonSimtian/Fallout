@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Fallout.Common.CI;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
+using Fallout.Application.Execution;
+using Fallout.Application.CI;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 public interface IFalloutBuild
 {

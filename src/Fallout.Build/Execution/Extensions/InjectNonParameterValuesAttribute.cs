@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities;
+using Fallout.Application.Execution;
+using Fallout.Application;
 
-namespace Fallout.Common.ValueInjection;
+namespace Fallout.Application.ValueInjection;
 
 internal class InjectNonParameterValuesAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {

@@ -1,13 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Serilog;
-using static Fallout.Common.CI.BuildServerConfigurationGeneration;
+using static Fallout.Application.CI.BuildServerConfigurationGeneration;
+using Fallout.Application.Execution;
+using Fallout.Application;
 
-namespace Fallout.Common.CI;
+namespace Fallout.Application.CI;
 
 public class InvokeBuildServerConfigurationGenerationAttribute
     : BuildServerConfigurationGenerationAttributeBase, IOnBuildCreated

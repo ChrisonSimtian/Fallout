@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,9 +10,11 @@ using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Fallout.Domain.Execution;
 using Serilog;
+using Fallout.Application;
+using Fallout.Application.Tooling;
 #pragma warning disable CA2255
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal static class BuildManager
 {

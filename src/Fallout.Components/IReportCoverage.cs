@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
@@ -11,6 +10,7 @@ using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.Tools.Codecov.CodecovTasks;
 using static Fallout.Common.Tools.ReportGenerator.ReportGeneratorTasks;
+using Fallout.Application;
 
 namespace Fallout.Components;
 

@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Common.Git;
 using Fallout.Common.IO;
 using Fallout.Common.Tools.GitHub;
 using Xunit;
+using Fallout.Application.Git;
 
 namespace Fallout.Common.Tests;
 

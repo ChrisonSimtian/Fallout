@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
@@ -9,6 +9,8 @@ using Fallout.Common.Tools.DotCover;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
+using Fallout.Application;
+using Fallout.Application.CI;
 
 namespace Fallout.Common.CI.TeamCity;
 

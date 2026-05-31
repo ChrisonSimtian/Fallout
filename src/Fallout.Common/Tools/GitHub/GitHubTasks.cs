@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common.Git;
 using Fallout.Common.Utilities;
 using Octokit;
 using static Fallout.Common.IO.PathConstruction;
+using Fallout.Application;
+using Fallout.Application.Git;
 
 namespace Fallout.Common.Tools.GitHub;
 

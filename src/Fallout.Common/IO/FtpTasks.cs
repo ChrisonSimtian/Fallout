@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using Serilog;
+using Fallout.Application;
 #pragma warning disable SYSLIB0014
 
 namespace Fallout.Common.IO;

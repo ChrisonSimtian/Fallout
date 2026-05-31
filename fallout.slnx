@@ -41,13 +41,15 @@
   <Project Path="tests\Fallout.Cli.Tests\Fallout.Cli.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Tests\Fallout.Migrate.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Analyzers.Tests\Fallout.Migrate.Analyzers.Tests.csproj" />
-  <Project Path="tests\Nuke.Common.Shim.Tests\Nuke.Common.Shim.Tests.csproj" />
+  <!-- Temporarily excluded during the onion realignment (ADR-0006): these exercise the Nuke.* shim
+       surface, which lapses while the rings land. Re-added when the migration/shim strategy is
+       redesigned for the final shape. -->
   <Project Path="tests\Nuke.Components.Shim.Tests\Nuke.Components.Shim.Tests.csproj" />
   <Project Path="tests\Fallout.ProjectModel.Tests\Fallout.ProjectModel.Tests.csproj" />
   <Project Path="tests\Fallout.Solution.Tests\Fallout.Solution.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />
   <Project Path="tests\Benchmarks\Fallout.Persistence.Solution.Benchmarks\Fallout.Persistence.Solution.Benchmarks.csproj" />
-  <Project Path="tests\Consumers\Nuke.Consumer\Nuke.Consumer.csproj" />
+  <!-- Nuke.Consumer excluded during the onion realignment (ADR-0006) — consumes the lapsing Nuke.* shim. -->
   <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.NuGet\Fallout.Consumer.NuGet.csproj" />
   <Project Path="tests\Fallout.Tooling.Tests\Fallout.Tooling.Tests.csproj" />

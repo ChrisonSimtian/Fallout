@@ -1,21 +1,22 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Build.Execution.Extensions;
-using Fallout.Common.CI;
-using Fallout.Common.Execution;
 using Fallout.Domain.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
-using Fallout.Common.ValueInjection;
 using static Fallout.Common.Constants;
+using Fallout.Application.Execution;
+using Fallout.Application.ValueInjection;
+using Fallout.Application.CI;
+using Fallout.Application.Execution.Extensions;
+using Fallout.Common;
 
 // ReSharper disable VirtualMemberNeverOverridden.Global
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 /// <summary>
 /// Base class for build definitions. Derived types must declare <c>static int Main</c> which calls

@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Fallout.Common.Utilities;
+using Fallout.Common;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 internal partial class ParameterService
 {

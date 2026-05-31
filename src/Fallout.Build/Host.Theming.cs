@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
-using Fallout.Common.Execution;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 public partial class Host
 {

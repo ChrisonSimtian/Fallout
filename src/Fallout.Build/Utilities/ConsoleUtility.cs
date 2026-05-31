@@ -2,8 +2,11 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using Fallout.Application;
+using Fallout.Common;
+using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Utilities;
+namespace Fallout.Application.Utilities;
 
 public class ConsoleUtility
 {

@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.CI;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.Constants;
+using Fallout.Application.Execution;
+using Fallout.Application.CI;
+using Fallout.Common;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 public abstract partial class FalloutBuild
 {

@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
+using Fallout.Application.Execution;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 [EventInvoker(Priority = float.MinValue)]
 public abstract partial class FalloutBuild

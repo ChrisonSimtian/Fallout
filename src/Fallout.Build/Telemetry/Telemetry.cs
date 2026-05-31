@@ -1,13 +1,15 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Fallout.Common.IO;
 using Fallout.Solutions;
 using Fallout.Common.Utilities;
-using static Fallout.Common.ControlFlow;
+using static Fallout.Application.ControlFlow;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 internal static partial class Telemetry
 {

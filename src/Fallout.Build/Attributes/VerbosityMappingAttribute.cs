@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Application.Execution;
+using Fallout.Application;
+using Fallout.Common;
+using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tooling;
+namespace Fallout.Application.Tooling;
 
 public class VerbosityMappingAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {

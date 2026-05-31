@@ -6,6 +6,7 @@ using Fallout.Common.IO;
 using Fallout.Common.Utilities.Collections;
 using Xunit;
 using static Fallout.Common.Utilities.ReflectionUtility;
+using Fallout.Application;
 
 namespace Fallout.Common.Tests;
 

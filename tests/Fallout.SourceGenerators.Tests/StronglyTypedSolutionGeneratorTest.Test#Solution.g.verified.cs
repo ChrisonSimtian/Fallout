@@ -47,10 +47,8 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Soluti
     public Fallout.Solutions.Project Fallout_Utilities_Text_Yaml => this.GetProject("Fallout.Utilities.Text.Yaml");
     public Fallout.Solutions.Project Nuke_Build => this.GetProject("Nuke.Build");
     public Fallout.Solutions.Project Nuke_Common => this.GetProject("Nuke.Common");
-    public Fallout.Solutions.Project Nuke_Common_Shim_Tests => this.GetProject("Nuke.Common.Shim.Tests");
     public Fallout.Solutions.Project Nuke_Components => this.GetProject("Nuke.Components");
     public Fallout.Solutions.Project Nuke_Components_Shim_Tests => this.GetProject("Nuke.Components.Shim.Tests");
-    public Fallout.Solutions.Project Nuke_Consumer => this.GetProject("Nuke.Consumer");
 
     public _misc misc => Unsafe.As<_misc>(this.GetSolutionFolder("misc"));
 

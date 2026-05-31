@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Fallout.Common.Utilities;
 using Serilog;
+using Fallout.Common;
 #pragma warning disable CS0618
 
 // ReSharper disable CompareNonConstrainedGenericWithNull
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 [DebuggerNonUserCode]
 [DebuggerStepThrough]

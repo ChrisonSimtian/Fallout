@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
+using Fallout.Application;
+using Fallout.Application.CI;
 
 namespace Fallout.Common.CI.AppVeyor;
 // 

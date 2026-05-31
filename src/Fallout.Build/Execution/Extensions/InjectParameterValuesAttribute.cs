@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.Execution;
+using Fallout.Application.Execution;
+using Fallout.Application;
 
-namespace Fallout.Common.ValueInjection;
+namespace Fallout.Application.ValueInjection;
 
 internal class InjectParameterValuesAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {

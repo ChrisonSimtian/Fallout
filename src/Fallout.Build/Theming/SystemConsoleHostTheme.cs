@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Fallout.Common.Utilities;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
-namespace Fallout.Common.Execution.Theming;
+namespace Fallout.Application.Execution.Theming;
 
 public class SystemConsoleHostTheme : SystemConsoleTheme, IHostTheme
 {

@@ -3,6 +3,7 @@ using Fallout.Common;
 using Fallout.Common.Tools.Docker;
 using Fallout.Common.Utilities;
 using Serilog;
+using Fallout.Application;
 
 partial class Build
 {

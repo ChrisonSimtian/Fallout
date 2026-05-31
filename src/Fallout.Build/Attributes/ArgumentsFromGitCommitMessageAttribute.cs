@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common.CI;
-using Fallout.Common.Git;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
+using Fallout.Application.CI;
+using Fallout.Application.Git;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 public class ArgumentsFromGitCommitMessageAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {

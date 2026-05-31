@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +10,7 @@ using Fallout.Common.Utilities;
 using Fallout.Utilities.Text.Yaml;
 using Serilog;
 using Serilog.Events;
+using Fallout.Application;
 
 namespace Fallout.Common.Tools.Unity;
 

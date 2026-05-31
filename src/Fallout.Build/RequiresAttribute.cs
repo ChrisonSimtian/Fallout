@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Tooling;
+using Fallout.Common;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 public abstract class RequiresAttribute : Attribute
 {

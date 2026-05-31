@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common;
+namespace Fallout.Application;
 
 partial class FalloutBuild
 {

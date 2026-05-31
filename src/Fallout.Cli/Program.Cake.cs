@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Fallout.Common;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Solutions;
 using Fallout.Common.Tooling;
@@ -12,6 +11,8 @@ using Fallout.Common.Utilities;
 using Fallout.Cli.Rewriting.Cake;
 using static Fallout.Common.Constants;
 using static Fallout.Common.EnvironmentInfo;
+using Fallout.Application.Execution;
+using Fallout.Application;
 
 namespace Fallout.Cli;
 

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common.ValueInjection;
+using Fallout.Application.ValueInjection;
+using Fallout.Application.Git;
 
 namespace Fallout.Common.Git;
 

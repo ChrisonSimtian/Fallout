@@ -1,6 +1,8 @@
 using System.Runtime.CompilerServices;
 using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 // OnionRewriter (semantic) — ADR-0006. Moves every type declared in a source project out of an old
 // namespace prefix into a new one, and fixes references across the whole workspace by the symbol each
@@ -63,10 +65,31 @@ static class Runner
         Collect(sourceComp!.Assembly.GlobalNamespace);
         Console.WriteLine($"Moved types (declared in {SourceAssembly}, movable ns): {movedFullNames.Count}");
 
+        // Match by assembly NAME + the moved-type set (resolves correctly across projects — a referenced
+        // project's assembly symbol is a different instance per compilation, so identity comparison fails
+        // cross-project). The pinned Consumer.NuGet/Nuke.Consumer projects also have a "Fallout.Build"
+        // assembly via their package, but those projects are skipped entirely in the document loop.
         bool IsMovedType(INamedTypeSymbol t)
         {
             var ns = t.OriginalDefinition.ContainingNamespace?.ToDisplayString() ?? "";
-            return t.OriginalDefinition.ContainingAssembly?.Name == SourceAssembly && IsMovable(ns) && movedFullNames.Contains($"{ns}.{t.OriginalDefinition.Name}");
+            return t.OriginalDefinition.ContainingAssembly?.Name == SourceAssembly
+                && IsMovable(ns)
+                && movedFullNames.Contains($"{ns}.{t.OriginalDefinition.Name}");
+        }
+
+        // Movable namespaces still declared OUTSIDE the source project (so they survive the move). A
+        // movable `using` whose namespace is NOT here is evacuated and must be dropped even if the file
+        // referenced its types only via inference (no explicit type name).
+        var survivingMovableNs = new HashSet<string>();
+        foreach (var f in Directory.EnumerateFiles(Path.Combine(repo, "src"), "*.cs", SearchOption.AllDirectories))
+        {
+            if (f.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") || f.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")) continue;
+            if (f.StartsWith(Path.Combine(repo, "src", "Fallout.Build") + Path.DirectorySeparatorChar, StringComparison.Ordinal)) continue;
+            foreach (var n in CSharpSyntaxTree.ParseText(File.ReadAllText(f)).GetRoot().DescendantNodes().OfType<BaseNamespaceDeclarationSyntax>())
+            {
+                var ns = n.Name.ToString();
+                if (IsMovable(ns)) survivingMovableNs.Add(ns);
+            }
         }
 
         int filesChanged = 0, refsRewritten = 0, usingsAdded = 0, usingsDropped = 0, nsDecls = 0;
@@ -78,11 +101,15 @@ static class Runner
             foreach (var doc in project.Documents)
             {
                 if (doc.FilePath is null || !doc.FilePath.EndsWith(".cs") || doc.FilePath.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}")) continue;
+                // Package consumers (Consumer.NuGet, Nuke.Consumer) compile against the PUBLISHED package,
+                // which still has the old namespaces — the local rename must not touch them. (Consumer.Local
+                // references the local source and IS migrated.)
+                if (doc.FilePath.Contains("Consumer.NuGet") || doc.FilePath.Contains("Nuke.Consumer")) continue;
                 var model = await doc.GetSemanticModelAsync();
                 var root = await doc.GetSyntaxRootAsync();
                 if (model is null || root is null) continue;
 
-                var (newRoot, c) = DocumentRewriter.Rewrite(root, model, isSource, IsMovable, MapNs, IsMovedType);
+                var (newRoot, c) = DocumentRewriter.Rewrite(root, model, isSource, IsMovable, MapNs, IsMovedType, survivingMovableNs);
                 if (c.Changed)
                 {
                     filesChanged++; refsRewritten += c.Refs; usingsAdded += c.Added; usingsDropped += c.Dropped; nsDecls += c.NsDecls;

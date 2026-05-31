@@ -5,8 +5,10 @@ using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Fallout.Domain.Execution;
 using Fallout.Domain.Planning;
+using Fallout.Application;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 /// <summary>
 /// Given the invoked target names, creates an execution plan under consideration of execution, ordering and trigger dependencies.
