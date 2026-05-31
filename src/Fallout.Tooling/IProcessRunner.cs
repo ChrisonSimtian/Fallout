@@ -1,0 +1,15 @@
+using System;
+using System.Diagnostics;
+
+namespace Fallout.Common.Tooling;
+
+/// <summary>
+/// The process-execution port (ADR-0006 step 3). Abstracts the single impure step of running a tool —
+/// spawning an OS process — so the tooling <em>vocabulary</em> (<see cref="ToolOptions"/>, the generated
+/// wrappers) stays pure and side-effect-free, and builds become unit-testable by swapping in a fake
+/// runner via <see cref="ProcessTasks.Runner"/>. The default adapter is <see cref="SystemProcessRunner"/>.
+/// </summary>
+public interface IProcessRunner
+{
+    IProcess Start(ProcessStartInfo startInfo, int? timeout, Action<OutputType, string> logger, Func<string, string> outputFilter);
+}

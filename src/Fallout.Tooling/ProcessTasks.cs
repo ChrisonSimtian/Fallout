@@ -19,6 +19,12 @@ public static class ProcessTasks
     public static bool LogWorkingDirectory = true;
     public static string DefaultWorkingDirectory = EnvironmentInfo.WorkingDirectory;
 
+    /// <summary>
+    /// The process-execution port (ADR-0006). Defaults to spawning a real OS process; tests (and, later,
+    /// a hosted runner) swap in a fake/alternate <see cref="IProcessRunner"/>.
+    /// </summary>
+    public static IProcessRunner Runner { get; set; } = new SystemProcessRunner();
+
     private static readonly char[] s_pathSeparators = { EnvironmentInfo.IsWin ? ';' : ':' };
     private static readonly object s_lock = new();
 
@@ -158,12 +164,8 @@ public static class ProcessTasks
         if (logInvocation)
             LogInvocation(startInfo, outputFilter, environmentVariables != null);
 
-        var process = Process.Start(startInfo);
-        if (process == null)
-            return null;
-
-        var output = GetOutputCollection(process, logger, outputFilter);
-        return new Process2(process, outputFilter, timeout, output);
+        // The one impure step — spawning the OS process — goes through the execution port.
+        return Runner.Start(startInfo, timeout, logger, outputFilter);
     }
 
     private static void LogInvocation(ProcessStartInfo startInfo, Func<string, string> outputFilter, bool hasEnvironmentVariables)
@@ -188,7 +190,7 @@ public static class ProcessTasks
         }
     }
 
-    private static BlockingCollection<Output> GetOutputCollection(
+    internal static BlockingCollection<Output> GetOutputCollection(
         Process process,
         Action<OutputType, string> logger,
         Func<string, string> outputFilter)
