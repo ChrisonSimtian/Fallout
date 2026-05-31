@@ -2,6 +2,7 @@
 using System.Linq;
 using FluentAssertions;
 using Fallout.Common.Execution;
+using Fallout.Domain.Execution;
 using Fallout.Common.Utilities.Collections;
 using Xunit;
 

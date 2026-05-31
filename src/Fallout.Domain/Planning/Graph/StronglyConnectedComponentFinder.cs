@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fallout.Core.Planning;
+namespace Fallout.Domain.Planning;
 
 internal class StronglyConnectedComponentFinder<T>
 {

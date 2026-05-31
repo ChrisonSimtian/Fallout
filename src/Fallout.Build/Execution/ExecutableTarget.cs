@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Domain.Execution;
 // ReSharper disable MissingBaseTypeHighlighting
 
 namespace Fallout.Common.Execution;
@@ -62,7 +63,7 @@ public class ExecutableTarget : ITargetModel
         set => SummaryInformation.AddPairWhenValueNotNull(nameof(OnlyWhen), value);
     }
 
-    // ITargetModel — read-only projection over the live dependency lists for Fallout.Core consumers.
+    // ITargetModel — read-only projection over the live dependency lists for Fallout.Domain consumers.
     IReadOnlyCollection<string> ITargetModel.ExecutionDependencyNames => ExecutionDependencies.Select(x => x.Name).ToList();
     IReadOnlyCollection<string> ITargetModel.OrderDependencyNames => OrderDependencies.Select(x => x.Name).ToList();
     IReadOnlyCollection<string> ITargetModel.TriggerNames => Triggers.Select(x => x.Name).ToList();

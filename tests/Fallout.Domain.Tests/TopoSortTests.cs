@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Core.Planning;
+using Fallout.Domain.Planning;
 using Xunit;
 
-namespace Fallout.Core.Tests;
+namespace Fallout.Domain.Tests;
 
 public class TopoSortTests
 {

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using Fallout.Core.Planning;
+using Fallout.Domain.Execution;
+using Fallout.Domain.Planning;
 
 namespace Fallout.Common.Execution;
 
@@ -39,7 +40,7 @@ internal static class ExecutionPlanner
         IReadOnlyCollection<ExecutableTarget> executableTargets,
         ICollection<ExecutableTarget> invokedTargets)
     {
-        // Pure graph work — cycle detection and topological ordering — lives in Fallout.Core.
+        // Pure graph work — cycle detection and topological ordering — lives in Fallout.Domain.
         // Everything below is orchestration: deciding to fail the build, and applying the domain
         // scheduling rules (invoked / default / execution-dependency) over the ordered nodes.
         var strict = ParameterService.GetNamedArgument<bool>("strict");

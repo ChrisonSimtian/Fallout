@@ -1,4 +1,4 @@
-namespace Fallout.Common.Execution;
+namespace Fallout.Domain.Execution;
 
 public enum ExecutionStatus
 {

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Fallout.Core.Planning;
+namespace Fallout.Domain.Planning;
 
 internal class StronglyConnectedComponent<T> : IEnumerable<Vertex<T>>
 {

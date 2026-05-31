@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Core.Planning;
+namespace Fallout.Domain.Planning;
 
 internal class StronglyConnectedComponentList<T> : IEnumerable<StronglyConnectedComponent<T>>
 {

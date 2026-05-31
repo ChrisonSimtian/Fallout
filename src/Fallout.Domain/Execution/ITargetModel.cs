@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Domain.Execution;
 
 /// <summary>
 /// Read-only projection of a build target: its identity, status, and dependency shape.

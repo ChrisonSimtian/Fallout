@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fallout.Core.Planning;
+namespace Fallout.Domain.Planning;
 
 /// <summary>
 /// The outcome of a topological ordering: the ordered nodes, any dependency cycles that were

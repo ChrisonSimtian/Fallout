@@ -6,6 +6,7 @@ using System.Reflection;
 using Fallout.Build.Execution.Extensions;
 using Fallout.Common.CI;
 using Fallout.Common.Execution;
+using Fallout.Domain.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
