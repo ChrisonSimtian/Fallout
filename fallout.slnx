@@ -11,8 +11,10 @@
     <Configuration Solution="Release|Any CPU" Project="Debug|Any CPU|NoBuild" />
   </Project>
   <Project Path="src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+  <Project Path="src\Fallout\Fallout.csproj" />
+  <Project Path="src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
+  <Project Path="src\Fallout.Infrastructure.CI\Fallout.Infrastructure.CI.csproj" />
   <Project Path="src\Fallout.Application\Fallout.Application.csproj" />
-  <Project Path="src\Fallout.Common\Fallout.Common.csproj" />
   <Project Path="src\Fallout.Domain\Fallout.Domain.csproj" />
   <Project Path="src\Fallout.Application.Components\Fallout.Application.Components.csproj" />
   <Project Path="src\Fallout.Cli\Fallout.Cli.csproj" />

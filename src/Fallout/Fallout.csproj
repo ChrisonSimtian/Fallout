@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The consumer-facing meta-package. Successor to the dissolved Fallout.Common catch-all (onion
+    realignment, ADR-0006): it holds no code — it references every ring of the framework so a build
+    author can reference one package and inherit FalloutBuild + use the tool/CI/solution APIs, and it
+    carries the MSBuild integration (Fallout.props/.targets), the MSBuildTasks publish output, and the
+    source-generator analyzer that consumers need.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>Fallout — build automation for .NET. Reference this package to author a build.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Domain + Kernel -->
+    <ProjectReference Include="..\Fallout.Domain\Fallout.Domain.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Text.Yaml\Fallout.Kernel.Text.Yaml.csproj" />
+    <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+    <!-- Application ring -->
+    <ProjectReference Include="..\Fallout.Application\Fallout.Application.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Components\Fallout.Application.Components.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
+    <!-- Infrastructure ring (adapters consumers need at runtime) -->
+    <ProjectReference Include="..\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Infrastructure.CI\Fallout.Infrastructure.CI.csproj" />
+    <ProjectReference Include="..\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
+    <ProjectReference Include="..\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+  </ItemGroup>
+
+  <!-- MSBuild integration + tasks + analyzer, packed into the NuGet package (was Fallout.Common's role). -->
+  <ItemGroup Condition="'$(_IsPacking)' == 'True'">
+    <None Include="$(MSBuildProjectName).props" PackagePath="build" Pack="true" />
+    <None Include="$(MSBuildProjectName).targets" PackagePath="build" Pack="true" />
+    <None Include="..\Fallout.MSBuildTasks\Fallout.MSBuildTasks.targets" PackagePath="build\netcore" Pack="true" />
+    <None Include="..\Fallout.MSBuildTasks\bin\$(Configuration)\net10.0\publish\**\*.*" PackagePath="build\netcore" Pack="true" />
+    <None Include="..\Fallout.SourceGenerators\bin\$(Configuration)\netstandard2.0\*.dll" PackagePath="analyzers\dotnet\cs" Pack="true" />
+  </ItemGroup>
+
+</Project>

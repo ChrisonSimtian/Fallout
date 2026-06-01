@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Application\Fallout.Application.csproj" />
-    <ProjectReference Include="..\Fallout.Common\Fallout.Common.csproj" />
     <!-- Composition root: references the Infrastructure MSBuild evaluator directly (ProjectModelTasks +
          the IProjectEditor adapter's module initializer). Onion-legal — only the Cli root may reach Infra. -->
     <ProjectReference Include="..\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
@@ -40,6 +39,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout\Fallout.csproj" />
   </ItemGroup>
 
 </Project>

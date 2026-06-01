@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Fallout.Application.Tooling;
 using Fallout.Kernel;
+using Fallout.Application.Tooling;
 
 namespace Fallout.Kernel.IO;
 

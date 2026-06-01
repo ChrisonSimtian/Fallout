@@ -11,12 +11,16 @@
   <!-- References every ring so the onion dependency rules can be asserted across them. -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Application\Fallout.Application.csproj" />
-    <ProjectReference Include="..\..\src\Fallout.Common\Fallout.Common.csproj" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
   </ItemGroup>
 
 </Project>

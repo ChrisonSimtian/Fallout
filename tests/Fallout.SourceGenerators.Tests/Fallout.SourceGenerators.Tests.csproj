@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fallout.Common\Fallout.Common.csproj" />
     <ProjectReference Include="..\..\src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" />
   </ItemGroup>
 
@@ -16,6 +15,12 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
     <PackageReference Include="Verify.SourceGenerators" />
     <PackageReference Include="Basic.Reference.Assemblies.NetStandard20" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Application\Fallout.Application.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
   </ItemGroup>
 
 </Project>

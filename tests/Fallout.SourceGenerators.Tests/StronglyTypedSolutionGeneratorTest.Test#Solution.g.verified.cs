@@ -8,22 +8,24 @@ using System.Runtime.CompilerServices;
 internal class Solution(AbsolutePath path, object handle) : Fallout.Application.Solutions.Solution(path, handle)
 {
     public Fallout.Application.Solutions.Project _build => this.GetProject("_build");
+    public Fallout.Application.Solutions.Project Fallout => this.GetProject("Fallout");
     public Fallout.Application.Solutions.Project Fallout_Application => this.GetProject("Fallout.Application");
     public Fallout.Application.Solutions.Project Fallout_Application_Components => this.GetProject("Fallout.Application.Components");
     public Fallout.Application.Solutions.Project Fallout_Application_Solutions => this.GetProject("Fallout.Application.Solutions");
     public Fallout.Application.Solutions.Project Fallout_Application_Tooling => this.GetProject("Fallout.Application.Tooling");
+    public Fallout.Application.Solutions.Project Fallout_Application_Tools => this.GetProject("Fallout.Application.Tools");
     public Fallout.Application.Solutions.Project Fallout_Architecture_Tests => this.GetProject("Fallout.Architecture.Tests");
     public Fallout.Application.Solutions.Project Fallout_Build_Shared => this.GetProject("Fallout.Build.Shared");
     public Fallout.Application.Solutions.Project Fallout_Build_Tests => this.GetProject("Fallout.Build.Tests");
     public Fallout.Application.Solutions.Project Fallout_Cli => this.GetProject("Fallout.Cli");
     public Fallout.Application.Solutions.Project Fallout_Cli_Tests => this.GetProject("Fallout.Cli.Tests");
-    public Fallout.Application.Solutions.Project Fallout_Common => this.GetProject("Fallout.Common");
     public Fallout.Application.Solutions.Project Fallout_Common_Tests => this.GetProject("Fallout.Common.Tests");
     public Fallout.Application.Solutions.Project Fallout_Components_Tests => this.GetProject("Fallout.Components.Tests");
     public Fallout.Application.Solutions.Project Fallout_Consumer_Local => this.GetProject("Fallout.Consumer.Local");
     public Fallout.Application.Solutions.Project Fallout_Consumer_NuGet => this.GetProject("Fallout.Consumer.NuGet");
     public Fallout.Application.Solutions.Project Fallout_Domain => this.GetProject("Fallout.Domain");
     public Fallout.Application.Solutions.Project Fallout_Domain_Tests => this.GetProject("Fallout.Domain.Tests");
+    public Fallout.Application.Solutions.Project Fallout_Infrastructure_CI => this.GetProject("Fallout.Infrastructure.CI");
     public Fallout.Application.Solutions.Project Fallout_Infrastructure_ProjectModel => this.GetProject("Fallout.Infrastructure.ProjectModel");
     public Fallout.Application.Solutions.Project Fallout_Infrastructure_Solutions => this.GetProject("Fallout.Infrastructure.Solutions");
     public Fallout.Application.Solutions.Project Fallout_Infrastructure_Tooling => this.GetProject("Fallout.Infrastructure.Tooling");

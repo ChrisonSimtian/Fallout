@@ -36,4 +36,9 @@
     <ProjectReference Include="..\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
+  </ItemGroup>
+
 </Project>

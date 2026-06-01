@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>CI host adapters (GitHub Actions, TeamCity, Azure Pipelines, …) behind Fallout.Application.CI ports.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TeamCity\Configuration\pom.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application\Fallout.Application.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
+    <ProjectReference Include="..\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
+  </ItemGroup>
+
+</Project>

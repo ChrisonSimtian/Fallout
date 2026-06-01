@@ -4,8 +4,9 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <ProjectReference Include="..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
   </ItemGroup>
 
 </Project>

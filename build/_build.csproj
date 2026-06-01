@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\src\Fallout.Common\Fallout.Common.props" />
+  <Import Project="..\src\Fallout\Fallout.props" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -74,11 +74,18 @@
     <ProjectReference Include="..\src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
 
-  <Import Project="..\src\Fallout.Common\Fallout.Common.targets" />
+  <Import Project="..\src\Fallout\Fallout.targets" />
 
 
   <ItemGroup>
     <ProjectReference Include="..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
+    <ProjectReference Include="..\src\Fallout.Infrastructure.CI\Fallout.Infrastructure.CI.csproj" />
+    <ProjectReference Include="..\src\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
   </ItemGroup>
 
 </Project>
