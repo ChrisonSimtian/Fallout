@@ -13,7 +13,6 @@
     <ProjectReference Include="..\Fallout.Application\Fallout.Application.csproj" />
     <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
     <ProjectReference Include="..\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
-    <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
     <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
     <ProjectReference Include="..\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
     <ProjectReference Include="..\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
@@ -37,6 +36,12 @@
     <None Include="..\Fallout.MSBuildTasks\bin\$(Configuration)\net10.0\publish\**\*.*" PackagePath="build\netcore" Pack="true" />
     <None Include="..\Fallout.MSBuildTasks\bin\$(Configuration)\net472\publish\**\*.*" PackagePath="build\netfx" Pack="true" />
     <None Include="..\Fallout.SourceGenerators\bin\$(Configuration)\netstandard2.0\*.dll" PackagePath="analyzers\dotnet\cs" Pack="true" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
   </ItemGroup>
 
 </Project>

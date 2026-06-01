@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 

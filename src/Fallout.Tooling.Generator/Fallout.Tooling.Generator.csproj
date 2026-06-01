@@ -14,13 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
     <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
     <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Nuke Include="..\..\build\Build.CodeGeneration.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
   </ItemGroup>
 
 </Project>

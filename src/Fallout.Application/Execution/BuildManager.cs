@@ -30,9 +30,19 @@ internal static class BuildManager
     [ModuleInitializer]
     public static void Initialize()
     {
+        // Force-load every Fallout.* assembly AND run its module initializer. Assembly.Load alone only
+        // loads metadata — a [ModuleInitializer] runs lazily on first *use* of a type in that assembly.
+        // That mattered once the onion split moved the port-registration module initializers (e.g.
+        // Fallout.Infrastructure.Tooling's ToolingServicesRegistration) into assemblies whose types no
+        // outer code references directly: nothing would trigger them, leaving ToolingServices.* null.
+        // RunModuleConstructor makes registration deterministic regardless of assembly boundaries.
         DependencyContext.Default?.GetRuntimeAssemblyNames(string.Empty)
             .Where(x => x.FullName.StartsWith("Fallout."))
-            .ForEach(x => AppDomain.CurrentDomain.Load(x));
+            .ForEach(x =>
+            {
+                var assembly = AppDomain.CurrentDomain.Load(x);
+                RuntimeHelpers.RunModuleConstructor(assembly.ManifestModule.ModuleHandle);
+            });
     }
 
     public static int Execute<T>(Expression<Func<T, Target>>[] defaultTargetExpressions)

@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net10.0;netstandard2.0</TargetFrameworks>
+    <!-- netstandard2.0 retained: the tool vocabulary is consumed by Fallout.Tooling.Generator (a Roslyn
+         source generator, which must be netstandard2.0). net10.0 for the runtime. -->
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

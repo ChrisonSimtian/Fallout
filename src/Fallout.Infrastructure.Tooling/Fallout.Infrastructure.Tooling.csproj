@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- net10.0 only: the impure executors/resolvers are not consumed by any source generator. -->
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Packaging" />
+    <PackageReference Include="Serilog" />
+  </ItemGroup>
+
+</Project>

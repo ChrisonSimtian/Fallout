@@ -32,4 +32,9 @@
     <None Include="..\..\.fallout\temp\licenses\*.txt" PackagePath="licenses" Pack="true" Visible="false" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
+  </ItemGroup>
+
 </Project>

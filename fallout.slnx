@@ -27,7 +27,8 @@
   <Project Path="src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
   <Project Path="src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" />
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
-  <Project Path="src\Fallout.Tooling\Fallout.Tooling.csproj" />
+  <Project Path="src\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+  <Project Path="src\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
   <Project Path="src\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
   <Project Path="src\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
   <Project Path="src\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />

@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
-    <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
     <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
   </ItemGroup>
 
@@ -16,6 +15,11 @@
     <PackageReference Include="Microsoft.Build.Framework" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Build.Tasks.Core" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,7 +10,6 @@ using Fallout.Application.ValueInjection;
 using Fallout.Application.CI;
 using Fallout.Common;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
 
