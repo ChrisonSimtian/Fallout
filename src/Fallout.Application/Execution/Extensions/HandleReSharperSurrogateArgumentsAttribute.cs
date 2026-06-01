@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Serilog;
-using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;
 

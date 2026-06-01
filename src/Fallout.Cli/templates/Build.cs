@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Application.CI;
 using Fallout.Application.Execution;
 using Fallout.Application.Git;                                                                     // GIT

@@ -1,6 +1,3 @@
-// Generated from https://github.com/ChrisonSimtian/Fallout/blob/main/src/Fallout.Common/Tools/NSwag/NSwag.json
-
-using Fallout.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

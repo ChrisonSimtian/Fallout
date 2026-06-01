@@ -4,9 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Fallout.Common;
 using Spectre.Console;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using static Fallout.Kernel.EnvironmentInfo;
 using static Fallout.Infrastructure.Tooling.ProcessTasks;
 using static Fallout.Kernel.TemplateUtility;
@@ -16,6 +15,7 @@ using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
+using Fallout.Build.Shared;
 
 namespace Fallout.Cli;
 

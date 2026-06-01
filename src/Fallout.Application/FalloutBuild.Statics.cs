@@ -2,13 +2,13 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Application.Execution;
 using Fallout.Application.CI;
-using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
+using Fallout.Build.Shared;
 
 namespace Fallout.Application;
 

@@ -2,11 +2,10 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Serilog;
-
-using Fallout.Common;
 using Fallout.Application;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Application.Solutions;
 

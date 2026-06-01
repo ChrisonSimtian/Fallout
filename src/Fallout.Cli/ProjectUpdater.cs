@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using NuGet.Versioning;
-using Fallout.Common;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel;
 using Fallout.Infrastructure.ProjectModel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Cli;
 

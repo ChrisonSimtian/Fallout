@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Fallout.Common;
 using Fallout.Infrastructure.Solutions;
 using Scriban;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -15,6 +14,7 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 using Fallout.Application.Solutions;
+using Fallout.Build.Shared;
 
 namespace Fallout.SourceGenerators;
 

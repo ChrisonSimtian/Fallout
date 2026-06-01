@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Kernel;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Text.Yaml;
+using Fallout.Build.Shared;
 
 namespace Fallout.Cli;
 

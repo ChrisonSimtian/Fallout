@@ -7,13 +7,13 @@ using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Application;
 using Fallout.Application.ValueInjection;
-using Fallout.Common;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;
 

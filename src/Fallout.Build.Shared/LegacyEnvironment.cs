@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fallout.Common;
+namespace Fallout.Build.Shared;
 
 /// <summary>
 /// Helpers for reading environment variables during the NUKE → Fallout rename.

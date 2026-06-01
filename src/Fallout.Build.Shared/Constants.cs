@@ -6,7 +6,7 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 
-namespace Fallout.Common;
+namespace Fallout.Build.Shared;
 
 /// <summary>
 /// Set of constants shared between libraries and IDE extensions.

@@ -2,11 +2,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Fallout.Common;
 using Spectre.Console;
 using Fallout.Application;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Cli;
 

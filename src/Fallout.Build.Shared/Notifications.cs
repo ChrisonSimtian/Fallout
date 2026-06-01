@@ -3,7 +3,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 

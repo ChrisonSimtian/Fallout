@@ -4,15 +4,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Fallout.Domain.Execution;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Application.Execution;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.CI;
 using Fallout.Application.Execution.Extensions;
-using Fallout.Common;
 using Fallout.Application.Tooling;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 // ReSharper disable VirtualMemberNeverOverridden.Global
 

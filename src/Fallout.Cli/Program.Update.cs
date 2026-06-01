@@ -2,8 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Nodes;
-using Fallout.Common;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
@@ -11,6 +10,7 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Infrastructure.ProjectModel;
 using Fallout.Application.Solutions;
+using Fallout.Build.Shared;
 
 namespace Fallout.Cli;
 

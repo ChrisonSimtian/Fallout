@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Application;
-using Fallout.Common;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;
 

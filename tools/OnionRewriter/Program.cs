@@ -32,15 +32,15 @@ static class Runner
     // The two Infrastructure destinations are per-type overrides (they beat the default prefix rule). After
     // phase B the model already routes solution/project I/O through the ports, so this move adds no
     // Infrastructure dependency to the Application ring (gate stays green).
-    // Namespace residual #1 (post-project-rename tidy-up): a few Fallout.Kernel.IO-namespace files
-    // (FtpTasks, HttpTasks, the globbing injection attrs) physically live in the Fallout.Application
-    // assembly because they depend on the Application ring (ControlFlow/Configure) — their namespace lies
-    // about their ring. Retarget them to Fallout.Application.IO so namespace matches assembly. Source
-    // assembly = Fallout.Application ONLY, so the 20 genuine Kernel.IO types in Fallout.Kernel stay put
-    // (Fallout.Kernel.IO survives there — the surviving-ns logic keeps live `using Fallout.Kernel.IO;`).
+    // Namespace residual #2 (post-project-rename tidy-up): the last surviving Fallout.Common namespace —
+    // Constants + LegacyEnvironment, physically in the Fallout.Build.Shared assembly — is relabelled to
+    // Fallout.Build.Shared (matches the assembly; the dissolved Fallout.Common is finally gone everywhere).
+    // Pure namespace relabel + using rewrites across ~79 consumer files; no assembly-graph change (Constants
+    // stays in the Build.Shared assembly). The vestigial Fallout.Common stub in SourceGenerators was deleted
+    // first, so the namespace is fully evacuated and dead `using Fallout.Common;` directives drop cleanly.
     static readonly Rule[] Rules =
     [
-        new("Fallout.Kernel.IO", "Fallout.Application.IO", ["Fallout.Application"]),
+        new("Fallout.Common", "Fallout.Build.Shared", ["Fallout.Build.Shared"]),
     ];
 
     static readonly Dictionary<string, string> TypeOverrides = new();

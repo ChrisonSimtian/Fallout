@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
-using Fallout.Common;
+using Fallout.Build.Shared;
 
 namespace Fallout.Kernel;
 

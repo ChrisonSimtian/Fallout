@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Kernel;
-using static Fallout.Common.Constants;
+using static Fallout.Build.Shared.Constants;
 using Fallout.Application.CI;
 using Fallout.Application;
-using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;
 
