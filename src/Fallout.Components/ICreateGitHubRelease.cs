@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Fallout.Common;
-using Fallout.Common.ChangeLog;
 using Octokit;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
@@ -12,6 +11,7 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel;
 
 using Fallout.Application.CI;
+using Fallout.Application.ChangeLog;
 namespace Fallout.Application.Components;
 
 [ParameterPrefix(GitHubRelease)]

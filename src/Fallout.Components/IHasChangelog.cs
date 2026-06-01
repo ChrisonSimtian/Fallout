@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
-using static Fallout.Common.ChangeLog.ChangelogTasks;
+using static Fallout.Application.ChangeLog.ChangelogTasks;
 using Fallout.Application;
+using Fallout.Application.ChangeLog;
 
 namespace Fallout.Application.Components;
 

@@ -3,7 +3,7 @@ using System.Linq;
 using NuGet.Versioning;
 using Fallout.Kernel.IO;
 
-namespace Fallout.Common.ChangeLog;
+namespace Fallout.Application.ChangeLog;
 
 public class ChangeLog
 {

@@ -9,9 +9,10 @@ using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Common;
 
 // ReSharper disable ArgumentsStyleLiteral
-namespace Fallout.Common.ChangeLog;
+namespace Fallout.Application.ChangeLog;
 
 public static class ChangelogTasks
 {

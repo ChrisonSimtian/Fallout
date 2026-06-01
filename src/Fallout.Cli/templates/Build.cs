@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Common;
 using Fallout.Application.CI;
 using Fallout.Common.Execution;
-using Fallout.Common.Git;                                                                          // GIT
+using Fallout.Application.Git;                                                                     // GIT
 using Fallout.Kernel.IO;
 using Fallout.Application.Solutions;
 using Fallout.Application.Tooling;
@@ -12,7 +12,7 @@ using Fallout.Application.Tools.GitVersion;                                     
 using Fallout.Application.Tools.MSBuild;                                                            // MSBUILD
 using Fallout.Application.Tools.NuGet;                                                              // NUGET && MSBUILD
 using Fallout.Kernel.Collections;
-using static Fallout.Common.ChangeLog.ChangelogTasks;                                              // CHANGELOG
+using static Fallout.Application.ChangeLog.ChangelogTasks;                                         // CHANGELOG
 using static Fallout.Common.EnvironmentInfo;
 using static Fallout.Kernel.IO.PathConstruction;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;                                          // DOTNET

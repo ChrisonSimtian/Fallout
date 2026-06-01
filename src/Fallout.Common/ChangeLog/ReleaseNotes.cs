@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NuGet.Versioning;
+using Fallout.Common;
 
-namespace Fallout.Common.ChangeLog;
+namespace Fallout.Application.ChangeLog;
 
 public class ReleaseNotes
 {

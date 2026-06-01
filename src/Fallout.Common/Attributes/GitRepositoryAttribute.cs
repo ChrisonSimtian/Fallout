@@ -4,7 +4,7 @@ using System.Reflection;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 
-namespace Fallout.Common.Git;
+namespace Fallout.Application.Git;
 
 /// <summary>
 /// Injects an instance of <see cref="GitRepository"/> based on the local repository.
