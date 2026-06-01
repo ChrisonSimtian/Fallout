@@ -45,15 +45,17 @@
   <Project Path="tests\Fallout.Cli.Tests\Fallout.Cli.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Tests\Fallout.Migrate.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Analyzers.Tests\Fallout.Migrate.Analyzers.Tests.csproj" />
-  <!-- Temporarily excluded during the onion realignment (ADR-0006): these exercise the Nuke.* shim
-       surface, which lapses while the rings land. Re-added when the migration/shim strategy is
-       redesigned for the final shape. -->
+  <!-- The Nuke.* shim compat tests — back in the solution now that the shim/migration redesign landed
+       (one canonical Nuke<->Fallout map, 2 shim packages). They are the validation that NUKE-era
+       consumers still compile against the consolidated shims. -->
+  <Project Path="tests\Nuke.Common.Shim.Tests\Nuke.Common.Shim.Tests.csproj" />
   <Project Path="tests\Nuke.Components.Shim.Tests\Nuke.Components.Shim.Tests.csproj" />
   <Project Path="tests\Fallout.ProjectModel.Tests\Fallout.ProjectModel.Tests.csproj" />
   <Project Path="tests\Fallout.Solution.Tests\Fallout.Solution.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />
   <Project Path="tests\Benchmarks\Fallout.Persistence.Solution.Benchmarks\Fallout.Persistence.Solution.Benchmarks.csproj" />
-  <!-- Nuke.Consumer excluded during the onion realignment (ADR-0006) — consumes the lapsing Nuke.* shim. -->
+  <!-- Nuke.Consumer: the end-to-end NUKE-consumer compat sentinel, back in the solution post shim redesign. -->
+  <Project Path="tests\Consumers\Nuke.Consumer\Nuke.Consumer.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.NuGet\Fallout.Consumer.NuGet.csproj" />
   <Project Path="tests\Fallout.Tooling.Tests\Fallout.Tooling.Tests.csproj" />

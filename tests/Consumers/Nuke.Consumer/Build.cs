@@ -11,10 +11,10 @@ using Nuke.Components;
 
 // The shim generator skips delegates by C# language limitation (see SHIM002 —
 // can't subclass a delegate cross-assembly). `Target` is a delegate in
-// Fallout.Common, so NUKE-era code referencing `Target` needs either
+// Fallout.Application, so NUKE-era code referencing `Target` needs either
 // `fallout-migrate` (which flips usings to Fallout.*) or this manual alias.
 // Including it here keeps the rest of the file NUKE-shape.
-using Target = Fallout.Common.Target;
+using Target = Fallout.Application.Target;
 
 class Build : NukeBuild
 {

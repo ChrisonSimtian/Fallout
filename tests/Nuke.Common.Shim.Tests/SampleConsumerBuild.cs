@@ -15,25 +15,22 @@ using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities;
-using Fallout.Application.Git;
-using Fallout.Kernel.IO;
-using Fallout.Application.Solutions;
 
 namespace Nuke.Common.Shim.Tests;
 
-// Consumer's typical Build.cs entry-point — inherits the shim's NukeBuild,
-// uses the canonical Fallout types via `Fallout.Common.Target` (shim doesn't
-// bridge delegates; that's `fallout-migrate`'s job). The [GlobbingOptions(...)]
-// attribute resolves through the shim now that the canonical is un-sealed.
+// Consumer's typical Build.cs entry-point — a pure NUKE-era surface: everything resolves through the
+// Nuke.* shim (Solution/GitRepository/[Parameter]/CI hosts/DelegateDisposable), with no Fallout.* imports.
+// Enums (GlobbingCaseSensitivity) aren't shimmed (SHIM002 — can't subclass cross-assembly), so that one
+// stays a fully-qualified canonical reference — exactly what `fallout-migrate` would otherwise flip.
 [GlobbingOptions(Fallout.Kernel.IO.GlobbingCaseSensitivity.CaseInsensitive)]
 public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
 {
     [Parameter("Configuration to build")] readonly string Configuration;
     [Parameter] readonly bool RunTests;
     [Secret] readonly string NuGetApiKey;
-    [Solution] readonly Fallout.Application.Solutions.Solution Solution;
-    [Solution("path/to/explicit.slnx")] readonly Fallout.Application.Solutions.Solution ExplicitSolution;
-    [GitRepository] readonly Fallout.Application.Git.GitRepository GitRepository;
+    [Solution] readonly Solution Solution;
+    [Solution("path/to/explicit.slnx")] readonly Solution ExplicitSolution;
+    [GitRepository] readonly GitRepository GitRepository;
 
     // CI-host shims expose only the static `Instance` accessor. Consumers can
     // still chain into instance members because the returned type is canonical.

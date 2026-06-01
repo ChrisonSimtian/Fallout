@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Shims\Nuke.Common\Nuke.Common.csproj" />
-    <ProjectReference Include="..\..\..\src\Shims\Nuke.Build\Nuke.Build.csproj" />
     <ProjectReference Include="..\..\..\src\Shims\Nuke.Components\Nuke.Components.csproj" />
   </ItemGroup>
 
