@@ -17,6 +17,7 @@ using Fallout.Application.Tools.Discord;
 using Fallout.Application.Tools.Kubernetes;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Common.Tests;
 

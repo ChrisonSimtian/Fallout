@@ -1,7 +1,7 @@
 ﻿{
   Diagnostics: [
     {
-      Message: Type 'Fallout.Common.SealedThing' was skipped by the transition-shim generator (kind: sealed-class). Consumers relying on this via the Nuke.* shim need a hand-written bridge, a canonical-side fix (un-seal / widen ctor visibility), or to migrate via 'fallout-migrate'.,
+      Message: Type 'Fallout.Application.SealedThing' was skipped by the transition-shim generator (kind: sealed-class). Consumers relying on this via the Nuke.* shim need a hand-written bridge, a canonical-side fix (un-seal / widen ctor visibility), or to migrate via 'fallout-migrate'.,
       Severity: Warning,
       WarningLevel: 1,
       Descriptor: {
@@ -15,7 +15,7 @@
       }
     },
     {
-      Message: Type 'Fallout.Common.PrivateCtorOnly' was skipped by the transition-shim generator (kind: no-accessible-ctor). Consumers relying on this via the Nuke.* shim need a hand-written bridge, a canonical-side fix (un-seal / widen ctor visibility), or to migrate via 'fallout-migrate'.,
+      Message: Type 'Fallout.Application.PrivateCtorOnly' was skipped by the transition-shim generator (kind: no-accessible-ctor). Consumers relying on this via the Nuke.* shim need a hand-written bridge, a canonical-side fix (un-seal / widen ctor visibility), or to migrate via 'fallout-migrate'.,
       Severity: Warning,
       WarningLevel: 1,
       Descriptor: {

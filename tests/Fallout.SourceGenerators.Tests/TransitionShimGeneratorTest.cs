@@ -11,16 +11,19 @@ namespace Fallout.SourceGenerators.Tests;
 
 public class TransitionShimGeneratorTest
 {
-    // Each kind in the Easy tier (regular class, abstract class, interface,
-    // attribute, generic class, nested type) emits a representative shim. The
-    // Hard tier kinds (sealed class, static class, enum, delegate, class with
-    // no public/protected ctor) emit SHIM001 diagnostics instead. Captures both
-    // as a Verify snapshot.
+    // The generator is map-driven: it emits shims when the COMPILING assembly's name is a shim package
+    // (Nuke.Common / Nuke.Components in NukeNamespaceMap), mirroring public types from referenced
+    // Fallout.* assemblies under the package's mapped Fallout prefixes. These tests fake a referenced
+    // canonical Fallout.Application assembly (a Nuke.Common-mapped prefix) and compile "as" Nuke.Common.
+
+    // Each kind in the Easy tier (regular class, abstract class, interface, attribute, generic class,
+    // nested type) emits a representative shim. The Hard tier kinds (sealed class, static class, enum,
+    // class with no public/protected ctor) emit SHIM001 diagnostics instead. Captures both as a snapshot.
     [Fact]
     public Task EmitsShimsForEachKindAndSkipsHardTier()
     {
         var canonical = CompileCanonicalAssembly("""
-            namespace Fallout.Common
+            namespace Fallout.Application
             {
                 // Easy tier
                 public class Regular { public Regular(string a) {} public Regular() {} }
@@ -54,40 +57,27 @@ public class TransitionShimGeneratorTest
             }
             """);
 
-        var shimCompilation = CSharpCompilation.Create("Nuke.TestShim",
-            new[] { CSharpSyntaxTree.ParseText("""
-                [assembly: Fallout.Migrate.Shims.ShimAllPublicTypesUnder("Fallout.Common", "Nuke.Common")]
-                """) },
-            Basic.Reference.Assemblies.NetStandard20.References.All
-                .Concat(new[] { canonical }),
-            new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
-
-        var driver = CSharpGeneratorDriver.Create(new TransitionShimGenerator());
-        var result = driver.RunGenerators(shimCompilation);
+        var result = RunForShimPackage("Nuke.Common", canonical);
         return Verifier.Verify(result);
     }
 
-    // Hand-bridge suppression: when the consuming compilation declares a type at
-    // the target shim FQN, the generator treats that as the authoritative bridge —
-    // no emission, no SHIM001 (even for canonical kinds that would otherwise be
-    // skipped as Hard tier). Mirrors the session-4 CI host pattern in Nuke.Common.
+    // Hand-bridge suppression: when the consuming compilation declares a type at the target shim FQN, the
+    // generator treats that as the authoritative bridge — no emission, no SHIM001 (even for kinds that
+    // would otherwise be skipped). Mirrors the CI host accessors hand-written in Nuke.Common.
     [Fact]
     public void SkipsCanonicalTypesAlreadyHandBridgedByConsumer()
     {
         var canonical = CompileCanonicalAssembly("""
-            namespace Fallout.Common
+            namespace Fallout.Application
             {
                 public sealed class HandBridgedSealed { public HandBridgedSealed() {} }
                 public class HandBridgedRegular { public HandBridgedRegular() {} }
             }
             """);
 
-        var shimCompilation = CSharpCompilation.Create("Nuke.HandBridged",
+        var shimCompilation = CSharpCompilation.Create("Nuke.Common",
             new[]
             {
-                CSharpSyntaxTree.ParseText("""
-                    [assembly: Fallout.Migrate.Shims.ShimAllPublicTypesUnder("Fallout.Common", "Nuke.Common")]
-                    """),
                 CSharpSyntaxTree.ParseText("""
                     namespace Nuke.Common
                     {
@@ -96,46 +86,40 @@ public class TransitionShimGeneratorTest
                     }
                     """),
             },
-            Basic.Reference.Assemblies.NetStandard20.References.All
-                .Concat(new[] { canonical }),
+            Basic.Reference.Assemblies.NetStandard20.References.All.Concat(new[] { canonical }),
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
-        var driver = CSharpGeneratorDriver.Create(new TransitionShimGenerator());
-        var result = driver.RunGenerators(shimCompilation).GetRunResult();
+        var result = CSharpGeneratorDriver.Create(new TransitionShimGenerator())
+            .RunGenerators(shimCompilation).GetRunResult();
 
-        // No source emitted for the hand-bridged canonical types.
-        result.GeneratedTrees
-            .Where(t => !t.FilePath.EndsWith("ShimAllPublicTypesUnderAttribute.g.cs", System.StringComparison.Ordinal))
-            .Should().BeEmpty();
-
-        // And no SHIM001 diagnostic for either hand-bridged type — the sealed
-        // one would normally warn, the regular one would normally emit.
+        result.GeneratedTrees.Should().BeEmpty();
         result.Diagnostics.Should().BeEmpty();
     }
 
     [Fact]
-    public void EmitsNothingWhenNoMarkerAttributePresent()
+    public void EmitsNothingWhenAssemblyIsNotAShimPackage()
     {
         var canonical = CompileCanonicalAssembly("""
-            namespace Fallout.Common
+            namespace Fallout.Application
             {
                 public class Whatever { public Whatever() {} }
             }
             """);
 
-        var shimCompilation = CSharpCompilation.Create("Nuke.NoMarker",
-            new[] { CSharpSyntaxTree.ParseText("// no marker") },
-            Basic.Reference.Assemblies.NetStandard20.References.All
-                .Concat(new[] { canonical }),
+        // A normal consumer assembly (not a shim package) → no map rows → no emission.
+        var result = RunForShimPackage("SomeConsumer.Build", canonical);
+
+        result.GetRunResult().GeneratedTrees.Should().BeEmpty();
+    }
+
+    private static GeneratorDriver RunForShimPackage(string assemblyName, MetadataReference canonical)
+    {
+        var shimCompilation = CSharpCompilation.Create(assemblyName,
+            new[] { CSharpSyntaxTree.ParseText("// shim package — types come from referenced Fallout.* assemblies") },
+            Basic.Reference.Assemblies.NetStandard20.References.All.Concat(new[] { canonical }),
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
-        var driver = CSharpGeneratorDriver.Create(new TransitionShimGenerator());
-        var result = driver.RunGenerators(shimCompilation).GetRunResult();
-
-        // The post-init attribute definition is the only output expected.
-        result.GeneratedTrees
-            .Where(t => !t.FilePath.EndsWith("ShimAllPublicTypesUnderAttribute.g.cs", System.StringComparison.Ordinal))
-            .Should().BeEmpty();
+        return CSharpGeneratorDriver.Create(new TransitionShimGenerator()).RunGenerators(shimCompilation);
     }
 
     private static MetadataReference CompileCanonicalAssembly(string source)

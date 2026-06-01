@@ -6,6 +6,7 @@ using Fallout.Kernel.IO;
 using Fallout.Application.Solutions;
 using Fallout.Infrastructure.ProjectModel;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Common.Tests;
 

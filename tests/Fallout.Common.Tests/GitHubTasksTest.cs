@@ -6,6 +6,7 @@ using Fallout.Application.Git;
 using Fallout.Application.Tools.GitHub;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Common.Tests;
 

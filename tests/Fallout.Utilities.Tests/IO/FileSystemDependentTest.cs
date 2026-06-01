@@ -2,10 +2,10 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Fallout.Common;
 using Xunit.Abstractions;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Common.Tests;
 

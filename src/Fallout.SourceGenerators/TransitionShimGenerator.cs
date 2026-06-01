@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Fallout.Migration.Shared;
 
 namespace Fallout.SourceGenerators;
 
 /// <summary>
-/// Source generator that produces transition shims under the Nuke.* namespaces by
-/// mirroring public types from canonical Fallout.* assemblies. See the
-/// <see cref="ShimAttributeSource"/> marker emitted via PostInitializationOutput.
+/// Source generator that produces transition shims under the Nuke.* namespaces by mirroring public types
+/// from canonical Fallout.* assemblies. The Fallout→Nuke namespace correspondence is the shared
+/// <see cref="NukeNamespaceMap"/>; this generator emits the rows whose <c>ShimPackage</c> equals the
+/// compiling assembly's name (so only the Nuke.Common / Nuke.Components shim assemblies produce output).
 /// </summary>
 /// <remarks>
 /// Session 1 scope (Easy tier): regular classes, abstract classes, interfaces,
@@ -23,10 +25,6 @@ namespace Fallout.SourceGenerators;
 [Generator(LanguageNames.CSharp)]
 public sealed class TransitionShimGenerator : IIncrementalGenerator
 {
-    private const string AttributeNamespace = "Fallout.Migrate.Shims";
-    private const string AttributeName = "ShimAllPublicTypesUnderAttribute";
-    private const string AttributeFullName = AttributeNamespace + "." + AttributeName;
-
     // SHIM001: actionable skips. Something COULD still bridge these — un-seal
     // the canonical, promote a ctor's visibility, dedup across assemblies, or
     // hand-write a shim. Warning by default.
@@ -54,69 +52,55 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        // Emit the marker attribute into the consuming compilation so shim
-        // projects can declare `[assembly: ShimAllPublicTypesUnder(...)]` without
-        // depending on a separate runtime assembly.
-        context.RegisterPostInitializationOutput(ctx =>
-            ctx.AddSource("ShimAllPublicTypesUnderAttribute.g.cs", ShimAttributeSource));
-
-        // Find marker assembly attribute uses, then combine with the full
-        // compilation so we can walk referenced assemblies.
-        var markers = context.SyntaxProvider
-            .ForAttributeWithMetadataName(
-                AttributeFullName,
-                predicate: static (_, _) => true,
-                transform: static (syntaxCtx, _) => ExtractMarkers(syntaxCtx.TargetSymbol))
-            .SelectMany(static (markers, _) => markers);
-
-        var combined = markers.Collect().Combine(context.CompilationProvider);
-
-        context.RegisterSourceOutput(combined, static (ctx, input) =>
+        // Markers come from the shared canonical map, scoped to the compiling shim assembly (by name),
+        // instead of per-assembly `[assembly: ShimAllPublicTypesUnder(...)]` attributes — one source of
+        // truth, shared with the migration rewriters. Non-shim assemblies that reference this generator
+        // (any project pulling the analyzer) produce no rows → no output.
+        context.RegisterSourceOutput(context.CompilationProvider, static (ctx, compilation) =>
         {
-            var (markers, compilation) = input;
-            if (markers.IsDefaultOrEmpty)
+            var shimPackage = compilation.AssemblyName;
+            if (string.IsNullOrEmpty(shimPackage))
                 return;
 
-            foreach (var marker in markers)
-            {
-                EmitShimsForMarker(ctx, compilation, marker);
-            }
+            var rows = NukeNamespaceMap.ShimRowsFor(shimPackage!).ToList();
+            var siblingFromPrefixes = rows.Select(r => r.FalloutPrefix).ToList();
+            foreach (var row in rows)
+                EmitShimsForMarker(ctx, compilation, new ShimMarker(row.FalloutPrefix, row.NukePrefix, siblingFromPrefixes));
         });
     }
 
     // ───────────────────────────────────────────────────────────────────────
-    // Marker extraction
+    // Marker (a single Fallout→Nuke prefix pair, derived from NukeNamespaceMap)
     // ───────────────────────────────────────────────────────────────────────
 
     private readonly struct ShimMarker
     {
-        public ShimMarker(string fromPrefix, string toPrefix)
+        // siblingFromPrefixes = every Fallout-prefix row in the same shim package (incl. this one). Used to
+        // give a type to the LONGEST matching prefix, so e.g. Fallout.Kernel.IO types are owned by the
+        // Nuke.Common.IO row, not also by the broader Nuke.Common.Utilities→Fallout.Kernel row (which would
+        // double-emit and throw on a duplicate hint name).
+        public ShimMarker(string fromPrefix, string toPrefix, IReadOnlyList<string> siblingFromPrefixes = null)
         {
             FromPrefix = fromPrefix;
             ToPrefix = toPrefix;
+            _siblings = siblingFromPrefixes ?? new[] { fromPrefix };
         }
         public string FromPrefix { get; }
         public string ToPrefix { get; }
-    }
+        private readonly IReadOnlyList<string> _siblings;
 
-    private static ImmutableArray<ShimMarker> ExtractMarkers(ISymbol target)
-    {
-        // The target is the assembly itself (since this is an assembly-targeted
-        // attribute). Pull the attributes off and extract the two string args.
-        var results = ImmutableArray.CreateBuilder<ShimMarker>();
-        foreach (var attr in target.GetAttributes())
+        private static bool Covers(string prefix, string ns)
+            => ns == prefix || ns.StartsWith(prefix + ".", StringComparison.Ordinal);
+
+        /// <summary>This marker owns <paramref name="ns"/> iff its prefix matches and no longer sibling prefix does.</summary>
+        public bool Owns(string ns)
         {
-            if (attr.AttributeClass?.ToDisplayString() != AttributeFullName)
-                continue;
-            if (attr.ConstructorArguments.Length < 2)
-                continue;
-            var from = attr.ConstructorArguments[0].Value as string;
-            var to = attr.ConstructorArguments[1].Value as string;
-            if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(to))
-                continue;
-            results.Add(new ShimMarker(from!, to!));
+            if (!Covers(FromPrefix, ns)) return false;
+            foreach (var s in _siblings)
+                if (s.Length > FromPrefix.Length && Covers(s, ns))
+                    return false;
+            return true;
         }
-        return results.ToImmutable();
     }
 
     // ───────────────────────────────────────────────────────────────────────
@@ -190,9 +174,7 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
             if (type.DeclaredAccessibility != Accessibility.Public) continue;
             var fullNamespace = type.ContainingNamespace?.ToDisplayString() ?? string.Empty;
             if (string.IsNullOrEmpty(fullNamespace)) continue;
-            var matches = fullNamespace == marker.FromPrefix
-                || fullNamespace.StartsWith(marker.FromPrefix + ".", StringComparison.Ordinal);
-            if (!matches) continue;
+            if (!marker.Owns(fullNamespace)) continue;
             var fqn = type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
             counts[fqn] = counts.TryGetValue(fqn, out var existing) ? existing + 1 : 1;
         }
@@ -211,9 +193,7 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
             // Match `Fallout.Common` exactly OR any sub-namespace `Fallout.Common.X.Y`.
             // The marker stores the prefix without trailing dot.
             if (string.IsNullOrEmpty(fullNamespace)) continue;
-            var matches = fullNamespace == marker.FromPrefix
-                || fullNamespace.StartsWith(marker.FromPrefix + ".", StringComparison.Ordinal);
-            if (!matches) continue;
+            if (!marker.Owns(fullNamespace)) continue;
 
             EmitOrSkipType(ctx, type, marker, emittedHints, ambiguousFqns, handBridgedFqns);
         }
@@ -662,28 +642,4 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
     // Marker attribute source (emitted via PostInit)
     // ───────────────────────────────────────────────────────────────────────
 
-    private const string ShimAttributeSource = """
-        // <auto-generated/>
-        #nullable enable
-        namespace Fallout.Migrate.Shims;
-
-        /// <summary>
-        /// Marks the consuming assembly as a transition-shim project. The
-        /// TransitionShimGenerator walks referenced Fallout.* assemblies and emits
-        /// shim types under <paramref name="toNamespacePrefix"/> mirroring the
-        /// public types whose namespace begins with <paramref name="fromNamespacePrefix"/>.
-        /// </summary>
-        [System.AttributeUsage(System.AttributeTargets.Assembly, AllowMultiple = true)]
-        internal sealed class ShimAllPublicTypesUnderAttribute : System.Attribute
-        {
-            public ShimAllPublicTypesUnderAttribute(string fromNamespacePrefix, string toNamespacePrefix)
-            {
-                FromNamespacePrefix = fromNamespacePrefix;
-                ToNamespacePrefix = toNamespacePrefix;
-            }
-
-            public string FromNamespacePrefix { get; }
-            public string ToNamespacePrefix { get; }
-        }
-        """;
 }

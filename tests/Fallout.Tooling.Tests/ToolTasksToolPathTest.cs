@@ -7,6 +7,7 @@ using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tooling;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Build.Shared;
 
 namespace Fallout.Common.Tests;
 
