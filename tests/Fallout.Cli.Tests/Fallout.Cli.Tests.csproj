@@ -8,11 +8,6 @@
     <ProjectReference Include="..\..\src\Fallout.Cli\Fallout.Cli.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="cake-scripts\*" />
-    <None Include="cake-scripts\*" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />

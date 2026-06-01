@@ -56,15 +56,6 @@ internal partial class Telemetry
                     .AddDictionary(GetRepositoryProperties(EnvironmentInfo.WorkingDirectory)));
     }
 
-    public static void ConvertCake()
-    {
-        TrackEvent(
-            eventName: nameof(ConvertCake),
-            propertiesProvider: () =>
-                GetCommonProperties()
-                    .AddDictionary(GetRepositoryProperties(EnvironmentInfo.WorkingDirectory)));
-    }
-
     public static void AddPackage()
     {
         TrackEvent(
