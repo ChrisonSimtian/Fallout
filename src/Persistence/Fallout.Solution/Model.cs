@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
-using Fallout.Persistence.Solution.Serializer;
 using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
@@ -84,10 +82,7 @@ public class Solution : IProjectContainer, IAbsolutePathHolder
     public void Save(AbsolutePath path = null)
     {
         Path = (path ?? Path).NotNull();
-        var model = (Persistence.Solution.Model.SolutionModel)Handle.NotNull(
-            "Solution was not read from a file and cannot be saved.");
-        var serializer = SolutionSerializers.GetSerializerByMoniker(Path).NotNull();
-        AsyncHelper.RunSync(() => serializer.SaveAsync(Path, model, CancellationToken.None));
+        SolutionServices.Serializer.Save(this, Path);
     }
 }
 

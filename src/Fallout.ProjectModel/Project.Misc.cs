@@ -40,14 +40,6 @@ public static partial class ProjectExtensions
     }
 
     /// <summary>
-    /// Indicates whether the project references a package ID.
-    /// </summary>
-    public static bool HasPackageReference(this Project project, string packageId)
-    {
-        return project.GetItems("PackageReference").Contains(packageId);
-    }
-
-    /// <summary>
     /// Returns the version of the referenced package ID.
     /// </summary>
     public static string GetPackageReferenceVersion(this Project project, string packageId)

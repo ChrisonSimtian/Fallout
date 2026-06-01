@@ -63,10 +63,9 @@ internal static partial class Telemetry
             return CurrentVersion;
         }
 
-        var project = ProjectModelTasks.ParseProject(FalloutBuild.BuildProjectFile);
-        var property = project.Properties.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(VersionPropertyName))
-                       ?? project.Properties.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(LegacyVersionPropertyName));
-        if (property?.EvaluatedValue != CurrentVersion.ToString())
+        var versionProperty = SolutionServices.Projects.GetProperty(
+            FalloutBuild.BuildProjectFile, VersionPropertyName, LegacyVersionPropertyName);
+        if (versionProperty != CurrentVersion.ToString())
         {
             if (FalloutBuild.IsServerBuild)
             {
@@ -75,8 +74,8 @@ internal static partial class Telemetry
             }
 
             PrintDisclosure($"set the {VersionPropertyName.SingleQuote()} property");
-            project.SetProperty(VersionPropertyName, CurrentVersion.ToString());
-            project.Save();
+            SolutionServices.Projects.SetProperty(
+                FalloutBuild.BuildProjectFile, VersionPropertyName, CurrentVersion.ToString());
         }
 
         for (var version = CurrentVersion; version > 0; version--)

@@ -11,6 +11,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Build\Fallout.Build.csproj" />
     <ProjectReference Include="..\Fallout.Common\Fallout.Common.csproj" />
+    <!-- Composition root: references the Infrastructure MSBuild evaluator directly (ProjectModelTasks +
+         the IProjectEditor adapter's module initializer). Onion-legal — only the Cli root may reach Infra. -->
+    <ProjectReference Include="..\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
