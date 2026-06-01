@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Fallout.Persistence.Solution.Model;
 using Fallout.Persistence.Solution.Serializer;
 using Fallout.Common;
 using Fallout.Kernel.IO;
@@ -35,32 +33,37 @@ public static class ProjectContainerExtensions
     }
 }
 
-public class Solution(SolutionModel model, AbsolutePath path = null) : IProjectContainer, IAbsolutePathHolder
+public class Solution : IProjectContainer, IAbsolutePathHolder
 {
-	private ConcurrentDictionary<object, object> wrappers { get; } = new();
+    private readonly List<Project> _allProjects = new();
+    private readonly List<SolutionFolder> _allSolutionFolders = new();
 
-    internal T GetOrCreate<T>(object model)
+    /// <summary>
+    /// Constructs an (empty) solution. The project/folder tree is populated by the
+    /// reader (<see cref="SolutionModelExtensions.ReadSolution(AbsolutePath)"/>); the
+    /// <paramref name="handle"/> is an opaque carrier for the underlying serializer
+    /// model so the solution can be saved back without the inner ring naming the
+    /// concrete (vendored) model type.
+    /// </summary>
+    protected internal Solution(AbsolutePath path = null, object handle = null)
     {
-        lock (wrappers)
-        {
-            return (T)wrappers.GetOrAdd(model, x => x switch
-            {
-                SolutionProjectModel project => new Project(project, this),
-                SolutionFolderModel folder => new SolutionFolder(folder, this),
-                _ => throw new ArgumentOutOfRangeException(nameof(x), x, null)
-            });
-        }
+        Path = path;
+        Handle = handle;
     }
 
-    public SolutionModel GetModel() => model;
+    /// <summary>The opaque serializer model this solution was read from (null if constructed in-memory).</summary>
+    internal object Handle { get; }
 
-    public AbsolutePath Path { get; set; } = path;
+    internal void AddProject(Project project) => _allProjects.Add(project);
+    internal void AddSolutionFolder(SolutionFolder folder) => _allSolutionFolders.Add(folder);
+
+    public AbsolutePath Path { get; set; }
     public string Name => Path?.NameWithoutExtension;
     public string FileName => Path?.Name;
     public AbsolutePath Directory => Path?.Parent;
 
-    public IReadOnlyCollection<Project> AllProjects => model.SolutionProjects.Select(GetOrCreate<Project>).ToList();
-    public IReadOnlyCollection<SolutionFolder> AllSolutionFolders => model.SolutionFolders.Select(GetOrCreate<SolutionFolder>).ToList();
+    public IReadOnlyCollection<Project> AllProjects => _allProjects;
+    public IReadOnlyCollection<SolutionFolder> AllSolutionFolders => _allSolutionFolders;
 
     IProjectContainer IProjectContainer.Parent => null;
     public IReadOnlyCollection<Project> Projects => AllProjects.Where(x => x.Parent == this).ToList();
@@ -81,35 +84,58 @@ public class Solution(SolutionModel model, AbsolutePath path = null) : IProjectC
     public void Save(AbsolutePath path = null)
     {
         Path = (path ?? Path).NotNull();
+        var model = (Persistence.Solution.Model.SolutionModel)Handle.NotNull(
+            "Solution was not read from a file and cannot be saved.");
         var serializer = SolutionSerializers.GetSerializerByMoniker(Path).NotNull();
         AsyncHelper.RunSync(() => serializer.SaveAsync(Path, model, CancellationToken.None));
     }
 }
 
-public class SolutionItem(SolutionItemModel model, Solution solution)
+public class SolutionItem
 {
-    public string Name => model.ActualDisplayName;
+    private protected SolutionItem(string name, Solution solution)
+    {
+        Name = name;
+        Solution = solution;
+    }
 
-    public Solution Solution => solution;
-    public IProjectContainer Parent => (IProjectContainer)model.Parent?.Apply(solution.GetOrCreate<SolutionFolder>) ?? solution;
+    public string Name { get; }
 
-    public override string ToString() => model.ActualDisplayName;
+    public Solution Solution { get; }
+    public IProjectContainer Parent { get; internal set; }
+
+    public override string ToString() => Name;
 }
 
-public class SolutionFolder(SolutionFolderModel model, Solution solution) : SolutionItem(model, solution), IProjectContainer
+public class SolutionFolder : SolutionItem, IProjectContainer
 {
-    public SolutionFolderModel GetModel() => model;
+    internal SolutionFolder(string name, Solution solution)
+        : base(name, solution)
+    {
+    }
+
+    // Vestigial: strongly-typed folder subclasses (generated, in consumer assemblies) are
+    // reached via Unsafe.As and never actually constructed, but their declarations still
+    // need an accessible (cross-assembly => protected) base ctor to compile.
+    protected SolutionFolder()
+        : base(name: null, solution: null)
+    {
+    }
 
     public IReadOnlyCollection<Project> Projects => Solution.AllProjects.Where(x => x.Parent == this).ToList();
     public IReadOnlyCollection<SolutionFolder> SolutionFolders => Solution.AllSolutionFolders.Where(x => x.Parent == this).ToList();
 }
 
-public class Project(SolutionProjectModel model, Solution solution) : SolutionItem(model, solution), IAbsolutePathHolder
+public class Project : SolutionItem, IAbsolutePathHolder
 {
-    public SolutionProjectModel GetModel() => model;
+    internal Project(string name, string relativePath, Solution solution)
+        : base(name, solution)
+    {
+        RelativePath = relativePath;
+    }
 
-    public string RelativePath => model.FilePath;
-    public AbsolutePath Path => Solution.Directory.NotNull() / model.FilePath;
+    public string RelativePath { get; }
+    public AbsolutePath Path => Solution.Directory.NotNull() / RelativePath;
     public string FileName => System.IO.Path.GetFileName(RelativePath);
     public AbsolutePath Directory => Path?.Parent;
 
