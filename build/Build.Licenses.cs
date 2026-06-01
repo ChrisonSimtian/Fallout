@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
-using static Fallout.Kernel.IO.HttpTasks;
+using static Fallout.Application.IO.HttpTasks;
 using Fallout.Application;
 using Fallout.Application.Components;
 using Fallout.Kernel.IO;
+using Fallout.Application.IO;
 
 partial class Build
 {

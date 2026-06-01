@@ -32,15 +32,15 @@ static class Runner
     // The two Infrastructure destinations are per-type overrides (they beat the default prefix rule). After
     // phase B the model already routes solution/project I/O through the ports, so this move adds no
     // Infrastructure dependency to the Application ring (gate stays green).
-    // Finish partial onion moves — the Execution + Gitter tail (stragglers from steps 2/4b). The two
-    // build-extension attributes still under Fallout.Common.Execution join the rest of the Execution
-    // vocabulary in Fallout.Application.Execution; the Gitter chat-notification tool joins its siblings
-    // (Slack/Discord/Teams/Mastodon) under Fallout.Application.Tools.*. Both are specific sub-namespaces of
-    // the Fallout.Common assembly (the Fallout.Common root is untouched), so no surviving-ns subtlety.
+    // Namespace residual #1 (post-project-rename tidy-up): a few Fallout.Kernel.IO-namespace files
+    // (FtpTasks, HttpTasks, the globbing injection attrs) physically live in the Fallout.Application
+    // assembly because they depend on the Application ring (ControlFlow/Configure) — their namespace lies
+    // about their ring. Retarget them to Fallout.Application.IO so namespace matches assembly. Source
+    // assembly = Fallout.Application ONLY, so the 20 genuine Kernel.IO types in Fallout.Kernel stay put
+    // (Fallout.Kernel.IO survives there — the surviving-ns logic keeps live `using Fallout.Kernel.IO;`).
     static readonly Rule[] Rules =
     [
-        new("Fallout.Common.Execution", "Fallout.Application.Execution", ["Fallout.Common"]),
-        new("Fallout.Common.Gitter", "Fallout.Application.Tools.Gitter", ["Fallout.Common"]),
+        new("Fallout.Kernel.IO", "Fallout.Application.IO", ["Fallout.Application"]),
     ];
 
     static readonly Dictionary<string, string> TypeOverrides = new();

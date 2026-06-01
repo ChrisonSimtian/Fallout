@@ -5,6 +5,7 @@ using NuGet.Versioning;
 using Fallout.Application.ValueInjection;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Application.IO;
 
 namespace Fallout.Application.Tooling;
 

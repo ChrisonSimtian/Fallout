@@ -5,8 +5,9 @@ using System.Reflection;
 using Fallout.Application;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
+using Fallout.Kernel.IO;
 
-namespace Fallout.Kernel.IO;
+namespace Fallout.Application.IO;
 
 // TODO: document
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]

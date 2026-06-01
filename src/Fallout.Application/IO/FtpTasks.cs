@@ -4,9 +4,10 @@ using System.Linq;
 using System.Net;
 using Serilog;
 using Fallout.Application;
+using Fallout.Kernel.IO;
 #pragma warning disable SYSLIB0014
 
-namespace Fallout.Kernel.IO;
+namespace Fallout.Application.IO;
 
 public static class FtpTasks
 {
