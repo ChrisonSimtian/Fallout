@@ -10,6 +10,7 @@ internal class Solution(AbsolutePath path, object handle) : Fallout.Application.
     public Fallout.Application.Solutions.Project _build => this.GetProject("_build");
     public Fallout.Application.Solutions.Project Fallout_Application => this.GetProject("Fallout.Application");
     public Fallout.Application.Solutions.Project Fallout_Application_Components => this.GetProject("Fallout.Application.Components");
+    public Fallout.Application.Solutions.Project Fallout_Application_Solutions => this.GetProject("Fallout.Application.Solutions");
     public Fallout.Application.Solutions.Project Fallout_Application_Tooling => this.GetProject("Fallout.Application.Tooling");
     public Fallout.Application.Solutions.Project Fallout_Architecture_Tests => this.GetProject("Fallout.Architecture.Tests");
     public Fallout.Application.Solutions.Project Fallout_Build_Shared => this.GetProject("Fallout.Build.Shared");
@@ -24,6 +25,7 @@ internal class Solution(AbsolutePath path, object handle) : Fallout.Application.
     public Fallout.Application.Solutions.Project Fallout_Domain => this.GetProject("Fallout.Domain");
     public Fallout.Application.Solutions.Project Fallout_Domain_Tests => this.GetProject("Fallout.Domain.Tests");
     public Fallout.Application.Solutions.Project Fallout_Infrastructure_ProjectModel => this.GetProject("Fallout.Infrastructure.ProjectModel");
+    public Fallout.Application.Solutions.Project Fallout_Infrastructure_Solutions => this.GetProject("Fallout.Infrastructure.Solutions");
     public Fallout.Application.Solutions.Project Fallout_Infrastructure_Tooling => this.GetProject("Fallout.Infrastructure.Tooling");
     public Fallout.Application.Solutions.Project Fallout_Kernel => this.GetProject("Fallout.Kernel");
     public Fallout.Application.Solutions.Project Fallout_Kernel_IO_Compression => this.GetProject("Fallout.Kernel.IO.Compression");
@@ -39,7 +41,6 @@ internal class Solution(AbsolutePath path, object handle) : Fallout.Application.
     public Fallout.Application.Solutions.Project Fallout_Persistence_Solution => this.GetProject("Fallout.Persistence.Solution");
     public Fallout.Application.Solutions.Project Fallout_Persistence_Solution_Benchmarks => this.GetProject("Fallout.Persistence.Solution.Benchmarks");
     public Fallout.Application.Solutions.Project Fallout_ProjectModel_Tests => this.GetProject("Fallout.ProjectModel.Tests");
-    public Fallout.Application.Solutions.Project Fallout_Solution => this.GetProject("Fallout.Solution");
     public Fallout.Application.Solutions.Project Fallout_Solution_Tests => this.GetProject("Fallout.Solution.Tests");
     public Fallout.Application.Solutions.Project Fallout_SourceGenerators => this.GetProject("Fallout.SourceGenerators");
     public Fallout.Application.Solutions.Project Fallout_SourceGenerators_Tests => this.GetProject("Fallout.SourceGenerators.Tests");

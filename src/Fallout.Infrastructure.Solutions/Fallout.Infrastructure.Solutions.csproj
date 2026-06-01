@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- netstandard2.0 retained: the source generator reads solutions at compile time via SolutionReader
+         (a direct call into this adapter), so the Roslyn host (netstandard2.0) must be able to load it. -->
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <Description>Concrete .sln/.slnx serializer adapter behind Fallout.Application.Solutions' ports.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+    <ProjectReference Include="..\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
+  </ItemGroup>
+
+</Project>

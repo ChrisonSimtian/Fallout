@@ -37,4 +37,9 @@
     <ProjectReference Include="..\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+  </ItemGroup>
+
 </Project>

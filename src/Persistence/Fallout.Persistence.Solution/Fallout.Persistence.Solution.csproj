@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Fallout.Solution" />
+    <InternalsVisibleTo Include="Fallout.Infrastructure.Solutions" />
     <InternalsVisibleTo Include="Fallout.SourceGenerators" />
     <InternalsVisibleTo Include="Fallout.Persistence.Solution.Tests" />
   </ItemGroup>

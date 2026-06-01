@@ -20,8 +20,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Fallout.Common\Fallout.Common.csproj" />
     <ProjectReference Include="..\..\..\src\Fallout.Application\Fallout.Application.csproj" />
-    <ProjectReference Include="..\..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
     <ProjectReference Include="..\..\..\src\Fallout.Application.Components\Fallout.Application.Components.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
   </ItemGroup>
 
 </Project>

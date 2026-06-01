@@ -9,4 +9,9 @@
     <ProjectReference Include="..\..\src\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+  </ItemGroup>
+
 </Project>

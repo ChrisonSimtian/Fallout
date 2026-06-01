@@ -6,7 +6,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
-    <ProjectReference Include="..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
   </ItemGroup>
 
 </Project>

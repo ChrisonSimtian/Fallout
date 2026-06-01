@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- netstandard2.0 retained: the Solution/Project model is consumed by Fallout.SourceGenerators
+         (the strongly-typed-solution Roslyn generator, which must be netstandard2.0). -->
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <Description>Fallout's public API (model + ports) for working with .NET solution files.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+  </ItemGroup>
+
+</Project>

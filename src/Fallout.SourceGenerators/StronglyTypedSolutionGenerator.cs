@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
+using Fallout.Infrastructure.Solutions;
 using Scriban;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Fallout.Kernel.IO;
@@ -46,7 +47,7 @@ public class StronglyTypedSolutionGenerator : ISourceGenerator
                     : GetSolutionFileFromParametersFile(rootDirectory, member.Name);
                 var fancyNaming = attribute.NamedArguments.SingleOrDefault(x => x.Key == "FancyNames").Value.Value as bool? ?? false;
 
-                var solution = solutionFile.ReadSolution();
+                var solution = SolutionReader.Read(solutionFile);
                 var hintName = member.Name + ".g.cs";
                 var declaration = GetDeclaration(solution);
 

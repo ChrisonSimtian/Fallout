@@ -15,8 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
     <ProjectReference Include="..\..\..\src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
+    <ProjectReference Include="..\..\..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
   </ItemGroup>
 
 </Project>

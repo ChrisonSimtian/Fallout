@@ -24,8 +24,9 @@
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
   <Project Path="src\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
   <Project Path="src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
-  <Project Path="src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
   <Project Path="src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" />
+  <Project Path="src\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
+  <Project Path="src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
   <Project Path="src\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />

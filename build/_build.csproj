@@ -76,4 +76,9 @@
 
   <Import Project="..\src\Fallout.Common\Fallout.Common.targets" />
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+  </ItemGroup>
+
 </Project>
