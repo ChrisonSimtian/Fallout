@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Fallout.Components\Fallout.Components.csproj" />
+    <ProjectReference Include="..\..\Fallout.Application.Components\Fallout.Application.Components.csproj" />
     <ProjectReference Include="..\..\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj"
                       ReferenceOutputAssembly="false"
                       OutputItemType="Analyzer" />

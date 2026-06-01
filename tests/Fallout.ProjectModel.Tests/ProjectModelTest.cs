@@ -19,7 +19,7 @@ public class ProjectModelTest
     public void ProjectTest()
     {
         var solution = SolutionFile.ReadSolution();
-        var project = solution.Projects.Single(x => x.Name == "Fallout.ProjectModel");
+        var project = solution.Projects.Single(x => x.Name == "Fallout.Infrastructure.ProjectModel");
 
         var action = new Action(() => project.GetMSBuildProject());
         action.Should().NotThrow();
@@ -34,7 +34,7 @@ public class ProjectModelTest
     public void MSBuildProjectTest()
     {
         var solution = SolutionFile.ReadSolution();
-        var project = solution.Projects.Single(x => x.Name == "Fallout.ProjectModel");
+        var project = solution.Projects.Single(x => x.Name == "Fallout.Infrastructure.ProjectModel");
 
         var msbuildProject = project.GetMSBuildProject(targetFramework: "net8.0");
 

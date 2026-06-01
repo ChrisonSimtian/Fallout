@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Application\Fallout.Application.csproj" />
   </ItemGroup>
 
 </Project>

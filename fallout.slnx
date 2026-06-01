@@ -11,10 +11,10 @@
     <Configuration Solution="Release|Any CPU" Project="Debug|Any CPU|NoBuild" />
   </Project>
   <Project Path="src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
-  <Project Path="src\Fallout.Build\Fallout.Build.csproj" />
+  <Project Path="src\Fallout.Application\Fallout.Application.csproj" />
   <Project Path="src\Fallout.Common\Fallout.Common.csproj" />
   <Project Path="src\Fallout.Domain\Fallout.Domain.csproj" />
-  <Project Path="src\Fallout.Components\Fallout.Components.csproj" />
+  <Project Path="src\Fallout.Application.Components\Fallout.Application.Components.csproj" />
   <Project Path="src\Fallout.Cli\Fallout.Cli.csproj" />
   <Project Path="src\Fallout.Migrate\Fallout.Migrate.csproj" />
   <Project Path="src\Fallout.Migrate.Analyzers\Fallout.Migrate.Analyzers.csproj" />
@@ -22,18 +22,18 @@
   <Project Path="src\Shims\Nuke.Common\Nuke.Common.csproj" />
   <Project Path="src\Shims\Nuke.Components\Nuke.Components.csproj" />
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
-  <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
+  <Project Path="src\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
   <Project Path="src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
   <Project Path="src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
   <Project Path="src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" />
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Tooling\Fallout.Tooling.csproj" />
-  <Project Path="src\Fallout.Utilities.IO.Compression\Fallout.Utilities.IO.Compression.csproj" />
-  <Project Path="src\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
-  <Project Path="src\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />
-  <Project Path="src\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
-  <Project Path="src\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
-  <Project Path="src\Fallout.Utilities\Fallout.Utilities.csproj" />
+  <Project Path="src\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
+  <Project Path="src\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
+  <Project Path="src\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
+  <Project Path="src\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
+  <Project Path="src\Fallout.Kernel.Text.Yaml\Fallout.Kernel.Text.Yaml.csproj" />
+  <Project Path="src\Fallout.Kernel\Fallout.Kernel.csproj" />
   <Project Path="tests\Fallout.Architecture.Tests\Fallout.Architecture.Tests.csproj" />
   <Project Path="tests\Fallout.Build.Tests\Fallout.Build.Tests.csproj" />
   <Project Path="tests\Fallout.Common.Tests\Fallout.Common.Tests.csproj" />

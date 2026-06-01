@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
     <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
-    <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
   </ItemGroup>
 
   <ItemGroup>

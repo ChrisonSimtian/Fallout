@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Fallout.Build")]
+[assembly: InternalsVisibleTo("Fallout.Application")]
 [assembly: InternalsVisibleTo("Fallout.Build.Shared")]
 [assembly: InternalsVisibleTo("Fallout.Build.Tests")]
 [assembly: InternalsVisibleTo("Fallout.Common")]
@@ -15,7 +15,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Fallout.Persistence.Solution.Tests")]
 [assembly: InternalsVisibleTo("Fallout.Tooling")]
 [assembly: InternalsVisibleTo("Fallout.Tooling.Tests")]
-[assembly: InternalsVisibleTo("Fallout.Utilities.IO.Globbing")]
+[assembly: InternalsVisibleTo("Fallout.Kernel.IO.Globbing")]
 [assembly: InternalsVisibleTo("Fallout.Utilities.Tests")]
 
 // External extensions — kept as Nuke.* until those projects rebrand independently.

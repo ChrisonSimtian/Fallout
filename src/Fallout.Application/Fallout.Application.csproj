@@ -9,11 +9,11 @@
     <ProjectReference Include="..\Fallout.Domain\Fallout.Domain.csproj" />
     <ProjectReference Include="..\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
     <ProjectReference Include="..\Fallout.Tooling\Fallout.Tooling.csproj" />
-    <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
-    <ProjectReference Include="..\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
-    <ProjectReference Include="..\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />
-    <ProjectReference Include="..\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
-    <ProjectReference Include="..\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
+    <ProjectReference Include="..\Fallout.Kernel.Text.Yaml\Fallout.Kernel.Text.Yaml.csproj" />
   </ItemGroup>
 
   <ItemGroup>
