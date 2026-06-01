@@ -19,7 +19,9 @@ internal static class Constants
     // consumer projects keep building until they migrate (manually or via the
     // forthcoming Fallout.Migrate CLI). New setups always use .fallout/.
     internal const string LegacyNukeDirectoryName = ".nuke";
-    internal const string FalloutCommonPackageId = "Fallout.Common";
+    // The consumer-facing meta-package (successor to the dissolved Fallout.Common — ADR-0006 onion
+    // realignment). This is what `dotnet fallout :setup` adds and `:update` bumps in a build project.
+    internal const string FalloutPackageId = "Fallout";
     internal const string BuildSchemaFileName = "build.schema.json";
     internal const string VisualStudioDebugFileName = $"{VisualStudioDebugParameterName}.log";
 

@@ -39,9 +39,9 @@ partial class Program
 
         #region Basic
 
-        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutCommonPackageId, includePrereleases: false);
-        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutCommonPackageId, includePrereleases: true);
-        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(FalloutCommonPackageId, version: null, packagesConfigFile: null)
+        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutPackageId, includePrereleases: false);
+        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutPackageId, includePrereleases: true);
+        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(FalloutPackageId, version: null, packagesConfigFile: null)
             ?.Version.ToString();
 
         if (rootDirectory == null)
@@ -62,7 +62,7 @@ partial class Program
         ClearPreviousLine();
         ShowInput("round_pushpin", "Build project location", buildProjectRelativeDirectory);
 
-        var nukeVersion = PromptForChoice("Which Fallout.Common version should be used?",
+        var nukeVersion = PromptForChoice("Which Fallout version should be used?",
             new[]
                 {
                     ("latest release", nukeLatestReleaseVersion.GetAwaiter().GetResult()),
@@ -73,7 +73,7 @@ partial class Program
                 .Where(x => x.Item2 != null)
                 .Distinct(x => x.Item2)
                 .Select(x => (x.Item2, $"{x.Item2} ({x.Item1})")).ToArray());
-        ShowInput("gem_stone", "Fallout.Common version", nukeVersion);
+        ShowInput("gem_stone", "Fallout version", nukeVersion);
 
         var solutionFile = (AbsolutePath) PromptForChoice(
             "Which solution should be the default?",

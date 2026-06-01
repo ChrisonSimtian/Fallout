@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fallout.Common" Version="_NUKE_VERSION_" />
+    <PackageReference Include="Fallout" Version="_NUKE_VERSION_" />
     <PackageDownload Include="GitVersion.Tool" Version="[5.8.0]" />    // GITVERSION
   </ItemGroup>
 

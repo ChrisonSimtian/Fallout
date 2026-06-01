@@ -30,10 +30,10 @@ public static class ProjectUpdater
 
     private static void UpdateNukeCommonPackage(Microsoft.Build.Evaluation.Project buildProject, out FloatRange previousPackageVersion)
     {
-        var packageItem = buildProject.Items.SingleOrDefault(x => x.EvaluatedInclude == Constants.FalloutCommonPackageId).NotNull();
+        var packageItem = buildProject.Items.SingleOrDefault(x => x.EvaluatedInclude == Constants.FalloutPackageId).NotNull();
         previousPackageVersion = FloatRange.Parse(packageItem.GetMetadataValue("Version"));
 
-        var latestPackageVersion = NuGetVersionResolver.GetLatestVersion(Constants.FalloutCommonPackageId, includePrereleases: false).GetAwaiter().GetResult();
+        var latestPackageVersion = NuGetVersionResolver.GetLatestVersion(Constants.FalloutPackageId, includePrereleases: false).GetAwaiter().GetResult();
         if (previousPackageVersion.Satisfies(NuGetVersion.Parse(latestPackageVersion)))
             return;
 
