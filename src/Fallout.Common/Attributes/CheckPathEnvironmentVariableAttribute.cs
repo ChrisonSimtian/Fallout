@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Application.Execution;
-using Fallout.Infrastructure.Tooling;
+using Fallout.Application.Tooling;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 public class CheckPathEnvironmentVariableAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {
@@ -12,6 +12,6 @@ public class CheckPathEnvironmentVariableAttribute : BuildExtensionAttributeBase
         IReadOnlyCollection<ExecutableTarget> executableTargets,
         IReadOnlyCollection<ExecutableTarget> executionPlan)
     {
-        ProcessTasks.CheckPathEnvironmentVariable();
+        ToolingServices.Process.CheckPathEnvironmentVariable();
     }
 }

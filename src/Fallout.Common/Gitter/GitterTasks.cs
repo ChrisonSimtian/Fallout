@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Fallout.Kernel.Net;
 
-namespace Fallout.Common.Gitter;
+namespace Fallout.Application.Tools.Gitter;
 //
 //[Headers("Accept: application/json")]
 //public interface IGitterRestClient

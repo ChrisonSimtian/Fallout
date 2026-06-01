@@ -9,11 +9,11 @@ using NuGet.Packaging;
 using Serilog;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
-using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Common;
 
-namespace Fallout.Common.Execution;
+namespace Fallout.Application.Execution;
 
 public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
@@ -78,11 +78,11 @@ public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, I
         {
             if (EnvironmentInfo.IsLinux)
             {
-                ProcessTasks.StartShell($"chmod +x {ScriptFile.ToString().DoubleQuoteIfNeeded()}", logOutput: false)
+                ToolingServices.Process.StartShell($"chmod +x {ScriptFile.ToString().DoubleQuoteIfNeeded()}", logOutput: false)
                     .AssertZeroExitCode();
             }
 
-            ProcessTasks.StartShell(
+            ToolingServices.Process.StartShell(
                     EnvironmentInfo.IsWin
                         ? $"powershell {ScriptFile.ToString().DoubleQuoteIfNeeded()} -InstallDir {installLocation} -NoPath -Runtime dotnet "
                           + (version != null ? $"-Version {version}" : "-Channel Current")

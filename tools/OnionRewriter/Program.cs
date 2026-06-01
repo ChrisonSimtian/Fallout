@@ -32,15 +32,15 @@ static class Runner
     // The two Infrastructure destinations are per-type overrides (they beat the default prefix rule). After
     // phase B the model already routes solution/project I/O through the ports, so this move adds no
     // Infrastructure dependency to the Application ring (gate stays green).
-    // Finish partial onion moves (stragglers from step 5a). PASS 2 — pure utilities still stuck in the
-    // Fallout.Common namespace but physically in the Fallout.Utilities (Kernel) project: EnvironmentInfo,
-    // Assert, AsyncHelper, ArgumentParser. They belong in Fallout.Kernel (5a missed them — the lesson-#12
-    // workspace-load gap). Source assembly is Fallout.Utilities ONLY: that keeps the Fallout.Common PROJECT
-    // dir OUT of the source set, so the surviving-namespace scan still sees Fallout.Common surviving there
-    // and does NOT drop live `using Fallout.Common;` directives. Run as its own pass (after pass 1).
+    // Finish partial onion moves — the Execution + Gitter tail (stragglers from steps 2/4b). The two
+    // build-extension attributes still under Fallout.Common.Execution join the rest of the Execution
+    // vocabulary in Fallout.Application.Execution; the Gitter chat-notification tool joins its siblings
+    // (Slack/Discord/Teams/Mastodon) under Fallout.Application.Tools.*. Both are specific sub-namespaces of
+    // the Fallout.Common assembly (the Fallout.Common root is untouched), so no surviving-ns subtlety.
     static readonly Rule[] Rules =
     [
-        new("Fallout.Common", "Fallout.Kernel", ["Fallout.Utilities"]),
+        new("Fallout.Common.Execution", "Fallout.Application.Execution", ["Fallout.Common"]),
+        new("Fallout.Common.Gitter", "Fallout.Application.Tools.Gitter", ["Fallout.Common"]),
     ];
 
     static readonly Dictionary<string, string> TypeOverrides = new();
