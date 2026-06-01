@@ -1,24 +1,29 @@
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Fallout.Migration.Shared;
 
 namespace Fallout.Migrate;
 
 internal static class CsprojRewriter
 {
-    // Combined rewrite: Nuke.X PackageReference WITH an inline Version attribute → Fallout.X
-    // at the current Fallout version. NUKE-era pins (e.g. `Version="10.1.0"`) don't exist as
-    // Fallout.* packages and produce NU1603 ("not found, falling back to next-higher") which
-    // `WarningsAsErrors` in the migrated project escalates. Bumping in the same pass avoids
-    // a broken post-migrate build (#217). Tolerates extra attributes between Include and Version
-    // (e.g. `PrivateAssets="all"`).
+    // The known NUKE→Fallout package-ID rewrites (canonical map). Post-onion these are NOT a `Nuke.X →
+    // Fallout.X` prefix swap: NUKE's Nuke.Common consumer package maps to the `Fallout` meta-package, and
+    // Nuke.Components to Fallout.Application.Components. A blind swap would emit dead `Fallout.Common`/
+    // `Fallout.Components` package IDs.
+    private static readonly IReadOnlyDictionary<string, string> s_packageIdMap = NukeNamespaceMap.PackageIdMap;
+
+    // Combined rewrite: a known Nuke.X PackageReference WITH an inline Version attribute → its Fallout
+    // package at the current Fallout version. NUKE-era pins (e.g. `Version="10.1.0"`) don't exist as the
+    // Fallout packages and produce NU1603 which `WarningsAsErrors` escalates; bumping in the same pass
+    // avoids a broken post-migrate build (#217). Tolerates extra attributes between Include and Version.
     private static readonly Regex NukePackageWithInlineVersionPattern = new(
-        @"(?<prefix><PackageReference\s+Include="")Nuke\.(?<name>[A-Z][A-Za-z0-9.]+)(?<between>""[^>]*?\s+Version="")[^""]+",
+        @"(?<prefix><PackageReference\s+Include="")(?<id>Nuke\.[A-Z][A-Za-z0-9.]+)(?<between>""[^>]*?\s+Version="")[^""]+",
         RegexOptions.Compiled);
 
-    // PackageReference / ProjectReference `Include="Nuke.X"` → `Include="Fallout.X"` — namespace
-    // only. Catches references that DON'T have an inline Version (central package management).
-    // Must run AFTER NukePackageWithInlineVersionPattern so it only touches what's left.
+    // PackageReference / ProjectReference `Include="Nuke.X"` → the mapped Fallout package — catches refs
+    // that DON'T have an inline Version (central package management). Runs after the inline-version pass.
     private static readonly Regex PackageReferencePattern =
-        new(@"(?<=\b(?:Include|Update|Remove)="")Nuke\.(?=[A-Z])", RegexOptions.Compiled);
+        new(@"(?<=\b(?:Include|Update|Remove)="")(?<id>Nuke\.[A-Za-z0-9.]+)", RegexOptions.Compiled);
 
     // MSBuild element/property names that begin with `Nuke` followed by an uppercase
     // letter (e.g. <NukeRootDirectory>...). Limited to known consumer-facing names from
@@ -48,19 +53,24 @@ internal static class CsprojRewriter
         var edits = 0;
         var content = original;
 
-        // Pass 1 — combined Include + Version rewrite for Nuke.X PackageReferences with inline Version.
+        // Pass 1 — combined Include + Version rewrite for known Nuke.X PackageReferences with inline Version.
         content = NukePackageWithInlineVersionPattern.Replace(content, m =>
         {
+            if (!s_packageIdMap.TryGetValue(m.Groups["id"].Value, out var falloutId))
+                return m.Value; // unknown Nuke.* package — leave it (don't invent a dead Fallout id)
             edits++;
-            return m.Groups["prefix"].Value
-                   + "Fallout." + m.Groups["name"].Value
-                   + m.Groups["between"].Value
-                   + falloutVersion;
+            return m.Groups["prefix"].Value + falloutId + m.Groups["between"].Value + falloutVersion;
         });
 
-        // Pass 2 — namespace-only rewrites for anything Pass 1 didn't consume (CPM-managed
-        // PackageReferences without inline Version, ProjectReferences, MSBuild properties).
-        content = PackageReferencePattern.Replace(content, _ => { edits++; return "Fallout."; });
+        // Pass 2 — Include/Update/Remove rewrites for anything Pass 1 didn't consume (CPM-managed
+        // PackageReferences without inline Version, ProjectReferences). Known package IDs only.
+        content = PackageReferencePattern.Replace(content, m =>
+        {
+            if (!s_packageIdMap.TryGetValue(m.Groups["id"].Value, out var falloutId))
+                return m.Value;
+            edits++;
+            return falloutId;
+        });
         content = MSBuildPropertyPattern.Replace(content, _ => { edits++; return "Fallout"; });
 
         // Pass 3 — strip the stale System.Security.Cryptography.Xml direct pin.

@@ -22,8 +22,8 @@ public class CsprojRewriterTest
         var result = CsprojRewriter.Rewrite(input, TestFalloutVersion);
 
         result.EditCount.Should().Be(2);
-        result.Content.Should().Contain(@"Include=""Fallout.Common""");
-        result.Content.Should().Contain(@"Include=""Fallout.Components""");
+        result.Content.Should().Contain(@"Include=""Fallout""");
+        result.Content.Should().Contain(@"Include=""Fallout.Application.Components""");
         result.Content.Should().NotContain(@"Include=""Nuke.");
     }
 
@@ -98,8 +98,8 @@ public class CsprojRewriterTest
 
         var result = CsprojRewriter.Rewrite(input, TestFalloutVersion);
 
-        result.Content.Should().Contain(@"Include=""Fallout.Common"" Version=""11.0.0""");
-        result.Content.Should().Contain(@"Include=""Fallout.Components"" Version=""11.0.0""");
+        result.Content.Should().Contain(@"Include=""Fallout"" Version=""11.0.0""");
+        result.Content.Should().Contain(@"Include=""Fallout.Application.Components"" Version=""11.0.0""");
         result.Content.Should().NotContain(@"Version=""10.1.0""");
     }
 
@@ -118,7 +118,7 @@ public class CsprojRewriterTest
 
         var result = CsprojRewriter.Rewrite(input, TestFalloutVersion);
 
-        result.Content.Should().Contain(@"Include=""Fallout.Common"" PrivateAssets=""all"" Version=""11.0.0""");
+        result.Content.Should().Contain(@"Include=""Fallout"" PrivateAssets=""all"" Version=""11.0.0""");
     }
 
     [Fact]
@@ -137,7 +137,7 @@ public class CsprojRewriterTest
 
         var result = CsprojRewriter.Rewrite(input, TestFalloutVersion);
 
-        result.Content.Should().Contain(@"<PackageReference Include=""Fallout.Common"" />");
+        result.Content.Should().Contain(@"<PackageReference Include=""Fallout"" />");
         result.Content.Should().NotContain(@"Version=");
     }
 
@@ -159,7 +159,7 @@ public class CsprojRewriterTest
         var result = CsprojRewriter.Rewrite(input, TestFalloutVersion);
 
         result.Content.Should().NotContain("System.Security.Cryptography.Xml");
-        result.Content.Should().Contain(@"Include=""Fallout.Common"" Version=""11.0.0""");
+        result.Content.Should().Contain(@"Include=""Fallout"" Version=""11.0.0""");
     }
 
     [Fact]

@@ -11,14 +11,19 @@ public class CodeRewriterTest
         const string input = """
             using Nuke.Common;
             using Nuke.Common.IO;
-            using Fallout.Common;
+            using Fallout.Kernel;
             """;
 
         var result = CodeRewriter.Rewrite(input);
 
+        // Per-namespace mapping (canonical map), not a blind Nuke.→Fallout. swap:
+        //   Nuke.Common    → Fallout.Application   (the build-vocabulary root)
+        //   Nuke.Common.IO → Fallout.Kernel.IO     (AbsolutePath/glob fluent API)
+        // The pre-existing `using Fallout.Kernel;` has no Nuke prefix and is left untouched.
         result.EditCount.Should().Be(2);
-        result.Content.Should().Contain("using Fallout.Common;");
-        result.Content.Should().Contain("using Fallout.Common.IO;");
+        result.Content.Should().Contain("using Fallout.Application;");
+        result.Content.Should().Contain("using Fallout.Kernel.IO;");
+        result.Content.Should().Contain("using Fallout.Kernel;");
     }
 
     [Fact]
@@ -27,7 +32,7 @@ public class CodeRewriterTest
         const string input = "var x = new Nuke.Common.Tools.DotNet.DotNetTasks();";
         var result = CodeRewriter.Rewrite(input);
         result.EditCount.Should().Be(1);
-        result.Content.Should().Be("var x = new Fallout.Common.Tools.DotNet.DotNetTasks();");
+        result.Content.Should().Be("var x = new Fallout.Application.Tools.DotNet.DotNetTasks();");
     }
 
     [Fact]

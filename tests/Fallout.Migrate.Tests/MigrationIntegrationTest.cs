@@ -21,13 +21,15 @@ public class MigrationIntegrationTest
 
             // Build file rewritten end to end.
             var buildCsproj = File.ReadAllText(Path.Combine(temp, "build", "_build.csproj"));
-            buildCsproj.Should().Contain(@"Include=""Fallout.Common""");
+            // Nuke.Common → the Fallout meta-package (post-onion; Fallout.Common no longer exists).
+            buildCsproj.Should().Contain(@"Include=""Fallout""");
             buildCsproj.Should().Contain("<FalloutRootDirectory>");
             buildCsproj.Should().NotContain("Nuke.Common");
             buildCsproj.Should().NotContain("<NukeRootDirectory>");
 
             var buildCs = File.ReadAllText(Path.Combine(temp, "build", "Build.cs"));
-            buildCs.Should().Contain("using Fallout.Common");
+            // Nuke.Common namespace → Fallout.Application (the build-vocabulary root).
+            buildCs.Should().Contain("using Fallout.Application");
             buildCs.Should().Contain(": FalloutBuild");
             buildCs.Should().NotContain("using Nuke.");
             buildCs.Should().NotContain("NukeBuild");

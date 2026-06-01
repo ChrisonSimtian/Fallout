@@ -24,14 +24,14 @@ public class RealWorldSmokeTests
         """;
 
     private const string TargetFalloutStub = """
-        namespace Fallout.Common
+        namespace Fallout.Application
         {
             public class FalloutBuild { public static int Execute<T>(System.Linq.Expressions.Expression<System.Func<T, object>> defaultTarget) => 0; }
             public class Target { }
-            namespace ProjectModel { public class Solution { } }
             namespace Tools.DotNet { public static class DotNetTasks { } }
         }
-        namespace Fallout.Components { public interface IPack { } }
+        namespace Fallout.Application.Solutions { public class Solution { } }
+        namespace Fallout.Application.Components { public interface IPack { } }
         """;
 
     [Fact]
@@ -61,16 +61,16 @@ public class RealWorldSmokeTests
             """;
 
         var fixedSource = $$"""
-            using Fallout.Common;
-            using Fallout.Common.ProjectModel;
-            using Fallout.Components;
-            using static Fallout.Common.Tools.DotNet.DotNetTasks;
+            using Fallout.Application;
+            using Fallout.Application.Solutions;
+            using Fallout.Application.Components;
+            using static Fallout.Application.Tools.DotNet.DotNetTasks;
 
-            partial class Build : FalloutBuild, Fallout.Components.IPack
+            partial class Build : FalloutBuild, Fallout.Application.Components.IPack
             {
                 public static int Main() => Execute<Build>(x => null);
 
-                Fallout.Common.ProjectModel.Solution _solution;
+                Fallout.Application.Solutions.Solution _solution;
             }
 
             {{LegacyNukeStub}}

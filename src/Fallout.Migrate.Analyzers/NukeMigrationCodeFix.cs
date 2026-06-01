@@ -6,6 +6,7 @@ using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Fallout.Migration.Shared;
 
 namespace Fallout.Migrate.Analyzers;
 
@@ -54,13 +55,24 @@ public sealed class NukeMigrationCodeFix : CodeFixProvider
 
     private sealed class NukeToFalloutRewriter : CSharpSyntaxRewriter
     {
+        public override SyntaxNode? VisitQualifiedName(QualifiedNameSyntax node)
+        {
+            // Map the whole dotted name by longest Nuke prefix (e.g. Nuke.Common.Tools.DotNet →
+            // Fallout.Application.Tools.DotNet), via the shared canonical map. Replacing the bare `Nuke`
+            // token alone would yield the dead `Fallout.Common.*` namespace (post-onion).
+            var mapped = MapNamespacePrefix(node.ToString());
+            return mapped is null
+                ? base.VisitQualifiedName(node)
+                : SyntaxFactory.ParseName(mapped).WithTriviaFrom(node);
+        }
+
         public override SyntaxNode? VisitIdentifierName(IdentifierNameSyntax node)
         {
             var replacement = node.Identifier.ValueText switch
             {
-                "Nuke" => "Fallout",
                 "NukeBuild" => "FalloutBuild",
                 "INukeBuild" => "IFalloutBuild",
+                "Nuke" => "Fallout", // lone Nuke identifier (not part of a qualified name)
                 _ => null,
             };
 
@@ -71,6 +83,19 @@ public sealed class NukeMigrationCodeFix : CodeFixProvider
                 node.Identifier.LeadingTrivia,
                 replacement,
                 node.Identifier.TrailingTrivia));
+        }
+
+        /// <summary>Applies the canonical Nuke→Fallout prefix map (longest first); null if no prefix matches.</summary>
+        private static string? MapNamespacePrefix(string dottedName)
+        {
+            foreach (var pair in NukeNamespaceMap.MigrationPairsLongestFirst)
+            {
+                if (dottedName == pair.Key)
+                    return pair.Value;
+                if (dottedName.StartsWith(pair.Key + ".", System.StringComparison.Ordinal))
+                    return pair.Value + dottedName.Substring(pair.Key.Length);
+            }
+            return null;
         }
     }
 }

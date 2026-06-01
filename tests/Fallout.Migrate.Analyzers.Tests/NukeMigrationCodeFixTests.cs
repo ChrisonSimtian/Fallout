@@ -20,7 +20,7 @@ public class NukeMigrationCodeFixTests
         """;
 
     private const string TargetFalloutStub = """
-        namespace Fallout.Common
+        namespace Fallout.Application
         {
             public class AbsolutePath { }
             namespace Tools.DotNet
@@ -41,7 +41,7 @@ public class NukeMigrationCodeFixTests
             """;
 
         var fixedSource = $$"""
-            using Fallout.Common;
+            using Fallout.Application;
             namespace X { class C { } }
             {{LegacyNukeStub}}
             {{TargetFalloutStub}}
@@ -61,7 +61,7 @@ public class NukeMigrationCodeFixTests
             """;
 
         var fixedSource = $$"""
-            using static Fallout.Common.Tools.DotNet.DotNetTasks;
+            using static Fallout.Application.Tools.DotNet.DotNetTasks;
             namespace X { class C { } }
             {{LegacyNukeStub}}
             {{TargetFalloutStub}}
@@ -90,7 +90,7 @@ public class NukeMigrationCodeFixTests
             {
                 class C
                 {
-                    object M() => typeof(Fallout.Common.AbsolutePath);
+                    object M() => typeof(Fallout.Application.AbsolutePath);
                 }
             }
             {{LegacyNukeStub}}
@@ -161,7 +161,7 @@ public class NukeMigrationCodeFixTests
 
         var fixedSource = $$"""
             // Legacy build, mid-migration.
-            using Fallout.Common;
+            using Fallout.Application;
             namespace X { class C { } }
             {{LegacyNukeStub}}
             {{TargetFalloutStub}}

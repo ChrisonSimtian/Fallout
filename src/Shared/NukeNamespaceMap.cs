@@ -84,6 +84,20 @@ internal static class NukeNamespaceMap
         new NukeNamespaceMapping("Nuke.Components",            "Fallout.Application.Components",      NukeComponentsPackage),
     };
 
+    /// <summary>
+    /// NUKE consumer NuGet package ID → its post-onion Fallout package, for the migration's
+    /// <c>&lt;PackageReference&gt;</c> rewrite. NUKE consumers reference <c>Nuke.Common</c> (→ the <c>Fallout</c>
+    /// meta-package, which pulls every ring) and optionally <c>Nuke.Components</c> (→ <c>Fallout.Application.Components</c>);
+    /// the bogus <c>Nuke.Build</c> package folds into the meta. Distinct from the namespace map — package IDs
+    /// don't track namespaces post-onion (e.g. the <c>Fallout</c> meta has no namespace of its own).
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, string> PackageIdMap = new Dictionary<string, string>
+    {
+        ["Nuke.Common"] = "Fallout",
+        ["Nuke.Build"] = "Fallout",
+        ["Nuke.Components"] = "Fallout.Application.Components",
+    };
+
     /// <summary>Fallout→Nuke rows the shim generator emits for <paramref name="shimPackage"/> (unions splits).</summary>
     public static IEnumerable<NukeNamespaceMapping> ShimRowsFor(string shimPackage)
         => All.Where(x => x.ShimPackage == shimPackage);
