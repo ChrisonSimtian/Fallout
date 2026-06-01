@@ -55,4 +55,11 @@
     <ProjectReference Include="..\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <!-- Canonical Nuke<->Fallout namespace map, shared (as linked source) between the shim
+         generator and the migration rewriters so there is one source of truth. -->
+    <Compile Include="..\Shared\NukeNamespaceMap.cs" Link="NukeNamespaceMap.cs" />
+  </ItemGroup>
+
 </Project>
