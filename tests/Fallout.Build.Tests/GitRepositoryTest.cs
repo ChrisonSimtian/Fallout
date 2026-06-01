@@ -4,6 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using Xunit;
 using Fallout.Application.Git;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

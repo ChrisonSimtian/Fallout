@@ -4,8 +4,8 @@ using System.Linq;
 using static Fallout.Application.CI.BuildServerConfigurationGeneration;
 using Fallout.Application.Execution;
 using Fallout.Application;
-using Fallout.Common;
 using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Application.CI;
 

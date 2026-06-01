@@ -4,7 +4,7 @@ using System.Linq;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
 
-namespace Fallout.Common;
+namespace Fallout.Kernel;
 
 internal class ArgumentParser
 {

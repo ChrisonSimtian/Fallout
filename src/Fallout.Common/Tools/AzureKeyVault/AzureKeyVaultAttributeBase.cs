@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Application;
 using Fallout.Application.ValueInjection;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.AzureKeyVault
 {

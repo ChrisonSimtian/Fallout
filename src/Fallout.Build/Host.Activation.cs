@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using Fallout.Application.Execution;
-using Fallout.Common;
 using Fallout.Kernel;
 
 namespace Fallout.Application;

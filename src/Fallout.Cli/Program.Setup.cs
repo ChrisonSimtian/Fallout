@@ -7,7 +7,7 @@ using System.Text;
 using Fallout.Common;
 using Spectre.Console;
 using static Fallout.Common.Constants;
-using static Fallout.Common.EnvironmentInfo;
+using static Fallout.Kernel.EnvironmentInfo;
 using static Fallout.Infrastructure.Tooling.ProcessTasks;
 using static Fallout.Kernel.TemplateUtility;
 using Fallout.Application.Execution;

@@ -5,7 +5,6 @@ using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 

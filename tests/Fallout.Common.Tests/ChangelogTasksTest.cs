@@ -7,6 +7,7 @@ using VerifyXunit;
 using Xunit;
 using Fallout.Kernel.IO;
 using Fallout.Application.ChangeLog;
+using Fallout.Kernel;
 
 // ReSharper disable ReturnValueOfPureMethodIsNotUsed
 

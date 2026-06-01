@@ -2,7 +2,6 @@ using System;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using Fallout.Kernel.IO;
-using Fallout.Common;
 
 namespace Fallout.Kernel;
 

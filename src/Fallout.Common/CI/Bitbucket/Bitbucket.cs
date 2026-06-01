@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Infrastructure.CI.Bitbucket;
 

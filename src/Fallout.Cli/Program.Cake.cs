@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Fallout.Common;
 using Fallout.Cli.Rewriting.Cake;
 using static Fallout.Common.Constants;
-using static Fallout.Common.EnvironmentInfo;
+using static Fallout.Kernel.EnvironmentInfo;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Infrastructure.Tooling;

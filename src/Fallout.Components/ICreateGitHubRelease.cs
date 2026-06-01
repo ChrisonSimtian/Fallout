@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Fallout.Common;
 using Octokit;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;

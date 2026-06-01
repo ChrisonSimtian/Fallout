@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Kernel.IO;
 

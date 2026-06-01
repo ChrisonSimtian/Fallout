@@ -13,7 +13,7 @@ using Fallout.Application.Tools.MSBuild;                                        
 using Fallout.Application.Tools.NuGet;                                                              // NUGET && MSBUILD
 using Fallout.Kernel.Collections;
 using static Fallout.Application.ChangeLog.ChangelogTasks;                                         // CHANGELOG
-using static Fallout.Common.EnvironmentInfo;
+using static Fallout.Kernel.EnvironmentInfo;
 using static Fallout.Kernel.IO.PathConstruction;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;                                          // DOTNET
 using static Fallout.Application.Tools.MSBuild.MSBuildTasks;                                        // MSBUILD

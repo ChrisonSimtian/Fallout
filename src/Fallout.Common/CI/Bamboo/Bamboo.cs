@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Fallout.Application.CI;
 using Fallout.Application;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Infrastructure.CI.Bamboo;
 

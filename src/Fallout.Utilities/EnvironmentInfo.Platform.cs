@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using Fallout.Kernel;
 
-namespace Fallout.Common;
+namespace Fallout.Kernel;
 
 public enum PlatformFamily
 {

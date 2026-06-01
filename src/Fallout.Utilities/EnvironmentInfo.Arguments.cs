@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Fallout.Kernel;
 
-namespace Fallout.Common;
+namespace Fallout.Kernel;
 
 public static partial class EnvironmentInfo
 {

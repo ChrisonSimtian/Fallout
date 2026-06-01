@@ -6,6 +6,7 @@ using Xunit;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tooling;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

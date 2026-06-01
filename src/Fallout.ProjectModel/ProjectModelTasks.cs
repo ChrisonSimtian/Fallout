@@ -7,7 +7,6 @@ using Microsoft.Build.Locator;
 using Serilog;
 #pragma warning disable CA2255
 
-using Fallout.Common;
 using Fallout.Application.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;

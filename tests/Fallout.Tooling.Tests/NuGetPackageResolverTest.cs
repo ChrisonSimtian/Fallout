@@ -3,6 +3,7 @@ using FluentAssertions;
 using Xunit;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

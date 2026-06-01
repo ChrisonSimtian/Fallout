@@ -7,6 +7,7 @@ using Fallout.Common;
 using VerifyXunit;
 using Xunit;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Cli.Tests;
 

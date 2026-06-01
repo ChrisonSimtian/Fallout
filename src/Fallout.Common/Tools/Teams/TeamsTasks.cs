@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Fallout.Application.Tooling;
-using Fallout.Common;
 using Fallout.Kernel.Net;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.Teams;
 

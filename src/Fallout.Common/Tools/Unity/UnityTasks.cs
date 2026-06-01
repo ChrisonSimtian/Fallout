@@ -8,7 +8,6 @@ using Serilog.Events;
 using Fallout.Application;
 using Fallout.Application.Tools.Unity.Logging;
 using Fallout.Application.Tooling;
-using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Text.Yaml;
 using Fallout.Kernel;

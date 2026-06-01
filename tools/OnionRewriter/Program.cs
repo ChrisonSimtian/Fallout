@@ -32,15 +32,15 @@ static class Runner
     // The two Infrastructure destinations are per-type overrides (they beat the default prefix rule). After
     // phase B the model already routes solution/project I/O through the ports, so this move adds no
     // Infrastructure dependency to the Application ring (gate stays green).
-    // Finish partial onion moves (stragglers from steps 2/4b/5a). PASS 1 — Git + ChangeLog build
-    // vocabulary → Application. GitRepositoryAttribute (still in Fallout.Common.Git) joins the GitRepository
-    // model already in Fallout.Application.Git; the changelog helpers → Fallout.Application.ChangeLog. Source
-    // assembly is Fallout.Common, and only these sub-namespaces move (the Fallout.Common root is untouched
-    // here — that's pass 2's job, run separately so the surviving-namespace scan stays correct).
+    // Finish partial onion moves (stragglers from step 5a). PASS 2 — pure utilities still stuck in the
+    // Fallout.Common namespace but physically in the Fallout.Utilities (Kernel) project: EnvironmentInfo,
+    // Assert, AsyncHelper, ArgumentParser. They belong in Fallout.Kernel (5a missed them — the lesson-#12
+    // workspace-load gap). Source assembly is Fallout.Utilities ONLY: that keeps the Fallout.Common PROJECT
+    // dir OUT of the source set, so the surviving-namespace scan still sees Fallout.Common surviving there
+    // and does NOT drop live `using Fallout.Common;` directives. Run as its own pass (after pass 1).
     static readonly Rule[] Rules =
     [
-        new("Fallout.Common.Git", "Fallout.Application.Git", ["Fallout.Common"]),
-        new("Fallout.Common.ChangeLog", "Fallout.Application.ChangeLog", ["Fallout.Common"]),
+        new("Fallout.Common", "Fallout.Kernel", ["Fallout.Utilities"]),
     ];
 
     static readonly Dictionary<string, string> TypeOverrides = new();

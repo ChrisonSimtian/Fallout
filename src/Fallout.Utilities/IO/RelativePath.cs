@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using static Fallout.Kernel.IO.PathConstruction;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Kernel.IO;
 

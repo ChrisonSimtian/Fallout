@@ -7,7 +7,6 @@ using Octokit;
 using static Fallout.Kernel.IO.PathConstruction;
 using Fallout.Application;
 using Fallout.Application.Git;
-using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 

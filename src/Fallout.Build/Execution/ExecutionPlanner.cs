@@ -4,7 +4,6 @@ using System.Linq;
 using Fallout.Domain.Execution;
 using Fallout.Domain.Planning;
 using Fallout.Application;
-using Fallout.Common;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 

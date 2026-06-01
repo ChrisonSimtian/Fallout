@@ -15,6 +15,7 @@ using Fallout.Infrastructure.CI.AppVeyor;
 using Fallout.Infrastructure.CI.TeamCity;
 using Fallout.Infrastructure.CI.AzurePipelines;
 using Fallout.Infrastructure.CI.GitHubActions;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests.CI;
 

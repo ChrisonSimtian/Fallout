@@ -5,6 +5,7 @@ using FluentAssertions;
 using Xunit;
 using Fallout.Application.Execution;
 using Fallout.Application;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests.Execution;
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Fallout.Kernel.Collections;
-using Fallout.Common;
 
 namespace Fallout.Kernel;
 

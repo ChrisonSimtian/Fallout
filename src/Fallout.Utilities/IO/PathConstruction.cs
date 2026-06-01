@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
-using Fallout.Common;
 
 // ReSharper disable ArrangeMethodOrOperatorBody
 

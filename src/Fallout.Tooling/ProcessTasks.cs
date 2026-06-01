@@ -8,7 +8,6 @@ using System.Text;
 using Serilog;
 using Serilog.Events;
 using Fallout.Application.Tooling;
-using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
 

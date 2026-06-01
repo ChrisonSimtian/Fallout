@@ -1,5 +1,4 @@
 using System;
-using Fallout.Common;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.Tools.Docker;

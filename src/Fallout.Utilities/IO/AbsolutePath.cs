@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using static Fallout.Kernel.IO.PathConstruction;
 using Fallout.Kernel;
-using Fallout.Common;
 
 namespace Fallout.Kernel.IO;
 

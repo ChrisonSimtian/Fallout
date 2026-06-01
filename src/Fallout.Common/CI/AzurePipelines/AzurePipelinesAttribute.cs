@@ -11,7 +11,6 @@ using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 using Fallout.Infrastructure.CI.AzurePipelines.Configuration;
-using Fallout.Common;
 
 namespace Fallout.Infrastructure.CI.AzurePipelines;
 

@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Fallout.Common;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Fallout.Application;
 using Fallout.Kernel.Collections;
+using Fallout.Kernel;
 
 namespace Fallout.Cli.Rewriting.Cake;
 

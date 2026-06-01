@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fallout.Common;
+namespace Fallout.Kernel;
 
 internal static class AsyncHelper
 {

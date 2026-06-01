@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
-using Fallout.Common;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;

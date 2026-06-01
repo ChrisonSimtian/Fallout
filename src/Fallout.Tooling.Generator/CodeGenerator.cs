@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using Fallout.CodeGeneration.Generators;
 using Fallout.CodeGeneration.Model;
-using Fallout.Common;
 using Serilog;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;

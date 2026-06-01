@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Kernel.IO;
 

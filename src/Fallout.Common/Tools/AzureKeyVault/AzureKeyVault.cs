@@ -5,7 +5,6 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Secrets;
-using Fallout.Common;
 using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.AzureKeyVault

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Fallout.Kernel.Collections;
-using Fallout.Common;
+using Fallout.Kernel;
 
 namespace Fallout.Kernel.IO;
 

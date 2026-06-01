@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Fallout.Kernel;
-using Fallout.Common;
 
 namespace Fallout.Kernel.IO;
 

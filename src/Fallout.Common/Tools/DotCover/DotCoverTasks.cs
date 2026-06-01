@@ -1,5 +1,4 @@
 using Fallout.Application.Tooling;
-using Fallout.Common;
 using Fallout.Kernel;
 
 namespace Fallout.Application.Tools.DotCover;

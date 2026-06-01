@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Serilog;
 using Serilog.Events;
-using Fallout.Common;
 using Fallout.Application.Tooling;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Collections;

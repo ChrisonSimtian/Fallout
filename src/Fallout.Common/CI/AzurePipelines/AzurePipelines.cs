@@ -6,7 +6,6 @@ using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
-using Fallout.Common;
 
 namespace Fallout.Infrastructure.CI.AzurePipelines;
 

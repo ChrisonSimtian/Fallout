@@ -4,7 +4,6 @@ using System.Linq;
 using Serilog;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel.IO;
-using Fallout.Common;
 
 namespace Fallout.Kernel;
 

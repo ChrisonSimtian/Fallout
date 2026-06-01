@@ -11,7 +11,6 @@ using Fallout.Application.Tools.DotCover;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;
-using Fallout.Common;
 
 namespace Fallout.Infrastructure.CI.TeamCity;
 

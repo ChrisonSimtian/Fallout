@@ -5,6 +5,7 @@ using Xunit;
 using Fallout.Kernel.IO;
 using Fallout.Application.Solutions;
 using Fallout.Infrastructure.ProjectModel;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

@@ -9,7 +9,6 @@ using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using Fallout.Application.Execution.Theming;
 using Fallout.Application.Execution;
-using Fallout.Common;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 

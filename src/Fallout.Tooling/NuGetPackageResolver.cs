@@ -6,7 +6,6 @@ using System.Text.Json.Nodes;
 using System.Xml.Linq;
 using NuGet.Packaging;
 using NuGet.Versioning;
-using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Kernel.Collections;

@@ -3,6 +3,7 @@ using System.Linq;
 using FluentAssertions;
 using Xunit;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Common.Tests;
 

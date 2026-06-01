@@ -10,7 +10,6 @@ using Fallout.Kernel.Collections;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Infrastructure.CI.GitHubActions.Configuration;
-using Fallout.Common;
 
 namespace Fallout.Infrastructure.CI.GitHubActions;
 

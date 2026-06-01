@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Fallout.Kernel.Collections;
-using Fallout.Common;
 
 namespace Fallout.Kernel;
 

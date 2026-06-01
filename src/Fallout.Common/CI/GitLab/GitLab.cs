@@ -4,7 +4,6 @@ using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application;
 using Fallout.Kernel;
-using Fallout.Common;
 
 namespace Fallout.Infrastructure.CI.GitLab;
 

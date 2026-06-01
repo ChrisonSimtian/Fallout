@@ -16,7 +16,7 @@ using Fallout.Application.Tools.MSBuild;
 using Fallout.Application.Tools.SignTool;
 using Fallout.Application.Tools.NuGet;
 using Fallout.Kernel.IO;
-using Fallout.Common;
+using Fallout.Kernel;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using static Fallout.Application.Tools.MSBuild.MSBuildTasks;
@@ -24,7 +24,7 @@ using static Fallout.Application.Tools.SignTool.SignToolTasks;
 using static Fallout.Application.Tools.NuGet.NuGetTasks;
 using static Fallout.Kernel.IO.TextTasks;
 using static Fallout.Kernel.IO.XmlTasks;
-using static Fallout.Common.EnvironmentInfo;
+using static Fallout.Kernel.EnvironmentInfo;
 
 class Build : FalloutBuild
 {

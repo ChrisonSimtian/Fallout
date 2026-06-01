@@ -3,7 +3,6 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Fallout.Common;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
@@ -11,6 +10,7 @@ using Fallout.Application.Tools.MSBuild;
 using Fallout.Application.Tools.SignTool;
 using Fallout.Application.Tools.NuGet;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Cli.Rewriting.Cake;
 
@@ -32,7 +32,7 @@ internal class ClassRewriter : SafeSyntaxRewriter
             // Onion-realigned namespaces (ADR-0006). The tool/build/solution vocabulary moved to the
             // Fallout.Application.* ring; pure helpers to Fallout.Kernel.*. Namespaces already contributed by
             // StaticClassImports below (Fallout.Application + .Tools.DotNet/.MSBuild/.SignTool/.NuGet,
-            // Fallout.Kernel.IO, Fallout.Common via EnvironmentInfo) are intentionally NOT repeated here.
+            // Fallout.Kernel.IO, Fallout.Kernel via EnvironmentInfo) are intentionally NOT repeated here.
             "Fallout.Application.Execution",
             "Fallout.Application.Solutions",
             "Fallout.Application.Tooling",

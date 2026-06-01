@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
-using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 

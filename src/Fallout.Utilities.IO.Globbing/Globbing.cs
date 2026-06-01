@@ -5,7 +5,6 @@ using System.Linq;
 using GlobExpressions;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
-using Fallout.Common;
 
 namespace Fallout.Kernel.IO;
 

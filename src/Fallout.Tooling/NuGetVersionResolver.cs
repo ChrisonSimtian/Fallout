@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Fallout.Kernel;
-using Fallout.Common;
 
 namespace Fallout.Infrastructure.Tooling;
 

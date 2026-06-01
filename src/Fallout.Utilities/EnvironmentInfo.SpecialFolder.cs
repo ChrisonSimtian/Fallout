@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 
-namespace Fallout.Common;
+namespace Fallout.Kernel;
 
 public enum SpecialFolders
 {

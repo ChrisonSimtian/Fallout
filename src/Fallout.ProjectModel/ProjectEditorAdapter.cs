@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 using Fallout.Application.Solutions;

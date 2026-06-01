@@ -5,6 +5,7 @@ using System.Linq;
 using Fallout.Common;
 using static Fallout.Common.Constants;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Cli;
 

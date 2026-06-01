@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Fallout.Application.Tooling;
-using Fallout.Common;
 using Fallout.Kernel.IO;
+using Fallout.Kernel;
 
 namespace Fallout.Application.Tooling;
 

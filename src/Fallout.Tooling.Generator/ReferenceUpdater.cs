@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Fallout.CodeGeneration.Model;
-using Fallout.Common;
 using Serilog;
 using Fallout.Kernel.Net;
+using Fallout.Kernel;
 
 namespace Fallout.CodeGeneration;
 

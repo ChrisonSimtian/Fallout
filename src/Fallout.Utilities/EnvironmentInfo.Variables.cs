@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 
-namespace Fallout.Common;
+namespace Fallout.Kernel;
 
 [DebuggerNonUserCode]
 [DebuggerStepThrough]
