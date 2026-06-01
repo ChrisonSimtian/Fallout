@@ -18,7 +18,7 @@ public class GitHubActionsCheckoutStep : GitHubActionsStep
     /// The git ref to check out. When unset, actions/checkout picks the default for the event
     /// (the merge SHA on pull_request triggers, which leaves HEAD detached). Set to
     /// <c>${{ github.head_ref }}</c> on PR workflows that read <c>.git/HEAD</c> directly
-    /// (e.g. <see cref="Fallout.Common.Git.GitRepository.FromLocalDirectory"/>) so the branch
+    /// (e.g. <see cref="Fallout.Application.Git.GitRepository.FromLocalDirectory"/>) so the branch
     /// resolves correctly. When set, the generator also emits a <c>repository:</c> line that
     /// resolves to the PR head's repo for fork PRs and falls back to the current repo for push
     /// events — without it, fork PRs fail with "branch or tag could not be found" because the
