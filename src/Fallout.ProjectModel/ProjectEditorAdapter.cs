@@ -3,8 +3,9 @@ using System.Runtime.CompilerServices;
 using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Application.Solutions;
 
-namespace Fallout.Solutions;
+namespace Fallout.Infrastructure.ProjectModel;
 
 // Infrastructure adapter for the IProjectEditor port (ADR-0006, step 5c). Owns the Microsoft.Build
 // evaluation used to read/edit MSBuild project files, keeping the Application ring (e.g. Telemetry) free

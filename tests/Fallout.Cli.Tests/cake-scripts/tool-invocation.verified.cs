@@ -8,7 +8,7 @@ using System.Xml;
 using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Kernel.IO;
-using Fallout.Solutions;
+using Fallout.Application.Solutions;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Tools.GitVersion;

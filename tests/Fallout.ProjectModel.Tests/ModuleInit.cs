@@ -1,5 +1,5 @@
 using System.Runtime.CompilerServices;
-using Fallout.Solutions;
+using Fallout.Infrastructure.ProjectModel;
 
 namespace Fallout.Common.Tests;
 

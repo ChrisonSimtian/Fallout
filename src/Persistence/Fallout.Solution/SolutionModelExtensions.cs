@@ -1,6 +1,6 @@
 using Fallout.Kernel.IO;
 
-namespace Fallout.Solutions;
+namespace Fallout.Application.Solutions;
 
 public static class SolutionModelExtensions
 {

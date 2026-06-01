@@ -23,22 +23,30 @@ static class Runner
     // across rings type-by-type uses `TypeOverrides` (full-name → target ns), which beats the prefix rule.
     record struct Rule(string Old, string New, string[] SourceAssemblies);
 
-    // Step 5b — CI host providers → Infrastructure. The concrete CI provider classes (AppVeyor,
-    // AzurePipelines, TeamCity, GitHubActions, … : Host) and their config generators move from
-    // Fallout.Common.CI.* to Fallout.Infrastructure.CI.*. The Application ring reaches the provider-specific
-    // capabilities it needs through ports (IAppVeyor/IAzurePipelines/ITeamCity/IGitHubActions + CiHost) that
-    // were added in Fallout.Application.CI; consumers were already rewritten to CiHost, so this move doesn't
-    // add any Infrastructure using to the Application ring (gate stays green). The two enums the port methods
-    // expose are vocabulary → Fallout.Application.CI (per-type override).
+    // Step 5c — ProjectModel/Solution → ports (ADR-0006). The single Fallout.Solutions namespace is declared
+    // across three assemblies and splits THREE ways:
+    //   • the Fallout-owned model + ports + [Solution] vocabulary → Fallout.Application.Solutions (the abstract
+    //     concept, inner ring): default rule below.
+    //   • the vendored .sln/.slnx serializer adapter (Fallout.Solution asm) → Fallout.Infrastructure.Solutions.
+    //   • the Microsoft.Build evaluator (Fallout.ProjectModel asm) → Fallout.Infrastructure.ProjectModel.
+    // The two Infrastructure destinations are per-type overrides (they beat the default prefix rule). After
+    // phase B the model already routes solution/project I/O through the ports, so this move adds no
+    // Infrastructure dependency to the Application ring (gate stays green).
     static readonly Rule[] Rules =
     [
-        new("Fallout.Common.CI", "Fallout.Infrastructure.CI", ["Fallout.Common"]),
+        new("Fallout.Solutions", "Fallout.Application.Solutions", ["Fallout.Solution", "Fallout.ProjectModel", "Fallout.Common"]),
     ];
 
     static readonly Dictionary<string, string> TypeOverrides = new()
     {
-        ["Fallout.Common.CI.AzurePipelines.AzurePipelinesTestResultsType"] = "Fallout.Application.CI",
-        ["Fallout.Common.CI.AzurePipelines.AzurePipelinesCodeCoverageToolType"] = "Fallout.Application.CI",
+        // Serializer adapter (concrete .sln/.slnx, vendored) → Infrastructure.Solutions.
+        ["Fallout.Solutions.SolutionSerializerAdapter"] = "Fallout.Infrastructure.Solutions",
+        ["Fallout.Solutions.SolutionSerializerRegistration"] = "Fallout.Infrastructure.Solutions",
+        // MSBuild evaluator → Infrastructure.ProjectModel.
+        ["Fallout.Solutions.ProjectModelTasks"] = "Fallout.Infrastructure.ProjectModel",
+        ["Fallout.Solutions.ProjectExtensions"] = "Fallout.Infrastructure.ProjectModel",
+        ["Fallout.Solutions.ProjectEditorAdapter"] = "Fallout.Infrastructure.ProjectModel",
+        ["Fallout.Solutions.ProjectEditorRegistration"] = "Fallout.Infrastructure.ProjectModel",
     };
 
     static bool Matches(Rule r, string ns) => ns == r.Old || ns.StartsWith(r.Old + ".");

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Solutions;
 using Fallout.Kernel;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.Git.GitTasks;
@@ -12,6 +11,7 @@ using Fallout.Application.Tools.Git;
 using Fallout.Application.Tools.GitHub;
 using Fallout.Kernel.IO;
 using Fallout.Kernel.Text.Yaml;
+using Fallout.Application.Solutions;
 
 partial class Build
 {
@@ -21,7 +21,7 @@ partial class Build
     AbsolutePath ExternalRepositoriesDirectory => RootDirectory / "external";
     AbsolutePath ExternalRepositoriesFile => ExternalRepositoriesDirectory / "repositories.yml";
 
-    IEnumerable<Fallout.Solutions.Solution> ExternalSolutions
+    IEnumerable<Fallout.Application.Solutions.Solution> ExternalSolutions
         => ExternalRepositories
             .Select(x => ExternalRepositoriesDirectory / x.GetGitHubName())
             .Select(x => x.GlobFiles("*.sln").Single())

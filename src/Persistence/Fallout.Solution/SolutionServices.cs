@@ -1,6 +1,6 @@
 using Fallout.Kernel.IO;
 
-namespace Fallout.Solutions;
+namespace Fallout.Application.Solutions;
 
 // Ports for the impure solution/project I/O (ADR-0006, onion realignment step 5c). The Application ring
 // (the Solution/Project model, [Solution] injection, build orchestration) depends only on these

@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Solutions;
 using static Fallout.Kernel.IO.PathConstruction;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;

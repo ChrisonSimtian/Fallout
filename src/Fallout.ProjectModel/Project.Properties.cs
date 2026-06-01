@@ -1,8 +1,9 @@
 
 using Fallout.Common;
 using Fallout.Kernel;
+using Fallout.Application.Solutions;
 
-namespace Fallout.Solutions;
+namespace Fallout.Infrastructure.ProjectModel;
 
 public static partial class ProjectExtensions
 {

@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Solutions;
 using Xunit;
 using Fallout.Kernel.IO;
+using Fallout.Application.Solutions;
+using Fallout.Infrastructure.ProjectModel;
 
 namespace Fallout.Common.Tests;
 

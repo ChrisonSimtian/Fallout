@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Solutions;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
@@ -13,6 +12,7 @@ using Fallout.Kernel.Collections;
 using Fallout.Kernel;
 
 using Fallout.Application.CI;
+using Fallout.Application.Solutions;
 namespace Fallout.Application.Components;
 
 public interface ITest : ICompile, IHasArtifacts

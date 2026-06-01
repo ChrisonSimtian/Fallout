@@ -7,8 +7,9 @@ using Fallout.Persistence.Solution.Serializer;
 using Fallout.Common;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
+using Fallout.Application.Solutions;
 
-namespace Fallout.Solutions;
+namespace Fallout.Infrastructure.Solutions;
 
 // Infrastructure adapter for the ISolutionSerializer port (ADR-0006, step 5c). It owns the only references
 // to the vendored, format-specific serializers (legacy .sln = SlnV12, XML .slnx = SlnXml — selected by

@@ -2,12 +2,12 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using Fallout.Solutions;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
 using Fallout.Common;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
+using Fallout.Application.Solutions;
 
 namespace Fallout.Application.Execution;
 

@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Solutions;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Kernel.IO;
+using Fallout.Infrastructure.ProjectModel;
 
 namespace Fallout.Cli;
 

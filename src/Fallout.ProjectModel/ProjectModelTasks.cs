@@ -12,7 +12,7 @@ using Fallout.Application.Tooling;
 using Fallout.Kernel;
 using Fallout.Kernel.IO;
 
-namespace Fallout.Solutions;
+namespace Fallout.Infrastructure.ProjectModel;
 
 public static class ProjectModelTasks
 {

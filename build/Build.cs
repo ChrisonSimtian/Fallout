@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
 using Fallout.Common;
-using Fallout.Solutions;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
@@ -18,6 +17,8 @@ using Fallout.Application.Tools.GitHub;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 using Fallout.Infrastructure.CI.GitHubActions;
+using Fallout.Application.Solutions;
+using Fallout.Infrastructure.ProjectModel;
 
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]
@@ -41,7 +42,7 @@ partial class Build
     GitRepository GitRepository => From<IHasGitRepository>().GitRepository;
 
     [Solution(GenerateProjects = true)] readonly Solution Solution;
-    Fallout.Solutions.Solution IHasSolution.Solution => Solution;
+    Fallout.Application.Solutions.Solution IHasSolution.Solution => Solution;
 
     AbsolutePath OutputDirectory => RootDirectory / "output";
     AbsolutePath SourceDirectory => RootDirectory / "source";
@@ -98,12 +99,12 @@ partial class Build
         .When(!ScheduledTargets.Contains(((IPublish)this).Publish) && !ScheduledTargets.Contains(Install), _ => _
             .ClearProperties());
 
-    IEnumerable<(Fallout.Solutions.Project Project, string Framework)> ICompile.PublishConfigurations =>
+    IEnumerable<(Fallout.Application.Solutions.Project Project, string Framework)> ICompile.PublishConfigurations =>
         from project in new[] { Solution.Fallout_Cli, Solution.Fallout_MSBuildTasks }
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Fallout.Solutions.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
+    IEnumerable<Fallout.Application.Solutions.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
 
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;

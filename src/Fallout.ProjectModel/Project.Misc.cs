@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 using Fallout.Common;
+using Fallout.Application.Solutions;
 
-namespace Fallout.Solutions;
+namespace Fallout.Infrastructure.ProjectModel;
 
 public static partial class ProjectExtensions
 {

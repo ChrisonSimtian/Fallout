@@ -1,6 +1,6 @@
 using Fallout.Kernel.IO;
 
-namespace Fallout.Solutions;
+namespace Fallout.Application.Solutions;
 
 // Application-ring conveniences over a Project that need impure MSBuild evaluation. They route through the
 // IProjectEditor port (implemented in Fallout.ProjectModel) so the inner ring stays free of Microsoft.Build.

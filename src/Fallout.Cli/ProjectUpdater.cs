@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using NuGet.Versioning;
 using Fallout.Common;
-using Fallout.Solutions;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Kernel;
+using Fallout.Infrastructure.ProjectModel;
 
 namespace Fallout.Cli;
 

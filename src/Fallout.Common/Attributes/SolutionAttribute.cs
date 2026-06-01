@@ -8,7 +8,7 @@ using Fallout.Application;
 using Fallout.Kernel.IO;
 using Fallout.Kernel;
 
-namespace Fallout.Solutions;
+namespace Fallout.Application.Solutions;
 
 /// <summary>
 ///     Injects an instance of <see cref="Solution"/>. The solution path is resolved in the following order:
