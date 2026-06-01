@@ -29,14 +29,14 @@ internal class ClassRewriter : SafeSyntaxRewriter
             "System.Linq.Expressions",
             "System.Security.Cryptography.X509Certificates",
             "System.Xml",
-            "Fallout.Common",
-            "Fallout.Common.Execution",
-            "Fallout.Kernel.IO",
+            // Onion-realigned namespaces (ADR-0006). The tool/build/solution vocabulary moved to the
+            // Fallout.Application.* ring; pure helpers to Fallout.Kernel.*. Namespaces already contributed by
+            // StaticClassImports below (Fallout.Application + .Tools.DotNet/.MSBuild/.SignTool/.NuGet,
+            // Fallout.Kernel.IO, Fallout.Common via EnvironmentInfo) are intentionally NOT repeated here.
+            "Fallout.Application.Execution",
             "Fallout.Application.Solutions",
-            "Fallout.Common.Tooling",
-            "Fallout.Common.Tools.DotNet",
-            "Fallout.Common.Tools.GitVersion",
-            "Fallout.Common.Tools.SignTool",
+            "Fallout.Application.Tooling",
+            "Fallout.Application.Tools.GitVersion",
             "Fallout.Kernel.Collections",
         };
 
@@ -89,6 +89,7 @@ internal class ClassRewriter : SafeSyntaxRewriter
 
         var namespaceUsings = NamespaceImports
             .Concat(staticTypes.Select(x => x.Namespace))
+            .Distinct()
             .Select(IdentifierName)
             .Select(UsingDirective);
 
