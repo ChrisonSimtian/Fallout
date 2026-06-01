@@ -85,6 +85,13 @@ Migration/shim strategy is redesigned after step 5, before the cut (deferred, ab
 - **Minimal — fix only the internal mismatches.** Smallest break. **Not chosen** — leaves the catch-all and doesn't achieve the onion goal.
 - **Defer to "after shim sunset" (status quo per rebrand-plan).** **Not chosen** — see "Why now"; the work is wanted this year.
 
+## Amendments
+
+- **2026-06-01 — `Fallout.Kernel` + filesystem/external-IO is kernel-level (resolves the "Utilities as Infrastructure vs shared kernel" judgment call above, and amends the layer table's IO/Net/compression/globbing → Infrastructure entry).** During the Infrastructure ring (spike 0003 steps 5a/5d), the open default in *Judgment calls* — "IO/Net/compression are genuinely infrastructure" — was **reversed for the fluent vocabulary**. A new innermost shared ring **`Fallout.Kernel`** (Domain/Application/Infrastructure all depend on it; Domain stays zero-dep otherwise) holds the pure helpers **and** the fluent IO vocabulary:
+  - **Filesystem is a kernel-level capability** (like the BCL's `File`/`Directory`): `AbsolutePath` + all its fluent ops (`.ReadAllText`/`.GlobFiles`/`.CreateDirectory`/`.ZipTo`/…) stay in Kernel. Rationale: the fluent API is used pervasively across the Application ring; routing it through an `IFileSystem` port would be hundreds of call sites that kill the ergonomics, and placing it in Infrastructure would fail the Application-ring fitness gate.
+  - **The same reasoning extends to the rest of external-IO *vocabulary* (5d):** the fluent HTTP client (`HttpClient.CreateRequest(...).Send()` extensions over the BCL `HttpClient`), compression (`.ZipTo()`/`.UnZipTo()` — themselves `AbsolutePath` extensions), and glob all stay in Kernel. Every one is consumed by *gated* Application-ring code (tool wrappers, `Components`, version-resolver attributes), so a clean move would break the gate, and they are thin ergonomic layers over BCL capabilities — not genuine external adapters worth a port. `HttpTasks`/`FtpTasks` (download-URL-to-file) are the one coarse "network task" category; kept in Kernel for now, with an optional `IHttpDownload`-style port → Infrastructure left as deferred future work (not required for the gate).
+  - **What still goes to Infrastructure** is unchanged: process/tool execution (4b), CI host adapters (5b), tool-path/package resolvers (4b), and project/solution readers (5c, via ports). The seam is *genuine external side-effecting adapters behind Application-owned ports*, not "anything in a namespace called IO/Net."
+
 ## References
 
 - Current-state map: see the structural survey summarized in the spike.
