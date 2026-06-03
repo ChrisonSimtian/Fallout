@@ -12,7 +12,7 @@ namespace Fallout.Architecture.Tests;
 /// <c>Fallout.Application.Tooling</c> (see <c>ToolingServices</c>), with the concrete adapters registered from
 /// Infrastructure via a module initializer. This guards the inversion that the tool-layer split (step 4b)
 /// deferred. (Houses ring fitness in its own project so loading every ring's assembly cannot perturb
-/// load-order-sensitive tests elsewhere, e.g. the schema/AppDomain-scan tests in Fallout.Build.Tests.)
+/// load-order-sensitive tests elsewhere, e.g. the schema/AppDomain-scan tests in Fallout.Application.Tests.)
 /// </summary>
 public class ApplicationRingFitnessTests
 {
