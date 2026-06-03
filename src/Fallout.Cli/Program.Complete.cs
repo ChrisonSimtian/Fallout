@@ -4,7 +4,6 @@ using System.Linq;
 using Fallout.Kernel;
 using static Fallout.Build.Shared.Constants;
 using Fallout.Kernel.IO;
-using Fallout.Kernel;
 using Fallout.Kernel.Text.Yaml;
 using Fallout.Build.Shared;
 

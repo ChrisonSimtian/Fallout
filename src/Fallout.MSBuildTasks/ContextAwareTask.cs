@@ -7,7 +7,6 @@ using Microsoft.Build.Utilities;
 using Fallout.Kernel;
 #if NETCOREAPP
 using System.Runtime.Loader;
-using Fallout.Kernel;
 #endif
 
 namespace Fallout.MSBuildTasks;
