@@ -1,0 +1,57 @@
+﻿{
+  "version": 1,
+  "targets": [
+    {
+      "name": "Clean",
+      "description": null,
+      "declaredIn": "SampleComponent",
+      "default": false,
+      "listed": true,
+      "dependsOn": [],
+      "after": [],
+      "triggeredBy": [],
+      "triggers": []
+    },
+    {
+      "name": "Compile",
+      "description": "Compiles the solution",
+      "declaredIn": null,
+      "default": true,
+      "listed": true,
+      "dependsOn": [
+        "Restore"
+      ],
+      "after": [],
+      "triggeredBy": [],
+      "triggers": [
+        "Report"
+      ]
+    },
+    {
+      "name": "Report",
+      "description": null,
+      "declaredIn": null,
+      "default": false,
+      "listed": false,
+      "dependsOn": [],
+      "after": [],
+      "triggeredBy": [
+        "Compile"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "Restore",
+      "description": null,
+      "declaredIn": null,
+      "default": false,
+      "listed": true,
+      "dependsOn": [],
+      "after": [
+        "Clean"
+      ],
+      "triggeredBy": [],
+      "triggers": []
+    }
+  ]
+}

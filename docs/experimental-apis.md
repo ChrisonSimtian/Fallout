@@ -48,7 +48,7 @@ Status values: **Experimental** (live, opt-in), **Promoted** (attribute removed,
 
 | ID | Surface | Introduced | Status | Notes |
 |----|---------|------------|--------|-------|
-| _none allocated yet_ | — | — | — | First experimental API to land claims `FALLOUT001`. |
+| `FALLOUT001` | `Fallout.Common.Execution.BuildGraphUtility` | 2026.1 | Experimental | JSON export of the target graph (`.fallout/temp/build-graph.json`) for IDE tooling; shape may change while the VS Code extension PoC firms up. |
 
 <!--
 Allocation example (do not uncomment unless a real API is marked):

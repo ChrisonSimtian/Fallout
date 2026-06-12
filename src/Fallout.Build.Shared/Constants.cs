@@ -21,6 +21,7 @@ internal static class Constants
     internal const string LegacyNukeDirectoryName = ".nuke";
     internal const string FalloutCommonPackageId = "Fallout.Common";
     internal const string BuildSchemaFileName = "build.schema.json";
+    internal const string BuildGraphFileName = "build-graph.json";
     internal const string VisualStudioDebugFileName = $"{VisualStudioDebugParameterName}.log";
 
     internal const string TargetsSeparator = "+";
@@ -121,6 +122,11 @@ internal static class Constants
     internal static AbsolutePath GetBuildSchemaFile(AbsolutePath rootDirectory)
     {
         return GetFalloutDirectory(rootDirectory) / BuildSchemaFileName;
+    }
+
+    internal static AbsolutePath GetBuildGraphFile(AbsolutePath rootDirectory)
+    {
+        return GetTemporaryDirectory(rootDirectory) / BuildGraphFileName;
     }
 
     internal static AbsolutePath GetDefaultParametersFile(AbsolutePath rootDirectory)
