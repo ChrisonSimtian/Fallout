@@ -22,16 +22,9 @@ public static class NuGetToolPathResolver
 
         var packageDirectory = GetPackageDirectory(packageId.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries), version);
         var packageExecutables = packageExecutable.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-#if !NETSTANDARD2_0
-            var enumerationOptions = new EnumerationOptions { RecurseSubdirectories = true, MatchCasing = MatchCasing.CaseInsensitive };
-#endif
+        var enumerationOptions = new EnumerationOptions { RecurseSubdirectories = true, MatchCasing = MatchCasing.CaseInsensitive };
         var packageExecutablePaths = packageExecutables
-#if !NETSTANDARD2_0
-                .SelectMany(x => Directory.GetFiles(packageDirectory, x, enumerationOptions))
-#else
-            .SelectMany(x => Directory.EnumerateFiles(packageDirectory, "*", SearchOption.AllDirectories)
-                .Where(y => Path.GetFileName(y).EqualsOrdinalIgnoreCase(x)))
-#endif
+            .SelectMany(x => Directory.GetFiles(packageDirectory, x, enumerationOptions))
             .ToList();
 
         Assert.NotEmpty(packageExecutablePaths,

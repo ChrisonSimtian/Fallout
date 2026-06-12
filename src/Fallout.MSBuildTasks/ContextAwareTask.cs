@@ -5,9 +5,7 @@ using System.Reflection;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using Fallout.Core;
-#if NETCOREAPP
 using System.Runtime.Loader;
-#endif
 
 namespace Fallout.MSBuildTasks;
 
@@ -23,7 +21,6 @@ public abstract class ContextAwareTask : Task
 
     public sealed override bool Execute()
     {
-#if NETCOREAPP
         var taskAssemblyPath = new Uri(GetType().GetTypeInfo().Assembly.Location).LocalPath;
         var context = new CustomAssemblyLoader(this);
         var inContextAssembly = context.LoadFromAssemblyPath(taskAssemblyPath);
@@ -53,21 +50,6 @@ public abstract class ContextAwareTask : Task
             propertyPair.outerProperty.SetValue(this, propertyPair.innerProperty.GetValue(innerTask));
 
         return result;
-#else
-        // On .NET Framework (on Windows), we find native binaries by adding them to our PATH.
-        if (UnmanagedDllDirectory != null)
-        {
-            var pathEnvVar = Environment.GetEnvironmentVariable("PATH").NotNull("pathEnvVar != null");
-            var searchPaths = pathEnvVar.Split(Path.PathSeparator);
-            if (!searchPaths.Contains(UnmanagedDllDirectory, StringComparer.OrdinalIgnoreCase))
-            {
-                pathEnvVar += Path.PathSeparator + UnmanagedDllDirectory;
-                Environment.SetEnvironmentVariable("PATH", pathEnvVar);
-            }
-        }
-
-        return ExecuteInner();
-#endif
     }
 
     protected abstract bool ExecuteInner();
@@ -143,7 +125,6 @@ public abstract class ContextAwareTask : Task
             importance));
     }
 
-#if NETCOREAPP
     private class CustomAssemblyLoader : AssemblyLoadContext
     {
         private readonly ContextAwareTask loaderTask;
@@ -176,5 +157,4 @@ public abstract class ContextAwareTask : Task
                 : base.LoadUnmanagedDll(unmanagedDllName);
         }
     }
-#endif
 }
