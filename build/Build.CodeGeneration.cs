@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Fallout.Core.IO.Globbing;
 using static Fallout.CodeGeneration.CodeGenerator;
 using static Fallout.CodeGeneration.ReferenceUpdater;
@@ -11,8 +13,15 @@ using Fallout.Core.Collections;
 
 partial class Build
 {
-    AbsolutePath SpecificationsDirectory => RootDirectory / "src" / "Fallout.Common" / "Tools";
+    AbsolutePath SpecificationsDirectory => RootDirectory / "src" / "Fallout.Application.Tools";
     AbsolutePath ReferencesDirectory => RootDirectory / "docs" / "cli-tools";
+
+    // Tool specs live one level down as <Tool>/<Tool>.json. SpecificationsDirectory is the
+    // Fallout.Application.Tools project root, so exclude build output (obj/bin) whose *.json
+    // artifacts would otherwise be picked up as specs.
+    IEnumerable<AbsolutePath> SpecificationFiles =>
+        SpecificationsDirectory.GlobFiles("*/*.json")
+            .Where(x => x.Parent.Name is not ("obj" or "bin"));
 
     Target References => _ => _
         .Requires(() => GitHasCleanWorkingCopy())
@@ -20,16 +29,16 @@ partial class Build
         {
             ReferencesDirectory.CreateOrCleanDirectory();
 
-            UpdateReferences(SpecificationsDirectory, ReferencesDirectory);
+            UpdateReferences(SpecificationFiles.Select(x => (string)x), ReferencesDirectory);
         });
 
     Target GenerateTools => _ => _
         .Executes(() =>
         {
-            SpecificationsDirectory.GlobFiles("*/*.json").ForEach(x =>
+            SpecificationFiles.ForEach(x =>
                 GenerateCode(
                     x,
-                    namespaceProvider: x => $"Fallout.Common.Tools.{x.Name}",
+                    namespaceProvider: x => $"Fallout.Application.Tools.{x.Name}",
                     sourceFileProvider: x => GitRepository.SetBranch(MainBranch).GetGitHubBrowseUrl(x.SpecificationFile)));
         });
 }
