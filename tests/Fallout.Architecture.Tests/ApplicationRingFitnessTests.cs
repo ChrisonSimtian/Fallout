@@ -16,13 +16,15 @@ namespace Fallout.Architecture.Tests;
 /// </summary>
 public class ApplicationRingFitnessTests
 {
-    // Application-ring types are spread across four assemblies: Fallout.Build (root/Execution/CI/Utilities),
-    // Fallout.Tooling (Application.Tooling vocabulary + ports), Fallout.Common (Application.Tools.*), and
-    // Fallout.Solution (Application.Solutions model + ports — step 5c; the co-hosted Infrastructure.Solutions
-    // serializer adapter lives in the same assembly but is filtered out by the namespace clause below).
+    // Application-ring types are spread across five assemblies: Fallout.Application (root/Execution/CI/IO),
+    // Fallout.Application.Components (the ICompile/ITest/IPack composition interfaces), Fallout.Application.Tooling
+    // (tool vocabulary + ports), Fallout.Application.Tools (the 60+ tool wrappers), and Fallout.Application.Solutions
+    // (solution model + ports — step 5c; the co-hosted Infrastructure.Solutions serializer adapter is a separate
+    // assembly, and the namespace clause below scopes the scan to Fallout.Application.* regardless).
     private static readonly Assembly[] ApplicationAssemblies =
     [
         typeof(global::Fallout.Application.FalloutBuild).Assembly,
+        typeof(global::Fallout.Application.Components.ICompile).Assembly,
         typeof(global::Fallout.Application.Tooling.ToolTasks).Assembly,
         typeof(global::Fallout.Application.Tools.DotNet.DotNetTasks).Assembly,
         typeof(global::Fallout.Application.Solutions.Solution).Assembly,

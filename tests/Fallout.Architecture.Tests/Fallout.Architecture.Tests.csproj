@@ -8,19 +8,37 @@
     <PackageReference Include="NetArchTest.Rules" />
   </ItemGroup>
 
-  <!-- References every ring so the onion dependency rules can be asserted across them. -->
+  <!--
+    References every ring so the onion dependency rules can be asserted across them.
+    The reference set IS part of the contract: a ring assembly that isn't referenced
+    here cannot be scanned, so omitting one silently drops it from the fitness gate.
+  -->
+
+  <!-- Application ring -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Application\Fallout.Application.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Application.Components\Fallout.Application.Components.csproj" />
     <ProjectReference Include="..\..\src\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Application.Solutions\Fallout.Application.Solutions.csproj" />
   </ItemGroup>
 
-
+  <!-- Core (kernel) ring -->
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fallout.Application.Tools\Fallout.Application.Tools.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Core\Fallout.Core.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Core.Net\Fallout.Core.Net.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Core.IO.Compression\Fallout.Core.IO.Compression.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Core.IO.Globbing\Fallout.Core.IO.Globbing.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Core.Text.Json\Fallout.Core.Text.Json.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Core.Text.Yaml\Fallout.Core.Text.Yaml.csproj" />
+  </ItemGroup>
+
+  <!-- Infrastructure ring -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Infrastructure.CI\Fallout.Infrastructure.CI.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
   </ItemGroup>
 
 </Project>

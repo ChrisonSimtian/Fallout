@@ -49,9 +49,12 @@ public class ArchitectureFitnessTests
             .That().ResideInNamespaceStartingWith("Fallout")
             .Should()
             .NotHaveDependencyOnAny(
-                "Fallout.Common",
+                "Fallout.Core",
                 "Fallout.Application",
                 "Fallout.Infrastructure",
+                "Fallout.Cli",
+                // legacy pre-realignment names, guarded so a regression can't reintroduce them
+                "Fallout.Common",
                 "Fallout.Build",
                 "Fallout.Components",
                 "Fallout.Tooling",
