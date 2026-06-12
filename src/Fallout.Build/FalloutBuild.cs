@@ -46,6 +46,7 @@ namespace Fallout.Common;
 [HandleReSharperSurrogateArguments(Priority = 150)]
 [InjectParameterValues(Priority = 100)]
 [HandleShellCompletion(Priority = 75)]
+[EmitBuildGraph(Priority = 70)]
 [GenerateBuildServerConfigurations(Priority = 50)]
 [InvokeBuildServerConfigurationGeneration(Priority = 45)]
 [UnsetVisualStudioEnvironmentVariables]

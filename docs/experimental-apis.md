@@ -49,6 +49,7 @@ Status values: **Experimental** (live, opt-in), **Promoted** (attribute removed,
 | ID | Surface | Introduced | Status | Notes |
 |----|---------|------------|--------|-------|
 | `FALLOUT001` | `Fallout.Components.IPublish.PublishTargets` / `.PublishTo` (multi-channel publishing) | 2026.1 | Experimental | Fan a single `Pack` output across multiple feeds with per-feed package-ID routing (`PublishTarget`). Shape may change while the CD model firms up (epic #332). Promote by deleting the attribute once `ReleaseChannel`/`DeploymentTarget` (#334) settle. |
+| `FALLOUT002` | `Fallout.Common.Execution.BuildGraphUtility` | 2026.1 | Experimental | JSON export of the target graph (`.fallout/temp/build-graph.json`) for IDE tooling; shape may change while the VS Code extension PoC firms up. |
 
 <!--
 Allocation example (do not uncomment unless a real API is marked):
