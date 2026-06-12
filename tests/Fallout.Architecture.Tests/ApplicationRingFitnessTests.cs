@@ -1,6 +1,4 @@
 using System.Reflection;
-using FluentAssertions;
-using NetArchTest.Rules;
 using Xunit;
 
 namespace Fallout.Architecture.Tests;
@@ -19,8 +17,8 @@ public class ApplicationRingFitnessTests
     // Application-ring types are spread across five assemblies: Fallout.Application (root/Execution/CI/IO),
     // Fallout.Application.Components (the ICompile/ITest/IPack composition interfaces), Fallout.Application.Tooling
     // (tool vocabulary + ports), Fallout.Application.Tools (the 60+ tool wrappers), and Fallout.Application.Solutions
-    // (solution model + ports — step 5c; the co-hosted Infrastructure.Solutions serializer adapter is a separate
-    // assembly, and the namespace clause below scopes the scan to Fallout.Application.* regardless).
+    // (solution model + ports). The co-hosted Infrastructure.Solutions serializer adapter is a separate assembly,
+    // and the namespace clause scopes the scan to Fallout.Application.* regardless.
     private static readonly Assembly[] ApplicationAssemblies =
     [
         typeof(global::Fallout.Application.FalloutBuild).Assembly,
@@ -31,19 +29,11 @@ public class ApplicationRingFitnessTests
     ];
 
     [Fact]
-    public void Application_ring_does_not_depend_on_Infrastructure()
-    {
-        var result = Types.InAssemblies(ApplicationAssemblies)
-            .That().ResideInNamespaceStartingWith("Fallout.Application")
-            .Should()
-            .NotHaveDependencyOn("Fallout.Infrastructure")
-            .GetResult();
-
-        result.IsSuccessful.Should().BeTrue(
-            because: "the Application ring must reach Infrastructure only through Fallout.Application.Tooling " +
-                     "ports (ToolingServices); offending types: " + FailingTypes(result));
-    }
-
-    private static string FailingTypes(TestResult result) =>
-        result.FailingTypeNames is null ? "(none reported)" : string.Join(", ", result.FailingTypeNames);
+    public void Application_ring_does_not_depend_on_Infrastructure() =>
+        RingFitness.AssertNoDependencyOn(
+            ApplicationAssemblies,
+            ringNamespace: "Fallout.Application",
+            rationale: "the Application ring must reach Infrastructure only through Fallout.Application.Tooling " +
+                       "ports (ToolingServices).",
+            "Fallout.Infrastructure");
 }

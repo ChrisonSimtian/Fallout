@@ -42,9 +42,11 @@ public class ArchitectureFitnessTests
     [Fact]
     public void Domain_does_not_depend_on_any_outer_ring()
     {
-        // ADR-0006 onion rule: the innermost ring references no outer ring — and crucially none of the
-        // dissolving `Fallout.Common.*` catch-all (the whole point of the realignment) nor the
-        // Application/Infrastructure rings to come.
+        // ADR-0006 onion rule: the innermost ring references no outer ring — not the Core kernel ring, the
+        // Application/Infrastructure rings, nor the Cli composition root. We deliberately do NOT list the
+        // pre-realignment names (Fallout.Common/Build/Components/Utilities/ProjectModel): those namespaces no
+        // longer exist, so guarding them is dead weight — and "Fallout.Build" would false-positive against the
+        // real, allowed `Fallout.Build.Shared` project (NetArchTest matches by namespace-segment prefix).
         var result = Types.InAssembly(DomainAssembly)
             .That().ResideInNamespaceStartingWith("Fallout")
             .Should()
@@ -52,20 +54,22 @@ public class ArchitectureFitnessTests
                 "Fallout.Core",
                 "Fallout.Application",
                 "Fallout.Infrastructure",
-                "Fallout.Cli",
-                // legacy pre-realignment names, guarded so a regression can't reintroduce them
-                "Fallout.Common",
-                "Fallout.Build",
-                "Fallout.Components",
-                "Fallout.Tooling",
-                "Fallout.Utilities",
-                "Fallout.ProjectModel")
+                "Fallout.Cli")
             .GetResult();
 
         result.IsSuccessful.Should().BeTrue(
             because: "Fallout.Domain is the innermost ring and must reference no other Fallout project; " +
                      "offending types: " + FailingTypes(result));
     }
+
+    [Fact]
+    public void Fitness_scan_is_not_vacuous() =>
+        // Both rules above scan `Fallout`-namespaced types in the Domain assembly. A NetArchTest rule over an
+        // empty type set reports success, so if that filter ever matched nothing (e.g. after a namespace rename)
+        // the purity/ring guards would silently become no-ops. Assert the scan is non-empty so it can't.
+        Types.InAssembly(DomainAssembly).That().ResideInNamespaceStartingWith("Fallout")
+            .GetTypes().Should().NotBeEmpty(
+                because: "the Domain fitness filter must match real types, else the purity/ring guards pass vacuously");
 
     private static string FailingTypes(TestResult result) =>
         result.FailingTypeNames is null ? "(none reported)" : string.Join(", ", result.FailingTypeNames);
