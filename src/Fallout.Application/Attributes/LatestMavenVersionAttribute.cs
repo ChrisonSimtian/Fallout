@@ -3,8 +3,8 @@ using System.Linq;
 using System.Reflection;
 using NuGet.Versioning;
 using Fallout.Application.ValueInjection;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 using Fallout.Application.IO;
 
 namespace Fallout.Application.Tooling;

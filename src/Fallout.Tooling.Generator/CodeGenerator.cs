@@ -4,9 +4,9 @@ using System.Linq;
 using Fallout.CodeGeneration.Generators;
 using Fallout.CodeGeneration.Model;
 using Serilog;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core.Collections;
+using Fallout.Core;
 
 namespace Fallout.CodeGeneration;
 

@@ -10,8 +10,8 @@ using System.Text.Json.Nodes;
 using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 
 namespace Fallout.Infrastructure.CI.GitHubActions;
 

@@ -4,8 +4,8 @@ using FluentAssertions;
 using Xunit;
 using Fallout.Application.Git;
 using Fallout.Application.Tools.GitHub;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application.Tools.Tests;

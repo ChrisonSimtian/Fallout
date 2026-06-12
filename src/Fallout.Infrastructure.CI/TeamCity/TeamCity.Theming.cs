@@ -1,7 +1,7 @@
 using System;
 using Fallout.Application.Execution.Theming;
 using Fallout.Application.Execution;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.TeamCity;
 

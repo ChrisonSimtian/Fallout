@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 using Serilog;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.Text.Json;
+using Fallout.Core.IO;
 
 using Fallout.Application.CI;
 namespace Fallout.Application.Tools.SignPath;

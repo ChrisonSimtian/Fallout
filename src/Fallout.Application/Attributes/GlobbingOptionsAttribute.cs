@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fallout.Application.Execution;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
+using Fallout.Core.IO.Globbing;
 
 namespace Fallout.Application.IO;
 

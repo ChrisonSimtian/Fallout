@@ -4,8 +4,8 @@ using System.Reflection;
 using System.Threading;
 using static Fallout.Application.ControlFlow;
 using Fallout.Application;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 using Fallout.Application.Solutions;
 using Fallout.Build.Shared;
 

@@ -1,10 +1,11 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using Serilog;
 using Fallout.Application;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 #pragma warning disable SYSLIB0014
 
 namespace Fallout.Application.IO;

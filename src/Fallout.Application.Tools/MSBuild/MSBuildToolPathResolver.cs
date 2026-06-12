@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.MSBuild;
 

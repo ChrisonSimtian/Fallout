@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.SourceGenerators;
 

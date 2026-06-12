@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Fallout.Persistence.Solution.Model;
 using Fallout.Persistence.Solution.Serializer;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Application.Solutions;
 
 namespace Fallout.Infrastructure.Solutions;

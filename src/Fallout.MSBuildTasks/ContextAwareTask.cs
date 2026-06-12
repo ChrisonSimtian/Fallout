@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
-using Fallout.Kernel;
+using Fallout.Core;
 #if NETCOREAPP
 using System.Runtime.Loader;
 #endif

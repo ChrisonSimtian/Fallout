@@ -6,7 +6,7 @@ using NuGet.Versioning;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application.Tools.GitHub;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tooling;
 

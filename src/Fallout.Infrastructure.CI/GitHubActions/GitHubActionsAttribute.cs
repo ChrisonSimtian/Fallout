@@ -6,9 +6,9 @@ using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Infrastructure.CI.GitHubActions.Configuration;
 
 namespace Fallout.Infrastructure.CI.GitHubActions;

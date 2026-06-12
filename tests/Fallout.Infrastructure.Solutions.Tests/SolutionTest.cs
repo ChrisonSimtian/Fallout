@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using Fallout.Kernel;
+using Fallout.Core;
 using Xunit;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 using Fallout.Application.Solutions;
 using Fallout.Build.Shared;
 

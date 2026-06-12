@@ -5,7 +5,7 @@ using Fallout.Application.CI;
 using Fallout.Application.Git;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Execution;
 

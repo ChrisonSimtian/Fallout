@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NuGet.Versioning;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.ChangeLog;
 

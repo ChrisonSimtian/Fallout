@@ -2,7 +2,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.Tooling;
 

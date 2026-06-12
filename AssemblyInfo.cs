@@ -20,8 +20,8 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Fallout.Infrastructure.Tooling")]
 [assembly: InternalsVisibleTo("Fallout.Application.Tooling.Tests")]
 [assembly: InternalsVisibleTo("Fallout.Infrastructure.Tooling.Tests")]
-[assembly: InternalsVisibleTo("Fallout.Kernel.IO.Globbing")]
-[assembly: InternalsVisibleTo("Fallout.Kernel.Tests")]
+[assembly: InternalsVisibleTo("Fallout.Core.IO.Globbing")]
+[assembly: InternalsVisibleTo("Fallout.Core.Tests")]
 
 // External extensions — kept as Nuke.* until those projects rebrand independently.
 [assembly: InternalsVisibleTo("Nuke.VisualStudio")]

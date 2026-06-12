@@ -7,6 +7,7 @@
 #pragma warning disable CS0169  // unused fields — same reason
 
 using Nuke.Common;
+using Fallout.Core.IO.Globbing;
 using Nuke.Common.CI.AppVeyor;
 using Nuke.Common.CI.AzurePipelines;
 using Nuke.Common.CI.GitHubActions;
@@ -22,7 +23,7 @@ namespace Nuke.Common.Shim.Tests;
 // Nuke.* shim (Solution/GitRepository/[Parameter]/CI hosts/DelegateDisposable), with no Fallout.* imports.
 // Enums (GlobbingCaseSensitivity) aren't shimmed (SHIM002 — can't subclass cross-assembly), so that one
 // stays a fully-qualified canonical reference — exactly what `fallout-migrate` would otherwise flip.
-[GlobbingOptions(Fallout.Kernel.IO.GlobbingCaseSensitivity.CaseInsensitive)]
+[GlobbingOptions(Fallout.Core.IO.Globbing.GlobbingCaseSensitivity.CaseInsensitive)]
 public abstract class SampleConsumerBuild : NukeBuild, INukeBuild
 {
     [Parameter("Configuration to build")] readonly string Configuration;

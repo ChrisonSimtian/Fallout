@@ -1,19 +1,20 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application.Execution;
 using Fallout.Application.Git;                                                                     // GIT
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 using Fallout.Application.Solutions;
 using Fallout.Application.Tooling;
 using Fallout.Application.Tools.DotNet;                                                             // DOTNET
 using Fallout.Application.Tools.GitVersion;                                                         // GITVERSION
 using Fallout.Application.Tools.MSBuild;                                                            // MSBUILD
 using Fallout.Application.Tools.NuGet;                                                              // NUGET && MSBUILD
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 using static Fallout.Application.ChangeLog.ChangelogTasks;                                         // CHANGELOG
-using static Fallout.Kernel.EnvironmentInfo;
-using static Fallout.Kernel.IO.PathConstruction;
+using static Fallout.Core.EnvironmentInfo;
+using static Fallout.Core.IO.PathConstruction;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;                                          // DOTNET
 using static Fallout.Application.Tools.MSBuild.MSBuildTasks;                                        // MSBUILD
 using static Fallout.Application.Tools.NuGet.NuGetTasks;                                            // NUGET && MSBUILD

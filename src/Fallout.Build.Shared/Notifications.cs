@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 
 namespace Fallout.Build.Shared;
 

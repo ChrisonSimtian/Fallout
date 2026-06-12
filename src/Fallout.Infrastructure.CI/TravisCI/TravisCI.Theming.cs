@@ -1,5 +1,5 @@
 using System;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.TravisCI;
 

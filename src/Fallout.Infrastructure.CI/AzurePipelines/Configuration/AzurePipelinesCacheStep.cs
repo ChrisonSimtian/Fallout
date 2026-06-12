@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 using Fallout.Infrastructure.CI.AzurePipelines;
 
 namespace Fallout.Infrastructure.CI.AzurePipelines.Configuration;

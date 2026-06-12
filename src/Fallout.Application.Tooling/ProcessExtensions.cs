@@ -3,7 +3,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using Fallout.Kernel;
+using Fallout.Core;
+using Fallout.Core.Text.Json;
 
 namespace Fallout.Application.Tooling;
 

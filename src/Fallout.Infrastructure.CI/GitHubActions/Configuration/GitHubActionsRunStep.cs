@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Fallout.Application.Utilities;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;
 

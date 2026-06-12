@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VerifyXunit;
 using Xunit;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Cli.Tests;
 

@@ -5,7 +5,7 @@ using System.Linq;
 using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.AppVeyor;
 // 

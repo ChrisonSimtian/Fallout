@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Fallout.CodeGeneration.Model;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.CodeGeneration.Generators;
 

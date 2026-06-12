@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Application.Components;
 

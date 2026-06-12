@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tooling;
 

@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.Text.Json;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Net;
-using Fallout.Kernel;
+using Fallout.Core.Net;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.Slack;
 

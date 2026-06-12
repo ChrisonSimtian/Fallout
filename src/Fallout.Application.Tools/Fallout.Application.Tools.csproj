@@ -9,9 +9,9 @@
     <ProjectReference Include="..\Fallout.Application\Fallout.Application.csproj" />
     <ProjectReference Include="..\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
     <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
+    <ProjectReference Include="..\Fallout.Core\Fallout.Core.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Net\Fallout.Core.Net.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Text.Json\Fallout.Core.Text.Json.csproj" />
   </ItemGroup>
 
   <ItemGroup>

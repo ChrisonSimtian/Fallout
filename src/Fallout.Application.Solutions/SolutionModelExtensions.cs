@@ -1,4 +1,4 @@
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Application.Solutions;
 

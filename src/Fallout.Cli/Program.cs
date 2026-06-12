@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using Spectre.Console;
 using Fallout.Application;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Cli;

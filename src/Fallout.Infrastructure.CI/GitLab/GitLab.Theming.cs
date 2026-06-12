@@ -1,6 +1,6 @@
 using System;
 using Fallout.Application.Execution.Theming;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.GitLab;
 

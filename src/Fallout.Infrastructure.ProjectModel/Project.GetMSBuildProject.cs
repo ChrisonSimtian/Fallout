@@ -1,4 +1,4 @@
-using Fallout.Kernel;
+using Fallout.Core;
 using Fallout.Application.Solutions;
 
 namespace Fallout.Infrastructure.ProjectModel;

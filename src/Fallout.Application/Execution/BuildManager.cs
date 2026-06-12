@@ -9,8 +9,8 @@ using Fallout.Domain.Execution;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.Collections;
+using Fallout.Core;
 #pragma warning disable CA2255
 
 namespace Fallout.Application.Execution;

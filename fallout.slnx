@@ -31,12 +31,12 @@
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Application.Tooling\Fallout.Application.Tooling.csproj" />
   <Project Path="src\Fallout.Infrastructure.Tooling\Fallout.Infrastructure.Tooling.csproj" />
-  <Project Path="src\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
-  <Project Path="src\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
-  <Project Path="src\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
-  <Project Path="src\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
-  <Project Path="src\Fallout.Kernel.Text.Yaml\Fallout.Kernel.Text.Yaml.csproj" />
-  <Project Path="src\Fallout.Kernel\Fallout.Kernel.csproj" />
+  <Project Path="src\Fallout.Core.IO.Compression\Fallout.Core.IO.Compression.csproj" />
+  <Project Path="src\Fallout.Core.IO.Globbing\Fallout.Core.IO.Globbing.csproj" />
+  <Project Path="src\Fallout.Core.Net\Fallout.Core.Net.csproj" />
+  <Project Path="src\Fallout.Core.Text.Json\Fallout.Core.Text.Json.csproj" />
+  <Project Path="src\Fallout.Core.Text.Yaml\Fallout.Core.Text.Yaml.csproj" />
+  <Project Path="src\Fallout.Core\Fallout.Core.csproj" />
   <Project Path="tests\Fallout.Architecture.Tests\Fallout.Architecture.Tests.csproj" />
   <Project Path="tests\Fallout.Application.Tests\Fallout.Application.Tests.csproj" />
   <Project Path="tests\Fallout.Application.Components.Tests\Fallout.Application.Components.Tests.csproj" />
@@ -61,5 +61,5 @@
   <Project Path="tests\Consumers\Nuke.Consumer\Nuke.Consumer.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.NuGet\Fallout.Consumer.NuGet.csproj" />
-  <Project Path="tests\Fallout.Kernel.Tests\Fallout.Kernel.Tests.csproj" />
+  <Project Path="tests\Fallout.Core.Tests\Fallout.Core.Tests.csproj" />
 </Solution>

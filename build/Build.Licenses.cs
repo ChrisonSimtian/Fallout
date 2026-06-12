@@ -5,7 +5,7 @@ using Serilog;
 using static Fallout.Application.IO.HttpTasks;
 using Fallout.Application;
 using Fallout.Application.Components;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 using Fallout.Application.IO;
 
 partial class Build

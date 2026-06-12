@@ -5,9 +5,9 @@ using System.Reflection;
 using static Fallout.Build.Shared.Constants;
 using Fallout.Application.Execution;
 using Fallout.Application.CI;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application;

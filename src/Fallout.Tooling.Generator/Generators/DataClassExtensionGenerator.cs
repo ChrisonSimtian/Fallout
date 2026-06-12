@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.CodeGeneration.Model;
 using Fallout.CodeGeneration.Writers;
 using Serilog;
-using Fallout.Kernel;
+using Fallout.Core;
 
 // ReSharper disable UnusedMethodReturnValue.Local
 

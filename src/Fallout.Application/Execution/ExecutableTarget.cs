@@ -7,7 +7,7 @@ using System.Reflection;
 using Fallout.Domain.Execution;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 // ReSharper disable MissingBaseTypeHighlighting
 
 namespace Fallout.Application.Execution;

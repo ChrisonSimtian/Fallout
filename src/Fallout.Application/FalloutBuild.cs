@@ -10,8 +10,8 @@ using Fallout.Application.ValueInjection;
 using Fallout.Application.CI;
 using Fallout.Application.Execution.Extensions;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 // ReSharper disable VirtualMemberNeverOverridden.Global

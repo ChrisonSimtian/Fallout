@@ -9,8 +9,8 @@ using Fallout.Application.Git;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.CI;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;

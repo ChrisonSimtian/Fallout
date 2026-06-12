@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Fallout.Application;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tests;
 

@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Text.Json\Fallout.Core.Text.Json.csproj" />
+    <ProjectReference Include="..\Fallout.Core\Fallout.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

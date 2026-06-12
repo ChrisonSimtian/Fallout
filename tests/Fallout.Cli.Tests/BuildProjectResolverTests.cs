@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using Fallout.Kernel;
+using Fallout.Core;
 using FluentAssertions;
 using Xunit;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Cli.Tests;
 

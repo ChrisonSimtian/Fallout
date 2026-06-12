@@ -6,18 +6,18 @@
 
 using System;
 using System.Linq.Expressions;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Nuke.Common.Utilities;
 
 public static class DelegateDisposable
 {
     public static IDisposable CreateBracket(Action setup = null, Action cleanup = null)
-        => global::Fallout.Kernel.DelegateDisposable.CreateBracket(setup, cleanup);
+        => global::Fallout.Core.DelegateDisposable.CreateBracket(setup, cleanup);
 
     public static IDisposable CreateBracket<T>(Func<T> setup, Action<T> cleanup)
-        => global::Fallout.Kernel.DelegateDisposable.CreateBracket(setup, cleanup);
+        => global::Fallout.Core.DelegateDisposable.CreateBracket(setup, cleanup);
 
     public static IDisposable SetAndRestore<T>(Expression<Func<T>> memberProvider, T value)
-        => global::Fallout.Kernel.DelegateDisposable.SetAndRestore(memberProvider, value);
+        => global::Fallout.Core.DelegateDisposable.SetAndRestore(memberProvider, value);
 }

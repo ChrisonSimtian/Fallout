@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
 using Fallout.Build.Shared;
 
-namespace Fallout.Kernel;
+namespace Fallout.Core;
 
 public static class CompletionUtility
 {

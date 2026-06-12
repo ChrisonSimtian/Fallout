@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.Tooling;
 

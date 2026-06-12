@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.Text.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +10,8 @@ using NuGet.Packaging;
 using Serilog;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 using Fallout.Application.IO;
 using Fallout.Build.Shared;
 

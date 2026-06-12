@@ -1,5 +1,5 @@
 using Fallout.Application.Solutions;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Infrastructure.Solutions;
 

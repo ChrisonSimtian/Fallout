@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using Fallout.Infrastructure.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.MSBuildTasks;
 

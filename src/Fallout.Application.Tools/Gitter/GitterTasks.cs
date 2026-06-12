@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Fallout.Kernel.Net;
+using Fallout.Core.Net;
 
 namespace Fallout.Application.Tools.Gitter;
 //

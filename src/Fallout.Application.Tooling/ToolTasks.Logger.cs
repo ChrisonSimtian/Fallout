@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Serilog;
 using Serilog.Events;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tooling;
 

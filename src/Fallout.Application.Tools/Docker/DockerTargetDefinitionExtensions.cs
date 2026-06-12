@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,9 +11,9 @@ using Fallout.Application;
 using Fallout.Application.Execution;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application.Tools.Docker;

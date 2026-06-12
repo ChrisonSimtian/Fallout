@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tooling;
 

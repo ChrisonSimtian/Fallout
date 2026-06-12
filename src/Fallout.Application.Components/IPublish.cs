@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -7,8 +8,8 @@ using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 
 namespace Fallout.Application.Components;
 

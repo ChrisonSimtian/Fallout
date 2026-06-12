@@ -6,7 +6,7 @@ using System.Reflection;
 using Fallout.Application;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Utilities;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Execution;
 

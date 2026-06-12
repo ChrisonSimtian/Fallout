@@ -5,7 +5,7 @@ using Fallout.Domain.Execution;
 using Xunit;
 using Fallout.Application.Execution;
 using Fallout.Application;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.Tests.Execution;
 

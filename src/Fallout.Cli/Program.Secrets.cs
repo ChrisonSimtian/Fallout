@@ -1,14 +1,15 @@
 using System;
+using Fallout.Core.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
-using Fallout.Kernel;
+using Fallout.Core;
 using static Fallout.Build.Shared.Constants;
-using static Fallout.Kernel.EncryptionUtility;
+using static Fallout.Core.EncryptionUtility;
 using Fallout.Application;
 using Fallout.Application.Utilities;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core.Collections;
 using Fallout.Build.Shared;
 
 namespace Fallout.Cli;

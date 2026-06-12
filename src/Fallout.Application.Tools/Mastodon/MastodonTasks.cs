@@ -1,11 +1,12 @@
 using System;
+using Fallout.Core.Text.Json;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Net;
-using Fallout.Kernel;
+using Fallout.Core.Net;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.Mastodon;
 

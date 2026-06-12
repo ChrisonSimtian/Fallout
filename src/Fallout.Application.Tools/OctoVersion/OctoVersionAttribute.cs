@@ -5,8 +5,8 @@ using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 
 using Fallout.Application.CI;
 namespace Fallout.Application.Tools.OctoVersion;

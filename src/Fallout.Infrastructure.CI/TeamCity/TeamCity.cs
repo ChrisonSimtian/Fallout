@@ -8,9 +8,9 @@ using Serilog;
 using Fallout.Application;
 using Fallout.Application.CI;
 using Fallout.Application.Tools.DotCover;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 namespace Fallout.Infrastructure.CI.TeamCity;
 

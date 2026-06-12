@@ -13,8 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
+    <ProjectReference Include="..\Fallout.Core\Fallout.Core.csproj" />
+    <ProjectReference Include="..\Fallout.Core.IO.Globbing\Fallout.Core.IO.Globbing.csproj" />
     <!-- Persistence parser inlined into Fallout.Persistence.Solution.
          The generator runs inside Roslyn, so its dependency DLLs need to land in this project's output dir. -->
     <ProjectReference Include="..\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" PrivateAssets="all" />
@@ -41,8 +41,8 @@
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Build.Shared.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Application.Solutions.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Infrastructure.Solutions.dll" IncludeRuntimeDependency="false" />
-      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Kernel.dll" IncludeRuntimeDependency="false" />
-      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Kernel.IO.Globbing.dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Core.dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(TargetFramework)\Fallout.Core.IO.Globbing.dll" IncludeRuntimeDependency="false" />
 
       <TargetPathWithTargetPlatformMoniker Include="$(MSBuildProjectDirectory)\..\Persistence\Fallout.Persistence.Solution\bin\$(Configuration)\netstandard2.0\Fallout.Persistence.Solution.dll" IncludeRuntimeDependency="false" />
       <TargetPathWithTargetPlatformMoniker Include="$(PkgScriban)\lib\$(TargetFramework)\*.dll" IncludeRuntimeDependency="false" />

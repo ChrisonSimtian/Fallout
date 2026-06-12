@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.Text.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

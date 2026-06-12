@@ -8,8 +8,8 @@ using Serilog;
 #pragma warning disable CA2255
 
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 
 namespace Fallout.Infrastructure.ProjectModel;
 

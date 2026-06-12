@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.Tools.Xunit;
 

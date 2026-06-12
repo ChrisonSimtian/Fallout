@@ -5,9 +5,9 @@ using System.Linq;
 using Fallout.Domain.Execution;
 using Serilog;
 using Fallout.Application;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core.Collections;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;

@@ -13,8 +13,8 @@ using Fallout.Infrastructure.CI.AzurePipelines;
 using Fallout.Infrastructure.CI.Jenkins;
 using Fallout.Infrastructure.CI.TravisCI;
 using Fallout.Infrastructure.CI.GitLab;
-using Fallout.Kernel;
-// Fallout.Kernel now also defines an Assert (moved from Fallout.Common in the onion realignment),
+using Fallout.Core;
+// Fallout.Core now also defines an Assert (moved from Fallout.Common in the onion realignment),
 // which collides by name with Xunit.Assert used throughout this test — bind the bare name to Xunit's.
 using Assert = Xunit.Assert;
 

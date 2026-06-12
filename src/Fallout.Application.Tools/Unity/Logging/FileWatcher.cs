@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.Unity.Logging;
 

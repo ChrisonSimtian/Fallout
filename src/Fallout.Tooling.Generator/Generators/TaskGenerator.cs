@@ -2,8 +2,8 @@ using System;
 using System.Linq;
 using Fallout.CodeGeneration.Model;
 using Fallout.CodeGeneration.Writers;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 // ReSharper disable UnusedMethodReturnValue.Local
 

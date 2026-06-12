@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
-using static Fallout.Kernel.IO.PathConstruction;
+using static Fallout.Core.IO.PathConstruction;
 using Fallout.Infrastructure.Tooling;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.MSBuildTasks;
 

@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Octokit;
-using static Fallout.Kernel.IO.PathConstruction;
+using static Fallout.Core.IO.PathConstruction;
 using Fallout.Application;
 using Fallout.Application.Git;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.GitHub;
 

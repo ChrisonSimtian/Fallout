@@ -5,8 +5,8 @@ using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 using Fallout.Application.Solutions;
 
 namespace Fallout.Application.Components;

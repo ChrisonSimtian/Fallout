@@ -5,8 +5,8 @@ using System.Reflection;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 
 namespace Fallout.Application.Execution;
 

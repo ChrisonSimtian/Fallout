@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,8 +7,8 @@ using static Fallout.Application.CI.BuildServerConfigurationGeneration;
 using Fallout.Application;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 
 namespace Fallout.Application.CI;
 

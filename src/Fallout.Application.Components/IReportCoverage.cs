@@ -1,4 +1,6 @@
 using System;
+using Fallout.Core.IO.Compression;
+using Fallout.Core.IO.Globbing;
 using System.IO;
 using System.Linq;
 using static Fallout.Application.Tools.Codecov.CodecovTasks;
@@ -7,9 +9,9 @@ using Fallout.Application;
 using Fallout.Application.Tools.Codecov;
 using Fallout.Application.Tools.ReportGenerator;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 using Fallout.Application.CI;
 namespace Fallout.Application.Components;

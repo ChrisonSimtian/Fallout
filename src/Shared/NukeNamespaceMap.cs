@@ -60,7 +60,7 @@ internal static class NukeNamespaceMap
         new NukeNamespaceMapping("Nuke.Common.Execution",      "Fallout.Application.Execution",      NukeCommonPackage),
         new NukeNamespaceMapping("Nuke.Common.ValueInjection", "Fallout.Application.ValueInjection", NukeCommonPackage),
         new NukeNamespaceMapping("Nuke.Common.ChangeLog",      "Fallout.Application.ChangeLog",      NukeCommonPackage),
-        new NukeNamespaceMapping("Nuke.Common.Utilities",      "Fallout.Kernel",                     NukeCommonPackage),
+        new NukeNamespaceMapping("Nuke.Common.Utilities",      "Fallout.Core",                     NukeCommonPackage),
 
         // Split namespaces: migration target = the dominant consumer-facing home; secondary = shim-only.
         // CI: providers (Infrastructure.CI) are what `using Nuke.Common.CI.<Provider>` consumers reference;
@@ -73,7 +73,7 @@ internal static class NukeNamespaceMap
         new NukeNamespaceMapping("Nuke.Common.ProjectModel",   "Fallout.Infrastructure.ProjectModel", NukeCommonPackage, isMigrationTarget: false),
         // IO: AbsolutePath/glob fluent API (Kernel.IO) is dominant; the build-injection IO attrs
         // (Application.IO) are the secondary.
-        new NukeNamespaceMapping("Nuke.Common.IO",             "Fallout.Kernel.IO",                  NukeCommonPackage),
+        new NukeNamespaceMapping("Nuke.Common.IO",             "Fallout.Core.IO",                  NukeCommonPackage),
         new NukeNamespaceMapping("Nuke.Common.IO",             "Fallout.Application.IO",             NukeCommonPackage, isMigrationTarget: false),
 
         // Root: NukeBuild/Target/[Parameter]/[Secret]/Host/… → Fallout.Application. Kept LAST so the more

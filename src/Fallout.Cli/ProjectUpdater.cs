@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using NuGet.Versioning;
 using Fallout.Infrastructure.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 using Fallout.Infrastructure.ProjectModel;
 using Fallout.Build.Shared;
 

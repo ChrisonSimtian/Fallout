@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Serilog;
-using static Fallout.Kernel.ReflectionUtility;
+using static Fallout.Core.ReflectionUtility;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application;

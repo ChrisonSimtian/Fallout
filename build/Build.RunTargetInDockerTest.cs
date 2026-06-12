@@ -2,7 +2,7 @@ using System;
 using Serilog;
 using Fallout.Application;
 using Fallout.Application.Tools.Docker;
-using Fallout.Kernel;
+using Fallout.Core;
 
 partial class Build
 {

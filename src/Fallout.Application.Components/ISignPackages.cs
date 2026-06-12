@@ -1,12 +1,14 @@
 using System;
+using Fallout.Core.IO.Compression;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using static Fallout.Application.Tools.SignPath.SignPathTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.SignPath;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core.Collections;
 
 using Fallout.Application.CI;
 namespace Fallout.Application.Components;

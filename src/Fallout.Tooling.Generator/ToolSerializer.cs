@@ -8,9 +8,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using Fallout.CodeGeneration.Model;
-using Fallout.Kernel;
+using Fallout.Core;
 using Serilog;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.CodeGeneration;
 

@@ -5,8 +5,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using Serilog;
 using Serilog.Events;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.Tooling;
 

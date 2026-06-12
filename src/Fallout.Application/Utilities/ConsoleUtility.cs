@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using Fallout.Application;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Utilities;
 

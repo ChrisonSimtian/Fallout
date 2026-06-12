@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Execution.Theming;
 

@@ -6,8 +6,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.Execution;
 

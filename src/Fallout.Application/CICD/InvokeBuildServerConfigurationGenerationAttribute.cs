@@ -6,7 +6,7 @@ using static Fallout.Application.CI.BuildServerConfigurationGeneration;
 using Fallout.Application.Execution;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Application.CI;
 

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
+    <ProjectReference Include="..\Fallout.Core\Fallout.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

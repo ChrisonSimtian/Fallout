@@ -4,8 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Fallout.Application;
 using Fallout.Application.CI;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.Collections;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.AzurePipelines;
 

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Fallout.CodeGeneration.Model;
 using Serilog;
-using Fallout.Kernel.Net;
-using Fallout.Kernel;
+using Fallout.Core.Net;
+using Fallout.Core;
 
 namespace Fallout.CodeGeneration;
 

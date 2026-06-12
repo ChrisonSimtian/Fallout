@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Fallout.Application.Tools.MSBuild;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.TeamCity;
 

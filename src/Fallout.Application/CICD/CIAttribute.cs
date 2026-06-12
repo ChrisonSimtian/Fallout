@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Application.ValueInjection;
 using Fallout.Application;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.CI;
 

@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 using Fallout.Application.Solutions;
 using Fallout.Infrastructure.ProjectModel;
-using Fallout.Kernel;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Infrastructure.ProjectModel.Tests;

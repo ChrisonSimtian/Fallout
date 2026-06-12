@@ -2,8 +2,8 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Fallout.Application.ValueInjection;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Application.IO;
 
 namespace Fallout.Application.Tooling;

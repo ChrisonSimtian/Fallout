@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Text.Json;
 
 namespace Fallout.Application.Tools.OctoVersion;
 

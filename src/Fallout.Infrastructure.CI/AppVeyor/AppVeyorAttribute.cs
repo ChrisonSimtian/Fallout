@@ -6,8 +6,8 @@ using System.Reflection;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel.IO;
+using Fallout.Core.Collections;
+using Fallout.Core.IO;
 using Fallout.Infrastructure.CI.AppVeyor.Configuration;
 
 namespace Fallout.Infrastructure.CI.AppVeyor;

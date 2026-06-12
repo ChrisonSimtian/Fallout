@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Fallout.Application.Utilities;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.AzurePipelines.Configuration;
 

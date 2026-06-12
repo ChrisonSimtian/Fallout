@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Serilog;
 using Fallout.Application.Execution;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.Collections;
+using Fallout.Core;
 
 namespace Fallout.Application;
 

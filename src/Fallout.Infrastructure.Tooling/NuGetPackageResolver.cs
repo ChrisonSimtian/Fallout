@@ -6,9 +6,9 @@ using System.Text.Json.Nodes;
 using System.Xml.Linq;
 using NuGet.Packaging;
 using NuGet.Versioning;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 namespace Fallout.Infrastructure.Tooling;
 

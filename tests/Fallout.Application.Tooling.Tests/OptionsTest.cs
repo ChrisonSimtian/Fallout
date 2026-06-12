@@ -6,11 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
 using FluentAssertions;
-using Fallout.Kernel;
+using Fallout.Core;
 using VerifyXunit;
 using Xunit;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.Tooling.Tests;
 

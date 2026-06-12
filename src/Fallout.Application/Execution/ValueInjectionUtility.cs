@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Fallout.Application;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.ValueInjection;
 

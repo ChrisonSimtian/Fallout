@@ -1,11 +1,12 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Fallout.Application;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.Collections;
+using Fallout.Core.IO;
 
 namespace Fallout.Application.IO;
 

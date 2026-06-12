@@ -1,12 +1,13 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Linq;
 using static Fallout.Application.Tools.DotNet.DotNetTasks;
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core.Collections;
+using Fallout.Core;
 
 namespace Fallout.Application.Components;
 

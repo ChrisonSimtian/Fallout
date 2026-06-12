@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using Humanizer;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.CodeGeneration.Generators;
 

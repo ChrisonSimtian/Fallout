@@ -1,11 +1,12 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Fallout.Application;
 using Fallout.Application.CI;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 
 namespace Fallout.Application.Git;
 

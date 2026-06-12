@@ -8,9 +8,9 @@ using Serilog.Events;
 using Fallout.Application;
 using Fallout.Application.Tools.Unity.Logging;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Text.Yaml;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core.Text.Yaml;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.Unity;
 

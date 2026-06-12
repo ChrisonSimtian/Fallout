@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Infrastructure.Tooling;
 

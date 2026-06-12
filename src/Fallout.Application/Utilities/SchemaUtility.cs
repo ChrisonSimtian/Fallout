@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.Text.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using Fallout.Application;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application.Execution;

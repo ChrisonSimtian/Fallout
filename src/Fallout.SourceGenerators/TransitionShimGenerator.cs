@@ -76,8 +76,8 @@ public sealed class TransitionShimGenerator : IIncrementalGenerator
     private readonly struct ShimMarker
     {
         // siblingFromPrefixes = every Fallout-prefix row in the same shim package (incl. this one). Used to
-        // give a type to the LONGEST matching prefix, so e.g. Fallout.Kernel.IO types are owned by the
-        // Nuke.Common.IO row, not also by the broader Nuke.Common.Utilities→Fallout.Kernel row (which would
+        // give a type to the LONGEST matching prefix, so e.g. Fallout.Core.IO types are owned by the
+        // Nuke.Common.IO row, not also by the broader Nuke.Common.Utilities→Fallout.Core row (which would
         // double-emit and throw on a duplicate hint name).
         public ShimMarker(string fromPrefix, string toPrefix, IReadOnlyList<string> siblingFromPrefixes = null)
         {

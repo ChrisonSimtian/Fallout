@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Fallout.Application.Execution;
 using Fallout.Application;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.ValueInjection;
 

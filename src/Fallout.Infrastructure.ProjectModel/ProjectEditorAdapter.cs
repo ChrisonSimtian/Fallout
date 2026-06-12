@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 using Fallout.Application.Solutions;
 
 namespace Fallout.Infrastructure.ProjectModel;

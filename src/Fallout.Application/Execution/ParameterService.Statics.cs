@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application;
 

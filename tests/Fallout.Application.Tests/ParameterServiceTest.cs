@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
-using static Fallout.Kernel.ReflectionUtility;
+using static Fallout.Core.ReflectionUtility;
 using Fallout.Application;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 
 namespace Fallout.Application.Tests;
 

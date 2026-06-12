@@ -6,10 +6,10 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using FluentAssertions;
-using Fallout.Kernel;
+using Fallout.Core;
 using Xunit;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.Tooling.Tests;
 

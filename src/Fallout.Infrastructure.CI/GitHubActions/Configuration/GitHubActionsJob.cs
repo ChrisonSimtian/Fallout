@@ -3,8 +3,8 @@ using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
-using Fallout.Kernel.Collections;
+using Fallout.Core;
+using Fallout.Core.Collections;
 using Fallout.Infrastructure.CI.GitHubActions;
 
 namespace Fallout.Infrastructure.CI.GitHubActions.Configuration;

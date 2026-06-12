@@ -10,12 +10,12 @@ using Fallout.Application.Execution;
 using Fallout.Application.CI;
 using Fallout.Application;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 using Fallout.Infrastructure.CI.AppVeyor;
 using Fallout.Infrastructure.CI.TeamCity;
 using Fallout.Infrastructure.CI.AzurePipelines;
 using Fallout.Infrastructure.CI.GitHubActions;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Infrastructure.CI.Tests;
 

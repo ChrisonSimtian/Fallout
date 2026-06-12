@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using Fallout.Application.Execution;
 using Fallout.Application.CI;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
+using Fallout.Core.IO;
 
 namespace Fallout.Application;
 

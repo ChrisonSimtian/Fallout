@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
+    <ProjectReference Include="..\Fallout.Core\Fallout.Core.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Net\Fallout.Core.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,8 +15,8 @@ using Fallout.Application.Tools.CorFlags;
 using Fallout.Application.Tools.Docker;
 using Fallout.Application.Tools.Discord;
 using Fallout.Application.Tools.Kubernetes;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Build.Shared;
 
 namespace Fallout.Application.Tools.Tests;

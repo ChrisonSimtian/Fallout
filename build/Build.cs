@@ -1,4 +1,5 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.Linq;
 using NuGet.Packaging;
@@ -13,8 +14,8 @@ using Fallout.Application.Tools.DotNet;
 using Fallout.Application.Tooling;
 using Fallout.Infrastructure.Tooling;
 using Fallout.Application.Tools.GitHub;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Infrastructure.CI.GitHubActions;
 using Fallout.Application.Solutions;
 using Fallout.Infrastructure.ProjectModel;

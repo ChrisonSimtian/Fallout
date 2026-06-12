@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Fallout.Kernel;
+using Fallout.Core;
 
 namespace Fallout.Application.Tools.AzureKeyVault
 {

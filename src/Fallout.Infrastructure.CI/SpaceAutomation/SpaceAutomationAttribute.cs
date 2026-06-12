@@ -5,8 +5,8 @@ using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
-using Fallout.Kernel.IO;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core;
 using Fallout.Infrastructure.CI.SpaceAutomation.Configuration;
 
 namespace Fallout.Infrastructure.CI.SpaceAutomation;

@@ -7,8 +7,8 @@ using Serilog;
 using Fallout.Application.Git;
 using Fallout.Application;
 using Fallout.Application.Tools.GitHub;
-using Fallout.Kernel;
-using Fallout.Kernel.IO;
+using Fallout.Core;
+using Fallout.Core.IO;
 
 // ReSharper disable ArgumentsStyleLiteral
 namespace Fallout.Application.ChangeLog;

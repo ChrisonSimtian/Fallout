@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Serilog;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel.IO;
+using Fallout.Core.Collections;
+using Fallout.Core.IO;
 
-namespace Fallout.Kernel;
+namespace Fallout.Core;
 
 public static class TemplateUtility
 {

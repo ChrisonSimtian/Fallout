@@ -7,11 +7,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
     <ProjectReference Include="..\Fallout.Domain\Fallout.Domain.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel\Fallout.Kernel.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.IO.Globbing\Fallout.Kernel.IO.Globbing.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.Net\Fallout.Kernel.Net.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.Text.Json\Fallout.Kernel.Text.Json.csproj" />
-    <ProjectReference Include="..\Fallout.Kernel.Text.Yaml\Fallout.Kernel.Text.Yaml.csproj" />
+    <ProjectReference Include="..\Fallout.Core\Fallout.Core.csproj" />
+    <ProjectReference Include="..\Fallout.Core.IO.Globbing\Fallout.Core.IO.Globbing.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Net\Fallout.Core.Net.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Text.Json\Fallout.Core.Text.Json.csproj" />
+    <ProjectReference Include="..\Fallout.Core.Text.Yaml\Fallout.Core.Text.Yaml.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +38,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Fallout.Kernel.IO.Compression\Fallout.Kernel.IO.Compression.csproj" />
+    <ProjectReference Include="..\Fallout.Core.IO.Compression\Fallout.Core.IO.Compression.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static Fallout.Kernel.IO.PathConstruction;
+using static Fallout.Core.IO.PathConstruction;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Execution;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.IO;
+using Fallout.Core.Collections;
+using Fallout.Core;
 using Fallout.Infrastructure.CI.AzurePipelines.Configuration;
 
 namespace Fallout.Infrastructure.CI.AzurePipelines;

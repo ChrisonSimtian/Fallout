@@ -7,7 +7,7 @@ using Fallout.Application;
 using Fallout.Application.ValueInjection;
 using Fallout.Application.Git;
 using Fallout.Application.Tooling;
-using Fallout.Kernel;
+using Fallout.Core;
 
 using Fallout.Application.CI;
 namespace Fallout.Application.Tools.GitVersion;

@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.Infrastructure.CI.AppVeyor.Configuration;
 

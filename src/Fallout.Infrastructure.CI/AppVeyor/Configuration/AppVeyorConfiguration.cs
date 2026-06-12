@@ -4,8 +4,8 @@ using System.Linq;
 using Fallout.Application.CI;
 using Fallout.Application.Utilities;
 using Fallout.Application.Tooling;
-using Fallout.Kernel.Collections;
-using Fallout.Kernel;
+using Fallout.Core.Collections;
+using Fallout.Core;
 using Fallout.Infrastructure.CI.AppVeyor;
 
 namespace Fallout.Infrastructure.CI.AppVeyor.Configuration;

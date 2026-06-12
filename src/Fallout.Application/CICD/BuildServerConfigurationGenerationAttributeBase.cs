@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Fallout.Application.Execution;
 using Fallout.Application;
-using Fallout.Kernel.Collections;
+using Fallout.Core.Collections;
 
 namespace Fallout.Application.CI;
 

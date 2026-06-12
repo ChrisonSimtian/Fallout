@@ -1,16 +1,17 @@
 using System;
+using Fallout.Core.IO.Globbing;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Kernel;
+using Fallout.Core;
 using static Fallout.Application.ControlFlow;
 using static Fallout.Application.Tools.Git.GitTasks;
 using Fallout.Application;
 using Fallout.Application.Git;
 using Fallout.Application.Tools.Git;
 using Fallout.Application.Tools.GitHub;
-using Fallout.Kernel.IO;
-using Fallout.Kernel.Text.Yaml;
+using Fallout.Core.IO;
+using Fallout.Core.Text.Yaml;
 using Fallout.Application.Solutions;
 
 partial class Build
