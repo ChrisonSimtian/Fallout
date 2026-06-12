@@ -3,6 +3,7 @@ using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Tools.Npm;
+using Fallout.Common.Utilities;
 using static Fallout.Common.Tools.Npm.NpmTasks;
 
 partial class Build
@@ -22,11 +23,18 @@ partial class Build
             (RootDirectory / "LICENSE").Copy(VsCodeExtensionDirectory / "LICENSE", ExistsPolicy.FileOverwrite);
 
             OutputDirectory.CreateDirectory();
+
+            // Versioning contract: major.minor follow the framework (NBGV, calendar versioning),
+            // the patch belongs to the extension and moves independently (package.json is its source).
             using var manifest = JsonDocument.Parse((VsCodeExtensionDirectory / "package.json").ReadAllText());
-            var version = manifest.RootElement.GetProperty("version").GetString();
+            var extensionPatch = manifest.RootElement.GetProperty("version").GetString().NotNull().Split('.')[2];
+            var frameworkCore = ThisAssembly.AssemblyInformationalVersion.Split('+')[0].Split('-')[0].Split('.');
+            var version = $"{frameworkCore[0]}.{frameworkCore[1]}.{extensionPatch}";
+
             NpmRun(_ => _
                 .SetProcessWorkingDirectory(VsCodeExtensionDirectory)
                 .SetCommand("package")
-                .SetArguments("--out", OutputDirectory / $"fallout-buildview-{version}.vsix"));
+                .SetArguments(version, "--no-git-tag-version", "--no-update-package-json",
+                    "--out", OutputDirectory / $"fallout-buildview-{version}.vsix"));
         });
 }

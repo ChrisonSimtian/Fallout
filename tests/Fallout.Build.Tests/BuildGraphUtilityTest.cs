@@ -29,7 +29,7 @@ public class BuildGraphUtilityTest
         compile.Triggers.Add(report);
         report.TriggerDependencies.Add(compile);
 
-        var json = BuildGraphUtility.GetJsonString(new[] { clean, restore, compile, report });
+        var json = BuildGraphUtility.GetJsonString(new[] { clean, restore, compile, report }, falloutVersion: "2026.1.0-test");
         return Verifier.Verify(json, "json");
     }
 

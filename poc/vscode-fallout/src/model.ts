@@ -17,7 +17,38 @@ export interface GraphTarget {
 
 export interface BuildGraph {
     version: number;
+    falloutVersion?: string | null;
     targets: GraphTarget[];
+}
+
+/** Schema version of build-graph.json this extension understands. */
+export const SUPPORTED_SCHEMA_VERSION = 1;
+
+const warned = new Set<string>();
+
+/**
+ * Versioning contract: the extension's major.minor track the Fallout framework
+ * (calendar versioning, major = year); the patch moves independently. The schema
+ * `version` is the hard gate, the major.minor comparison a drift warning.
+ */
+export function checkCompatibility(graph: BuildGraph, extensionVersion: string): void {
+    let message: string | undefined;
+    if (graph.version !== SUPPORTED_SCHEMA_VERSION) {
+        message = `Fallout: build-graph.json uses schema v${graph.version}, but this extension understands v${SUPPORTED_SCHEMA_VERSION}. ` +
+            'Update the extension or the Fallout package — the view may be incomplete.';
+    } else if (graph.falloutVersion) {
+        const [exMajor, exMinor] = extensionVersion.split('.');
+        const [fwMajor, fwMinor] = graph.falloutVersion.split('-')[0].split('.');
+        if (exMajor !== fwMajor || exMinor !== fwMinor) {
+            message = `Fallout: this workspace builds with Fallout ${graph.falloutVersion}, but the extension is versioned ${extensionVersion} ` +
+                `(coupled to Fallout ${exMajor}.${exMinor}). Things may not line up.`;
+        }
+    }
+
+    if (message && !warned.has(message)) {
+        warned.add(message);
+        void vscode.window.showWarningMessage(message);
+    }
 }
 
 export interface GraphSource {

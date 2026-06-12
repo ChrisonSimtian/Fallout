@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { BuildGraph, GraphSource, GraphTarget, findGraphFile, loadGraph } from './model';
+import { BuildGraph, GraphSource, GraphTarget, checkCompatibility, findGraphFile, loadGraph } from './model';
 import { GraphPanel } from './graphPanel';
 import { goToTarget } from './goToTarget';
 
@@ -56,6 +56,8 @@ class TargetItem extends vscode.TreeItem {
 }
 
 class FalloutTargetsProvider implements vscode.TreeDataProvider<TargetItem> {
+    constructor(private readonly extensionVersion: string) {}
+
     private readonly onDidChangeEmitter = new vscode.EventEmitter<void>();
     readonly onDidChangeTreeData = this.onDidChangeEmitter.event;
 
@@ -100,6 +102,7 @@ class FalloutTargetsProvider implements vscode.TreeDataProvider<TargetItem> {
             return [];
         }
 
+        checkCompatibility(this.graph, this.extensionVersion);
         this.byName = new Map(this.graph.targets.map(t => [t.name, t]));
         return this.graph.targets
             .slice()
@@ -120,7 +123,8 @@ function runInTerminal(root: string, args: string): void {
 }
 
 export function activate(context: vscode.ExtensionContext): void {
-    const provider = new FalloutTargetsProvider();
+    const extensionVersion: string = context.extension.packageJSON.version;
+    const provider = new FalloutTargetsProvider(extensionVersion);
 
     const runTarget = (name: string) => {
         const root = provider.source?.root;
@@ -169,7 +173,9 @@ export function activate(context: vscode.ExtensionContext): void {
             }
             try {
                 provider.source ??= source;
-                GraphPanel.createOrShow(context.extensionUri, loadGraph(source), runTarget);
+                const graph = loadGraph(source);
+                checkCompatibility(graph, extensionVersion);
+                GraphPanel.createOrShow(context.extensionUri, graph, runTarget);
             } catch (e) {
                 void vscode.window.showWarningMessage(`Fallout: could not parse ${source.file}: ${e}`);
             }

@@ -23,7 +23,7 @@ public static class BuildGraphUtility
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
-    public static string GetJsonString(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public static string GetJsonString(IReadOnlyCollection<ExecutableTarget> executableTargets, string falloutVersion = null)
     {
         var targets = new JsonArray();
         foreach (var target in executableTargets.OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase))
@@ -47,6 +47,9 @@ public static class BuildGraphUtility
         var graph = new JsonObject
                     {
                         ["version"] = 1,
+                        // Version of the Fallout framework that produced this file. IDE tooling couples
+                        // its own major.minor to this (calendar versioning: major = year) and warns on drift.
+                        ["falloutVersion"] = falloutVersion,
                         ["targets"] = targets,
                     };
         return graph.ToJsonString(s_writeOptions) + "\n";

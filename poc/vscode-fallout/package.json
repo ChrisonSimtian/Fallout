@@ -2,7 +2,7 @@
   "name": "fallout-buildview",
   "displayName": "Fallout Build View",
   "description": "PoC: shows the Fallout build target graph as a tree view and runs targets.",
-  "version": "0.0.1",
+  "version": "2026.1.0",
   "publisher": "fallout-poc",
   "private": true,
   "license": "MIT",

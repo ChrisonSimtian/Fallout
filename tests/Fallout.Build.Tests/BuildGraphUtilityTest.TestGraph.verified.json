@@ -1,5 +1,6 @@
 ﻿{
   "version": 1,
+  "falloutVersion": "2026.1.0-test",
   "targets": [
     {
       "name": "Clean",

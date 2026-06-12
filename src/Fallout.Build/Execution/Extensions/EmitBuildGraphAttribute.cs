@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using Fallout.Common.CI;
 using Fallout.Common.IO;
 using static Fallout.Common.Constants;
@@ -17,8 +18,11 @@ internal class EmitBuildGraphAttribute : BuildExtensionAttributeBase, IOnBuildCr
         if (BuildServerConfigurationGeneration.IsActive || Build.BuildProjectFile == null)
             return;
 
+        var falloutVersion = typeof(EmitBuildGraphAttribute).Assembly
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.Split('+')[0];
+
 #pragma warning disable FALLOUT002 // framework-internal consumption of the experimental graph export
-        GetBuildGraphFile(Build.RootDirectory).WriteAllText(BuildGraphUtility.GetJsonString(executableTargets));
+        GetBuildGraphFile(Build.RootDirectory).WriteAllText(BuildGraphUtility.GetJsonString(executableTargets, falloutVersion));
 #pragma warning restore FALLOUT002
     }
 }
