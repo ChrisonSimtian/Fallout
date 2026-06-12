@@ -18,7 +18,7 @@
 #     nuget.org publish (see below).
 #   - validate-ref → test-and-pack → fan out to three publish jobs in parallel:
 #       - publish-nuget-org   (opt-in via workflow_dispatch flag, approval-gated)
-#       - publish-github-packages (all packages — Fallout.* + Nuke.*)
+#       - publish-github-packages (the Fallout.* packages)
 #       - publish-github-releases (artifact bundling on the tag's GH Release)
 #
 # Channel routing (ADR-0004):
@@ -27,7 +27,7 @@
 #     publish-to-nugetorg=true — a conscious "this release is stabilised enough"
 #     switch, used when a release/YYYY production line is ready for the broad
 #     consumer audience, or for a support/v10 legacy security patch.
-#   - GitHub Packages gets every Fallout.* and Nuke.* build via tag push.
+#   - GitHub Packages gets every Fallout.* build via tag push.
 #   - GitHub Releases bundles nupkgs on the tag's release page regardless.
 #
 # See docs/branching-and-release.md for the full runbook.
@@ -163,11 +163,10 @@ jobs:
               --skip-duplicate
           done
 
-  # Tier 2 — GitHub Packages. The default release channel. Pushes both
-  # Fallout.* AND Nuke.* transition shims. The Nuke.* shim IDs are owned by the
-  # original NUKE maintainer on nuget.org (#47) — GitHub Packages is their
-  # permanent home. Fallout.* is here because nuget.org is opt-in by default
-  # (see header).
+  # Tier 2 — GitHub Packages. The default release channel. Pushes the Fallout.*
+  # packages (the Nuke.* transition shims were removed — the onion re-layering is
+  # a deliberate one-time break, with fallout-migrate as the consumer path; see
+  # ADR-0006). Fallout.* lands here because nuget.org is opt-in by default (see header).
   publish-github-packages:
     name: publish → GitHub Packages
     runs-on: ubuntu-latest

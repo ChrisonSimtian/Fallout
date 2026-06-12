@@ -20,8 +20,6 @@
   <Project Path="src\Fallout.Cli\Fallout.Cli.csproj" />
   <Project Path="src\Fallout.Migrate\Fallout.Migrate.csproj" />
   <Project Path="src\Fallout.Migrate.Analyzers\Fallout.Migrate.Analyzers.csproj" />
-  <Project Path="src\Shims\Nuke.Common\Nuke.Common.csproj" />
-  <Project Path="src\Shims\Nuke.Components\Nuke.Components.csproj" />
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
   <Project Path="src\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
   <Project Path="src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
@@ -46,19 +44,12 @@
   <Project Path="tests\Fallout.Cli.Tests\Fallout.Cli.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Tests\Fallout.Migrate.Tests.csproj" />
   <Project Path="tests\Fallout.Migrate.Analyzers.Tests\Fallout.Migrate.Analyzers.Tests.csproj" />
-  <!-- The Nuke.* shim compat tests — back in the solution now that the shim/migration redesign landed
-       (one canonical Nuke<->Fallout map, 2 shim packages). They are the validation that NUKE-era
-       consumers still compile against the consolidated shims. -->
-  <Project Path="tests\Nuke.Common.Shim.Tests\Nuke.Common.Shim.Tests.csproj" />
-  <Project Path="tests\Nuke.Components.Shim.Tests\Nuke.Components.Shim.Tests.csproj" />
   <Project Path="tests\Fallout.Infrastructure.CI.Tests\Fallout.Infrastructure.CI.Tests.csproj" />
   <Project Path="tests\Fallout.Infrastructure.ProjectModel.Tests\Fallout.Infrastructure.ProjectModel.Tests.csproj" />
   <Project Path="tests\Fallout.Infrastructure.Solutions.Tests\Fallout.Infrastructure.Solutions.Tests.csproj" />
   <Project Path="tests\Fallout.Infrastructure.Tooling.Tests\Fallout.Infrastructure.Tooling.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />
   <Project Path="tests\Benchmarks\Fallout.Persistence.Solution.Benchmarks\Fallout.Persistence.Solution.Benchmarks.csproj" />
-  <!-- Nuke.Consumer: the end-to-end NUKE-consumer compat sentinel, back in the solution post shim redesign. -->
-  <Project Path="tests\Consumers\Nuke.Consumer\Nuke.Consumer.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.NuGet\Fallout.Consumer.NuGet.csproj" />
   <Project Path="tests\Fallout.Core.Tests\Fallout.Core.Tests.csproj" />

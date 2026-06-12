@@ -51,11 +51,6 @@ internal class Solution(AbsolutePath path, object handle) : Fallout.Application.
     public Fallout.Application.Solutions.Project Fallout_SourceGenerators => this.GetProject("Fallout.SourceGenerators");
     public Fallout.Application.Solutions.Project Fallout_SourceGenerators_Tests => this.GetProject("Fallout.SourceGenerators.Tests");
     public Fallout.Application.Solutions.Project Fallout_Tooling_Generator => this.GetProject("Fallout.Tooling.Generator");
-    public Fallout.Application.Solutions.Project Nuke_Common => this.GetProject("Nuke.Common");
-    public Fallout.Application.Solutions.Project Nuke_Common_Shim_Tests => this.GetProject("Nuke.Common.Shim.Tests");
-    public Fallout.Application.Solutions.Project Nuke_Components => this.GetProject("Nuke.Components");
-    public Fallout.Application.Solutions.Project Nuke_Components_Shim_Tests => this.GetProject("Nuke.Components.Shim.Tests");
-    public Fallout.Application.Solutions.Project Nuke_Consumer => this.GetProject("Nuke.Consumer");
 
     public _misc misc => Unsafe.As<_misc>(this.GetSolutionFolder("misc"));
 

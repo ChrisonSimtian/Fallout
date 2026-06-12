@@ -16,7 +16,7 @@ Fallout is the hard-fork successor to [NUKE](https://github.com/nuke-build/nuke)
 
 This milestone finishes the rebrand and lays the internal groundwork for a plugin model. It bundles two workstreams so consumers face a single migration wave instead of two:
 
-**Workstream A — Rebrand completion.** Ship the `Nuke.*` → `Fallout.*` transition shims with full public-API coverage, the migration CLI (`Fallout.Migrate`), the Roslyn codefix for `using` directives, the migration guide, the documentation site port, and the coordinated announcement.
+**Workstream A — Rebrand completion.** Ship the `Nuke.*` → `Fallout.*` migration path: the migration CLI (`Fallout.Migrate`) plus a fuller migration helper (the transition shims were dropped — the onion re-layering is too deep to shim honestly, so it's a deliberate one-time break; see [ADR-0006](adr/0006-onion-layering-and-namespace-realignment.md)), the Roslyn codefix for `using` directives, the migration guide, the documentation site port, and the coordinated announcement.
 
 **Workstream B — Plugin-architecture foundation (internal).** Restructure the build orchestrator so a plugin SDK can sit on top later:
 - Extract a `Fallout.Core` domain project — pure, immutable, dependency-free.

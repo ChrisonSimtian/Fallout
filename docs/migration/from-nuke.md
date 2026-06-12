@@ -55,7 +55,7 @@ Migration complete. Verify the build:  ./build.ps1
 ./build.ps1   # or ./build.sh on unix
 ```
 
-If your build had previously worked against NUKE, it should now work against Fallout. The first run will restore the `Fallout.*` packages from nuget.org. If you don't see `Fallout.Common`, `Fallout.Build`, etc. in your `_build.csproj`'s `PackageReference` list, the rewrite failed — file an issue (see below) and use [the shim path](#alternative-keep-using-nuke-via-the-transition-shim) in the meantime.
+If your build had previously worked against NUKE, it should now work against Fallout. The first run will restore the `Fallout.*` packages from nuget.org. If you don't see the `Fallout.*` packages in your `_build.csproj`'s `PackageReference` list, the rewrite failed — file an issue (see below).
 
 ## What gets changed
 
@@ -72,32 +72,11 @@ If your build had previously worked against NUKE, it should now work against Fal
 
 The 1:1 namespace prefix swap is the only structural change. Type names (other than `NukeBuild` / `INukeBuild`) keep their identifiers — `[Parameter]`, `[Solution]`, `[GitHubActions]`, `Solution`, `GitRepository`, etc. all stay the same.
 
-## Alternative: keep using `Nuke.*` via the transition shim
+## No transition shim
 
-If you can't run `fallout-migrate` right now (frozen CI, vendored build with local patches, compliance review pending), you can keep `using Nuke.Common;` working by referencing the **transition shim**. The shim re-exports the legacy `Nuke.*` types as subclasses of the canonical `Fallout.*` types.
+Earlier previews shipped `Nuke.*` transition shims (re-export packages) so a build could keep `using Nuke.Common;` working unchanged. **Those have been removed.** The onion re-layering ([ADR-0006](../adr/0006-onion-layering-and-namespace-realignment.md)) moves types across rings and deepens namespaces in ways a re-export shim cannot honestly mirror — a half-working shim would compile and then fail at the edges (e.g. glob/compression extension methods, enums), which is worse than no shim. The migration is therefore a deliberate one-time break: run `fallout-migrate` (above).
 
-The shim ships on **GitHub Packages** (not nuget.org — that namespace belongs to NUKE's original maintainer). Add this fork's feed to your `nuget.config`:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="fallout-shims" value="https://nuget.pkg.github.com/Fallout-build/index.json" />
-  </packageSources>
-  <packageSourceCredentials>
-    <fallout-shims>
-      <add key="Username" value="YOUR_GITHUB_USERNAME" />
-      <add key="ClearTextPassword" value="YOUR_GITHUB_PAT_WITH_READ_PACKAGES" />
-    </fallout-shims>
-  </packageSourceCredentials>
-</configuration>
-```
-
-You'll need a GitHub Personal Access Token with the `read:packages` scope. Then bump your `Nuke.Common` package version to the latest published on the shim feed and your build keeps compiling unchanged.
-
-**Caveats**:
-- The shim covers most public types but skips a few (sealed-class wrappers and static helper classes like `DotNetTasks` are not bridged yet — tracked in [#69](https://github.com/ChrisonSimtian/Fallout/issues/69)). If your build uses any of those, it won't compile against the shim and you'll need `fallout-migrate` after all.
-- The shim is a transition aid, not a permanent home. It's removed in 12.0. Plan to migrate before then.
+A fuller **migration helper** that handles the trickier moves a prefix-swap can't (deepened sub-namespaces like `Fallout.Core.IO.Globbing`, package-ID remaps, enum FQNs) is in progress. Until it lands, if `fallout-migrate` leaves something unconverted, fix it by hand using the table above and [file an issue](#if-something-breaks).
 
 ## Manual migration
 
@@ -117,7 +96,7 @@ The [`Fallout.Migrate.Analyzers`](https://www.nuget.org/packages/Fallout.Migrate
 - **`[GitHubActions]` attribute regeneration**: the framework regenerates your CI YAML from the attribute on next build. The regenerated file will use the new tool name — review the diff and commit it.
 - **`.nuke/parameters.json`** moves to `.fallout/parameters.json`. Schemas are unchanged.
 - **MSBuild props files** (`Directory.Build.props` / `Directory.Build.targets`) — if you wrote custom NUKE-related properties (`<Nuke*>`), `fallout-migrate` rewrites them too, but only inside `*.csproj`. Custom props files at repo root are not in scope; rewrite by hand.
-- **Vendored / forked NUKE plugins** with their own `Nuke.*` namespaces aren't rewritten. The tool only touches your build orchestrator. If you depend on a third-party plugin still on `Nuke.*`, [the shim](#alternative-keep-using-nuke-via-the-transition-shim) covers the surface used by your own code, but the plugin itself stays on the upstream NUKE packages.
+- **Vendored / forked NUKE plugins** with their own `Nuke.*` namespaces aren't rewritten. The tool only touches your build orchestrator. If you depend on a third-party plugin still on `Nuke.*`, only your own build orchestrator is migrated — the plugin itself stays on the upstream NUKE packages.
 
 ## If something breaks
 
