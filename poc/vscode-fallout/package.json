@@ -1,0 +1,107 @@
+{
+  "name": "fallout-buildview",
+  "displayName": "Fallout Build View",
+  "description": "PoC: shows the Fallout build target graph as a tree view and runs targets.",
+  "version": "0.0.1",
+  "publisher": "fallout-poc",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "falloutTargets",
+          "name": "Fallout Targets",
+          "icon": "$(rocket)",
+          "contextualTitle": "Fallout Build"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "falloutTargets",
+        "contents": "No build graph found.\nRun the build once (e.g. `./build.ps1 --help`) to generate `.fallout/temp/build-graph.json`, then refresh.\n[Refresh](command:fallout.refreshTargets)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "fallout.refreshTargets",
+        "title": "Fallout: Refresh Targets",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "fallout.runTarget",
+        "title": "Fallout: Run Target",
+        "icon": "$(play)"
+      },
+      {
+        "command": "fallout.showGraph",
+        "title": "Fallout: Show Build Graph",
+        "icon": "$(type-hierarchy)"
+      },
+      {
+        "command": "fallout.goToTarget",
+        "title": "Go to Definition",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "fallout.planTarget",
+        "title": "Fallout: Show Execution Plan (legacy HTML, opens browser)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "fallout.refreshTargets",
+          "when": "view == falloutTargets",
+          "group": "navigation"
+        },
+        {
+          "command": "fallout.showGraph",
+          "when": "view == falloutTargets",
+          "group": "navigation"
+        },
+        {
+          "command": "fallout.planTarget",
+          "when": "view == falloutTargets"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "fallout.runTarget",
+          "when": "view == falloutTargets && viewItem == falloutTarget",
+          "group": "inline"
+        },
+        {
+          "command": "fallout.goToTarget",
+          "when": "view == falloutTargets && viewItem == falloutTarget",
+          "group": "navigation@1"
+        },
+        {
+          "command": "fallout.runTarget",
+          "when": "view == falloutTargets && viewItem == falloutTarget",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "mermaid": "^11.15.0"
+  }
+}
