@@ -1,0 +1,7 @@
+.vscode/**
+.gitignore
+src/**
+tsconfig.json
+out/**/*.map
+node_modules/**
+!node_modules/mermaid/dist/mermaid.min.js
