@@ -14,6 +14,13 @@
     here cannot be scanned, so omitting one silently drops it from the fitness gate.
   -->
 
+  <!-- Domain ring + the Build.Shared helper + the Fallout meta-package (aggregator test) -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Domain\Fallout.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+    <ProjectReference Include="..\..\src\Fallout\Fallout.csproj" />
+  </ItemGroup>
+
   <!-- Application ring -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Application\Fallout.Application.csproj" />

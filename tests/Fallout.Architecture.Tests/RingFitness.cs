@@ -1,35 +1,34 @@
-using System.Reflection;
+using System.Linq;
 using FluentAssertions;
 using NetArchTest.Rules;
 
 namespace Fallout.Architecture.Tests;
 
 /// <summary>
-/// Shared assertion for onion-ring fitness (ADR-0006). Scans <paramref name="assemblies"/> for types residing in
-/// <paramref name="ringNamespace"/> and asserts none of them depend on any of the <paramref name="forbidden"/>
-/// namespaces.
-/// <para>
-/// It also fails if the namespace filter matches <b>zero</b> types: a NetArchTest rule over an empty type set
-/// reports success, so a stale filter string (e.g. after a namespace rename) would silently turn the guard into a
-/// no-op. The non-empty precondition keeps the gate honest.
-/// </para>
+/// Asserts a ring depends only within its declared layer (see <see cref="RingModel"/>): its types must not
+/// depend on any other ring's namespace. Also fails if the namespace filter matches zero types — a NetArchTest
+/// rule over an empty set reports success, so a stale filter (e.g. after a namespace rename) would silently turn
+/// the guard into a no-op.
 /// </summary>
 internal static class RingFitness
 {
-    public static void AssertNoDependencyOn(
-        Assembly[] assemblies, string ringNamespace, string rationale, params string[] forbidden)
+    public static void AssertDependsOnlyWithinLayer(Ring ring)
     {
-        Types.InAssemblies(assemblies).That().ResideInNamespaceStartingWith(ringNamespace)
-            .GetTypes().Should().NotBeEmpty(
-                because: $"the '{ringNamespace}' filter must match real types — otherwise this fitness guard " +
-                         "passes vacuously (the likely failure mode after a namespace rename)");
+        var forbidden = RingModel.ForbiddenFor(ring);
 
-        var result = Types.InAssemblies(assemblies).That().ResideInNamespaceStartingWith(ringNamespace)
+        Types.InAssemblies(ring.Assemblies).That().ResideInNamespaceStartingWith(ring.Namespace)
+            .GetTypes().Should().NotBeEmpty(
+                because: $"the '{ring.Namespace}' filter must match real types — otherwise the {ring.Name}-ring " +
+                         "layering guard passes vacuously (the likely failure mode after a namespace rename)");
+
+        var result = Types.InAssemblies(ring.Assemblies).That().ResideInNamespaceStartingWith(ring.Namespace)
             .Should().NotHaveDependencyOnAny(forbidden)
             .GetResult();
 
+        var allowed = ring.MayDependOn.Length == 0 ? "(no other Fallout ring)" : string.Join(", ", ring.MayDependOn);
         result.IsSuccessful.Should().BeTrue(
-            because: rationale + " Offending types: " +
+            because: $"the {ring.Name} ring may depend only on [{allowed}] plus non-Fallout libraries; it must not " +
+                     $"reach [{string.Join(", ", forbidden)}]. Offending types: " +
                      (result.FailingTypeNames is null ? "(none reported)" : string.Join(", ", result.FailingTypeNames)));
     }
 }
