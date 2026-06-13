@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <!--
+    End-to-end fixture suite: drives the synthetic build fixtures under tests/fixtures/ out-of-process
+    (dotnet run on each fixture's Fallout build) and asserts the target succeeds + produces its artifact.
+    No ProjectReferences — it shells out. Test packages (xunit/FluentAssertions/Test.Sdk) come from the
+    repo-root Directory.Build.props. These tests are slower than unit tests (each spawns a real build);
+    they carry [Trait("Category","Fixtures")] so they can be filtered out of the fast gate.
+  -->
+
+</Project>

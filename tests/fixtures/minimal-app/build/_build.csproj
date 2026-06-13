@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\src\Fallout\Fallout.props" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace></RootNamespace>
+    <NoWarn>CS0649;CS0169</NoWarn>
+    <!-- This fixture IS the root being built; point Fallout at it (not the outer repo). -->
+    <FalloutRootDirectory>.\..</FalloutRootDirectory>
+    <FalloutTelemetryVersion>1</FalloutTelemetryVersion>
+    <!-- Skip the MSBuild-tasks integration import (its default path is a NuGet-package layout
+         that doesn't exist when consuming Fallout from source) — matches build/_build.csproj. -->
+    <FalloutTasksEnabled>False</FalloutTasksEnabled>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- The Fallout meta-package aggregates every ring (engine, tool wrappers, infra adapters). -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Fallout\Fallout.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\..\..\..\src\Fallout\Fallout.targets" />
+
+</Project>

@@ -1,0 +1,12 @@
+<!--
+  Isolation boundary for the synthetic build fixtures under tests/fixtures/.
+  MSBuild walks UP for the nearest Directory.Build.props and stops here, so the
+  fixtures do NOT inherit the repo-root Directory.Build.props / Directory.Packages.props
+  (central package management, shared analyzers, etc.). Each fixture is a self-contained
+  mini-repo that a Fallout build drives, exercised by Fallout.Fixtures.Tests.
+-->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+</Project>

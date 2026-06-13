@@ -1,0 +1,2 @@
+<!-- Isolation boundary (see Directory.Build.props): stops fixtures inheriting the repo-root Directory.Build.targets. -->
+<Project />

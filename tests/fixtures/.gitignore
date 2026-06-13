@@ -1,0 +1,5 @@
+# Build output + runtime state produced when the fixture suite drives each fixture's Fallout build.
+bin/
+obj/
+artifacts/
+.fallout/

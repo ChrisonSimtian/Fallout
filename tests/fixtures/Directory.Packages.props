@@ -1,0 +1,9 @@
+<!--
+  Stops the Directory.Packages.props walk-up at the fixtures boundary so the synthetic fixtures do NOT inherit
+  the repo-root central package management. Fixtures pin their own package versions inline (see lib-plus-tests).
+-->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+</Project>

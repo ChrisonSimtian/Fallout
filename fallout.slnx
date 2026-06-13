@@ -36,6 +36,7 @@
   <Project Path="src\Fallout.Core.Text.Yaml\Fallout.Core.Text.Yaml.csproj" />
   <Project Path="src\Fallout.Core\Fallout.Core.csproj" />
   <Project Path="tests\Fallout.Architecture.Tests\Fallout.Architecture.Tests.csproj" />
+  <Project Path="tests\Fallout.Fixtures.Tests\Fallout.Fixtures.Tests.csproj" />
   <Project Path="tests\Fallout.Application.Tests\Fallout.Application.Tests.csproj" />
   <Project Path="tests\Fallout.Application.Components.Tests\Fallout.Application.Components.Tests.csproj" />
   <Project Path="tests\Fallout.Application.Tooling.Tests\Fallout.Application.Tooling.Tests.csproj" />
