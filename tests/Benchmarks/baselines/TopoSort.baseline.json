@@ -1,0 +1,30 @@
+{
+  "_comment": "Perf regression baseline (committed). Means in ns, allocs in bytes. REGENERATE ON THE CI RUNNER via the benchmarks workflow refresh mode — cross-machine numbers are not comparable. Seeded locally (macOS).",
+  "os": "macOS 26.5.1 (25F80) [Darwin 25.5.0]",
+  "benchmarks": {
+    "Fallout.Domain.Benchmarks.TopoSortBenchmarks.Order(NodeCount: 10)": {
+      "meanNs": 1846.943669382731,
+      "allocatedBytes": 7992
+    },
+    "Fallout.Domain.Benchmarks.TopoSortBenchmarks.OrderStrict(NodeCount: 10)": {
+      "meanNs": 1875.2797104971748,
+      "allocatedBytes": 7992
+    },
+    "Fallout.Domain.Benchmarks.TopoSortBenchmarks.Order(NodeCount: 100)": {
+      "meanNs": 497320.57591488486,
+      "allocatedBytes": 181664
+    },
+    "Fallout.Domain.Benchmarks.TopoSortBenchmarks.OrderStrict(NodeCount: 100)": {
+      "meanNs": 493328.13033854164,
+      "allocatedBytes": 181664
+    },
+    "Fallout.Domain.Benchmarks.TopoSortBenchmarks.Order(NodeCount: 1000)": {
+      "meanNs": 466224541.9285714,
+      "allocatedBytes": 12604640
+    },
+    "Fallout.Domain.Benchmarks.TopoSortBenchmarks.OrderStrict(NodeCount: 1000)": {
+      "meanNs": 466245377.8666667,
+      "allocatedBytes": 12603968
+    }
+  }
+}

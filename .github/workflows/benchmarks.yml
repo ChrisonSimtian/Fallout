@@ -1,0 +1,64 @@
+name: benchmarks
+
+# Performance regression gate. Deliberately OFF the fast PR gate — benchmarks are slow and machine-sensitive,
+# so this runs weekly + on demand only. It compares a fresh run against the committed baseline
+# (tests/Benchmarks/baselines/*.baseline.json) and fails if anything regressed beyond the threshold.
+#
+# Baselines are machine-specific: refresh them FROM A RUNNER via the manual `refresh-baseline` input
+# (never commit local-machine numbers as the CI baseline — they won't be comparable).
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh-baseline:
+        description: "Regenerate + commit the baseline from this run instead of gating against it"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  domain-benchmarks:
+    name: Fallout.Domain benchmarks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # only used by the refresh-baseline path
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Run benchmarks (JSON export)
+        run: dotnet run -c Release --project tests/Benchmarks/Fallout.Domain.Benchmarks -- --filter '*' --exporters json
+
+      - name: Locate report
+        id: report
+        run: echo "path=$(ls BenchmarkDotNet.Artifacts/results/*-report-full-compressed.json | head -1)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-report
+          path: BenchmarkDotNet.Artifacts/results/
+          if-no-files-found: error
+
+      - name: Gate against committed baseline
+        if: ${{ inputs.refresh-baseline != true }}
+        run: bash tests/Benchmarks/compare-to-baseline.sh "${{ steps.report.outputs.path }}" tests/Benchmarks/baselines/TopoSort.baseline.json 25
+
+      - name: Refresh baseline (manual)
+        if: ${{ inputs.refresh-baseline == true }}
+        run: |
+          jq '{
+            _comment: "Perf regression baseline (committed). Means in ns, allocs in bytes. Captured on the CI runner via the benchmarks workflow refresh mode.",
+            os: .HostEnvironmentInfo.OsVersion,
+            benchmarks: (.Benchmarks | map({ key: .FullName, value: { meanNs: .Statistics.Mean, allocatedBytes: .Memory.BytesAllocatedPerOperation } }) | from_entries)
+          }' "${{ steps.report.outputs.path }}" > tests/Benchmarks/baselines/TopoSort.baseline.json
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tests/Benchmarks/baselines/TopoSort.baseline.json
+          git commit -m "Refresh TopoSort perf baseline from CI runner" && git push || echo "baseline unchanged"
