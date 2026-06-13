@@ -1,5 +1,6 @@
 using Fallout.Application;
 using Fallout.Application.Tools.DotNet;
+using Fallout.Core;
 using Fallout.Core.Collections;
 using Fallout.Core.IO;
 using Fallout.Core.IO.Globbing;
@@ -16,7 +17,9 @@ class Build : FalloutBuild
     Target Test => _ => _
         .Executes(() =>
         {
-            (RootDirectory / "tests").GlobFiles("**/*.Tests.csproj")
-                .ForEach(project => DotNetTest(_ => _.SetProjectFile(project)));
+            var testProjects = (RootDirectory / "tests").GlobFiles("**/*.Tests.csproj");
+            // Guard against a globbing regression silently turning this into a no-op (green, but tested nothing).
+            Assert.NotEmpty(testProjects, "expected at least one *.Tests.csproj under tests/");
+            testProjects.ForEach(project => DotNetTest(_ => _.SetProjectFile(project)));
         });
 }

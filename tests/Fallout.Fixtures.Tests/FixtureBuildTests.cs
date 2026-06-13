@@ -25,16 +25,21 @@ public class FixtureBuildTests
 
     public static IEnumerable<object[]> Cases =>
     [
-        // fixture          target     expected artifact (relative to the fixture root; null = exit-code only)
-        new object[] { "minimal-app",    "Compile", "src/App/bin/Debug/net10.0/App.dll" },
-        new object[] { "lib-plus-tests", "Test",    null! },
-        new object[] { "multi-tfm",      "Compile", "src/MultiLib/bin/Debug/netstandard2.0/MultiLib.dll" },
-        new object[] { "packable",       "Pack",    "artifacts/Fallout.Fixtures.PackLib.1.2.3.nupkg" },
+        // fixture          target     expected artifacts (relative to the fixture root; empty = exit-code only)
+        new object[] { "minimal-app",    "Compile", new[] { "src/App/bin/Debug/net10.0/App.dll" } },
+        new object[] { "lib-plus-tests", "Test",    Array.Empty<string>() },
+        // multi-TFM: a single build must produce BOTH framework outputs — assert each.
+        new object[] { "multi-tfm",      "Compile", new[]
+        {
+            "src/MultiLib/bin/Debug/netstandard2.0/MultiLib.dll",
+            "src/MultiLib/bin/Debug/net10.0/MultiLib.dll",
+        } },
+        new object[] { "packable",       "Pack",    new[] { "artifacts/Fallout.Fixtures.PackLib.1.2.3.nupkg" } },
     ];
 
     [Theory]
     [MemberData(nameof(Cases))]
-    public void Fallout_build_drives_the_fixture(string fixture, string target, string? expectedArtifact)
+    public void Fallout_build_drives_the_fixture(string fixture, string target, string[] expectedArtifacts)
     {
         var fixtureDir = Path.Combine(FixturesRoot, fixture);
         Directory.Exists(fixtureDir).Should().BeTrue($"fixture '{fixture}' should exist at {fixtureDir}");
@@ -44,10 +49,10 @@ public class FixtureBuildTests
 
         exitCode.Should().Be(0, $"the '{target}' target should succeed for the '{fixture}' fixture");
 
-        if (expectedArtifact is not null)
+        foreach (var expected in expectedArtifacts)
         {
-            var artifact = Path.Combine(fixtureDir, expectedArtifact.Replace('/', Path.DirectorySeparatorChar));
-            File.Exists(artifact).Should().BeTrue($"the '{target}' target should produce '{expectedArtifact}'");
+            var artifact = Path.Combine(fixtureDir, expected.Replace('/', Path.DirectorySeparatorChar));
+            File.Exists(artifact).Should().BeTrue($"the '{target}' target should produce '{expected}'");
         }
     }
 

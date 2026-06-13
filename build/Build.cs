@@ -104,7 +104,11 @@ partial class Build
         from framework in project.GetTargetFrameworks()
         select (project, framework);
 
-    IEnumerable<Fallout.Application.Solutions.Project> ITest.TestProjects => Partition.GetCurrent(Solution.GetAllProjects("*.Tests"));
+    // Fallout.Fixtures.Tests is a slow end-to-end suite (it spawns a real `dotnet run` build per fixture),
+    // so it's kept out of the default Test gate to keep CI cheap. Run it on demand with
+    // `dotnet test tests/Fallout.Fixtures.Tests` (the cases also carry [Trait("Category","Fixtures")]).
+    IEnumerable<Fallout.Application.Solutions.Project> ITest.TestProjects =>
+        Partition.GetCurrent(Solution.GetAllProjects("*.Tests").Where(p => p.Name != "Fallout.Fixtures.Tests"));
 
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;

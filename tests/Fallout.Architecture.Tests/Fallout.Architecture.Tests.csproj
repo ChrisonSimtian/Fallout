@@ -46,6 +46,9 @@
     <ProjectReference Include="..\..\src\Fallout.Infrastructure.CI\Fallout.Infrastructure.CI.csproj" />
     <ProjectReference Include="..\..\src\Fallout.Infrastructure.Solutions\Fallout.Infrastructure.Solutions.csproj" />
     <ProjectReference Include="..\..\src\Fallout.Infrastructure.ProjectModel\Fallout.Infrastructure.ProjectModel.csproj" />
+    <!-- Explicit (not just transitive): Infrastructure's MayDependOn allows Fallout.Persistence, and the
+         reference set is the scan contract — see the header comment. -->
+    <ProjectReference Include="..\..\src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
   </ItemGroup>
 
 </Project>

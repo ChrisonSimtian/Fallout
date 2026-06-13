@@ -8,12 +8,18 @@ namespace Fallout.Architecture.Tests;
 internal sealed record Ring(string Name, string Namespace, Assembly[] Assemblies, string[] MayDependOn);
 
 /// <summary>
-/// The onion architecture (ADR-0006) expressed as data: every Fallout ring and the rings it is allowed to
-/// depend on. The layering tests derive each ring's <i>forbidden</i> set as "every other known ring, minus the
-/// allowed ones, minus itself", and assert the ring depends on nothing in that set. That makes the rule a
-/// positive whitelist — a ring may depend only within its declared layer — which catches an illegal edge to
-/// <b>any</b> other current ring (Application → Infrastructure, anything → Fallout.Cli, a ring → Migrate/MSBuild
-/// tooling, …), not just a hand-picked few. Non-Fallout libraries are unconstrained.
+/// The onion architecture (ADR-0006) expressed as data. The layering tests derive each ring's <i>forbidden</i>
+/// set as "every namespace in <see cref="Universe"/>, minus the ones it may depend on, minus itself", and assert
+/// the ring depends on nothing in that set — a positive whitelist: a ring may depend only within its declared
+/// layer. Non-Fallout libraries are unconstrained.
+/// <para>
+/// <b>Coverage is asymmetric by design.</b> Only the five onion rings below (Domain, Core, Build.Shared,
+/// Application, Infrastructure) are scanned as <i>subjects</i> — i.e. their outbound dependencies are gated. The
+/// remaining <see cref="Universe"/> entries (Cli, Persistence, Migrate, MSBuildTasks, SourceGenerators,
+/// CodeGeneration) appear only as forbidden <i>targets</i>: the suite asserts "no ring depends on them", but does
+/// not gate their own outbound edges. They are the composition root, vendored, or build-time tooling — outside
+/// the runtime onion — so they intentionally have no layering rule of their own.
+/// </para>
 /// </summary>
 internal static class RingModel
 {
