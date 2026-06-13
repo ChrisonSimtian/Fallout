@@ -51,6 +51,7 @@
   <Project Path="tests\Fallout.Infrastructure.Tooling.Tests\Fallout.Infrastructure.Tooling.Tests.csproj" />
   <Project Path="tests\Fallout.SourceGenerators.Tests\Fallout.SourceGenerators.Tests.csproj" />
   <Project Path="tests\Benchmarks\Fallout.Persistence.Solution.Benchmarks\Fallout.Persistence.Solution.Benchmarks.csproj" />
+  <Project Path="tests\Benchmarks\Fallout.Domain.Benchmarks\Fallout.Domain.Benchmarks.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.Local\Fallout.Consumer.Local.csproj" />
   <Project Path="tests\Consumers\Fallout.Consumer.NuGet\Fallout.Consumer.NuGet.csproj" />
   <Project Path="tests\Fallout.Core.Tests\Fallout.Core.Tests.csproj" />

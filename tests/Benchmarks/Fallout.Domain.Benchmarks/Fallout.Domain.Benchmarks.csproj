@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Fallout.Domain.Benchmarks</RootNamespace>
+    <!-- BenchmarkDotNet Release-builds the benchmark assembly itself on demand. The .csproj only needs to
+         compile in Debug for the CI compile-gate; the benchmarks are RUN on demand, not in the fast Test gate. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fallout.Domain\Fallout.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
