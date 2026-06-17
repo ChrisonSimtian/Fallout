@@ -13,7 +13,7 @@ namespace Fallout.Cli;
 
 public partial class Program
 {
-    private static string CurrentBuildScriptName => EnvironmentInfo.IsWin ? "build.ps1" : "build.sh";
+    internal static string CurrentBuildScriptName => EnvironmentInfo.IsWin ? "build.ps1" : "build.sh";
 
     private static int Main(string[] args)
     {
@@ -72,7 +72,7 @@ public partial class Program
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithChosenRootDirectory", (_, _, _) => PushWithChosenRootDirectory()));
     }
 
-    private static void PrintInfo()
+    internal static void PrintInfo()
     {
         Host.Information($"Fallout Global Tool 🌐 {typeof(Program).Assembly.GetInformationalText()}");
     }

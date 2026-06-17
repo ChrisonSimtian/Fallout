@@ -11,7 +11,9 @@ namespace Fallout.Cli;
 
 partial class Program
 {
-    private const string BUILD_PROJECT_FILE = nameof(BUILD_PROJECT_FILE);
+    // internal (not private): shared with AddPackage/Update/Cake; will move into a configuration
+    // service in the final #392 collapse PR.
+    internal const string BUILD_PROJECT_FILE = nameof(BUILD_PROJECT_FILE);
     private const string TEMP_DIRECTORY = nameof(TEMP_DIRECTORY);
     private const string DOTNET_GLOBAL_FILE = nameof(DOTNET_GLOBAL_FILE);
     private const string DOTNET_INSTALL_URL = nameof(DOTNET_INSTALL_URL);
@@ -27,7 +29,7 @@ partial class Program
         return 0;
     }
 
-    private static Dictionary<string, string> GetConfiguration(AbsolutePath buildScript, bool evaluate)
+    internal static Dictionary<string, string> GetConfiguration(AbsolutePath buildScript, bool evaluate)
     {
         string ReplaceScriptDirectory(string value)
             => evaluate
