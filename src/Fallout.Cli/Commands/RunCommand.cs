@@ -8,11 +8,17 @@ using Fallout.Common.IO;
 using Fallout.Common.Utilities;
 using static Fallout.Common.Constants;
 
-namespace Fallout.Cli;
+namespace Fallout.Cli.Commands;
 
-partial class Program
+/// <summary>
+/// <c>fallout :run</c> (and the default, command-less invocation): builds the build project and
+/// runs it, forwarding any remaining arguments to the build.
+/// </summary>
+public sealed class RunCommand : IFalloutCommand
 {
-    private static int Run(string[] forwardedArgs, AbsolutePath rootDirectory, AbsolutePath buildProjectFile)
+    public string Name => "run";
+
+    public int Execute(string[] forwardedArgs, AbsolutePath rootDirectory, AbsolutePath buildProjectFile)
     {
         var dotnet = ResolveDotnet(rootDirectory);
 
@@ -63,7 +69,7 @@ partial class Program
         startInfo.Environment["DOTNET_NOLOGO"] = "1";
         startInfo.Environment["DOTNET_ROLL_FORWARD"] = "Major";
         startInfo.Environment["FALLOUT_TELEMETRY_OPTOUT"] = "1";
-        startInfo.Environment[GlobalToolVersionEnvironmentKey] = typeof(Program).Assembly.GetVersionText();
+        startInfo.Environment[GlobalToolVersionEnvironmentKey] = typeof(RunCommand).Assembly.GetVersionText();
         startInfo.Environment[GlobalToolStartTimeEnvironmentKey] = DateTime.Now.ToString("O");
 
         var process = Process.Start(startInfo).NotNull();

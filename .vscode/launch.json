@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Prompts you for the command/args each launch, e.g. ":get-configuration" or ":bogus".
+      "name": "fallout (ask for args)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-cli",
+      "program": "${workspaceFolder}/src/Fallout.Cli/bin/Debug/net10.0/Fallout.Cli.dll",
+      "args": "${input:falloutArgs}",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      // Dispatch error path — prints the command manifest, no side effects.
+      "name": "fallout :bogus",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-cli",
+      "program": "${workspaceFolder}/src/Fallout.Cli/bin/Debug/net10.0/Fallout.Cli.dll",
+      "args": [":bogus"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      // Real command via the DelegateCommand path — read-only.
+      "name": "fallout :get-configuration",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-cli",
+      "program": "${workspaceFolder}/src/Fallout.Cli/bin/Debug/net10.0/Fallout.Cli.dll",
+      "args": [":get-configuration"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "falloutArgs",
+      "type": "promptString",
+      "description": "Arguments to pass to fallout (space-separated), e.g. ':get-configuration'",
+      "default": ":bogus"
+    }
+  ]
+}
