@@ -16,17 +16,27 @@ namespace Fallout.Cli.Commands;
 public sealed class CakeConvertCommand : IFalloutCommand
 {
     private readonly IConsolePrompts _prompts;
+    private readonly IConfigurationReader _configuration;
+    private readonly IPackageManager _packages;
+    private readonly SetupCommand _setup;
 
-    public CakeConvertCommand(IConsolePrompts prompts) => _prompts = prompts;
+    public CakeConvertCommand(
+        IConsolePrompts prompts,
+        IConfigurationReader configuration,
+        IPackageManager packages,
+        SetupCommand setup)
+    {
+        _prompts = prompts;
+        _configuration = configuration;
+        _packages = packages;
+        _setup = setup;
+    }
 
     public string Name => "cake-convert";
 
-    // The .cake syntax-rewriting helpers (GetCakeFiles/GetCakeConvertedContent/GetCakePackages) and
-    // the shared GetConfiguration/AddOrReplacePackage helpers remain on Program until the #392
-    // collapse PR; GetCakeConvertedContent/GetCakePackages are also exercised directly by tests.
     public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        Program.PrintInfo();
+        ToolBanner.Print();
         Logging.Configure();
         Telemetry.ConvertCake();
         ProjectModelTasks.Initialize();
@@ -53,27 +63,27 @@ public sealed class CakeConvertCommand : IFalloutCommand
         if (buildScript == null &&
             _prompts.PromptForConfirmation("Should a NUKE project be created for better results?"))
         {
-            Program.Setup(args, rootDirectory: null, buildScript: null);
+            _setup.Execute(args, rootDirectory: null, buildScript: null);
         }
 
-        var buildScriptFile = WorkingDirectory / Program.CurrentBuildScriptName;
+        var buildScriptFile = WorkingDirectory / CliConventions.CurrentBuildScriptName;
         var buildProjectFile = buildScriptFile.Exists()
-            ? Program.GetConfiguration(buildScriptFile, evaluate: true)
-                .GetValueOrDefault(Program.BUILD_PROJECT_FILE, defaultValue: null)
+            ? _configuration.Read(buildScriptFile, evaluate: true)
+                .GetValueOrDefault(ConfigurationReader.BuildProjectFileKey, defaultValue: null)
             : null;
 
-        foreach (var cakeFile in Program.GetCakeFiles())
+        foreach (var cakeFile in CakeConverter.GetCakeFiles())
         {
             var outputFile = cakeFile.Parent / cakeFile.NameWithoutExtension.Capitalize() + ".cs";
-            var content = Program.GetCakeConvertedContent(cakeFile.ReadAllText());
+            var content = CakeConverter.GetConvertedContent(cakeFile.ReadAllText());
             outputFile.WriteAllText(content);
         }
 
         if (buildProjectFile != null)
         {
-            var packages = Program.GetCakeFiles().SelectMany(x => Program.GetCakePackages(x.ReadAllText()));
+            var packages = CakeConverter.GetCakeFiles().SelectMany(x => CakeConverter.GetPackages(x.ReadAllText()));
             foreach (var package in packages)
-                Program.AddOrReplacePackage(package.Id, package.Version, package.Type, buildProjectFile);
+                _packages.AddOrReplacePackage(package.Id, package.Version, package.Type, buildProjectFile);
         }
 
         return 0;

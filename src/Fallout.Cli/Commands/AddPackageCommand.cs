@@ -13,11 +13,20 @@ namespace Fallout.Cli.Commands;
 /// </summary>
 public sealed class AddPackageCommand : IFalloutCommand
 {
+    private readonly IConfigurationReader _configuration;
+    private readonly IPackageManager _packages;
+
+    public AddPackageCommand(IConfigurationReader configuration, IPackageManager packages)
+    {
+        _configuration = configuration;
+        _packages = packages;
+    }
+
     public string Name => "add-package";
 
     public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        Program.PrintInfo();
+        ToolBanner.Print();
         Logging.Configure();
         Telemetry.AddPackage();
         ProjectModelTasks.Initialize();
@@ -30,19 +39,17 @@ public sealed class AddPackageCommand : IFalloutCommand
              NuGetPackageResolver.GetGlobalInstalledPackage(packageId, version: null, packagesConfigFile: null)?.Version.ToString())
             .NotNull("packageVersion != null");
 
-        // GetConfiguration / AddOrReplacePackage / BUILD_PROJECT_FILE / PACKAGE_TYPE_* are shared
-        // helpers still on Program; they move into services in the final #392 collapse PR.
-        var configuration = Program.GetConfiguration(buildScript, evaluate: true);
-        var buildProjectFile = configuration[Program.BUILD_PROJECT_FILE];
+        var configuration = _configuration.Read(buildScript, evaluate: true);
+        var buildProjectFile = configuration[ConfigurationReader.BuildProjectFileKey];
         Host.Information($"Installing {packageId}/{packageVersion} to {buildProjectFile} ...");
-        Program.AddOrReplacePackage(packageId, packageVersion, Program.PACKAGE_TYPE_DOWNLOAD, buildProjectFile);
+        _packages.AddOrReplacePackage(packageId, packageVersion, PackageManager.DownloadType, buildProjectFile);
         DotNetTasks.DotNet($"restore {buildProjectFile}");
 
         var installedPackage = NuGetPackageResolver.GetGlobalInstalledPackage(packageId, packageVersion, packagesConfigFile: null)
             .NotNull("installedPackage != null");
         var hasToolsDirectory = installedPackage.Directory.GlobDirectories("tools").Any();
         if (!hasToolsDirectory)
-            Program.AddOrReplacePackage(packageId, packageVersion, Program.PACKAGE_TYPE_REFERENCE, buildProjectFile);
+            _packages.AddOrReplacePackage(packageId, packageVersion, PackageManager.ReferenceType, buildProjectFile);
 
         Host.Information($"Done installing {packageId}/{packageVersion} to {buildProjectFile}");
         return 0;

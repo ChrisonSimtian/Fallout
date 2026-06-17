@@ -11,7 +11,7 @@ public class GetConfigurationCommandTests
 {
     [Fact]
     public void Name_IsGetConfiguration()
-        => new GetConfigurationCommand().Name.Should().Be("get-configuration");
+        => new GetConfigurationCommand(new ConfigurationReader()).Name.Should().Be("get-configuration");
 
     [Fact]
     public void Execute_ParsesConfigurationBlock_ReturnsZero()
@@ -31,7 +31,7 @@ public class GetConfigurationCommandTests
                 "# EXECUTION",
                 "dotnet run"));
 
-            new GetConfigurationCommand().Execute([], dir, buildScript).Should().Be(0);
+            new GetConfigurationCommand(new ConfigurationReader()).Execute([], dir, buildScript).Should().Be(0);
         }
         finally
         {

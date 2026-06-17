@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Fallout.Common;
-using Fallout.Common.Execution;
 using Fallout.Common.IO;
-using Fallout.Solutions;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Cli.Rewriting.Cake;
@@ -15,19 +13,17 @@ using static Fallout.Common.EnvironmentInfo;
 
 namespace Fallout.Cli;
 
-partial class Program
+/// <summary>Best-effort syntax rewriting of Cake (<c>*.cake</c>) scripts into Fallout C#.</summary>
+internal static class CakeConverter
 {
-    public const string CAKE_FILE_PATTERN = "*.cake";
+    public const string FilePattern = "*.cake";
 
-    // Residual after the :cake-convert/:cake-clean commands moved to CakeConvertCommand/
-    // CakeCleanCommand: these .cake syntax-rewriting helpers stay on Program until the #392 collapse
-    // PR (GetCakeConvertedContent/GetCakePackages are exercised directly by tests).
-    internal static IEnumerable<AbsolutePath> GetCakeFiles()
+    public static IEnumerable<AbsolutePath> GetCakeFiles()
     {
-        return (TryGetRootDirectoryFrom(WorkingDirectory) ?? WorkingDirectory).GlobFiles($"**/{CAKE_FILE_PATTERN}");
+        return (TryGetRootDirectoryFrom(WorkingDirectory) ?? WorkingDirectory).GlobFiles($"**/{FilePattern}");
     }
 
-    internal static string GetCakeConvertedContent(string content)
+    public static string GetConvertedContent(string content)
     {
         var options = new CSharpParseOptions(LanguageVersion.Latest, DocumentationMode.None, SourceCodeKind.Script);
         var syntaxTree = CSharpSyntaxTree.ParseText(content, options);
@@ -49,7 +45,7 @@ partial class Program
             .ToFullString();
     }
 
-    internal static IEnumerable<(string Type, string Id, string Version)> GetCakePackages(string content)
+    public static IEnumerable<(string Type, string Id, string Version)> GetPackages(string content)
     {
         IEnumerable<(string Type, string Id, string Version)> GetPackages(
             string packageType,
@@ -66,8 +62,8 @@ partial class Program
             }
         }
 
-        return GetPackages(PACKAGE_TYPE_DOWNLOAD, @"#tool ""nuget:\?package=(?'packageId'[\w\d\.]+)(&version=(?'version'[\w\d\.]+))?S*""")
-            .Concat(GetPackages(PACKAGE_TYPE_REFERENCE, @"#addin ""nuget:\?package=(?'packageId'[\w\d\.]+)(&version=(?'version'[\w\d\.]+))?S*"""))
+        return GetPackages(PackageManager.DownloadType, @"#tool ""nuget:\?package=(?'packageId'[\w\d\.]+)(&version=(?'version'[\w\d\.]+))?S*""")
+            .Concat(GetPackages(PackageManager.ReferenceType, @"#addin ""nuget:\?package=(?'packageId'[\w\d\.]+)(&version=(?'version'[\w\d\.]+))?S*"""))
             .Where(x => !x.Id.ContainsOrdinalIgnoreCase("Cake"));
     }
 }

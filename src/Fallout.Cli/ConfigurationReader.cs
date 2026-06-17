@@ -1,27 +1,24 @@
-﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
-using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.Cli;
 
-partial class Program
+/// <summary>Parses the <c># CONFIGURATION … # EXECUTION</c> block out of a build script.</summary>
+public interface IConfigurationReader
 {
-    // internal (not private): shared with AddPackage/Update/Cake; will move into a configuration
-    // service in the final #392 collapse PR.
-    internal const string BUILD_PROJECT_FILE = nameof(BUILD_PROJECT_FILE);
-    private const string TEMP_DIRECTORY = nameof(TEMP_DIRECTORY);
-    private const string DOTNET_GLOBAL_FILE = nameof(DOTNET_GLOBAL_FILE);
-    private const string DOTNET_INSTALL_URL = nameof(DOTNET_INSTALL_URL);
-    private const string DOTNET_CHANNEL = nameof(DOTNET_CHANNEL);
+    Dictionary<string, string> Read(AbsolutePath buildScript, bool evaluate);
+}
 
-    // Residual after the :get-configuration command moved to GetConfigurationCommand: this helper is
-    // shared with add-package/update/cake and moves into a configuration service in the #392 collapse PR.
-    internal static Dictionary<string, string> GetConfiguration(AbsolutePath buildScript, bool evaluate)
+/// <inheritdoc />
+public sealed class ConfigurationReader : IConfigurationReader
+{
+    /// <summary>Configuration key holding the build project file path.</summary>
+    public const string BuildProjectFileKey = "BUILD_PROJECT_FILE";
+
+    public Dictionary<string, string> Read(AbsolutePath buildScript, bool evaluate)
     {
         string ReplaceScriptDirectory(string value)
             => evaluate

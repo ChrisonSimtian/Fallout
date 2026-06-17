@@ -11,13 +11,15 @@ namespace Fallout.Cli.Commands;
 /// </summary>
 public sealed class GetConfigurationCommand : IFalloutCommand
 {
+    private readonly IConfigurationReader _configuration;
+
+    public GetConfigurationCommand(IConfigurationReader configuration) => _configuration = configuration;
+
     public string Name => "get-configuration";
 
     public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        // Program.GetConfiguration(buildScript, evaluate) is shared with add-package/update/cake;
-        // it moves into a configuration service in the final #392 collapse PR.
-        var configuration = Program.GetConfiguration(buildScript.NotNull(), evaluate: false);
+        var configuration = _configuration.Read(buildScript.NotNull(), evaluate: false);
 
         Host.Information($"Configuration from {buildScript}:");
         configuration.ForEach(x => Console.WriteLine($"{x.Key} = {x.Value}"));
