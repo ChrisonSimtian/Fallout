@@ -71,11 +71,14 @@ public partial class Program
 
         // Legacy handlers still living on Program, adapted until they are extracted into command
         // types. Each conversion deletes one line here plus its Program.X.cs partial.
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("GetNextDirectory", GetNextDirectory));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PopDirectory", PopDirectory));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithCurrentRootDirectory", PushWithCurrentRootDirectory));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithParentRootDirectory", PushWithParentRootDirectory));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithChosenRootDirectory", PushWithChosenRootDirectory));
+        services.AddSingleton<IFalloutCommand, Commands.Navigation.GetNextDirectoryCommand>();
+        services.AddSingleton<IFalloutCommand, Commands.Navigation.PopDirectoryCommand>();
+        services.AddSingleton<IFalloutCommand, Commands.Navigation.PushWithCurrentRootDirectoryCommand>();
+        services.AddSingleton<IFalloutCommand, Commands.Navigation.PushWithParentRootDirectoryCommand>();
+        services.AddSingleton<IFalloutCommand, Commands.Navigation.PushWithChosenRootDirectoryCommand>();
+
+        // Legacy handlers still living on Program, adapted until they are extracted into command
+        // types. Each conversion deletes one line here plus its Program.X.cs partial.
     }
 
     internal static void PrintInfo()
