@@ -7,13 +7,18 @@ using Fallout.Common.Utilities;
 using Fallout.Utilities.Text.Yaml;
 using static Fallout.Common.Constants;
 
-namespace Fallout.Cli;
+namespace Fallout.Cli.Commands;
 
-partial class Program
+/// <summary>
+/// <c>fallout :complete</c>: emits shell-completion candidates for the partially typed command line.
+/// </summary>
+public sealed class CompleteCommand : IFalloutCommand
 {
     private const string CommandName = "fallout";
 
-    public static int Complete(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
+    public string Name => "complete";
+
+    public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
         if (rootDirectory == null)
             return 0;

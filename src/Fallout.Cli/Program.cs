@@ -54,6 +54,7 @@ public partial class Program
         // Real command types — issue #392 converts one legacy handler per PR.
         services.AddSingleton<IFalloutCommand, RunCommand>();
         services.AddSingleton<IFalloutCommand, TriggerCommand>();
+        services.AddSingleton<IFalloutCommand, CompleteCommand>();
 
         // Legacy handlers still living on Program, adapted until they are extracted into command
         // types. Each conversion deletes one line here plus its Program.X.cs partial.
@@ -62,7 +63,6 @@ public partial class Program
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("add-package", AddPackage));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-convert", CakeConvert));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-clean", CakeClean));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("complete", Complete));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("get-configuration", GetConfiguration));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("secrets", Secrets));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("GetNextDirectory", GetNextDirectory));
