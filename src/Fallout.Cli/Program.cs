@@ -56,12 +56,12 @@ public partial class Program
         services.AddSingleton<IFalloutCommand, TriggerCommand>();
         services.AddSingleton<IFalloutCommand, CompleteCommand>();
         services.AddSingleton<IFalloutCommand, GetConfigurationCommand>();
+        services.AddSingleton<IFalloutCommand, AddPackageCommand>();
 
         // Legacy handlers still living on Program, adapted until they are extracted into command
         // types. Each conversion deletes one line here plus its Program.X.cs partial.
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("setup", Setup));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("update", Update));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("add-package", AddPackage));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-convert", CakeConvert));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-clean", CakeClean));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("secrets", Secrets));
