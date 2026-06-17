@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Fallout.Cli.Commands;
+using Fallout.Cli.Prompts;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
-using Spectre.Console;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fallout.Cli;
 
 public partial class Program
 {
-    private const char CommandPrefix = ':';
-
     private static string CurrentBuildScriptName => EnvironmentInfo.IsWin ? "build.ps1" : "build.sh";
 
     private static int Main(string[] args)
@@ -28,13 +28,48 @@ public partial class Program
                     .FirstOrDefault(x => Constants.TryGetRootDirectoryFrom(x.Parent) == rootDirectory)
                 : null;
 
-            return Handle(args, rootDirectory, buildScript);
+            using var services = BuildServiceProvider();
+            return services.GetRequiredService<CommandDispatcher>().Dispatch(args, rootDirectory, buildScript);
         }
         catch (Exception exception)
         {
             Host.Error(exception.Unwrap().Message);
             return 1;
         }
+    }
+
+    private static ServiceProvider BuildServiceProvider()
+    {
+        var services = new ServiceCollection();
+
+        services.AddSingleton<IConsolePrompts, SpectreConsolePrompts>();
+        services.AddSingleton<CommandDispatcher>();
+        RegisterCommands(services);
+
+        return services.BuildServiceProvider();
+    }
+
+    private static void RegisterCommands(IServiceCollection services)
+    {
+        // Real command types — issue #392 converts one legacy handler per PR.
+        services.AddSingleton<IFalloutCommand, RunCommand>();
+
+        // Legacy handlers still living on Program, adapted until they are extracted into command
+        // types. Each conversion deletes one line here plus its Program.X.cs partial.
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("setup", Setup));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("update", Update));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("add-package", AddPackage));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-convert", CakeConvert));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-clean", CakeClean));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("complete", Complete));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("get-configuration", GetConfiguration));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("secrets", Secrets));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("trigger", Trigger));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("GetNextDirectory", (_, _, _) => GetNextDirectory()));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PopDirectory", (_, _, _) => PopDirectory()));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithCurrentRootDirectory", (_, rootDirectory, _) => PushWithCurrentRootDirectory(rootDirectory)));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithParentRootDirectory", (_, rootDirectory, _) => PushWithParentRootDirectory(rootDirectory)));
+        services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithChosenRootDirectory", (_, _, _) => PushWithChosenRootDirectory()));
     }
 
     private static void PrintInfo()
@@ -45,7 +80,7 @@ public partial class Program
     private static AbsolutePath TryGetRootDirectory()
     {
         // TODO: copied in FalloutBuild.GetRootDirectory
-        var parameterValue = EnvironmentInfo.GetNamedArgument<AbsolutePath>(Constants.RootDirectoryParameterName);
+        AbsolutePath parameterValue = EnvironmentInfo.GetNamedArgument<AbsolutePath>(Constants.RootDirectoryParameterName);
         if (parameterValue != null)
             return parameterValue;
 
@@ -55,115 +90,18 @@ public partial class Program
         return Constants.TryGetRootDirectoryFrom(Directory.GetCurrentDirectory());
     }
 
-    private static int Handle(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-    {
-        var hasCommand = args.FirstOrDefault()?.StartsWithOrdinalIgnoreCase(CommandPrefix.ToString()) ?? false;
-        if (hasCommand)
-        {
-            var command = args.First().Trim(CommandPrefix).Replace("-", string.Empty);
-            if (string.IsNullOrWhiteSpace(command))
-                Assert.Fail($"No command specified. Usage is: nuke {CommandPrefix}<command> [args]");
+    // ── Transitional Spectre prompt delegators ──────────────────────────────────────────────────
+    // The implementations now live in SpectreConsolePrompts; these forwards keep the not-yet-extracted
+    // Program.X.cs command handlers compiling. As each handler becomes a command type taking
+    // IConsolePrompts via the constructor, its use of these disappears; the last conversion deletes them.
+    private static readonly IConsolePrompts s_prompts = new SpectreConsolePrompts();
 
-            var availableCommands = typeof(Program).GetMethods(ReflectionUtility.Static).Where(x => x.ReturnType == typeof(int)).ToList();
-            var commandHandler = availableCommands.SingleOrDefault(x => x.Name.EqualsOrdinalIgnoreCase(command))
-                .NotNull(new[] { $"Command '{command}' is not supported, available commands are:" }
-                    .Concat(availableCommands.Where(x => x.IsPublic).Select(x => $"  - {x.Name}").OrderBy(x => x)).JoinNewLine());
-            // TODO: add assertions about return type and parameters
-
-            var commandArguments = new object[] { args.Skip(count: 1).ToArray(), rootDirectory, buildScript };
-            return (int)commandHandler.Invoke(obj: null, commandArguments).NotNull($"Command '{command}' did not return exit code");
-        }
-
-        if (rootDirectory == null)
-        {
-            return PromptForConfirmation($"Could not find {Constants.FalloutDirectoryName} directory/file. Do you want to setup a build?")
-                ? Setup(new string[0], rootDirectory: null, buildScript: null)
-                : 0;
-        }
-
-        // TODO: docker
-
-        return Run(args, rootDirectory, BuildProjectResolver.Resolve(rootDirectory));
-    }
-
-    private static void ShowInput(string emoji, string title, string value)
-    {
-        AnsiConsole.MarkupLine($":{emoji}:  {$"{title}:",-25} [turquoise2 bold]{value}[/]");
-    }
-
-    private static void ShowCompletion(string title)
-    {
-        AnsiConsole.WriteLine();
-        AnsiConsole.MarkupLine($"[bold green]{title} completed![/] :party_popper:");
-    }
-
-    private static void ClearPreviousLine()
-    {
-        AnsiConsole.Cursor.MoveUp();
-        Console.WriteLine(' '.Repeat(Console.WindowWidth));
-        AnsiConsole.Cursor.MoveUp();
-    }
-
-    private static bool PromptForConfirmation(string question)
-    {
-        return AnsiConsole.Confirm(question);
-    }
-
-    private static string PromptForInput(string question, string defaultValue = null)
-    {
-        return AnsiConsole.Prompt(
-            new TextPrompt<string>(question)
-                .DefaultValue(defaultValue));
-    }
-
-    private static string PromptForSecret(string title, int? minLength = null)
-    {
-        Assert.False(title.EndsWith(':'));
-
-        return AnsiConsole.Prompt(
-            new TextPrompt<string>($"{title}:")
-                .Secret()
-                .Validate(x => minLength == null || x.Length >= minLength,
-                    message: $"Secret must be at least {minLength} characters long"));
-    }
-
-    private static T PromptForChoice<T>(string question, params (T Value, string Description)[] choices)
-    {
-        var choice = AnsiConsole.Prompt(
-            new SelectionPrompt<T>()
-                .Title(question)
-                .HighlightStyle(new Style(Color.Turquoise2))
-                .UseConverter(x => choices.Single(y => Equals(x, y.Value)).Description)
-                .AddChoices(choices.Select(x => x.Value)));
-        return choice;
-    }
-
-    private static void ConfirmExecution(string title, Action action)
-    {
-        Assert.False(title.EndsWith('?'));
-
-        var confirmation = PromptForConfirmation($"{title}?");
-        ClearPreviousLine();
-
-        if (confirmation)
-        {
-            AnsiConsole.MarkupLine($":hourglass_not_done:  {title} ...");
-            try
-            {
-                action.Invoke();
-            }
-            catch (Exception)
-            {
-                confirmation = false;
-                title = $"{title} (failed)";
-            }
-            finally
-            {
-                ClearPreviousLine();
-            }
-        }
-
-        var (emoji, color) = confirmation ? ("check_mark", "green") : ("multiply", "red");
-        AnsiConsole.MarkupLine($"[{color}]:{emoji}:[/]  {title}");
-    }
+    private static void ShowInput(string emoji, string title, string value) => s_prompts.ShowInput(emoji, title, value);
+    private static void ShowCompletion(string title) => s_prompts.ShowCompletion(title);
+    private static void ClearPreviousLine() => s_prompts.ClearPreviousLine();
+    private static bool PromptForConfirmation(string question) => s_prompts.PromptForConfirmation(question);
+    private static string PromptForInput(string question, string defaultValue = null) => s_prompts.PromptForInput(question, defaultValue);
+    private static string PromptForSecret(string title, int? minLength = null) => s_prompts.PromptForSecret(title, minLength);
+    private static T PromptForChoice<T>(string question, params (T Value, string Description)[] choices) => s_prompts.PromptForChoice(question, choices);
+    private static void ConfirmExecution(string title, Action action) => s_prompts.ConfirmExecution(title, action);
 }
