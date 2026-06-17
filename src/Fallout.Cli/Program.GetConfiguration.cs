@@ -19,16 +19,8 @@ partial class Program
     private const string DOTNET_INSTALL_URL = nameof(DOTNET_INSTALL_URL);
     private const string DOTNET_CHANNEL = nameof(DOTNET_CHANNEL);
 
-    public static int GetConfiguration(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-    {
-        var configuration = GetConfiguration(buildScript.NotNull(), evaluate: false);
-
-        Host.Information($"Configuration from {buildScript}:");
-        configuration.ForEach(x => Console.WriteLine($"{x.Key} = {x.Value}"));
-
-        return 0;
-    }
-
+    // Residual after the :get-configuration command moved to GetConfigurationCommand: this helper is
+    // shared with add-package/update/cake and moves into a configuration service in the #392 collapse PR.
     internal static Dictionary<string, string> GetConfiguration(AbsolutePath buildScript, bool evaluate)
     {
         string ReplaceScriptDirectory(string value)
