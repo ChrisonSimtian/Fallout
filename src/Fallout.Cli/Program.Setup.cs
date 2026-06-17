@@ -22,119 +22,16 @@ partial class Program
 {
     // ReSharper disable InconsistentNaming
 
-    private const string TARGET_FRAMEWORK = "net8.0";
     private const string PROJECT_KIND = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
 
-    // ReSharper disable once CognitiveComplexity
-    public static int Setup(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-    {
-        PrintInfo();
-        Logging.Configure();
-        Telemetry.SetupBuild();
+    // Transitional shim: cake (still a legacy handler) invokes setup directly. Removed once cake is
+    // converted; the dispatcher itself resolves SetupCommand from the registry, not this.
+    internal static int Setup(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
+        => new Commands.SetupCommand(s_prompts).Execute(args, rootDirectory, buildScript);
 
-        AnsiConsole.WriteLine();
-        AnsiConsole.MarkupLine("[bold]Let's setup a new build![/]");
-        AnsiConsole.WriteLine();
-
-        #region Basic
-
-        var nukeLatestReleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutCommonPackageId, includePrereleases: false);
-        var nukeLatestPrereleaseVersion = NuGetVersionResolver.GetLatestVersion(FalloutCommonPackageId, includePrereleases: true);
-        var nukeLatestLocalVersion = NuGetPackageResolver.GetGlobalInstalledPackage(FalloutCommonPackageId, version: null, packagesConfigFile: null)
-            ?.Version.ToString();
-
-        if (rootDirectory == null)
-            rootDirectory = WorkingDirectory.FindParentOrSelf(x => x.ContainsDirectory(".git") || x.ContainsDirectory(".svn"));
-
-        if (rootDirectory == null)
-        {
-            Host.Warning("Could not find root directory. Falling back to working directory ...");
-            rootDirectory = WorkingDirectory;
-        }
-        ShowInput("deciduous_tree", "Root directory", rootDirectory);
-
-        var buildProjectName = PromptForInput("How should the project be named?", "_build");
-        ClearPreviousLine();
-        ShowInput("bookmark", "Build project name", buildProjectName);
-
-        var buildProjectRelativeDirectory = PromptForInput("Where should the project be located?", "./build");
-        ClearPreviousLine();
-        ShowInput("round_pushpin", "Build project location", buildProjectRelativeDirectory);
-
-        var nukeVersion = PromptForChoice("Which Fallout.Common version should be used?",
-            new[]
-                {
-                    ("latest release", nukeLatestReleaseVersion.GetAwaiter().GetResult()),
-                    ("latest prerelease", nukeLatestPrereleaseVersion.GetAwaiter().GetResult()),
-                    ("latest local", nukeLatestLocalVersion),
-                    ("same as global tool", typeof(Program).GetTypeInfo().Assembly.GetVersionText())
-                }
-                .Where(x => x.Item2 != null)
-                .Distinct(x => x.Item2)
-                .Select(x => (x.Item2, $"{x.Item2} ({x.Item1})")).ToArray());
-        ShowInput("gem_stone", "Fallout.Common version", nukeVersion);
-
-        var solutionFile = (AbsolutePath) PromptForChoice(
-            "Which solution should be the default?",
-            choices: new DirectoryInfo(rootDirectory)
-                .EnumerateFiles("*", SearchOption.AllDirectories)
-                .Where(x => x.FullName.EndsWithOrdinalIgnoreCase(".sln"))
-                .OrderByDescending(x => x.FullName)
-                .Select(x => (x, rootDirectory.GetRelativePathTo(x.FullName).ToString()))
-                .Concat((null, "None")).ToArray())?.FullName;
-        ShowInput("toolbox", "Default solution", solutionFile != null ? rootDirectory.GetRelativePathTo(solutionFile) : "<none>");
-
-        #endregion
-
-        #region Generation
-
-        var buildDirectory = rootDirectory / buildProjectRelativeDirectory;
-        var buildProjectFile = rootDirectory / buildProjectRelativeDirectory / buildProjectName + ".csproj";
-        var buildProjectGuid = Guid.NewGuid().ToString().ToUpper();
-
-        (rootDirectory / FalloutDirectoryName).CreateDirectory();
-
-        WriteBuildScripts(
-            scriptDirectory: WorkingDirectory,
-            rootDirectory,
-            buildDirectory,
-            buildProjectName);
-
-        WriteConfigurationFile(rootDirectory, solutionFile);
-
-        if (solutionFile != null)
-        {
-            var solutionFileContent = solutionFile.ReadAllLines().ToList();
-            var buildProjectFileRelative = solutionFile.Parent.GetWinRelativePathTo(buildProjectFile);
-            UpdateSolutionFileContent(solutionFileContent, buildProjectFileRelative, buildProjectGuid, buildProjectName);
-            solutionFile.WriteAllLines(solutionFileContent, Encoding.UTF8);
-        }
-
-        buildProjectFile.WriteAllLines(
-            FillTemplate(
-                GetTemplate("_build.csproj"),
-                GetDictionary(
-                    new
-                    {
-                        RootDirectory = buildDirectory.GetWinRelativePathTo(rootDirectory),
-                        ScriptDirectory = buildDirectory.GetWinRelativePathTo(WorkingDirectory),
-                        TargetFramework = TARGET_FRAMEWORK,
-                        TelemetryVersion = Telemetry.CurrentVersion,
-                        NukeVersion = nukeVersion,
-                    })));
-
-        (buildDirectory / "Directory.Build.props").WriteAllLines(GetTemplate("Directory.Build.props"));
-        (buildDirectory / "Directory.Build.targets").WriteAllLines(GetTemplate("Directory.Build.targets"));
-        (buildDirectory / "Build.cs").WriteAllLines(FillTemplate(GetTemplate("Build.cs")));
-        (buildDirectory / "Configuration.cs").WriteAllLines(GetTemplate("Configuration.cs"));
-
-        #endregion
-
-        ShowCompletion("Setup");
-
-        return 0;
-    }
-
+    // Residual after the :setup command moved to SetupCommand: these scaffolding helpers are shared
+    // with update (and UpdateSolutionFileContent is exercised directly by tests). They move into a
+    // scaffolding service in the #392 collapse PR.
     internal static void UpdateSolutionFileContent(
         List<string> content,
         string buildProjectFileRelative,
