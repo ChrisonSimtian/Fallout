@@ -1,7 +1,7 @@
-﻿using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Nodes;
+using Fallout.Cli.Prompts;
 using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
@@ -10,37 +10,48 @@ using Fallout.Common.Tools.DotNet;
 using Fallout.Common.Utilities;
 using static Fallout.Common.Constants;
 
-namespace Fallout.Cli;
+namespace Fallout.Cli.Commands;
 
-partial class Program
+/// <summary>
+/// <c>fallout :update</c>: updates the build scripts, build project, configuration file and global.json.
+/// </summary>
+public sealed class UpdateCommand : IFalloutCommand
 {
-    public static int Update(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
+    private readonly IConsolePrompts _prompts;
+
+    public UpdateCommand(IConsolePrompts prompts) => _prompts = prompts;
+
+    public string Name => "update";
+
+    // GetConfiguration / WriteBuildScripts / WriteConfigurationFile / BUILD_PROJECT_FILE remain on
+    // Program as internal residual until the #392 collapse PR extracts them into services.
+    public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        PrintInfo();
+        Program.PrintInfo();
         Logging.Configure();
 
         Assert.NotNull(rootDirectory);
 
         if (buildScript != null)
         {
-            ConfirmExecution("Update build scripts", () => UpdateBuildScripts(rootDirectory, buildScript));
-            ConfirmExecution("Update build project", () => UpdateBuildProject(buildScript));
+            _prompts.ConfirmExecution("Update build scripts", () => UpdateBuildScripts(rootDirectory, buildScript));
+            _prompts.ConfirmExecution("Update build project", () => UpdateBuildProject(buildScript));
         }
 
-        ConfirmExecution("Update configuration file", () => UpdateConfigurationFile(rootDirectory));
-        ConfirmExecution("Update global.json", () => UpdateGlobalJsonFile(rootDirectory));
+        _prompts.ConfirmExecution("Update configuration file", () => UpdateConfigurationFile(rootDirectory));
+        _prompts.ConfirmExecution("Update global.json", () => UpdateGlobalJsonFile(rootDirectory));
 
-        ShowCompletion("Updates");
+        _prompts.ShowCompletion("Updates");
 
         return 0;
     }
 
     private static void UpdateBuildScripts(AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        var configuration = GetConfiguration(buildScript, evaluate: true);
-        var buildProjectFile = (AbsolutePath) configuration[BUILD_PROJECT_FILE];
+        var configuration = Program.GetConfiguration(buildScript, evaluate: true);
+        var buildProjectFile = (AbsolutePath) configuration[Program.BUILD_PROJECT_FILE];
 
-        WriteBuildScripts(
+        Program.WriteBuildScripts(
             scriptDirectory: buildScript.Parent,
             rootDirectory,
             buildDirectory: buildProjectFile.NotNull().Parent,
@@ -49,8 +60,8 @@ partial class Program
 
     private static void UpdateBuildProject(AbsolutePath buildScript)
     {
-        var configuration = GetConfiguration(buildScript, evaluate: true);
-        var projectFile = configuration[BUILD_PROJECT_FILE];
+        var configuration = Program.GetConfiguration(buildScript, evaluate: true);
+        var projectFile = configuration[Program.BUILD_PROJECT_FILE];
         ProjectModelTasks.Initialize();
         ProjectUpdater.Update(projectFile);
     }
@@ -64,7 +75,7 @@ partial class Program
         var solutionFile = rootDirectory / configurationFile.ReadAllLines().FirstOrDefault(x => !x.IsNullOrEmpty());
         configurationFile.DeleteFile();
 
-        WriteConfigurationFile(rootDirectory, solutionFile);
+        Program.WriteConfigurationFile(rootDirectory, solutionFile);
         Host.Warning($"The previous {FalloutFileName} file was transformed to a {FalloutDirectoryName} directory.");
         Host.Warning($"The .tmp directory can be cleared, as it is moved to {FalloutDirectoryName}/temp as well.");
         if (solutionFile != null)
