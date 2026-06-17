@@ -62,12 +62,12 @@ public partial class Program
         // Legacy handlers still living on Program, adapted until they are extracted into command
         // types. Each conversion deletes one line here plus its Program.X.cs partial.
         services.AddSingleton<IFalloutCommand, UpdateCommand>();
+        services.AddSingleton<IFalloutCommand, SecretsCommand>();
 
         // Legacy handlers still living on Program, adapted until they are extracted into command
         // types. Each conversion deletes one line here plus its Program.X.cs partial.
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-convert", CakeConvert));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("cake-clean", CakeClean));
-        services.AddSingleton<IFalloutCommand>(new DelegateCommand("secrets", Secrets));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("GetNextDirectory", GetNextDirectory));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("PopDirectory", PopDirectory));
         services.AddSingleton<IFalloutCommand>(new DelegateCommand("PushWithCurrentRootDirectory", PushWithCurrentRootDirectory));
