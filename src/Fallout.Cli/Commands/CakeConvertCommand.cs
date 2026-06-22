@@ -51,7 +51,7 @@ public sealed class CakeConvertCommand : IFalloutCommand
         Host.Debug();
 
         if (buildScript == null &&
-            _prompts.PromptForConfirmation("Should a NUKE project be created for better results?"))
+            _prompts.PromptForConfirmation("Should a Fallout project be created for better results?"))
         {
             Program.Setup(args, rootDirectory: null, buildScript: null);
         }
