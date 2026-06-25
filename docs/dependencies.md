@@ -95,7 +95,7 @@ Still on Matt's personal NuGet account; supply-chain SPOF, high-priority to repl
 | `coverlet.msbuild` | Code coverage |
 | `GitHubActionsTestLogger` | Format test output for GitHub Actions annotations |
 | `Basic.Reference.Assemblies.NetStandard20` | Reference assemblies for source-generator compile tests |
-| `NetArchTest.Rules` | Architecture-fitness tests (e.g. `Fallout.Core` purity); broader suite tracked in #95 |
+| `TngTech.ArchUnitNET` (+ `.xUnit`) | Architecture-fitness suite (`tests/Fallout.Architecture.Tests`, #95) — assembly layering, `Fallout.Core` purity, shim direction, and namespace/assembly alignment, enforced as a ratcheting baseline. Replaced the unmaintained `NetArchTest.Rules`. |
 
 ## Build-time CLI tools (`PackageDownload`)
 
