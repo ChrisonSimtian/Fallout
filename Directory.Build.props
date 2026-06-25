@@ -69,4 +69,22 @@
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
   </ItemGroup>
 
+  <!-- JetBrains.Annotations: the "outer" (consumer-facing) layer gets [assembly: PublicAPI] so
+       Rider/ReSharper treat its entire public surface as intentional API and never flag it as
+       unused. This list is the single source of truth for what counts as an outer layer — inner
+       layers (MSBuildTasks, SourceGenerators, the Cli/Migrate tools, Migrate.Analyzers) are NOT
+       blanket-marked; any genuinely-exported type there is annotated with [PublicAPI] in source.
+       A project can opt out by setting <FalloutPublicApi>false</FalloutPublicApi> before this import. -->
+  <PropertyGroup>
+    <_FalloutOuterApiAssemblies>;Fallout.Common;Fallout.Build;Fallout.Build.Shared;Fallout.Components;Fallout.Core;Fallout.Tooling;Fallout.ProjectModel;Fallout.Utilities;Fallout.Utilities.IO.Compression;Fallout.Utilities.IO.Globbing;Fallout.Utilities.Net;Fallout.Utilities.Text.Json;Fallout.Utilities.Text.Yaml;Fallout.Solution;Fallout.NuGet.Analysis;Fallout.Tooling.Generator;Nuke.Common;Nuke.Build;Nuke.Components;</_FalloutOuterApiAssemblies>
+    <FalloutPublicApi Condition="'$(FalloutPublicApi)' == '' and $(_FalloutOuterApiAssemblies.Contains(';$(MSBuildProjectName);'))">true</FalloutPublicApi>
+  </PropertyGroup>
+
+  <!-- The reference flows to consumers (no PrivateAssets) so a consumer's Rider also sees the
+       annotations baked into our public surface. CPM is off for build/_build.csproj, so guard on it. -->
+  <ItemGroup Condition="'$(FalloutPublicApi)' == 'true' and '$(ManagePackageVersionsCentrally)' != 'false'">
+    <PackageReference Include="JetBrains.Annotations" />
+    <AssemblyAttribute Include="JetBrains.Annotations.PublicAPIAttribute" />
+  </ItemGroup>
+
 </Project>
