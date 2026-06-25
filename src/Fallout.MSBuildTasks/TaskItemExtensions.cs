@@ -4,7 +4,7 @@ using Microsoft.Build.Framework;
 
 namespace Fallout.MSBuildTasks;
 
-public static class TaskItemExtensions
+internal static class TaskItemExtensions
 {
     public static string GetMetadataOrNull(this ITaskItem taskItem, string metdataName)
     {

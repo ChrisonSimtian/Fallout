@@ -6,7 +6,7 @@ using Fallout.Common.Utilities.Collections;
 
 namespace Fallout.SourceGenerators;
 
-public static class CodeAnalysisExtensions
+internal static class CodeAnalysisExtensions
 {
     public static IEnumerable<INamespaceSymbol> GetAllNamespaces(this INamespaceSymbol namespaceSymbol)
     {
