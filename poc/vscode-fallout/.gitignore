@@ -3,3 +3,4 @@ out/
 *.vsix
 # copied from the repo root at pack time (single source of truth)
 LICENSE
+icon.png

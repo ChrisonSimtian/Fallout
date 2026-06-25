@@ -22,6 +22,10 @@ partial class Build
             // source of truth, so it is copied (and gitignored) rather than duplicated.
             (RootDirectory / "LICENSE").Copy(VsCodeExtensionDirectory / "LICENSE", ExistsPolicy.FileOverwrite);
 
+            // Marketplace icon: same single-source-of-truth pattern — the logo lives in .assets/
+            // and is copied to icon.png (gitignored) for packaging.
+            (RootDirectory / ".assets" / "fallout-logo.png").Copy(VsCodeExtensionDirectory / "icon.png", ExistsPolicy.FileOverwrite);
+
             OutputDirectory.CreateDirectory();
 
             // Versioning contract: major.minor follow the framework (NBGV, calendar versioning),
