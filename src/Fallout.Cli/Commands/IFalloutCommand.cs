@@ -12,12 +12,12 @@ namespace Fallout.Cli.Commands;
 /// when a public command SDK lands (milestone #7) the API will be annotated and versioned
 /// explicitly. Until then, treat additions here as internal-by-convention.
 /// </remarks>
-public interface IFalloutCommand
+internal interface IFalloutCommand
 {
     /// <summary>
-    /// The canonical command name as typed after the <c>:</c> prefix, in dash form
-    /// (e.g. <c>"run"</c>, <c>"add-package"</c>, <c>"cake-convert"</c>). Matched case-insensitively.
-    /// </summary>
+    /// The command name as typed after the <c>:</c> prefix (prefer dash form, e.g. <c>"add-package"</c>).\
+    /// Matched case-insensitively and with dashes ignored (so <c>:addpackage</c> also matches).\
+    /// Legacy commands may still use PascalCase names (e.g. <c>"GetNextDirectory"</c>).
     string Name { get; }
 
     /// <summary>
