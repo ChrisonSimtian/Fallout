@@ -8,7 +8,7 @@ namespace Fallout.Cli.Prompts;
 /// <c>static</c> Spectre helpers on <c>Program</c>. The default implementation is
 /// <see cref="SpectreConsolePrompts"/>.
 /// </summary>
-public interface IConsolePrompts
+internal interface IConsolePrompts
 {
     /// <summary>Renders a labelled, read-only input line (used to echo resolved setup choices).</summary>
     void ShowInput(string emoji, string title, string value);

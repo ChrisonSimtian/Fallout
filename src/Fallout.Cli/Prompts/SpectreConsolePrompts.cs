@@ -10,7 +10,7 @@ namespace Fallout.Cli.Prompts;
 /// <see cref="IConsolePrompts"/> backed by <see cref="AnsiConsole"/>. This is the single home for
 /// the interactive prompt logic that previously lived as <c>static</c> helpers on <c>Program</c>.
 /// </summary>
-public sealed class SpectreConsolePrompts : IConsolePrompts
+internal sealed class SpectreConsolePrompts : IConsolePrompts
 {
     public void ShowInput(string emoji, string title, string value)
     {
