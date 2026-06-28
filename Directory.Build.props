@@ -53,12 +53,15 @@
     <PackageReference Include="Nerdbank.GitVersioning" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+  <!-- Shared xunit-v2 test dependencies. Gated on central package management so a test project
+       can self-manage its own stack by setting <ManagePackageVersionsCentrally>false</…>: that
+       opts it out of both CPM and this block (it then declares its own versioned references).
+       Fallout.Core.Tests does exactly this to pilot xunit.v3 + ArchUnitNET. -->
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests')) AND '$(ManagePackageVersionsCentrally)' != 'false'">
     <PackageReference Include="coverlet.msbuild"  />
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="GitHubActionsTestLogger" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
-<!--    <PackageReference Include="TeamCity.VSTest.TestAdapter" />-->
     <PackageReference Include="Verify.Xunit"  />
     <PackageReference Include="Verify.DiffPlex"  />
     <PackageReference Include="xunit" />

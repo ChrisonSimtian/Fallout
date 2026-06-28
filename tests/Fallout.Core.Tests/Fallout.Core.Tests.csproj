@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <!-- xunit.v3 test projects are executables, not libraries. -->
+    <OutputType>Exe</OutputType>
+    <!-- Pilot project for xunit.v3 + ArchUnitNET. Opting out of central package management also
+         opts out of the shared xunit-v2 test deps in Directory.Build.props, so this project owns
+         its full test stack with inline versions. Precedent: tests/Consumers/Fallout.Consumer.NuGet. -->
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +15,33 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetArchTest.Rules" />
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- xunit.v3 with the Microsoft.Testing.Platform runner DISABLED (mtp-off), so this project runs
+         under VSTest like the repo's other ~20 test projects. C# Dev Kit's Test Explorer only
+         discovers MTP projects behind an experimental flag and the .NET 10 SDK treats a mixed
+         VSTest+MTP solution as unsupported — staying on VSTest keeps IDE discovery and CI working
+         with no global.json / settings.json changes. Switch to plain `xunit.v3` if/when the whole
+         repo moves to MTP. We still get xunit.v3 (v3 API + ArchUnitNET.xUnitV3). -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageReference Include="xunit.v3.mtp-off" Version="3.2.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+
+    <!-- Architecture fitness. xUnitV3 integration gives rule.Check(architecture), throwing on
+    failure. -->
+    <PackageReference Include="TngTech.ArchUnitNET" Version="0.13.3" />
+    <PackageReference Include="TngTech.ArchUnitNET.xUnitV3" Version="0.13.3" />
+
+    <!-- Assertions + coverage, matching repo conventions. -->
+    <PackageReference Include="FluentAssertions" Version="8.10.0" />
+    <PackageReference Include="coverlet.msbuild" Version="6.0.4" />
+    <PackageReference Include="GitHubActionsTestLogger" Version="2.4.1" />
   </ItemGroup>
 
 </Project>

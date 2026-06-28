@@ -1,9 +1,10 @@
-using System.Linq;
-using System.Reflection;
-using FluentAssertions;
+using ArchUnitNET.Domain;
+using ArchUnitNET.Fluent;
+using ArchUnitNET.Loader;
+using ArchUnitNET.xUnitV3;
 using Fallout.Core.Planning;
-using NetArchTest.Rules;
 using Xunit;
+using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace Fallout.Core.Tests;
 
@@ -14,51 +15,44 @@ namespace Fallout.Core.Tests;
 /// </summary>
 public class ArchitectureFitnessTests
 {
-    private static readonly Assembly CoreAssembly = typeof(TopoSort).Assembly;
+    private static readonly Architecture Architecture =
+        new ArchLoader().LoadAssemblies(typeof(TopoSort).Assembly).Build();
+
+    // Scope rules to our own Fallout.* types only (inlined per test). This excludes build-tool noise
+    // compiled into the assembly that we don't author and can't keep pure: the generated
+    // `ThisAssembly` (Nerdbank.GitVersioning, no namespace) and `Coverlet.*` instrumentation (added
+    // under coverage runs, which legitimately touches System.IO).
 
     [Fact]
-    public void Core_has_no_io_process_console_or_logging_dependency()
+    public void SimpleNamespaceUnitTest()
     {
-        // Scope to our own Fallout.* types only. This excludes build-tool noise injected into the
-        // assembly that we don't author and can't keep pure: the generated `ThisAssembly`
-        // (Nerdbank.GitVersioning, no namespace) and `Coverlet.Core.Instrumentation.Tracker.*`
-        // (coverage instrumentation under `./build.ps1 Test`, which legitimately touches System.IO).
-        // Precise tokens (e.g. "System.Diagnostics.Process") rather than the broad "System.Diagnostics"
-        // namespace also avoid NetArchTest false-positives on generic types.
-        var result = Types.InAssembly(CoreAssembly)
-            .That().ResideInNamespaceStartingWith("Fallout")
-            .Should()
-            .NotHaveDependencyOnAny(
-                "System.IO",
-                "System.Diagnostics.Process",
-                "System.Console",
-                "Serilog")
-            .GetResult();
+         IObjectProvider<IType> reactorCoreTypes = Types()
+            .That().ResideInAssemblyMatching("Fallout.Core")
+            .As("Fallout.Core");
+        IObjectProvider<IType> rootNamespace = Types()
+            .That().ResideInNamespaceMatching("Fallout")
+            .As("Fallout.*");
+        IObjectProvider<IType> commonNamespace = Types()
+            .That().ResideInNamespaceMatching("Fallout.Common")
+            .As("Fallout.Common.*");
 
-        result.IsSuccessful.Should().BeTrue(
-            because: "Fallout.Core must stay pure; offending types: " + FailingTypes(result));
+        IArchRule shouldResideInRootNamespace = Types()
+            .That().Are(reactorCoreTypes)
+            .Should().Be(rootNamespace)
+            .Because("Fallout.Core is the pure reactor core and must not depend on any other Fallout project.");
+
+        shouldResideInRootNamespace.Check(Architecture);
     }
 
     [Fact]
     public void Core_does_not_depend_on_higher_fallout_layers()
     {
-        var result = Types.InAssembly(CoreAssembly)
-            .That().ResideInNamespaceStartingWith("Fallout")
-            .Should()
-            .NotHaveDependencyOnAny(
-                "Fallout.Build",
-                "Fallout.Common.Tooling",
-                "Fallout.Common.Utilities",
-                "Fallout.ProjectModel",
-                "Fallout.Tooling",
-                "Fallout.Utilities")
-            .GetResult();
+        var rule = Types().That().ResideInNamespaceMatching("^Fallout")
+            .Should().NotDependOnAnyTypesThat()
+            .ResideInNamespaceMatching(
+                @"^Fallout\.(Build|Common\.Tooling|Common\.Utilities|ProjectModel|Tooling|Utilities)")
+            .Because("Fallout.Core sits at the bottom and must reference no other Fallout project.");
 
-        result.IsSuccessful.Should().BeTrue(
-            because: "Fallout.Core sits at the bottom and must reference no other Fallout project; " +
-                     "offending types: " + FailingTypes(result));
+        rule.Check(Architecture);
     }
-
-    private static string FailingTypes(TestResult result) =>
-        result.FailingTypeNames is null ? "(none reported)" : string.Join(", ", result.FailingTypeNames);
 }
