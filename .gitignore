@@ -65,3 +65,6 @@ _dotTrace*
 
 # JetBrains
 .junie/memory
+
+# Claude Memory
+memory/
