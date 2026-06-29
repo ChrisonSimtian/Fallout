@@ -11,7 +11,7 @@ internal class HandleReSharperSurrogateArgumentsAttribute : BuildExtensionAttrib
 {
     private AbsolutePath ReSharperSurrogateFile => Constants.GetReSharperSurrogateFile(Build.RootDirectory);
 
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (!ReSharperSurrogateFile.Exists())
             return;

@@ -9,7 +9,7 @@ namespace Fallout.Common.Execution;
 
 internal class UpdateNotificationAttribute : BuildExtensionAttributeBase, IOnBuildCreated, IOnBuildFinished
 {
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (Build.IsLocalBuild && ShouldNotify)
         {

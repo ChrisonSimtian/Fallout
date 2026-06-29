@@ -11,8 +11,8 @@ namespace Fallout.Common.Execution;
 internal class HandleHelpRequestsAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {
     public void OnBuildInitialized(
-        IReadOnlyCollection<ExecutableTarget> executableTargets,
-        IReadOnlyCollection<ExecutableTarget> executionPlan)
+        IReadOnlyCollection<ITargetModel> executableTargets,
+        IReadOnlyCollection<ITargetModel> executionPlan)
     {
         if (Build.Help || executionPlan.Count == 0)
         {

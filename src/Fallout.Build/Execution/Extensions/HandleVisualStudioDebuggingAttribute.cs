@@ -13,7 +13,7 @@ internal class HandleVisualStudioDebuggingAttribute : BuildExtensionAttributeBas
 
     private AbsolutePath VisualStudioDebugFile => Constants.GetVisualStudioDebugFile(Build.RootDirectory);
 
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (!ParameterService.GetParameter<bool>(Constants.VisualStudioDebugParameterName))
             return;

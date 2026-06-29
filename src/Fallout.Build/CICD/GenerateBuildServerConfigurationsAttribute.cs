@@ -10,7 +10,7 @@ namespace Fallout.Common.CI;
 public class GenerateBuildServerConfigurationsAttribute
     : BuildServerConfigurationGenerationAttributeBase, IOnBuildCreated
 {
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         var configurationId = ParameterService.GetParameter<string>(ConfigurationParameterName);
         if (configurationId == null)
@@ -23,7 +23,7 @@ public class GenerateBuildServerConfigurationsAttribute
             .SingleOrDefaultOrError($"Found multiple {nameof(IConfigurationGenerator)} with same ID '{configurationId}'.")
             .NotNull("generator != null");
 
-        generator.Generate(executableTargets);
+        generator.Generate(executableTargets.Cast<ExecutableTarget>().ToList());
 
         Environment.Exit(0);
     }

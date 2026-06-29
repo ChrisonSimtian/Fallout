@@ -17,7 +17,7 @@ public class GlobbingOptionsAttribute : BuildExtensionAttributeBase, IOnBuildCre
         _caseSensitivity = caseSensitivity;
     }
 
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         Globbing.GlobbingCaseSensitivity = _caseSensitivity;
     }
