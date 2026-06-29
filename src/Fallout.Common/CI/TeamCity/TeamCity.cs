@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.DotCover;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
@@ -140,8 +139,8 @@ public partial class TeamCity : Host, IBuildServer
         {
             Log.Warning("Configuration parameter 'teamcity.dotCover.home' is set to the bundled version." +
                         "Adding the {AttributeName} will automatically set " +
-                        $"it to '{nameof(DotCoverTasks)}.{nameof(DotCoverTasks.DotCoverPath)}'",
-                nameof(TeamCitySetDotCoverHomePathAttribute));
+                        "it to 'DotCoverTasks.DotCoverPath'",
+                "TeamCitySetDotCoverHomePathAttribute");
         }
 
         Write("importData",

@@ -63,6 +63,10 @@ public class LayeringSpecs
     [InlineData(Arch.ToolsShell)]
     [InlineData(Arch.ToolsGaming)]
     [InlineData(Arch.ToolsDocumentation)]
+    [InlineData(Arch.ToolsDotNet)]
+    [InlineData(Arch.ToolsCoverage)]
+    [InlineData(Arch.ToolsContainers)]
+    [InlineData(Arch.ToolsVersionControl)]
     public void Tool_family_does_not_depend_on_upper_layers(string family) =>
         // Tool families legitimately reach UP into Fallout.Build today — their value-injection
         // attributes derive from ValueInjectionAttributeBase, which still lives in Fallout.Build.

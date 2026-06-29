@@ -67,6 +67,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\Fallout.Components\Fallout.Components.csproj" />
+    <ProjectReference Include="..\src\Tools\Fallout.Application.Tools.Containers\Fallout.Application.Tools.Containers.csproj" />
+    <ProjectReference Include="..\src\Tools\Fallout.Application.Tools.DotNet\Fallout.Application.Tools.DotNet.csproj" />
+    <ProjectReference Include="..\src\Tools\Fallout.Application.Tools.VersionControl\Fallout.Application.Tools.VersionControl.csproj" />
     <ProjectReference Include="..\src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
     <ProjectReference Include="..\src\Fallout.SourceGenerators\Fallout.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>

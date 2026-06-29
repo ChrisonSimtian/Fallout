@@ -24,6 +24,10 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Fallout.Application.Tools.Signing")]
 [assembly: InternalsVisibleTo("Fallout.Application.Tools.Versioning")]
 [assembly: InternalsVisibleTo("Fallout.Application.Tools.Shell")]
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.DotNet")]
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.Coverage")]
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.Containers")]
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.VersionControl")]
 
 // External extensions — kept as Nuke.* until those projects rebrand independently.
 [assembly: InternalsVisibleTo("Nuke.VisualStudio")]

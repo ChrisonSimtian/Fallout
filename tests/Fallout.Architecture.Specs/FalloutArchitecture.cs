@@ -49,6 +49,10 @@ internal static class FalloutArchitecture
     public const string ToolsShell = "Fallout.Application.Tools.Shell";
     public const string ToolsGaming = "Fallout.Application.Tools.Gaming";
     public const string ToolsDocumentation = "Fallout.Application.Tools.Documentation";
+    public const string ToolsDotNet = "Fallout.Application.Tools.DotNet";
+    public const string ToolsCoverage = "Fallout.Application.Tools.Coverage";
+    public const string ToolsContainers = "Fallout.Application.Tools.Containers";
+    public const string ToolsVersionControl = "Fallout.Application.Tools.VersionControl";
 
     // Transition shims.
     public const string NukeCommon = "Nuke.Common";

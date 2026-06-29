@@ -31,6 +31,9 @@
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Tooling\Fallout.Tooling.csproj" />
   <Project Path="src\Tools\Fallout.Application.Tools.Cloud\Fallout.Application.Tools.Cloud.csproj" />
+  <Project Path="src\Tools\Fallout.Application.Tools.Containers\Fallout.Application.Tools.Containers.csproj" />
+  <Project Path="src\Tools\Fallout.Application.Tools.Coverage\Fallout.Application.Tools.Coverage.csproj" />
+  <Project Path="src\Tools\Fallout.Application.Tools.DotNet\Fallout.Application.Tools.DotNet.csproj" />
   <Project Path="src\Tools\Fallout.Application.Tools.Documentation\Fallout.Application.Tools.Documentation.csproj" />
   <Project Path="src\Tools\Fallout.Application.Tools.Gaming\Fallout.Application.Tools.Gaming.csproj" />
   <Project Path="src\Tools\Fallout.Application.Tools.JavaScript\Fallout.Application.Tools.JavaScript.csproj" />
@@ -40,6 +43,7 @@
   <Project Path="src\Tools\Fallout.Application.Tools.Signing\Fallout.Application.Tools.Signing.csproj" />
   <Project Path="src\Tools\Fallout.Application.Tools.Testing\Fallout.Application.Tools.Testing.csproj" />
   <Project Path="src\Tools\Fallout.Application.Tools.Versioning\Fallout.Application.Tools.Versioning.csproj" />
+  <Project Path="src\Tools\Fallout.Application.Tools.VersionControl\Fallout.Application.Tools.VersionControl.csproj" />
   <Project Path="src\Fallout.Utilities.IO.Compression\Fallout.Utilities.IO.Compression.csproj" />
   <Project Path="src\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
   <Project Path="src\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />

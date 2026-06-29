@@ -1,6 +1,7 @@
 ﻿using System;
 using Fallout.Common;
 using Fallout.Common.IO;
+using Fallout.Common.Git;
 using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities.Collections;
 using static Fallout.CodeGeneration.CodeGenerator;

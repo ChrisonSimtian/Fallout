@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>Version-control tool wrappers for Fallout — Git, GitHub (gh/Octokit client), GitLink, GitReleaseManager. Application layer (Fallout.Application.Tools.*).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\Fallout.Tooling\Fallout.Tooling.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Octokit" />
+  </ItemGroup>
+
+</Project>
