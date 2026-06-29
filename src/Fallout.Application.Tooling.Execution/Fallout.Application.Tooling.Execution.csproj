@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <Description>Application-layer process-execution contract for Fallout tools — the IProcess abstraction and its Output model. No I/O, no logging. Targets netstandard2.0 so the source-generator and MSBuild-task layers can consume it.</Description>
+  </PropertyGroup>
+
+</Project>

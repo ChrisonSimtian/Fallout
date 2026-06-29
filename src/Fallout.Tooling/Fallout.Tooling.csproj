@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fallout.Application.Tooling.Execution\Fallout.Application.Tooling.Execution.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tooling.Requirements\Fallout.Application.Tooling.Requirements.csproj" />
     <ProjectReference Include="..\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
     <ProjectReference Include="..\Fallout.Utilities\Fallout.Utilities.csproj" />
   </ItemGroup>
