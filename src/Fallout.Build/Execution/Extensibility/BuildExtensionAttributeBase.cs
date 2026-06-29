@@ -4,11 +4,6 @@ using System.Linq;
 
 namespace Fallout.Common.Execution;
 
-public interface IBuildExtension
-{
-    float Priority { get; }
-}
-
 [AttributeUsage(AttributeTargets.Class)]
 public abstract class BuildExtensionAttributeBase : Attribute, IBuildExtension
 {
@@ -51,9 +46,4 @@ public interface IOnTargetSucceeded : IBuildExtension
 public interface IOnTargetFailed : IBuildExtension
 {
     void OnTargetFailed(ExecutableTarget target);
-}
-
-public interface IOnBuildFinished : IBuildExtension
-{
-    void OnBuildFinished();
 }
