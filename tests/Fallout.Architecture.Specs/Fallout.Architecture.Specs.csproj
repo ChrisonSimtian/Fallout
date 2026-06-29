@@ -51,7 +51,16 @@
 
   <!-- Application-layer tool families. -->
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Cloud\Fallout.Application.Tools.Cloud.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Documentation\Fallout.Application.Tools.Documentation.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Gaming\Fallout.Application.Tools.Gaming.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.JavaScript\Fallout.Application.Tools.JavaScript.csproj" />
     <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Notifications\Fallout.Application.Tools.Notifications.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Packaging\Fallout.Application.Tools.Packaging.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Shell\Fallout.Application.Tools.Shell.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Signing\Fallout.Application.Tools.Signing.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Testing\Fallout.Application.Tools.Testing.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Versioning\Fallout.Application.Tools.Versioning.csproj" />
   </ItemGroup>
 
   <!-- Upper layers + composition root. -->

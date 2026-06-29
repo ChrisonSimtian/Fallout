@@ -18,6 +18,13 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Fallout.Utilities.IO.Globbing")]
 [assembly: InternalsVisibleTo("Fallout.Utilities.Specs")]
 
+// Application-layer tool families — some tool attributes integrate with the (currently
+// internal) value-injection plumbing. Interim bridge until value-injection is a public
+// Application API; tracked with the tool-namespace-alignment follow-up.
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.Signing")]
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.Versioning")]
+[assembly: InternalsVisibleTo("Fallout.Application.Tools.Shell")]
+
 // External extensions — kept as Nuke.* until those projects rebrand independently.
 [assembly: InternalsVisibleTo("Nuke.VisualStudio")]
 [assembly: InternalsVisibleTo("ReSharper.Nuke")]

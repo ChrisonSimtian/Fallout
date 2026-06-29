@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\Tools\Fallout.Application.Tools.Signing\Fallout.Application.Tools.Signing.csproj" />
+    <ProjectReference Include="..\Tools\Fallout.Application.Tools.Versioning\Fallout.Application.Tools.Versioning.csproj" />
   </ItemGroup>
 
 </Project>

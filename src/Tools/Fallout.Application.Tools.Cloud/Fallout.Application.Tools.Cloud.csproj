@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>Cloud/deploy tool wrappers — Octopus, Netlify, Static Web Apps. Application layer (Fallout.Application.Tools.*).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\Fallout.Tooling\Fallout.Tooling.csproj" />
+  </ItemGroup>
+
+</Project>
