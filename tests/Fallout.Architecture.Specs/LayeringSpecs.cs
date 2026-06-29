@@ -42,6 +42,16 @@ public class LayeringSpecs
             $"{satellite} is a utility satellite and may depend only on Fallout.Utilities",
             KnownViolations.None);
 
+    [Theory]
+    [InlineData(Arch.ToolingExecution)]
+    [InlineData(Arch.ToolingRequirements)]
+    public void Tooling_contract_leaf_is_a_foundation(string leaf) =>
+        Ratchet.Enforce(
+            Arch.TypesIn(leaf)
+                .Should().NotDependOnAny(Arch.TypesIn(Arch.AllAssembliesExcept(leaf))),
+            $"{leaf} is a pure Application-layer tooling-contract leaf and must reference no other Fallout/Nuke assembly",
+            KnownViolations.None);
+
     [Fact]
     public void Tooling_does_not_depend_on_upper_layers() =>
         Ratchet.Enforce(
