@@ -418,7 +418,56 @@ Axis 2 is the key realisation: what differs between GitHub and GitLab is **not t
 
 The only platform coupling in the core git type is the same `Host.Instance` ambient seam (#2) already on the critical path. Everything else is either already-generic (stays) or already-factored flavour (moves with the platform plugin). No new abstraction is required to ship — just a reserved slot for the rare second VCS.
 
-## Open questions (still open after round 4)
+## Parameters & secrets across providers (round 5)
+
+[ADR-0002](adr/0002-cross-provider-auth-and-secret-conventions.md) already *designs* the cross-provider secret convention in full; this round validates it against the code. Verdict: **the extension point already exists (`ValueInjectionAttributeBase`), the convention is sound — but log masking is a missing security prerequisite that should gate the plugin SDK, and the ADR's idealized resolution chain doesn't match the code.**
+
+### Two halves, cleanly separable (confirms the generation-vs-runtime split)
+
+A "secret" touches the system at two unrelated times:
+
+- **Generation-time (provider-specific):** `ImportSecrets` / `EnableGitHubToken` on the CI config attribute emits `env: OctopusApiKey: ${{ secrets.OCTOPUS_API_KEY }}` into the workflow YAML (`GitHubActionsAttribute.cs:247-260`). This is **part of the config-gen contribution** and rides inside the platform plugin. Each provider has its own (`secrets.X`, Azure variable groups, GitLab CI variables).
+- **Runtime (provider-agnostic):** by the time the build runs, that secret is just an env var. `ParameterService.GetParameter` (`:132-160`) resolves from a chain that knows nothing about the CI provider.
+
+So the CI provider's entire secret role is generation-time injection; the runtime side is shared. This is the cleanest seam we've found — the two halves don't even need to know about each other.
+
+### The runtime secret-source extension point already exists
+
+`ValueInjectionAttributeBase` (`src/Fallout.Build/Execution/Extensibility/`) is the base for `[Parameter]`, `[CI]`, `[GitRepository]`, `[LatestNuGetVersion]`, **`[AzureKeyVaultSecret]`**, **`[AppVeyorSecret]`**, etc. A field-level attribute that resolves a value from an external store at startup is *already* the pattern. A secret-store plugin (`Fallout.Plugin.HashiCorpVault`) ships `[HashiCorpVaultSecret] : ValueInjectionAttributeBase` — no new mechanism, just public exposure. (Same recurring theme: the seam exists, it needs formalizing + exposing, not inventing.)
+
+**"Parameter sources" is therefore two distinct plugin categories**, which RFC #2's catalogue should not conflate:
+1. **CI secret-import** — generation-time, a sub-part of the config-gen contribution (`ImportSecrets`).
+2. **Runtime value provider** — `ValueInjectionAttributeBase` subclass; the secret-store plugins (Vault, 1Password, Bitwarden — tracked at #168).
+
+### The canonical-name convention is the glue — and it's in the wrong place
+
+One C# field name derives every provider's wire name via `SplitCamelHumpsWithKnownWords().JoinUnderscore().ToUpperInvariant()` (`OctopusApiKey` → `OCTOPUS_API_KEY`). But that derivation lives today on `GitHubActionsAttribute` (provider-specific!). For cross-provider consistency it **must move into the SDK as a shared service** — otherwise every provider plugin re-derives it, which the ADR itself bans (anti-pattern #6). Concrete SDK-2 carve item.
+
+### Gap 1 (blocking): log masking is unimplemented — promote to SDK prerequisite
+
+The ADR lists log masking as an *open question*. The code confirms the worst case: **`[Secret]` is a passive marker; there is no `SensitiveValueRegistry` or output scrubber** (grep finds nothing). For the in-process **full-trust** plugin model (RFC #100), the ADR's trust boundary — "plugins receive resolved values, never raw stores" — is **porous without masking**: a plugin handed a resolved secret can echo it straight into CI logs. The difference between "secret stays in process" and "secret in public build logs" is exactly the masking layer. → This should move from *ADR open question* to **plugin-SDK gating requirement**: a `SensitiveValueRegistry` + logging-middleware scrubber must land before the SDK exposes resolved secrets to third-party plugins.
+
+### Gap 2: the ADR's resolution chain ≠ the code
+
+ADR-0002 §3 describes one ordered 6-step chain (CLI → env → value-provider → file → CredentialStore → prompt). The code is **two mechanisms**, not one:
+- `ParameterService.GetParameter` chain: commit-message → CLI → positional → env → profile-file. (Note: commit-message args come *first* — undocumented in the ADR; and there's no CredentialStore/prompt step here at all.)
+- Value-provider attributes (`[AzureKeyVaultSecret]`) *wrap* that chain — `GetValue` calls `GetParameter(member.Name) ?? vault.Get(...)` (`AzureKeyVaultSecretAttribute.cs:19-20`), so they're a separate injection path, not "step 3."
+
+The SDK must reconcile: unify into the ADR's single chain, or formalize the two-mechanism reality. Today it's two; the ADR documents one. Pick before freezing the resolution contract.
+
+### Constraint on the SDK surface (from the trust boundary)
+
+ADR rule 5: plugins get resolved `[Parameter, Secret]` values via the build object, but must **not** reach `CredentialStore`, the encrypted parameters file, or register arbitrary network-backed providers under their own auth. That's a concrete shape constraint on SDK-2's `IBuildContext`/build-object surface — it exposes resolved values, hides the stores. A secret-store plugin contributes via a value-provider attribute (category 2 above), and the value still flows through the chain rather than bypassing it.
+
+### Minor: rebrand leftover
+
+Env-var resolution still falls back to `NUKE`-prefixed names (`ParameterService.cs:192`). The canonical-name convention inherits a `NUKE`→`FALLOUT` prefix migration (accept both for a deprecation window). Trivial, but it's part of the secret-naming surface.
+
+### Net
+
+Parameters/secrets validate the model well — the seam is the cleanest yet, and ADR-0002 has done the design thinking. The two real outputs of this round are **(a) promote log masking to an SDK prerequisite** (security, not polish) and **(b) hoist the canonical-name derivation into the SDK** so providers stop owning it.
+
+## Open questions (still open after round 5)
 
 - **`IHostOutput` surface.** What's the minimal capability set? GitHub needs `WriteCommand`/`Group`/`EndGroup`; TeamCity/Azure have their own service-message vocabularies. Define the union without leaking provider specifics into the SDK.
 - **`ChangelogTasks` home.** It's the lone real `Fallout.Common`-assembly dependency of the GitHub component. Where does it live once `Common` is split — a `Fallout.Tooling`-level utility, or its own small package?
@@ -433,3 +482,6 @@ The only platform coupling in the core git type is the same `Host.Instance` ambi
 - **VCS-kind slot shape** (round 4): what's the minimal `IVcsReader` contract that Git satisfies and SVN/hg could later satisfy — `TryRead(AbsolutePath) → IWorkingCopyInfo?` plus a detector (`.git`/`.svn`/`.hg`)? Define it thin enough that reserving it now doesn't constrain the rare future impl.
 - **Does forge flavour need its own extension point, or is it just "plugin public API"?** GitHub's `GetGitHubOwner/Name` + Octokit tasks are consumed by `ICreateGitHubRelease` and `LatestGitHubReleaseAttribute`. If those move into the GitHub plugin too, the flavour helpers are just internal plugin API — no SDK extension point needed. Confirm nothing *outside* a platform plugin needs forge-specific git helpers.
 - **CI-branch-over-VCS-branch precedence** (`GetBranchFromCI()` wins over local HEAD): keep this inversion (CI env is source of truth on detached-HEAD checkouts) but route it through `BuildContext` rather than `Host.Instance` — confirm the ordering survives the de-stat move.
+- **One resolution chain or two?** (round 5) Reconcile ADR-0002's single 6-step chain with the code's two mechanisms (`GetParameter` chain + value-provider attributes that wrap it). Does the SDK expose one ordered `IParameterSource` list, or keep `[Parameter]` and `ValueInjectionAttributeBase` as separate concepts?
+- **Log-masking scope** (round 5, security): a `SensitiveValueRegistry` scrubbing stdout/stderr/target logs/build summary — does it cover plugin-emitted output too (it must), and how does it handle partial/transformed secrets (base64, URL-embedded) a plugin might derive?
+- **Canonical-name service ownership** (round 5): hoisting `SplitCamelHumpsWithKnownWords().JoinUnderscore().ToUpperInvariant()` into the SDK — does every provider accept the same derivation, or do some (Azure variable groups, GitLab protected vars) impose naming rules that need per-provider overrides on top of the shared default?
