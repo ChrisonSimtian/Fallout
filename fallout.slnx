@@ -30,6 +30,7 @@
   <Project Path="src\Fallout.Application.Tooling.Requirements\Fallout.Application.Tooling.Requirements.csproj" />
   <Project Path="src\Fallout.Tooling.Generator\Fallout.Tooling.Generator.csproj" />
   <Project Path="src\Fallout.Tooling\Fallout.Tooling.csproj" />
+  <Project Path="src\Tools\Fallout.Application.Tools.Notifications\Fallout.Application.Tools.Notifications.csproj" />
   <Project Path="src\Fallout.Utilities.IO.Compression\Fallout.Utilities.IO.Compression.csproj" />
   <Project Path="src\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
   <Project Path="src\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />

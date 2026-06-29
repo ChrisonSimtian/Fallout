@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Notifications\Fallout.Application.Tools.Notifications.csproj" />
   </ItemGroup>
 
 </Project>

@@ -52,6 +52,15 @@ public class LayeringSpecs
             $"{leaf} is a pure Application-layer tooling-contract leaf and must reference no other Fallout/Nuke assembly",
             KnownViolations.None);
 
+    [Theory]
+    [InlineData(Arch.ToolsNotifications)]
+    public void Tool_family_does_not_depend_on_upper_layers(string family) =>
+        Ratchet.Enforce(
+            Arch.TypesIn(family)
+                .Should().NotDependOnAny(Arch.TypesIn(Arch.Build, Arch.Components, Arch.Cli)),
+            $"{family} is an Application-layer tool family and must not depend on the Build/Components/Cli layers above it",
+            KnownViolations.None);
+
     [Fact]
     public void Tooling_does_not_depend_on_upper_layers() =>
         Ratchet.Enforce(

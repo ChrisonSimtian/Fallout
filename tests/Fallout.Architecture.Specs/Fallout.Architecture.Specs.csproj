@@ -49,6 +49,11 @@
     <ProjectReference Include="..\..\src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
   </ItemGroup>
 
+  <!-- Application-layer tool families. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Tools\Fallout.Application.Tools.Notifications\Fallout.Application.Tools.Notifications.csproj" />
+  </ItemGroup>
+
   <!-- Upper layers + composition root. -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\Fallout.Build\Fallout.Build.csproj" />
