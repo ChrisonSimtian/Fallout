@@ -30,6 +30,11 @@ internal sealed class BuildContext : IDisposable
     private readonly ConsoleCancelEventHandler _onCancelKeyPress;
     private readonly EventHandler _onToolOptionsCreated;
 
+    /// <summary>The per-run parameter service (FT-4 / #309) — replaces the process-global
+    /// <c>ParameterService.Instance</c>, so prod and tests exercise the same instance form.</summary>
+    public ParameterService Parameters { get; } =
+        new(() => EnvironmentInfo.ArgumentParser, () => EnvironmentInfo.Variables);
+
     private BuildContext()
     {
         _onCancelKeyPress = (_, _) => _cancellationHandlers.ForEach(x => x());

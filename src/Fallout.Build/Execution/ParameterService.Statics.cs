@@ -2,15 +2,20 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using Fallout.Common.Execution;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common;
 
 internal partial class ParameterService
 {
-    internal static ParameterService Instance = new(
-        () => EnvironmentInfo.ArgumentParser,
-        () => EnvironmentInfo.Variables);
+    // FT-4 (#309): the active instance is the per-run one held on BuildContext, so prod uses the
+    // same instance form as tests and nothing leaks across runs. The lazy fallback covers the rare
+    // access outside a build run (no cross-run concern there); it can retire once that's confirmed dead.
+    private static readonly Lazy<ParameterService> s_ambient = new(
+        () => new ParameterService(() => EnvironmentInfo.ArgumentParser, () => EnvironmentInfo.Variables));
+
+    internal static ParameterService Instance => BuildContext.Current?.Parameters ?? s_ambient.Value;
 
     public static T GetParameter<T>(string name, char? separator = null)
     {
