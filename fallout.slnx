@@ -9,7 +9,6 @@
   <Project Path="build\_build.csproj">
     <Configuration Solution="Debug|Any CPU" Project="Debug|Any CPU|NoBuild" />
     <Configuration Solution="Release|Any CPU" Project="Debug|Any CPU|NoBuild" />
-    <Build Project="false" />
   </Project>
   <Project Path="src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
   <Project Path="src\Fallout.Build\Fallout.Build.csproj" />
@@ -35,6 +34,7 @@
   <Project Path="src\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
   <Project Path="src\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
   <Project Path="src\Fallout.Utilities\Fallout.Utilities.csproj" />
+  <Project Path="tests\Fallout.Architecture.Specs\Fallout.Architecture.Specs.csproj" />
   <Project Path="tests\Fallout.Build.Specs\Fallout.Build.Specs.csproj" />
   <Project Path="tests\Fallout.Common.Specs\Fallout.Common.Specs.csproj" />
   <Project Path="tests\Fallout.Components.Specs\Fallout.Components.Specs.csproj" />
