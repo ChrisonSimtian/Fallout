@@ -80,7 +80,7 @@ flowchart TD
 ### Problems (all in the engine)
 
 - **God class** — `FalloutBuild` is ~456 LOC across 5 partials with 4 responsibilities: inheritable base class (`FalloutBuild.cs`), process-global state + static ctor (`FalloutBuild.Statics.cs:16-30`), output formatting (`FalloutBuild.Output.cs`), extension host (`FalloutBuild.Events.cs`). The partials hide the size, not the coupling.
-- **Static state leaks across runs** — `BuildManager.cs:20,41,69` (handlers accumulate), `Logging.cs:20,214` (`LevelSwitch` + `InMemorySink.Instance` carry log events over), `ValueInjectionUtility.cs:13` (`s_valueCache` persists), `NuGetToolPathResolver.cs:14-17` (set per-run at `BuildManager.cs:53-56`, never reset).
+- **Static state leaks across runs** — `BuildManager.cs:20,41,69` (handlers accumulate), `Logging.cs:20` (`LevelSwitch` carries over) and `Logging.cs:214` (`InMemorySink.Instance` carried log events over; now per-run on `BuildContext.LogSink`, FT-6), `ValueInjectionUtility.cs:13` (`s_valueCache` persists), `NuGetToolPathResolver.cs:14-17` (set per-run at `BuildManager.cs:53-56`, never reset).
 - **Test/prod path divergence** — production reads the static `ParameterService.Instance` (`ParameterService.Statics.cs:11-13`), but `ParameterServiceTest.cs:14-22` constructs a *fresh* `ParameterService(funcs)`. Tests exercise a different object than production.
 - **No DIP seams** — `BuildManager.cs:39-41` pokes `Console` directly; `BuildExecutor.cs:81` writes the filesystem directly; output goes through static `Host.Error()`.
 
