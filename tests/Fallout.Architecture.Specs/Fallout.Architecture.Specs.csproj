@@ -26,6 +26,8 @@
 
   <!-- Foundation: depend on nothing else in the repo. -->
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Application.Tooling.Execution\Fallout.Application.Tooling.Execution.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Application.Tooling.Requirements\Fallout.Application.Tooling.Requirements.csproj" />
     <ProjectReference Include="..\..\src\Fallout.Core\Fallout.Core.csproj" />
     <ProjectReference Include="..\..\src\Fallout.Utilities\Fallout.Utilities.csproj" />
   </ItemGroup>

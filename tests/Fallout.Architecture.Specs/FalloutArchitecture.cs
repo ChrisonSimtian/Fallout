@@ -26,6 +26,8 @@ internal static class FalloutArchitecture
     public const string UtilitiesTextJson = "Fallout.Utilities.Text.Json";
     public const string UtilitiesTextYaml = "Fallout.Utilities.Text.Yaml";
     public const string Solution = "Fallout.Solution";
+    public const string ToolingExecution = "Fallout.Application.Tooling.Execution";
+    public const string ToolingRequirements = "Fallout.Application.Tooling.Requirements";
     public const string Tooling = "Fallout.Tooling";
     public const string ProjectModel = "Fallout.ProjectModel";
     public const string BuildShared = "Fallout.Build.Shared";
@@ -52,8 +54,8 @@ internal static class FalloutArchitecture
     public static readonly string[] RuntimeLibraries =
     [
         Core, Utilities, UtilitiesIoCompression, UtilitiesIoGlobbing, UtilitiesNet, UtilitiesTextJson,
-        UtilitiesTextYaml, Solution, Tooling, ProjectModel, BuildShared, Build, Common, Components, Cli,
-        NukeCommon, NukeBuild, NukeComponents,
+        UtilitiesTextYaml, Solution, ToolingExecution, ToolingRequirements, Tooling, ProjectModel, BuildShared,
+        Build, Common, Components, Cli, NukeCommon, NukeBuild, NukeComponents,
     ];
 
     private static readonly IReadOnlyDictionary<string, System.Reflection.Assembly> Loaded = LoadProductionAssemblies();

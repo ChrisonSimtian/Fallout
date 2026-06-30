@@ -31,7 +31,7 @@ Current rules:
 
 | File | Rule(s) |
 |---|---|
-| `LayeringSpecs` | `Core` / `Utilities` are foundations (no in-repo deps); utility satellites depend only on `Utilities`; `Tooling` / `ProjectModel` / `Build.Shared` don't reach upward; `Solution` is a thin facade; nothing depends on the `Cli` composition root; `Fallout.*` never depends on the `Nuke.*` shims. |
+| `LayeringSpecs` | `Core` / `Utilities` and the `Application.Tooling.Execution` / `Application.Tooling.Requirements` contract leaves are foundations (no in-repo deps); utility satellites depend only on `Utilities`; `Tooling` / `ProjectModel` / `Build.Shared` don't reach upward; `Solution` is a thin facade; nothing depends on the `Cli` composition root; `Fallout.*` never depends on the `Nuke.*` shims. |
 | `PuritySpecs` | `Fallout.Core` takes no dependency on `System.IO`, `System.Diagnostics.Process`, `System.Console`, or Serilog (issue #88). |
 | `NamingSpecs` | A type's namespace should be rooted at its assembly name. The main debt-bearing rule. |
 

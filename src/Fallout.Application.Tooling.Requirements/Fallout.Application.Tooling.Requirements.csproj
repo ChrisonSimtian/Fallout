@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <Description>Application-layer tool-requirement marker interfaces — how a target declares the tools/packages it needs present before it runs. No I/O, no logging. Targets netstandard2.0 so the source-generator and MSBuild-task layers can consume it.</Description>
+  </PropertyGroup>
+
+</Project>
