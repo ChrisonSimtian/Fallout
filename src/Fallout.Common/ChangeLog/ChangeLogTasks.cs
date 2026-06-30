@@ -5,7 +5,6 @@ using System.Linq;
 using NuGet.Versioning;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
 using Fallout.Common.Utilities;
 using Serilog;
 

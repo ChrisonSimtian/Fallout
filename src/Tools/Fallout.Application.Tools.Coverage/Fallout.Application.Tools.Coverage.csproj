@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>Code-coverage/quality tool wrappers for Fallout — Coverlet, OpenCover, dotCover, ReportGenerator, Codecov, Coveralls.net, CodeMetrics, SonarScanner. Application layer (Fallout.Application.Tools.*).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\Fallout.Tooling\Fallout.Tooling.csproj" />
+    <ProjectReference Include="..\Fallout.Application.Tools.DotNet\Fallout.Application.Tools.DotNet.csproj" />
+  </ItemGroup>
+
+</Project>

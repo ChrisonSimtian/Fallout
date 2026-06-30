@@ -36,6 +36,24 @@ internal static class FalloutArchitecture
     public const string Components = "Fallout.Components";
     public const string Cli = "Fallout.Cli";
 
+    // Application-layer tool families (Fallout.Application.Tools.*). Governed for layering; their
+    // namespace alignment (still legacy Fallout.Common.Tools.*) is deferred, so they are deliberately
+    // NOT in RuntimeLibraries (the naming-rule subjects) yet.
+    public const string ToolsNotifications = "Fallout.Application.Tools.Notifications";
+    public const string ToolsJavaScript = "Fallout.Application.Tools.JavaScript";
+    public const string ToolsTesting = "Fallout.Application.Tools.Testing";
+    public const string ToolsSigning = "Fallout.Application.Tools.Signing";
+    public const string ToolsPackaging = "Fallout.Application.Tools.Packaging";
+    public const string ToolsVersioning = "Fallout.Application.Tools.Versioning";
+    public const string ToolsCloud = "Fallout.Application.Tools.Cloud";
+    public const string ToolsShell = "Fallout.Application.Tools.Shell";
+    public const string ToolsGaming = "Fallout.Application.Tools.Gaming";
+    public const string ToolsDocumentation = "Fallout.Application.Tools.Documentation";
+    public const string ToolsDotNet = "Fallout.Application.Tools.DotNet";
+    public const string ToolsCoverage = "Fallout.Application.Tools.Coverage";
+    public const string ToolsContainers = "Fallout.Application.Tools.Containers";
+    public const string ToolsVersionControl = "Fallout.Application.Tools.VersionControl";
+
     // Transition shims.
     public const string NukeCommon = "Nuke.Common";
     public const string NukeBuild = "Nuke.Build";

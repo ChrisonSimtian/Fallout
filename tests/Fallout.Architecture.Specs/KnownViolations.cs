@@ -101,6 +101,8 @@ internal static class KnownViolations
         "Fallout.Common.Execution.VSCode",
         "Fallout.Common.Execution.VisualStudio",
         "Fallout.Common.FalloutBuild",
+        "Fallout.Common.Git.GitHubItemType",
+        "Fallout.Common.Git.GitHubUrlExtensions",
         "Fallout.Common.Git.GitProtocol",
         "Fallout.Common.Git.GitRepository",
         "Fallout.Common.Git.GitRepositoryExtensions",

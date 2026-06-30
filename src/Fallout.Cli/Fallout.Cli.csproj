@@ -14,6 +14,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Fallout.Build\Fallout.Build.csproj" />
     <ProjectReference Include="..\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\Tools\Fallout.Application.Tools.DotNet\Fallout.Application.Tools.DotNet.csproj" />
+    <ProjectReference Include="..\Tools\Fallout.Application.Tools.Signing\Fallout.Application.Tools.Signing.csproj" />
+    <ProjectReference Include="..\Tools\Fallout.Application.Tools.VersionControl\Fallout.Application.Tools.VersionControl.csproj" />
+    <ProjectReference Include="..\Tools\Fallout.Application.Tools.Versioning\Fallout.Application.Tools.Versioning.csproj" />
   </ItemGroup>
 
   <ItemGroup>
