@@ -78,7 +78,7 @@ Shaped by [milestone #18](https://github.com/Fallout-build/Fallout/milestone/18)
 
 When asked to add or extend a tool wrapper:
 
-1. Find the closest existing tool under `src/Fallout.Common/Tools/<Tool>/<Tool>.json`.
+1. Find the closest existing tool under `src/Tools/Fallout.Application.Tools.<Family>/<Tool>/<Tool>.json`.
 2. Copy its shape; cover a full command with all arguments.
 3. Run `./build.ps1 GenerateTools` to verify it generates cleanly.
 4. Do **not** commit the generated `.cs` output.

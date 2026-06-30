@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.SpecFlow;
+namespace Fallout.Application.Tools.Testing.SpecFlow;
 
 /// <summary><p>Use SpecFlow to define, manage and automatically execute human-readable acceptance tests in .NET projects. Writing easily understandable tests is a cornerstone of the BDD paradigm and also helps build up a living documentation of your system.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,62 +28,62 @@ public partial class SpecFlowTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>This report provides a formatted HTML report of a test execution. The report contains a summary about the executed tests and the result and also a detailed report for the individual scenario executions.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--FeatureLanguage</c> via <see cref="SpecFlowNUnitExecutionReportSettings.FeatureLanguage"/></li><li><c>--OutputFile</c> via <see cref="SpecFlowNUnitExecutionReportSettings.OutputFile"/></li><li><c>--ProjectFile</c> via <see cref="SpecFlowNUnitExecutionReportSettings.ProjectFile"/></li><li><c>--ProjectName</c> via <see cref="SpecFlowNUnitExecutionReportSettings.ProjectName"/></li><li><c>--testOutput</c> via <see cref="SpecFlowNUnitExecutionReportSettings.TestOutput"/></li><li><c>--xmlTestResult</c> via <see cref="SpecFlowNUnitExecutionReportSettings.XmlTestResult"/></li><li><c>--XsltFile</c> via <see cref="SpecFlowNUnitExecutionReportSettings.XsltFile"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SpecFlowNUnitExecutionReport(SpecFlowNUnitExecutionReportSettings options = null) => new SpecFlowTasks().Run<SpecFlowNUnitExecutionReportSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowNUnitExecutionReport(Configure<SpecFlowNUnitExecutionReportSettings> configurator) => new SpecFlowTasks().Run<SpecFlowNUnitExecutionReportSettings>(configurator.Invoke(new SpecFlowNUnitExecutionReportSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
     public static IEnumerable<(SpecFlowNUnitExecutionReportSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowNUnitExecutionReport(CombinatorialConfigure<SpecFlowNUnitExecutionReportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowNUnitExecutionReport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>This report provides a formatted HTML report of a test execution. The report contains a summary about the executed tests and the result and also a detailed report for the individual scenario executions.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;projectFile&gt;</c> via <see cref="SpecFlowMSTestExecutionReportSettings.ProjectFile"/></li><li><c>/out</c> via <see cref="SpecFlowMSTestExecutionReportSettings.OutputFile"/></li><li><c>/testResult</c> via <see cref="SpecFlowMSTestExecutionReportSettings.TestResult"/></li><li><c>/xsltFile</c> via <see cref="SpecFlowMSTestExecutionReportSettings.XsltFile"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SpecFlowMSTestExecutionReport(SpecFlowMSTestExecutionReportSettings options = null) => new SpecFlowTasks().Run<SpecFlowMSTestExecutionReportSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowMSTestExecutionReport(Configure<SpecFlowMSTestExecutionReportSettings> configurator) => new SpecFlowTasks().Run<SpecFlowMSTestExecutionReportSettings>(configurator.Invoke(new SpecFlowMSTestExecutionReportSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
     public static IEnumerable<(SpecFlowMSTestExecutionReportSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowMSTestExecutionReport(CombinatorialConfigure<SpecFlowMSTestExecutionReportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowMSTestExecutionReport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>This report shows the usage and binding status of the steps for the entire project. You can use this report to find both unused code in the automation layer and scenario steps that have no definition yet.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;projectFile&gt;</c> via <see cref="SpecFlowStepDefinitionReportSettings.ProjectFile"/></li><li><c>/out</c> via <see cref="SpecFlowStepDefinitionReportSettings.OutputFile"/></li><li><c>/testResult</c> via <see cref="SpecFlowStepDefinitionReportSettings.BinFolder"/></li><li><c>/xsltFile</c> via <see cref="SpecFlowStepDefinitionReportSettings.XsltFile"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SpecFlowStepDefinitionReport(SpecFlowStepDefinitionReportSettings options = null) => new SpecFlowTasks().Run<SpecFlowStepDefinitionReportSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Common.Tools.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowStepDefinitionReport(Configure<SpecFlowStepDefinitionReportSettings> configurator) => new SpecFlowTasks().Run<SpecFlowStepDefinitionReportSettings>(configurator.Invoke(new SpecFlowStepDefinitionReportSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Common.Tools.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
     public static IEnumerable<(SpecFlowStepDefinitionReportSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowStepDefinitionReport(CombinatorialConfigure<SpecFlowStepDefinitionReportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowStepDefinitionReport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Use <c>SpecRun.exe run</c> to execute your tests.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>/basefolder</c> via <see cref="SpecFlowRunSettings.BaseFolder"/></li><li><c>/debug</c> via <see cref="SpecFlowRunSettings.Debug"/></li><li><c>/filter</c> via <see cref="SpecFlowRunSettings.Filter"/></li><li><c>/log</c> via <see cref="SpecFlowRunSettings.LogFile"/></li><li><c>/outputfolder</c> via <see cref="SpecFlowRunSettings.OutputFolder"/></li><li><c>/report</c> via <see cref="SpecFlowRunSettings.ReportFile"/></li><li><c>/toolIntegration</c> via <see cref="SpecFlowRunSettings.ToolIntegration"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SpecFlowRun(SpecFlowRunSettings options = null) => new SpecFlowTasks().Run<SpecFlowRunSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Common.Tools.SpecFlow.SpecFlowRunSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRunSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowRun(Configure<SpecFlowRunSettings> configurator) => new SpecFlowTasks().Run<SpecFlowRunSettings>(configurator.Invoke(new SpecFlowRunSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Common.Tools.SpecFlow.SpecFlowRunSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRunSettings)"/>
     public static IEnumerable<(SpecFlowRunSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowRun(CombinatorialConfigure<SpecFlowRunSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowRun, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Use <c>SpecRun.exe buildserverrun</c> to execute your tests in build server mode.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;target&gt;</c> via <see cref="SpecFlowBuildServerRunSettings.Target"/></li><li><c>/basefolder</c> via <see cref="SpecFlowBuildServerRunSettings.BaseFolder"/></li><li><c>/buildserver</c> via <see cref="SpecFlowBuildServerRunSettings.BuildServerName"/></li><li><c>/filter</c> via <see cref="SpecFlowBuildServerRunSettings.Filter"/></li><li><c>/log</c> via <see cref="SpecFlowBuildServerRunSettings.LogFile"/></li><li><c>/outputfolder</c> via <see cref="SpecFlowBuildServerRunSettings.OutputFolder"/></li><li><c>/report</c> via <see cref="SpecFlowBuildServerRunSettings.ReportFile"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SpecFlowBuildServerRun(SpecFlowBuildServerRunSettings options = null) => new SpecFlowTasks().Run<SpecFlowBuildServerRunSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Common.Tools.SpecFlow.SpecFlowBuildServerRunSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowBuildServerRunSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowBuildServerRun(Configure<SpecFlowBuildServerRunSettings> configurator) => new SpecFlowTasks().Run<SpecFlowBuildServerRunSettings>(configurator.Invoke(new SpecFlowBuildServerRunSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Common.Tools.SpecFlow.SpecFlowBuildServerRunSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowBuildServerRunSettings)"/>
     public static IEnumerable<(SpecFlowBuildServerRunSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowBuildServerRun(CombinatorialConfigure<SpecFlowBuildServerRunSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowBuildServerRun, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Use <c>SpecRun.exe register</c> to register your SpecFlow+ license. You only need to register your license once per user per machine. The license is valid for all SpecFlow+ components.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;issuedTo&gt;</c> via <see cref="SpecFlowRegisterSettings.IssuedTo"/></li><li><c>&lt;licenseKey&gt;</c> via <see cref="SpecFlowRegisterSettings.LicenseKey"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SpecFlowRegister(SpecFlowRegisterSettings options = null) => new SpecFlowTasks().Run<SpecFlowRegisterSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Common.Tools.SpecFlow.SpecFlowRegisterSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRegisterSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowRegister(Configure<SpecFlowRegisterSettings> configurator) => new SpecFlowTasks().Run<SpecFlowRegisterSettings>(configurator.Invoke(new SpecFlowRegisterSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Common.Tools.SpecFlow.SpecFlowRegisterSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRegisterSettings)"/>
     public static IEnumerable<(SpecFlowRegisterSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowRegister(CombinatorialConfigure<SpecFlowRegisterSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowRegister, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Use <c>SpecRun.exe unregister</c> to unregister your SpecFlow+ license.</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p></remarks>
     public static IReadOnlyCollection<Output> SpecFlowUnregister(SpecFlowUnregisterSettings options = null) => new SpecFlowTasks().Run<SpecFlowUnregisterSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Common.Tools.SpecFlow.SpecFlowUnregisterSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowUnregisterSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowUnregister(Configure<SpecFlowUnregisterSettings> configurator) => new SpecFlowTasks().Run<SpecFlowUnregisterSettings>(configurator.Invoke(new SpecFlowUnregisterSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Common.Tools.SpecFlow.SpecFlowUnregisterSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowUnregisterSettings)"/>
     public static IEnumerable<(SpecFlowUnregisterSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowUnregister(CombinatorialConfigure<SpecFlowUnregisterSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowUnregister, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Use <c>SpecRun.exe about</c> to display information such as your version number, build date and license information (licensee, upgrade until date/expiry date).</p><p>For more details, visit the <a href="https://specflow.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p></remarks>
     public static IReadOnlyCollection<Output> SpecFlowAbout(SpecFlowAboutSettings options = null) => new SpecFlowTasks().Run<SpecFlowAboutSettings>(options);
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Common.Tools.SpecFlow.SpecFlowAboutSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowAboutSettings)"/>
     public static IReadOnlyCollection<Output> SpecFlowAbout(Configure<SpecFlowAboutSettings> configurator) => new SpecFlowTasks().Run<SpecFlowAboutSettings>(configurator.Invoke(new SpecFlowAboutSettings()));
-    /// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Common.Tools.SpecFlow.SpecFlowAboutSettings)"/>
+    /// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowAboutSettings)"/>
     public static IEnumerable<(SpecFlowAboutSettings Settings, IReadOnlyCollection<Output> Output)> SpecFlowAbout(CombinatorialConfigure<SpecFlowAboutSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SpecFlowAbout, degreeOfParallelism, completeOnFailure);
 }
 #region SpecFlowNUnitExecutionReportSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowNUnitExecutionReport), Arguments = "nunitexecutionreport")]
 public partial class SpecFlowNUnitExecutionReportSettings : ToolOptions
@@ -106,7 +105,7 @@ public partial class SpecFlowNUnitExecutionReportSettings : ToolOptions
 }
 #endregion
 #region SpecFlowMSTestExecutionReportSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowMSTestExecutionReport), Arguments = "mstestexecutionreport")]
 public partial class SpecFlowMSTestExecutionReportSettings : ToolOptions
@@ -122,7 +121,7 @@ public partial class SpecFlowMSTestExecutionReportSettings : ToolOptions
 }
 #endregion
 #region SpecFlowStepDefinitionReportSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Common.Tools.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowStepDefinitionReport), Arguments = "stepdefinitionreport")]
 public partial class SpecFlowStepDefinitionReportSettings : ToolOptions
@@ -138,7 +137,7 @@ public partial class SpecFlowStepDefinitionReportSettings : ToolOptions
 }
 #endregion
 #region SpecFlowRunSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Common.Tools.SpecFlow.SpecFlowRunSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRunSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowRun), Arguments = "run")]
 public partial class SpecFlowRunSettings : ToolOptions
@@ -160,7 +159,7 @@ public partial class SpecFlowRunSettings : ToolOptions
 }
 #endregion
 #region SpecFlowBuildServerRunSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Common.Tools.SpecFlow.SpecFlowBuildServerRunSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowBuildServerRunSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowBuildServerRun), Arguments = "buildserverrun")]
 public partial class SpecFlowBuildServerRunSettings : ToolOptions
@@ -182,7 +181,7 @@ public partial class SpecFlowBuildServerRunSettings : ToolOptions
 }
 #endregion
 #region SpecFlowRegisterSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Common.Tools.SpecFlow.SpecFlowRegisterSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRegisterSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowRegister), Arguments = "register")]
 public partial class SpecFlowRegisterSettings : ToolOptions
@@ -194,7 +193,7 @@ public partial class SpecFlowRegisterSettings : ToolOptions
 }
 #endregion
 #region SpecFlowUnregisterSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Common.Tools.SpecFlow.SpecFlowUnregisterSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowUnregisterSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowUnregister), Arguments = "register")]
 public partial class SpecFlowUnregisterSettings : ToolOptions
@@ -202,7 +201,7 @@ public partial class SpecFlowUnregisterSettings : ToolOptions
 }
 #endregion
 #region SpecFlowAboutSettings
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Common.Tools.SpecFlow.SpecFlowAboutSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowAboutSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SpecFlowTasks), Command = nameof(SpecFlowTasks.SpecFlowAbout), Arguments = "register")]
 public partial class SpecFlowAboutSettings : ToolOptions
@@ -210,7 +209,7 @@ public partial class SpecFlowAboutSettings : ToolOptions
 }
 #endregion
 #region SpecFlowNUnitExecutionReportSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowNUnitExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowNUnitExecutionReportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowNUnitExecutionReportSettingsExtensions
 {
@@ -273,7 +272,7 @@ public static partial class SpecFlowNUnitExecutionReportSettingsExtensions
 }
 #endregion
 #region SpecFlowMSTestExecutionReportSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Common.Tools.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowMSTestExecutionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowMSTestExecutionReportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowMSTestExecutionReportSettingsExtensions
 {
@@ -312,7 +311,7 @@ public static partial class SpecFlowMSTestExecutionReportSettingsExtensions
 }
 #endregion
 #region SpecFlowStepDefinitionReportSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Common.Tools.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowStepDefinitionReport(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowStepDefinitionReportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowStepDefinitionReportSettingsExtensions
 {
@@ -351,7 +350,7 @@ public static partial class SpecFlowStepDefinitionReportSettingsExtensions
 }
 #endregion
 #region SpecFlowRunSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Common.Tools.SpecFlow.SpecFlowRunSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRunSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowRunSettingsExtensions
 {
@@ -423,7 +422,7 @@ public static partial class SpecFlowRunSettingsExtensions
 }
 #endregion
 #region SpecFlowBuildServerRunSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Common.Tools.SpecFlow.SpecFlowBuildServerRunSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowBuildServerRun(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowBuildServerRunSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowBuildServerRunSettingsExtensions
 {
@@ -486,7 +485,7 @@ public static partial class SpecFlowBuildServerRunSettingsExtensions
 }
 #endregion
 #region SpecFlowRegisterSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Common.Tools.SpecFlow.SpecFlowRegisterSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowRegister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowRegisterSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowRegisterSettingsExtensions
 {
@@ -509,14 +508,14 @@ public static partial class SpecFlowRegisterSettingsExtensions
 }
 #endregion
 #region SpecFlowUnregisterSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Common.Tools.SpecFlow.SpecFlowUnregisterSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowUnregister(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowUnregisterSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowUnregisterSettingsExtensions
 {
 }
 #endregion
 #region SpecFlowAboutSettingsExtensions
-/// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Common.Tools.SpecFlow.SpecFlowAboutSettings)"/>
+/// <inheritdoc cref="SpecFlowTasks.SpecFlowAbout(Fallout.Application.Tools.Testing.SpecFlow.SpecFlowAboutSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SpecFlowAboutSettingsExtensions
 {

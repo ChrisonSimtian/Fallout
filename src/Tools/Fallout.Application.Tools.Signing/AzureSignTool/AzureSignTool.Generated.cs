@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.AzureSignTool;
+namespace Fallout.Application.Tools.Signing.AzureSignTool;
 
 /// <summary><p>Azure Sign Tool is similar to <c>signtool</c> in the Windows SDK, with the major difference being that it uses Azure Key Vault for performing the signing process. The usage is like <c>signtool</c>, except with a limited set of options for signing and options for authenticating to Azure Key Vault.</p><p>For more details, visit the <a href="https://github.com/vcsjones/AzureSignTool">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,13 +28,13 @@ public partial class AzureSignToolTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Azure Sign Tool is similar to <c>signtool</c> in the Windows SDK, with the major difference being that it uses Azure Key Vault for performing the signing process. The usage is like <c>signtool</c>, except with a limited set of options for signing and options for authenticating to Azure Key Vault.</p><p>For more details, visit the <a href="https://github.com/vcsjones/AzureSignTool">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;files&gt;</c> via <see cref="AzureSignToolSettings.Files"/></li><li><c>--additional-certificates</c> via <see cref="AzureSignToolSettings.AdditionalCertificates"/></li><li><c>--azure-key-vault-accesstoken</c> via <see cref="AzureSignToolSettings.KeyVaultAccessToken"/></li><li><c>--azure-key-vault-certificate</c> via <see cref="AzureSignToolSettings.KeyVaultCertificateName"/></li><li><c>--azure-key-vault-client-id</c> via <see cref="AzureSignToolSettings.KeyVaultClientId"/></li><li><c>--azure-key-vault-client-secret</c> via <see cref="AzureSignToolSettings.KeyVaultClientSecret"/></li><li><c>--azure-key-vault-managed-identity</c> via <see cref="AzureSignToolSettings.KeyVaultManagedIdentity"/></li><li><c>--azure-key-vault-tenant-id</c> via <see cref="AzureSignToolSettings.KeyVaultTenantId"/></li><li><c>--azure-key-vault-url</c> via <see cref="AzureSignToolSettings.KeyVaultUrl"/></li><li><c>--continue-on-error</c> via <see cref="AzureSignToolSettings.ContinueOnError"/></li><li><c>--description</c> via <see cref="AzureSignToolSettings.Description"/></li><li><c>--description-url</c> via <see cref="AzureSignToolSettings.DescriptionUrl"/></li><li><c>--file-digest</c> via <see cref="AzureSignToolSettings.FileDigest"/></li><li><c>--input-file-list</c> via <see cref="AzureSignToolSettings.InputFileList"/></li><li><c>--max-degree-of-parallelism</c> via <see cref="AzureSignToolSettings.MaxDegreeOfParallelism"/></li><li><c>--no-page-hashing</c> via <see cref="AzureSignToolSettings.NoPageHashing"/></li><li><c>--page-hashing</c> via <see cref="AzureSignToolSettings.PageHashing"/></li><li><c>--quiet</c> via <see cref="AzureSignToolSettings.Quiet"/></li><li><c>--skip-signed</c> via <see cref="AzureSignToolSettings.SkipSigned"/></li><li><c>--timestamp-authenticode</c> via <see cref="AzureSignToolSettings.TimestampAuthenticodeUrl"/></li><li><c>--timestamp-digest</c> via <see cref="AzureSignToolSettings.TimestampDigest"/></li><li><c>--timestamp-rfc3161</c> via <see cref="AzureSignToolSettings.TimestampRfc3161Url"/></li><li><c>--verbose</c> via <see cref="AzureSignToolSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> AzureSignTool(AzureSignToolSettings options = null) => new AzureSignToolTasks().Run<AzureSignToolSettings>(options);
-    /// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Common.Tools.AzureSignTool.AzureSignToolSettings)"/>
+    /// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Application.Tools.Signing.AzureSignTool.AzureSignToolSettings)"/>
     public static IReadOnlyCollection<Output> AzureSignTool(Configure<AzureSignToolSettings> configurator) => new AzureSignToolTasks().Run<AzureSignToolSettings>(configurator.Invoke(new AzureSignToolSettings()));
-    /// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Common.Tools.AzureSignTool.AzureSignToolSettings)"/>
+    /// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Application.Tools.Signing.AzureSignTool.AzureSignToolSettings)"/>
     public static IEnumerable<(AzureSignToolSettings Settings, IReadOnlyCollection<Output> Output)> AzureSignTool(CombinatorialConfigure<AzureSignToolSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(AzureSignTool, degreeOfParallelism, completeOnFailure);
 }
 #region AzureSignToolSettings
-/// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Common.Tools.AzureSignTool.AzureSignToolSettings)"/>
+/// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Application.Tools.Signing.AzureSignTool.AzureSignToolSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(AzureSignToolTasks), Command = nameof(AzureSignToolTasks.AzureSignTool), Arguments = "sign")]
 public partial class AzureSignToolSettings : ToolOptions
@@ -89,7 +88,7 @@ public partial class AzureSignToolSettings : ToolOptions
 }
 #endregion
 #region AzureSignToolSettingsExtensions
-/// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Common.Tools.AzureSignTool.AzureSignToolSettings)"/>
+/// <inheritdoc cref="AzureSignToolTasks.AzureSignTool(Fallout.Application.Tools.Signing.AzureSignTool.AzureSignToolSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class AzureSignToolSettingsExtensions
 {

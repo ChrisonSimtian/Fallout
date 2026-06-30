@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.VSWhere;
+namespace Fallout.Application.Tools.DotNet.VSWhere;
 
 /// <summary><p>VSWhere is designed to be a redistributable, single-file executable that can be used in build or deployment scripts to find where Visual Studio - or other products in the Visual Studio family - is located.</p><p>For more details, visit the <a href="https://github.com/Microsoft/vswhere">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,13 +28,13 @@ public partial class VSWhereTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>VSWhere is designed to be a redistributable, single-file executable that can be used in build or deployment scripts to find where Visual Studio - or other products in the Visual Studio family - is located.</p><p>For more details, visit the <a href="https://github.com/Microsoft/vswhere">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-all</c> via <see cref="VSWhereSettings.All"/></li><li><c>-format</c> via <see cref="VSWhereSettings.Format"/></li><li><c>-latest</c> via <see cref="VSWhereSettings.Latest"/></li><li><c>-legacy</c> via <see cref="VSWhereSettings.Legacy"/></li><li><c>-nologo</c> via <see cref="VSWhereSettings.NoLogo"/></li><li><c>-prerelease</c> via <see cref="VSWhereSettings.Prerelease"/></li><li><c>-products</c> via <see cref="VSWhereSettings.Products"/></li><li><c>-property</c> via <see cref="VSWhereSettings.Property"/></li><li><c>-requires</c> via <see cref="VSWhereSettings.Requires"/></li><li><c>-requiresAny</c> via <see cref="VSWhereSettings.RequiresAny"/></li><li><c>-utf8</c> via <see cref="VSWhereSettings.UTF8"/></li><li><c>-version</c> via <see cref="VSWhereSettings.Version"/></li></ul></remarks>
     public static (List<VSWhereResult> Result, IReadOnlyCollection<Output> Output) VSWhere(VSWhereSettings options = null) => new VSWhereTasks().Run<VSWhereSettings, List<VSWhereResult>>(options);
-    /// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Common.Tools.VSWhere.VSWhereSettings)"/>
+    /// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Application.Tools.DotNet.VSWhere.VSWhereSettings)"/>
     public static (List<VSWhereResult> Result, IReadOnlyCollection<Output> Output) VSWhere(Configure<VSWhereSettings> configurator) => new VSWhereTasks().Run<VSWhereSettings, List<VSWhereResult>>(configurator.Invoke(new VSWhereSettings()));
-    /// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Common.Tools.VSWhere.VSWhereSettings)"/>
+    /// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Application.Tools.DotNet.VSWhere.VSWhereSettings)"/>
     public static IEnumerable<(VSWhereSettings Settings, List<VSWhereResult> Result, IReadOnlyCollection<Output> Output)> VSWhere(CombinatorialConfigure<VSWhereSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(VSWhere, degreeOfParallelism, completeOnFailure);
 }
 #region VSWhereSettings
-/// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Common.Tools.VSWhere.VSWhereSettings)"/>
+/// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Application.Tools.DotNet.VSWhere.VSWhereSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(VSWhereTasks), Command = nameof(VSWhereTasks.VSWhere))]
 public partial class VSWhereSettings : ToolOptions
@@ -151,7 +150,7 @@ public partial class VSWhereResult : Options
 }
 #endregion
 #region VSWhereSettingsExtensions
-/// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Common.Tools.VSWhere.VSWhereSettings)"/>
+/// <inheritdoc cref="VSWhereTasks.VSWhere(Fallout.Application.Tools.DotNet.VSWhere.VSWhereSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class VSWhereSettingsExtensions
 {

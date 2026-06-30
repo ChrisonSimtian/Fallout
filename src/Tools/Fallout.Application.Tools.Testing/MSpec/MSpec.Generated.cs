@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.MSpec;
+namespace Fallout.Application.Tools.Testing.MSpec;
 
 /// <summary><p>MSpec is called a 'context/specification' test framework because of the 'grammar' that is used in describing and coding the tests or 'specs'.</p><p>For more details, visit the <a href="https://github.com/machine/machine.specifications">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +27,13 @@ public partial class MSpecTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>MSpec is called a 'context/specification' test framework because of the 'grammar' that is used in describing and coding the tests or 'specs'.</p><p>For more details, visit the <a href="https://github.com/machine/machine.specifications">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;assemblies&gt;</c> via <see cref="MSpecSettings.Assemblies"/></li><li><c>--appveyor</c> via <see cref="MSpecSettings.AppVeyor"/></li><li><c>--html</c> via <see cref="MSpecSettings.HtmlOutput"/></li><li><c>--no-appveyor-autodetect</c> via <see cref="MSpecSettings.NoAppVeyor"/></li><li><c>--no-color</c> via <see cref="MSpecSettings.NoColor"/></li><li><c>--no-teamcity-autodetect</c> via <see cref="MSpecSettings.NoTeamCity"/></li><li><c>--progress</c> via <see cref="MSpecSettings.DottedProgress"/></li><li><c>--silent</c> via <see cref="MSpecSettings.Silent"/></li><li><c>--teamcity</c> via <see cref="MSpecSettings.TeamCity"/></li><li><c>--timeinfo</c> via <see cref="MSpecSettings.TimeInfo"/></li><li><c>--xml</c> via <see cref="MSpecSettings.XmlOutput"/></li><li><c>-exclude</c> via <see cref="MSpecSettings.Excludes"/></li><li><c>-filters</c> via <see cref="MSpecSettings.Filters"/></li><li><c>-include</c> via <see cref="MSpecSettings.Includes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MSpec(MSpecSettings options = null) => new MSpecTasks().Run<MSpecSettings>(options);
-    /// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Common.Tools.MSpec.MSpecSettings)"/>
+    /// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Application.Tools.Testing.MSpec.MSpecSettings)"/>
     public static IReadOnlyCollection<Output> MSpec(Configure<MSpecSettings> configurator) => new MSpecTasks().Run<MSpecSettings>(configurator.Invoke(new MSpecSettings()));
-    /// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Common.Tools.MSpec.MSpecSettings)"/>
+    /// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Application.Tools.Testing.MSpec.MSpecSettings)"/>
     public static IEnumerable<(MSpecSettings Settings, IReadOnlyCollection<Output> Output)> MSpec(CombinatorialConfigure<MSpecSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MSpec, degreeOfParallelism, completeOnFailure);
 }
 #region MSpecSettings
-/// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Common.Tools.MSpec.MSpecSettings)"/>
+/// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Application.Tools.Testing.MSpec.MSpecSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MSpecTasks), Command = nameof(MSpecTasks.MSpec))]
 public partial class MSpecSettings : ToolOptions
@@ -70,7 +69,7 @@ public partial class MSpecSettings : ToolOptions
 }
 #endregion
 #region MSpecSettingsExtensions
-/// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Common.Tools.MSpec.MSpecSettings)"/>
+/// <inheritdoc cref="MSpecTasks.MSpec(Fallout.Application.Tools.Testing.MSpec.MSpecSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class MSpecSettingsExtensions
 {

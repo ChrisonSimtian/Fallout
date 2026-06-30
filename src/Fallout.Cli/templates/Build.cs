@@ -7,17 +7,17 @@ using Fallout.Common.Git;                                                       
 using Fallout.Common.IO;
 using Fallout.Solutions;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;                                                                 // DOTNET
-using Fallout.Common.Tools.GitVersion;                                                             // GITVERSION
-using Fallout.Common.Tools.MSBuild;                                                                // MSBUILD
-using Fallout.Common.Tools.NuGet;                                                                  // NUGET && MSBUILD
+using Fallout.Application.Tools.DotNet;                                                                 // DOTNET
+using Fallout.Application.Tools.Versioning.GitVersion;                                                             // GITVERSION
+using Fallout.Application.Tools.DotNet.MSBuild;                                                                // MSBUILD
+using Fallout.Application.Tools.DotNet.NuGet;                                                                  // NUGET && MSBUILD
 using Fallout.Common.Utilities.Collections;
 using static Fallout.Common.ChangeLog.ChangelogTasks;                                              // CHANGELOG
 using static Fallout.Common.EnvironmentInfo;
 using static Fallout.Common.IO.PathConstruction;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;                                              // DOTNET
-using static Fallout.Common.Tools.MSBuild.MSBuildTasks;                                            // MSBUILD
-using static Fallout.Common.Tools.NuGet.NuGetTasks;                                                // NUGET && MSBUILD
+using static Fallout.Application.Tools.DotNet.DotNetTasks;                                              // DOTNET
+using static Fallout.Application.Tools.DotNet.MSBuild.MSBuildTasks;                                            // MSBUILD
+using static Fallout.Application.Tools.DotNet.NuGet.NuGetTasks;                                                // NUGET && MSBUILD
 
 [CheckBuildProjectConfigurations]                                                               // SOLUTION_FILE
 [ShutdownDotNetAfterServerBuild]                                                                // DOTNET

@@ -3,7 +3,8 @@ using System.Linq;
 using Fallout.Common.Tooling;
 using Serilog.Events;
 
-namespace Fallout.Common.Tools.DotNet;
+using Fallout.Common;
+namespace Fallout.Application.Tools.DotNet;
 
 public class DotNetVerbosityMappingAttribute : VerbosityMappingAttribute
 {

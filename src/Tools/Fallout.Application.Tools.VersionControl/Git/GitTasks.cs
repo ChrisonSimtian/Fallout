@@ -2,7 +2,8 @@
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.Git;
+using Fallout.Common;
+namespace Fallout.Application.Tools.VersionControl.Git;
 
 [LogErrorAsStandard]
 partial class GitTasks

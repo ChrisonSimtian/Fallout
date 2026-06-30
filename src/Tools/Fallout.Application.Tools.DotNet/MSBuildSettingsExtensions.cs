@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
-using Fallout.Common.Tools.MSBuild;
+using Fallout.Application.Tools.DotNet.MSBuild;
 
+using Fallout.Common;
 namespace Fallout.Common.CI.TeamCity;
 
 public static class MSBuildSettingsExtensions

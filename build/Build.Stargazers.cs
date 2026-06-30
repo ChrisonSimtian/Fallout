@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Git;
-using Fallout.Common.Tools.GitHub;
+using Fallout.Application.Tools.VersionControl.GitHub;
 using Fallout.Common.Utilities;
 
 partial class Build

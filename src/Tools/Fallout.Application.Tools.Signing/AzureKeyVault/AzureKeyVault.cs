@@ -7,7 +7,8 @@ using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Secrets;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+using Fallout.Common;
+namespace Fallout.Application.Tools.Signing.AzureKeyVault
 {
     public partial class AzureKeyVaultConfiguration
     {

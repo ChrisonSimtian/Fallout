@@ -4,7 +4,8 @@ using System.Linq;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Tools.Netlify;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Cloud.Netlify;
 
 partial class NetlifyTasks
 {

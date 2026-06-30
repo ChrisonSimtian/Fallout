@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.MinVer;
+namespace Fallout.Application.Tools.Versioning.MinVer;
 
 /// <summary><p>Minimalistic versioning using Git tags.</p><p>For more details, visit the <a href="https://github.com/adamralph/minver">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,13 +28,13 @@ public partial class MinVerTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Minimalistic versioning using Git tags.</p><p>For more details, visit the <a href="https://github.com/adamralph/minver">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--auto-increment</c> via <see cref="MinVerSettings.AutoIncrement"/></li><li><c>--build-metadata</c> via <see cref="MinVerSettings.BuildMetadata"/></li><li><c>--default-pre-release-identifiers</c> via <see cref="MinVerSettings.DefaultPreReleaseIdentifiers"/></li><li><c>--minimum-major-minor</c> via <see cref="MinVerSettings.MinimumMajorMinor"/></li><li><c>--tag-prefix</c> via <see cref="MinVerSettings.TagPrefix"/></li><li><c>--verbosity</c> via <see cref="MinVerSettings.Verbosity"/></li></ul></remarks>
     public static (MinVer Result, IReadOnlyCollection<Output> Output) MinVer(MinVerSettings options = null) => new MinVerTasks().Run<MinVerSettings, MinVer>(options);
-    /// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Common.Tools.MinVer.MinVerSettings)"/>
+    /// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Application.Tools.Versioning.MinVer.MinVerSettings)"/>
     public static (MinVer Result, IReadOnlyCollection<Output> Output) MinVer(Configure<MinVerSettings> configurator) => new MinVerTasks().Run<MinVerSettings, MinVer>(configurator.Invoke(new MinVerSettings()));
-    /// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Common.Tools.MinVer.MinVerSettings)"/>
+    /// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Application.Tools.Versioning.MinVer.MinVerSettings)"/>
     public static IEnumerable<(MinVerSettings Settings, MinVer Result, IReadOnlyCollection<Output> Output)> MinVer(CombinatorialConfigure<MinVerSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MinVer, degreeOfParallelism, completeOnFailure);
 }
 #region MinVerSettings
-/// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Common.Tools.MinVer.MinVerSettings)"/>
+/// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Application.Tools.Versioning.MinVer.MinVerSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MinVerTasks), Command = nameof(MinVerTasks.MinVer))]
 public partial class MinVerSettings : ToolOptions, IToolOptionsWithFramework
@@ -55,7 +54,7 @@ public partial class MinVerSettings : ToolOptions, IToolOptionsWithFramework
 }
 #endregion
 #region MinVerSettingsExtensions
-/// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Common.Tools.MinVer.MinVerSettings)"/>
+/// <inheritdoc cref="MinVerTasks.MinVer(Fallout.Application.Tools.Versioning.MinVer.MinVerSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class MinVerSettingsExtensions
 {

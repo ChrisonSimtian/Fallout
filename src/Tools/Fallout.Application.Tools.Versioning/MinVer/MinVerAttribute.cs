@@ -7,7 +7,8 @@ using Fallout.Common.CI.TeamCity;
 using Fallout.Common.Tooling;
 using Fallout.Common.ValueInjection;
 
-namespace Fallout.Common.Tools.MinVer;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.MinVer;
 
 /// <summary>
 /// Injects an instance of <see cref="MinVer"/> based on the local repository.

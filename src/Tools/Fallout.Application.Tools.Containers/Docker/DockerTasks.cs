@@ -3,7 +3,8 @@ using System.Linq;
 using Fallout.Common.Tooling;
 using Serilog.Events;
 
-namespace Fallout.Common.Tools.Docker;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Containers.Docker;
 
 [LogErrorAsStandard]
 [LogLevelPattern(LogEventLevel.Warning, "^WARNING!")]

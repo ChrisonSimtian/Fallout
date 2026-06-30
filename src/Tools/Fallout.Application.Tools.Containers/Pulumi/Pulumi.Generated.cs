@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Pulumi;
+namespace Fallout.Application.Tools.Containers.Pulumi;
 
 /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,188 +27,188 @@ public partial class PulumiTasks : ToolTasks, IRequirePathTool
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiUpSettings.Color"/></li><li><c>--config</c> via <see cref="PulumiUpSettings.Config"/></li><li><c>--config-file</c> via <see cref="PulumiUpSettings.ConfigFile"/></li><li><c>--config-path</c> via <see cref="PulumiUpSettings.ConfigPath"/></li><li><c>--cwd</c> via <see cref="PulumiUpSettings.Cwd"/></li><li><c>--debug</c> via <see cref="PulumiUpSettings.Debug"/></li><li><c>--diff</c> via <see cref="PulumiUpSettings.Diff"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiUpSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiUpSettings.Emoji"/></li><li><c>--expect-no-changes</c> via <see cref="PulumiUpSettings.ExpectNoChanges"/></li><li><c>--logflow</c> via <see cref="PulumiUpSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiUpSettings.LogToStderr"/></li><li><c>--message</c> via <see cref="PulumiUpSettings.Message"/></li><li><c>--non-interactive</c> via <see cref="PulumiUpSettings.NonInteractive"/></li><li><c>--parallel</c> via <see cref="PulumiUpSettings.Parallel"/></li><li><c>--policy-pack</c> via <see cref="PulumiUpSettings.PolicyPack"/></li><li><c>--policy-pack-config</c> via <see cref="PulumiUpSettings.PolicyPackConfig"/></li><li><c>--profiling</c> via <see cref="PulumiUpSettings.Profiling"/></li><li><c>--refresh</c> via <see cref="PulumiUpSettings.Refresh"/></li><li><c>--replace</c> via <see cref="PulumiUpSettings.Replace"/></li><li><c>--secrets-provider</c> via <see cref="PulumiUpSettings.SecretsProvider"/></li><li><c>--show-config</c> via <see cref="PulumiUpSettings.ShowConfig"/></li><li><c>--show-reads</c> via <see cref="PulumiUpSettings.ShowReads"/></li><li><c>--show-replacement-steps</c> via <see cref="PulumiUpSettings.ShowReplacementSteps"/></li><li><c>--show-sames</c> via <see cref="PulumiUpSettings.ShowSames"/></li><li><c>--skip-preview</c> via <see cref="PulumiUpSettings.SkipPreview"/></li><li><c>--stack</c> via <see cref="PulumiUpSettings.Stack"/></li><li><c>--suppress-outputs</c> via <see cref="PulumiUpSettings.SuppressOutputs"/></li><li><c>--suppress-permalink</c> via <see cref="PulumiUpSettings.SuppressPermalink"/></li><li><c>--target</c> via <see cref="PulumiUpSettings.Target"/></li><li><c>--target-dependents</c> via <see cref="PulumiUpSettings.TargetDependents"/></li><li><c>--target-replace</c> via <see cref="PulumiUpSettings.TargetReplace"/></li><li><c>--tracing</c> via <see cref="PulumiUpSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiUpSettings.Verbose"/></li><li><c>--yes</c> via <see cref="PulumiUpSettings.Yes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiUp(PulumiUpSettings options = null) => new PulumiTasks().Run<PulumiUpSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Common.Tools.Pulumi.PulumiUpSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Application.Tools.Containers.Pulumi.PulumiUpSettings)"/>
     public static IReadOnlyCollection<Output> PulumiUp(Configure<PulumiUpSettings> configurator) => new PulumiTasks().Run<PulumiUpSettings>(configurator.Invoke(new PulumiUpSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Common.Tools.Pulumi.PulumiUpSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Application.Tools.Containers.Pulumi.PulumiUpSettings)"/>
     public static IEnumerable<(PulumiUpSettings Settings, IReadOnlyCollection<Output> Output)> PulumiUp(CombinatorialConfigure<PulumiUpSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiUp, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiPreviewSettings.Color"/></li><li><c>--config</c> via <see cref="PulumiPreviewSettings.Config"/></li><li><c>--config-file</c> via <see cref="PulumiPreviewSettings.ConfigFile"/></li><li><c>--config-path</c> via <see cref="PulumiPreviewSettings.ConfigPath"/></li><li><c>--cwd</c> via <see cref="PulumiPreviewSettings.Cwd"/></li><li><c>--debug</c> via <see cref="PulumiPreviewSettings.Debug"/></li><li><c>--diff</c> via <see cref="PulumiPreviewSettings.Diff"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiPreviewSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiPreviewSettings.Emoji"/></li><li><c>--expect-no-changes</c> via <see cref="PulumiPreviewSettings.ExpectNoChanges"/></li><li><c>--json</c> via <see cref="PulumiPreviewSettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiPreviewSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiPreviewSettings.LogToStderr"/></li><li><c>--message</c> via <see cref="PulumiPreviewSettings.Message"/></li><li><c>--non-interactive</c> via <see cref="PulumiPreviewSettings.NonInteractive"/></li><li><c>--parallel</c> via <see cref="PulumiPreviewSettings.Parallel"/></li><li><c>--policy-pack</c> via <see cref="PulumiPreviewSettings.PolicyPack"/></li><li><c>--policy-pack-config</c> via <see cref="PulumiPreviewSettings.PolicyPackConfig"/></li><li><c>--profiling</c> via <see cref="PulumiPreviewSettings.Profiling"/></li><li><c>--refresh</c> via <see cref="PulumiPreviewSettings.Refresh"/></li><li><c>--replace</c> via <see cref="PulumiPreviewSettings.Replace"/></li><li><c>--show-config</c> via <see cref="PulumiPreviewSettings.ShowConfig"/></li><li><c>--show-reads</c> via <see cref="PulumiPreviewSettings.ShowReads"/></li><li><c>--show-replacement-steps</c> via <see cref="PulumiPreviewSettings.ShowReplacementSteps"/></li><li><c>--show-sames</c> via <see cref="PulumiPreviewSettings.ShowSames"/></li><li><c>--stack</c> via <see cref="PulumiPreviewSettings.Stack"/></li><li><c>--suppress-outputs</c> via <see cref="PulumiPreviewSettings.SuppressOutputs"/></li><li><c>--suppress-permalink</c> via <see cref="PulumiPreviewSettings.SuppressPermalink"/></li><li><c>--target</c> via <see cref="PulumiPreviewSettings.Target"/></li><li><c>--target-dependents</c> via <see cref="PulumiPreviewSettings.TargetDependents"/></li><li><c>--target-replace</c> via <see cref="PulumiPreviewSettings.TargetReplace"/></li><li><c>--tracing</c> via <see cref="PulumiPreviewSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiPreviewSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiPreview(PulumiPreviewSettings options = null) => new PulumiTasks().Run<PulumiPreviewSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Common.Tools.Pulumi.PulumiPreviewSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Application.Tools.Containers.Pulumi.PulumiPreviewSettings)"/>
     public static IReadOnlyCollection<Output> PulumiPreview(Configure<PulumiPreviewSettings> configurator) => new PulumiTasks().Run<PulumiPreviewSettings>(configurator.Invoke(new PulumiPreviewSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Common.Tools.Pulumi.PulumiPreviewSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Application.Tools.Containers.Pulumi.PulumiPreviewSettings)"/>
     public static IEnumerable<(PulumiPreviewSettings Settings, IReadOnlyCollection<Output> Output)> PulumiPreview(CombinatorialConfigure<PulumiPreviewSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiPreview, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiConfigSettings.Color"/></li><li><c>--config-file</c> via <see cref="PulumiConfigSettings.ConfigFile"/></li><li><c>--cwd</c> via <see cref="PulumiConfigSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiConfigSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiConfigSettings.Emoji"/></li><li><c>--json</c> via <see cref="PulumiConfigSettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiConfigSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiConfigSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiConfigSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiConfigSettings.Profiling"/></li><li><c>--show-secrets</c> via <see cref="PulumiConfigSettings.ShowSecrets"/></li><li><c>--stack</c> via <see cref="PulumiConfigSettings.Stack"/></li><li><c>--tracing</c> via <see cref="PulumiConfigSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiConfigSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiConfig(PulumiConfigSettings options = null) => new PulumiTasks().Run<PulumiConfigSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Common.Tools.Pulumi.PulumiConfigSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSettings)"/>
     public static IReadOnlyCollection<Output> PulumiConfig(Configure<PulumiConfigSettings> configurator) => new PulumiTasks().Run<PulumiConfigSettings>(configurator.Invoke(new PulumiConfigSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Common.Tools.Pulumi.PulumiConfigSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSettings)"/>
     public static IEnumerable<(PulumiConfigSettings Settings, IReadOnlyCollection<Output> Output)> PulumiConfig(CombinatorialConfigure<PulumiConfigSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiConfig, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiConfigCopySettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiConfigCopySettings.Cwd"/></li><li><c>--dest</c> via <see cref="PulumiConfigCopySettings.Destination"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiConfigCopySettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiConfigCopySettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiConfigCopySettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiConfigCopySettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiConfigCopySettings.NonInteractive"/></li><li><c>--path</c> via <see cref="PulumiConfigCopySettings.Path"/></li><li><c>--profiling</c> via <see cref="PulumiConfigCopySettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiConfigCopySettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiConfigCopySettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiConfigCopy(PulumiConfigCopySettings options = null) => new PulumiTasks().Run<PulumiConfigCopySettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Common.Tools.Pulumi.PulumiConfigCopySettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigCopySettings)"/>
     public static IReadOnlyCollection<Output> PulumiConfigCopy(Configure<PulumiConfigCopySettings> configurator) => new PulumiTasks().Run<PulumiConfigCopySettings>(configurator.Invoke(new PulumiConfigCopySettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Common.Tools.Pulumi.PulumiConfigCopySettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigCopySettings)"/>
     public static IEnumerable<(PulumiConfigCopySettings Settings, IReadOnlyCollection<Output> Output)> PulumiConfigCopy(CombinatorialConfigure<PulumiConfigCopySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiConfigCopy, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;key&gt;</c> via <see cref="PulumiConfigGetSettings.Key"/></li><li><c>--color</c> via <see cref="PulumiConfigGetSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiConfigGetSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiConfigGetSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiConfigGetSettings.Emoji"/></li><li><c>--json</c> via <see cref="PulumiConfigGetSettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiConfigGetSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiConfigGetSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiConfigGetSettings.NonInteractive"/></li><li><c>--path</c> via <see cref="PulumiConfigGetSettings.Path"/></li><li><c>--profiling</c> via <see cref="PulumiConfigGetSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiConfigGetSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiConfigGetSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiConfigGet(PulumiConfigGetSettings options = null) => new PulumiTasks().Run<PulumiConfigGetSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Common.Tools.Pulumi.PulumiConfigGetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigGetSettings)"/>
     public static IReadOnlyCollection<Output> PulumiConfigGet(Configure<PulumiConfigGetSettings> configurator) => new PulumiTasks().Run<PulumiConfigGetSettings>(configurator.Invoke(new PulumiConfigGetSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Common.Tools.Pulumi.PulumiConfigGetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigGetSettings)"/>
     public static IEnumerable<(PulumiConfigGetSettings Settings, IReadOnlyCollection<Output> Output)> PulumiConfigGet(CombinatorialConfigure<PulumiConfigGetSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiConfigGet, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiConfigRefreshSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiConfigRefreshSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiConfigRefreshSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiConfigRefreshSettings.Emoji"/></li><li><c>--force</c> via <see cref="PulumiConfigRefreshSettings.Force"/></li><li><c>--logflow</c> via <see cref="PulumiConfigRefreshSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiConfigRefreshSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiConfigRefreshSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiConfigRefreshSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiConfigRefreshSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiConfigRefreshSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiConfigRefresh(PulumiConfigRefreshSettings options = null) => new PulumiTasks().Run<PulumiConfigRefreshSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Common.Tools.Pulumi.PulumiConfigRefreshSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRefreshSettings)"/>
     public static IReadOnlyCollection<Output> PulumiConfigRefresh(Configure<PulumiConfigRefreshSettings> configurator) => new PulumiTasks().Run<PulumiConfigRefreshSettings>(configurator.Invoke(new PulumiConfigRefreshSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Common.Tools.Pulumi.PulumiConfigRefreshSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRefreshSettings)"/>
     public static IEnumerable<(PulumiConfigRefreshSettings Settings, IReadOnlyCollection<Output> Output)> PulumiConfigRefresh(CombinatorialConfigure<PulumiConfigRefreshSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiConfigRefresh, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;key&gt;</c> via <see cref="PulumiConfigRemoveSettings.Key"/></li><li><c>--color</c> via <see cref="PulumiConfigRemoveSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiConfigRemoveSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiConfigRemoveSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiConfigRemoveSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiConfigRemoveSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiConfigRemoveSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiConfigRemoveSettings.NonInteractive"/></li><li><c>--path</c> via <see cref="PulumiConfigRemoveSettings.Path"/></li><li><c>--profiling</c> via <see cref="PulumiConfigRemoveSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiConfigRemoveSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiConfigRemoveSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiConfigRemove(PulumiConfigRemoveSettings options = null) => new PulumiTasks().Run<PulumiConfigRemoveSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Common.Tools.Pulumi.PulumiConfigRemoveSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRemoveSettings)"/>
     public static IReadOnlyCollection<Output> PulumiConfigRemove(Configure<PulumiConfigRemoveSettings> configurator) => new PulumiTasks().Run<PulumiConfigRemoveSettings>(configurator.Invoke(new PulumiConfigRemoveSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Common.Tools.Pulumi.PulumiConfigRemoveSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRemoveSettings)"/>
     public static IEnumerable<(PulumiConfigRemoveSettings Settings, IReadOnlyCollection<Output> Output)> PulumiConfigRemove(CombinatorialConfigure<PulumiConfigRemoveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiConfigRemove, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;key&gt;</c> via <see cref="PulumiConfigSetSettings.Key"/></li><li><c>&lt;value&gt;</c> via <see cref="PulumiConfigSetSettings.Value"/></li><li><c>--color</c> via <see cref="PulumiConfigSetSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiConfigSetSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiConfigSetSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiConfigSetSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiConfigSetSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiConfigSetSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiConfigSetSettings.NonInteractive"/></li><li><c>--path</c> via <see cref="PulumiConfigSetSettings.Path"/></li><li><c>--plaintext</c> via <see cref="PulumiConfigSetSettings.Plaintext"/></li><li><c>--profiling</c> via <see cref="PulumiConfigSetSettings.Profiling"/></li><li><c>--secret</c> via <see cref="PulumiConfigSetSettings.Secret"/></li><li><c>--tracing</c> via <see cref="PulumiConfigSetSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiConfigSetSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiConfigSet(PulumiConfigSetSettings options = null) => new PulumiTasks().Run<PulumiConfigSetSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Common.Tools.Pulumi.PulumiConfigSetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSetSettings)"/>
     public static IReadOnlyCollection<Output> PulumiConfigSet(Configure<PulumiConfigSetSettings> configurator) => new PulumiTasks().Run<PulumiConfigSetSettings>(configurator.Invoke(new PulumiConfigSetSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Common.Tools.Pulumi.PulumiConfigSetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSetSettings)"/>
     public static IEnumerable<(PulumiConfigSetSettings Settings, IReadOnlyCollection<Output> Output)> PulumiConfigSet(CombinatorialConfigure<PulumiConfigSetSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiConfigSet, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiStackSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackSettings.Profiling"/></li><li><c>--show-ids</c> via <see cref="PulumiStackSettings.ShowIds"/></li><li><c>--show-name</c> via <see cref="PulumiStackSettings.ShowName"/></li><li><c>--show-secrets</c> via <see cref="PulumiStackSettings.ShowSecrets"/></li><li><c>--show-urns</c> via <see cref="PulumiStackSettings.ShowUrns"/></li><li><c>--stack</c> via <see cref="PulumiStackSettings.Stack"/></li><li><c>--tracing</c> via <see cref="PulumiStackSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStack(PulumiStackSettings options = null) => new PulumiTasks().Run<PulumiStackSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Common.Tools.Pulumi.PulumiStackSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStack(Configure<PulumiStackSettings> configurator) => new PulumiTasks().Run<PulumiStackSettings>(configurator.Invoke(new PulumiStackSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Common.Tools.Pulumi.PulumiStackSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSettings)"/>
     public static IEnumerable<(PulumiStackSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStack(CombinatorialConfigure<PulumiStackSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStack, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;newSecretsProvider&gt;</c> via <see cref="PulumiStackChangeSecretsProviderSettings.NewSecretsProvider"/></li><li><c>--color</c> via <see cref="PulumiStackChangeSecretsProviderSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackChangeSecretsProviderSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackChangeSecretsProviderSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackChangeSecretsProviderSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackChangeSecretsProviderSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackChangeSecretsProviderSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackChangeSecretsProviderSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackChangeSecretsProviderSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackChangeSecretsProviderSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackChangeSecretsProviderSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackChangeSecretsProvider(PulumiStackChangeSecretsProviderSettings options = null) => new PulumiTasks().Run<PulumiStackChangeSecretsProviderSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Common.Tools.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Application.Tools.Containers.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackChangeSecretsProvider(Configure<PulumiStackChangeSecretsProviderSettings> configurator) => new PulumiTasks().Run<PulumiStackChangeSecretsProviderSettings>(configurator.Invoke(new PulumiStackChangeSecretsProviderSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Common.Tools.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Application.Tools.Containers.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
     public static IEnumerable<(PulumiStackChangeSecretsProviderSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackChangeSecretsProvider(CombinatorialConfigure<PulumiStackChangeSecretsProviderSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackChangeSecretsProvider, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiStackExportSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackExportSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackExportSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackExportSettings.Emoji"/></li><li><c>--file</c> via <see cref="PulumiStackExportSettings.File"/></li><li><c>--logflow</c> via <see cref="PulumiStackExportSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackExportSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackExportSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackExportSettings.Profiling"/></li><li><c>--show-secrets</c> via <see cref="PulumiStackExportSettings.ShowSecrets"/></li><li><c>--tracing</c> via <see cref="PulumiStackExportSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackExportSettings.Verbose"/></li><li><c>--version</c> via <see cref="PulumiStackExportSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackExport(PulumiStackExportSettings options = null) => new PulumiTasks().Run<PulumiStackExportSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Common.Tools.Pulumi.PulumiStackExportSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackExportSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackExport(Configure<PulumiStackExportSettings> configurator) => new PulumiTasks().Run<PulumiStackExportSettings>(configurator.Invoke(new PulumiStackExportSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Common.Tools.Pulumi.PulumiStackExportSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackExportSettings)"/>
     public static IEnumerable<(PulumiStackExportSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackExport(CombinatorialConfigure<PulumiStackExportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackExport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;file&gt;</c> via <see cref="PulumiStackGraphSettings.File"/></li><li><c>--color</c> via <see cref="PulumiStackGraphSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackGraphSettings.Cwd"/></li><li><c>--dependency-edge-color</c> via <see cref="PulumiStackGraphSettings.DependencyEdgeColor"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackGraphSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackGraphSettings.Emoji"/></li><li><c>--ignore-dependency-edges</c> via <see cref="PulumiStackGraphSettings.IgnoreDependencyEdges"/></li><li><c>--ignore-parent-edges</c> via <see cref="PulumiStackGraphSettings.IgnoreParentEdges"/></li><li><c>--logflow</c> via <see cref="PulumiStackGraphSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackGraphSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackGraphSettings.NonInteractive"/></li><li><c>--parent-edge-color</c> via <see cref="PulumiStackGraphSettings.ParentEdgeColor"/></li><li><c>--profiling</c> via <see cref="PulumiStackGraphSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackGraphSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackGraphSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackGraph(PulumiStackGraphSettings options = null) => new PulumiTasks().Run<PulumiStackGraphSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Common.Tools.Pulumi.PulumiStackGraphSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Application.Tools.Containers.Pulumi.PulumiStackGraphSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackGraph(Configure<PulumiStackGraphSettings> configurator) => new PulumiTasks().Run<PulumiStackGraphSettings>(configurator.Invoke(new PulumiStackGraphSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Common.Tools.Pulumi.PulumiStackGraphSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Application.Tools.Containers.Pulumi.PulumiStackGraphSettings)"/>
     public static IEnumerable<(PulumiStackGraphSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackGraph(CombinatorialConfigure<PulumiStackGraphSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackGraph, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiStackHistorySettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackHistorySettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackHistorySettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackHistorySettings.Emoji"/></li><li><c>--json</c> via <see cref="PulumiStackHistorySettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiStackHistorySettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackHistorySettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackHistorySettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackHistorySettings.Profiling"/></li><li><c>--show-secrets</c> via <see cref="PulumiStackHistorySettings.ShowSecrets"/></li><li><c>--tracing</c> via <see cref="PulumiStackHistorySettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackHistorySettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackHistory(PulumiStackHistorySettings options = null) => new PulumiTasks().Run<PulumiStackHistorySettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Common.Tools.Pulumi.PulumiStackHistorySettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Application.Tools.Containers.Pulumi.PulumiStackHistorySettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackHistory(Configure<PulumiStackHistorySettings> configurator) => new PulumiTasks().Run<PulumiStackHistorySettings>(configurator.Invoke(new PulumiStackHistorySettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Common.Tools.Pulumi.PulumiStackHistorySettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Application.Tools.Containers.Pulumi.PulumiStackHistorySettings)"/>
     public static IEnumerable<(PulumiStackHistorySettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackHistory(CombinatorialConfigure<PulumiStackHistorySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackHistory, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiStackImportSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackImportSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackImportSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackImportSettings.Emoji"/></li><li><c>--file</c> via <see cref="PulumiStackImportSettings.File"/></li><li><c>--force</c> via <see cref="PulumiStackImportSettings.Force"/></li><li><c>--logflow</c> via <see cref="PulumiStackImportSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackImportSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackImportSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackImportSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackImportSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackImportSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackImport(PulumiStackImportSettings options = null) => new PulumiTasks().Run<PulumiStackImportSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Common.Tools.Pulumi.PulumiStackImportSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackImportSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackImport(Configure<PulumiStackImportSettings> configurator) => new PulumiTasks().Run<PulumiStackImportSettings>(configurator.Invoke(new PulumiStackImportSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Common.Tools.Pulumi.PulumiStackImportSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackImportSettings)"/>
     public static IEnumerable<(PulumiStackImportSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackImport(CombinatorialConfigure<PulumiStackImportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackImport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;organizationAndName&gt;</c> via <see cref="PulumiStackInitSettings.OrganizationAndName"/></li><li><c>--color</c> via <see cref="PulumiStackInitSettings.Color"/></li><li><c>--copy-config-from</c> via <see cref="PulumiStackInitSettings.CopyConfigFrom"/></li><li><c>--cwd</c> via <see cref="PulumiStackInitSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackInitSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackInitSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackInitSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackInitSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackInitSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackInitSettings.Profiling"/></li><li><c>--secrets-provider</c> via <see cref="PulumiStackInitSettings.SecretsProvider"/></li><li><c>--tracing</c> via <see cref="PulumiStackInitSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackInitSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackInit(PulumiStackInitSettings options = null) => new PulumiTasks().Run<PulumiStackInitSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Common.Tools.Pulumi.PulumiStackInitSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Application.Tools.Containers.Pulumi.PulumiStackInitSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackInit(Configure<PulumiStackInitSettings> configurator) => new PulumiTasks().Run<PulumiStackInitSettings>(configurator.Invoke(new PulumiStackInitSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Common.Tools.Pulumi.PulumiStackInitSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Application.Tools.Containers.Pulumi.PulumiStackInitSettings)"/>
     public static IEnumerable<(PulumiStackInitSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackInit(CombinatorialConfigure<PulumiStackInitSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackInit, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--all</c> via <see cref="PulumiStackListSettings.All"/></li><li><c>--color</c> via <see cref="PulumiStackListSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackListSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackListSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackListSettings.Emoji"/></li><li><c>--json</c> via <see cref="PulumiStackListSettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiStackListSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackListSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackListSettings.NonInteractive"/></li><li><c>--organization</c> via <see cref="PulumiStackListSettings.Organization"/></li><li><c>--profiling</c> via <see cref="PulumiStackListSettings.Profiling"/></li><li><c>--project</c> via <see cref="PulumiStackListSettings.Project"/></li><li><c>--tag</c> via <see cref="PulumiStackListSettings.Tag"/></li><li><c>--tracing</c> via <see cref="PulumiStackListSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackListSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackList(PulumiStackListSettings options = null) => new PulumiTasks().Run<PulumiStackListSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Common.Tools.Pulumi.PulumiStackListSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackListSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackList(Configure<PulumiStackListSettings> configurator) => new PulumiTasks().Run<PulumiStackListSettings>(configurator.Invoke(new PulumiStackListSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Common.Tools.Pulumi.PulumiStackListSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackListSettings)"/>
     public static IEnumerable<(PulumiStackListSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackList(CombinatorialConfigure<PulumiStackListSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackList, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;propertyName&gt;</c> via <see cref="PulumiStackOutputSettings.PropertyName"/></li><li><c>--color</c> via <see cref="PulumiStackOutputSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackOutputSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackOutputSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackOutputSettings.Emoji"/></li><li><c>--json</c> via <see cref="PulumiStackOutputSettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiStackOutputSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackOutputSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackOutputSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackOutputSettings.Profiling"/></li><li><c>--show-secrets</c> via <see cref="PulumiStackOutputSettings.ShowSecrets"/></li><li><c>--tracing</c> via <see cref="PulumiStackOutputSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackOutputSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackOutput(PulumiStackOutputSettings options = null) => new PulumiTasks().Run<PulumiStackOutputSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Common.Tools.Pulumi.PulumiStackOutputSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Application.Tools.Containers.Pulumi.PulumiStackOutputSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackOutput(Configure<PulumiStackOutputSettings> configurator) => new PulumiTasks().Run<PulumiStackOutputSettings>(configurator.Invoke(new PulumiStackOutputSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Common.Tools.Pulumi.PulumiStackOutputSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Application.Tools.Containers.Pulumi.PulumiStackOutputSettings)"/>
     public static IEnumerable<(PulumiStackOutputSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackOutput(CombinatorialConfigure<PulumiStackOutputSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackOutput, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;newStackName&gt;</c> via <see cref="PulumiStackRenameSettings.NewStackName"/></li><li><c>--color</c> via <see cref="PulumiStackRenameSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackRenameSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackRenameSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackRenameSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackRenameSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackRenameSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackRenameSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackRenameSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackRenameSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackRenameSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackRename(PulumiStackRenameSettings options = null) => new PulumiTasks().Run<PulumiStackRenameSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Common.Tools.Pulumi.PulumiStackRenameSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRenameSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackRename(Configure<PulumiStackRenameSettings> configurator) => new PulumiTasks().Run<PulumiStackRenameSettings>(configurator.Invoke(new PulumiStackRenameSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Common.Tools.Pulumi.PulumiStackRenameSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRenameSettings)"/>
     public static IEnumerable<(PulumiStackRenameSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackRename(CombinatorialConfigure<PulumiStackRenameSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackRename, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stackName&gt;</c> via <see cref="PulumiStackRemoveSettings.StackName"/></li><li><c>--color</c> via <see cref="PulumiStackRemoveSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackRemoveSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackRemoveSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackRemoveSettings.Emoji"/></li><li><c>--force</c> via <see cref="PulumiStackRemoveSettings.Force"/></li><li><c>--logflow</c> via <see cref="PulumiStackRemoveSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackRemoveSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackRemoveSettings.NonInteractive"/></li><li><c>--preserve-config</c> via <see cref="PulumiStackRemoveSettings.PreserveConfig"/></li><li><c>--profiling</c> via <see cref="PulumiStackRemoveSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackRemoveSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackRemoveSettings.Verbose"/></li><li><c>--yes</c> via <see cref="PulumiStackRemoveSettings.Yes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackRemove(PulumiStackRemoveSettings options = null) => new PulumiTasks().Run<PulumiStackRemoveSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Common.Tools.Pulumi.PulumiStackRemoveSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRemoveSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackRemove(Configure<PulumiStackRemoveSettings> configurator) => new PulumiTasks().Run<PulumiStackRemoveSettings>(configurator.Invoke(new PulumiStackRemoveSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Common.Tools.Pulumi.PulumiStackRemoveSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRemoveSettings)"/>
     public static IEnumerable<(PulumiStackRemoveSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackRemove(CombinatorialConfigure<PulumiStackRemoveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackRemove, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;stackName&gt;</c> via <see cref="PulumiStackSelectSettings.StackName"/></li><li><c>--color</c> via <see cref="PulumiStackSelectSettings.Color"/></li><li><c>--create</c> via <see cref="PulumiStackSelectSettings.Create"/></li><li><c>--cwd</c> via <see cref="PulumiStackSelectSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackSelectSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackSelectSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackSelectSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackSelectSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackSelectSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackSelectSettings.Profiling"/></li><li><c>--secrets-provider</c> via <see cref="PulumiStackSelectSettings.SecretsProvider"/></li><li><c>--tracing</c> via <see cref="PulumiStackSelectSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackSelectSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackSelect(PulumiStackSelectSettings options = null) => new PulumiTasks().Run<PulumiStackSelectSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Common.Tools.Pulumi.PulumiStackSelectSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSelectSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackSelect(Configure<PulumiStackSelectSettings> configurator) => new PulumiTasks().Run<PulumiStackSelectSettings>(configurator.Invoke(new PulumiStackSelectSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Common.Tools.Pulumi.PulumiStackSelectSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSelectSettings)"/>
     public static IEnumerable<(PulumiStackSelectSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackSelect(CombinatorialConfigure<PulumiStackSelectSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackSelect, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="PulumiStackTagSetSettings.Name"/></li><li><c>&lt;value&gt;</c> via <see cref="PulumiStackTagSetSettings.Value"/></li><li><c>--color</c> via <see cref="PulumiStackTagSetSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackTagSetSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackTagSetSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackTagSetSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackTagSetSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackTagSetSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackTagSetSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackTagSetSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackTagSetSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackTagSetSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackTagSet(PulumiStackTagSetSettings options = null) => new PulumiTasks().Run<PulumiStackTagSetSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Common.Tools.Pulumi.PulumiStackTagSetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagSetSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackTagSet(Configure<PulumiStackTagSetSettings> configurator) => new PulumiTasks().Run<PulumiStackTagSetSettings>(configurator.Invoke(new PulumiStackTagSetSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Common.Tools.Pulumi.PulumiStackTagSetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagSetSettings)"/>
     public static IEnumerable<(PulumiStackTagSetSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackTagSet(CombinatorialConfigure<PulumiStackTagSetSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackTagSet, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="PulumiStackTagGetSettings.Name"/></li><li><c>--color</c> via <see cref="PulumiStackTagGetSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackTagGetSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackTagGetSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackTagGetSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackTagGetSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackTagGetSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackTagGetSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackTagGetSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackTagGetSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackTagGetSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackTagGet(PulumiStackTagGetSettings options = null) => new PulumiTasks().Run<PulumiStackTagGetSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Common.Tools.Pulumi.PulumiStackTagGetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagGetSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackTagGet(Configure<PulumiStackTagGetSettings> configurator) => new PulumiTasks().Run<PulumiStackTagGetSettings>(configurator.Invoke(new PulumiStackTagGetSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Common.Tools.Pulumi.PulumiStackTagGetSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagGetSettings)"/>
     public static IEnumerable<(PulumiStackTagGetSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackTagGet(CombinatorialConfigure<PulumiStackTagGetSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackTagGet, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="PulumiStackTagRemoveSettings.Name"/></li><li><c>--color</c> via <see cref="PulumiStackTagRemoveSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackTagRemoveSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackTagRemoveSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackTagRemoveSettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiStackTagRemoveSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackTagRemoveSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackTagRemoveSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackTagRemoveSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackTagRemoveSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackTagRemoveSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackTagRemove(PulumiStackTagRemoveSettings options = null) => new PulumiTasks().Run<PulumiStackTagRemoveSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Common.Tools.Pulumi.PulumiStackTagRemoveSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagRemoveSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackTagRemove(Configure<PulumiStackTagRemoveSettings> configurator) => new PulumiTasks().Run<PulumiStackTagRemoveSettings>(configurator.Invoke(new PulumiStackTagRemoveSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Common.Tools.Pulumi.PulumiStackTagRemoveSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagRemoveSettings)"/>
     public static IEnumerable<(PulumiStackTagRemoveSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackTagRemove(CombinatorialConfigure<PulumiStackTagRemoveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackTagRemove, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiStackTagListSettings.Color"/></li><li><c>--cwd</c> via <see cref="PulumiStackTagListSettings.Cwd"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiStackTagListSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiStackTagListSettings.Emoji"/></li><li><c>--json</c> via <see cref="PulumiStackTagListSettings.Json"/></li><li><c>--logflow</c> via <see cref="PulumiStackTagListSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiStackTagListSettings.LogToStderr"/></li><li><c>--non-interactive</c> via <see cref="PulumiStackTagListSettings.NonInteractive"/></li><li><c>--profiling</c> via <see cref="PulumiStackTagListSettings.Profiling"/></li><li><c>--tracing</c> via <see cref="PulumiStackTagListSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiStackTagListSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiStackTagList(PulumiStackTagListSettings options = null) => new PulumiTasks().Run<PulumiStackTagListSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Common.Tools.Pulumi.PulumiStackTagListSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagListSettings)"/>
     public static IReadOnlyCollection<Output> PulumiStackTagList(Configure<PulumiStackTagListSettings> configurator) => new PulumiTasks().Run<PulumiStackTagListSettings>(configurator.Invoke(new PulumiStackTagListSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Common.Tools.Pulumi.PulumiStackTagListSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagListSettings)"/>
     public static IEnumerable<(PulumiStackTagListSettings Settings, IReadOnlyCollection<Output> Output)> PulumiStackTagList(CombinatorialConfigure<PulumiStackTagListSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiStackTagList, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;template&gt;</c> via <see cref="PulumiNewSettings.Template"/></li><li><c>--color</c> via <see cref="PulumiNewSettings.Color"/></li><li><c>--config</c> via <see cref="PulumiNewSettings.Config"/></li><li><c>--config-path</c> via <see cref="PulumiNewSettings.ConfigPath"/></li><li><c>--cwd</c> via <see cref="PulumiNewSettings.Cwd"/></li><li><c>--description</c> via <see cref="PulumiNewSettings.Description"/></li><li><c>--dir</c> via <see cref="PulumiNewSettings.Directory"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiNewSettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiNewSettings.Emoji"/></li><li><c>--force</c> via <see cref="PulumiNewSettings.Force"/></li><li><c>--generate-only</c> via <see cref="PulumiNewSettings.GenerateOnly"/></li><li><c>--logflow</c> via <see cref="PulumiNewSettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiNewSettings.LogToStderr"/></li><li><c>--name</c> via <see cref="PulumiNewSettings.Name"/></li><li><c>--non-interactive</c> via <see cref="PulumiNewSettings.NonInteractive"/></li><li><c>--offline</c> via <see cref="PulumiNewSettings.Offline"/></li><li><c>--profiling</c> via <see cref="PulumiNewSettings.Profiling"/></li><li><c>--secrets-provider</c> via <see cref="PulumiNewSettings.SecretsProvider"/></li><li><c>--stack</c> via <see cref="PulumiNewSettings.Stack"/></li><li><c>--tracing</c> via <see cref="PulumiNewSettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiNewSettings.Verbose"/></li><li><c>--yes</c> via <see cref="PulumiNewSettings.Yes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiNew(PulumiNewSettings options = null) => new PulumiTasks().Run<PulumiNewSettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Common.Tools.Pulumi.PulumiNewSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Application.Tools.Containers.Pulumi.PulumiNewSettings)"/>
     public static IReadOnlyCollection<Output> PulumiNew(Configure<PulumiNewSettings> configurator) => new PulumiTasks().Run<PulumiNewSettings>(configurator.Invoke(new PulumiNewSettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Common.Tools.Pulumi.PulumiNewSettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Application.Tools.Containers.Pulumi.PulumiNewSettings)"/>
     public static IEnumerable<(PulumiNewSettings Settings, IReadOnlyCollection<Output> Output)> PulumiNew(CombinatorialConfigure<PulumiNewSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiNew, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p><p>For more details, visit the <a href="https://www.pulumi.com/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--color</c> via <see cref="PulumiDestroySettings.Color"/></li><li><c>--config-file</c> via <see cref="PulumiDestroySettings.ConfigFile"/></li><li><c>--cwd</c> via <see cref="PulumiDestroySettings.Cwd"/></li><li><c>--debug</c> via <see cref="PulumiDestroySettings.Debug"/></li><li><c>--diff</c> via <see cref="PulumiDestroySettings.Diff"/></li><li><c>--disable-integrity-checking</c> via <see cref="PulumiDestroySettings.DisableIntegrityChecking"/></li><li><c>--emoji</c> via <see cref="PulumiDestroySettings.Emoji"/></li><li><c>--logflow</c> via <see cref="PulumiDestroySettings.LogFlow"/></li><li><c>--logtostderr</c> via <see cref="PulumiDestroySettings.LogToStderr"/></li><li><c>--message</c> via <see cref="PulumiDestroySettings.Message"/></li><li><c>--non-interactive</c> via <see cref="PulumiDestroySettings.NonInteractive"/></li><li><c>--parallel</c> via <see cref="PulumiDestroySettings.Parallel"/></li><li><c>--profiling</c> via <see cref="PulumiDestroySettings.Profiling"/></li><li><c>--refresh</c> via <see cref="PulumiDestroySettings.Refresh"/></li><li><c>--show-config</c> via <see cref="PulumiDestroySettings.ShowConfig"/></li><li><c>--show-replacement-steps</c> via <see cref="PulumiDestroySettings.ShowReplacementSteps"/></li><li><c>--show-sames</c> via <see cref="PulumiDestroySettings.ShowSames"/></li><li><c>--skip-preview</c> via <see cref="PulumiDestroySettings.SkipPreview"/></li><li><c>--stack</c> via <see cref="PulumiDestroySettings.Stack"/></li><li><c>--suppress-outputs</c> via <see cref="PulumiDestroySettings.SuppressOutputs"/></li><li><c>--suppress-permalink</c> via <see cref="PulumiDestroySettings.SuppressPermalink"/></li><li><c>--target</c> via <see cref="PulumiDestroySettings.Target"/></li><li><c>--target-dependents</c> via <see cref="PulumiDestroySettings.TargetDependents"/></li><li><c>--tracing</c> via <see cref="PulumiDestroySettings.Tracing"/></li><li><c>--verbose</c> via <see cref="PulumiDestroySettings.Verbose"/></li><li><c>--yes</c> via <see cref="PulumiDestroySettings.Yes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PulumiDestroy(PulumiDestroySettings options = null) => new PulumiTasks().Run<PulumiDestroySettings>(options);
-    /// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Common.Tools.Pulumi.PulumiDestroySettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Application.Tools.Containers.Pulumi.PulumiDestroySettings)"/>
     public static IReadOnlyCollection<Output> PulumiDestroy(Configure<PulumiDestroySettings> configurator) => new PulumiTasks().Run<PulumiDestroySettings>(configurator.Invoke(new PulumiDestroySettings()));
-    /// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Common.Tools.Pulumi.PulumiDestroySettings)"/>
+    /// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Application.Tools.Containers.Pulumi.PulumiDestroySettings)"/>
     public static IEnumerable<(PulumiDestroySettings Settings, IReadOnlyCollection<Output> Output)> PulumiDestroy(CombinatorialConfigure<PulumiDestroySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PulumiDestroy, degreeOfParallelism, completeOnFailure);
 }
 #region PulumiUpSettings
-/// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Common.Tools.Pulumi.PulumiUpSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Application.Tools.Containers.Pulumi.PulumiUpSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiUp), Arguments = "up")]
 public partial class PulumiUpSettings : ToolOptions
@@ -287,7 +286,7 @@ public partial class PulumiUpSettings : ToolOptions
 }
 #endregion
 #region PulumiPreviewSettings
-/// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Common.Tools.Pulumi.PulumiPreviewSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Application.Tools.Containers.Pulumi.PulumiPreviewSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiPreview), Arguments = "preview")]
 public partial class PulumiPreviewSettings : ToolOptions
@@ -361,7 +360,7 @@ public partial class PulumiPreviewSettings : ToolOptions
 }
 #endregion
 #region PulumiConfigSettings
-/// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Common.Tools.Pulumi.PulumiConfigSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiConfig), Arguments = "config")]
 public partial class PulumiConfigSettings : ToolOptions
@@ -397,7 +396,7 @@ public partial class PulumiConfigSettings : ToolOptions
 }
 #endregion
 #region PulumiConfigCopySettings
-/// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Common.Tools.Pulumi.PulumiConfigCopySettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigCopySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiConfigCopy), Arguments = "config cp")]
 public partial class PulumiConfigCopySettings : ToolOptions
@@ -429,7 +428,7 @@ public partial class PulumiConfigCopySettings : ToolOptions
 }
 #endregion
 #region PulumiConfigGetSettings
-/// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Common.Tools.Pulumi.PulumiConfigGetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigGetSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiConfigGet), Arguments = "config get")]
 public partial class PulumiConfigGetSettings : ToolOptions
@@ -463,7 +462,7 @@ public partial class PulumiConfigGetSettings : ToolOptions
 }
 #endregion
 #region PulumiConfigRefreshSettings
-/// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Common.Tools.Pulumi.PulumiConfigRefreshSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRefreshSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiConfigRefresh), Arguments = "config refresh")]
 public partial class PulumiConfigRefreshSettings : ToolOptions
@@ -493,7 +492,7 @@ public partial class PulumiConfigRefreshSettings : ToolOptions
 }
 #endregion
 #region PulumiConfigRemoveSettings
-/// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Common.Tools.Pulumi.PulumiConfigRemoveSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiConfigRemove), Arguments = "config rm")]
 public partial class PulumiConfigRemoveSettings : ToolOptions
@@ -525,7 +524,7 @@ public partial class PulumiConfigRemoveSettings : ToolOptions
 }
 #endregion
 #region PulumiConfigSetSettings
-/// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Common.Tools.Pulumi.PulumiConfigSetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSetSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiConfigSet), Arguments = "config set")]
 public partial class PulumiConfigSetSettings : ToolOptions
@@ -563,7 +562,7 @@ public partial class PulumiConfigSetSettings : ToolOptions
 }
 #endregion
 #region PulumiStackSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Common.Tools.Pulumi.PulumiStackSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStack), Arguments = "stack")]
 public partial class PulumiStackSettings : ToolOptions
@@ -601,7 +600,7 @@ public partial class PulumiStackSettings : ToolOptions
 }
 #endregion
 #region PulumiStackChangeSecretsProviderSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Common.Tools.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Application.Tools.Containers.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackChangeSecretsProvider), Arguments = "stack change-secrets-provider")]
 public partial class PulumiStackChangeSecretsProviderSettings : ToolOptions
@@ -631,7 +630,7 @@ public partial class PulumiStackChangeSecretsProviderSettings : ToolOptions
 }
 #endregion
 #region PulumiStackExportSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Common.Tools.Pulumi.PulumiStackExportSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackExportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackExport), Arguments = "stack export")]
 public partial class PulumiStackExportSettings : ToolOptions
@@ -665,7 +664,7 @@ public partial class PulumiStackExportSettings : ToolOptions
 }
 #endregion
 #region PulumiStackGraphSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Common.Tools.Pulumi.PulumiStackGraphSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Application.Tools.Containers.Pulumi.PulumiStackGraphSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackGraph), Arguments = "stack graph")]
 public partial class PulumiStackGraphSettings : ToolOptions
@@ -703,7 +702,7 @@ public partial class PulumiStackGraphSettings : ToolOptions
 }
 #endregion
 #region PulumiStackHistorySettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Common.Tools.Pulumi.PulumiStackHistorySettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Application.Tools.Containers.Pulumi.PulumiStackHistorySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackHistory), Arguments = "stack history")]
 public partial class PulumiStackHistorySettings : ToolOptions
@@ -735,7 +734,7 @@ public partial class PulumiStackHistorySettings : ToolOptions
 }
 #endregion
 #region PulumiStackImportSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Common.Tools.Pulumi.PulumiStackImportSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackImportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackImport), Arguments = "stack import")]
 public partial class PulumiStackImportSettings : ToolOptions
@@ -767,7 +766,7 @@ public partial class PulumiStackImportSettings : ToolOptions
 }
 #endregion
 #region PulumiStackInitSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Common.Tools.Pulumi.PulumiStackInitSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Application.Tools.Containers.Pulumi.PulumiStackInitSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackInit), Arguments = "stack init")]
 public partial class PulumiStackInitSettings : ToolOptions
@@ -801,7 +800,7 @@ public partial class PulumiStackInitSettings : ToolOptions
 }
 #endregion
 #region PulumiStackListSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Common.Tools.Pulumi.PulumiStackListSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackListSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackList), Arguments = "stack ls")]
 public partial class PulumiStackListSettings : ToolOptions
@@ -839,7 +838,7 @@ public partial class PulumiStackListSettings : ToolOptions
 }
 #endregion
 #region PulumiStackOutputSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Common.Tools.Pulumi.PulumiStackOutputSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Application.Tools.Containers.Pulumi.PulumiStackOutputSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackOutput), Arguments = "stack output")]
 public partial class PulumiStackOutputSettings : ToolOptions
@@ -873,7 +872,7 @@ public partial class PulumiStackOutputSettings : ToolOptions
 }
 #endregion
 #region PulumiStackRenameSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Common.Tools.Pulumi.PulumiStackRenameSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRenameSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackRename), Arguments = "stack rename")]
 public partial class PulumiStackRenameSettings : ToolOptions
@@ -903,7 +902,7 @@ public partial class PulumiStackRenameSettings : ToolOptions
 }
 #endregion
 #region PulumiStackRemoveSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Common.Tools.Pulumi.PulumiStackRemoveSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackRemove), Arguments = "stack rm")]
 public partial class PulumiStackRemoveSettings : ToolOptions
@@ -939,7 +938,7 @@ public partial class PulumiStackRemoveSettings : ToolOptions
 }
 #endregion
 #region PulumiStackSelectSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Common.Tools.Pulumi.PulumiStackSelectSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSelectSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackSelect), Arguments = "stack select")]
 public partial class PulumiStackSelectSettings : ToolOptions
@@ -973,7 +972,7 @@ public partial class PulumiStackSelectSettings : ToolOptions
 }
 #endregion
 #region PulumiStackTagSetSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Common.Tools.Pulumi.PulumiStackTagSetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagSetSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackTagSet), Arguments = "stack tag set")]
 public partial class PulumiStackTagSetSettings : ToolOptions
@@ -1005,7 +1004,7 @@ public partial class PulumiStackTagSetSettings : ToolOptions
 }
 #endregion
 #region PulumiStackTagGetSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Common.Tools.Pulumi.PulumiStackTagGetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagGetSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackTagGet), Arguments = "stack tag get")]
 public partial class PulumiStackTagGetSettings : ToolOptions
@@ -1035,7 +1034,7 @@ public partial class PulumiStackTagGetSettings : ToolOptions
 }
 #endregion
 #region PulumiStackTagRemoveSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Common.Tools.Pulumi.PulumiStackTagRemoveSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackTagRemove), Arguments = "stack tag rm")]
 public partial class PulumiStackTagRemoveSettings : ToolOptions
@@ -1065,7 +1064,7 @@ public partial class PulumiStackTagRemoveSettings : ToolOptions
 }
 #endregion
 #region PulumiStackTagListSettings
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Common.Tools.Pulumi.PulumiStackTagListSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagListSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiStackTagList), Arguments = "stack tag ls")]
 public partial class PulumiStackTagListSettings : ToolOptions
@@ -1095,7 +1094,7 @@ public partial class PulumiStackTagListSettings : ToolOptions
 }
 #endregion
 #region PulumiNewSettings
-/// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Common.Tools.Pulumi.PulumiNewSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Application.Tools.Containers.Pulumi.PulumiNewSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiNew), Arguments = "new")]
 public partial class PulumiNewSettings : ToolOptions
@@ -1147,7 +1146,7 @@ public partial class PulumiNewSettings : ToolOptions
 }
 #endregion
 #region PulumiDestroySettings
-/// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Common.Tools.Pulumi.PulumiDestroySettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Application.Tools.Containers.Pulumi.PulumiDestroySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PulumiTasks), Command = nameof(PulumiTasks.PulumiDestroy), Arguments = "destroy")]
 public partial class PulumiDestroySettings : ToolOptions
@@ -1207,7 +1206,7 @@ public partial class PulumiDestroySettings : ToolOptions
 }
 #endregion
 #region PulumiUpSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Common.Tools.Pulumi.PulumiUpSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiUp(Fallout.Application.Tools.Containers.Pulumi.PulumiUpSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiUpSettingsExtensions
 {
@@ -1755,7 +1754,7 @@ public static partial class PulumiUpSettingsExtensions
 }
 #endregion
 #region PulumiPreviewSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Common.Tools.Pulumi.PulumiPreviewSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiPreview(Fallout.Application.Tools.Containers.Pulumi.PulumiPreviewSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiPreviewSettingsExtensions
 {
@@ -2278,7 +2277,7 @@ public static partial class PulumiPreviewSettingsExtensions
 }
 #endregion
 #region PulumiConfigSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Common.Tools.Pulumi.PulumiConfigSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfig(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiConfigSettingsExtensions
 {
@@ -2460,7 +2459,7 @@ public static partial class PulumiConfigSettingsExtensions
 }
 #endregion
 #region PulumiConfigCopySettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Common.Tools.Pulumi.PulumiConfigCopySettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigCopy(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigCopySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiConfigCopySettingsExtensions
 {
@@ -2608,7 +2607,7 @@ public static partial class PulumiConfigCopySettingsExtensions
 }
 #endregion
 #region PulumiConfigGetSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Common.Tools.Pulumi.PulumiConfigGetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigGet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigGetSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiConfigGetSettingsExtensions
 {
@@ -2773,7 +2772,7 @@ public static partial class PulumiConfigGetSettingsExtensions
 }
 #endregion
 #region PulumiConfigRefreshSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Common.Tools.Pulumi.PulumiConfigRefreshSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigRefresh(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRefreshSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiConfigRefreshSettingsExtensions
 {
@@ -2922,7 +2921,7 @@ public static partial class PulumiConfigRefreshSettingsExtensions
 }
 #endregion
 #region PulumiConfigRemoveSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Common.Tools.Pulumi.PulumiConfigRemoveSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiConfigRemoveSettingsExtensions
 {
@@ -3070,7 +3069,7 @@ public static partial class PulumiConfigRemoveSettingsExtensions
 }
 #endregion
 #region PulumiConfigSetSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Common.Tools.Pulumi.PulumiConfigSetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiConfigSet(Fallout.Application.Tools.Containers.Pulumi.PulumiConfigSetSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiConfigSetSettingsExtensions
 {
@@ -3260,7 +3259,7 @@ public static partial class PulumiConfigSetSettingsExtensions
 }
 #endregion
 #region PulumiStackSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Common.Tools.Pulumi.PulumiStackSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStack(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackSettingsExtensions
 {
@@ -3468,7 +3467,7 @@ public static partial class PulumiStackSettingsExtensions
 }
 #endregion
 #region PulumiStackChangeSecretsProviderSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Common.Tools.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackChangeSecretsProvider(Fallout.Application.Tools.Containers.Pulumi.PulumiStackChangeSecretsProviderSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackChangeSecretsProviderSettingsExtensions
 {
@@ -3608,7 +3607,7 @@ public static partial class PulumiStackChangeSecretsProviderSettingsExtensions
 }
 #endregion
 #region PulumiStackExportSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Common.Tools.Pulumi.PulumiStackExportSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackExport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackExportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackExportSettingsExtensions
 {
@@ -3773,7 +3772,7 @@ public static partial class PulumiStackExportSettingsExtensions
 }
 #endregion
 #region PulumiStackGraphSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Common.Tools.Pulumi.PulumiStackGraphSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackGraph(Fallout.Application.Tools.Containers.Pulumi.PulumiStackGraphSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackGraphSettingsExtensions
 {
@@ -3963,7 +3962,7 @@ public static partial class PulumiStackGraphSettingsExtensions
 }
 #endregion
 #region PulumiStackHistorySettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Common.Tools.Pulumi.PulumiStackHistorySettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackHistory(Fallout.Application.Tools.Containers.Pulumi.PulumiStackHistorySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackHistorySettingsExtensions
 {
@@ -4129,7 +4128,7 @@ public static partial class PulumiStackHistorySettingsExtensions
 }
 #endregion
 #region PulumiStackImportSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Common.Tools.Pulumi.PulumiStackImportSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackImport(Fallout.Application.Tools.Containers.Pulumi.PulumiStackImportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackImportSettingsExtensions
 {
@@ -4286,7 +4285,7 @@ public static partial class PulumiStackImportSettingsExtensions
 }
 #endregion
 #region PulumiStackInitSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Common.Tools.Pulumi.PulumiStackInitSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackInit(Fallout.Application.Tools.Containers.Pulumi.PulumiStackInitSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackInitSettingsExtensions
 {
@@ -4442,7 +4441,7 @@ public static partial class PulumiStackInitSettingsExtensions
 }
 #endregion
 #region PulumiStackListSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Common.Tools.Pulumi.PulumiStackListSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackListSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackListSettingsExtensions
 {
@@ -4632,7 +4631,7 @@ public static partial class PulumiStackListSettingsExtensions
 }
 #endregion
 #region PulumiStackOutputSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Common.Tools.Pulumi.PulumiStackOutputSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackOutput(Fallout.Application.Tools.Containers.Pulumi.PulumiStackOutputSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackOutputSettingsExtensions
 {
@@ -4806,7 +4805,7 @@ public static partial class PulumiStackOutputSettingsExtensions
 }
 #endregion
 #region PulumiStackRenameSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Common.Tools.Pulumi.PulumiStackRenameSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackRename(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRenameSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackRenameSettingsExtensions
 {
@@ -4946,7 +4945,7 @@ public static partial class PulumiStackRenameSettingsExtensions
 }
 #endregion
 #region PulumiStackRemoveSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Common.Tools.Pulumi.PulumiStackRemoveSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackRemoveSettingsExtensions
 {
@@ -5137,7 +5136,7 @@ public static partial class PulumiStackRemoveSettingsExtensions
 }
 #endregion
 #region PulumiStackSelectSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Common.Tools.Pulumi.PulumiStackSelectSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackSelect(Fallout.Application.Tools.Containers.Pulumi.PulumiStackSelectSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackSelectSettingsExtensions
 {
@@ -5302,7 +5301,7 @@ public static partial class PulumiStackSelectSettingsExtensions
 }
 #endregion
 #region PulumiStackTagSetSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Common.Tools.Pulumi.PulumiStackTagSetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagSet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagSetSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackTagSetSettingsExtensions
 {
@@ -5450,7 +5449,7 @@ public static partial class PulumiStackTagSetSettingsExtensions
 }
 #endregion
 #region PulumiStackTagGetSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Common.Tools.Pulumi.PulumiStackTagGetSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagGet(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagGetSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackTagGetSettingsExtensions
 {
@@ -5590,7 +5589,7 @@ public static partial class PulumiStackTagGetSettingsExtensions
 }
 #endregion
 #region PulumiStackTagRemoveSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Common.Tools.Pulumi.PulumiStackTagRemoveSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagRemove(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackTagRemoveSettingsExtensions
 {
@@ -5730,7 +5729,7 @@ public static partial class PulumiStackTagRemoveSettingsExtensions
 }
 #endregion
 #region PulumiStackTagListSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Common.Tools.Pulumi.PulumiStackTagListSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiStackTagList(Fallout.Application.Tools.Containers.Pulumi.PulumiStackTagListSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiStackTagListSettingsExtensions
 {
@@ -5879,7 +5878,7 @@ public static partial class PulumiStackTagListSettingsExtensions
 }
 #endregion
 #region PulumiNewSettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Common.Tools.Pulumi.PulumiNewSettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiNew(Fallout.Application.Tools.Containers.Pulumi.PulumiNewSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiNewSettingsExtensions
 {
@@ -6167,7 +6166,7 @@ public static partial class PulumiNewSettingsExtensions
 }
 #endregion
 #region PulumiDestroySettingsExtensions
-/// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Common.Tools.Pulumi.PulumiDestroySettings)"/>
+/// <inheritdoc cref="PulumiTasks.PulumiDestroy(Fallout.Application.Tools.Containers.Pulumi.PulumiDestroySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PulumiDestroySettingsExtensions
 {

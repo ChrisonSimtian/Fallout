@@ -6,7 +6,7 @@ using Fallout.Common;
 using Fallout.Common.CI.AppVeyor;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.Tools.SignPath.SignPathTasks;
+using static Fallout.Application.Tools.Signing.SignPath.SignPathTasks;
 
 namespace Fallout.Components;
 

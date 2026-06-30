@@ -2,8 +2,8 @@
 using System.Linq;
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using Fallout.Application.Tools.DotNet;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 

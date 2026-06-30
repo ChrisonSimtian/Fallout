@@ -36,9 +36,9 @@ internal static class FalloutArchitecture
     public const string Components = "Fallout.Components";
     public const string Cli = "Fallout.Cli";
 
-    // Application-layer tool families (Fallout.Application.Tools.*). Governed for layering; their
-    // namespace alignment (still legacy Fallout.Common.Tools.*) is deferred, so they are deliberately
-    // NOT in RuntimeLibraries (the naming-rule subjects) yet.
+    // Application-layer tool families (Fallout.Application.Tools.*). Their namespaces are now aligned
+    // to the assembly (Fallout.Application.Tools.<Family>[.<Tool>]), so they are governed for both
+    // layering and naming (members of RuntimeLibraries below).
     public const string ToolsNotifications = "Fallout.Application.Tools.Notifications";
     public const string ToolsJavaScript = "Fallout.Application.Tools.JavaScript";
     public const string ToolsTesting = "Fallout.Application.Tools.Testing";
@@ -74,6 +74,9 @@ internal static class FalloutArchitecture
         Core, Utilities, UtilitiesIoCompression, UtilitiesIoGlobbing, UtilitiesNet, UtilitiesTextJson,
         UtilitiesTextYaml, Solution, ToolingExecution, ToolingRequirements, Tooling, ProjectModel, BuildShared,
         Build, Common, Components, Cli, NukeCommon, NukeBuild, NukeComponents,
+        ToolsNotifications, ToolsJavaScript, ToolsTesting, ToolsSigning, ToolsPackaging, ToolsVersioning,
+        ToolsCloud, ToolsShell, ToolsGaming, ToolsDocumentation, ToolsDotNet, ToolsCoverage, ToolsContainers,
+        ToolsVersionControl,
     ];
 
     private static readonly IReadOnlyDictionary<string, System.Reflection.Assembly> Loaded = LoadProductionAssemblies();

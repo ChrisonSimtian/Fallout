@@ -4,7 +4,7 @@
 // https://github.com/Fallout-build/Fallout/blob/main/LICENSE
 
 using FluentAssertions;
-using Fallout.Common.Tools.GitVersion;
+using Fallout.Application.Tools.Versioning.GitVersion;
 using Fallout.Common.Utilities;
 using Xunit;
 

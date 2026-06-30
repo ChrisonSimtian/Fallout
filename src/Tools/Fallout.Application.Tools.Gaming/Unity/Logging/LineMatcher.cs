@@ -2,7 +2,8 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Fallout.Common.Tools.Unity.Logging;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Gaming.Unity.Logging;
 
 internal class LineMatcher
 {

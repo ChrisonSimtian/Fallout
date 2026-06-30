@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
-namespace Fallout.Common.Tools.Twitter;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Notifications.Twitter;
 
 public static class TwitterTasks
 {

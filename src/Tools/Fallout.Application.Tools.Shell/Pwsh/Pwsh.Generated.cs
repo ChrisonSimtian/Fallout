@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Pwsh;
+namespace Fallout.Application.Tools.Shell.Pwsh;
 
 /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +27,13 @@ public partial class PwshTasks : ToolTasks, IRequirePathTool
     /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;fileArguments&gt;</c> via <see cref="PwshSettings.FileArguments"/></li><li><c>-Command</c> via <see cref="PwshSettings.Command"/></li><li><c>-ConfigurationFile</c> via <see cref="PwshSettings.ConfigurationFile"/></li><li><c>-ConfigurationName</c> via <see cref="PwshSettings.ConfigurationName"/></li><li><c>-CustomPipeName</c> via <see cref="PwshSettings.CustomPipeName"/></li><li><c>-EncodedCommand</c> via <see cref="PwshSettings.EncodedCommand"/></li><li><c>-ExecutionPolicy</c> via <see cref="PwshSettings.ExecutionPolicy"/></li><li><c>-File</c> via <see cref="PwshSettings.File"/></li><li><c>-InputFormat</c> via <see cref="PwshSettings.InputFormat"/></li><li><c>-Interactive</c> via <see cref="PwshSettings.Interactive"/></li><li><c>-Login</c> via <see cref="PwshSettings.Login"/></li><li><c>-Mta</c> via <see cref="PwshSettings.MultiThreadedApartment"/></li><li><c>-NoExit</c> via <see cref="PwshSettings.NoExit"/></li><li><c>-NoLogo</c> via <see cref="PwshSettings.NoLogo"/></li><li><c>-NonInteractive</c> via <see cref="PwshSettings.NonInteractive"/></li><li><c>-NoProfile</c> via <see cref="PwshSettings.NoProfile"/></li><li><c>-NoProfileLoadTime</c> via <see cref="PwshSettings.NoProfileLoadTime"/></li><li><c>-OutputFormat</c> via <see cref="PwshSettings.OutputFormat"/></li><li><c>-SettingsFile</c> via <see cref="PwshSettings.SettingsFile"/></li><li><c>-SSHServerMode</c> via <see cref="PwshSettings.SSHServerMode"/></li><li><c>-Sta</c> via <see cref="PwshSettings.SingleThreadedApartment"/></li><li><c>-Version</c> via <see cref="PwshSettings.Version"/></li><li><c>-WindowStyle</c> via <see cref="PwshSettings.WindowStyle"/></li><li><c>-WorkingDirectory</c> via <see cref="PwshSettings.WorkingDirectory"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Pwsh(PwshSettings options = null) => new PwshTasks().Run<PwshSettings>(options);
-    /// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Common.Tools.Pwsh.PwshSettings)"/>
+    /// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Application.Tools.Shell.Pwsh.PwshSettings)"/>
     public static IReadOnlyCollection<Output> Pwsh(Configure<PwshSettings> configurator) => new PwshTasks().Run<PwshSettings>(configurator.Invoke(new PwshSettings()));
-    /// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Common.Tools.Pwsh.PwshSettings)"/>
+    /// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Application.Tools.Shell.Pwsh.PwshSettings)"/>
     public static IEnumerable<(PwshSettings Settings, IReadOnlyCollection<Output> Output)> Pwsh(CombinatorialConfigure<PwshSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Pwsh, degreeOfParallelism, completeOnFailure);
 }
 #region PwshSettings
-/// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Common.Tools.Pwsh.PwshSettings)"/>
+/// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Application.Tools.Shell.Pwsh.PwshSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PwshTasks), Command = nameof(PwshTasks.Pwsh))]
 public partial class PwshSettings : ToolOptions
@@ -90,7 +89,7 @@ public partial class PwshSettings : ToolOptions
 }
 #endregion
 #region PwshSettingsExtensions
-/// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Common.Tools.Pwsh.PwshSettings)"/>
+/// <inheritdoc cref="PwshTasks.Pwsh(Fallout.Application.Tools.Shell.Pwsh.PwshSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PwshSettingsExtensions
 {

@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.PowerShell;
+namespace Fallout.Application.Tools.Shell.PowerShell;
 
 /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -26,13 +25,13 @@ public partial class PowerShellTasks : ToolTasks
     /// <summary><p>PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/powershell/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;fileArguments&gt;</c> via <see cref="PowerShellSettings.FileArguments"/></li><li><c>-</c> via <see cref="PowerShellSettings.FileKeyValueParameters"/></li><li><c>-Command</c> via <see cref="PowerShellSettings.Command"/></li><li><c>-ConfigurationName</c> via <see cref="PowerShellSettings.ConfigurationName"/></li><li><c>-EncodedCommand</c> via <see cref="PowerShellSettings.EncodedCommand"/></li><li><c>-ExecutionPolicy</c> via <see cref="PowerShellSettings.ExecutionPolicy"/></li><li><c>-File</c> via <see cref="PowerShellSettings.File"/></li><li><c>-InputFormat</c> via <see cref="PowerShellSettings.InputFormat"/></li><li><c>-Mta</c> via <see cref="PowerShellSettings.StartUsingAMultiThreadedApartment"/></li><li><c>-NoExit</c> via <see cref="PowerShellSettings.NoExit"/></li><li><c>-NoLogo</c> via <see cref="PowerShellSettings.NoLogo"/></li><li><c>-NonInteractive</c> via <see cref="PowerShellSettings.NonInteractive"/></li><li><c>-NoProfile</c> via <see cref="PowerShellSettings.NoProfile"/></li><li><c>-OutputFormat</c> via <see cref="PowerShellSettings.OutputFormat"/></li><li><c>-PSConsoleFile</c> via <see cref="PowerShellSettings.ConsoleFile"/></li><li><c>-Sta</c> via <see cref="PowerShellSettings.StartUsingASingleThreadedApartment"/></li><li><c>-Version</c> via <see cref="PowerShellSettings.Version"/></li><li><c>-WindowStyle</c> via <see cref="PowerShellSettings.WindowStyle"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> PowerShell(PowerShellSettings options = null) => new PowerShellTasks().Run<PowerShellSettings>(options);
-    /// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Common.Tools.PowerShell.PowerShellSettings)"/>
+    /// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Application.Tools.Shell.PowerShell.PowerShellSettings)"/>
     public static IReadOnlyCollection<Output> PowerShell(Configure<PowerShellSettings> configurator) => new PowerShellTasks().Run<PowerShellSettings>(configurator.Invoke(new PowerShellSettings()));
-    /// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Common.Tools.PowerShell.PowerShellSettings)"/>
+    /// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Application.Tools.Shell.PowerShell.PowerShellSettings)"/>
     public static IEnumerable<(PowerShellSettings Settings, IReadOnlyCollection<Output> Output)> PowerShell(CombinatorialConfigure<PowerShellSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(PowerShell, degreeOfParallelism, completeOnFailure);
 }
 #region PowerShellSettings
-/// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Common.Tools.PowerShell.PowerShellSettings)"/>
+/// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Application.Tools.Shell.PowerShell.PowerShellSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(PowerShellTasks), Command = nameof(PowerShellTasks.PowerShell))]
 public partial class PowerShellSettings : ToolOptions
@@ -76,7 +75,7 @@ public partial class PowerShellSettings : ToolOptions
 }
 #endregion
 #region PowerShellSettingsExtensions
-/// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Common.Tools.PowerShell.PowerShellSettings)"/>
+/// <inheritdoc cref="PowerShellTasks.PowerShell(Fallout.Application.Tools.Shell.PowerShell.PowerShellSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class PowerShellSettingsExtensions
 {

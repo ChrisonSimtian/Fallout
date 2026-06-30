@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.MinVer;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.MinVer;
 
 partial class MinVerTasks
 {

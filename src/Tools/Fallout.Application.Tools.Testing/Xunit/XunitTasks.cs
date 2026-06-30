@@ -2,7 +2,8 @@ using System;
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.Xunit;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Testing.Xunit;
 
 partial class XunitTasks
 {

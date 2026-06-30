@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
 
-namespace Fallout.Common.Tools.Discord;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Notifications.Discord;
 
 public static class DiscordTasks
 {

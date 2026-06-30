@@ -41,7 +41,7 @@ This is locked by the bridge-package design — `[TypeForwardedTo]` requires the
 | `Nuke.Common.IO` | `Fallout.Common.IO` | |
 | `Nuke.Common.ProjectModel` | `Fallout.Common.ProjectModel` | |
 | `Nuke.Common.Tooling` | `Fallout.Common.Tooling` | |
-| `Nuke.Common.Tools.<Tool>` | `Fallout.Common.Tools.<Tool>` | Applies to all ~70 tool wrappers |
+| `Nuke.Common.Tools.<Tool>` | `Fallout.Application.Tools.<Family>.<Tool>` | Applies to all ~65 tool wrappers. **Superseded:** the rebrand first mapped these to `Fallout.Common.Tools.<Tool>`; the 2026 onion alignment moved each tool into its family assembly/namespace (`Fallout.Application.Tools.<Family>`), e.g. `Docker` → `…Containers.Docker`, the `DotNet` tool collapses to `…DotNet`. Breaking change (pre-release 2026). |
 | `Nuke.Common.Utilities` (+ `.Collections`, `.Net`) | `Fallout.Common.Utilities` | |
 | `Nuke.Common.ValueInjection` | `Fallout.Common.ValueInjection` | |
 | `Nuke.Components` | `Fallout.Components` | |

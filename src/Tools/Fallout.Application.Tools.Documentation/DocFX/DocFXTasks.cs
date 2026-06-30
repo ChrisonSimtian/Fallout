@@ -1,7 +1,8 @@
 ﻿using Fallout.Common.Tooling;
 using Serilog.Events;
 
-namespace Fallout.Common.Tools.DocFX;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Documentation.DocFX;
 
 [LogLevelPattern(LogEventLevel.Warning, $@"{TimestampPattern}Info\:\[ExtractMetadata\]No\ files\ are\ found")]
 [LogLevelPattern(LogEventLevel.Warning, $@"{TimestampPattern}Warning\:")]

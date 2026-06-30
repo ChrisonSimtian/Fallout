@@ -3,7 +3,8 @@ using System.ComponentModel;
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.DotNet;
+using Fallout.Common;
+namespace Fallout.Application.Tools.DotNet;
 
 [TypeConverter(typeof(TypeConverter<DotNetRuntimeIdentifier>))]
 public class DotNetRuntimeIdentifier : Enumeration

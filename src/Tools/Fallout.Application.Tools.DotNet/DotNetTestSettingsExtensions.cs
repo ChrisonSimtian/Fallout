@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
 
+using Fallout.Common;
 namespace Fallout.Common.CI.TeamCity;
 
 public static class DotNetTestSettingsExtensions

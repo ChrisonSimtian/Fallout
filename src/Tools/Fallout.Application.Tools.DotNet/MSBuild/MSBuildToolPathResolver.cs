@@ -5,7 +5,8 @@ using System.IO;
 using System.Linq;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Tools.MSBuild;
+using Fallout.Common;
+namespace Fallout.Application.Tools.DotNet.MSBuild;
 
 public static class MSBuildToolPathResolver
 {

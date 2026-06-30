@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Fixie;
+namespace Fallout.Application.Tools.Testing.Fixie;
 
 /// <summary><p>Fixie is a .NET modern test framework similar to NUnit and xUnit, but with an emphasis on low-ceremony defaults and flexible customization.</p><p>For more details, visit the <a href="https://fixie.github.io/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,13 +28,13 @@ public partial class FixieTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>The <c>dotnet fixie</c> command is used to execute Fixie unit tests in a given project.</p><p>For more details, visit the <a href="https://fixie.github.io/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--</c> via <see cref="FixieSettings.CustomArguments"/></li><li><c>--configuration</c> via <see cref="FixieSettings.Configuration"/></li><li><c>--framework</c> via <see cref="FixieSettings.Framework"/></li><li><c>--no-build</c> via <see cref="FixieSettings.NoBuild"/></li><li><c>--report</c> via <see cref="FixieSettings.Report"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Fixie(FixieSettings options = null) => new FixieTasks().Run<FixieSettings>(options);
-    /// <inheritdoc cref="FixieTasks.Fixie(Fallout.Common.Tools.Fixie.FixieSettings)"/>
+    /// <inheritdoc cref="FixieTasks.Fixie(Fallout.Application.Tools.Testing.Fixie.FixieSettings)"/>
     public static IReadOnlyCollection<Output> Fixie(Configure<FixieSettings> configurator) => new FixieTasks().Run<FixieSettings>(configurator.Invoke(new FixieSettings()));
-    /// <inheritdoc cref="FixieTasks.Fixie(Fallout.Common.Tools.Fixie.FixieSettings)"/>
+    /// <inheritdoc cref="FixieTasks.Fixie(Fallout.Application.Tools.Testing.Fixie.FixieSettings)"/>
     public static IEnumerable<(FixieSettings Settings, IReadOnlyCollection<Output> Output)> Fixie(CombinatorialConfigure<FixieSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Fixie, degreeOfParallelism, completeOnFailure);
 }
 #region FixieSettings
-/// <inheritdoc cref="FixieTasks.Fixie(Fallout.Common.Tools.Fixie.FixieSettings)"/>
+/// <inheritdoc cref="FixieTasks.Fixie(Fallout.Application.Tools.Testing.Fixie.FixieSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(FixieTasks), Command = nameof(FixieTasks.Fixie))]
 public partial class FixieSettings : ToolOptions
@@ -53,7 +52,7 @@ public partial class FixieSettings : ToolOptions
 }
 #endregion
 #region FixieSettingsExtensions
-/// <inheritdoc cref="FixieTasks.Fixie(Fallout.Common.Tools.Fixie.FixieSettings)"/>
+/// <inheritdoc cref="FixieTasks.Fixie(Fallout.Application.Tools.Testing.Fixie.FixieSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class FixieSettingsExtensions
 {

@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.SonarScanner;
+namespace Fallout.Application.Tools.Coverage.SonarScanner;
 
 /// <summary><p>The SonarScanner for MSBuild is the recommended way to launch a SonarQube or SonarCloud analysis for projects/solutions using MSBuild or dotnet command as build tool.</p><p>For more details, visit the <a href="https://www.sonarqube.org/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,20 +28,20 @@ public partial class SonarScannerTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>The SonarScanner for MSBuild is the recommended way to launch a SonarQube or SonarCloud analysis for projects/solutions using MSBuild or dotnet command as build tool.</p><p>For more details, visit the <a href="https://www.sonarqube.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>/d</c> via <see cref="SonarScannerBeginSettings.AdditionalParameters"/></li><li><c>/d:sonar.analysis.</c> via <see cref="SonarScannerBeginSettings.AdditionalAnalysisParameters"/></li><li><c>/d:sonar.branch.name</c> via <see cref="SonarScannerBeginSettings.BranchName"/></li><li><c>/d:sonar.clientcert.password</c> via <see cref="SonarScannerBeginSettings.ClientCertificatePassword"/></li><li><c>/d:sonar.clientcert.path</c> via <see cref="SonarScannerBeginSettings.ClientCertificatePath"/></li><li><c>/d:sonar.coverage.exclusions</c> via <see cref="SonarScannerBeginSettings.CoverageExclusions"/></li><li><c>/d:sonar.coverageReportPaths</c> via <see cref="SonarScannerBeginSettings.GenericCoveragePaths"/></li><li><c>/d:sonar.cpd.exclusions</c> via <see cref="SonarScannerBeginSettings.DuplicationExclusions"/></li><li><c>/d:sonar.cs.dotcover.reportsPaths</c> via <see cref="SonarScannerBeginSettings.DotCoverPaths"/></li><li><c>/d:sonar.cs.nunit.reportsPaths</c> via <see cref="SonarScannerBeginSettings.NUnitTestReports"/></li><li><c>/d:sonar.cs.opencover.reportsPaths</c> via <see cref="SonarScannerBeginSettings.OpenCoverPaths"/></li><li><c>/d:sonar.cs.vscoveragexml.reportsPaths</c> via <see cref="SonarScannerBeginSettings.VisualStudioCoveragePaths"/></li><li><c>/d:sonar.cs.vstest.reportsPaths</c> via <see cref="SonarScannerBeginSettings.VSTestReports"/></li><li><c>/d:sonar.cs.xunit.reportsPaths</c> via <see cref="SonarScannerBeginSettings.XUnitTestReports"/></li><li><c>/d:sonar.dotnet.excludeTestProjects</c> via <see cref="SonarScannerBeginSettings.ExcludeTestProjects"/></li><li><c>/d:sonar.exclusions</c> via <see cref="SonarScannerBeginSettings.SourceExclusions"/></li><li><c>/d:sonar.host.url</c> via <see cref="SonarScannerBeginSettings.Server"/></li><li><c>/d:sonar.inclusions</c> via <see cref="SonarScannerBeginSettings.SourceInclusions"/></li><li><c>/d:sonar.links.ci</c> via <see cref="SonarScannerBeginSettings.ContinuousIntegrationUrl"/></li><li><c>/d:sonar.links.homepage</c> via <see cref="SonarScannerBeginSettings.Homepage"/></li><li><c>/d:sonar.links.issue</c> via <see cref="SonarScannerBeginSettings.IssueTrackerUrl"/></li><li><c>/d:sonar.links.scm</c> via <see cref="SonarScannerBeginSettings.SCMUrl"/></li><li><c>/d:sonar.login</c> via <see cref="SonarScannerBeginSettings.Login"/></li><li><c>/d:sonar.password</c> via <see cref="SonarScannerBeginSettings.Password"/></li><li><c>/d:sonar.projectDescription</c> via <see cref="SonarScannerBeginSettings.Description"/></li><li><c>/d:sonar.pullrequest.base</c> via <see cref="SonarScannerBeginSettings.PullRequestBase"/></li><li><c>/d:sonar.pullrequest.branch</c> via <see cref="SonarScannerBeginSettings.PullRequestBranch"/></li><li><c>/d:sonar.pullrequest.key</c> via <see cref="SonarScannerBeginSettings.PullRequestKey"/></li><li><c>/d:sonar.qualitygate.timeout</c> via <see cref="SonarScannerBeginSettings.QualityGateTimeout"/></li><li><c>/d:sonar.qualitygate.wait</c> via <see cref="SonarScannerBeginSettings.QualityGateWait"/></li><li><c>/d:sonar.scm.exclusions.disabled</c> via <see cref="SonarScannerBeginSettings.ScmExclusionsDisabled"/></li><li><c>/d:sonar.scm.forceReloadAll</c> via <see cref="SonarScannerBeginSettings.ScmForceReloadAll"/></li><li><c>/d:sonar.scm.provider</c> via <see cref="SonarScannerBeginSettings.ScmProvider"/></li><li><c>/d:sonar.scm.revision</c> via <see cref="SonarScannerBeginSettings.ScmRevision"/></li><li><c>/d:sonar.sourceEncoding</c> via <see cref="SonarScannerBeginSettings.SourceEncoding"/></li><li><c>/d:sonar.test.exclusions</c> via <see cref="SonarScannerBeginSettings.TestFileExclusions"/></li><li><c>/d:sonar.test.inclusions</c> via <see cref="SonarScannerBeginSettings.TestFileInclusions"/></li><li><c>/d:sonar.token</c> via <see cref="SonarScannerBeginSettings.Token"/></li><li><c>/d:sonar.verbose</c> via <see cref="SonarScannerBeginSettings.Verbose"/></li><li><c>/d:sonar.ws.timeout</c> via <see cref="SonarScannerBeginSettings.WebServiceTimeout"/></li><li><c>/k</c> via <see cref="SonarScannerBeginSettings.ProjectKey"/></li><li><c>/n</c> via <see cref="SonarScannerBeginSettings.Name"/></li><li><c>/o</c> via <see cref="SonarScannerBeginSettings.Organization"/></li><li><c>/v</c> via <see cref="SonarScannerBeginSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SonarScannerBegin(SonarScannerBeginSettings options = null) => new SonarScannerTasks().Run<SonarScannerBeginSettings>(options);
-    /// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Common.Tools.SonarScanner.SonarScannerBeginSettings)"/>
+    /// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerBeginSettings)"/>
     public static IReadOnlyCollection<Output> SonarScannerBegin(Configure<SonarScannerBeginSettings> configurator) => new SonarScannerTasks().Run<SonarScannerBeginSettings>(configurator.Invoke(new SonarScannerBeginSettings()));
-    /// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Common.Tools.SonarScanner.SonarScannerBeginSettings)"/>
+    /// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerBeginSettings)"/>
     public static IEnumerable<(SonarScannerBeginSettings Settings, IReadOnlyCollection<Output> Output)> SonarScannerBegin(CombinatorialConfigure<SonarScannerBeginSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SonarScannerBegin, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The SonarScanner for MSBuild is the recommended way to launch a SonarQube or SonarCloud analysis for projects/solutions using MSBuild or dotnet command as build tool.</p><p>For more details, visit the <a href="https://www.sonarqube.org/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>/d:sonar.clientcert.password</c> via <see cref="SonarScannerEndSettings.ClientCertificatePassword"/></li><li><c>/d:sonar.login</c> via <see cref="SonarScannerEndSettings.Login"/></li><li><c>/d:sonar.password</c> via <see cref="SonarScannerEndSettings.Password"/></li><li><c>/d:sonar.token</c> via <see cref="SonarScannerEndSettings.Token"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> SonarScannerEnd(SonarScannerEndSettings options = null) => new SonarScannerTasks().Run<SonarScannerEndSettings>(options);
-    /// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Common.Tools.SonarScanner.SonarScannerEndSettings)"/>
+    /// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerEndSettings)"/>
     public static IReadOnlyCollection<Output> SonarScannerEnd(Configure<SonarScannerEndSettings> configurator) => new SonarScannerTasks().Run<SonarScannerEndSettings>(configurator.Invoke(new SonarScannerEndSettings()));
-    /// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Common.Tools.SonarScanner.SonarScannerEndSettings)"/>
+    /// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerEndSettings)"/>
     public static IEnumerable<(SonarScannerEndSettings Settings, IReadOnlyCollection<Output> Output)> SonarScannerEnd(CombinatorialConfigure<SonarScannerEndSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(SonarScannerEnd, degreeOfParallelism, completeOnFailure);
 }
 #region SonarScannerBeginSettings
-/// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Common.Tools.SonarScanner.SonarScannerBeginSettings)"/>
+/// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerBeginSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SonarScannerTasks), Command = nameof(SonarScannerTasks.SonarScannerBegin), Arguments = "begin")]
 public partial class SonarScannerBeginSettings : ToolOptions, IToolOptionsWithFramework
@@ -138,7 +137,7 @@ public partial class SonarScannerBeginSettings : ToolOptions, IToolOptionsWithFr
 }
 #endregion
 #region SonarScannerEndSettings
-/// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Common.Tools.SonarScanner.SonarScannerEndSettings)"/>
+/// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerEndSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(SonarScannerTasks), Command = nameof(SonarScannerTasks.SonarScannerEnd), Arguments = "end")]
 public partial class SonarScannerEndSettings : ToolOptions, IToolOptionsWithFramework
@@ -154,7 +153,7 @@ public partial class SonarScannerEndSettings : ToolOptions, IToolOptionsWithFram
 }
 #endregion
 #region SonarScannerBeginSettingsExtensions
-/// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Common.Tools.SonarScanner.SonarScannerBeginSettings)"/>
+/// <inheritdoc cref="SonarScannerTasks.SonarScannerBegin(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerBeginSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SonarScannerBeginSettingsExtensions
 {
@@ -771,7 +770,7 @@ public static partial class SonarScannerBeginSettingsExtensions
 }
 #endregion
 #region SonarScannerEndSettingsExtensions
-/// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Common.Tools.SonarScanner.SonarScannerEndSettings)"/>
+/// <inheritdoc cref="SonarScannerTasks.SonarScannerEnd(Fallout.Application.Tools.Coverage.SonarScanner.SonarScannerEndSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class SonarScannerEndSettingsExtensions
 {

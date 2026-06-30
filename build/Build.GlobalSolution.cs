@@ -6,11 +6,11 @@ using Fallout.Common;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Tools.GitHub;
+using Fallout.Application.Tools.VersionControl.GitHub;
 using Fallout.Common.Utilities;
 using Fallout.Utilities.Text.Yaml;
 using static Fallout.Common.ControlFlow;
-using static Fallout.Common.Tools.Git.GitTasks;
+using static Fallout.Application.Tools.VersionControl.Git.GitTasks;
 
 partial class Build
 {

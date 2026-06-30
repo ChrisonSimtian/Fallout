@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.InnoSetup;
+namespace Fallout.Application.Tools.Packaging.InnoSetup;
 
 /// <summary><p>Inno Setup is a free installer for Windows programs by Jordan Russell and Martijn Laan. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.</p><p>For more details, visit the <a href="http://www.jrsoftware.org/isinfo.php">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +27,13 @@ public partial class InnoSetupTasks : ToolTasks, IRequirePathTool
     /// <summary><p>Inno Setup is a free installer for Windows programs by Jordan Russell and Martijn Laan. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.</p><p>For more details, visit the <a href="http://www.jrsoftware.org/isinfo.php">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;scriptFile&gt;</c> via <see cref="InnoSetupSettings.ScriptFile"/></li><li><c>/D</c> via <see cref="InnoSetupSettings.KeyValueDefinitions"/></li><li><c>/D</c> via <see cref="InnoSetupSettings.KeyDefinitions"/></li><li><c>/F</c> via <see cref="InnoSetupSettings.OutputBaseFilename"/></li><li><c>/O</c> via <see cref="InnoSetupSettings.Output"/></li><li><c>/O</c> via <see cref="InnoSetupSettings.OutputDir"/></li><li><c>/Q</c> via <see cref="InnoSetupSettings.Quiet"/></li><li><c>/Qp</c> via <see cref="InnoSetupSettings.QuietWithProgress"/></li><li><c>/S</c> via <see cref="InnoSetupSettings.SignTools"/></li><li><c>/V</c> via <see cref="InnoSetupSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> InnoSetup(InnoSetupSettings options = null) => new InnoSetupTasks().Run<InnoSetupSettings>(options);
-    /// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Common.Tools.InnoSetup.InnoSetupSettings)"/>
+    /// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Application.Tools.Packaging.InnoSetup.InnoSetupSettings)"/>
     public static IReadOnlyCollection<Output> InnoSetup(Configure<InnoSetupSettings> configurator) => new InnoSetupTasks().Run<InnoSetupSettings>(configurator.Invoke(new InnoSetupSettings()));
-    /// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Common.Tools.InnoSetup.InnoSetupSettings)"/>
+    /// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Application.Tools.Packaging.InnoSetup.InnoSetupSettings)"/>
     public static IEnumerable<(InnoSetupSettings Settings, IReadOnlyCollection<Output> Output)> InnoSetup(CombinatorialConfigure<InnoSetupSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(InnoSetup, degreeOfParallelism, completeOnFailure);
 }
 #region InnoSetupSettings
-/// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Common.Tools.InnoSetup.InnoSetupSettings)"/>
+/// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Application.Tools.Packaging.InnoSetup.InnoSetupSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(InnoSetupTasks), Command = nameof(InnoSetupTasks.InnoSetup))]
 public partial class InnoSetupSettings : ToolOptions
@@ -62,7 +61,7 @@ public partial class InnoSetupSettings : ToolOptions
 }
 #endregion
 #region InnoSetupSettingsExtensions
-/// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Common.Tools.InnoSetup.InnoSetupSettings)"/>
+/// <inheritdoc cref="InnoSetupTasks.InnoSetup(Fallout.Application.Tools.Packaging.InnoSetup.InnoSetupSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class InnoSetupSettingsExtensions
 {

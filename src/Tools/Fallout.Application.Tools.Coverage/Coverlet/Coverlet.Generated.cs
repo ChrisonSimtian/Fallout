@@ -2,8 +2,7 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Coverlet;
+namespace Fallout.Application.Tools.Coverage.Coverlet;
 
 /// <summary><p><c>Coverlet</c> is a cross platform code coverage library for .NET Core, with support for line, branch and method coverage.The <c>dotnet test</c> command is used to execute unit tests in a given project. Unit tests are console application projects that have dependencies on the unit test framework (for example, MSTest, NUnit, or xUnit) and the dotnet test runner for the unit testing framework. These are packaged as NuGet packages and are restored as ordinary dependencies for the project.</p><p>For more details, visit the <a href="https://github.com/tonerdo/coverlet/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -30,13 +29,13 @@ public partial class CoverletTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p><c>Coverlet</c> is a cross platform code coverage library for .NET Core, with support for line, branch and method coverage.The <c>dotnet test</c> command is used to execute unit tests in a given project. Unit tests are console application projects that have dependencies on the unit test framework (for example, MSTest, NUnit, or xUnit) and the dotnet test runner for the unit testing framework. These are packaged as NuGet packages and are restored as ordinary dependencies for the project.</p><p>For more details, visit the <a href="https://github.com/tonerdo/coverlet/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;assembly&gt;</c> via <see cref="CoverletSettings.Assembly"/></li><li><c>--exclude</c> via <see cref="CoverletSettings.Exclude"/></li><li><c>--exclude-by-file</c> via <see cref="CoverletSettings.ExcludeByFile"/></li><li><c>--format</c> via <see cref="CoverletSettings.Format"/></li><li><c>--include</c> via <see cref="CoverletSettings.Include"/></li><li><c>--merge-with</c> via <see cref="CoverletSettings.MergeWith"/></li><li><c>--output</c> via <see cref="CoverletSettings.Output"/></li><li><c>--target</c> via <see cref="CoverletSettings.Target"/></li><li><c>--targetargs</c> via <see cref="CoverletSettings.TargetArgs"/></li><li><c>--threshold</c> via <see cref="CoverletSettings.Threshold"/></li><li><c>--threshold-type</c> via <see cref="CoverletSettings.ThresholdType"/></li><li><c>--version</c> via <see cref="CoverletSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Coverlet(CoverletSettings options = null) => new CoverletTasks().Run<CoverletSettings>(options);
-    /// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Common.Tools.Coverlet.CoverletSettings)"/>
+    /// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Application.Tools.Coverage.Coverlet.CoverletSettings)"/>
     public static IReadOnlyCollection<Output> Coverlet(Configure<CoverletSettings> configurator) => new CoverletTasks().Run<CoverletSettings>(configurator.Invoke(new CoverletSettings()));
-    /// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Common.Tools.Coverlet.CoverletSettings)"/>
+    /// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Application.Tools.Coverage.Coverlet.CoverletSettings)"/>
     public static IEnumerable<(CoverletSettings Settings, IReadOnlyCollection<Output> Output)> Coverlet(CombinatorialConfigure<CoverletSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Coverlet, degreeOfParallelism, completeOnFailure);
 }
 #region CoverletSettings
-/// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Common.Tools.Coverlet.CoverletSettings)"/>
+/// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Application.Tools.Coverage.Coverlet.CoverletSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CoverletTasks), Command = nameof(CoverletTasks.Coverlet))]
 public partial class CoverletSettings : ToolOptions
@@ -68,7 +67,7 @@ public partial class CoverletSettings : ToolOptions
 }
 #endregion
 #region CoverletSettingsExtensions
-/// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Common.Tools.Coverlet.CoverletSettings)"/>
+/// <inheritdoc cref="CoverletTasks.Coverlet(Fallout.Application.Tools.Coverage.Coverlet.CoverletSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class CoverletSettingsExtensions
 {

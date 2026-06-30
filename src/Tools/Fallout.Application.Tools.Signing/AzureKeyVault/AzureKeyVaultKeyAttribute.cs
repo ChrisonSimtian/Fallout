@@ -2,7 +2,8 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+using Fallout.Common;
+namespace Fallout.Application.Tools.Signing.AzureKeyVault
 {
     /// <summary>Attribute to obtain a key from from the Azure KeyVault defined by <see cref="AzureKeyVaultConfigurationAttribute"/>.</summary>
     public class AzureKeyVaultKeyAttribute : AzureKeyVaultAttributeBase

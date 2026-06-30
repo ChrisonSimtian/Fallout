@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.VSWhere;
+using Fallout.Common;
+namespace Fallout.Application.Tools.DotNet.VSWhere;
 
 partial class VSWhereTasks
 {

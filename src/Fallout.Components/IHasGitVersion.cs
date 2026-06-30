@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Fallout.Common;
-using Fallout.Common.Tools.GitVersion;
+using Fallout.Application.Tools.Versioning.GitVersion;
 
 namespace Fallout.Components;
 

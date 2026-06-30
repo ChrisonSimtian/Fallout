@@ -3,7 +3,8 @@ using System.Linq;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.SignTool;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Signing.SignTool;
 
 partial class SignToolTasks
 {

@@ -5,10 +5,10 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Fallout.Common;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.DotNet;
-using Fallout.Common.Tools.MSBuild;
-using Fallout.Common.Tools.NuGet;
-using Fallout.Common.Tools.SignTool;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Application.Tools.DotNet.MSBuild;
+using Fallout.Application.Tools.DotNet.NuGet;
+using Fallout.Application.Tools.Signing.SignTool;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Fallout.Cli.Rewriting.Cake;
@@ -33,9 +33,9 @@ internal class ClassRewriter : SafeSyntaxRewriter
             "Fallout.Common.IO",
             "Fallout.Solutions",
             "Fallout.Common.Tooling",
-            "Fallout.Common.Tools.DotNet",
-            "Fallout.Common.Tools.GitVersion",
-            "Fallout.Common.Tools.SignTool",
+            "Fallout.Application.Tools.DotNet",
+            "Fallout.Application.Tools.Versioning.GitVersion",
+            "Fallout.Application.Tools.Signing.SignTool",
             "Fallout.Common.Utilities.Collections",
         };
 

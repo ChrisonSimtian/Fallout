@@ -5,7 +5,7 @@ using Fallout.Common;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Solutions;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
 using Fallout.Common.Utilities;
 using static Fallout.Common.Constants;
 

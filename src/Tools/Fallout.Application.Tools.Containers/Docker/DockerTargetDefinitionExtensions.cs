@@ -5,15 +5,16 @@ using System.Linq;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Serilog;
 using Serilog.Formatting.Compact.Reader;
-using static Fallout.Common.Tools.Docker.DockerTasks;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Application.Tools.Containers.Docker.DockerTasks;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 
-namespace Fallout.Common.Tools.Docker;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Containers.Docker;
 
 public static class DockerTargetDefinitionExtensions
 {

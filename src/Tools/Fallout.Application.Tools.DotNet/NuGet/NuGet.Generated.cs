@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.NuGet;
+namespace Fallout.Application.Tools.DotNet.NuGet;
 
 /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,97 +28,97 @@ public partial class NuGetTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="NuGetPushSettings.TargetPath"/></li><li><c>-ApiKey</c> via <see cref="NuGetPushSettings.ApiKey"/></li><li><c>-ConfigFile</c> via <see cref="NuGetPushSettings.ConfigFile"/></li><li><c>-DisableBuffering</c> via <see cref="NuGetPushSettings.DisableBuffering"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetPushSettings.ForceEnglishOutput"/></li><li><c>-NonInteractive</c> via <see cref="NuGetPushSettings.NonInteractive"/></li><li><c>-NoSymbols</c> via <see cref="NuGetPushSettings.NoSymbols"/></li><li><c>-Source</c> via <see cref="NuGetPushSettings.Source"/></li><li><c>-SymbolApiKey</c> via <see cref="NuGetPushSettings.SymbolApiKey"/></li><li><c>-SymbolSource</c> via <see cref="NuGetPushSettings.SymbolSource"/></li><li><c>-Timeout</c> via <see cref="NuGetPushSettings.Timeout"/></li><li><c>-Verbosity</c> via <see cref="NuGetPushSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetPush(NuGetPushSettings options = null) => new NuGetTasks().Run<NuGetPushSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Common.Tools.NuGet.NuGetPushSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Application.Tools.DotNet.NuGet.NuGetPushSettings)"/>
     public static IReadOnlyCollection<Output> NuGetPush(Configure<NuGetPushSettings> configurator) => new NuGetTasks().Run<NuGetPushSettings>(configurator.Invoke(new NuGetPushSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Common.Tools.NuGet.NuGetPushSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Application.Tools.DotNet.NuGet.NuGetPushSettings)"/>
     public static IEnumerable<(NuGetPushSettings Settings, IReadOnlyCollection<Output> Output)> NuGetPush(CombinatorialConfigure<NuGetPushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetPush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageId&gt;</c> via <see cref="NuGetDeleteSettings.PackageId"/></li><li><c>&lt;packageVersion&gt;</c> via <see cref="NuGetDeleteSettings.PackageVersion"/></li><li><c>-ApiKey</c> via <see cref="NuGetDeleteSettings.ApiKey"/></li><li><c>-ConfigFile</c> via <see cref="NuGetDeleteSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetDeleteSettings.ForceEnglishOutput"/></li><li><c>-NonInteractive</c> via <see cref="NuGetDeleteSettings.NonInteractive"/></li><li><c>-NoPrompt</c> via <see cref="NuGetDeleteSettings.NoPrompt"/></li><li><c>-Source</c> via <see cref="NuGetDeleteSettings.Source"/></li><li><c>-Verbosity</c> via <see cref="NuGetDeleteSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetDelete(NuGetDeleteSettings options = null) => new NuGetTasks().Run<NuGetDeleteSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Common.Tools.NuGet.NuGetDeleteSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Application.Tools.DotNet.NuGet.NuGetDeleteSettings)"/>
     public static IReadOnlyCollection<Output> NuGetDelete(Configure<NuGetDeleteSettings> configurator) => new NuGetTasks().Run<NuGetDeleteSettings>(configurator.Invoke(new NuGetDeleteSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Common.Tools.NuGet.NuGetDeleteSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Application.Tools.DotNet.NuGet.NuGetDeleteSettings)"/>
     public static IEnumerable<(NuGetDeleteSettings Settings, IReadOnlyCollection<Output> Output)> NuGetDelete(CombinatorialConfigure<NuGetDeleteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetDelete, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="NuGetSignSettings.TargetPath"/></li><li><c>-CertificateFingerprint</c> via <see cref="NuGetSignSettings.CertificateFingerprint"/></li><li><c>-CertificatePassword</c> via <see cref="NuGetSignSettings.CertificatePassword"/></li><li><c>-CertificatePath</c> via <see cref="NuGetSignSettings.CertificatePath"/></li><li><c>-CertificateStoreLocation</c> via <see cref="NuGetSignSettings.CertificateStoreLocation"/></li><li><c>-CertificateStoreName</c> via <see cref="NuGetSignSettings.CertificateStoreName"/></li><li><c>-CertificateSubjectName</c> via <see cref="NuGetSignSettings.CertificateSubjectName"/></li><li><c>-ConfigFile</c> via <see cref="NuGetSignSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSignSettings.ForceEnglishOutput"/></li><li><c>-HashAlgorithm</c> via <see cref="NuGetSignSettings.HashAlgorithm"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSignSettings.NonInteractive"/></li><li><c>-OutputDirectory</c> via <see cref="NuGetSignSettings.OutputDirectory"/></li><li><c>-Overwrite</c> via <see cref="NuGetSignSettings.Overwrite"/></li><li><c>-Timestamper</c> via <see cref="NuGetSignSettings.Timestamper"/></li><li><c>-TimestampHashAlgorithm</c> via <see cref="NuGetSignSettings.TimestampHashAlgorithm"/></li><li><c>-Verbosity</c> via <see cref="NuGetSignSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSign(NuGetSignSettings options = null) => new NuGetTasks().Run<NuGetSignSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Common.Tools.NuGet.NuGetSignSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Application.Tools.DotNet.NuGet.NuGetSignSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSign(Configure<NuGetSignSettings> configurator) => new NuGetTasks().Run<NuGetSignSettings>(configurator.Invoke(new NuGetSignSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Common.Tools.NuGet.NuGetSignSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Application.Tools.DotNet.NuGet.NuGetSignSettings)"/>
     public static IEnumerable<(NuGetSignSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSign(CombinatorialConfigure<NuGetSignSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSign, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-CertificateFingerprint</c> via <see cref="NuGetVerifySettings.CertificateFingerprint"/></li><li><c>-ConfigFile</c> via <see cref="NuGetVerifySettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetVerifySettings.ForceEnglishOutput"/></li><li><c>-NonInteractive</c> via <see cref="NuGetVerifySettings.NonInteractive"/></li><li><c>-Signatures</c> via <see cref="NuGetVerifySettings.TargetPath"/></li><li><c>-Verbosity</c> via <see cref="NuGetVerifySettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetVerify(NuGetVerifySettings options = null) => new NuGetTasks().Run<NuGetVerifySettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Common.Tools.NuGet.NuGetVerifySettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Application.Tools.DotNet.NuGet.NuGetVerifySettings)"/>
     public static IReadOnlyCollection<Output> NuGetVerify(Configure<NuGetVerifySettings> configurator) => new NuGetTasks().Run<NuGetVerifySettings>(configurator.Invoke(new NuGetVerifySettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Common.Tools.NuGet.NuGetVerifySettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Application.Tools.DotNet.NuGet.NuGetVerifySettings)"/>
     public static IEnumerable<(NuGetVerifySettings Settings, IReadOnlyCollection<Output> Output)> NuGetVerify(CombinatorialConfigure<NuGetVerifySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetVerify, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="NuGetPackSettings.TargetPath"/></li><li><c>-BasePath</c> via <see cref="NuGetPackSettings.BasePath"/></li><li><c>-Build</c> via <see cref="NuGetPackSettings.Build"/></li><li><c>-Exclude</c> via <see cref="NuGetPackSettings.Exclude"/></li><li><c>-ExcludeEmptyDirectories</c> via <see cref="NuGetPackSettings.ExcludeEmptyDirectories"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetPackSettings.ForceEnglishOutput"/></li><li><c>-IncludeReferencedProjects</c> via <see cref="NuGetPackSettings.IncludeReferencedProjects"/></li><li><c>-MinClientVersion</c> via <see cref="NuGetPackSettings.MinClientVersion"/></li><li><c>-MSBuildPath</c> via <see cref="NuGetPackSettings.MSBuildPath"/></li><li><c>-MSBuildVersion</c> via <see cref="NuGetPackSettings.MSBuildVersion"/></li><li><c>-NoDefaultExcludes</c> via <see cref="NuGetPackSettings.NoDefaultExcludes"/></li><li><c>-NoPackageAnalysis</c> via <see cref="NuGetPackSettings.NoPackageAnalysis"/></li><li><c>-OutputDirectory</c> via <see cref="NuGetPackSettings.OutputDirectory"/></li><li><c>-Properties</c> via <see cref="NuGetPackSettings.Properties"/></li><li><c>-Suffix</c> via <see cref="NuGetPackSettings.Suffix"/></li><li><c>-SymbolPackageFormat</c> via <see cref="NuGetPackSettings.SymbolPackageFormat"/></li><li><c>-Symbols</c> via <see cref="NuGetPackSettings.Symbols"/></li><li><c>-Tool</c> via <see cref="NuGetPackSettings.Tool"/></li><li><c>-Verbosity</c> via <see cref="NuGetPackSettings.Verbosity"/></li><li><c>-Version</c> via <see cref="NuGetPackSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetPack(NuGetPackSettings options = null) => new NuGetTasks().Run<NuGetPackSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Common.Tools.NuGet.NuGetPackSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Application.Tools.DotNet.NuGet.NuGetPackSettings)"/>
     public static IReadOnlyCollection<Output> NuGetPack(Configure<NuGetPackSettings> configurator) => new NuGetTasks().Run<NuGetPackSettings>(configurator.Invoke(new NuGetPackSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Common.Tools.NuGet.NuGetPackSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Application.Tools.DotNet.NuGet.NuGetPackSettings)"/>
     public static IEnumerable<(NuGetPackSettings Settings, IReadOnlyCollection<Output> Output)> NuGetPack(CombinatorialConfigure<NuGetPackSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetPack, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="NuGetRestoreSettings.TargetPath"/></li><li><c>-ConfigFile</c> via <see cref="NuGetRestoreSettings.ConfigFile"/></li><li><c>-DirectDownload</c> via <see cref="NuGetRestoreSettings.DirectDownload"/></li><li><c>-DisableParallelProcessing</c> via <see cref="NuGetRestoreSettings.DisableParallelProcessing"/></li><li><c>-FallbackSource</c> via <see cref="NuGetRestoreSettings.FallbackSource"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetRestoreSettings.ForceEnglishOutput"/></li><li><c>-MSBuildPath</c> via <see cref="NuGetRestoreSettings.MSBuildPath"/></li><li><c>-MSBuildVersion</c> via <see cref="NuGetRestoreSettings.MSBuildVersion"/></li><li><c>-NoCache</c> via <see cref="NuGetRestoreSettings.NoCache"/></li><li><c>-NonInteractive</c> via <see cref="NuGetRestoreSettings.NonInteractive"/></li><li><c>-OutputDirectory</c> via <see cref="NuGetRestoreSettings.OutputDirectory"/></li><li><c>-PackageSaveMode</c> via <see cref="NuGetRestoreSettings.PackageSaveMode"/></li><li><c>-PackagesDirectory</c> via <see cref="NuGetRestoreSettings.PackagesDirectory"/></li><li><c>-Project2ProjectTimeOut</c> via <see cref="NuGetRestoreSettings.Project2ProjectTimeOut"/></li><li><c>-Recursive</c> via <see cref="NuGetRestoreSettings.Recursive"/></li><li><c>-RequireConsent</c> via <see cref="NuGetRestoreSettings.RequireConsent"/></li><li><c>-SolutionDirectory</c> via <see cref="NuGetRestoreSettings.SolutionDirectory"/></li><li><c>-Source</c> via <see cref="NuGetRestoreSettings.Source"/></li><li><c>-Verbosity</c> via <see cref="NuGetRestoreSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetRestore(NuGetRestoreSettings options = null) => new NuGetTasks().Run<NuGetRestoreSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Common.Tools.NuGet.NuGetRestoreSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Application.Tools.DotNet.NuGet.NuGetRestoreSettings)"/>
     public static IReadOnlyCollection<Output> NuGetRestore(Configure<NuGetRestoreSettings> configurator) => new NuGetTasks().Run<NuGetRestoreSettings>(configurator.Invoke(new NuGetRestoreSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Common.Tools.NuGet.NuGetRestoreSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Application.Tools.DotNet.NuGet.NuGetRestoreSettings)"/>
     public static IEnumerable<(NuGetRestoreSettings Settings, IReadOnlyCollection<Output> Output)> NuGetRestore(CombinatorialConfigure<NuGetRestoreSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetRestore, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageID&gt;</c> via <see cref="NuGetInstallSettings.PackageID"/></li><li><c>-ConfigFile</c> via <see cref="NuGetInstallSettings.ConfigFile"/></li><li><c>-DependencyVersion</c> via <see cref="NuGetInstallSettings.DependencyVersion"/></li><li><c>-DisableParallelProcessing</c> via <see cref="NuGetInstallSettings.DisableParallelProcessing"/></li><li><c>-ExcludeVersion</c> via <see cref="NuGetInstallSettings.ExcludeVersion"/></li><li><c>-FallbackSource</c> via <see cref="NuGetInstallSettings.FallbackSource"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetInstallSettings.ForceEnglishOutput"/></li><li><c>-Framework</c> via <see cref="NuGetInstallSettings.Framework"/></li><li><c>-NoCache</c> via <see cref="NuGetInstallSettings.NoCache"/></li><li><c>-NonInteractive</c> via <see cref="NuGetInstallSettings.NonInteractive"/></li><li><c>-OutputDirectory</c> via <see cref="NuGetInstallSettings.OutputDirectory"/></li><li><c>-PackageSaveMode</c> via <see cref="NuGetInstallSettings.PackageSaveMode"/></li><li><c>-PreRelease</c> via <see cref="NuGetInstallSettings.PreRelease"/></li><li><c>-RequireConsent</c> via <see cref="NuGetInstallSettings.RequireConsent"/></li><li><c>-SolutionDirectory</c> via <see cref="NuGetInstallSettings.SolutionDirectory"/></li><li><c>-Source</c> via <see cref="NuGetInstallSettings.Source"/></li><li><c>-Verbosity</c> via <see cref="NuGetInstallSettings.Verbosity"/></li><li><c>-Version</c> via <see cref="NuGetInstallSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetInstall(NuGetInstallSettings options = null) => new NuGetTasks().Run<NuGetInstallSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Common.Tools.NuGet.NuGetInstallSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Application.Tools.DotNet.NuGet.NuGetInstallSettings)"/>
     public static IReadOnlyCollection<Output> NuGetInstall(Configure<NuGetInstallSettings> configurator) => new NuGetTasks().Run<NuGetInstallSettings>(configurator.Invoke(new NuGetInstallSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Common.Tools.NuGet.NuGetInstallSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Application.Tools.DotNet.NuGet.NuGetInstallSettings)"/>
     public static IEnumerable<(NuGetInstallSettings Settings, IReadOnlyCollection<Output> Output)> NuGetInstall(CombinatorialConfigure<NuGetInstallSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetInstall, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-ConfigFile</c> via <see cref="NuGetSourcesAddSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSourcesAddSettings.ForceEnglishOutput"/></li><li><c>-Name</c> via <see cref="NuGetSourcesAddSettings.Name"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSourcesAddSettings.NonInteractive"/></li><li><c>-Password</c> via <see cref="NuGetSourcesAddSettings.Password"/></li><li><c>-Source</c> via <see cref="NuGetSourcesAddSettings.Source"/></li><li><c>-StorePasswordInClearText</c> via <see cref="NuGetSourcesAddSettings.StorePasswordInClearText"/></li><li><c>-UserName</c> via <see cref="NuGetSourcesAddSettings.UserName"/></li><li><c>-Verbosity</c> via <see cref="NuGetSourcesAddSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSourcesAdd(NuGetSourcesAddSettings options = null) => new NuGetTasks().Run<NuGetSourcesAddSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Common.Tools.NuGet.NuGetSourcesAddSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesAddSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSourcesAdd(Configure<NuGetSourcesAddSettings> configurator) => new NuGetTasks().Run<NuGetSourcesAddSettings>(configurator.Invoke(new NuGetSourcesAddSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Common.Tools.NuGet.NuGetSourcesAddSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesAddSettings)"/>
     public static IEnumerable<(NuGetSourcesAddSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSourcesAdd(CombinatorialConfigure<NuGetSourcesAddSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSourcesAdd, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-ConfigFile</c> via <see cref="NuGetSourcesUpdateSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSourcesUpdateSettings.ForceEnglishOutput"/></li><li><c>-Name</c> via <see cref="NuGetSourcesUpdateSettings.Name"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSourcesUpdateSettings.NonInteractive"/></li><li><c>-Password</c> via <see cref="NuGetSourcesUpdateSettings.Password"/></li><li><c>-Source</c> via <see cref="NuGetSourcesUpdateSettings.Source"/></li><li><c>-StorePasswordInClearText</c> via <see cref="NuGetSourcesUpdateSettings.StorePasswordInClearText"/></li><li><c>-UserName</c> via <see cref="NuGetSourcesUpdateSettings.UserName"/></li><li><c>-Verbosity</c> via <see cref="NuGetSourcesUpdateSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSourcesUpdate(NuGetSourcesUpdateSettings options = null) => new NuGetTasks().Run<NuGetSourcesUpdateSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Common.Tools.NuGet.NuGetSourcesUpdateSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesUpdateSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSourcesUpdate(Configure<NuGetSourcesUpdateSettings> configurator) => new NuGetTasks().Run<NuGetSourcesUpdateSettings>(configurator.Invoke(new NuGetSourcesUpdateSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Common.Tools.NuGet.NuGetSourcesUpdateSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesUpdateSettings)"/>
     public static IEnumerable<(NuGetSourcesUpdateSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSourcesUpdate(CombinatorialConfigure<NuGetSourcesUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSourcesUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-ConfigFile</c> via <see cref="NuGetSourcesRemoveSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSourcesRemoveSettings.ForceEnglishOutput"/></li><li><c>-Name</c> via <see cref="NuGetSourcesRemoveSettings.Name"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSourcesRemoveSettings.NonInteractive"/></li><li><c>-Verbosity</c> via <see cref="NuGetSourcesRemoveSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSourcesRemove(NuGetSourcesRemoveSettings options = null) => new NuGetTasks().Run<NuGetSourcesRemoveSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Common.Tools.NuGet.NuGetSourcesRemoveSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesRemoveSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSourcesRemove(Configure<NuGetSourcesRemoveSettings> configurator) => new NuGetTasks().Run<NuGetSourcesRemoveSettings>(configurator.Invoke(new NuGetSourcesRemoveSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Common.Tools.NuGet.NuGetSourcesRemoveSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesRemoveSettings)"/>
     public static IEnumerable<(NuGetSourcesRemoveSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSourcesRemove(CombinatorialConfigure<NuGetSourcesRemoveSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSourcesRemove, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-ConfigFile</c> via <see cref="NuGetSourcesEnableSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSourcesEnableSettings.ForceEnglishOutput"/></li><li><c>-Name</c> via <see cref="NuGetSourcesEnableSettings.Name"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSourcesEnableSettings.NonInteractive"/></li><li><c>-Verbosity</c> via <see cref="NuGetSourcesEnableSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSourcesEnable(NuGetSourcesEnableSettings options = null) => new NuGetTasks().Run<NuGetSourcesEnableSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Common.Tools.NuGet.NuGetSourcesEnableSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesEnableSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSourcesEnable(Configure<NuGetSourcesEnableSettings> configurator) => new NuGetTasks().Run<NuGetSourcesEnableSettings>(configurator.Invoke(new NuGetSourcesEnableSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Common.Tools.NuGet.NuGetSourcesEnableSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesEnableSettings)"/>
     public static IEnumerable<(NuGetSourcesEnableSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSourcesEnable(CombinatorialConfigure<NuGetSourcesEnableSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSourcesEnable, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-ConfigFile</c> via <see cref="NuGetSourcesDisableSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSourcesDisableSettings.ForceEnglishOutput"/></li><li><c>-Name</c> via <see cref="NuGetSourcesDisableSettings.Name"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSourcesDisableSettings.NonInteractive"/></li><li><c>-Verbosity</c> via <see cref="NuGetSourcesDisableSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSourcesDisable(NuGetSourcesDisableSettings options = null) => new NuGetTasks().Run<NuGetSourcesDisableSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Common.Tools.NuGet.NuGetSourcesDisableSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesDisableSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSourcesDisable(Configure<NuGetSourcesDisableSettings> configurator) => new NuGetTasks().Run<NuGetSourcesDisableSettings>(configurator.Invoke(new NuGetSourcesDisableSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Common.Tools.NuGet.NuGetSourcesDisableSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesDisableSettings)"/>
     public static IEnumerable<(NuGetSourcesDisableSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSourcesDisable(CombinatorialConfigure<NuGetSourcesDisableSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSourcesDisable, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The NuGet Command Line Interface (CLI) provides the full extent of NuGet functionality to install, create, publish, and manage packages.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>-ConfigFile</c> via <see cref="NuGetSourcesListSettings.ConfigFile"/></li><li><c>-ForceEnglishOutput</c> via <see cref="NuGetSourcesListSettings.ForceEnglishOutput"/></li><li><c>-Format</c> via <see cref="NuGetSourcesListSettings.Format"/></li><li><c>-NonInteractive</c> via <see cref="NuGetSourcesListSettings.NonInteractive"/></li><li><c>-Verbosity</c> via <see cref="NuGetSourcesListSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NuGetSourcesList(NuGetSourcesListSettings options = null) => new NuGetTasks().Run<NuGetSourcesListSettings>(options);
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Common.Tools.NuGet.NuGetSourcesListSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesListSettings)"/>
     public static IReadOnlyCollection<Output> NuGetSourcesList(Configure<NuGetSourcesListSettings> configurator) => new NuGetTasks().Run<NuGetSourcesListSettings>(configurator.Invoke(new NuGetSourcesListSettings()));
-    /// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Common.Tools.NuGet.NuGetSourcesListSettings)"/>
+    /// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesListSettings)"/>
     public static IEnumerable<(NuGetSourcesListSettings Settings, IReadOnlyCollection<Output> Output)> NuGetSourcesList(CombinatorialConfigure<NuGetSourcesListSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NuGetSourcesList, degreeOfParallelism, completeOnFailure);
 }
 #region NuGetPushSettings
-/// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Common.Tools.NuGet.NuGetPushSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Application.Tools.DotNet.NuGet.NuGetPushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetPush), Arguments = "push")]
 public partial class NuGetPushSettings : ToolOptions
@@ -151,7 +150,7 @@ public partial class NuGetPushSettings : ToolOptions
 }
 #endregion
 #region NuGetDeleteSettings
-/// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Common.Tools.NuGet.NuGetDeleteSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Application.Tools.DotNet.NuGet.NuGetDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetDelete), Arguments = "delete")]
 public partial class NuGetDeleteSettings : ToolOptions
@@ -177,7 +176,7 @@ public partial class NuGetDeleteSettings : ToolOptions
 }
 #endregion
 #region NuGetSignSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Common.Tools.NuGet.NuGetSignSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Application.Tools.DotNet.NuGet.NuGetSignSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSign), Arguments = "sign")]
 public partial class NuGetSignSettings : ToolOptions
@@ -217,7 +216,7 @@ public partial class NuGetSignSettings : ToolOptions
 }
 #endregion
 #region NuGetVerifySettings
-/// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Common.Tools.NuGet.NuGetVerifySettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Application.Tools.DotNet.NuGet.NuGetVerifySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetVerify), Arguments = "verify")]
 public partial class NuGetVerifySettings : ToolOptions
@@ -237,7 +236,7 @@ public partial class NuGetVerifySettings : ToolOptions
 }
 #endregion
 #region NuGetPackSettings
-/// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Common.Tools.NuGet.NuGetPackSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Application.Tools.DotNet.NuGet.NuGetPackSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetPack), Arguments = "pack")]
 public partial class NuGetPackSettings : ToolOptions
@@ -285,7 +284,7 @@ public partial class NuGetPackSettings : ToolOptions
 }
 #endregion
 #region NuGetRestoreSettings
-/// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Common.Tools.NuGet.NuGetRestoreSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Application.Tools.DotNet.NuGet.NuGetRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetRestore), Arguments = "restore")]
 public partial class NuGetRestoreSettings : ToolOptions
@@ -331,7 +330,7 @@ public partial class NuGetRestoreSettings : ToolOptions
 }
 #endregion
 #region NuGetInstallSettings
-/// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Common.Tools.NuGet.NuGetInstallSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Application.Tools.DotNet.NuGet.NuGetInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetInstall), Arguments = "install")]
 public partial class NuGetInstallSettings : ToolOptions
@@ -375,7 +374,7 @@ public partial class NuGetInstallSettings : ToolOptions
 }
 #endregion
 #region NuGetSourcesAddSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Common.Tools.NuGet.NuGetSourcesAddSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesAddSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSourcesAdd), Arguments = "sources add")]
 public partial class NuGetSourcesAddSettings : ToolOptions
@@ -401,7 +400,7 @@ public partial class NuGetSourcesAddSettings : ToolOptions
 }
 #endregion
 #region NuGetSourcesUpdateSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Common.Tools.NuGet.NuGetSourcesUpdateSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSourcesUpdate), Arguments = "sources update")]
 public partial class NuGetSourcesUpdateSettings : ToolOptions
@@ -427,7 +426,7 @@ public partial class NuGetSourcesUpdateSettings : ToolOptions
 }
 #endregion
 #region NuGetSourcesRemoveSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Common.Tools.NuGet.NuGetSourcesRemoveSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSourcesRemove), Arguments = "sources remove")]
 public partial class NuGetSourcesRemoveSettings : ToolOptions
@@ -445,7 +444,7 @@ public partial class NuGetSourcesRemoveSettings : ToolOptions
 }
 #endregion
 #region NuGetSourcesEnableSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Common.Tools.NuGet.NuGetSourcesEnableSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesEnableSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSourcesEnable), Arguments = "sources enable")]
 public partial class NuGetSourcesEnableSettings : ToolOptions
@@ -463,7 +462,7 @@ public partial class NuGetSourcesEnableSettings : ToolOptions
 }
 #endregion
 #region NuGetSourcesDisableSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Common.Tools.NuGet.NuGetSourcesDisableSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesDisableSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSourcesDisable), Arguments = "sources disable")]
 public partial class NuGetSourcesDisableSettings : ToolOptions
@@ -481,7 +480,7 @@ public partial class NuGetSourcesDisableSettings : ToolOptions
 }
 #endregion
 #region NuGetSourcesListSettings
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Common.Tools.NuGet.NuGetSourcesListSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesListSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NuGetTasks), Command = nameof(NuGetTasks.NuGetSourcesList), Arguments = "sources list")]
 public partial class NuGetSourcesListSettings : ToolOptions
@@ -499,7 +498,7 @@ public partial class NuGetSourcesListSettings : ToolOptions
 }
 #endregion
 #region NuGetPushSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Common.Tools.NuGet.NuGetPushSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetPush(Fallout.Application.Tools.DotNet.NuGet.NuGetPushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetPushSettingsExtensions
 {
@@ -638,7 +637,7 @@ public static partial class NuGetPushSettingsExtensions
 }
 #endregion
 #region NuGetDeleteSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Common.Tools.NuGet.NuGetDeleteSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetDelete(Fallout.Application.Tools.DotNet.NuGet.NuGetDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetDeleteSettingsExtensions
 {
@@ -744,7 +743,7 @@ public static partial class NuGetDeleteSettingsExtensions
 }
 #endregion
 #region NuGetSignSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Common.Tools.NuGet.NuGetSignSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSign(Fallout.Application.Tools.DotNet.NuGet.NuGetSignSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSignSettingsExtensions
 {
@@ -906,7 +905,7 @@ public static partial class NuGetSignSettingsExtensions
 }
 #endregion
 #region NuGetVerifySettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Common.Tools.NuGet.NuGetVerifySettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetVerify(Fallout.Application.Tools.DotNet.NuGet.NuGetVerifySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetVerifySettingsExtensions
 {
@@ -979,7 +978,7 @@ public static partial class NuGetVerifySettingsExtensions
 }
 #endregion
 #region NuGetPackSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Common.Tools.NuGet.NuGetPackSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetPack(Fallout.Application.Tools.DotNet.NuGet.NuGetPackSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetPackSettingsExtensions
 {
@@ -1244,7 +1243,7 @@ public static partial class NuGetPackSettingsExtensions
 }
 #endregion
 #region NuGetRestoreSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Common.Tools.NuGet.NuGetRestoreSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetRestore(Fallout.Application.Tools.DotNet.NuGet.NuGetRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetRestoreSettingsExtensions
 {
@@ -1511,7 +1510,7 @@ public static partial class NuGetRestoreSettingsExtensions
 }
 #endregion
 #region NuGetInstallSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Common.Tools.NuGet.NuGetInstallSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetInstall(Fallout.Application.Tools.DotNet.NuGet.NuGetInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetInstallSettingsExtensions
 {
@@ -1770,7 +1769,7 @@ public static partial class NuGetInstallSettingsExtensions
 }
 #endregion
 #region NuGetSourcesAddSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Common.Tools.NuGet.NuGetSourcesAddSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesAdd(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesAddSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSourcesAddSettingsExtensions
 {
@@ -1876,7 +1875,7 @@ public static partial class NuGetSourcesAddSettingsExtensions
 }
 #endregion
 #region NuGetSourcesUpdateSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Common.Tools.NuGet.NuGetSourcesUpdateSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesUpdate(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSourcesUpdateSettingsExtensions
 {
@@ -1982,7 +1981,7 @@ public static partial class NuGetSourcesUpdateSettingsExtensions
 }
 #endregion
 #region NuGetSourcesRemoveSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Common.Tools.NuGet.NuGetSourcesRemoveSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesRemove(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesRemoveSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSourcesRemoveSettingsExtensions
 {
@@ -2047,7 +2046,7 @@ public static partial class NuGetSourcesRemoveSettingsExtensions
 }
 #endregion
 #region NuGetSourcesEnableSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Common.Tools.NuGet.NuGetSourcesEnableSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesEnable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesEnableSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSourcesEnableSettingsExtensions
 {
@@ -2112,7 +2111,7 @@ public static partial class NuGetSourcesEnableSettingsExtensions
 }
 #endregion
 #region NuGetSourcesDisableSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Common.Tools.NuGet.NuGetSourcesDisableSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesDisable(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesDisableSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSourcesDisableSettingsExtensions
 {
@@ -2177,7 +2176,7 @@ public static partial class NuGetSourcesDisableSettingsExtensions
 }
 #endregion
 #region NuGetSourcesListSettingsExtensions
-/// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Common.Tools.NuGet.NuGetSourcesListSettings)"/>
+/// <inheritdoc cref="NuGetTasks.NuGetSourcesList(Fallout.Application.Tools.DotNet.NuGet.NuGetSourcesListSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NuGetSourcesListSettingsExtensions
 {

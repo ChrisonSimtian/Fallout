@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.DotNet;
+namespace Fallout.Application.Tools.DotNet;
 
 /// <summary><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,174 +27,174 @@ public partial class DotNetTasks : ToolTasks, IRequirePathTool
     /// <summary><p>The <c>dotnet test</c> command is used to execute unit tests in a given project. Unit tests are console application projects that have dependencies on the unit test framework (for example, MSTest, NUnit, or xUnit) and the dotnet test runner for the unit testing framework. These are packaged as NuGet packages and are restored as ordinary dependencies for the project.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;projectFile&gt;</c> via <see cref="DotNetTestSettings.ProjectFile"/></li><li><c>--</c> via <see cref="DotNetTestSettings.RunSettings"/></li><li><c>--artifacts-path</c> via <see cref="DotNetTestSettings.ArtifactsPath"/></li><li><c>--blame</c> via <see cref="DotNetTestSettings.BlameMode"/></li><li><c>--blame-crash</c> via <see cref="DotNetTestSettings.BlameCrash"/></li><li><c>--blame-crash-collect-always</c> via <see cref="DotNetTestSettings.BlameCrashCollectAlways"/></li><li><c>--blame-crash-dump-type</c> via <see cref="DotNetTestSettings.BlameCrashDumpType"/></li><li><c>--blame-hang</c> via <see cref="DotNetTestSettings.BlameHang"/></li><li><c>--blame-hang-dump-type</c> via <see cref="DotNetTestSettings.BlameHangDumpType"/></li><li><c>--blame-hang-timeout</c> via <see cref="DotNetTestSettings.BlameHangTimeout"/></li><li><c>--collect</c> via <see cref="DotNetTestSettings.DataCollector"/></li><li><c>--configuration</c> via <see cref="DotNetTestSettings.Configuration"/></li><li><c>--diag</c> via <see cref="DotNetTestSettings.DiagnosticsFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetTestSettings.DisableParallel"/></li><li><c>--filter</c> via <see cref="DotNetTestSettings.Filter"/></li><li><c>--force</c> via <see cref="DotNetTestSettings.Force"/></li><li><c>--force-evaluate</c> via <see cref="DotNetTestSettings.ForceEvaluate"/></li><li><c>--framework</c> via <see cref="DotNetTestSettings.Framework"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetTestSettings.IgnoreFailedSources"/></li><li><c>--list-tests</c> via <see cref="DotNetTestSettings.ListTests"/></li><li><c>--lock-file-path</c> via <see cref="DotNetTestSettings.LockFilePath"/></li><li><c>--locked-mode</c> via <see cref="DotNetTestSettings.LockedMode"/></li><li><c>--logger</c> via <see cref="DotNetTestSettings.Loggers"/></li><li><c>--no-build</c> via <see cref="DotNetTestSettings.NoBuild"/></li><li><c>--no-cache</c> via <see cref="DotNetTestSettings.NoCache"/></li><li><c>--no-dependencies</c> via <see cref="DotNetTestSettings.NoDependencies"/></li><li><c>--no-restore</c> via <see cref="DotNetTestSettings.NoRestore"/></li><li><c>--nologo</c> via <see cref="DotNetTestSettings.NoLogo"/></li><li><c>--output</c> via <see cref="DotNetTestSettings.Output"/></li><li><c>--packages</c> via <see cref="DotNetTestSettings.PackageDirectory"/></li><li><c>--results-directory</c> via <see cref="DotNetTestSettings.ResultsDirectory"/></li><li><c>--runtime</c> via <see cref="DotNetTestSettings.Runtime"/></li><li><c>--settings</c> via <see cref="DotNetTestSettings.SettingsFile"/></li><li><c>--source</c> via <see cref="DotNetTestSettings.Sources"/></li><li><c>--test-adapter-path</c> via <see cref="DotNetTestSettings.TestAdapterPath"/></li><li><c>--use-lock-file</c> via <see cref="DotNetTestSettings.UseLockFile"/></li><li><c>--verbosity</c> via <see cref="DotNetTestSettings.Verbosity"/></li><li><c>/property</c> via <see cref="DotNetTestSettings.Properties"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetTest(DotNetTestSettings options = null) => new DotNetTasks().Run<DotNetTestSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Common.Tools.DotNet.DotNetTestSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Application.Tools.DotNet.DotNetTestSettings)"/>
     public static IReadOnlyCollection<Output> DotNetTest(Configure<DotNetTestSettings> configurator) => new DotNetTasks().Run<DotNetTestSettings>(configurator.Invoke(new DotNetTestSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Common.Tools.DotNet.DotNetTestSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Application.Tools.DotNet.DotNetTestSettings)"/>
     public static IEnumerable<(DotNetTestSettings Settings, IReadOnlyCollection<Output> Output)> DotNetTest(CombinatorialConfigure<DotNetTestSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetTest, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet run</c> command provides a convenient option to run your application from the source code with one command. It's useful for fast iterative development from the command line. The command depends on the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build"><c>dotnet build</c></a> command to build the code. Any requirements for the build, such as that the project must be restored first, apply to <c>dotnet run</c> as well.</p><p>Output files are written into the default location, which is <c>bin/&lt;configuration&gt;/&lt;target&gt;</c>. For example if you have a <c>netcoreapp1.0</c> application and you run <c>dotnet run</c>, the output is placed in <c>bin/Debug/netcoreapp1.0</c>. Files are overwritten as needed. Temporary files are placed in the <c>obj</c> directory.</p><p>If the project specifies multiple frameworks, executing <c>dotnet run</c> results in an error unless the <c>-f|--framework &lt;FRAMEWORK&gt;</c> option is used to specify the framework.</p><p>The <c>dotnet run</c> command is used in the context of projects, not built assemblies. If you're trying to run a framework-dependent application DLL instead, you must use <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet">dotnet</a> without a command. For example, to run <c>myapp.dll</c>, use: <c>dotnet myapp.dll</c></p><p>For more information on the <c>dotnet</c> driver, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/index">.NET Core Command Line Tools (CLI)</a> topic.</p><p>In order to run the application, the <c>dotnet run</c> command resolves the dependencies of the application that are outside of the shared runtime from the NuGet cache. Because it uses cached dependencies, it's not recommended to use <c>dotnet run</c> to run applications in production. Instead, <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/index">create a deployment</a> using the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish"><c>dotnet publish</c></a> command and deploy the published output.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--</c> via <see cref="DotNetRunSettings.ApplicationArguments"/></li><li><c>--arch</c> via <see cref="DotNetRunSettings.Architecture"/></li><li><c>--artifacts-path</c> via <see cref="DotNetRunSettings.ArtifactsPath"/></li><li><c>--configuration</c> via <see cref="DotNetRunSettings.Configuration"/></li><li><c>--disable-build-servers</c> via <see cref="DotNetRunSettings.DisableBuildServers"/></li><li><c>--disable-parallel</c> via <see cref="DotNetRunSettings.DisableParallel"/></li><li><c>--force</c> via <see cref="DotNetRunSettings.Force"/></li><li><c>--force-evaluate</c> via <see cref="DotNetRunSettings.ForceEvaluate"/></li><li><c>--framework</c> via <see cref="DotNetRunSettings.Framework"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetRunSettings.IgnoreFailedSources"/></li><li><c>--interactive</c> via <see cref="DotNetRunSettings.Interactive"/></li><li><c>--launch-profile</c> via <see cref="DotNetRunSettings.LaunchProfile"/></li><li><c>--lock-file-path</c> via <see cref="DotNetRunSettings.LockFilePath"/></li><li><c>--locked-mode</c> via <see cref="DotNetRunSettings.LockedMode"/></li><li><c>--no-build</c> via <see cref="DotNetRunSettings.NoBuild"/></li><li><c>--no-cache</c> via <see cref="DotNetRunSettings.NoCache"/></li><li><c>--no-dependencies</c> via <see cref="DotNetRunSettings.NoDependencies"/></li><li><c>--no-launch-profile</c> via <see cref="DotNetRunSettings.NoLaunchProfile"/></li><li><c>--no-restore</c> via <see cref="DotNetRunSettings.NoRestore"/></li><li><c>--no-self-contained</c> via <see cref="DotNetRunSettings.NoSelfContained"/></li><li><c>--os</c> via <see cref="DotNetRunSettings.OperatingSystem"/></li><li><c>--packages</c> via <see cref="DotNetRunSettings.PackageDirectory"/></li><li><c>--project</c> via <see cref="DotNetRunSettings.ProjectFile"/></li><li><c>--property</c> via <see cref="DotNetRunSettings.Properties"/></li><li><c>--runtime</c> via <see cref="DotNetRunSettings.Runtime"/></li><li><c>--self-contained</c> via <see cref="DotNetRunSettings.SelfContained"/></li><li><c>--source</c> via <see cref="DotNetRunSettings.Sources"/></li><li><c>--use-lock-file</c> via <see cref="DotNetRunSettings.UseLockFile"/></li><li><c>--verbosity</c> via <see cref="DotNetRunSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetRun(DotNetRunSettings options = null) => new DotNetTasks().Run<DotNetRunSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Common.Tools.DotNet.DotNetRunSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Application.Tools.DotNet.DotNetRunSettings)"/>
     public static IReadOnlyCollection<Output> DotNetRun(Configure<DotNetRunSettings> configurator) => new DotNetTasks().Run<DotNetRunSettings>(configurator.Invoke(new DotNetRunSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Common.Tools.DotNet.DotNetRunSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Application.Tools.DotNet.DotNetRunSettings)"/>
     public static IEnumerable<(DotNetRunSettings Settings, IReadOnlyCollection<Output> Output)> DotNetRun(CombinatorialConfigure<DotNetRunSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetRun, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet restore</c> command uses NuGet to restore dependencies as well as project-specific tools that are specified in the project file. By default, the restoration of dependencies and tools are performed in parallel.</p><p>Starting with .NET Core 2.0, you don't have to run <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-restore"><c>dotnet restore</c></a> because it's run implicitly by all commands, such as <c>dotnet build</c> and <c>dotnet run</c>, that require a restore to occur. It's still a valid command in certain scenarios where doing an explicit restore makes sense, such as <a href="https://docs.microsoft.com/en-us/vsts/build-release/apps/aspnet/build-aspnet-core">continuous integration builds in Visual Studio Team Services</a> or in build systems that need to explicitly control the time at which the restore occurs.</p><p>In order to restore the dependencies, NuGet needs the feeds where the packages are located. Feeds are usually provided via the <em>NuGet.config</em> configuration file. A default configuration file is provided when the CLI tools are installed. You specify additional feeds by creating your own <em>NuGet.config</em> file in the project directory. You also specify additional feeds per invocation at a command prompt.</p><p>For dependencies, you specify where the restored packages are placed during the restore operation using the <c>--packages</c> argument. If not specified, the default NuGet package cache is used, which is found in the <c>.nuget/packages</c> directory in the user's home directory on all operating systems (for example, <em>/home/user1</em> on Linux or <em>C:\Users\user1</em> on Windows).</p><p>For project-specific tooling, <c>dotnet restore</c> first restores the package in which the tool is packed, and then proceeds to restore the tool's dependencies as specified in its project file.</p><p>The behavior of the <c>dotnet restore</c> command is affected by some of the settings in the <em>Nuget.Config</em> file, if present. For example, setting the <c>globalPackagesFolder</c> in <em>NuGet.Config</em> places the restored NuGet packages in the specified folder. This is an alternative to specifying the <c>--packages</c> option on the <c>dotnet restore</c> command. For more information, see the <a href="https://docs.microsoft.com/nuget/schema/nuget-config-file">NuGet.Config reference</a>.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;projectFile&gt;</c> via <see cref="DotNetRestoreSettings.ProjectFile"/></li><li><c>--configfile</c> via <see cref="DotNetRestoreSettings.ConfigFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetRestoreSettings.DisableParallel"/></li><li><c>--force</c> via <see cref="DotNetRestoreSettings.Force"/></li><li><c>--force-evaluate</c> via <see cref="DotNetRestoreSettings.ForceEvaluate"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetRestoreSettings.IgnoreFailedSources"/></li><li><c>--lock-file-path</c> via <see cref="DotNetRestoreSettings.LockFilePath"/></li><li><c>--locked-mode</c> via <see cref="DotNetRestoreSettings.LockedMode"/></li><li><c>--no-cache</c> via <see cref="DotNetRestoreSettings.NoCache"/></li><li><c>--no-dependencies</c> via <see cref="DotNetRestoreSettings.NoDependencies"/></li><li><c>--packages</c> via <see cref="DotNetRestoreSettings.PackageDirectory"/></li><li><c>--property</c> via <see cref="DotNetRestoreSettings.Properties"/></li><li><c>--runtime</c> via <see cref="DotNetRestoreSettings.Runtime"/></li><li><c>--source</c> via <see cref="DotNetRestoreSettings.Sources"/></li><li><c>--use-lock-file</c> via <see cref="DotNetRestoreSettings.UseLockFile"/></li><li><c>--verbosity</c> via <see cref="DotNetRestoreSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetRestore(DotNetRestoreSettings options = null) => new DotNetTasks().Run<DotNetRestoreSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Common.Tools.DotNet.DotNetRestoreSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Application.Tools.DotNet.DotNetRestoreSettings)"/>
     public static IReadOnlyCollection<Output> DotNetRestore(Configure<DotNetRestoreSettings> configurator) => new DotNetTasks().Run<DotNetRestoreSettings>(configurator.Invoke(new DotNetRestoreSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Common.Tools.DotNet.DotNetRestoreSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Application.Tools.DotNet.DotNetRestoreSettings)"/>
     public static IEnumerable<(DotNetRestoreSettings Settings, IReadOnlyCollection<Output> Output)> DotNetRestore(CombinatorialConfigure<DotNetRestoreSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetRestore, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet pack</c> command builds the project and creates NuGet packages. The result of this command is a NuGet package. If the <c>--include-symbols</c> option is present, another package containing the debug symbols is created.</p><p>NuGet dependencies of the packed project are added to the <em>.nuspec</em> file, so they're properly resolved when the package is installed. Project-to-project references aren't packaged inside the project. Currently, you must have a package per project if you have project-to-project dependencies.</p><p>By default, <c>dotnet pack</c> builds the project first. If you wish to avoid this behavior, pass the <c>--no-build</c> option. This is often useful in Continuous Integration (CI) build scenarios where you know the code was previously built.</p><p>You can provide MSBuild properties to the <c>dotnet pack</c> command for the packing process. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/csproj#nuget-metadata-properties">NuGet metadata properties</a> and the <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-command-line-reference">MSBuild Command-Line Reference</a>.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;project&gt;</c> via <see cref="DotNetPackSettings.Project"/></li><li><c>--artifacts-path</c> via <see cref="DotNetPackSettings.ArtifactsPath"/></li><li><c>--configuration</c> via <see cref="DotNetPackSettings.Configuration"/></li><li><c>--disable-parallel</c> via <see cref="DotNetPackSettings.DisableParallel"/></li><li><c>--force</c> via <see cref="DotNetPackSettings.Force"/></li><li><c>--force-evaluate</c> via <see cref="DotNetPackSettings.ForceEvaluate"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetPackSettings.IgnoreFailedSources"/></li><li><c>--include-source</c> via <see cref="DotNetPackSettings.IncludeSource"/></li><li><c>--include-symbols</c> via <see cref="DotNetPackSettings.IncludeSymbols"/></li><li><c>--lock-file-path</c> via <see cref="DotNetPackSettings.LockFilePath"/></li><li><c>--locked-mode</c> via <see cref="DotNetPackSettings.LockedMode"/></li><li><c>--no-build</c> via <see cref="DotNetPackSettings.NoBuild"/></li><li><c>--no-cache</c> via <see cref="DotNetPackSettings.NoCache"/></li><li><c>--no-dependencies</c> via <see cref="DotNetPackSettings.NoDependencies"/></li><li><c>--no-restore</c> via <see cref="DotNetPackSettings.NoRestore"/></li><li><c>--nologo</c> via <see cref="DotNetPackSettings.NoLogo"/></li><li><c>--output</c> via <see cref="DotNetPackSettings.OutputDirectory"/></li><li><c>--packages</c> via <see cref="DotNetPackSettings.PackageDirectory"/></li><li><c>--property</c> via <see cref="DotNetPackSettings.Properties"/></li><li><c>--runtime</c> via <see cref="DotNetPackSettings.Runtime"/></li><li><c>--serviceable</c> via <see cref="DotNetPackSettings.Serviceable"/></li><li><c>--source</c> via <see cref="DotNetPackSettings.Sources"/></li><li><c>--use-lock-file</c> via <see cref="DotNetPackSettings.UseLockFile"/></li><li><c>--verbosity</c> via <see cref="DotNetPackSettings.Verbosity"/></li><li><c>--version-suffix</c> via <see cref="DotNetPackSettings.VersionSuffix"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetPack(DotNetPackSettings options = null) => new DotNetTasks().Run<DotNetPackSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Common.Tools.DotNet.DotNetPackSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Application.Tools.DotNet.DotNetPackSettings)"/>
     public static IReadOnlyCollection<Output> DotNetPack(Configure<DotNetPackSettings> configurator) => new DotNetTasks().Run<DotNetPackSettings>(configurator.Invoke(new DotNetPackSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Common.Tools.DotNet.DotNetPackSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Application.Tools.DotNet.DotNetPackSettings)"/>
     public static IEnumerable<(DotNetPackSettings Settings, IReadOnlyCollection<Output> Output)> DotNetPack(CombinatorialConfigure<DotNetPackSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetPack, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet build</c> command builds the project and its dependencies into a set of binaries. The binaries include the project's code in Intermediate Language (IL) files with a <em>.dll</em> extension and symbol files used for debugging with a <em>.pdb</em> extension. A dependencies JSON file (<em>*.deps.json</em>) is produced that lists the dependencies of the application. A <em>.runtimeconfig.json</em> file is produced, which specifies the shared runtime and its version for the application.</p><p>If the project has third-party dependencies, such as libraries from NuGet, they're resolved from the NuGet cache and aren't available with the project's built output. With that in mind, the product of <c>dotnet build</c>d isn't ready to be transferred to another machine to run. This is in contrast to the behavior of the .NET Framework in which building an executable project (an application) produces output that's runnable on any machine where the .NET Framework is installed. To have a similar experience with .NET Core, you use the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish"><c>dotnet publish</c></a> command. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/index">.NET Core Application Deployment</a>.</p><p>Building requires the <em>project.assets.json</em> file, which lists the dependencies of your application. The file is created <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-restore"><c>dotnet restore</c></a> is executed. Without the assets file in place, the tooling cannot resolve reference assemblies, which will result in errors. With .NET Core 1.x SDK, you needed to explicitily run the <c>dotnet restore</c> before running <c>dotnet build</c>. Starting with .NET Core 2.0 SDK, <c>dotnet restore</c> runs implicitily when you run <c>dotnet build</c>. If you want to disable implicit restore when running the build command, you can pass the <c>--no-restore</c> option.</p><p><c>dotnet build</c> uses MSBuild to build the project; thus, it supports both parallel and incremental builds. Refer to <a href="https://docs.microsoft.com/visualstudio/msbuild/incremental-builds">Incremental Builds</a> for more information.</p><p>In addition to its options, the <c>dotnet build</c> command accepts MSBuild options, such as <c>/p</c> for setting properties or <c>/l</c> to define a logger. Learn more about these options in the <a href="https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference">MSBuild Command-Line Reference</a>.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;projectFile&gt;</c> via <see cref="DotNetBuildSettings.ProjectFile"/></li><li><c>--artifacts-path</c> via <see cref="DotNetBuildSettings.ArtifactsPath"/></li><li><c>--configuration</c> via <see cref="DotNetBuildSettings.Configuration"/></li><li><c>--disable-parallel</c> via <see cref="DotNetBuildSettings.DisableParallel"/></li><li><c>--force</c> via <see cref="DotNetBuildSettings.Force"/></li><li><c>--force-evaluate</c> via <see cref="DotNetBuildSettings.ForceEvaluate"/></li><li><c>--framework</c> via <see cref="DotNetBuildSettings.Framework"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetBuildSettings.IgnoreFailedSources"/></li><li><c>--lock-file-path</c> via <see cref="DotNetBuildSettings.LockFilePath"/></li><li><c>--locked-mode</c> via <see cref="DotNetBuildSettings.LockedMode"/></li><li><c>--no-cache</c> via <see cref="DotNetBuildSettings.NoCache"/></li><li><c>--no-dependencies</c> via <see cref="DotNetBuildSettings.NoDependencies"/></li><li><c>--no-incremental</c> via <see cref="DotNetBuildSettings.NoIncremental"/></li><li><c>--no-restore</c> via <see cref="DotNetBuildSettings.NoRestore"/></li><li><c>--nologo</c> via <see cref="DotNetBuildSettings.NoLogo"/></li><li><c>--output</c> via <see cref="DotNetBuildSettings.OutputDirectory"/></li><li><c>--packages</c> via <see cref="DotNetBuildSettings.PackageDirectory"/></li><li><c>--property</c> via <see cref="DotNetBuildSettings.Properties"/></li><li><c>--runtime</c> via <see cref="DotNetBuildSettings.Runtime"/></li><li><c>--self-contained</c> via <see cref="DotNetBuildSettings.SelfContained"/></li><li><c>--source</c> via <see cref="DotNetBuildSettings.Sources"/></li><li><c>--use-lock-file</c> via <see cref="DotNetBuildSettings.UseLockFile"/></li><li><c>--verbosity</c> via <see cref="DotNetBuildSettings.Verbosity"/></li><li><c>--version-suffix</c> via <see cref="DotNetBuildSettings.VersionSuffix"/></li><li><c>-bl</c> via <see cref="DotNetBuildSettings.BinaryLog"/></li><li><c>/logger</c> via <see cref="DotNetBuildSettings.Loggers"/></li><li><c>/noconsolelogger</c> via <see cref="DotNetBuildSettings.NoConsoleLogger"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetBuild(DotNetBuildSettings options = null) => new DotNetTasks().Run<DotNetBuildSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Common.Tools.DotNet.DotNetBuildSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Application.Tools.DotNet.DotNetBuildSettings)"/>
     public static IReadOnlyCollection<Output> DotNetBuild(Configure<DotNetBuildSettings> configurator) => new DotNetTasks().Run<DotNetBuildSettings>(configurator.Invoke(new DotNetBuildSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Common.Tools.DotNet.DotNetBuildSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Application.Tools.DotNet.DotNetBuildSettings)"/>
     public static IEnumerable<(DotNetBuildSettings Settings, IReadOnlyCollection<Output> Output)> DotNetBuild(CombinatorialConfigure<DotNetBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetBuild, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet msbuild</c> command allows access to a fully functional MSBuild.<para/>The command has the exact same capabilities as the existing MSBuild command-line client for SDK-style projects only. The options are all the same. For more information about the available options, see the <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-command-line-reference">MSBuild command-line reference</a>.<para/>The <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build">dotnet build</a> command is equivalent to <c>dotnet msbuild -restore</c>. When you don't want to build the project and you have a specific target you want to run, use <c>dotnet build</c> or <c>dotnet msbuild</c> and specify the target.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="DotNetMSBuildSettings.TargetPath"/></li><li><c>-bl</c> via <see cref="DotNetMSBuildSettings.BinaryLog"/></li><li><c>/detailedsummary</c> via <see cref="DotNetMSBuildSettings.DetailedSummary"/></li><li><c>/graphBuild</c> via <see cref="DotNetMSBuildSettings.GraphBuild"/></li><li><c>/logger</c> via <see cref="DotNetMSBuildSettings.Loggers"/></li><li><c>/maxcpucount</c> via <see cref="DotNetMSBuildSettings.MaxCpuCount"/></li><li><c>/noconsolelogger</c> via <see cref="DotNetMSBuildSettings.NoConsoleLogger"/></li><li><c>/nodeReuse</c> via <see cref="DotNetMSBuildSettings.NodeReuse"/></li><li><c>/nologo</c> via <see cref="DotNetMSBuildSettings.NoLogo"/></li><li><c>/property</c> via <see cref="DotNetMSBuildSettings.Properties"/></li><li><c>/property:Configuration</c> via <see cref="DotNetMSBuildSettings.Configuration"/></li><li><c>/restore</c> via <see cref="DotNetMSBuildSettings.Restore"/></li><li><c>/target</c> via <see cref="DotNetMSBuildSettings.Targets"/></li><li><c>/verbosity</c> via <see cref="DotNetMSBuildSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetMSBuild(DotNetMSBuildSettings options = null) => new DotNetTasks().Run<DotNetMSBuildSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Common.Tools.DotNet.DotNetMSBuildSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Application.Tools.DotNet.DotNetMSBuildSettings)"/>
     public static IReadOnlyCollection<Output> DotNetMSBuild(Configure<DotNetMSBuildSettings> configurator) => new DotNetTasks().Run<DotNetMSBuildSettings>(configurator.Invoke(new DotNetMSBuildSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Common.Tools.DotNet.DotNetMSBuildSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Application.Tools.DotNet.DotNetMSBuildSettings)"/>
     public static IEnumerable<(DotNetMSBuildSettings Settings, IReadOnlyCollection<Output> Output)> DotNetMSBuild(CombinatorialConfigure<DotNetMSBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetMSBuild, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet clean</c> command cleans the output of the previous build. It's implemented as an <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-targets">MSBuild target</a>, so the project is evaluated when the command is run. Only the outputs created during the build are cleaned. Both intermediate <em>(obj)</em> and final output <em>(bin)</em> folders are cleaned.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;project&gt;</c> via <see cref="DotNetCleanSettings.Project"/></li><li><c>--artifacts-path</c> via <see cref="DotNetCleanSettings.ArtifactsPath"/></li><li><c>--configuration</c> via <see cref="DotNetCleanSettings.Configuration"/></li><li><c>--framework</c> via <see cref="DotNetCleanSettings.Framework"/></li><li><c>--nologo</c> via <see cref="DotNetCleanSettings.NoLogo"/></li><li><c>--output</c> via <see cref="DotNetCleanSettings.Output"/></li><li><c>--property</c> via <see cref="DotNetCleanSettings.Properties"/></li><li><c>--runtime</c> via <see cref="DotNetCleanSettings.Runtime"/></li><li><c>--verbosity</c> via <see cref="DotNetCleanSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetClean(DotNetCleanSettings options = null) => new DotNetTasks().Run<DotNetCleanSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Common.Tools.DotNet.DotNetCleanSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Application.Tools.DotNet.DotNetCleanSettings)"/>
     public static IReadOnlyCollection<Output> DotNetClean(Configure<DotNetCleanSettings> configurator) => new DotNetTasks().Run<DotNetCleanSettings>(configurator.Invoke(new DotNetCleanSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Common.Tools.DotNet.DotNetCleanSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Application.Tools.DotNet.DotNetCleanSettings)"/>
     public static IEnumerable<(DotNetCleanSettings Settings, IReadOnlyCollection<Output> Output)> DotNetClean(CombinatorialConfigure<DotNetCleanSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetClean, degreeOfParallelism, completeOnFailure);
     /// <summary><p><c>dotnet format</c> is a code formatter that applies style preferences to a project or solution. Preferences will be read from an *.editorconfig* file, if present, otherwise a default set of preferences will be used. For more information, see the <a href="https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#editorconfig">EditorConfig documentation</a></p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;project&gt;</c> via <see cref="DotNetFormatSettings.Project"/></li><li><c>--binarylog</c> via <see cref="DotNetFormatSettings.BinaryLog"/></li><li><c>--exclude</c> via <see cref="DotNetFormatSettings.Exclude"/></li><li><c>--include</c> via <see cref="DotNetFormatSettings.Include"/></li><li><c>--include-generated</c> via <see cref="DotNetFormatSettings.IncludeGenerated"/></li><li><c>--no-restore</c> via <see cref="DotNetFormatSettings.NoRestore"/></li><li><c>--property</c> via <see cref="DotNetFormatSettings.Properties"/></li><li><c>--report</c> via <see cref="DotNetFormatSettings.Report"/></li><li><c>--severity</c> via <see cref="DotNetFormatSettings.Severity"/></li><li><c>--verbosity</c> via <see cref="DotNetFormatSettings.Verbosity"/></li><li><c>--verify-no-changes</c> via <see cref="DotNetFormatSettings.VerifyNoChanges"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetFormat(DotNetFormatSettings options = null) => new DotNetTasks().Run<DotNetFormatSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Common.Tools.DotNet.DotNetFormatSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Application.Tools.DotNet.DotNetFormatSettings)"/>
     public static IReadOnlyCollection<Output> DotNetFormat(Configure<DotNetFormatSettings> configurator) => new DotNetTasks().Run<DotNetFormatSettings>(configurator.Invoke(new DotNetFormatSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Common.Tools.DotNet.DotNetFormatSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Application.Tools.DotNet.DotNetFormatSettings)"/>
     public static IEnumerable<(DotNetFormatSettings Settings, IReadOnlyCollection<Output> Output)> DotNetFormat(CombinatorialConfigure<DotNetFormatSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetFormat, degreeOfParallelism, completeOnFailure);
     /// <summary><p><c>dotnet publish</c> compiles the application, reads through its dependencies specified in the project file, and publishes the resulting set of files to a directory. The output will contain the following:<para/><ul><li>Intermediate Language (IL) code in an assembly with a <em>dll</em> extension.</li><li><em>.deps.json</em> file that contains all of the dependencies of the project.</li><li><em>.runtime.config.json</em> file that specifies the shared runtime that the application expects, as well as other configuration options for the runtime (for example, garbage collection type).</li><li>The application's dependencies. These are copied from the NuGet cache into the output folder.</li></ul><para/>The <c>dotnet publish</c> command's output is ready for deployment to a hosting system (for example, a server, PC, Mac, laptop) for execution and is the only officially supported way to prepare the application for deployment. Depending on the type of deployment that the project specifies, the hosting system may or may not have the .NET Core shared runtime installed on it. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/index">.NET Core Application Deployment</a>. For the directory structure of a published application, see <a href="https://docs.microsoft.com/en-us/aspnet/core/hosting/directory-structure">Directory structure</a>.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;project&gt;</c> via <see cref="DotNetPublishSettings.Project"/></li><li><c>--arch</c> via <see cref="DotNetPublishSettings.Architecture"/></li><li><c>--artifacts-path</c> via <see cref="DotNetPublishSettings.ArtifactsPath"/></li><li><c>--configuration</c> via <see cref="DotNetPublishSettings.Configuration"/></li><li><c>--disable-parallel</c> via <see cref="DotNetPublishSettings.DisableParallel"/></li><li><c>--force</c> via <see cref="DotNetPublishSettings.Force"/></li><li><c>--force-evaluate</c> via <see cref="DotNetPublishSettings.ForceEvaluate"/></li><li><c>--framework</c> via <see cref="DotNetPublishSettings.Framework"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetPublishSettings.IgnoreFailedSources"/></li><li><c>--lock-file-path</c> via <see cref="DotNetPublishSettings.LockFilePath"/></li><li><c>--locked-mode</c> via <see cref="DotNetPublishSettings.LockedMode"/></li><li><c>--manifest</c> via <see cref="DotNetPublishSettings.Manifest"/></li><li><c>--no-build</c> via <see cref="DotNetPublishSettings.NoBuild"/></li><li><c>--no-cache</c> via <see cref="DotNetPublishSettings.NoCache"/></li><li><c>--no-dependencies</c> via <see cref="DotNetPublishSettings.NoDependencies"/></li><li><c>--no-restore</c> via <see cref="DotNetPublishSettings.NoRestore"/></li><li><c>--nologo</c> via <see cref="DotNetPublishSettings.NoLogo"/></li><li><c>--os</c> via <see cref="DotNetPublishSettings.OperatingSystem"/></li><li><c>--output</c> via <see cref="DotNetPublishSettings.Output"/></li><li><c>--packages</c> via <see cref="DotNetPublishSettings.PackageDirectory"/></li><li><c>--property</c> via <see cref="DotNetPublishSettings.Properties"/></li><li><c>--runtime</c> via <see cref="DotNetPublishSettings.Runtime"/></li><li><c>--self-contained</c> via <see cref="DotNetPublishSettings.SelfContained"/></li><li><c>--source</c> via <see cref="DotNetPublishSettings.Sources"/></li><li><c>--use-lock-file</c> via <see cref="DotNetPublishSettings.UseLockFile"/></li><li><c>--verbosity</c> via <see cref="DotNetPublishSettings.Verbosity"/></li><li><c>--version-suffix</c> via <see cref="DotNetPublishSettings.VersionSuffix"/></li><li><c>/t</c> via <see cref="DotNetPublishSettings.Targets"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetPublish(DotNetPublishSettings options = null) => new DotNetTasks().Run<DotNetPublishSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Common.Tools.DotNet.DotNetPublishSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Application.Tools.DotNet.DotNetPublishSettings)"/>
     public static IReadOnlyCollection<Output> DotNetPublish(Configure<DotNetPublishSettings> configurator) => new DotNetTasks().Run<DotNetPublishSettings>(configurator.Invoke(new DotNetPublishSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Common.Tools.DotNet.DotNetPublishSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Application.Tools.DotNet.DotNetPublishSettings)"/>
     public static IEnumerable<(DotNetPublishSettings Settings, IReadOnlyCollection<Output> Output)> DotNetPublish(CombinatorialConfigure<DotNetPublishSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetPublish, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Pushes a package to the server and publishes it.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="DotNetNuGetPushSettings.TargetPath"/></li><li><c>--api-key</c> via <see cref="DotNetNuGetPushSettings.ApiKey"/></li><li><c>--disable-buffering</c> via <see cref="DotNetNuGetPushSettings.DisableBuffering"/></li><li><c>--force-english-output</c> via <see cref="DotNetNuGetPushSettings.ForceEnglishOutput"/></li><li><c>--no-service-endpoint</c> via <see cref="DotNetNuGetPushSettings.NoServiceEndpoint"/></li><li><c>--no-symbols</c> via <see cref="DotNetNuGetPushSettings.NoSymbols"/></li><li><c>--skip-duplicate</c> via <see cref="DotNetNuGetPushSettings.SkipDuplicate"/></li><li><c>--source</c> via <see cref="DotNetNuGetPushSettings.Source"/></li><li><c>--symbol-api-key</c> via <see cref="DotNetNuGetPushSettings.SymbolApiKey"/></li><li><c>--symbol-source</c> via <see cref="DotNetNuGetPushSettings.SymbolSource"/></li><li><c>--timeout</c> via <see cref="DotNetNuGetPushSettings.Timeout"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetNuGetPush(DotNetNuGetPushSettings options = null) => new DotNetTasks().Run<DotNetNuGetPushSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Common.Tools.DotNet.DotNetNuGetPushSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Application.Tools.DotNet.DotNetNuGetPushSettings)"/>
     public static IReadOnlyCollection<Output> DotNetNuGetPush(Configure<DotNetNuGetPushSettings> configurator) => new DotNetTasks().Run<DotNetNuGetPushSettings>(configurator.Invoke(new DotNetNuGetPushSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Common.Tools.DotNet.DotNetNuGetPushSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Application.Tools.DotNet.DotNetNuGetPushSettings)"/>
     public static IEnumerable<(DotNetNuGetPushSettings Settings, IReadOnlyCollection<Output> Output)> DotNetNuGetPush(CombinatorialConfigure<DotNetNuGetPushSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetNuGetPush, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The dotnet nuget delete command deletes or unlists a package from the server. For nuget.org, the action is to unlist the package.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageId&gt;</c> via <see cref="DotNetNuGetDeleteSettings.PackageId"/></li><li><c>&lt;packageVersion&gt;</c> via <see cref="DotNetNuGetDeleteSettings.PackageVersion"/></li><li><c>--api-key</c> via <see cref="DotNetNuGetDeleteSettings.ApiKey"/></li><li><c>--force-english-output</c> via <see cref="DotNetNuGetDeleteSettings.ForceEnglishOutput"/></li><li><c>--interactive</c> via <see cref="DotNetNuGetDeleteSettings.Interactive"/></li><li><c>--no-service-endpoint</c> via <see cref="DotNetNuGetDeleteSettings.NoServiceEndpoint"/></li><li><c>--non-interactive</c> via <see cref="DotNetNuGetDeleteSettings.NonInteractive"/></li><li><c>--source</c> via <see cref="DotNetNuGetDeleteSettings.Source"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetNuGetDelete(DotNetNuGetDeleteSettings options = null) => new DotNetTasks().Run<DotNetNuGetDeleteSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Common.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Application.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
     public static IReadOnlyCollection<Output> DotNetNuGetDelete(Configure<DotNetNuGetDeleteSettings> configurator) => new DotNetTasks().Run<DotNetNuGetDeleteSettings>(configurator.Invoke(new DotNetNuGetDeleteSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Common.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Application.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
     public static IEnumerable<(DotNetNuGetDeleteSettings Settings, IReadOnlyCollection<Output> Output)> DotNetNuGetDelete(CombinatorialConfigure<DotNetNuGetDeleteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetNuGetDelete, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The dotnet nuget sign command signs all the packages matching the first argument with a certificate. The certificate with the private key can be obtained from a file or from a certificate installed in a certificate store by providing a subject name or a SHA-1 fingerprint.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="DotNetNuGetSignSettings.TargetPath"/></li><li><c>--certificate-fingerprint</c> via <see cref="DotNetNuGetSignSettings.CertificateFingerprint"/></li><li><c>--certificate-password</c> via <see cref="DotNetNuGetSignSettings.CertificatePassword"/></li><li><c>--certificate-path</c> via <see cref="DotNetNuGetSignSettings.CertificatePath"/></li><li><c>--certificate-store-location</c> via <see cref="DotNetNuGetSignSettings.CertificateStoreLocation"/></li><li><c>--certificate-store-name</c> via <see cref="DotNetNuGetSignSettings.CertificateStoreName"/></li><li><c>--certificate-subject-name</c> via <see cref="DotNetNuGetSignSettings.CertificateSubjectName"/></li><li><c>--hash-algorithm</c> via <see cref="DotNetNuGetSignSettings.HashAlgorithm"/></li><li><c>--output</c> via <see cref="DotNetNuGetSignSettings.Output"/></li><li><c>--overwrite</c> via <see cref="DotNetNuGetSignSettings.Overwrite"/></li><li><c>--timestamp-hash-algorithm</c> via <see cref="DotNetNuGetSignSettings.TimestampHashAlgorithm"/></li><li><c>--timestamper</c> via <see cref="DotNetNuGetSignSettings.Timestamper"/></li><li><c>--verbosity</c> via <see cref="DotNetNuGetSignSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetNuGetSign(DotNetNuGetSignSettings options = null) => new DotNetTasks().Run<DotNetNuGetSignSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Common.Tools.DotNet.DotNetNuGetSignSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Application.Tools.DotNet.DotNetNuGetSignSettings)"/>
     public static IReadOnlyCollection<Output> DotNetNuGetSign(Configure<DotNetNuGetSignSettings> configurator) => new DotNetTasks().Run<DotNetNuGetSignSettings>(configurator.Invoke(new DotNetNuGetSignSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Common.Tools.DotNet.DotNetNuGetSignSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Application.Tools.DotNet.DotNetNuGetSignSettings)"/>
     public static IEnumerable<(DotNetNuGetSignSettings Settings, IReadOnlyCollection<Output> Output)> DotNetNuGetSign(CombinatorialConfigure<DotNetNuGetSignSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetNuGetSign, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The dotnet nuget verify command verifies a signed NuGet package.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="DotNetNuGetVerifySettings.TargetPath"/></li><li><c>--certificate-fingerprint</c> via <see cref="DotNetNuGetVerifySettings.CertificateFingerprint"/></li><li><c>--configfile</c> via <see cref="DotNetNuGetVerifySettings.ConfigFile"/></li><li><c>--verbosity</c> via <see cref="DotNetNuGetVerifySettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetNuGetVerify(DotNetNuGetVerifySettings options = null) => new DotNetTasks().Run<DotNetNuGetVerifySettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Common.Tools.DotNet.DotNetNuGetVerifySettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Application.Tools.DotNet.DotNetNuGetVerifySettings)"/>
     public static IReadOnlyCollection<Output> DotNetNuGetVerify(Configure<DotNetNuGetVerifySettings> configurator) => new DotNetTasks().Run<DotNetNuGetVerifySettings>(configurator.Invoke(new DotNetNuGetVerifySettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Common.Tools.DotNet.DotNetNuGetVerifySettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Application.Tools.DotNet.DotNetNuGetVerifySettings)"/>
     public static IEnumerable<(DotNetNuGetVerifySettings Settings, IReadOnlyCollection<Output> Output)> DotNetNuGetVerify(CombinatorialConfigure<DotNetNuGetVerifySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetNuGetVerify, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Adds a NuGet source.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;source&gt;</c> via <see cref="DotNetNuGetAddSourceSettings.Source"/></li><li><c>--configfile</c> via <see cref="DotNetNuGetAddSourceSettings.ConfigFile"/></li><li><c>--name</c> via <see cref="DotNetNuGetAddSourceSettings.Name"/></li><li><c>--password</c> via <see cref="DotNetNuGetAddSourceSettings.Password"/></li><li><c>--store-password-in-clear-text</c> via <see cref="DotNetNuGetAddSourceSettings.StorePasswordInClearText"/></li><li><c>--username</c> via <see cref="DotNetNuGetAddSourceSettings.Username"/></li><li><c>--valid-authentication-types</c> via <see cref="DotNetNuGetAddSourceSettings.ValidAuthenticationTypes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetNuGetAddSource(DotNetNuGetAddSourceSettings options = null) => new DotNetTasks().Run<DotNetNuGetAddSourceSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Common.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Application.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
     public static IReadOnlyCollection<Output> DotNetNuGetAddSource(Configure<DotNetNuGetAddSourceSettings> configurator) => new DotNetTasks().Run<DotNetNuGetAddSourceSettings>(configurator.Invoke(new DotNetNuGetAddSourceSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Common.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Application.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
     public static IEnumerable<(DotNetNuGetAddSourceSettings Settings, IReadOnlyCollection<Output> Output)> DotNetNuGetAddSource(CombinatorialConfigure<DotNetNuGetAddSourceSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetNuGetAddSource, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Updates a NuGet source.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;name&gt;</c> via <see cref="DotNetNuGetUpdateSourceSettings.Name"/></li><li><c>--configfile</c> via <see cref="DotNetNuGetUpdateSourceSettings.ConfigFile"/></li><li><c>--password</c> via <see cref="DotNetNuGetUpdateSourceSettings.Password"/></li><li><c>--source</c> via <see cref="DotNetNuGetUpdateSourceSettings.Source"/></li><li><c>--store-password-in-clear-text</c> via <see cref="DotNetNuGetUpdateSourceSettings.StorePasswordInClearText"/></li><li><c>--username</c> via <see cref="DotNetNuGetUpdateSourceSettings.Username"/></li><li><c>--valid-authentication-types</c> via <see cref="DotNetNuGetUpdateSourceSettings.ValidAuthenticationTypes"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetNuGetUpdateSource(DotNetNuGetUpdateSourceSettings options = null) => new DotNetTasks().Run<DotNetNuGetUpdateSourceSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Common.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Application.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
     public static IReadOnlyCollection<Output> DotNetNuGetUpdateSource(Configure<DotNetNuGetUpdateSourceSettings> configurator) => new DotNetTasks().Run<DotNetNuGetUpdateSourceSettings>(configurator.Invoke(new DotNetNuGetUpdateSourceSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Common.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Application.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
     public static IEnumerable<(DotNetNuGetUpdateSourceSettings Settings, IReadOnlyCollection<Output> Output)> DotNetNuGetUpdateSource(CombinatorialConfigure<DotNetNuGetUpdateSourceSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetNuGetUpdateSource, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet tool install</c> command provides a way for you to install .NET Core Global Tools on your machine. To use the command, you either have to specify that you want a user-wide installation using the <c>--global</c> option or you specify a path to install it using the <c>--tool-path</c> option.<para/>Global Tools are installed in the following directories by default when you specify the <c>-g</c> (or <c>--global</c>) option:<ul><li>Linux/macOS: <c>$HOME/.dotnet/tools</c></li><li>Windows: <c>%USERPROFILE%\.dotnet\tools</c></li></ul></p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageName&gt;</c> via <see cref="DotNetToolInstallSettings.PackageName"/></li><li><c>--add-source</c> via <see cref="DotNetToolInstallSettings.Sources"/></li><li><c>--configfile</c> via <see cref="DotNetToolInstallSettings.ConfigFile"/></li><li><c>--framework</c> via <see cref="DotNetToolInstallSettings.Framework"/></li><li><c>--global</c> via <see cref="DotNetToolInstallSettings.Global"/></li><li><c>--tool-path</c> via <see cref="DotNetToolInstallSettings.ToolInstallationPath"/></li><li><c>--verbosity</c> via <see cref="DotNetToolInstallSettings.Verbosity"/></li><li><c>--version</c> via <see cref="DotNetToolInstallSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetToolInstall(DotNetToolInstallSettings options = null) => new DotNetTasks().Run<DotNetToolInstallSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Common.Tools.DotNet.DotNetToolInstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Application.Tools.DotNet.DotNetToolInstallSettings)"/>
     public static IReadOnlyCollection<Output> DotNetToolInstall(Configure<DotNetToolInstallSettings> configurator) => new DotNetTasks().Run<DotNetToolInstallSettings>(configurator.Invoke(new DotNetToolInstallSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Common.Tools.DotNet.DotNetToolInstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Application.Tools.DotNet.DotNetToolInstallSettings)"/>
     public static IEnumerable<(DotNetToolInstallSettings Settings, IReadOnlyCollection<Output> Output)> DotNetToolInstall(CombinatorialConfigure<DotNetToolInstallSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetToolInstall, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet tool restore</c> command finds the tool manifest file that is in scope for the current directory and installs the tools that are listed in it.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--add-source</c> via <see cref="DotNetToolRestoreSettings.Sources"/></li><li><c>--configfile</c> via <see cref="DotNetToolRestoreSettings.ConfigFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetToolRestoreSettings.DisableParallel"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetToolRestoreSettings.IgnoreFailedSources"/></li><li><c>--interactive</c> via <see cref="DotNetToolRestoreSettings.Interactive"/></li><li><c>--no-cache</c> via <see cref="DotNetToolRestoreSettings.NoCache"/></li><li><c>--tool-manifest</c> via <see cref="DotNetToolRestoreSettings.ToolManifest"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetToolRestore(DotNetToolRestoreSettings options = null) => new DotNetTasks().Run<DotNetToolRestoreSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Common.Tools.DotNet.DotNetToolRestoreSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Application.Tools.DotNet.DotNetToolRestoreSettings)"/>
     public static IReadOnlyCollection<Output> DotNetToolRestore(Configure<DotNetToolRestoreSettings> configurator) => new DotNetTasks().Run<DotNetToolRestoreSettings>(configurator.Invoke(new DotNetToolRestoreSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Common.Tools.DotNet.DotNetToolRestoreSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Application.Tools.DotNet.DotNetToolRestoreSettings)"/>
     public static IEnumerable<(DotNetToolRestoreSettings Settings, IReadOnlyCollection<Output> Output)> DotNetToolRestore(CombinatorialConfigure<DotNetToolRestoreSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetToolRestore, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet tool uninstall</c> command provides a way for you to uninstall .NET Core Global Tools from your machine. To use the command, you either have to specify that you want to remove a user-wide tool using the <c>--global</c> option or specify a path to where the tool is installed using the <c>--tool-path</c> option.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageName&gt;</c> via <see cref="DotNetToolUninstallSettings.PackageName"/></li><li><c>--global</c> via <see cref="DotNetToolUninstallSettings.Global"/></li><li><c>--tool-path</c> via <see cref="DotNetToolUninstallSettings.ToolInstallationPath"/></li><li><c>--verbosity</c> via <see cref="DotNetToolUninstallSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetToolUninstall(DotNetToolUninstallSettings options = null) => new DotNetTasks().Run<DotNetToolUninstallSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Common.Tools.DotNet.DotNetToolUninstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Application.Tools.DotNet.DotNetToolUninstallSettings)"/>
     public static IReadOnlyCollection<Output> DotNetToolUninstall(Configure<DotNetToolUninstallSettings> configurator) => new DotNetTasks().Run<DotNetToolUninstallSettings>(configurator.Invoke(new DotNetToolUninstallSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Common.Tools.DotNet.DotNetToolUninstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Application.Tools.DotNet.DotNetToolUninstallSettings)"/>
     public static IEnumerable<(DotNetToolUninstallSettings Settings, IReadOnlyCollection<Output> Output)> DotNetToolUninstall(CombinatorialConfigure<DotNetToolUninstallSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetToolUninstall, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet tool update</c> command provides a way for you to update .NET Core Global Tools on your machine to the latest stable version of the package. The command uninstalls and re-installs a tool, effectively updating it. To use the command, you either have to specify that you want to update a tool from a user-wide installation using the <c>--global</c> option or specify a path to where the tool is installed using the <c>--tool-path</c> option.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;packageName&gt;</c> via <see cref="DotNetToolUpdateSettings.PackageName"/></li><li><c>--add-source</c> via <see cref="DotNetToolUpdateSettings.Sources"/></li><li><c>--configfile</c> via <see cref="DotNetToolUpdateSettings.ConfigFile"/></li><li><c>--framework</c> via <see cref="DotNetToolUpdateSettings.Framework"/></li><li><c>--global</c> via <see cref="DotNetToolUpdateSettings.Global"/></li><li><c>--tool-path</c> via <see cref="DotNetToolUpdateSettings.ToolInstallationPath"/></li><li><c>--verbosity</c> via <see cref="DotNetToolUpdateSettings.Verbosity"/></li><li><c>--version</c> via <see cref="DotNetToolUpdateSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetToolUpdate(DotNetToolUpdateSettings options = null) => new DotNetTasks().Run<DotNetToolUpdateSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Common.Tools.DotNet.DotNetToolUpdateSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Application.Tools.DotNet.DotNetToolUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DotNetToolUpdate(Configure<DotNetToolUpdateSettings> configurator) => new DotNetTasks().Run<DotNetToolUpdateSettings>(configurator.Invoke(new DotNetToolUpdateSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Common.Tools.DotNet.DotNetToolUpdateSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Application.Tools.DotNet.DotNetToolUpdateSettings)"/>
     public static IEnumerable<(DotNetToolUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DotNetToolUpdate(CombinatorialConfigure<DotNetToolUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetToolUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet workload install</c> command installs one or more optional workloads. Optional workloads can be installed on top of the .NET SDK to provide support for various application types, such as .NET MAUI and Blazor WebAssembly AOT.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;workloadId&gt;</c> via <see cref="DotNetWorkloadInstallSettings.WorkloadId"/></li><li><c>--configFile</c> via <see cref="DotNetWorkloadInstallSettings.ConfigFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetWorkloadInstallSettings.DisableParallel"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetWorkloadInstallSettings.IgnoreFailedSources"/></li><li><c>--include-previews</c> via <see cref="DotNetWorkloadInstallSettings.IncludePreviews"/></li><li><c>--interactive</c> via <see cref="DotNetWorkloadInstallSettings.Interactive"/></li><li><c>--no-cache</c> via <see cref="DotNetWorkloadInstallSettings.NoCache"/></li><li><c>--skip-manifest-update</c> via <see cref="DotNetWorkloadInstallSettings.SkipManifestUpdate"/></li><li><c>--skip-sign-check</c> via <see cref="DotNetWorkloadInstallSettings.SkipSignCheck"/></li><li><c>--source</c> via <see cref="DotNetWorkloadInstallSettings.Source"/></li><li><c>--temp-dir</c> via <see cref="DotNetWorkloadInstallSettings.TempDir"/></li><li><c>--verbosity</c> via <see cref="DotNetWorkloadInstallSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetWorkloadInstall(DotNetWorkloadInstallSettings options = null) => new DotNetTasks().Run<DotNetWorkloadInstallSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Common.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Application.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
     public static IReadOnlyCollection<Output> DotNetWorkloadInstall(Configure<DotNetWorkloadInstallSettings> configurator) => new DotNetTasks().Run<DotNetWorkloadInstallSettings>(configurator.Invoke(new DotNetWorkloadInstallSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Common.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Application.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
     public static IEnumerable<(DotNetWorkloadInstallSettings Settings, IReadOnlyCollection<Output> Output)> DotNetWorkloadInstall(CombinatorialConfigure<DotNetWorkloadInstallSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetWorkloadInstall, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet workload uninstall</c> command uninstalls one or more workloads.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;workloadId&gt;</c> via <see cref="DotNetWorkloadUninstallSettings.WorkloadId"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetWorkloadUninstall(DotNetWorkloadUninstallSettings options = null) => new DotNetTasks().Run<DotNetWorkloadUninstallSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Common.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Application.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
     public static IReadOnlyCollection<Output> DotNetWorkloadUninstall(Configure<DotNetWorkloadUninstallSettings> configurator) => new DotNetTasks().Run<DotNetWorkloadUninstallSettings>(configurator.Invoke(new DotNetWorkloadUninstallSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Common.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Application.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
     public static IEnumerable<(DotNetWorkloadUninstallSettings Settings, IReadOnlyCollection<Output> Output)> DotNetWorkloadUninstall(CombinatorialConfigure<DotNetWorkloadUninstallSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetWorkloadUninstall, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet workload restore</c> command analyzes a project or solution to determine which workloads it needs, then installs any workloads that are missing.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;project&gt;</c> via <see cref="DotNetWorkloadRestoreSettings.Project"/></li><li><c>--configFile</c> via <see cref="DotNetWorkloadRestoreSettings.ConfigFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetWorkloadRestoreSettings.DisableParallel"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetWorkloadRestoreSettings.IgnoreFailedSources"/></li><li><c>--include-previews</c> via <see cref="DotNetWorkloadRestoreSettings.IncludePreviews"/></li><li><c>--interactive</c> via <see cref="DotNetWorkloadRestoreSettings.Interactive"/></li><li><c>--no-cache</c> via <see cref="DotNetWorkloadRestoreSettings.NoCache"/></li><li><c>--skip-manifest-update</c> via <see cref="DotNetWorkloadRestoreSettings.SkipManifestUpdate"/></li><li><c>--skip-sign-check</c> via <see cref="DotNetWorkloadRestoreSettings.SkipSignCheck"/></li><li><c>--source</c> via <see cref="DotNetWorkloadRestoreSettings.Source"/></li><li><c>--temp-dir</c> via <see cref="DotNetWorkloadRestoreSettings.TempDir"/></li><li><c>--verbosity</c> via <see cref="DotNetWorkloadRestoreSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetWorkloadRestore(DotNetWorkloadRestoreSettings options = null) => new DotNetTasks().Run<DotNetWorkloadRestoreSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Common.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Application.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
     public static IReadOnlyCollection<Output> DotNetWorkloadRestore(Configure<DotNetWorkloadRestoreSettings> configurator) => new DotNetTasks().Run<DotNetWorkloadRestoreSettings>(configurator.Invoke(new DotNetWorkloadRestoreSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Common.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Application.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
     public static IEnumerable<(DotNetWorkloadRestoreSettings Settings, IReadOnlyCollection<Output> Output)> DotNetWorkloadRestore(CombinatorialConfigure<DotNetWorkloadRestoreSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetWorkloadRestore, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet workload update</c> command updates all installed workloads to the newest available versions. It queries Nuget.org for updated workload manifests. It then updates local manifests, downloads new versions of the installed workloads, and removes all old versions of each workload.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--advertising-manifests-only</c> via <see cref="DotNetWorkloadUpdateSettings.AdvertisingManifestsOnly"/></li><li><c>--configFile</c> via <see cref="DotNetWorkloadUpdateSettings.ConfigFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetWorkloadUpdateSettings.DisableParallel"/></li><li><c>--from-previous-sdk</c> via <see cref="DotNetWorkloadUpdateSettings.FromPreviousSdk"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetWorkloadUpdateSettings.IgnoreFailedSources"/></li><li><c>--include-previews</c> via <see cref="DotNetWorkloadUpdateSettings.IncludePreviews"/></li><li><c>--interactive</c> via <see cref="DotNetWorkloadUpdateSettings.Interactive"/></li><li><c>--no-cache</c> via <see cref="DotNetWorkloadUpdateSettings.NoCache"/></li><li><c>--skip-sign-check</c> via <see cref="DotNetWorkloadUpdateSettings.SkipSignCheck"/></li><li><c>--source</c> via <see cref="DotNetWorkloadUpdateSettings.Source"/></li><li><c>--temp-dir</c> via <see cref="DotNetWorkloadUpdateSettings.TempDir"/></li><li><c>--verbosity</c> via <see cref="DotNetWorkloadUpdateSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetWorkloadUpdate(DotNetWorkloadUpdateSettings options = null) => new DotNetTasks().Run<DotNetWorkloadUpdateSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Common.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Application.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
     public static IReadOnlyCollection<Output> DotNetWorkloadUpdate(Configure<DotNetWorkloadUpdateSettings> configurator) => new DotNetTasks().Run<DotNetWorkloadUpdateSettings>(configurator.Invoke(new DotNetWorkloadUpdateSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Common.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Application.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
     public static IEnumerable<(DotNetWorkloadUpdateSettings Settings, IReadOnlyCollection<Output> Output)> DotNetWorkloadUpdate(CombinatorialConfigure<DotNetWorkloadUpdateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetWorkloadUpdate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>The <c>dotnet workload repair</c>  command reinstalls all installed workloads. Workloads are made up of multiple workload packs and it's possible to get into a state where some installed successfully but others didn't. For example, a dotnet workload install command might not finish installing because of a dropped internet connection.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--configFile</c> via <see cref="DotNetWorkloadRepairSettings.ConfigFile"/></li><li><c>--disable-parallel</c> via <see cref="DotNetWorkloadRepairSettings.DisableParallel"/></li><li><c>--ignore-failed-sources</c> via <see cref="DotNetWorkloadRepairSettings.IgnoreFailedSources"/></li><li><c>--include-previews</c> via <see cref="DotNetWorkloadRepairSettings.IncludePreviews"/></li><li><c>--interactive</c> via <see cref="DotNetWorkloadRepairSettings.Interactive"/></li><li><c>--no-cache</c> via <see cref="DotNetWorkloadRepairSettings.NoCache"/></li><li><c>--skip-sign-check</c> via <see cref="DotNetWorkloadRepairSettings.SkipSignCheck"/></li><li><c>--source</c> via <see cref="DotNetWorkloadRepairSettings.Source"/></li><li><c>--temp-dir</c> via <see cref="DotNetWorkloadRepairSettings.TempDir"/></li><li><c>--verbosity</c> via <see cref="DotNetWorkloadRepairSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotNetWorkloadRepair(DotNetWorkloadRepairSettings options = null) => new DotNetTasks().Run<DotNetWorkloadRepairSettings>(options);
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Common.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Application.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
     public static IReadOnlyCollection<Output> DotNetWorkloadRepair(Configure<DotNetWorkloadRepairSettings> configurator) => new DotNetTasks().Run<DotNetWorkloadRepairSettings>(configurator.Invoke(new DotNetWorkloadRepairSettings()));
-    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Common.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
+    /// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Application.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
     public static IEnumerable<(DotNetWorkloadRepairSettings Settings, IReadOnlyCollection<Output> Output)> DotNetWorkloadRepair(CombinatorialConfigure<DotNetWorkloadRepairSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotNetWorkloadRepair, degreeOfParallelism, completeOnFailure);
 }
 #region DotNetTestSettings
-/// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Common.Tools.DotNet.DotNetTestSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Application.Tools.DotNet.DotNetTestSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetTest), Arguments = "test")]
 public partial class DotNetTestSettings : ToolOptions
@@ -279,7 +278,7 @@ public partial class DotNetTestSettings : ToolOptions
 }
 #endregion
 #region DotNetRunSettings
-/// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Common.Tools.DotNet.DotNetRunSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Application.Tools.DotNet.DotNetRunSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetRun), Arguments = "run")]
 public partial class DotNetRunSettings : ToolOptions
@@ -345,7 +344,7 @@ public partial class DotNetRunSettings : ToolOptions
 }
 #endregion
 #region DotNetRestoreSettings
-/// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Common.Tools.DotNet.DotNetRestoreSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Application.Tools.DotNet.DotNetRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetRestore), Arguments = "restore")]
 public partial class DotNetRestoreSettings : ToolOptions
@@ -385,7 +384,7 @@ public partial class DotNetRestoreSettings : ToolOptions
 }
 #endregion
 #region DotNetPackSettings
-/// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Common.Tools.DotNet.DotNetPackSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Application.Tools.DotNet.DotNetPackSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetPack), Arguments = "pack")]
 public partial class DotNetPackSettings : ToolOptions
@@ -443,7 +442,7 @@ public partial class DotNetPackSettings : ToolOptions
 }
 #endregion
 #region DotNetBuildSettings
-/// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Common.Tools.DotNet.DotNetBuildSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Application.Tools.DotNet.DotNetBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetBuild), Arguments = "build")]
 public partial class DotNetBuildSettings : ToolOptions
@@ -505,7 +504,7 @@ public partial class DotNetBuildSettings : ToolOptions
 }
 #endregion
 #region DotNetMSBuildSettings
-/// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Common.Tools.DotNet.DotNetMSBuildSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Application.Tools.DotNet.DotNetMSBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetMSBuild), Arguments = "msbuild")]
 public partial class DotNetMSBuildSettings : ToolOptions
@@ -541,7 +540,7 @@ public partial class DotNetMSBuildSettings : ToolOptions
 }
 #endregion
 #region DotNetCleanSettings
-/// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Common.Tools.DotNet.DotNetCleanSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Application.Tools.DotNet.DotNetCleanSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetClean), Arguments = "clean")]
 public partial class DotNetCleanSettings : ToolOptions
@@ -567,7 +566,7 @@ public partial class DotNetCleanSettings : ToolOptions
 }
 #endregion
 #region DotNetFormatSettings
-/// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Common.Tools.DotNet.DotNetFormatSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Application.Tools.DotNet.DotNetFormatSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetFormat), Arguments = "format")]
 public partial class DotNetFormatSettings : ToolOptions
@@ -597,7 +596,7 @@ public partial class DotNetFormatSettings : ToolOptions
 }
 #endregion
 #region DotNetPublishSettings
-/// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Common.Tools.DotNet.DotNetPublishSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Application.Tools.DotNet.DotNetPublishSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetPublish), Arguments = "publish")]
 public partial class DotNetPublishSettings : ToolOptions
@@ -661,7 +660,7 @@ public partial class DotNetPublishSettings : ToolOptions
 }
 #endregion
 #region DotNetNuGetPushSettings
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Common.Tools.DotNet.DotNetNuGetPushSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Application.Tools.DotNet.DotNetNuGetPushSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetNuGetPush), Arguments = "nuget push")]
 public partial class DotNetNuGetPushSettings : ToolOptions
@@ -691,7 +690,7 @@ public partial class DotNetNuGetPushSettings : ToolOptions
 }
 #endregion
 #region DotNetNuGetDeleteSettings
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Common.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Application.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetNuGetDelete), Arguments = "nuget delete")]
 public partial class DotNetNuGetDeleteSettings : ToolOptions
@@ -715,7 +714,7 @@ public partial class DotNetNuGetDeleteSettings : ToolOptions
 }
 #endregion
 #region DotNetNuGetSignSettings
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Common.Tools.DotNet.DotNetNuGetSignSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Application.Tools.DotNet.DotNetNuGetSignSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetNuGetSign), Arguments = "nuget sign")]
 public partial class DotNetNuGetSignSettings : ToolOptions
@@ -749,7 +748,7 @@ public partial class DotNetNuGetSignSettings : ToolOptions
 }
 #endregion
 #region DotNetNuGetVerifySettings
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Common.Tools.DotNet.DotNetNuGetVerifySettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Application.Tools.DotNet.DotNetNuGetVerifySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetNuGetVerify), Arguments = "nuget verify")]
 public partial class DotNetNuGetVerifySettings : ToolOptions
@@ -765,7 +764,7 @@ public partial class DotNetNuGetVerifySettings : ToolOptions
 }
 #endregion
 #region DotNetNuGetAddSourceSettings
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Common.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Application.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetNuGetAddSource), Arguments = "nuget add source")]
 public partial class DotNetNuGetAddSourceSettings : ToolOptions
@@ -787,7 +786,7 @@ public partial class DotNetNuGetAddSourceSettings : ToolOptions
 }
 #endregion
 #region DotNetNuGetUpdateSourceSettings
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Common.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Application.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetNuGetUpdateSource), Arguments = "nuget update source")]
 public partial class DotNetNuGetUpdateSourceSettings : ToolOptions
@@ -809,7 +808,7 @@ public partial class DotNetNuGetUpdateSourceSettings : ToolOptions
 }
 #endregion
 #region DotNetToolInstallSettings
-/// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Common.Tools.DotNet.DotNetToolInstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Application.Tools.DotNet.DotNetToolInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetToolInstall), Arguments = "tool install")]
 public partial class DotNetToolInstallSettings : ToolOptions
@@ -833,7 +832,7 @@ public partial class DotNetToolInstallSettings : ToolOptions
 }
 #endregion
 #region DotNetToolRestoreSettings
-/// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Common.Tools.DotNet.DotNetToolRestoreSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Application.Tools.DotNet.DotNetToolRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetToolRestore), Arguments = "tool restore")]
 public partial class DotNetToolRestoreSettings : ToolOptions
@@ -855,7 +854,7 @@ public partial class DotNetToolRestoreSettings : ToolOptions
 }
 #endregion
 #region DotNetToolUninstallSettings
-/// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Common.Tools.DotNet.DotNetToolUninstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Application.Tools.DotNet.DotNetToolUninstallSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetToolUninstall), Arguments = "tool uninstall")]
 public partial class DotNetToolUninstallSettings : ToolOptions
@@ -871,7 +870,7 @@ public partial class DotNetToolUninstallSettings : ToolOptions
 }
 #endregion
 #region DotNetToolUpdateSettings
-/// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Common.Tools.DotNet.DotNetToolUpdateSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Application.Tools.DotNet.DotNetToolUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetToolUpdate), Arguments = "tool update")]
 public partial class DotNetToolUpdateSettings : ToolOptions
@@ -895,7 +894,7 @@ public partial class DotNetToolUpdateSettings : ToolOptions
 }
 #endregion
 #region DotNetWorkloadInstallSettings
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Common.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Application.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetWorkloadInstall), Arguments = "workload install")]
 public partial class DotNetWorkloadInstallSettings : ToolOptions
@@ -927,7 +926,7 @@ public partial class DotNetWorkloadInstallSettings : ToolOptions
 }
 #endregion
 #region DotNetWorkloadUninstallSettings
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Common.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Application.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetWorkloadUninstall), Arguments = "workload uninstall")]
 public partial class DotNetWorkloadUninstallSettings : ToolOptions
@@ -937,7 +936,7 @@ public partial class DotNetWorkloadUninstallSettings : ToolOptions
 }
 #endregion
 #region DotNetWorkloadRestoreSettings
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Common.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Application.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetWorkloadRestore), Arguments = "workload restore")]
 public partial class DotNetWorkloadRestoreSettings : ToolOptions
@@ -969,7 +968,7 @@ public partial class DotNetWorkloadRestoreSettings : ToolOptions
 }
 #endregion
 #region DotNetWorkloadUpdateSettings
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Common.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Application.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetWorkloadUpdate), Arguments = "workload update")]
 public partial class DotNetWorkloadUpdateSettings : ToolOptions
@@ -1001,7 +1000,7 @@ public partial class DotNetWorkloadUpdateSettings : ToolOptions
 }
 #endregion
 #region DotNetWorkloadRepairSettings
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Common.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Application.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotNetTasks), Command = nameof(DotNetTasks.DotNetWorkloadRepair), Arguments = "workload repair")]
 public partial class DotNetWorkloadRepairSettings : ToolOptions
@@ -1029,7 +1028,7 @@ public partial class DotNetWorkloadRepairSettings : ToolOptions
 }
 #endregion
 #region DotNetTestSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Common.Tools.DotNet.DotNetTestSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetTest(Fallout.Application.Tools.DotNet.DotNetTestSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetTestSettingsExtensions
 {
@@ -1532,7 +1531,7 @@ public static partial class DotNetTestSettingsExtensions
 }
 #endregion
 #region DotNetRunSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Common.Tools.DotNet.DotNetRunSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetRun(Fallout.Application.Tools.DotNet.DotNetRunSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetRunSettingsExtensions
 {
@@ -2342,7 +2341,7 @@ public static partial class DotNetRunSettingsExtensions
 }
 #endregion
 #region DotNetRestoreSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Common.Tools.DotNet.DotNetRestoreSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetRestore(Fallout.Application.Tools.DotNet.DotNetRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetRestoreSettingsExtensions
 {
@@ -2970,7 +2969,7 @@ public static partial class DotNetRestoreSettingsExtensions
 }
 #endregion
 #region DotNetPackSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Common.Tools.DotNet.DotNetPackSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetPack(Fallout.Application.Tools.DotNet.DotNetPackSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetPackSettingsExtensions
 {
@@ -3724,7 +3723,7 @@ public static partial class DotNetPackSettingsExtensions
 }
 #endregion
 #region DotNetBuildSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Common.Tools.DotNet.DotNetBuildSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetBuild(Fallout.Application.Tools.DotNet.DotNetBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetBuildSettingsExtensions
 {
@@ -4500,7 +4499,7 @@ public static partial class DotNetBuildSettingsExtensions
 }
 #endregion
 #region DotNetMSBuildSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Common.Tools.DotNet.DotNetMSBuildSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetMSBuild(Fallout.Application.Tools.DotNet.DotNetMSBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetMSBuildSettingsExtensions
 {
@@ -5109,7 +5108,7 @@ public static partial class DotNetMSBuildSettingsExtensions
 }
 #endregion
 #region DotNetCleanSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Common.Tools.DotNet.DotNetCleanSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetClean(Fallout.Application.Tools.DotNet.DotNetCleanSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetCleanSettingsExtensions
 {
@@ -5603,7 +5602,7 @@ public static partial class DotNetCleanSettingsExtensions
 }
 #endregion
 #region DotNetFormatSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Common.Tools.DotNet.DotNetFormatSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetFormat(Fallout.Application.Tools.DotNet.DotNetFormatSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetFormatSettingsExtensions
 {
@@ -6161,7 +6160,7 @@ public static partial class DotNetFormatSettingsExtensions
 }
 #endregion
 #region DotNetPublishSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Common.Tools.DotNet.DotNetPublishSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetPublish(Fallout.Application.Tools.DotNet.DotNetPublishSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetPublishSettingsExtensions
 {
@@ -6936,7 +6935,7 @@ public static partial class DotNetPublishSettingsExtensions
 }
 #endregion
 #region DotNetNuGetPushSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Common.Tools.DotNet.DotNetNuGetPushSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetPush(Fallout.Application.Tools.DotNet.DotNetNuGetPushSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetNuGetPushSettingsExtensions
 {
@@ -7076,7 +7075,7 @@ public static partial class DotNetNuGetPushSettingsExtensions
 }
 #endregion
 #region DotNetNuGetDeleteSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Common.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetDelete(Fallout.Application.Tools.DotNet.DotNetNuGetDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetNuGetDeleteSettingsExtensions
 {
@@ -7183,7 +7182,7 @@ public static partial class DotNetNuGetDeleteSettingsExtensions
 }
 #endregion
 #region DotNetNuGetSignSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Common.Tools.DotNet.DotNetNuGetSignSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetSign(Fallout.Application.Tools.DotNet.DotNetNuGetSignSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetNuGetSignSettingsExtensions
 {
@@ -7303,7 +7302,7 @@ public static partial class DotNetNuGetSignSettingsExtensions
 }
 #endregion
 #region DotNetNuGetVerifySettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Common.Tools.DotNet.DotNetNuGetVerifySettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetVerify(Fallout.Application.Tools.DotNet.DotNetNuGetVerifySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetNuGetVerifySettingsExtensions
 {
@@ -7342,7 +7341,7 @@ public static partial class DotNetNuGetVerifySettingsExtensions
 }
 #endregion
 #region DotNetNuGetAddSourceSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Common.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetAddSource(Fallout.Application.Tools.DotNet.DotNetNuGetAddSourceSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetNuGetAddSourceSettingsExtensions
 {
@@ -7429,7 +7428,7 @@ public static partial class DotNetNuGetAddSourceSettingsExtensions
 }
 #endregion
 #region DotNetNuGetUpdateSourceSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Common.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetNuGetUpdateSource(Fallout.Application.Tools.DotNet.DotNetNuGetUpdateSourceSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetNuGetUpdateSourceSettingsExtensions
 {
@@ -7516,7 +7515,7 @@ public static partial class DotNetNuGetUpdateSourceSettingsExtensions
 }
 #endregion
 #region DotNetToolInstallSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Common.Tools.DotNet.DotNetToolInstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolInstall(Fallout.Application.Tools.DotNet.DotNetToolInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetToolInstallSettingsExtensions
 {
@@ -7611,7 +7610,7 @@ public static partial class DotNetToolInstallSettingsExtensions
 }
 #endregion
 #region DotNetToolRestoreSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Common.Tools.DotNet.DotNetToolRestoreSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolRestore(Fallout.Application.Tools.DotNet.DotNetToolRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetToolRestoreSettingsExtensions
 {
@@ -7725,7 +7724,7 @@ public static partial class DotNetToolRestoreSettingsExtensions
 }
 #endregion
 #region DotNetToolUninstallSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Common.Tools.DotNet.DotNetToolUninstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolUninstall(Fallout.Application.Tools.DotNet.DotNetToolUninstallSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetToolUninstallSettingsExtensions
 {
@@ -7773,7 +7772,7 @@ public static partial class DotNetToolUninstallSettingsExtensions
 }
 #endregion
 #region DotNetToolUpdateSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Common.Tools.DotNet.DotNetToolUpdateSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetToolUpdate(Fallout.Application.Tools.DotNet.DotNetToolUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetToolUpdateSettingsExtensions
 {
@@ -7868,7 +7867,7 @@ public static partial class DotNetToolUpdateSettingsExtensions
 }
 #endregion
 #region DotNetWorkloadInstallSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Common.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadInstall(Fallout.Application.Tools.DotNet.DotNetWorkloadInstallSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetWorkloadInstallSettingsExtensions
 {
@@ -8049,7 +8048,7 @@ public static partial class DotNetWorkloadInstallSettingsExtensions
 }
 #endregion
 #region DotNetWorkloadUninstallSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Common.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUninstall(Fallout.Application.Tools.DotNet.DotNetWorkloadUninstallSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetWorkloadUninstallSettingsExtensions
 {
@@ -8079,7 +8078,7 @@ public static partial class DotNetWorkloadUninstallSettingsExtensions
 }
 #endregion
 #region DotNetWorkloadRestoreSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Common.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRestore(Fallout.Application.Tools.DotNet.DotNetWorkloadRestoreSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetWorkloadRestoreSettingsExtensions
 {
@@ -8245,7 +8244,7 @@ public static partial class DotNetWorkloadRestoreSettingsExtensions
 }
 #endregion
 #region DotNetWorkloadUpdateSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Common.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadUpdate(Fallout.Application.Tools.DotNet.DotNetWorkloadUpdateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetWorkloadUpdateSettingsExtensions
 {
@@ -8420,7 +8419,7 @@ public static partial class DotNetWorkloadUpdateSettingsExtensions
 }
 #endregion
 #region DotNetWorkloadRepairSettingsExtensions
-/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Common.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
+/// <inheritdoc cref="DotNetTasks.DotNetWorkloadRepair(Fallout.Application.Tools.DotNet.DotNetWorkloadRepairSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotNetWorkloadRepairSettingsExtensions
 {

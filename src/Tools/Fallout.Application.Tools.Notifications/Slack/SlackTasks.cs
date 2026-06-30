@@ -10,7 +10,8 @@ using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Net;
 
-namespace Fallout.Common.Tools.Slack;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Notifications.Slack;
 
 public static class SlackTasks
 {

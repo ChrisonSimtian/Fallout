@@ -4,7 +4,8 @@ using Fallout.Common.IO;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Tools.OctoVersion;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.OctoVersion;
 
 partial class OctoVersionTasks
 {

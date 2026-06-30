@@ -2,7 +2,8 @@
 using System.Linq;
 using Azure.Security.KeyVault.Keys;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+using Fallout.Common;
+namespace Fallout.Application.Tools.Signing.AzureKeyVault
 {
     public class AzureKeyVaultKey
     {

@@ -10,12 +10,12 @@ using Fallout.Common.Git;
 using Fallout.Common.IO;
 using Fallout.Solutions;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
-using Fallout.Common.Tools.GitHub;
+using Fallout.Application.Tools.DotNet;
+using Fallout.Application.Tools.VersionControl.GitHub;
 using Fallout.Common.Utilities;
 using Fallout.Components;
 using static Fallout.Common.ControlFlow;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 
 [DotNetVerbosityMapping]
 [ShutdownDotNetAfterServerBuild]

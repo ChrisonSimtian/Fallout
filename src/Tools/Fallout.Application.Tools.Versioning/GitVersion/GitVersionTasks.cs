@@ -6,7 +6,8 @@ using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
-namespace Fallout.Common.Tools.GitVersion;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.GitVersion;
 
 partial class GitVersionTasks
 {

@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.Unity.Logging;
+using Fallout.Application.Tools.Gaming.Unity.Logging;
 using Fallout.Common.Utilities;
 using Fallout.Utilities.Text.Yaml;
 using Serilog;
 using Serilog.Events;
 
-namespace Fallout.Common.Tools.Unity;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Gaming.Unity;
 
 partial class UnityTasks
 {

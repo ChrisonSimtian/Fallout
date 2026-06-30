@@ -5,12 +5,12 @@ using Fallout.Common;
 using Fallout.Common.CI.AzurePipelines;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.Codecov;
-using Fallout.Common.Tools.ReportGenerator;
+using Fallout.Application.Tools.Coverage.Codecov;
+using Fallout.Application.Tools.Coverage.ReportGenerator;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.Tools.Codecov.CodecovTasks;
-using static Fallout.Common.Tools.ReportGenerator.ReportGeneratorTasks;
+using static Fallout.Application.Tools.Coverage.Codecov.CodecovTasks;
+using static Fallout.Application.Tools.Coverage.ReportGenerator.ReportGeneratorTasks;
 
 namespace Fallout.Components;
 

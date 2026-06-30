@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.DotCover;
+namespace Fallout.Application.Tools.Coverage.DotCover;
 
 /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,55 +27,55 @@ public partial class DotCoverTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverAnalyseSettings.Configuration"/></li><li><c>--AllowSymbolServerAccess</c> via <see cref="DotCoverAnalyseSettings.AllowSymbolServerAccess"/></li><li><c>--AnalyseTargetArguments</c> via <see cref="DotCoverAnalyseSettings.AnalyseTargetArguments"/></li><li><c>--AttributeFilters</c> via <see cref="DotCoverAnalyseSettings.AttributeFilters"/></li><li><c>--DisableDefaultFilters</c> via <see cref="DotCoverAnalyseSettings.DisableDefaultFilters"/></li><li><c>--Filters</c> via <see cref="DotCoverAnalyseSettings.Filters"/></li><li><c>--HideAutoProperties</c> via <see cref="DotCoverAnalyseSettings.HideAutoProperties"/></li><li><c>--InheritConsole</c> via <see cref="DotCoverAnalyseSettings.InheritConsole"/></li><li><c>--LogFile</c> via <see cref="DotCoverAnalyseSettings.LogFile"/></li><li><c>--Output</c> via <see cref="DotCoverAnalyseSettings.OutputFile"/></li><li><c>--ProcessFilters</c> via <see cref="DotCoverAnalyseSettings.ProcessFilters"/></li><li><c>--ReportType</c> via <see cref="DotCoverAnalyseSettings.ReportType"/></li><li><c>--ReturnTargetExitCode</c> via <see cref="DotCoverAnalyseSettings.ReturnTargetExitCode"/></li><li><c>--Scope</c> via <see cref="DotCoverAnalyseSettings.Scope"/></li><li><c>--SymbolSearchPaths</c> via <see cref="DotCoverAnalyseSettings.SymbolSearchPaths"/></li><li><c>--TargetArguments</c> via <see cref="DotCoverAnalyseSettings.TargetArguments"/></li><li><c>--TargetExecutable</c> via <see cref="DotCoverAnalyseSettings.TargetExecutable"/></li><li><c>--TargetWorkingDir</c> via <see cref="DotCoverAnalyseSettings.TargetWorkingDirectory"/></li><li><c>--TempDir</c> via <see cref="DotCoverAnalyseSettings.TempDirectory"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverAnalyse(DotCoverAnalyseSettings options = null) => new DotCoverTasks().Run<DotCoverAnalyseSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Common.Tools.DotCover.DotCoverAnalyseSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Application.Tools.Coverage.DotCover.DotCoverAnalyseSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverAnalyse(Configure<DotCoverAnalyseSettings> configurator) => new DotCoverTasks().Run<DotCoverAnalyseSettings>(configurator.Invoke(new DotCoverAnalyseSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Common.Tools.DotCover.DotCoverAnalyseSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Application.Tools.Coverage.DotCover.DotCoverAnalyseSettings)"/>
     public static IEnumerable<(DotCoverAnalyseSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverAnalyse(CombinatorialConfigure<DotCoverAnalyseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverAnalyse, degreeOfParallelism, completeOnFailure);
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverCoverSettings.Configuration"/></li><li><c>--AllowSymbolServerAccess</c> via <see cref="DotCoverCoverSettings.AllowSymbolServerAccess"/></li><li><c>--AnalyseTargetArguments</c> via <see cref="DotCoverCoverSettings.AnalyseTargetArguments"/></li><li><c>--AttributeFilters</c> via <see cref="DotCoverCoverSettings.AttributeFilters"/></li><li><c>--DisableDefaultFilters</c> via <see cref="DotCoverCoverSettings.DisableDefaultFilters"/></li><li><c>--Filters</c> via <see cref="DotCoverCoverSettings.Filters"/></li><li><c>--InheritConsole</c> via <see cref="DotCoverCoverSettings.InheritConsole"/></li><li><c>--LogFile</c> via <see cref="DotCoverCoverSettings.LogFile"/></li><li><c>--Output</c> via <see cref="DotCoverCoverSettings.OutputFile"/></li><li><c>--ProcessFilters</c> via <see cref="DotCoverCoverSettings.ProcessFilters"/></li><li><c>--ReportType</c> via <see cref="DotCoverCoverSettings.ReportType"/></li><li><c>--ReturnTargetExitCode</c> via <see cref="DotCoverCoverSettings.ReturnTargetExitCode"/></li><li><c>--Scope</c> via <see cref="DotCoverCoverSettings.Scope"/></li><li><c>--SymbolSearchPaths</c> via <see cref="DotCoverCoverSettings.SymbolSearchPaths"/></li><li><c>--TargetArguments</c> via <see cref="DotCoverCoverSettings.TargetArguments"/></li><li><c>--TargetExecutable</c> via <see cref="DotCoverCoverSettings.TargetExecutable"/></li><li><c>--TargetWorkingDir</c> via <see cref="DotCoverCoverSettings.TargetWorkingDirectory"/></li><li><c>--TempDir</c> via <see cref="DotCoverCoverSettings.TempDirectory"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverCover(DotCoverCoverSettings options = null) => new DotCoverTasks().Run<DotCoverCoverSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Common.Tools.DotCover.DotCoverCoverSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverCover(Configure<DotCoverCoverSettings> configurator) => new DotCoverTasks().Run<DotCoverCoverSettings>(configurator.Invoke(new DotCoverCoverSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Common.Tools.DotCover.DotCoverCoverSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverSettings)"/>
     public static IEnumerable<(DotCoverCoverSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverCover(CombinatorialConfigure<DotCoverCoverSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverCover, degreeOfParallelism, completeOnFailure);
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverCoverDotNetSettings.Configuration"/></li><li><c>--AllowSymbolServerAccess</c> via <see cref="DotCoverCoverDotNetSettings.AllowSymbolServerAccess"/></li><li><c>--AnalyseTargetArguments</c> via <see cref="DotCoverCoverDotNetSettings.AnalyseTargetArguments"/></li><li><c>--AttributeFilters</c> via <see cref="DotCoverCoverDotNetSettings.AttributeFilters"/></li><li><c>--DisableDefaultFilters</c> via <see cref="DotCoverCoverDotNetSettings.DisableDefaultFilters"/></li><li><c>--Filters</c> via <see cref="DotCoverCoverDotNetSettings.Filters"/></li><li><c>--InheritConsole</c> via <see cref="DotCoverCoverDotNetSettings.InheritConsole"/></li><li><c>--LogFile</c> via <see cref="DotCoverCoverDotNetSettings.LogFile"/></li><li><c>--Output</c> via <see cref="DotCoverCoverDotNetSettings.OutputFile"/></li><li><c>--ProcessFilters</c> via <see cref="DotCoverCoverDotNetSettings.ProcessFilters"/></li><li><c>--ReportType</c> via <see cref="DotCoverCoverDotNetSettings.ReportType"/></li><li><c>--ReturnTargetExitCode</c> via <see cref="DotCoverCoverDotNetSettings.ReturnTargetExitCode"/></li><li><c>--Scope</c> via <see cref="DotCoverCoverDotNetSettings.Scope"/></li><li><c>--SymbolSearchPaths</c> via <see cref="DotCoverCoverDotNetSettings.SymbolSearchPaths"/></li><li><c>--TargetArguments</c> via <see cref="DotCoverCoverDotNetSettings.TargetArguments"/></li><li><c>--TargetWorkingDir</c> via <see cref="DotCoverCoverDotNetSettings.TargetWorkingDirectory"/></li><li><c>--TempDir</c> via <see cref="DotCoverCoverDotNetSettings.TempDirectory"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverCoverDotNet(DotCoverCoverDotNetSettings options = null) => new DotCoverTasks().Run<DotCoverCoverDotNetSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Common.Tools.DotCover.DotCoverCoverDotNetSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverDotNetSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverCoverDotNet(Configure<DotCoverCoverDotNetSettings> configurator) => new DotCoverTasks().Run<DotCoverCoverDotNetSettings>(configurator.Invoke(new DotCoverCoverDotNetSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Common.Tools.DotCover.DotCoverCoverDotNetSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverDotNetSettings)"/>
     public static IEnumerable<(DotCoverCoverDotNetSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverCoverDotNet(CombinatorialConfigure<DotCoverCoverDotNetSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverCoverDotNet, degreeOfParallelism, completeOnFailure);
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverDeleteSettings.Configuration"/></li><li><c>--LogFile</c> via <see cref="DotCoverDeleteSettings.LogFile"/></li><li><c>--Source</c> via <see cref="DotCoverDeleteSettings.Source"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverDelete(DotCoverDeleteSettings options = null) => new DotCoverTasks().Run<DotCoverDeleteSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Common.Tools.DotCover.DotCoverDeleteSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Application.Tools.Coverage.DotCover.DotCoverDeleteSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverDelete(Configure<DotCoverDeleteSettings> configurator) => new DotCoverTasks().Run<DotCoverDeleteSettings>(configurator.Invoke(new DotCoverDeleteSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Common.Tools.DotCover.DotCoverDeleteSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Application.Tools.Coverage.DotCover.DotCoverDeleteSettings)"/>
     public static IEnumerable<(DotCoverDeleteSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverDelete(CombinatorialConfigure<DotCoverDeleteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverDelete, degreeOfParallelism, completeOnFailure);
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverMergeSettings.Configuration"/></li><li><c>--LogFile</c> via <see cref="DotCoverMergeSettings.LogFile"/></li><li><c>--Output</c> via <see cref="DotCoverMergeSettings.OutputFile"/></li><li><c>--Source</c> via <see cref="DotCoverMergeSettings.Source"/></li><li><c>--TempDir</c> via <see cref="DotCoverMergeSettings.TempDirectory"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverMerge(DotCoverMergeSettings options = null) => new DotCoverTasks().Run<DotCoverMergeSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Common.Tools.DotCover.DotCoverMergeSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Application.Tools.Coverage.DotCover.DotCoverMergeSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverMerge(Configure<DotCoverMergeSettings> configurator) => new DotCoverTasks().Run<DotCoverMergeSettings>(configurator.Invoke(new DotCoverMergeSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Common.Tools.DotCover.DotCoverMergeSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Application.Tools.Coverage.DotCover.DotCoverMergeSettings)"/>
     public static IEnumerable<(DotCoverMergeSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverMerge(CombinatorialConfigure<DotCoverMergeSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverMerge, degreeOfParallelism, completeOnFailure);
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverReportSettings.Configuration"/></li><li><c>--HideAutoProperties</c> via <see cref="DotCoverReportSettings.HideAutoProperties"/></li><li><c>--LogFile</c> via <see cref="DotCoverReportSettings.LogFile"/></li><li><c>--Output</c> via <see cref="DotCoverReportSettings.OutputFile"/></li><li><c>--ReportType</c> via <see cref="DotCoverReportSettings.ReportType"/></li><li><c>--Source</c> via <see cref="DotCoverReportSettings.Source"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverReport(DotCoverReportSettings options = null) => new DotCoverTasks().Run<DotCoverReportSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Common.Tools.DotCover.DotCoverReportSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Application.Tools.Coverage.DotCover.DotCoverReportSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverReport(Configure<DotCoverReportSettings> configurator) => new DotCoverTasks().Run<DotCoverReportSettings>(configurator.Invoke(new DotCoverReportSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Common.Tools.DotCover.DotCoverReportSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Application.Tools.Coverage.DotCover.DotCoverReportSettings)"/>
     public static IEnumerable<(DotCoverReportSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverReport(CombinatorialConfigure<DotCoverReportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverReport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>dotCover is a .NET unit testing and code coverage tool that works right in Visual Studio, helps you know to what extent your code is covered with unit tests, provides great ways to visualize code coverage, and is Continuous Integration ready. dotCover calculates and reports statement-level code coverage in applications targeting .NET Framework, Silverlight, and .NET Core.</p><p>For more details, visit the <a href="https://www.jetbrains.com/dotcover">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;configuration&gt;</c> via <see cref="DotCoverZipSettings.Configuration"/></li><li><c>--LogFile</c> via <see cref="DotCoverZipSettings.LogFile"/></li><li><c>--Output</c> via <see cref="DotCoverZipSettings.OutputFile"/></li><li><c>--Source</c> via <see cref="DotCoverZipSettings.Source"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotCoverZip(DotCoverZipSettings options = null) => new DotCoverTasks().Run<DotCoverZipSettings>(options);
-    /// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Common.Tools.DotCover.DotCoverZipSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Application.Tools.Coverage.DotCover.DotCoverZipSettings)"/>
     public static IReadOnlyCollection<Output> DotCoverZip(Configure<DotCoverZipSettings> configurator) => new DotCoverTasks().Run<DotCoverZipSettings>(configurator.Invoke(new DotCoverZipSettings()));
-    /// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Common.Tools.DotCover.DotCoverZipSettings)"/>
+    /// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Application.Tools.Coverage.DotCover.DotCoverZipSettings)"/>
     public static IEnumerable<(DotCoverZipSettings Settings, IReadOnlyCollection<Output> Output)> DotCoverZip(CombinatorialConfigure<DotCoverZipSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotCoverZip, degreeOfParallelism, completeOnFailure);
 }
 #region DotCoverAnalyseSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Common.Tools.DotCover.DotCoverAnalyseSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Application.Tools.Coverage.DotCover.DotCoverAnalyseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverAnalyse), Arguments = "analyse")]
 public partial class DotCoverAnalyseSettings : ToolOptions
@@ -122,7 +121,7 @@ public partial class DotCoverAnalyseSettings : ToolOptions
 }
 #endregion
 #region DotCoverCoverSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Common.Tools.DotCover.DotCoverCoverSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverCover), Arguments = "cover")]
 public partial class DotCoverCoverSettings : ToolOptions
@@ -166,7 +165,7 @@ public partial class DotCoverCoverSettings : ToolOptions
 }
 #endregion
 #region DotCoverCoverDotNetSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Common.Tools.DotCover.DotCoverCoverDotNetSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverDotNetSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverCoverDotNet), Arguments = "dotnet")]
 public partial class DotCoverCoverDotNetSettings : ToolOptions
@@ -208,7 +207,7 @@ public partial class DotCoverCoverDotNetSettings : ToolOptions
 }
 #endregion
 #region DotCoverDeleteSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Common.Tools.DotCover.DotCoverDeleteSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Application.Tools.Coverage.DotCover.DotCoverDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverDelete), Arguments = "delete")]
 public partial class DotCoverDeleteSettings : ToolOptions
@@ -222,7 +221,7 @@ public partial class DotCoverDeleteSettings : ToolOptions
 }
 #endregion
 #region DotCoverMergeSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Common.Tools.DotCover.DotCoverMergeSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Application.Tools.Coverage.DotCover.DotCoverMergeSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverMerge), Arguments = "merge")]
 public partial class DotCoverMergeSettings : ToolOptions
@@ -240,7 +239,7 @@ public partial class DotCoverMergeSettings : ToolOptions
 }
 #endregion
 #region DotCoverReportSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Common.Tools.DotCover.DotCoverReportSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Application.Tools.Coverage.DotCover.DotCoverReportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverReport), Arguments = "report")]
 public partial class DotCoverReportSettings : ToolOptions
@@ -260,7 +259,7 @@ public partial class DotCoverReportSettings : ToolOptions
 }
 #endregion
 #region DotCoverZipSettings
-/// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Common.Tools.DotCover.DotCoverZipSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Application.Tools.Coverage.DotCover.DotCoverZipSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotCoverTasks), Command = nameof(DotCoverTasks.DotCoverZip), Arguments = "zip")]
 public partial class DotCoverZipSettings : ToolOptions
@@ -276,7 +275,7 @@ public partial class DotCoverZipSettings : ToolOptions
 }
 #endregion
 #region DotCoverAnalyseSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Common.Tools.DotCover.DotCoverAnalyseSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverAnalyse(Fallout.Application.Tools.Coverage.DotCover.DotCoverAnalyseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverAnalyseSettingsExtensions
 {
@@ -564,7 +563,7 @@ public static partial class DotCoverAnalyseSettingsExtensions
 }
 #endregion
 #region DotCoverCoverSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Common.Tools.DotCover.DotCoverCoverSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverCover(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverCoverSettingsExtensions
 {
@@ -835,7 +834,7 @@ public static partial class DotCoverCoverSettingsExtensions
 }
 #endregion
 #region DotCoverCoverDotNetSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Common.Tools.DotCover.DotCoverCoverDotNetSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverCoverDotNet(Fallout.Application.Tools.Coverage.DotCover.DotCoverCoverDotNetSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverCoverDotNetSettingsExtensions
 {
@@ -1098,7 +1097,7 @@ public static partial class DotCoverCoverDotNetSettingsExtensions
 }
 #endregion
 #region DotCoverDeleteSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Common.Tools.DotCover.DotCoverDeleteSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverDelete(Fallout.Application.Tools.Coverage.DotCover.DotCoverDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverDeleteSettingsExtensions
 {
@@ -1144,7 +1143,7 @@ public static partial class DotCoverDeleteSettingsExtensions
 }
 #endregion
 #region DotCoverMergeSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Common.Tools.DotCover.DotCoverMergeSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverMerge(Fallout.Application.Tools.Coverage.DotCover.DotCoverMergeSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverMergeSettingsExtensions
 {
@@ -1206,7 +1205,7 @@ public static partial class DotCoverMergeSettingsExtensions
 }
 #endregion
 #region DotCoverReportSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Common.Tools.DotCover.DotCoverReportSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverReport(Fallout.Application.Tools.Coverage.DotCover.DotCoverReportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverReportSettingsExtensions
 {
@@ -1285,7 +1284,7 @@ public static partial class DotCoverReportSettingsExtensions
 }
 #endregion
 #region DotCoverZipSettingsExtensions
-/// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Common.Tools.DotCover.DotCoverZipSettings)"/>
+/// <inheritdoc cref="DotCoverTasks.DotCoverZip(Fallout.Application.Tools.Coverage.DotCover.DotCoverZipSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotCoverZipSettingsExtensions
 {

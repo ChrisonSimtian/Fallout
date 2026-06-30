@@ -11,7 +11,8 @@ using Fallout.Common.ValueInjection;
 using Serilog;
 using static Fallout.Common.ControlFlow;
 
-namespace Fallout.Common.Tools.GitVersion;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.GitVersion;
 
 /// <summary>
 /// Injects an instance of <see cref="GitVersion"/> based on the local repository.

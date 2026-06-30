@@ -4,10 +4,11 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using NuGet.Versioning;
 using Fallout.Common.Git;
-using Fallout.Common.Tools.GitHub;
+using Fallout.Application.Tools.VersionControl.GitHub;
 using Fallout.Common.Utilities;
 using Fallout.Common.ValueInjection;
 
+using Fallout.Common;
 namespace Fallout.Common.Tooling;
 
 public class LatestGitHubReleaseAttribute : ValueInjectionAttributeBase

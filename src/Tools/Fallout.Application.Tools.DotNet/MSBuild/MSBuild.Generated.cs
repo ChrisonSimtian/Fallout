@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.MSBuild;
+namespace Fallout.Application.Tools.DotNet.MSBuild;
 
 /// <summary><p>The Microsoft Build Engine is a platform for building applications. This engine, which is also known as MSBuild, provides an XML schema for a project file that controls how the build platform processes and builds software. Visual Studio uses MSBuild, but it doesn't depend on Visual Studio. By invoking msbuild.exe on your project or solution file, you can orchestrate and build products in environments where Visual Studio isn't installed. Visual Studio uses MSBuild to load and build managed projects. The project files in Visual Studio (.csproj,.vbproj, vcxproj, and others) contain MSBuild XML code that executes when you build a project by using the IDE. Visual Studio projects import all the necessary settings and build processes to do typical development work, but you can extend or modify them from within Visual Studio or by using an XML editor.</p><p>For more details, visit the <a href="https://msdn.microsoft.com/en-us/library/ms164311.aspx">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -26,13 +25,13 @@ public partial class MSBuildTasks : ToolTasks
     /// <summary><p>The Microsoft Build Engine is a platform for building applications. This engine, which is also known as MSBuild, provides an XML schema for a project file that controls how the build platform processes and builds software. Visual Studio uses MSBuild, but it doesn't depend on Visual Studio. By invoking msbuild.exe on your project or solution file, you can orchestrate and build products in environments where Visual Studio isn't installed. Visual Studio uses MSBuild to load and build managed projects. The project files in Visual Studio (.csproj,.vbproj, vcxproj, and others) contain MSBuild XML code that executes when you build a project by using the IDE. Visual Studio projects import all the necessary settings and build processes to do typical development work, but you can extend or modify them from within Visual Studio or by using an XML editor.</p><p>For more details, visit the <a href="https://msdn.microsoft.com/en-us/library/ms164311.aspx">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;targetPath&gt;</c> via <see cref="MSBuildSettings.TargetPath"/></li><li><c>/detailedsummary</c> via <see cref="MSBuildSettings.DetailedSummary"/></li><li><c>/logger</c> via <see cref="MSBuildSettings.Loggers"/></li><li><c>/maxcpucount</c> via <see cref="MSBuildSettings.MaxCpuCount"/></li><li><c>/noconsolelogger</c> via <see cref="MSBuildSettings.NoConsoleLogger"/></li><li><c>/nodeReuse</c> via <see cref="MSBuildSettings.NodeReuse"/></li><li><c>/nologo</c> via <see cref="MSBuildSettings.NoLogo"/></li><li><c>/p</c> via <see cref="MSBuildSettings.Properties"/></li><li><c>/p:Platform</c> via <see cref="MSBuildSettings.TargetPlatform"/></li><li><c>/restore</c> via <see cref="MSBuildSettings.Restore"/></li><li><c>/target</c> via <see cref="MSBuildSettings.Targets"/></li><li><c>/toolsversion</c> via <see cref="MSBuildSettings.ToolsVersion"/></li><li><c>/verbosity</c> via <see cref="MSBuildSettings.Verbosity"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MSBuild(MSBuildSettings options = null) => new MSBuildTasks().Run<MSBuildSettings>(options);
-    /// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Common.Tools.MSBuild.MSBuildSettings)"/>
+    /// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Application.Tools.DotNet.MSBuild.MSBuildSettings)"/>
     public static IReadOnlyCollection<Output> MSBuild(Configure<MSBuildSettings> configurator) => new MSBuildTasks().Run<MSBuildSettings>(configurator.Invoke(new MSBuildSettings()));
-    /// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Common.Tools.MSBuild.MSBuildSettings)"/>
+    /// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Application.Tools.DotNet.MSBuild.MSBuildSettings)"/>
     public static IEnumerable<(MSBuildSettings Settings, IReadOnlyCollection<Output> Output)> MSBuild(CombinatorialConfigure<MSBuildSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MSBuild, degreeOfParallelism, completeOnFailure);
 }
 #region MSBuildSettings
-/// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Common.Tools.MSBuild.MSBuildSettings)"/>
+/// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Application.Tools.DotNet.MSBuild.MSBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MSBuildTasks), Command = nameof(MSBuildTasks.MSBuild))]
 public partial class MSBuildSettings : ToolOptions
@@ -70,7 +69,7 @@ public partial class MSBuildSettings : ToolOptions
 }
 #endregion
 #region MSBuildSettingsExtensions
-/// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Common.Tools.MSBuild.MSBuildSettings)"/>
+/// <inheritdoc cref="MSBuildTasks.MSBuild(Fallout.Application.Tools.DotNet.MSBuild.MSBuildSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class MSBuildSettingsExtensions
 {

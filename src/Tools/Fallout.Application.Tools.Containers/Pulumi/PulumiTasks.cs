@@ -2,7 +2,8 @@
 using Fallout.Common.Tooling;
 using Serilog.Events;
 
-namespace Fallout.Common.Tools.Pulumi;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Containers.Pulumi;
 
 [LogLevelPattern(LogEventLevel.Warning, "^warning:")]
 partial class PulumiTasks;

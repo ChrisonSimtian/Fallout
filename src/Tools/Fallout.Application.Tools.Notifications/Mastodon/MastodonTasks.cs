@@ -7,7 +7,8 @@ using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Net;
 
-namespace Fallout.Common.Tools.Mastodon;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Notifications.Mastodon;
 
 public static class MastodonTasks
 {

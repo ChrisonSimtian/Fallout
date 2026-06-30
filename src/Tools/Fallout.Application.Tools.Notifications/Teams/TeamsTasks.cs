@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities.Net;
 
-namespace Fallout.Common.Tools.Teams;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Notifications.Teams;
 
 public static class TeamsTasks
 {

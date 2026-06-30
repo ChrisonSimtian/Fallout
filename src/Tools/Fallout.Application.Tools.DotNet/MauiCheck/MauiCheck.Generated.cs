@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.MauiCheck;
+namespace Fallout.Application.Tools.DotNet.MauiCheck;
 
 /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,20 +28,20 @@ public partial class MauiCheckTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--ci</c> via <see cref="MauiCheckSettings.Ci"/></li><li><c>--fix</c> via <see cref="MauiCheckSettings.Fix"/></li><li><c>--manifest</c> via <see cref="MauiCheckSettings.Manifest"/></li><li><c>--non-interactive</c> via <see cref="MauiCheckSettings.NonInteractive"/></li><li><c>--preview</c> via <see cref="MauiCheckSettings.Preview"/></li><li><c>--skip</c> via <see cref="MauiCheckSettings.Skip"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MauiCheck(MauiCheckSettings options = null) => new MauiCheckTasks().Run<MauiCheckSettings>(options);
-    /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Common.Tools.MauiCheck.MauiCheckSettings)"/>
+    /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckSettings)"/>
     public static IReadOnlyCollection<Output> MauiCheck(Configure<MauiCheckSettings> configurator) => new MauiCheckTasks().Run<MauiCheckSettings>(configurator.Invoke(new MauiCheckSettings()));
-    /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Common.Tools.MauiCheck.MauiCheckSettings)"/>
+    /// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckSettings)"/>
     public static IEnumerable<(MauiCheckSettings Settings, IReadOnlyCollection<Output> Output)> MauiCheck(CombinatorialConfigure<MauiCheckSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MauiCheck, degreeOfParallelism, completeOnFailure);
     /// <summary><p>A dotnet tool for helping set up your .NET MAUI environment.</p><p>For more details, visit the <a href="https://github.com/Redth/dotnet-maui-check">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--dotnet-pre</c> via <see cref="MauiCheckConfigSettings.DotNetPrerelease"/></li><li><c>--dotnet-rollForward</c> via <see cref="MauiCheckConfigSettings.DotNetRollForward"/></li><li><c>--dotnet-version</c> via <see cref="MauiCheckConfigSettings.DotNetVersion"/></li><li><c>--nuget-sources</c> via <see cref="MauiCheckConfigSettings.NuGetSources"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> MauiCheckConfig(MauiCheckConfigSettings options = null) => new MauiCheckTasks().Run<MauiCheckConfigSettings>(options);
-    /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
+    /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckConfigSettings)"/>
     public static IReadOnlyCollection<Output> MauiCheckConfig(Configure<MauiCheckConfigSettings> configurator) => new MauiCheckTasks().Run<MauiCheckConfigSettings>(configurator.Invoke(new MauiCheckConfigSettings()));
-    /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
+    /// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckConfigSettings)"/>
     public static IEnumerable<(MauiCheckConfigSettings Settings, IReadOnlyCollection<Output> Output)> MauiCheckConfig(CombinatorialConfigure<MauiCheckConfigSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(MauiCheckConfig, degreeOfParallelism, completeOnFailure);
 }
 #region MauiCheckSettings
-/// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Common.Tools.MauiCheck.MauiCheckSettings)"/>
+/// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MauiCheckTasks), Command = nameof(MauiCheckTasks.MauiCheck))]
 public partial class MauiCheckSettings : ToolOptions
@@ -62,7 +61,7 @@ public partial class MauiCheckSettings : ToolOptions
 }
 #endregion
 #region MauiCheckConfigSettings
-/// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
+/// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckConfigSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(MauiCheckTasks), Command = nameof(MauiCheckTasks.MauiCheckConfig), Arguments = "config")]
 public partial class MauiCheckConfigSettings : ToolOptions
@@ -78,7 +77,7 @@ public partial class MauiCheckConfigSettings : ToolOptions
 }
 #endregion
 #region MauiCheckSettingsExtensions
-/// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Common.Tools.MauiCheck.MauiCheckSettings)"/>
+/// <inheritdoc cref="MauiCheckTasks.MauiCheck(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class MauiCheckSettingsExtensions
 {
@@ -184,7 +183,7 @@ public static partial class MauiCheckSettingsExtensions
 }
 #endregion
 #region MauiCheckConfigSettingsExtensions
-/// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Common.Tools.MauiCheck.MauiCheckConfigSettings)"/>
+/// <inheritdoc cref="MauiCheckTasks.MauiCheckConfig(Fallout.Application.Tools.DotNet.MauiCheck.MauiCheckConfigSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class MauiCheckConfigSettingsExtensions
 {

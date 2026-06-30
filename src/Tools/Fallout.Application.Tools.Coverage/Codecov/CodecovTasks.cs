@@ -1,7 +1,8 @@
 ﻿using System;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.Codecov;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Coverage.Codecov;
 
 partial class CodecovTasks
 {

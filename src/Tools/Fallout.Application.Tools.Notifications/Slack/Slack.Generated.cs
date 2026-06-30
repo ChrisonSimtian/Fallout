@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Slack;
+namespace Fallout.Application.Tools.Notifications.Slack;
 
 #region SlackMessage
 /// <summary>Used within <see cref="SlackTasks"/>.</summary>

@@ -8,7 +8,7 @@ using Fallout.Common.ChangeLog;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
+using Fallout.Application.Tools.VersionControl.GitHub;
 using Fallout.Common.Utilities;
 using Octokit;
 

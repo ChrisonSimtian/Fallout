@@ -10,7 +10,7 @@ As a final step of your build automation process, you may want to report errors 
 You can send a [Slack](https://slack.com/) messages as follows:
 
 ```csharp
-// using static Fallout.Common.Tools.Slack.SlackTasks;
+// using static Fallout.Application.Tools.Notifications.Slack.SlackTasks;
 
 [Parameter] [Secret] readonly string SlackWebhook;
 
@@ -33,7 +33,7 @@ For more advanced scenarios, check out the [SlackAPI](https://github.com/Inumedi
 You can send a [Microsoft Teams](https://www.microsoft.com/en/microsoft-teams/group-chat-software) messages as follows:
 
 ```csharp
-// using static Fallout.Common.Tools.Teams.TeamsTasks;
+// using static Fallout.Application.Tools.Notifications.Teams.TeamsTasks;
 
 [Parameter] [Secret] readonly string TeamsWebhook;
 
@@ -52,7 +52,7 @@ Target Send => _ => _
 You can send a [Twitter](https://twitter.com/) messages as follows:
 
 ```csharp
-// using static Fallout.Common.Tools.Twitter.TwitterTasks;
+// using static Fallout.Application.Tools.Notifications.Twitter.TwitterTasks;
 
 [Parameter] [Secret] readonly string TwitterConsumerKey;
 [Parameter] [Secret] readonly string TwitterConsumerSecret;

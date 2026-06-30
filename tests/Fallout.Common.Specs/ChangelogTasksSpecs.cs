@@ -6,7 +6,7 @@ using FluentAssertions;
 using Fallout.Common.ChangeLog;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.GitHub;
+using Fallout.Application.Tools.VersionControl.GitHub;
 using VerifyXunit;
 using Xunit;
 

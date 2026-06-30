@@ -60,7 +60,6 @@ public static class ToolGenerator
                {
                    "Fallout.Common",
                    "Fallout.Common.Tooling",
-                   "Fallout.Common.Tools",
                    "Fallout.Common.Utilities.Collections",
                    "System",
                    "System.Collections.Generic",

@@ -1,7 +1,8 @@
 ﻿using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 
-namespace Fallout.Common.Tools.DotCover;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Coverage.DotCover;
 
 partial class DotCoverTasks
 {

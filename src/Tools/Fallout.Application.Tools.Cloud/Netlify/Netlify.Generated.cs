@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Netlify;
+namespace Fallout.Application.Tools.Cloud.Netlify;
 
 /// <summary><p>Netlify’s command line interface (CLI) lets you configure <a href="https://docs.netlify.com/cli/get-started/#continuous-deployment">continuous deployment</a> straight from the command line. You can use Netlify CLI to <a href="https://docs.netlify.com/cli/get-started/#run-a-local-development-environment">run a local development server</a> that you can share with others, <a href="https://docs.netlify.com/cli/get-started/#run-builds-locally">run a local build and plugins</a>, and <a href="https://docs.netlify.com/cli/get-started/#manual-deploys">deploy your site</a>.</p><p>For more details, visit the <a href="https://docs.netlify.com/cli/get-started/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,27 +27,27 @@ public partial class NetlifyTasks : ToolTasks, IRequirePathTool
     /// <summary><p>Netlify’s command line interface (CLI) lets you configure <a href="https://docs.netlify.com/cli/get-started/#continuous-deployment">continuous deployment</a> straight from the command line. You can use Netlify CLI to <a href="https://docs.netlify.com/cli/get-started/#run-a-local-development-environment">run a local development server</a> that you can share with others, <a href="https://docs.netlify.com/cli/get-started/#run-builds-locally">run a local build and plugins</a>, and <a href="https://docs.netlify.com/cli/get-started/#manual-deploys">deploy your site</a>.</p><p>For more details, visit the <a href="https://docs.netlify.com/cli/get-started/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--alias</c> via <see cref="NetlifyDeploySettings.Alias"/></li><li><c>--auth</c> via <see cref="NetlifyDeploySettings.Auth"/></li><li><c>--branch</c> via <see cref="NetlifyDeploySettings.Branch"/></li><li><c>--build</c> via <see cref="NetlifyDeploySettings.Build"/></li><li><c>--debug</c> via <see cref="NetlifyDeploySettings.Debug"/></li><li><c>--dir</c> via <see cref="NetlifyDeploySettings.Directory"/></li><li><c>--functions</c> via <see cref="NetlifyDeploySettings.Functions"/></li><li><c>--httpProxy</c> via <see cref="NetlifyDeploySettings.HttpProxy"/></li><li><c>--httpProxyCertificateFilename</c> via <see cref="NetlifyDeploySettings.HttpProxyCertificateFileName"/></li><li><c>--json</c> via <see cref="NetlifyDeploySettings.Json"/></li><li><c>--message</c> via <see cref="NetlifyDeploySettings.Message"/></li><li><c>--open</c> via <see cref="NetlifyDeploySettings.Open"/></li><li><c>--prod</c> via <see cref="NetlifyDeploySettings.Production"/></li><li><c>--prodIfUnlocked</c> via <see cref="NetlifyDeploySettings.ProductionIfUnlocked"/></li><li><c>--site</c> via <see cref="NetlifyDeploySettings.Site"/></li><li><c>--timeout</c> via <see cref="NetlifyDeploySettings.Timeout"/></li><li><c>--trigger</c> via <see cref="NetlifyDeploySettings.Trigger"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NetlifyDeploy(NetlifyDeploySettings options = null) => new NetlifyTasks().Run<NetlifyDeploySettings>(options);
-    /// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Common.Tools.Netlify.NetlifyDeploySettings)"/>
+    /// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Application.Tools.Cloud.Netlify.NetlifyDeploySettings)"/>
     public static IReadOnlyCollection<Output> NetlifyDeploy(Configure<NetlifyDeploySettings> configurator) => new NetlifyTasks().Run<NetlifyDeploySettings>(configurator.Invoke(new NetlifyDeploySettings()));
-    /// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Common.Tools.Netlify.NetlifyDeploySettings)"/>
+    /// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Application.Tools.Cloud.Netlify.NetlifyDeploySettings)"/>
     public static IEnumerable<(NetlifyDeploySettings Settings, IReadOnlyCollection<Output> Output)> NetlifyDeploy(CombinatorialConfigure<NetlifyDeploySettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NetlifyDeploy, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Netlify’s command line interface (CLI) lets you configure <a href="https://docs.netlify.com/cli/get-started/#continuous-deployment">continuous deployment</a> straight from the command line. You can use Netlify CLI to <a href="https://docs.netlify.com/cli/get-started/#run-a-local-development-environment">run a local development server</a> that you can share with others, <a href="https://docs.netlify.com/cli/get-started/#run-builds-locally">run a local build and plugins</a>, and <a href="https://docs.netlify.com/cli/get-started/#manual-deploys">deploy your site</a>.</p><p>For more details, visit the <a href="https://docs.netlify.com/cli/get-started/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--account-slug</c> via <see cref="NetlifySitesCreateSettings.AccountSlug"/></li><li><c>--debug</c> via <see cref="NetlifySitesCreateSettings.Debug"/></li><li><c>--httpProxy</c> via <see cref="NetlifySitesCreateSettings.HttpProxy"/></li><li><c>--httpProxyCertificateFilename</c> via <see cref="NetlifySitesCreateSettings.HttpProxyCertificateFileName"/></li><li><c>--manual</c> via <see cref="NetlifySitesCreateSettings.Manual"/></li><li><c>--name</c> via <see cref="NetlifySitesCreateSettings.Name"/></li><li><c>--with-ci</c> via <see cref="NetlifySitesCreateSettings.WithCI"/></li></ul></remarks>
     public static (string Result, IReadOnlyCollection<Output> Output) NetlifySitesCreate(NetlifySitesCreateSettings options = null) => new NetlifyTasks().Run<NetlifySitesCreateSettings, string>(options);
-    /// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Common.Tools.Netlify.NetlifySitesCreateSettings)"/>
+    /// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesCreateSettings)"/>
     public static (string Result, IReadOnlyCollection<Output> Output) NetlifySitesCreate(Configure<NetlifySitesCreateSettings> configurator) => new NetlifyTasks().Run<NetlifySitesCreateSettings, string>(configurator.Invoke(new NetlifySitesCreateSettings()));
-    /// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Common.Tools.Netlify.NetlifySitesCreateSettings)"/>
+    /// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesCreateSettings)"/>
     public static IEnumerable<(NetlifySitesCreateSettings Settings, string Result, IReadOnlyCollection<Output> Output)> NetlifySitesCreate(CombinatorialConfigure<NetlifySitesCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NetlifySitesCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Netlify’s command line interface (CLI) lets you configure <a href="https://docs.netlify.com/cli/get-started/#continuous-deployment">continuous deployment</a> straight from the command line. You can use Netlify CLI to <a href="https://docs.netlify.com/cli/get-started/#run-a-local-development-environment">run a local development server</a> that you can share with others, <a href="https://docs.netlify.com/cli/get-started/#run-builds-locally">run a local build and plugins</a>, and <a href="https://docs.netlify.com/cli/get-started/#manual-deploys">deploy your site</a>.</p><p>For more details, visit the <a href="https://docs.netlify.com/cli/get-started/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;siteId&gt;</c> via <see cref="NetlifySitesDeleteSettings.SiteId"/></li><li><c>--debug</c> via <see cref="NetlifySitesDeleteSettings.Debug"/></li><li><c>--force</c> via <see cref="NetlifySitesDeleteSettings.Force"/></li><li><c>--httpProxy</c> via <see cref="NetlifySitesDeleteSettings.HttpProxy"/></li><li><c>--httpProxyCertificateFilename</c> via <see cref="NetlifySitesDeleteSettings.HttpProxyCertificateFileName"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> NetlifySitesDelete(NetlifySitesDeleteSettings options = null) => new NetlifyTasks().Run<NetlifySitesDeleteSettings>(options);
-    /// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Common.Tools.Netlify.NetlifySitesDeleteSettings)"/>
+    /// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesDeleteSettings)"/>
     public static IReadOnlyCollection<Output> NetlifySitesDelete(Configure<NetlifySitesDeleteSettings> configurator) => new NetlifyTasks().Run<NetlifySitesDeleteSettings>(configurator.Invoke(new NetlifySitesDeleteSettings()));
-    /// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Common.Tools.Netlify.NetlifySitesDeleteSettings)"/>
+    /// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesDeleteSettings)"/>
     public static IEnumerable<(NetlifySitesDeleteSettings Settings, IReadOnlyCollection<Output> Output)> NetlifySitesDelete(CombinatorialConfigure<NetlifySitesDeleteSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(NetlifySitesDelete, degreeOfParallelism, completeOnFailure);
 }
 #region NetlifyDeploySettings
-/// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Common.Tools.Netlify.NetlifyDeploySettings)"/>
+/// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Application.Tools.Cloud.Netlify.NetlifyDeploySettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NetlifyTasks), Command = nameof(NetlifyTasks.NetlifyDeploy), Arguments = "netlify deploy")]
 public partial class NetlifyDeploySettings : ToolOptions
@@ -90,7 +89,7 @@ public partial class NetlifyDeploySettings : ToolOptions
 }
 #endregion
 #region NetlifySitesCreateSettings
-/// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Common.Tools.Netlify.NetlifySitesCreateSettings)"/>
+/// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NetlifyTasks), Command = nameof(NetlifyTasks.NetlifySitesCreate), Arguments = "netlify sites:create")]
 public partial class NetlifySitesCreateSettings : ToolOptions
@@ -112,7 +111,7 @@ public partial class NetlifySitesCreateSettings : ToolOptions
 }
 #endregion
 #region NetlifySitesDeleteSettings
-/// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Common.Tools.Netlify.NetlifySitesDeleteSettings)"/>
+/// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(NetlifyTasks), Command = nameof(NetlifyTasks.NetlifySitesDelete), Arguments = "netlify sites:delete")]
 public partial class NetlifySitesDeleteSettings : ToolOptions
@@ -130,7 +129,7 @@ public partial class NetlifySitesDeleteSettings : ToolOptions
 }
 #endregion
 #region NetlifyDeploySettingsExtensions
-/// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Common.Tools.Netlify.NetlifyDeploySettings)"/>
+/// <inheritdoc cref="NetlifyTasks.NetlifyDeploy(Fallout.Application.Tools.Cloud.Netlify.NetlifyDeploySettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NetlifyDeploySettingsExtensions
 {
@@ -336,7 +335,7 @@ public static partial class NetlifyDeploySettingsExtensions
 }
 #endregion
 #region NetlifySitesCreateSettingsExtensions
-/// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Common.Tools.Netlify.NetlifySitesCreateSettings)"/>
+/// <inheritdoc cref="NetlifyTasks.NetlifySitesCreate(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NetlifySitesCreateSettingsExtensions
 {
@@ -426,7 +425,7 @@ public static partial class NetlifySitesCreateSettingsExtensions
 }
 #endregion
 #region NetlifySitesDeleteSettingsExtensions
-/// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Common.Tools.Netlify.NetlifySitesDeleteSettings)"/>
+/// <inheritdoc cref="NetlifyTasks.NetlifySitesDelete(Fallout.Application.Tools.Cloud.Netlify.NetlifySitesDeleteSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class NetlifySitesDeleteSettingsExtensions
 {

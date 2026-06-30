@@ -5,7 +5,7 @@ using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Solutions;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
 
 namespace Fallout.Cli;
 

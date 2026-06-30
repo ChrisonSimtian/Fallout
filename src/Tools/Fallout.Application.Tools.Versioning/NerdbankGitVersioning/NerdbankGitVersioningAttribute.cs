@@ -6,7 +6,8 @@ using Fallout.Common.CI.TeamCity;
 using Fallout.Common.Tooling;
 using Fallout.Common.ValueInjection;
 
-namespace Fallout.Common.Tools.NerdbankGitVersioning;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.NerdbankGitVersioning;
 
 /// <summary>
 /// Injects an instance of <see cref="NerdbankGitVersioning"/> based on the local repository.

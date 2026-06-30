@@ -3,7 +3,7 @@ using System.Linq;
 using Fallout.Common;
 using Fallout.Common.Git;
 using Fallout.Common.IO;
-using Fallout.Common.Tools.Git;
+using Fallout.Application.Tools.VersionControl.Git;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Cli;

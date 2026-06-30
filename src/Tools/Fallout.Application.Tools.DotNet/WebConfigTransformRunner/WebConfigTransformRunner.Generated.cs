@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.WebConfigTransformRunner;
+namespace Fallout.Application.Tools.DotNet.WebConfigTransformRunner;
 
 /// <summary><p>This is a commandline tool to run an ASP.Net web.config tranformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,13 +28,13 @@ public partial class WebConfigTransformRunnerTasks : ToolTasks, IRequireNuGetPac
     /// <summary><p>This is a commandline tool to run an ASP.Net web.config tranformation.</p><p>For more details, visit the <a href="https://github.com/erichexter/WebConfigTransformRunner">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;outputFilename&gt;</c> via <see cref="WebConfigTransformRunnerSettings.OutputFilename"/></li><li><c>&lt;transformFilename&gt;</c> via <see cref="WebConfigTransformRunnerSettings.TransformFilename"/></li><li><c>&lt;webConfigFilename&gt;</c> via <see cref="WebConfigTransformRunnerSettings.WebConfigFilename"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> WebConfigTransformRunner(WebConfigTransformRunnerSettings options = null) => new WebConfigTransformRunnerTasks().Run<WebConfigTransformRunnerSettings>(options);
-    /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
+    /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Application.Tools.DotNet.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
     public static IReadOnlyCollection<Output> WebConfigTransformRunner(Configure<WebConfigTransformRunnerSettings> configurator) => new WebConfigTransformRunnerTasks().Run<WebConfigTransformRunnerSettings>(configurator.Invoke(new WebConfigTransformRunnerSettings()));
-    /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
+    /// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Application.Tools.DotNet.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
     public static IEnumerable<(WebConfigTransformRunnerSettings Settings, IReadOnlyCollection<Output> Output)> WebConfigTransformRunner(CombinatorialConfigure<WebConfigTransformRunnerSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(WebConfigTransformRunner, degreeOfParallelism, completeOnFailure);
 }
 #region WebConfigTransformRunnerSettings
-/// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
+/// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Application.Tools.DotNet.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(WebConfigTransformRunnerTasks), Command = nameof(WebConfigTransformRunnerTasks.WebConfigTransformRunner))]
 public partial class WebConfigTransformRunnerSettings : ToolOptions
@@ -49,7 +48,7 @@ public partial class WebConfigTransformRunnerSettings : ToolOptions
 }
 #endregion
 #region WebConfigTransformRunnerSettingsExtensions
-/// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Common.Tools.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
+/// <inheritdoc cref="WebConfigTransformRunnerTasks.WebConfigTransformRunner(Fallout.Application.Tools.DotNet.WebConfigTransformRunner.WebConfigTransformRunnerSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class WebConfigTransformRunnerSettingsExtensions
 {

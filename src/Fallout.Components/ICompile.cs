@@ -4,10 +4,10 @@ using System.Linq;
 using Fallout.Common;
 using Fallout.Solutions;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools.DotNet;
+using Fallout.Application.Tools.DotNet;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
-using static Fallout.Common.Tools.DotNet.DotNetTasks;
+using static Fallout.Application.Tools.DotNet.DotNetTasks;
 
 namespace Fallout.Components;
 

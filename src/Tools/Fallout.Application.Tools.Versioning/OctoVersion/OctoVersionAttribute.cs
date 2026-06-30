@@ -10,7 +10,8 @@ using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.ValueInjection;
 
-namespace Fallout.Common.Tools.OctoVersion;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Versioning.OctoVersion;
 
 /// <summary>
 /// Injects an instance of <see cref="OctoVersion"/> based on the local repository.

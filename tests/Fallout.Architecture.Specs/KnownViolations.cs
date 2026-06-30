@@ -48,6 +48,12 @@ internal static class KnownViolations
         "Fallout.Common.CI.PartitionAttribute",
         "Fallout.Common.CI.SerializeBuildServerStateAttribute",
         "Fallout.Common.CI.ShutdownDotNetAfterServerBuildAttribute",
+        // CI/Tooling types residing in the tool-family assemblies (Fallout.Application.Tools.DotNet
+        // / .VersionControl) — surfaced when the tool families joined the naming rule; relocation is a
+        // separate follow-up, not part of the tool-namespace alignment.
+        "Fallout.Common.CI.TeamCity.DotNetBuildSettingsExtensions",
+        "Fallout.Common.CI.TeamCity.DotNetTestSettingsExtensions",
+        "Fallout.Common.CI.TeamCity.MSBuildSettingsExtensions",
         "Fallout.Common.Cleanup",
         "Fallout.Common.Constants",
         "Fallout.Common.ControlFlow",
@@ -167,6 +173,7 @@ internal static class KnownViolations
         "Fallout.Common.Tooling.IRequireTool",
         "Fallout.Common.Tooling.IRequireToolWithVersion",
         "Fallout.Common.Tooling.IToolOptionsWithFramework",
+        "Fallout.Common.Tooling.LatestGitHubReleaseAttribute",
         "Fallout.Common.Tooling.LogErrorAsStandard",
         "Fallout.Common.Tooling.LogLevelPattern",
         "Fallout.Common.Tooling.NpmPackageRequirement",

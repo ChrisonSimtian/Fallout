@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.Codecov;
+namespace Fallout.Application.Tools.Coverage.Codecov;
 
 /// <summary><p>Code coverage is a measurement used to express which lines of code were executed by a test suite. We use three primary terms to describe each line executed.<para/><ul><li>hit - indicates that the source code was executed by the test suite.</li><li>partial - indicates that the source code was not fully executed by the test suite; there are remaining branches that were not executed.</li><li>miss - indicates that the source code was not executed by the test suite.</li></ul><para/>Coverage is the ratio of <c>hits / (sum of hit + partial + miss)</c>. A code base that has 5 lines executed by tests out of 12 total lines will receive a coverage ratio of 41% (rounding down).<para/>Phrased simply, code coverage provides a visual measurement of what source code is being executed by a test suite. This information indicates to the software developer where they should write new tests in an effort to achieve higher coverage.<para/>Testing source code helps to prevent bugs and syntax errors by executing each line with a known variable and cross-checking it with an expected output.</p><p>For more details, visit the <a href="https://about.codecov.io/">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +27,13 @@ public partial class CodecovTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Code coverage is a measurement used to express which lines of code were executed by a test suite. We use three primary terms to describe each line executed.<para/><ul><li>hit - indicates that the source code was executed by the test suite.</li><li>partial - indicates that the source code was not fully executed by the test suite; there are remaining branches that were not executed.</li><li>miss - indicates that the source code was not executed by the test suite.</li></ul><para/>Coverage is the ratio of <c>hits / (sum of hit + partial + miss)</c>. A code base that has 5 lines executed by tests out of 12 total lines will receive a coverage ratio of 41% (rounding down).<para/>Phrased simply, code coverage provides a visual measurement of what source code is being executed by a test suite. This information indicates to the software developer where they should write new tests in an effort to achieve higher coverage.<para/>Testing source code helps to prevent bugs and syntax errors by executing each line with a known variable and cross-checking it with an expected output.</p><p>For more details, visit the <a href="https://about.codecov.io/">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--branch</c> via <see cref="CodecovSettings.Branch"/></li><li><c>--build</c> via <see cref="CodecovSettings.Build"/></li><li><c>--disable-network</c> via <see cref="CodecovSettings.DisableNetwork"/></li><li><c>--dump</c> via <see cref="CodecovSettings.Dump"/></li><li><c>--env</c> via <see cref="CodecovSettings.EnvironmentVariables"/></li><li><c>--feature</c> via <see cref="CodecovSettings.Features"/></li><li><c>--file</c> via <see cref="CodecovSettings.Files"/></li><li><c>--flag</c> via <see cref="CodecovSettings.Flags"/></li><li><c>--name</c> via <see cref="CodecovSettings.Name"/></li><li><c>--no-color</c> via <see cref="CodecovSettings.NoColor"/></li><li><c>--pr</c> via <see cref="CodecovSettings.PullRequest"/></li><li><c>--required</c> via <see cref="CodecovSettings.Required"/></li><li><c>--root</c> via <see cref="CodecovSettings.RepositoryRoot"/></li><li><c>--sha</c> via <see cref="CodecovSettings.Sha"/></li><li><c>--slug</c> via <see cref="CodecovSettings.Slug"/></li><li><c>--tag</c> via <see cref="CodecovSettings.Tag"/></li><li><c>--token</c> via <see cref="CodecovSettings.Token"/></li><li><c>--url</c> via <see cref="CodecovSettings.Url"/></li><li><c>--verbose</c> via <see cref="CodecovSettings.Verbose"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> Codecov(CodecovSettings options = null) => new CodecovTasks().Run<CodecovSettings>(options);
-    /// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Common.Tools.Codecov.CodecovSettings)"/>
+    /// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Application.Tools.Coverage.Codecov.CodecovSettings)"/>
     public static IReadOnlyCollection<Output> Codecov(Configure<CodecovSettings> configurator) => new CodecovTasks().Run<CodecovSettings>(configurator.Invoke(new CodecovSettings()));
-    /// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Common.Tools.Codecov.CodecovSettings)"/>
+    /// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Application.Tools.Coverage.Codecov.CodecovSettings)"/>
     public static IEnumerable<(CodecovSettings Settings, IReadOnlyCollection<Output> Output)> Codecov(CombinatorialConfigure<CodecovSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(Codecov, degreeOfParallelism, completeOnFailure);
 }
 #region CodecovSettings
-/// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Common.Tools.Codecov.CodecovSettings)"/>
+/// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Application.Tools.Coverage.Codecov.CodecovSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CodecovTasks), Command = nameof(CodecovTasks.Codecov))]
 public partial class CodecovSettings : ToolOptions
@@ -82,7 +81,7 @@ public partial class CodecovSettings : ToolOptions
 }
 #endregion
 #region CodecovSettingsExtensions
-/// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Common.Tools.Codecov.CodecovSettings)"/>
+/// <inheritdoc cref="CodecovTasks.Codecov(Fallout.Application.Tools.Coverage.Codecov.CodecovSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class CodecovSettingsExtensions
 {

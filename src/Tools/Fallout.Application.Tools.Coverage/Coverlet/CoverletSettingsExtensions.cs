@@ -2,7 +2,8 @@
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.Coverlet;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Coverage.Coverlet;
 
 public static partial class CoverletSettingsExtensions
 {

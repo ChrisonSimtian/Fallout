@@ -76,6 +76,6 @@ Full conventions + what-not-to-do list: [docs/agents/conventions.md](docs/agents
 ## Useful pointers
 
 - The `build/Build.*.cs` files are the canonical example of how to consume the framework — read these when reasoning about user-facing APIs.
-- `src/Fallout.Common/Tools/<Tool>/<Tool>.json` files are the source of truth for tool wrappers; the `.cs` next to them is generated.
+- `src/Tools/Fallout.Application.Tools.<Family>/<Tool>/<Tool>.json` files are the source of truth for tool wrappers; the `.cs` next to them is generated (namespace `Fallout.Application.Tools.<Family>.<Tool>`).
 - Source generators (`src/Fallout.SourceGenerators`) produce per-target code at compile time — if a symbol seems missing, check whether it's generated.
 - The Verify snapshots (`*.verified.txt`, `*.verified.cs`) under `tests/` are the contract for generator output; review carefully when they change.

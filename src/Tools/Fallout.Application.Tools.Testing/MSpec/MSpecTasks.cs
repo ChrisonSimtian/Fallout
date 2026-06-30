@@ -2,7 +2,8 @@
 using System.Linq;
 using Fallout.Common.Tooling;
 
-namespace Fallout.Common.Tools.MSpec;
+using Fallout.Common;
+namespace Fallout.Application.Tools.Testing.MSpec;
 
 partial class MSpecTasks
 {

@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.DotnetPackaging;
+namespace Fallout.Application.Tools.Packaging.DotnetPackaging;
 
 /// <summary><p>DotnetPackaging is able to package your application into various formats, including Deb and AppImage.</p><p>For more details, visit the <a href="https://github.com/superjmn/dotnetpackaging">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,20 +28,20 @@ public partial class DotnetPackagingTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Creates a Debian package from the specified directory.</p><p>For more details, visit the <a href="https://github.com/superjmn/dotnetpackaging">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--directory</c> via <see cref="DotnetPackagingDebSettings.Directory"/></li><li><c>--metadata</c> via <see cref="DotnetPackagingDebSettings.Metadata"/></li><li><c>--output</c> via <see cref="DotnetPackagingDebSettings.Output"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotnetPackagingDeb(DotnetPackagingDebSettings options = null) => new DotnetPackagingTasks().Run<DotnetPackagingDebSettings>(options);
-    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingDebSettings)"/>
+    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingDebSettings)"/>
     public static IReadOnlyCollection<Output> DotnetPackagingDeb(Configure<DotnetPackagingDebSettings> configurator) => new DotnetPackagingTasks().Run<DotnetPackagingDebSettings>(configurator.Invoke(new DotnetPackagingDebSettings()));
-    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingDebSettings)"/>
+    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingDebSettings)"/>
     public static IEnumerable<(DotnetPackagingDebSettings Settings, IReadOnlyCollection<Output> Output)> DotnetPackagingDeb(CombinatorialConfigure<DotnetPackagingDebSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotnetPackagingDeb, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Creates an AppImage package.</p><p>For more details, visit the <a href="https://github.com/superjmn/dotnetpackaging">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--additional-categories</c> via <see cref="DotnetPackagingAppImageSettings.AdditionalCategories"/></li><li><c>--appId</c> via <see cref="DotnetPackagingAppImageSettings.AppId"/></li><li><c>--application-name</c> via <see cref="DotnetPackagingAppImageSettings.ApplicationName"/></li><li><c>--directory</c> via <see cref="DotnetPackagingAppImageSettings.Directory"/></li><li><c>--homepage</c> via <see cref="DotnetPackagingAppImageSettings.Homepage"/></li><li><c>--icon</c> via <see cref="DotnetPackagingAppImageSettings.Icon"/></li><li><c>--license</c> via <see cref="DotnetPackagingAppImageSettings.License"/></li><li><c>--main-category</c> via <see cref="DotnetPackagingAppImageSettings.MainCategory"/></li><li><c>--output</c> via <see cref="DotnetPackagingAppImageSettings.Output"/></li><li><c>--screenshot-urls</c> via <see cref="DotnetPackagingAppImageSettings.ScreenshotUrls"/></li><li><c>--summary</c> via <see cref="DotnetPackagingAppImageSettings.Summary"/></li><li><c>--version</c> via <see cref="DotnetPackagingAppImageSettings.Version"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> DotnetPackagingAppImage(DotnetPackagingAppImageSettings options = null) => new DotnetPackagingTasks().Run<DotnetPackagingAppImageSettings>(options);
-    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
+    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
     public static IReadOnlyCollection<Output> DotnetPackagingAppImage(Configure<DotnetPackagingAppImageSettings> configurator) => new DotnetPackagingTasks().Run<DotnetPackagingAppImageSettings>(configurator.Invoke(new DotnetPackagingAppImageSettings()));
-    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
+    /// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
     public static IEnumerable<(DotnetPackagingAppImageSettings Settings, IReadOnlyCollection<Output> Output)> DotnetPackagingAppImage(CombinatorialConfigure<DotnetPackagingAppImageSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(DotnetPackagingAppImage, degreeOfParallelism, completeOnFailure);
 }
 #region DotnetPackagingDebSettings
-/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingDebSettings)"/>
+/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingDebSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotnetPackagingTasks), Command = nameof(DotnetPackagingTasks.DotnetPackagingDeb), Arguments = "deb")]
 public partial class DotnetPackagingDebSettings : ToolOptions
@@ -56,7 +55,7 @@ public partial class DotnetPackagingDebSettings : ToolOptions
 }
 #endregion
 #region DotnetPackagingAppImageSettings
-/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
+/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(DotnetPackagingTasks), Command = nameof(DotnetPackagingTasks.DotnetPackagingAppImage), Arguments = "appimage")]
 public partial class DotnetPackagingAppImageSettings : ToolOptions
@@ -88,7 +87,7 @@ public partial class DotnetPackagingAppImageSettings : ToolOptions
 }
 #endregion
 #region DotnetPackagingDebSettingsExtensions
-/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingDebSettings)"/>
+/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingDeb(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingDebSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotnetPackagingDebSettingsExtensions
 {
@@ -119,7 +118,7 @@ public static partial class DotnetPackagingDebSettingsExtensions
 }
 #endregion
 #region DotnetPackagingAppImageSettingsExtensions
-/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Common.Tools.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
+/// <inheritdoc cref="DotnetPackagingTasks.DotnetPackagingAppImage(Fallout.Application.Tools.Packaging.DotnetPackaging.DotnetPackagingAppImageSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class DotnetPackagingAppImageSettingsExtensions
 {

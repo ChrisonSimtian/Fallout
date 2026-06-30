@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.GitReleaseManager;
+namespace Fallout.Application.Tools.VersionControl.GitReleaseManager;
 
 /// <summary><p>GitReleaseManager is a tool that will help create a set of release notes for your application/product. It does this using the collection of issues which are stored on the GitHub Issue Tracker for your application/product.<para/>By inspecting the issues that have been assigned to a particular milestone, GitReleaseManager creates a set of release notes, in markdown format, which are then used to create a Release on GitHub.<para/>In addition to creating a Release, GitReleaseManager can be used to publish a release, close a milestone, and also to export the complete set of release notes for your application/product.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -29,41 +28,41 @@ public partial class GitReleaseManagerTasks : ToolTasks, IRequireNuGetPackage
     /// <summary><p>Adds an asset to an existing release.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--assets</c> via <see cref="GitReleaseManagerAddAssetsSettings.AssetPaths"/></li><li><c>--logFilePath</c> via <see cref="GitReleaseManagerAddAssetsSettings.LogFilePath"/></li><li><c>--owner</c> via <see cref="GitReleaseManagerAddAssetsSettings.RepositoryOwner"/></li><li><c>--password</c> via <see cref="GitReleaseManagerAddAssetsSettings.Password"/></li><li><c>--repository</c> via <see cref="GitReleaseManagerAddAssetsSettings.RepositoryName"/></li><li><c>--tagName</c> via <see cref="GitReleaseManagerAddAssetsSettings.TagName"/></li><li><c>--targetDirectory</c> via <see cref="GitReleaseManagerAddAssetsSettings.TargetDirectory"/></li><li><c>--token</c> via <see cref="GitReleaseManagerAddAssetsSettings.Token"/></li><li><c>--username</c> via <see cref="GitReleaseManagerAddAssetsSettings.UserName"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitReleaseManagerAddAssets(GitReleaseManagerAddAssetsSettings options = null) => new GitReleaseManagerTasks().Run<GitReleaseManagerAddAssetsSettings>(options);
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
     public static IReadOnlyCollection<Output> GitReleaseManagerAddAssets(Configure<GitReleaseManagerAddAssetsSettings> configurator) => new GitReleaseManagerTasks().Run<GitReleaseManagerAddAssetsSettings>(configurator.Invoke(new GitReleaseManagerAddAssetsSettings()));
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
     public static IEnumerable<(GitReleaseManagerAddAssetsSettings Settings, IReadOnlyCollection<Output> Output)> GitReleaseManagerAddAssets(CombinatorialConfigure<GitReleaseManagerAddAssetsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitReleaseManagerAddAssets, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Closes the milestone.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--logFilePath</c> via <see cref="GitReleaseManagerCloseSettings.LogFilePath"/></li><li><c>--milestone</c> via <see cref="GitReleaseManagerCloseSettings.Milestone"/></li><li><c>--owner</c> via <see cref="GitReleaseManagerCloseSettings.RepositoryOwner"/></li><li><c>--password</c> via <see cref="GitReleaseManagerCloseSettings.Password"/></li><li><c>--repository</c> via <see cref="GitReleaseManagerCloseSettings.RepositoryName"/></li><li><c>--targetDirectory</c> via <see cref="GitReleaseManagerCloseSettings.TargetDirectory"/></li><li><c>--token</c> via <see cref="GitReleaseManagerCloseSettings.Token"/></li><li><c>--username</c> via <see cref="GitReleaseManagerCloseSettings.UserName"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitReleaseManagerClose(GitReleaseManagerCloseSettings options = null) => new GitReleaseManagerTasks().Run<GitReleaseManagerCloseSettings>(options);
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
     public static IReadOnlyCollection<Output> GitReleaseManagerClose(Configure<GitReleaseManagerCloseSettings> configurator) => new GitReleaseManagerTasks().Run<GitReleaseManagerCloseSettings>(configurator.Invoke(new GitReleaseManagerCloseSettings()));
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
     public static IEnumerable<(GitReleaseManagerCloseSettings Settings, IReadOnlyCollection<Output> Output)> GitReleaseManagerClose(CombinatorialConfigure<GitReleaseManagerCloseSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitReleaseManagerClose, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Creates a draft release notes from a milestone.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--assets</c> via <see cref="GitReleaseManagerCreateSettings.AssetPaths"/></li><li><c>--inputFilePath</c> via <see cref="GitReleaseManagerCreateSettings.InputFilePath"/></li><li><c>--logFilePath</c> via <see cref="GitReleaseManagerCreateSettings.LogFilePath"/></li><li><c>--milestone</c> via <see cref="GitReleaseManagerCreateSettings.Milestone"/></li><li><c>--name</c> via <see cref="GitReleaseManagerCreateSettings.Name"/></li><li><c>--owner</c> via <see cref="GitReleaseManagerCreateSettings.RepositoryOwner"/></li><li><c>--password</c> via <see cref="GitReleaseManagerCreateSettings.Password"/></li><li><c>--prerelease</c> via <see cref="GitReleaseManagerCreateSettings.Prerelease"/></li><li><c>--repository</c> via <see cref="GitReleaseManagerCreateSettings.RepositoryName"/></li><li><c>--targetcommitish</c> via <see cref="GitReleaseManagerCreateSettings.TargetCommitish"/></li><li><c>--targetDirectory</c> via <see cref="GitReleaseManagerCreateSettings.TargetDirectory"/></li><li><c>--token</c> via <see cref="GitReleaseManagerCreateSettings.Token"/></li><li><c>--username</c> via <see cref="GitReleaseManagerCreateSettings.UserName"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitReleaseManagerCreate(GitReleaseManagerCreateSettings options = null) => new GitReleaseManagerTasks().Run<GitReleaseManagerCreateSettings>(options);
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
     public static IReadOnlyCollection<Output> GitReleaseManagerCreate(Configure<GitReleaseManagerCreateSettings> configurator) => new GitReleaseManagerTasks().Run<GitReleaseManagerCreateSettings>(configurator.Invoke(new GitReleaseManagerCreateSettings()));
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
     public static IEnumerable<(GitReleaseManagerCreateSettings Settings, IReadOnlyCollection<Output> Output)> GitReleaseManagerCreate(CombinatorialConfigure<GitReleaseManagerCreateSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitReleaseManagerCreate, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Exports all the Release Notes in markdown format.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--fileOutputPath</c> via <see cref="GitReleaseManagerExportSettings.FileOutputPath"/></li><li><c>--logFilePath</c> via <see cref="GitReleaseManagerExportSettings.LogFilePath"/></li><li><c>--owner</c> via <see cref="GitReleaseManagerExportSettings.RepositoryOwner"/></li><li><c>--password</c> via <see cref="GitReleaseManagerExportSettings.Password"/></li><li><c>--repository</c> via <see cref="GitReleaseManagerExportSettings.RepositoryName"/></li><li><c>--tagName</c> via <see cref="GitReleaseManagerExportSettings.TagName"/></li><li><c>--targetDirectory</c> via <see cref="GitReleaseManagerExportSettings.TargetDirectory"/></li><li><c>--token</c> via <see cref="GitReleaseManagerExportSettings.Token"/></li><li><c>--username</c> via <see cref="GitReleaseManagerExportSettings.UserName"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitReleaseManagerExport(GitReleaseManagerExportSettings options = null) => new GitReleaseManagerTasks().Run<GitReleaseManagerExportSettings>(options);
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerExportSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerExportSettings)"/>
     public static IReadOnlyCollection<Output> GitReleaseManagerExport(Configure<GitReleaseManagerExportSettings> configurator) => new GitReleaseManagerTasks().Run<GitReleaseManagerExportSettings>(configurator.Invoke(new GitReleaseManagerExportSettings()));
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerExportSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerExportSettings)"/>
     public static IEnumerable<(GitReleaseManagerExportSettings Settings, IReadOnlyCollection<Output> Output)> GitReleaseManagerExport(CombinatorialConfigure<GitReleaseManagerExportSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitReleaseManagerExport, degreeOfParallelism, completeOnFailure);
     /// <summary><p>Publishes the GitHub Release.</p><p>For more details, visit the <a href="https://gitreleasemanager.readthedocs.io">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>--logFilePath</c> via <see cref="GitReleaseManagerPublishSettings.LogFilePath"/></li><li><c>--owner</c> via <see cref="GitReleaseManagerPublishSettings.RepositoryOwner"/></li><li><c>--password</c> via <see cref="GitReleaseManagerPublishSettings.Password"/></li><li><c>--repository</c> via <see cref="GitReleaseManagerPublishSettings.RepositoryName"/></li><li><c>--tagName</c> via <see cref="GitReleaseManagerPublishSettings.TagName"/></li><li><c>--targetDirectory</c> via <see cref="GitReleaseManagerPublishSettings.TargetDirectory"/></li><li><c>--token</c> via <see cref="GitReleaseManagerPublishSettings.Token"/></li><li><c>--username</c> via <see cref="GitReleaseManagerPublishSettings.UserName"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> GitReleaseManagerPublish(GitReleaseManagerPublishSettings options = null) => new GitReleaseManagerTasks().Run<GitReleaseManagerPublishSettings>(options);
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
     public static IReadOnlyCollection<Output> GitReleaseManagerPublish(Configure<GitReleaseManagerPublishSettings> configurator) => new GitReleaseManagerTasks().Run<GitReleaseManagerPublishSettings>(configurator.Invoke(new GitReleaseManagerPublishSettings()));
-    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
+    /// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
     public static IEnumerable<(GitReleaseManagerPublishSettings Settings, IReadOnlyCollection<Output> Output)> GitReleaseManagerPublish(CombinatorialConfigure<GitReleaseManagerPublishSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(GitReleaseManagerPublish, degreeOfParallelism, completeOnFailure);
 }
 #region GitReleaseManagerAddAssetsSettings
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerAddAssets), Arguments = "addasset")]
 public partial class GitReleaseManagerAddAssetsSettings : ToolOptions
@@ -89,7 +88,7 @@ public partial class GitReleaseManagerAddAssetsSettings : ToolOptions
 }
 #endregion
 #region GitReleaseManagerCloseSettings
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerClose), Arguments = "close")]
 public partial class GitReleaseManagerCloseSettings : ToolOptions
@@ -113,7 +112,7 @@ public partial class GitReleaseManagerCloseSettings : ToolOptions
 }
 #endregion
 #region GitReleaseManagerCreateSettings
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerCreate), Arguments = "create")]
 public partial class GitReleaseManagerCreateSettings : ToolOptions
@@ -147,7 +146,7 @@ public partial class GitReleaseManagerCreateSettings : ToolOptions
 }
 #endregion
 #region GitReleaseManagerExportSettings
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerExportSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerExportSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerExport), Arguments = "export")]
 public partial class GitReleaseManagerExportSettings : ToolOptions
@@ -173,7 +172,7 @@ public partial class GitReleaseManagerExportSettings : ToolOptions
 }
 #endregion
 #region GitReleaseManagerPublishSettings
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(GitReleaseManagerTasks), Command = nameof(GitReleaseManagerTasks.GitReleaseManagerPublish), Arguments = "publish")]
 public partial class GitReleaseManagerPublishSettings : ToolOptions
@@ -197,7 +196,7 @@ public partial class GitReleaseManagerPublishSettings : ToolOptions
 }
 #endregion
 #region GitReleaseManagerAddAssetsSettingsExtensions
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerAddAssets(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerAddAssetsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerAddAssetsSettingsExtensions
 {
@@ -291,7 +290,7 @@ public static partial class GitReleaseManagerAddAssetsSettingsExtensions
 }
 #endregion
 #region GitReleaseManagerCloseSettingsExtensions
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerClose(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCloseSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerCloseSettingsExtensions
 {
@@ -362,7 +361,7 @@ public static partial class GitReleaseManagerCloseSettingsExtensions
 }
 #endregion
 #region GitReleaseManagerCreateSettingsExtensions
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerCreate(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerCreateSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerCreateSettingsExtensions
 {
@@ -497,7 +496,7 @@ public static partial class GitReleaseManagerCreateSettingsExtensions
 }
 #endregion
 #region GitReleaseManagerExportSettingsExtensions
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerExportSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerExport(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerExportSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerExportSettingsExtensions
 {
@@ -576,7 +575,7 @@ public static partial class GitReleaseManagerExportSettingsExtensions
 }
 #endregion
 #region GitReleaseManagerPublishSettingsExtensions
-/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Common.Tools.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
+/// <inheritdoc cref="GitReleaseManagerTasks.GitReleaseManagerPublish(Fallout.Application.Tools.VersionControl.GitReleaseManager.GitReleaseManagerPublishSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class GitReleaseManagerPublishSettingsExtensions
 {

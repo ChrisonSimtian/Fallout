@@ -4,7 +4,8 @@ using System.Reflection;
 using Fallout.Common.ValueInjection;
 using Serilog;
 
-namespace Fallout.Common.Tools.AzureKeyVault
+using Fallout.Common;
+namespace Fallout.Application.Tools.Signing.AzureKeyVault
 {
     /// <summary>Defines where the KeyVault login details can be found.</summary>
     public class AzureKeyVaultConfigurationAttribute : ValueInjectionAttributeBase

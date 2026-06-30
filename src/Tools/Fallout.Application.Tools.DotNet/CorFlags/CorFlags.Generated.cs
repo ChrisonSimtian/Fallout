@@ -2,7 +2,6 @@
 
 using Fallout.Common;
 using Fallout.Common.Tooling;
-using Fallout.Common.Tools;
 using Fallout.Common.Utilities.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Fallout.Common.Tools.CorFlags;
+namespace Fallout.Application.Tools.DotNet.CorFlags;
 
 /// <summary><p>The CorFlags Conversion tool allows you to configure the CorFlags section of the header of a portable executable image.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/framework/tools/corflags-exe-corflags-conversion-tool">official website</a>.</p></summary>
 [ExcludeFromCodeCoverage]
@@ -28,13 +27,13 @@ public partial class CorFlagsTasks : ToolTasks, IRequirePathTool
     /// <summary><p>The CorFlags Conversion tool allows you to configure the CorFlags section of the header of a portable executable image.</p><p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/framework/tools/corflags-exe-corflags-conversion-tool">official website</a>.</p></summary>
     /// <remarks><p>This is a <a href="https://github.com/ChrisonSimtian/Fallout">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p><ul><li><c>&lt;assembly&gt;</c> via <see cref="CorFlagsSettings.Assembly"/></li><li><c>-32BIT</c> via <see cref="CorFlagsSettings.Require32Bit"/></li><li><c>-32BITPREF</c> via <see cref="CorFlagsSettings.Prefer32Bit"/></li><li><c>-Force</c> via <see cref="CorFlagsSettings.Force"/></li><li><c>-ILONLY</c> via <see cref="CorFlagsSettings.ILOnly"/></li><li><c>-nologo</c> via <see cref="CorFlagsSettings.NoLogo"/></li><li><c>-RevertCLRHeader</c> via <see cref="CorFlagsSettings.RevertCLRHeader"/></li><li><c>-UpgradeCLRHeader</c> via <see cref="CorFlagsSettings.UpgradeCLRHeader"/></li></ul></remarks>
     public static IReadOnlyCollection<Output> CorFlags(CorFlagsSettings options = null) => new CorFlagsTasks().Run<CorFlagsSettings>(options);
-    /// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Common.Tools.CorFlags.CorFlagsSettings)"/>
+    /// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Application.Tools.DotNet.CorFlags.CorFlagsSettings)"/>
     public static IReadOnlyCollection<Output> CorFlags(Configure<CorFlagsSettings> configurator) => new CorFlagsTasks().Run<CorFlagsSettings>(configurator.Invoke(new CorFlagsSettings()));
-    /// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Common.Tools.CorFlags.CorFlagsSettings)"/>
+    /// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Application.Tools.DotNet.CorFlags.CorFlagsSettings)"/>
     public static IEnumerable<(CorFlagsSettings Settings, IReadOnlyCollection<Output> Output)> CorFlags(CombinatorialConfigure<CorFlagsSettings> configurator, int degreeOfParallelism = 1, bool completeOnFailure = false) => configurator.Invoke(CorFlags, degreeOfParallelism, completeOnFailure);
 }
 #region CorFlagsSettings
-/// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Common.Tools.CorFlags.CorFlagsSettings)"/>
+/// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Application.Tools.DotNet.CorFlags.CorFlagsSettings)"/>
 [ExcludeFromCodeCoverage]
 [Command(Type = typeof(CorFlagsTasks), Command = nameof(CorFlagsTasks.CorFlags))]
 public partial class CorFlagsSettings : ToolOptions
@@ -58,7 +57,7 @@ public partial class CorFlagsSettings : ToolOptions
 }
 #endregion
 #region CorFlagsSettingsExtensions
-/// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Common.Tools.CorFlags.CorFlagsSettings)"/>
+/// <inheritdoc cref="CorFlagsTasks.CorFlags(Fallout.Application.Tools.DotNet.CorFlags.CorFlagsSettings)"/>
 [ExcludeFromCodeCoverage]
 public static partial class CorFlagsSettingsExtensions
 {

@@ -7,7 +7,8 @@ using Fallout.Common.Utilities;
 using Octokit;
 using static Fallout.Common.IO.PathConstruction;
 
-namespace Fallout.Common.Tools.GitHub;
+using Fallout.Common;
+namespace Fallout.Application.Tools.VersionControl.GitHub;
 
 public static class GitHubTasks
 {
