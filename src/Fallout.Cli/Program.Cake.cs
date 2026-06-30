@@ -19,74 +19,10 @@ partial class Program
 {
     public const string CAKE_FILE_PATTERN = "*.cake";
 
-    public static int CakeConvert(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-    {
-        PrintInfo();
-        Logging.Configure();
-        Telemetry.ConvertCake();
-        ProjectModelTasks.Initialize();
-
-        Host.Warning(
-            new[]
-            {
-                "Converting .cake files is a best effort approach using syntax rewriting.",
-                "Compile errors are to be expected, however, the following elements are currently covered:",
-                "  - Target definitions",
-                "  - Default targets",
-                "  - Parameter declarations",
-                "  - Absolute paths",
-                "  - Globbing patterns",
-                "  - Tool invocations (dotnet CLI, SignTool)",
-                "  - Addin and tool references",
-            }.JoinNewLine());
-
-        Host.Debug();
-        if (!PromptForConfirmation("Continue?"))
-            return 0;
-        Host.Debug();
-
-        if (buildScript == null &&
-            PromptForConfirmation("Should a NUKE project be created for better results?"))
-        {
-            Setup(args, rootDirectory: null, buildScript: null);
-        }
-
-        var buildScriptFile = WorkingDirectory / CurrentBuildScriptName;
-        var buildProjectFile = buildScriptFile.Exists()
-            ? GetConfiguration(buildScriptFile, evaluate: true)
-                .GetValueOrDefault(BUILD_PROJECT_FILE, defaultValue: null)
-            : null;
-
-        foreach (var cakeFile in GetCakeFiles())
-        {
-            var outputFile = cakeFile.Parent / cakeFile.NameWithoutExtension.Capitalize() + ".cs";
-            var content = GetCakeConvertedContent(cakeFile.ReadAllText());
-            outputFile.WriteAllText(content);
-        }
-
-        if (buildProjectFile != null)
-        {
-            var packages = GetCakeFiles().SelectMany(x => GetCakePackages(x.ReadAllText()));
-            foreach (var package in packages)
-                AddOrReplacePackage(package.Id, package.Version, package.Type, buildProjectFile);
-        }
-
-        return 0;
-    }
-
-    public static int CakeClean(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-    {
-        var cakeFiles = GetCakeFiles().ToList();
-        Host.Information("Found .cake files:");
-        cakeFiles.ForEach(x => Host.Debug($"  - {x}"));
-
-        if (PromptForConfirmation("Delete?"))
-            cakeFiles.ForEach(x => x.DeleteFile());
-
-        return 0;
-    }
-
-    private static IEnumerable<AbsolutePath> GetCakeFiles()
+    // Residual after the :cake-convert/:cake-clean commands moved to CakeConvertCommand/
+    // CakeCleanCommand: these .cake syntax-rewriting helpers stay on Program until the #392 collapse
+    // PR (GetCakeConvertedContent/GetCakePackages are exercised directly by tests).
+    internal static IEnumerable<AbsolutePath> GetCakeFiles()
     {
         return (TryGetRootDirectoryFrom(WorkingDirectory) ?? WorkingDirectory).GlobFiles($"**/{CAKE_FILE_PATTERN}");
     }
