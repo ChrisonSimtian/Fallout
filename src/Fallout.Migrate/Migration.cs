@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Fallout.Migrate;
 
-public sealed class Migration
+internal sealed class Migration
 {
     private readonly string _rootDirectory;
     private readonly bool _dryRun;
@@ -144,7 +144,7 @@ public sealed class Migration
 
     private void Log(string line) => _log.WriteLine(line);
 
-    public sealed class Summary
+    internal sealed class Summary
     {
         public int FilesChanged { get; set; }
         public int EditCount { get; set; }
