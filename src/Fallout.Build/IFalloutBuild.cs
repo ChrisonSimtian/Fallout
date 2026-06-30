@@ -19,15 +19,15 @@ public interface IFalloutBuild
     internal string[] LoadedLocalProfiles { get; }
     internal bool IsOutputEnabled(DefaultOutput output);
 
-    IReadOnlyCollection<ExecutableTarget> ExecutionPlan { get; }
-    IReadOnlyCollection<ExecutableTarget> InvokedTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> SkippedTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> ScheduledTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> RunningTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> AbortedTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> FailedTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> SucceededTargets { get; }
-    IReadOnlyCollection<ExecutableTarget> FinishedTargets { get; }
+    IReadOnlyCollection<ITargetModel> ExecutionPlan { get; }
+    IReadOnlyCollection<ITargetModel> InvokedTargets { get; }
+    IReadOnlyCollection<ITargetModel> SkippedTargets { get; }
+    IReadOnlyCollection<ITargetModel> ScheduledTargets { get; }
+    IReadOnlyCollection<ITargetModel> RunningTargets { get; }
+    IReadOnlyCollection<ITargetModel> AbortedTargets { get; }
+    IReadOnlyCollection<ITargetModel> FailedTargets { get; }
+    IReadOnlyCollection<ITargetModel> SucceededTargets { get; }
+    IReadOnlyCollection<ITargetModel> FinishedTargets { get; }
 
     bool IsSucceeding { get; }
     bool IsFailing { get; }

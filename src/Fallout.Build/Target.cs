@@ -24,18 +24,20 @@ public delegate ITargetDefinition Cleanup(ITargetDefinition definition);
 
 public static class ExecutableTargetExtensions
 {
-    public static bool Contains(this IEnumerable<ExecutableTarget> targets, Target target)
+    // Accept the ITargetModel projection so these bind to the IFalloutBuild collection properties
+    // too; the elements are always ExecutableTarget at runtime, which carries the Factory identity.
+    public static bool Contains(this IEnumerable<ITargetModel> targets, Target target)
     {
-        return targets.Any(x => x.Factory.Equals(target));
+        return targets.OfType<ExecutableTarget>().Any(x => x.Factory.Equals(target));
     }
 
-    public static bool Contains(this IEnumerable<ExecutableTarget> targets, Setup target)
+    public static bool Contains(this IEnumerable<ITargetModel> targets, Setup target)
     {
-        return targets.Any(x => x.Factory.Equals(target));
+        return targets.OfType<ExecutableTarget>().Any(x => x.Factory.Equals(target));
     }
 
-    public static bool Contains(this IEnumerable<ExecutableTarget> targets, Cleanup target)
+    public static bool Contains(this IEnumerable<ITargetModel> targets, Cleanup target)
     {
-        return targets.Any(x => x.Factory.Equals(target));
+        return targets.OfType<ExecutableTarget>().Any(x => x.Factory.Equals(target));
     }
 }

@@ -10,6 +10,19 @@ namespace Fallout.Common;
 public abstract partial class FalloutBuild
 {
     IReadOnlyCollection<ExecutableTarget> IFalloutBuild.ExecutableTargets => ExecutableTargets;
+
+    // The public properties stay ExecutableTarget-typed for derived builds; the IFalloutBuild
+    // contract exposes the Core-pure ITargetModel projection (IReadOnlyCollection<T> is covariant).
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.ExecutionPlan => ExecutionPlan;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.InvokedTargets => InvokedTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.SkippedTargets => SkippedTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.ScheduledTargets => ScheduledTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.RunningTargets => RunningTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.AbortedTargets => AbortedTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.FailedTargets => FailedTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.SucceededTargets => SucceededTargets;
+    IReadOnlyCollection<ITargetModel> IFalloutBuild.FinishedTargets => FinishedTargets;
+
     bool IFalloutBuild.IsInterceptorExecution => IsInterceptorExecution;
     string[] IFalloutBuild.LoadedLocalProfiles => LoadedLocalProfiles;
     bool IFalloutBuild.IsOutputEnabled(DefaultOutput output) => IsOutputEnabled(output);

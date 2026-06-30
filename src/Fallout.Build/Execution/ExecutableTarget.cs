@@ -63,6 +63,7 @@ public class ExecutableTarget : ITargetModel
     }
 
     // ITargetModel — read-only projection over the live dependency lists for Fallout.Core consumers.
+    IReadOnlyDictionary<string, string> ITargetModel.SummaryInformation => SummaryInformation;
     IReadOnlyCollection<string> ITargetModel.ExecutionDependencyNames => ExecutionDependencies.Select(x => x.Name).ToList();
     IReadOnlyCollection<string> ITargetModel.OrderDependencyNames => OrderDependencies.Select(x => x.Name).ToList();
     IReadOnlyCollection<string> ITargetModel.TriggerNames => Triggers.Select(x => x.Name).ToList();

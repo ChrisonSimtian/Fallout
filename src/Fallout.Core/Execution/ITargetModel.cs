@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Fallout.Common.Execution;
@@ -24,6 +25,12 @@ public interface ITargetModel
 
     /// <summary>The target's current lifecycle status.</summary>
     ExecutionStatus Status { get; }
+
+    /// <summary>How long the target has run; <see cref="System.TimeSpan.Zero"/> until it starts.</summary>
+    TimeSpan Duration { get; }
+
+    /// <summary>Free-form summary entries surfaced in the build outcome (e.g. skip / condition reasons).</summary>
+    IReadOnlyDictionary<string, string> SummaryInformation { get; }
 
     /// <summary>Names of targets this target depends on for execution (must run before it).</summary>
     IReadOnlyCollection<string> ExecutionDependencyNames { get; }

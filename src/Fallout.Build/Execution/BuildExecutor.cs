@@ -189,7 +189,7 @@ internal static class BuildExecutor
             return;
 
         bool HasOtherDependencies(ExecutableTarget dependentTarget)
-            => build.ExecutionPlan
+            => build.ExecutionPlan.OfType<ExecutableTarget>()
                 .Where(x => x != target && x.Status == ExecutionStatus.Scheduled)
                 .Any(x => x.ExecutionDependencies.Contains(dependentTarget) || x.Triggers.Contains(dependentTarget));
 

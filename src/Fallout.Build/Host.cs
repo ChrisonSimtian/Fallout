@@ -123,7 +123,7 @@ public partial class Host
                + duration.PadLeft(thirdColumn, paddingChar: ' ')
                + (information != null ? $"   // {information}" : string.Empty);
 
-        static string GetDurationOrBlank(ExecutableTarget target)
+        static string GetDurationOrBlank(ITargetModel target)
             => target.Status == ExecutionStatus.Succeeded ||
                target.Status == ExecutionStatus.Failed ||
                target.Status == ExecutionStatus.Aborted
@@ -133,7 +133,7 @@ public partial class Host
         static string GetDuration(TimeSpan duration)
             => $"{(int)duration.TotalMinutes}:{duration:ss}".Replace("0:00", "< 1sec");
 
-        static string GetInformation(ExecutableTarget target)
+        static string GetInformation(ITargetModel target)
             => target.SummaryInformation.Any()
                 ? target.SummaryInformation.Select(x => $"{x.Key}: {x.Value}").JoinCommaSpace()
                 : null;
