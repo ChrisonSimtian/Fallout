@@ -30,6 +30,7 @@ internal class Solution(SolutionModel model, AbsolutePath path) : Fallout.Soluti
     public Fallout.Solutions.Project Fallout_MSBuildTasks_Bridge => this.GetProject("Fallout.MSBuildTasks.Bridge");
     public Fallout.Solutions.Project Fallout_MSBuildTasks_Engine => this.GetProject("Fallout.MSBuildTasks.Engine");
     public Fallout.Solutions.Project Fallout_MSBuildTasks_Protocol => this.GetProject("Fallout.MSBuildTasks.Protocol");
+    public Fallout.Solutions.Project Fallout_MSBuildTasks_Protocol_Specs => this.GetProject("Fallout.MSBuildTasks.Protocol.Specs");
     public Fallout.Solutions.Project Fallout_MSBuildTasks_Worker => this.GetProject("Fallout.MSBuildTasks.Worker");
     public Fallout.Solutions.Project Fallout_Persistence_Solution => this.GetProject("Fallout.Persistence.Solution");
     public Fallout.Solutions.Project Fallout_Persistence_Solution_Benchmarks => this.GetProject("Fallout.Persistence.Solution.Benchmarks");
