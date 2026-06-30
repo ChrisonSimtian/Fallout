@@ -1,4 +1,6 @@
-using System.Text.Json;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace Fallout.MSBuildTasks.Protocol;
 
@@ -10,14 +12,30 @@ public static class WorkerVerbs
     public const string PackTools = "pack-tools";
 }
 
-/// <summary>Shared (de)serialization so both ends use identical options.</summary>
+/// <summary>
+/// Shared (de)serialization so both ends use identical wire format. Uses the in-box
+/// <see cref="DataContractJsonSerializer"/> rather than System.Text.Json: the bridge loads this
+/// assembly in-process into full-framework MSBuild.exe, where an STJ package reference can't bind
+/// without a host binding redirect (the packaged STJ asm version never matches the compile-time
+/// reference). DataContractJsonSerializer resolves to the framework's in-box
+/// System.Runtime.Serialization on net472 — no NuGet dependency, no redirect. See ADR-0009.
+/// </summary>
 public static class WorkerJson
 {
-    private static readonly JsonSerializerOptions Options = new() { WriteIndented = false };
+    public static string Serialize<T>(T value)
+    {
+        var serializer = new DataContractJsonSerializer(typeof(T));
+        using var stream = new MemoryStream();
+        serializer.WriteObject(stream, value);
+        return Encoding.UTF8.GetString(stream.ToArray());
+    }
 
-    public static string Serialize<T>(T value) => JsonSerializer.Serialize(value, Options);
-
-    public static T Deserialize<T>(string json) => JsonSerializer.Deserialize<T>(json, Options);
+    public static T Deserialize<T>(string json)
+    {
+        var serializer = new DataContractJsonSerializer(typeof(T));
+        using var stream = new MemoryStream(Encoding.UTF8.GetBytes(json));
+        return (T)serializer.ReadObject(stream);
+    }
 }
 
 public sealed class CodegenRequest

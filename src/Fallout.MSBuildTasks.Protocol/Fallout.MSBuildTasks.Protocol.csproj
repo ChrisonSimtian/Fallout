@@ -6,12 +6,10 @@
   </PropertyGroup>
 
   <!--
-    The wire contract between the net472 bridge (Full MSBuild) and the net10 worker. Dependency-free
-    POCOs + System.Text.Json only, so it can be referenced from both runtimes and imposes no floor on
-    anything. See docs/adr/0009-lift-ns20-floor-via-msbuild-bridge.md.
+    The wire contract between the net472 bridge (Full MSBuild) and the net10 worker. Genuinely
+    dependency-free: POCOs serialized via the in-box DataContractJsonSerializer (System.Runtime.
+    Serialization), so the net472 bridge that loads this in-process into full-framework MSBuild.exe
+    needs no NuGet dependency and no binding redirect. See docs/adr/0009-lift-ns20-floor-via-msbuild-bridge.md.
   -->
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" />
-  </ItemGroup>
 
 </Project>
