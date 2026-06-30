@@ -14,37 +14,8 @@ partial class Program
     public const string PACKAGE_TYPE_DOWNLOAD = "PackageDownload";
     public const string PACKAGE_TYPE_REFERENCE = "PackageReference";
 
-    public static int AddPackage(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-    {
-        PrintInfo();
-        Logging.Configure();
-        Telemetry.AddPackage();
-        ProjectModelTasks.Initialize();
-
-        var packageId = args.ElementAt(0);
-        var packageVersion =
-            (EnvironmentInfo.GetNamedArgument<string>("version") ??
-             args.ElementAtOrDefault(1) ??
-             NuGetVersionResolver.GetLatestVersion(packageId, includePrereleases: false).GetAwaiter().GetResult() ??
-             NuGetPackageResolver.GetGlobalInstalledPackage(packageId, version: null, packagesConfigFile: null)?.Version.ToString())
-            .NotNull("packageVersion != null");
-
-        var configuration = GetConfiguration(buildScript, evaluate: true);
-        var buildProjectFile = configuration[BUILD_PROJECT_FILE];
-        Host.Information($"Installing {packageId}/{packageVersion} to {buildProjectFile} ...");
-        AddOrReplacePackage(packageId, packageVersion, PACKAGE_TYPE_DOWNLOAD, buildProjectFile);
-        DotNetTasks.DotNet($"restore {buildProjectFile}");
-
-        var installedPackage = NuGetPackageResolver.GetGlobalInstalledPackage(packageId, packageVersion, packagesConfigFile: null)
-            .NotNull("installedPackage != null");
-        var hasToolsDirectory = installedPackage.Directory.GlobDirectories("tools").Any();
-        if (!hasToolsDirectory)
-            AddOrReplacePackage(packageId, packageVersion, PACKAGE_TYPE_REFERENCE, buildProjectFile);
-
-        Host.Information($"Done installing {packageId}/{packageVersion} to {buildProjectFile}");
-        return 0;
-    }
-
+    // Residual after the :add-package command moved to AddPackageCommand: this helper is shared with
+    // cake and moves into a package service in the #392 collapse PR.
     internal static void AddOrReplacePackage(string packageId, string packageVersion, string packageType, string buildProjectFile)
     {
         var buildProject = ProjectModelTasks.ParseProject(buildProjectFile).NotNull();
