@@ -23,6 +23,7 @@
   <Project Path="src\Shims\Nuke.Common\Nuke.Common.csproj" />
   <Project Path="src\Shims\Nuke.Components\Nuke.Components.csproj" />
   <Project Path="src\Fallout.MSBuildTasks\Fallout.MSBuildTasks.csproj" />
+  <Project Path="src\Fallout.MSBuildTasks.Engine\Fallout.MSBuildTasks.Engine.csproj" />
   <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
   <Project Path="src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
   <Project Path="src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
