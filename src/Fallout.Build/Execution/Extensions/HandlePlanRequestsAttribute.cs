@@ -18,8 +18,8 @@ internal class HandlePlanRequestsAttribute : BuildExtensionAttributeBase, IOnBui
     private AbsolutePath HtmlFile => Build.TemporaryDirectory / HtmlFileName;
 
     public void OnBuildInitialized(
-        IReadOnlyCollection<ExecutableTarget> executableTargets,
-        IReadOnlyCollection<ExecutableTarget> executionPlan)
+        IReadOnlyCollection<ITargetModel> executableTargets,
+        IReadOnlyCollection<ITargetModel> executionPlan)
     {
         if (Build.Plan)
         {

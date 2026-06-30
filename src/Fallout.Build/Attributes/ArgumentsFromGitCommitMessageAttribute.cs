@@ -12,7 +12,7 @@ public class ArgumentsFromGitCommitMessageAttribute : BuildExtensionAttributeBas
 {
     public string Prefix { get; set; } = "[nuke++]";
 
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (BuildServerConfigurationGeneration.IsActive)
             return;

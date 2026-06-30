@@ -17,7 +17,7 @@ public class HandleSingleFileExecutionAttribute : BuildExtensionAttributeBase, I
 {
     private const string ScriptUrl = "https://dot.net/v1/dotnet-install.sh";
 
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (!IsSingleFileExecution)
             return;

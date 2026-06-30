@@ -10,8 +10,8 @@ namespace Fallout.Common.ValueInjection;
 internal class InjectNonParameterValuesAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
 {
     public void OnBuildInitialized(
-        IReadOnlyCollection<ExecutableTarget> executableTargets,
-        IReadOnlyCollection<ExecutableTarget> executionPlan)
+        IReadOnlyCollection<ITargetModel> executableTargets,
+        IReadOnlyCollection<ITargetModel> executionPlan)
     {
         ValueInjectionUtility.InjectValues(Build, (member, attribute) =>
         {
@@ -25,7 +25,7 @@ internal class InjectNonParameterValuesAttribute : BuildExtensionAttributeBase, 
             if (member.HasCustomAttribute<RequiredAttribute>())
                 return false;
 
-            var requiredMembers = executionPlan.SelectMany(x => x.DelegateRequirements)
+            var requiredMembers = executionPlan.SelectMany(x => ((ExecutableTarget)x).DelegateRequirements)
                 .Where(x => x is not Expression<Func<bool>>)
                 .Select(x => x.GetMemberInfo()).ToList();
 

@@ -21,8 +21,8 @@ public class VerbosityMappingAttribute : BuildExtensionAttributeBase, IOnBuildIn
     public string Verbose { get; set; }
 
     public void OnBuildInitialized(
-        IReadOnlyCollection<ExecutableTarget> executableTargets,
-        IReadOnlyCollection<ExecutableTarget> executionPlan)
+        IReadOnlyCollection<ITargetModel> executableTargets,
+        IReadOnlyCollection<ITargetModel> executionPlan)
     {
         object GetMappedValue(string name)
             => _targetType

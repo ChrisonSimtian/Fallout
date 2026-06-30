@@ -12,7 +12,7 @@ namespace Fallout.Common.CI;
 public class InvokeBuildServerConfigurationGenerationAttribute
     : BuildServerConfigurationGenerationAttributeBase, IOnBuildCreated
 {
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (Build.IsServerBuild || Build.IsInterceptorExecution)
             return;

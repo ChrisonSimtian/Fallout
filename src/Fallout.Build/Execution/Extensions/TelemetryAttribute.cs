@@ -7,8 +7,8 @@ namespace Fallout.Common.Execution;
 internal class TelemetryAttribute : BuildExtensionAttributeBase, IOnBuildInitialized, IOnTargetSucceeded
 {
     public void OnBuildInitialized(
-        IReadOnlyCollection<ExecutableTarget> executableTargets,
-        IReadOnlyCollection<ExecutableTarget> executionPlan)
+        IReadOnlyCollection<ITargetModel> executableTargets,
+        IReadOnlyCollection<ITargetModel> executionPlan)
     {
         if (Build.IsInterceptorExecution)
             return;
@@ -16,11 +16,11 @@ internal class TelemetryAttribute : BuildExtensionAttributeBase, IOnBuildInitial
         Telemetry.BuildStarted(Build);
     }
 
-    public void OnTargetSucceeded(ExecutableTarget target)
+    public void OnTargetSucceeded(ITargetModel target)
     {
         if (Build.IsInterceptorExecution)
             return;
 
-        Telemetry.TargetSucceeded(target, Build);
+        Telemetry.TargetSucceeded((ExecutableTarget)target, Build);
     }
 }

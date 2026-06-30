@@ -13,34 +13,34 @@ internal class EventInvoker : BuildExtensionAttributeBase,
     IOnTargetFailed,
     IOnBuildFinished
 {
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         ((FalloutBuild)Build).OnBuildCreated();
     }
 
     public void OnBuildInitialized(
-        IReadOnlyCollection<ExecutableTarget> executableTargets,
-        IReadOnlyCollection<ExecutableTarget> executionPlan)
+        IReadOnlyCollection<ITargetModel> executableTargets,
+        IReadOnlyCollection<ITargetModel> executionPlan)
     {
         ((FalloutBuild)Build).OnBuildInitialized();
     }
 
-    public void OnTargetRunning(ExecutableTarget target)
+    public void OnTargetRunning(ITargetModel target)
     {
         ((FalloutBuild)Build).OnTargetRunning(target.Name);
     }
 
-    public void OnTargetSkipped(ExecutableTarget target)
+    public void OnTargetSkipped(ITargetModel target)
     {
         ((FalloutBuild)Build).OnTargetSkipped(target.Name);
     }
 
-    public void OnTargetSucceeded(ExecutableTarget target)
+    public void OnTargetSucceeded(ITargetModel target)
     {
         ((FalloutBuild)Build).OnTargetSucceeded(target.Name);
     }
 
-    public void OnTargetFailed(ExecutableTarget target)
+    public void OnTargetFailed(ITargetModel target)
     {
         ((FalloutBuild)Build).OnTargetFailed(target.Name);
     }

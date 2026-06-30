@@ -10,7 +10,7 @@ namespace Fallout.Common.Execution;
 
 internal class HandleShellCompletionAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
-    public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
+    public void OnBuildCreated(IReadOnlyCollection<ITargetModel> executableTargets)
     {
         if (BuildServerConfigurationGeneration.IsActive)
             return;
