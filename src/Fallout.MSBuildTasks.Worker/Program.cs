@@ -1,13 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Fallout.MSBuildTasks.Engine;
 using Fallout.MSBuildTasks.Protocol;
 
 // Invoked by the net472 bridge as: <verb> <input.json> <output.json>
-// Reads the request, runs the engine, writes a WorkerResponse, and signals via exit code
-// (0 = success, 1 = handled failure, 2 = bad invocation).
+// Diagnostics flow through the streams the bridge's ToolTask reads natively — messages to stdout,
+// errors to stderr — and the exit code signals success (0 = ok, 1 = failure, 2 = bad invocation).
+// The output JSON carries only item outputs (embed-packages / pack-tools).
 if (args.Length != 3)
 {
     Console.Error.WriteLine("usage: <verb> <input.json> <output.json>");
@@ -15,19 +15,18 @@ if (args.Length != 3)
 }
 
 var (verb, inputPath, outputPath) = (args[0], args[1], args[2]);
-var messages = new List<string>();
-var response = new WorkerResponse();
 
 try
 {
     var inputJson = File.ReadAllText(inputPath);
+    var response = new WorkerResponse();
     switch (verb)
     {
         case WorkerVerbs.Codegen:
             var cg = WorkerJson.Deserialize<CodegenRequest>(inputJson);
             CodeGenerationEngine.Generate(
                 cg.SpecificationFiles, cg.BaseDirectory, cg.UseNestedNamespaces,
-                cg.BaseNamespace, cg.UpdateReferences, messages.Add);
+                cg.BaseNamespace, cg.UpdateReferences, Console.Out.WriteLine);
             break;
 
         case WorkerVerbs.EmbedPackages:
@@ -44,17 +43,15 @@ try
             break;
 
         default:
-            throw new ArgumentException($"Unknown verb '{verb}'.");
+            Console.Error.WriteLine($"Unknown verb '{verb}'.");
+            return 2;
     }
 
-    response.Success = true;
+    File.WriteAllText(outputPath, WorkerJson.Serialize(response));
+    return 0;
 }
 catch (Exception exception)
 {
-    response.Success = false;
-    response.Errors = [exception.Message];
+    Console.Error.WriteLine(exception.Message);
+    return 1;
 }
-
-response.Messages = messages.ToArray();
-File.WriteAllText(outputPath, WorkerJson.Serialize(response));
-return response.Success ? 0 : 1;

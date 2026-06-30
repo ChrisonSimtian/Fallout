@@ -49,13 +49,13 @@ public sealed class PackagedToolFileDto
     public string PackagePath { get; set; }
 }
 
-/// <summary>What the worker writes to its output JSON for the bridge to read back.</summary>
+/// <summary>
+/// Item outputs the worker writes to its output JSON for the bridge to read back. Diagnostics and
+/// success do NOT travel here — messages go to stdout, errors to stderr, and the exit code signals
+/// success, so the bridge's ToolTask surfaces them natively.
+/// </summary>
 public sealed class WorkerResponse
 {
-    public bool Success { get; set; }
-    public string[] Messages { get; set; } = [];
-    public string[] Errors { get; set; } = [];
-
     /// <summary>embed-packages output: package file paths.</summary>
     public string[] Files { get; set; } = [];
 

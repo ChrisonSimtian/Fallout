@@ -26,6 +26,7 @@
   <Project Path="src\Fallout.MSBuildTasks.Engine\Fallout.MSBuildTasks.Engine.csproj" />
   <Project Path="src\Fallout.MSBuildTasks.Protocol\Fallout.MSBuildTasks.Protocol.csproj" />
   <Project Path="src\Fallout.MSBuildTasks.Worker\Fallout.MSBuildTasks.Worker.csproj" />
+  <Project Path="src\Fallout.MSBuildTasks.Bridge\Fallout.MSBuildTasks.Bridge.csproj" />
   <Project Path="src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
   <Project Path="src\Persistence\Fallout.Persistence.Solution\Fallout.Persistence.Solution.csproj" />
   <Project Path="src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
