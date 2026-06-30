@@ -211,11 +211,15 @@ public static class Logging
 
     public class InMemorySink : ILogEventSink, IDisposable
     {
-        public static InMemorySink Instance { get; } = new();
+        // FT-6 (#311): the active sink is the per-run one held on BuildContext, so log events don't
+        // carry across invocations. The lazy fallback covers logging outside a build run.
+        private static readonly Lazy<InMemorySink> s_fallback = new(() => new InMemorySink());
+
+        public static InMemorySink Instance => BuildContext.Current?.LogSink ?? s_fallback.Value;
 
         private readonly List<LogEvent> _logEvents;
 
-        private InMemorySink()
+        internal InMemorySink()
         {
             _logEvents = new List<LogEvent>();
         }

@@ -35,6 +35,10 @@ internal sealed class BuildContext : IDisposable
     public ParameterService Parameters { get; } =
         new(() => EnvironmentInfo.ArgumentParser, () => EnvironmentInfo.Variables);
 
+    /// <summary>The per-run in-memory log sink (FT-6 / #311) — Serilog writes to it during the run and
+    /// <c>WriteErrorsAndWarnings</c> reads it; per-run scope keeps log events from carrying across runs.</summary>
+    public Logging.InMemorySink LogSink { get; } = new();
+
     private BuildContext()
     {
         _onCancelKeyPress = (_, _) => _cancellationHandlers.ForEach(x => x());
@@ -55,7 +59,8 @@ internal sealed class BuildContext : IDisposable
         // Undo this run's process-global state (the FT-1 cleanup, now owned by the scope).
         Console.CancelKeyPress -= _onCancelKeyPress;
         ToolOptions.Created -= _onToolOptionsCreated;
-        Logging.InMemorySink.Instance.Clear();
+        // The per-run LogSink (FT-6) and Parameters (FT-4) are owned by this context and discarded
+        // with it — no explicit reset needed. These remaining statics aren't yet context-owned:
         ValueInjectionUtility.ClearCache();
         NuGetToolPathResolver.Reset();
         NpmToolPathResolver.Reset();
