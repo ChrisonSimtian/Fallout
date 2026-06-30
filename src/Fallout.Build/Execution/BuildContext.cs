@@ -15,10 +15,13 @@ namespace Fallout.Build.Execution;
 /// <remarks>
 /// <para>
 /// <see cref="Current"/> is stored in an <see cref="AsyncLocal{T}"/>, so concurrent runs each see their own context.
-/// The context owns the cancellation handlers, the event subscriptions and the <see cref="ParameterService"/>.
+/// The context owns the cancellation handlers, the event subscriptions, the <see cref="ParameterService"/>
+/// and the in-memory log sink.
+/// Serilog's <c>Log.Logger</c> is still process-wide, so two runs at the same time can send events
+/// to each other's sink. The sink itself is not shared.
 /// </para>
 /// <para>
-/// On dispose, the context also resets some process-wide state: the in-memory log sink, the value-injection cache
+/// On dispose, the context also resets some process-wide state: the value-injection cache
 /// and the NuGet and npm tool path resolvers. That state is shared, so concurrent runs in one process can still
 /// affect each other through it.
 /// </para>
@@ -48,9 +51,17 @@ internal sealed class BuildContext : IDisposable
     /// </summary>
     public ParameterService Parameters { get; } = ParameterService.CreateDefault();
 
+    /// <summary>
+    /// The in-memory log sink for this run. FT-6 / <see href="https://github.com/Fallout-build/Fallout/issues/311">#311</see>:
+    /// <c>Logging.ConfigureInMemory</c> wires Serilog to this instance at the top of the run and
+    /// <c>WriteErrorsAndWarnings</c> reads it back at the end, both inside the scope — so a run's
+    /// warnings and errors are discarded with it rather than resurfacing in the next build.
+    /// </summary>
+    public Logging.InMemorySink LogSink { get; } = new();
+
     private BuildContext()
     {
-        onCancelKeyPress = (_, _) => cancellationHandlers.ForEach(x => x());
+        onCancelKeyPress = (_, _) => RunCancellationHandlers();
         onToolOptionsCreated = (options, _) => VerbosityMapping.Apply((ToolOptions)options);
         Console.CancelKeyPress += onCancelKeyPress;
         ToolOptions.Created += onToolOptionsCreated;
@@ -59,6 +70,17 @@ internal sealed class BuildContext : IDisposable
     /// <summary>Creates the ambient context for a build run and installs it as <see cref="Current"/>.</summary>
     public static BuildContext Activate() => currentInstance.Value = new BuildContext();
 
+    /// <summary>
+    /// Runs the cancellation handlers with this context as <see cref="Current"/>. <c>Console.CancelKeyPress</c>
+    /// fires on a thread that does not carry the run's <see cref="AsyncLocal{T}"/>, and the handlers
+    /// (for example the build summary) read run state such as <see cref="LogSink"/> through it.
+    /// </summary>
+    internal void RunCancellationHandlers()
+    {
+        currentInstance.Value = this;
+        cancellationHandlers.ForEach(x => x());
+    }
+
     public void RegisterCancellationHandler(Action handler) => cancellationHandlers.AddFirst(handler);
 
     public void UnregisterCancellationHandler(Action handler) => cancellationHandlers.Remove(handler);
@@ -66,6 +88,7 @@ internal sealed class BuildContext : IDisposable
     public void Dispose()
     {
         // These subscriptions belong to this instance, so removing them never affects another context.
+        // The per-run services (Parameters, LogSink) are dropped with the context, so they need no reset.
         Console.CancelKeyPress -= onCancelKeyPress;
         ToolOptions.Created -= onToolOptionsCreated;
 
@@ -76,7 +99,6 @@ internal sealed class BuildContext : IDisposable
             return;
         }
 
-        Logging.InMemorySink.Instance.Clear();
         ValueInjectionUtility.ClearCache();
         NuGetToolPathResolver.Reset();
         NpmToolPathResolver.Reset();
