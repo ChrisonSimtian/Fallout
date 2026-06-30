@@ -46,6 +46,7 @@
   <Project Path="tests\Fallout.Cli.Specs\Fallout.Cli.Specs.csproj" />
   <Project Path="tests\Fallout.Migrate.Specs\Fallout.Migrate.Specs.csproj" />
   <Project Path="tests\Fallout.Migrate.Analyzers.Specs\Fallout.Migrate.Analyzers.Specs.csproj" />
+  <Project Path="tests\Fallout.MSBuildTasks.Protocol.Specs\Fallout.MSBuildTasks.Protocol.Specs.csproj" />
   <Project Path="tests\Nuke.Common.Shim.Specs\Nuke.Common.Shim.Specs.csproj" />
   <Project Path="tests\Nuke.Components.Shim.Specs\Nuke.Components.Shim.Specs.csproj" />
   <Project Path="tests\Fallout.ProjectModel.Specs\Fallout.ProjectModel.Specs.csproj" />
