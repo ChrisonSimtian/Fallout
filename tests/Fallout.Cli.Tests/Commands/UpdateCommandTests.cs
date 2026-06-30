@@ -11,7 +11,7 @@ public class UpdateCommandTests
 {
     [Fact]
     public void Name_IsUpdate()
-        => new UpdateCommand(new FakeConsolePrompts()).Name.Should().Be("update");
+        => new UpdateCommand(new FakeConsolePrompts(), new ConfigurationReader(), new BuildScaffolder()).Name.Should().Be("update");
 
     [Fact]
     public void Execute_NoBuildScript_DeclineAll_ReturnsZeroAndReportsCompletion()
@@ -23,7 +23,7 @@ public class UpdateCommandTests
         {
             // No build script and every confirmation declined → no update steps run, but the command
             // still completes cleanly.
-            new UpdateCommand(prompts).Execute([], dir, buildScript: null).Should().Be(0);
+            new UpdateCommand(prompts, new ConfigurationReader(), new BuildScaffolder()).Execute([], dir, buildScript: null).Should().Be(0);
 
             prompts.Completions.Should().Contain("Updates");
         }

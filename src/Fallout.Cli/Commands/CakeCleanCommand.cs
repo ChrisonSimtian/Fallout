@@ -18,7 +18,7 @@ public sealed class CakeCleanCommand : IFalloutCommand
 
     public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        var cakeFiles = Program.GetCakeFiles().ToList();
+        var cakeFiles = CakeConverter.GetCakeFiles().ToList();
         Host.Information("Found .cake files:");
         cakeFiles.ForEach(x => Host.Debug($"  - {x}"));
 

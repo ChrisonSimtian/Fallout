@@ -25,16 +25,19 @@ public sealed class SetupCommand : IFalloutCommand
     private const string TARGET_FRAMEWORK = "net8.0";
 
     private readonly IConsolePrompts _prompts;
+    private readonly IBuildScaffolder _scaffolder;
 
-    public SetupCommand(IConsolePrompts prompts) => _prompts = prompts;
+    public SetupCommand(IConsolePrompts prompts, IBuildScaffolder scaffolder)
+    {
+        _prompts = prompts;
+        _scaffolder = scaffolder;
+    }
 
     public string Name => "setup";
 
-    // The scaffolding helpers (WriteBuildScripts/WriteConfigurationFile/UpdateSolutionFileContent/
-    // GetTemplate) remain on Program as internal residual until the #392 collapse PR extracts them.
     public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        Program.PrintInfo();
+        ToolBanner.Print();
         Logging.Configure();
         Telemetry.SetupBuild();
 
@@ -100,25 +103,25 @@ public sealed class SetupCommand : IFalloutCommand
 
         (rootDirectory / FalloutDirectoryName).CreateDirectory();
 
-        Program.WriteBuildScripts(
+        _scaffolder.WriteBuildScripts(
             scriptDirectory: WorkingDirectory,
             rootDirectory,
             buildDirectory,
             buildProjectName);
 
-        Program.WriteConfigurationFile(rootDirectory, solutionFile);
+        _scaffolder.WriteConfigurationFile(rootDirectory, solutionFile);
 
         if (solutionFile != null)
         {
             var solutionFileContent = solutionFile.ReadAllLines().ToList();
             var buildProjectFileRelative = solutionFile.Parent.GetWinRelativePathTo(buildProjectFile);
-            Program.UpdateSolutionFileContent(solutionFileContent, buildProjectFileRelative, buildProjectGuid, buildProjectName);
+            _scaffolder.UpdateSolutionFileContent(solutionFileContent, buildProjectFileRelative, buildProjectGuid, buildProjectName);
             solutionFile.WriteAllLines(solutionFileContent, Encoding.UTF8);
         }
 
         buildProjectFile.WriteAllLines(
             FillTemplate(
-                Program.GetTemplate("_build.csproj"),
+                _scaffolder.GetTemplate("_build.csproj"),
                 GetDictionary(
                     new
                     {
@@ -129,10 +132,10 @@ public sealed class SetupCommand : IFalloutCommand
                         NukeVersion = nukeVersion,
                     })));
 
-        (buildDirectory / "Directory.Build.props").WriteAllLines(Program.GetTemplate("Directory.Build.props"));
-        (buildDirectory / "Directory.Build.targets").WriteAllLines(Program.GetTemplate("Directory.Build.targets"));
-        (buildDirectory / "Build.cs").WriteAllLines(FillTemplate(Program.GetTemplate("Build.cs")));
-        (buildDirectory / "Configuration.cs").WriteAllLines(Program.GetTemplate("Configuration.cs"));
+        (buildDirectory / "Directory.Build.props").WriteAllLines(_scaffolder.GetTemplate("Directory.Build.props"));
+        (buildDirectory / "Directory.Build.targets").WriteAllLines(_scaffolder.GetTemplate("Directory.Build.targets"));
+        (buildDirectory / "Build.cs").WriteAllLines(FillTemplate(_scaffolder.GetTemplate("Build.cs")));
+        (buildDirectory / "Configuration.cs").WriteAllLines(_scaffolder.GetTemplate("Configuration.cs"));
 
         #endregion
 

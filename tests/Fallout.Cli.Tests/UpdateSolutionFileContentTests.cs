@@ -131,7 +131,7 @@ public class UpdateSolutionFileContentTests
     public Task Test(int number, string input, string expected)
     {
         var content = input.SplitLineBreaks().ToList();
-        Program.UpdateSolutionFileContent(content, "RELATIVE", "GUID", "NAME");
+        new BuildScaffolder().UpdateSolutionFileContent(content, "RELATIVE", "GUID", "NAME");
 
         return Verifier.Verify(expected)
             .UseParameters(number);

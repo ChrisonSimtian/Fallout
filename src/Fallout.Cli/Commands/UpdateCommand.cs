@@ -18,16 +18,21 @@ namespace Fallout.Cli.Commands;
 public sealed class UpdateCommand : IFalloutCommand
 {
     private readonly IConsolePrompts _prompts;
+    private readonly IConfigurationReader _configuration;
+    private readonly IBuildScaffolder _scaffolder;
 
-    public UpdateCommand(IConsolePrompts prompts) => _prompts = prompts;
+    public UpdateCommand(IConsolePrompts prompts, IConfigurationReader configuration, IBuildScaffolder scaffolder)
+    {
+        _prompts = prompts;
+        _configuration = configuration;
+        _scaffolder = scaffolder;
+    }
 
     public string Name => "update";
 
-    // GetConfiguration / WriteBuildScripts / WriteConfigurationFile / BUILD_PROJECT_FILE remain on
-    // Program as internal residual until the #392 collapse PR extracts them into services.
     public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        Program.PrintInfo();
+        ToolBanner.Print();
         Logging.Configure();
 
         Assert.NotNull(rootDirectory);
@@ -46,27 +51,27 @@ public sealed class UpdateCommand : IFalloutCommand
         return 0;
     }
 
-    private static void UpdateBuildScripts(AbsolutePath rootDirectory, AbsolutePath buildScript)
+    private void UpdateBuildScripts(AbsolutePath rootDirectory, AbsolutePath buildScript)
     {
-        var configuration = Program.GetConfiguration(buildScript, evaluate: true);
-        var buildProjectFile = (AbsolutePath) configuration[Program.BUILD_PROJECT_FILE];
+        var configuration = _configuration.Read(buildScript, evaluate: true);
+        var buildProjectFile = (AbsolutePath) configuration[ConfigurationReader.BuildProjectFileKey];
 
-        Program.WriteBuildScripts(
+        _scaffolder.WriteBuildScripts(
             scriptDirectory: buildScript.Parent,
             rootDirectory,
             buildDirectory: buildProjectFile.NotNull().Parent,
             buildProjectName: Path.GetFileNameWithoutExtension(buildProjectFile));
     }
 
-    private static void UpdateBuildProject(AbsolutePath buildScript)
+    private void UpdateBuildProject(AbsolutePath buildScript)
     {
-        var configuration = Program.GetConfiguration(buildScript, evaluate: true);
-        var projectFile = configuration[Program.BUILD_PROJECT_FILE];
+        var configuration = _configuration.Read(buildScript, evaluate: true);
+        var projectFile = configuration[ConfigurationReader.BuildProjectFileKey];
         ProjectModelTasks.Initialize();
         ProjectUpdater.Update(projectFile);
     }
 
-    private static void UpdateConfigurationFile(AbsolutePath rootDirectory)
+    private void UpdateConfigurationFile(AbsolutePath rootDirectory)
     {
         var configurationFile = rootDirectory / FalloutDirectoryName;
         if (!configurationFile.Exists())
@@ -75,7 +80,7 @@ public sealed class UpdateCommand : IFalloutCommand
         var solutionFile = rootDirectory / configurationFile.ReadAllLines().FirstOrDefault(x => !x.IsNullOrEmpty());
         configurationFile.DeleteFile();
 
-        Program.WriteConfigurationFile(rootDirectory, solutionFile);
+        _scaffolder.WriteConfigurationFile(rootDirectory, solutionFile);
         Host.Warning($"The previous {FalloutFileName} file was transformed to a {FalloutDirectoryName} directory.");
         Host.Warning($"The .tmp directory can be cleared, as it is moved to {FalloutDirectoryName}/temp as well.");
         if (solutionFile != null)
