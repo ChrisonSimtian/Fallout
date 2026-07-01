@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Fallout.Common;
 using Fallout.Common.IO;
 using Fallout.Common.Utilities;
@@ -18,22 +19,26 @@ public sealed class RunCommand : IFalloutCommand
 {
     public string Name => "run";
 
-    public int Execute(string[] forwardedArgs, AbsolutePath rootDirectory, AbsolutePath buildProjectFile)
+    public async Task<int> ExecuteAsync(string[] forwardedArgs, AbsolutePath rootDirectory, AbsolutePath buildProjectFile)
     {
         var dotnet = ResolveDotnet(rootDirectory);
 
-        var buildExitCode = StartDotnet(dotnet, GetBuildArguments(buildProjectFile));
+        var buildExitCode = await StartDotnetAsync(dotnet, GetBuildArguments(buildProjectFile));
         if (buildExitCode != 0)
+        {
             return buildExitCode;
+        }
 
-        return StartDotnet(dotnet, GetRunArguments(buildProjectFile, forwardedArgs));
+        return await StartDotnetAsync(dotnet, GetRunArguments(buildProjectFile, forwardedArgs));
     }
 
     private static string ResolveDotnet(AbsolutePath rootDirectory)
     {
         var pathDotnet = TryGetDotnetFromPath();
         if (pathDotnet != null)
+        {
             return pathDotnet;
+        }
 
         var shimDirectoryName = EnvironmentInfo.IsWin ? "dotnet-win" : "dotnet-unix";
         var shimExecutableName = EnvironmentInfo.IsWin ? "dotnet.exe" : "dotnet";
@@ -54,7 +59,7 @@ public sealed class RunCommand : IFalloutCommand
             .FirstOrDefault(File.Exists);
     }
 
-    private static int StartDotnet(string dotnet, IEnumerable<string> arguments)
+    private static async Task<int> StartDotnetAsync(string dotnet, IEnumerable<string> arguments)
     {
         var startInfo = new ProcessStartInfo
         {
@@ -63,7 +68,9 @@ public sealed class RunCommand : IFalloutCommand
         };
 
         foreach (var argument in arguments)
+        {
             startInfo.ArgumentList.Add(argument);
+        }
 
         startInfo.Environment["DOTNET_CLI_TELEMETRY_OPTOUT"] = "1";
         startInfo.Environment["DOTNET_NOLOGO"] = "1";
@@ -73,7 +80,7 @@ public sealed class RunCommand : IFalloutCommand
         startInfo.Environment[GlobalToolStartTimeEnvironmentKey] = DateTime.Now.ToString("O");
 
         var process = Process.Start(startInfo).NotNull();
-        process.WaitForExit();
+        await process.WaitForExitAsync();
         return process.ExitCode;
     }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Fallout.Common.IO;
 
 namespace Fallout.Cli.Commands;
@@ -12,16 +13,18 @@ namespace Fallout.Cli.Commands;
 /// </summary>
 internal sealed class DelegateCommand : IFalloutCommand
 {
-    private readonly Func<string[], AbsolutePath, AbsolutePath, int> _handler;
+    private readonly Func<string[], AbsolutePath, AbsolutePath, int> handler;
 
     public DelegateCommand(string name, Func<string[], AbsolutePath, AbsolutePath, int> handler)
     {
         Name = name;
-        _handler = handler;
+        this.handler = handler;
     }
 
     public string Name { get; }
 
-    public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
-        => _handler(args, rootDirectory, buildScript);
+    // The adapted legacy handlers are still synchronous; each #392 conversion replaces one
+    // registration of this adapter with a command type that overrides ExecuteAsync for real.
+    public Task<int> ExecuteAsync(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
+        => Task.FromResult(handler(args, rootDirectory, buildScript));
 }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Fallout.Common.IO;
 
 namespace Fallout.Cli.Commands;
@@ -26,5 +27,5 @@ internal interface IFalloutCommand
     /// <param name="args">The arguments following the command token.</param>
     /// <param name="rootDirectory">The resolved repository root, or <c>null</c> when none was found.</param>
     /// <param name="buildScript">The resolved build script / project file, or <c>null</c> when none applies.</param>
-    int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript);
+    Task<int> ExecuteAsync(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript);
 }

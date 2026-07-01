@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Fallout.Cli.Commands;
 using Fallout.Cli.Prompts;
 using Fallout.Common;
@@ -15,7 +16,7 @@ public partial class Program
 {
     internal static string CurrentBuildScriptName => EnvironmentInfo.IsWin ? "build.ps1" : "build.sh";
 
-    private static int Main(string[] args)
+    private static async Task<int> Main(string[] args)
     {
         Console.OutputEncoding = Encoding.UTF8;
 
@@ -29,7 +30,7 @@ public partial class Program
                 : null;
 
             using var services = BuildServiceProvider();
-            return services.GetRequiredService<CommandDispatcher>().Dispatch(args, rootDirectory, buildScript);
+            return await services.GetRequiredService<CommandDispatcher>().DispatchAsync(args, rootDirectory, buildScript);
         }
         catch (Exception exception)
         {

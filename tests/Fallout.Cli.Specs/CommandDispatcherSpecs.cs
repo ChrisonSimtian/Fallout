@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Fallout.Cli.Commands;
 using Fallout.Cli.Prompts;
 using Fallout.Common.IO;
@@ -15,13 +16,13 @@ public class CommandDispatcherSpecs
     private static readonly AbsolutePath SomeScript = SomeRoot / "build.sh";
 
     [Fact]
-    public void Dispatch_ColonCommand_InvokesMatchingCommandWithForwardedArgs()
+    public async Task Dispatch_ColonCommand_InvokesMatchingCommandWithForwardedArgs()
     {
         var run = new RecordingCommand("run");
         var setup = new RecordingCommand("setup");
         var dispatcher = new CommandDispatcher(new IFalloutCommand[] { run, setup }, new FakePrompts());
 
-        var exitCode = dispatcher.Dispatch([":setup", "alpha", "beta"], SomeRoot, SomeScript);
+        var exitCode = await dispatcher.DispatchAsync([":setup", "alpha", "beta"], SomeRoot, SomeScript);
 
         exitCode.Should().Be(0);
         setup.WasCalled.Should().BeTrue();
@@ -35,12 +36,12 @@ public class CommandDispatcherSpecs
     [InlineData(":setup")]
     [InlineData(":SETUP")]
     [InlineData(":Setup")]
-    public void Dispatch_MatchesNameCaseInsensitively(string token)
+    public async Task Dispatch_MatchesNameCaseInsensitively(string token)
     {
         var setup = new RecordingCommand("setup");
         var dispatcher = new CommandDispatcher(new IFalloutCommand[] { setup }, new FakePrompts());
 
-        dispatcher.Dispatch([token], SomeRoot, SomeScript);
+        await dispatcher.DispatchAsync([token], SomeRoot, SomeScript);
 
         setup.WasCalled.Should().BeTrue();
     }
@@ -49,59 +50,59 @@ public class CommandDispatcherSpecs
     [InlineData(":add-package")]
     [InlineData(":addpackage")]
     [InlineData(":ADD-PACKAGE")]
-    public void Dispatch_MatchesNameIgnoringDashes(string token)
+    public async Task Dispatch_MatchesNameIgnoringDashes(string token)
     {
         // Preserves every spelling the historical reflection dispatch accepted.
         var addPackage = new RecordingCommand("add-package");
         var dispatcher = new CommandDispatcher(new IFalloutCommand[] { addPackage }, new FakePrompts());
 
-        dispatcher.Dispatch([token], SomeRoot, SomeScript);
+        await dispatcher.DispatchAsync([token], SomeRoot, SomeScript);
 
         addPackage.WasCalled.Should().BeTrue();
     }
 
     [Fact]
-    public void Dispatch_ReturnsCommandExitCode()
+    public async Task Dispatch_ReturnsCommandExitCode()
     {
         var trigger = new RecordingCommand("trigger", exitCode: 42);
         var dispatcher = new CommandDispatcher(new IFalloutCommand[] { trigger }, new FakePrompts());
 
-        dispatcher.Dispatch([":trigger"], SomeRoot, SomeScript).Should().Be(42);
+        (await dispatcher.DispatchAsync([":trigger"], SomeRoot, SomeScript)).Should().Be(42);
     }
 
     [Fact]
-    public void Dispatch_UnknownCommand_ThrowsWithAvailableCommandListing()
+    public async Task Dispatch_UnknownCommand_ThrowsWithAvailableCommandListing()
     {
         var dispatcher = new CommandDispatcher(
             new IFalloutCommand[] { new RecordingCommand("run"), new RecordingCommand("setup") },
             new FakePrompts());
 
-        var action = () => dispatcher.Dispatch([":bogus"], SomeRoot, SomeScript);
+        var action = () => dispatcher.DispatchAsync([":bogus"], SomeRoot, SomeScript);
 
-        action.Should().Throw<Exception>()
-            .WithMessage("*'bogus' is not supported*")
+        (await action.Should().ThrowAsync<Exception>()
+            .WithMessage("*'bogus' is not supported*"))
             .And.Message.Should().ContainAll("- run", "- setup");
     }
 
     [Fact]
-    public void Dispatch_EmptyCommandToken_Fails()
+    public async Task Dispatch_EmptyCommandToken_Fails()
     {
         var dispatcher = new CommandDispatcher(new IFalloutCommand[] { new RecordingCommand("run") }, new FakePrompts());
 
-        var action = () => dispatcher.Dispatch([":"], SomeRoot, SomeScript);
+        var action = () => dispatcher.DispatchAsync([":"], SomeRoot, SomeScript);
 
-        action.Should().Throw<Exception>().WithMessage("*No command specified*");
+        await action.Should().ThrowAsync<Exception>().WithMessage("*No command specified*");
     }
 
     [Fact]
-    public void Dispatch_NoCommand_NullRoot_Confirmed_InvokesSetup()
+    public async Task Dispatch_NoCommand_NullRoot_Confirmed_InvokesSetup()
     {
         var setup = new RecordingCommand("setup");
         var dispatcher = new CommandDispatcher(
             new IFalloutCommand[] { new RecordingCommand("run"), setup },
             new FakePrompts(confirm: true));
 
-        dispatcher.Dispatch(["whatever"], rootDirectory: null, buildScript: null);
+        await dispatcher.DispatchAsync(["whatever"], rootDirectory: null, buildScript: null);
 
         setup.WasCalled.Should().BeTrue();
         setup.ReceivedArgs.Should().BeEmpty();
@@ -109,21 +110,21 @@ public class CommandDispatcherSpecs
     }
 
     [Fact]
-    public void Dispatch_NoCommand_NullRoot_Declined_ReturnsZeroWithoutSetup()
+    public async Task Dispatch_NoCommand_NullRoot_Declined_ReturnsZeroWithoutSetup()
     {
         var setup = new RecordingCommand("setup");
         var dispatcher = new CommandDispatcher(
             new IFalloutCommand[] { new RecordingCommand("run"), setup },
             new FakePrompts(confirm: false));
 
-        var exitCode = dispatcher.Dispatch(["whatever"], rootDirectory: null, buildScript: null);
+        var exitCode = await dispatcher.DispatchAsync(["whatever"], rootDirectory: null, buildScript: null);
 
         exitCode.Should().Be(0);
         setup.WasCalled.Should().BeFalse();
     }
 
     [Fact]
-    public void Dispatch_NoCommand_WithRoot_InvokesRunWithResolvedBuildProject()
+    public async Task Dispatch_NoCommand_WithRoot_InvokesRunWithResolvedBuildProject()
     {
         using var root = TempRoot.Create();
         var buildProject = root.WriteBuildProjectAtConvention();
@@ -132,7 +133,7 @@ public class CommandDispatcherSpecs
             new IFalloutCommand[] { run, new RecordingCommand("setup") },
             new FakePrompts());
 
-        dispatcher.Dispatch(["compile", "--verbose"], root.Path, buildScript: null);
+        await dispatcher.DispatchAsync(["compile", "--verbose"], root.Path, buildScript: null);
 
         run.WasCalled.Should().BeTrue();
         run.ReceivedArgs.Should().Equal("compile", "--verbose");
@@ -141,12 +142,12 @@ public class CommandDispatcherSpecs
 
     private sealed class RecordingCommand : IFalloutCommand
     {
-        private readonly int _exitCode;
+        private readonly int exitCode;
 
         public RecordingCommand(string name, int exitCode = 0)
         {
             Name = name;
-            _exitCode = exitCode;
+            this.exitCode = exitCode;
         }
 
         public string Name { get; }
@@ -155,23 +156,23 @@ public class CommandDispatcherSpecs
         public AbsolutePath ReceivedRoot { get; private set; }
         public AbsolutePath ReceivedBuildScript { get; private set; }
 
-        public int Execute(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
+        public Task<int> ExecuteAsync(string[] args, AbsolutePath rootDirectory, AbsolutePath buildScript)
         {
             WasCalled = true;
             ReceivedArgs = args;
             ReceivedRoot = rootDirectory;
             ReceivedBuildScript = buildScript;
-            return _exitCode;
+            return Task.FromResult(exitCode);
         }
     }
 
     private sealed class FakePrompts : IConsolePrompts
     {
-        private readonly bool _confirm;
+        private readonly bool confirm;
 
-        public FakePrompts(bool confirm = false) => _confirm = confirm;
+        public FakePrompts(bool confirm = false) => this.confirm = confirm;
 
-        public bool PromptForConfirmation(string question) => _confirm;
+        public bool PromptForConfirmation(string question) => confirm;
 
         public void ShowInput(string emoji, string title, string value) { }
         public void ShowCompletion(string title) { }
@@ -211,7 +212,9 @@ public class CommandDispatcherSpecs
         public void Dispose()
         {
             if (Directory.Exists(Path))
+            {
                 Directory.Delete(Path, recursive: true);
+            }
         }
     }
 }
