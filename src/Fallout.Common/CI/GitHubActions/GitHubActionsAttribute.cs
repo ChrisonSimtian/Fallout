@@ -91,6 +91,15 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public string JobConcurrencyGroup { get; set; }
     public bool JobConcurrencyCancelInProgress { get; set; }
 
+    /// <summary>
+    /// Pins the shell for every <c>run:</c> step via a workflow-level <c>defaults.run.shell</c> block,
+    /// so cross-platform matrix jobs use one consistent shell instead of the per-OS default (<c>bash</c>
+    /// on Linux/macOS, <c>pwsh</c> on Windows). Accepts any value GitHub allows — a built-in (<c>bash</c>,
+    /// <c>pwsh</c>, <c>sh</c>, <c>cmd</c>, <c>powershell</c>, <c>python</c>) or a custom <c>command {0}</c>
+    /// template. Unset or whitespace-only emits no <c>defaults:</c> block.
+    /// </summary>
+    public string DefaultShell { get; set; }
+
     public string[] InvokedTargets { get; set; } = new string[0];
 
     /// <summary>
@@ -149,6 +158,19 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
         get => throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Extra <c>actions/checkout</c> inputs, emitted verbatim inside the step's <c>with:</c> block after
+    /// the typed keys (<c>submodules</c>, <c>lfs</c>, <c>fetch-depth</c>, <c>progress</c>, <c>filter</c>,
+    /// <c>ref</c>/<c>repository</c>). An escape hatch for inputs the typed knobs don't cover — <c>token</c>,
+    /// <c>ssh-key</c>, <c>path</c>, <c>clean</c>, <c>persist-credentials</c>, <c>sparse-checkout</c>,
+    /// <c>set-safe-directory</c>.
+    /// <para/>
+    /// Each entry is one raw line — passed through unvalidated, so the caller owns correct YAML. Multi-line
+    /// block scalars work by supplying the key (e.g. <c>sparse-checkout: |</c>) and each continuation line
+    /// as separate entries, with the caller's own indentation preserved. Empty emits nothing.
+    /// </summary>
+    public string[] CheckoutWith { get; set; } = new string[0];
+
     public override CustomFileWriter CreateWriter(StreamWriter streamWriter)
     {
         return new CustomFileWriter(streamWriter, indentationFactor: 2, commentPrefix: "#");
@@ -179,6 +201,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                                     .Concat(ReadPermissions.Select(x => (x, "read"))).ToArray(),
                                 ConcurrencyGroup = ConcurrencyGroup,
                                 ConcurrencyCancelInProgress = ConcurrencyCancelInProgress,
+                                DefaultShell = DefaultShell,
                                 Jobs = _images.Select(x => GetJobs(x, relevantTargets)).ToArray()
                             };
 
@@ -219,7 +242,8 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                          FetchDepth = _fetchDepth,
                          Progress = _progress,
                          Filter = _filter,
-                         Ref = _ref
+                         Ref = _ref,
+                         CheckoutWith = CheckoutWith
                      };
 
         if (CacheKeyFiles.Any())

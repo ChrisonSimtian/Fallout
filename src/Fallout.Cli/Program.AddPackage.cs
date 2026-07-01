@@ -45,7 +45,7 @@ partial class Program
         return 0;
     }
 
-    private static void AddOrReplacePackage(string packageId, string packageVersion, string packageType, string buildProjectFile)
+    internal static void AddOrReplacePackage(string packageId, string packageVersion, string packageType, string buildProjectFile)
     {
         var buildProject = ProjectModelTasks.ParseProject(buildProjectFile).NotNull();
 
