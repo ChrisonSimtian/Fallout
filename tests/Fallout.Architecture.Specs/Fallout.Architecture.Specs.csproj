@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TngTech.ArchUnitNET" />
+    <PackageReference Include="TngTech.ArchUnitNET.xUnit" />
+  </ItemGroup>
+
+  <!--
+    The reference set IS the contract. The fitness rules govern only the assemblies that are
+    loaded at runtime, and an assembly is loaded only if it lands in this project's output — i.e.
+    only if it is referenced here. Adding a production assembly to the repo without adding it here
+    silently drops it from the architecture gate, so this list must track src/ for the runtime
+    libraries below.
+
+    Deliberately OUT of scope (not referenced): the Roslyn build-time tooling
+    (Fallout.SourceGenerators, Fallout.Tooling.Generator, Fallout.Migrate[.Analyzers],
+    Fallout.MSBuildTasks) and the vendored Fallout.Persistence.Solution parser. They are
+    composition-root / build-time / vendored code outside the runtime layering, with rules of their
+    own (or none). Fallout.Persistence.Solution still arrives transitively via Fallout.Solution and
+    can appear as a forbidden dependency *target*, but is never a governed *subject*.
+  -->
+
+  <!-- Foundation: depend on nothing else in the repo. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Core\Fallout.Core.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities\Fallout.Utilities.csproj" />
+  </ItemGroup>
+
+  <!-- Utility satellites: may depend only on Fallout.Utilities. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Utilities.IO.Compression\Fallout.Utilities.IO.Compression.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.IO.Globbing\Fallout.Utilities.IO.Globbing.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.Net\Fallout.Utilities.Net.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.Text.Json\Fallout.Utilities.Text.Json.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Utilities.Text.Yaml\Fallout.Utilities.Text.Yaml.csproj" />
+  </ItemGroup>
+
+  <!-- Mid layers. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Tooling\Fallout.Tooling.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.ProjectModel\Fallout.ProjectModel.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Build.Shared\Fallout.Build.Shared.csproj" />
+  </ItemGroup>
+
+  <!-- Upper layers + composition root. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Common\Fallout.Common.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Components\Fallout.Components.csproj" />
+    <ProjectReference Include="..\..\src\Fallout.Cli\Fallout.Cli.csproj" />
+  </ItemGroup>
+
+  <!-- Transition shims: must point inward (Nuke.* -> Fallout.*), never the reverse. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Shims\Nuke.Common\Nuke.Common.csproj" />
+    <ProjectReference Include="..\..\src\Shims\Nuke.Build\Nuke.Build.csproj" />
+    <ProjectReference Include="..\..\src\Shims\Nuke.Components\Nuke.Components.csproj" />
+  </ItemGroup>
+
+</Project>

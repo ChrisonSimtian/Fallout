@@ -239,19 +239,3 @@ public interface ITargetDefinition
     /// </summary>
     ITargetDefinition Partition(int size);
 }
-
-/// <summary>
-/// The behavior of dependent targets if the target is skipped.
-/// </summary>
-public enum DependencyBehavior
-{
-    /// <summary>
-    /// Skip all dependencies which are not required by another target.
-    /// </summary>
-    Skip,
-
-    /// <summary>
-    /// Execute all dependencies.
-    /// </summary>
-    Execute
-}
