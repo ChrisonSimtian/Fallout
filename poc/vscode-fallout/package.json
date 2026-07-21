@@ -100,7 +100,8 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "build:control": "node scripts/copy-control.mjs",
+    "compile": "npm run build:control && tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "vsce package"
   },
@@ -109,8 +110,5 @@
     "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^3.9.2",
     "typescript": "^5.4.0"
-  },
-  "dependencies": {
-    "mermaid": "^11.15.0"
   }
 }

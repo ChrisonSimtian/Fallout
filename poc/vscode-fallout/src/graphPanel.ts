@@ -1,7 +1,13 @@
 import * as vscode from 'vscode';
-import { BuildGraph, toMermaid } from './model';
+import { BuildGraph } from './model';
 
-/** Singleton webview panel rendering the build graph with Mermaid. */
+/**
+ * Singleton webview panel rendering the build graph with the Fallout graph
+ * control (@fallout/graph-control). The control ships as one self-contained IIFE
+ * in media/fallout-graph-control.js exposing `FalloutGraph.mount`; we post it the
+ * raw BuildGraph and it lays out + renders. Re-posting on a file change reconciles
+ * in place, which is the live refresh.
+ */
 export class GraphPanel {
     private static current: GraphPanel | undefined;
 
@@ -19,7 +25,7 @@ export class GraphPanel {
             {
                 enableScripts: true,
                 retainContextWhenHidden: true,
-                localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'node_modules', 'mermaid', 'dist')],
+                localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'media')],
             },
         );
         GraphPanel.current = new GraphPanel(panel, extensionUri, graph, onRunTarget);
@@ -53,17 +59,18 @@ export class GraphPanel {
 
     private update(graph: BuildGraph): void {
         this.graph = graph;
-        void this.panel.webview.postMessage({ type: 'graph', definition: toMermaid(graph) });
+        void this.panel.webview.postMessage({ type: 'graph', graph });
     }
 
     private getHtml(extensionUri: vscode.Uri): string {
         const webview = this.panel.webview;
-        const mermaidUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(extensionUri, 'node_modules', 'mermaid', 'dist', 'mermaid.min.js'),
+        const controlUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(extensionUri, 'media', 'fallout-graph-control.js'),
         );
         const nonce = getNonce();
 
-        // style-src 'unsafe-inline' is required: Mermaid injects its own <style> elements.
+        // style-src 'unsafe-inline' is required: the control injects its CSS as a
+        // runtime <style> element (vite-plugin-css-injected-by-js).
         return /* html */ `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,46 +78,21 @@ export class GraphPanel {
     <meta http-equiv="Content-Security-Policy"
           content="default-src 'none'; img-src ${webview.cspSource} data:; script-src 'nonce-${nonce}' ${webview.cspSource}; style-src ${webview.cspSource} 'unsafe-inline';">
     <style>
-        body { padding: 0.5em 1em; }
-        #legend { font-size: 0.85em; opacity: 0.8; margin-bottom: 0.5em; }
-        #graph .node { cursor: pointer; }
-        #graph svg { max-width: 100%; height: auto; }
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #graph { height: 100vh; }
     </style>
 </head>
 <body>
-    <div id="legend">
-        solid &rarr; depends on &nbsp;&bull;&nbsp; dashed &rarr; runs after &nbsp;&bull;&nbsp;
-        thick &rarr; triggers &nbsp;&bull;&nbsp; bold border = default target &nbsp;&bull;&nbsp;
-        <b>click a target to run it</b>
-    </div>
     <div id="graph"></div>
-    <script nonce="${nonce}" src="${mermaidUri}"></script>
+    <script nonce="${nonce}" src="${controlUri}"></script>
     <script nonce="${nonce}">
         const vscode = acquireVsCodeApi();
         const container = document.getElementById('graph');
-        const dark = document.body.classList.contains('vscode-dark')
-                  || document.body.classList.contains('vscode-high-contrast');
-        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: dark ? 'dark' : 'default' });
-
-        let renderCount = 0;
-        async function render(definition) {
-            const { svg } = await mermaid.render('falloutGraph' + renderCount++, definition);
-            container.innerHTML = svg;
-            for (const node of container.querySelectorAll('g.node')) {
-                node.addEventListener('click', () => {
-                    // Mermaid node DOM ids look like "flowchart-<TargetName>-<n>";
-                    // target names are C# identifiers, so they never contain dashes.
-                    const name = node.id.split('-')[1];
-                    if (name) {
-                        vscode.postMessage({ type: 'run', target: name });
-                    }
-                });
-            }
-        }
+        const runTarget = (name) => vscode.postMessage({ type: 'run', target: name });
 
         window.addEventListener('message', event => {
             if (event.data.type === 'graph') {
-                render(event.data.definition);
+                FalloutGraph.mount(container, event.data.graph, { onRunTarget: runTarget });
             }
         });
         vscode.postMessage({ type: 'ready' });
