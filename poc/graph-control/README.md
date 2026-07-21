@@ -18,6 +18,7 @@ npm run dev        # dev server, hot reload — opens the demo fixture
 npm run build      # → dist/index.html, a single self-contained file you can double-click
 npm run build:lib  # → dist-lib/fallout-graph-control.js, an IIFE for host embedding
 npm run report     # → dist-lib/report.html, a self-contained static build-graph report
+npm run live       # → dist-lib/live.html, a self-contained looping live-run demo
 ```
 
 ## Static HTML report
@@ -46,6 +47,28 @@ FalloutGraph.mount(document.getElementById('graph'), buildGraph, {
 Re-calling `mount` on the same element reconciles in place — that's how the VS
 Code extension does its live refresh. The runtime `<style>` injection needs
 `style-src 'unsafe-inline'` in the host's CSP.
+
+## Live run graph
+
+`mountLive` keeps the graph in sync with a running build — each per-target status
+update animates in place (queued → running → succeeded/failed; edges feeding a
+running target flow). Layout is cached on the graph *structure*, so a status-only
+update never re-lays-out.
+
+```js
+const dispose = FalloutGraph.mountLive(el, initialGraph, {
+    subscribe: FalloutGraph.sseStatus('/build/events'),   // or pollStatus(url, ms)
+    onRunTarget: (name) => { /* … */ },
+});
+// later: dispose();
+```
+
+A source is any `subscribe(push)` that calls `push` with a `{ targetName: status }`
+patch or a whole replacement graph, and returns a teardown. Two adapters ship:
+`pollStatus(url, intervalMs)` (fits the extension's file-watcher / a status JSON)
+and `sseStatus(url)` (a live server stream). `npm run live` builds a self-contained
+demo driven by a scripted run — the stand-in until the `BuildManager` status
+producer (Phase 3, framework side) exists.
 
 ## How it maps to Fallout
 
