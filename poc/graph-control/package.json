@@ -9,6 +9,7 @@
         "build": "vite build",
         "build:lib": "vite build --config vite.lib.config.ts",
         "report": "node scripts/report.mjs",
+        "live": "node scripts/live-demo.mjs",
         "preview": "vite preview"
     },
     "dependencies": {
