@@ -102,12 +102,18 @@ public partial class Host
         // TODO: move to Logging
         using (WriteBlock("Errors & Warnings"))
         {
+            // The logger we replace owns the run's file sinks. Setting Log.Logger does not dispose it.
+            // Without this, `build.log` stays open and the next run in the same process cannot reset it.
+            var replaced = Log.Logger as IDisposable;
+
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console(
                     outputTemplate: Logging.ErrorsAndWarningsOutputTemplate,
                     theme: (ConsoleTheme)Theme,
                     applyThemeToRedirectedOutput: true)
                 .CreateLogger();
+
+            replaced?.Dispose();
 
             var nonEmptyLogEvents = Logging.InMemorySink.Instance.LogEvents.Where(x => !x.MessageTemplate.Text.IsNullOrEmpty());
             nonEmptyLogEvents.ForEach(Log.Write);
