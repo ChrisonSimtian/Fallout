@@ -9,6 +9,9 @@ using Xunit;
 
 namespace Fallout.Common.Specs;
 
+// Runs `git` through the process runner, which logs to the process-wide Log. Without the shared
+// collection those lines land in a concurrent build run's in-memory sink.
+[Collection(ProcessGlobalStateCollection.Name)]
 public class GitRepositoryWorktreeSpecs
 {
     [Fact]
