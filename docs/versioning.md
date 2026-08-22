@@ -167,6 +167,10 @@ The full rationale is [ADR-0004](adr/0004-calendar-versioning-and-dual-pace-chan
 
 Today the attribute exists and is used once. The intent is that **every breaking surface is gated behind it before landing**, so breaking work can accumulate on the integration trunk without a separate branch — the discipline ADR-0008 assumed when it retired the `experimental` lane.
 
+## Nightly previews do not change the version scheme
+
+The branching North Star also moves the preview lane from per-commit to **nightly** (see [branching-and-release.md → Nightly preview cadence](branching-and-release.md#nightly-preview-cadence)). That is a cadence change only. The version stays `…-preview.{height}`, `{height}` stays monotonic, and no date enters the version. Two consequences worth knowing before it is adopted are recorded there: `schedule` fires only from the default branch, and a night with no commits reproduces the previous version.
+
 ## Where the versioning North Star meets the branching one
 
 CalVer pairs with the GitFlow North Star in [branching-and-release.md](branching-and-release.md). Under full GitFlow the preview lane publishes from `develop` rather than `main`, which means `version.json`'s `{height}` core and `publicReleaseRefSpec`'s exclusion both move to `develop`. That is a direct conflict with [ADR-0008](adr/0008-collapse-experimental-into-main.md) ("`main` is the sole prerelease lane") and will need a superseding ADR when we adopt it — the two North Stars have to land together or not at all.
