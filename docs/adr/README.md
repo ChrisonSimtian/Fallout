@@ -2,6 +2,12 @@
 
 This directory holds ADRs — short, dated records of architectural decisions, the context that drove them, and their consequences. Format is [MADR](https://adr.github.io/madr/)-lite: title, status, context, decision, consequences, alternatives.
 
+> [!NOTE]
+> **A replacement format is being trialled** in [../decisions.yaml](../decisions.yaml). It is a prototype only —
+> these ADRs remain the source of truth, and nothing reads the YAML yet. The trial exists because working out
+> the current release model today means reading ADR-0004, its two inline amendments, ADR-0007, ADR-0008 and
+> ADR-0012. Feedback belongs on the PR that introduced it.
+
 ## When to write one
 
 Write an ADR when a decision:
