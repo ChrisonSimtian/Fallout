@@ -211,10 +211,56 @@ gitGraph
 |---|---|---|
 | Integration trunk | `main` | `develop` |
 | Preview lane publishes from | `main` | `develop` |
+| Preview cadence | per-commit | **nightly** |
 | `main` holds | trunk + previews | **released code only**, tagged at each GA |
 | Stabilisation | `release/v*` cut from `main` | `release/v*` cut from `develop` |
 | Urgent fixes | `hotfix/*` off a support line | `hotfix/*` off `main`, back-merged to `develop` |
 | Feature branches | off `main` | off `develop` |
+
+## Nightly preview cadence
+
+The preview lane moves to `develop`, and the cadence moves with it: **one build per night, not one per commit.**
+
+Trigger today, in `publish-packages-preview.yml`:
+
+```yaml
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', '.assets/**', '**/*.md']
+```
+
+Trigger under the North Star:
+
+```yaml
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 03:00 UTC
+  workflow_dispatch:
+```
+
+### What does not change
+
+The version shape stays `-preview.{height}`. A nightly needs no date in the version, so `version.json` is untouched and nbgv keeps producing monotonic heights. [ADR-0004](adr/0004-calendar-versioning-and-dual-pace-channels.md) rejected date-based version *cores*; that rejection still holds and a nightly does not reopen it.
+
+`.g<commit>` still names the exact commit that was built, so a nightly package is still traceable to a single revision.
+
+### Why
+
+The preview lane publishes 22 packages per run. Per-commit means most of those runs differ trivially from the one before. Nightly caps the volume at one run a day, which cuts published versions, CI wall-clock, and the amount of work the prune job has to undo.
+
+### What it costs
+
+- **Latency.** A fix merged at 09:00 is not consumable until the next night. `workflow_dispatch` is the escape hatch when someone needs a build now.
+- **Coarser attribution.** A regression is attributed to a night rather than to a commit. The commit hash in the version still identifies what was built, so bisecting stays possible, just over a wider span.
+
+### Two mechanical traps
+
+> [!IMPORTANT]
+> **`schedule` only fires from the default branch.** GitHub ignores `schedule` triggers on non-default branches. A nightly that is meant to build `develop` therefore needs either `develop` to *be* the default branch, or an explicit `ref: develop` on the checkout step. Under full GitFlow, `develop` as default branch is the consistent choice, and it also makes new pull requests target `develop` by default.
+
+> [!IMPORTANT]
+> **A night with no commits produces a version that already exists.** `{height}` only advances when a commit lands, so a quiet day yields the same version as the night before, and the push is rejected as a duplicate. The nightly needs a guard that skips the run when no new commit has landed since the last published preview, otherwise every quiet night reports a red build.
 
 ## Calendar versioning
 

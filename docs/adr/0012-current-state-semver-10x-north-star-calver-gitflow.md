@@ -47,6 +47,7 @@ Recorded as direction, not as fact. Nothing below is implemented.
 
 - **CalVer `YYYY.MINOR.PATCH`** — production lines become `release/YYYY`, retired years become `support/YYYY`, breaking changes batch to the yearly cut. ADR-0004's rationale stands; only its timing changes.
 - **Full GitFlow**, including a long-lived **`develop`** as the integration trunk and preview lane, with `main` holding released code only. `release/v*` for stabilisation, `hotfix/v*` off `main`, `feature/*` off `develop`.
+- **Nightly previews instead of per-commit.** With the preview lane on `develop`, it publishes once a night rather than on every commit. Cadence only — the version stays `…-preview.{height}` and `version.json` is untouched. See [branching-and-release.md → Nightly preview cadence](../branching-and-release.md#nightly-preview-cadence).
 - **Routine `[Experimental("FALLOUT0xx")]` gating** of all breaking surface before it lands — the discipline ADR-0008 assumed when it retired the `experimental` branch. The mechanism is current; the practice is not (one usage, `FALLOUT001` on `IPublish`).
 
 ### 3. Documentation rule
