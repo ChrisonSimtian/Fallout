@@ -1,0 +1,229 @@
+# PROTOTYPE — a candidate replacement for docs/adr/*.md.
+#
+# Nothing reads this file yet. The ADRs remain the source of truth until this
+# format is accepted or rejected. See the PR that introduced it for the argument.
+#
+# Why: the ADR set has two ADR-0001s, two ADR-0002s, and no 0005/0006/0009/0011.
+# Working out the current release model means reading ADR-0004, its two inline
+# amendments, ADR-0007, ADR-0008 and ADR-0012 — roughly 1,200 lines to answer
+# "what do we do today". The durable value in an ADR is the decision and the
+# alternatives that were rejected, and both compress to a few lines.
+#
+# Fields:
+#   id         stable slug. The primary key. Slugs, not numbers, because the
+#              numbers already collided twice and a slug cannot.
+#   adr        the legacy ADR number, for resolving existing "ADR-0008"
+#              references in code comments, PRs and docs. Not unique.
+#   status     proposed | accepted | superseded | deprecated
+#   date       when the status was last set (ISO 8601)
+#   area       tags for filtering
+#   applies    now | north-star | never — is this load-bearing today?
+#   decision   what is true, in one or two sentences. Imperative, not narrative.
+#   why        the forcing reason. The thing that is lost if this is deleted.
+#   rejected   each alternative with the reason it lost, one line each
+#   relations  amends / superseded_by / supersedes, as "<id>" or "<id>#<section>"
+#   source     the long-form ADR, kept for history
+#
+# Known limit: this shape suits process and policy decisions. It does NOT suit
+# the design-track ADRs (cd-primitives at 440 lines, variables-and-substitution
+# at 259) whose value is the worked API design and code samples, not the verdict.
+# Those are living design docs by adr/README's own rule and probably belong in
+# docs/ rather than compressed to a decision line. Their entries here are
+# deliberately thin, which is the honest result rather than a good one.
+
+decisions:
+
+  - id: cd-primitives-attributes-vs-tasks
+    adr: "0001"
+    status: proposed
+    date: 2026-05-29
+    area: [cd, api-design]
+    applies: north-star
+    decision: >
+      CD primitives split by whether their state is file-shaped or API-shaped.
+      File-shaped state uses attributes; API-shaped state uses tasks.
+    why: >
+      A single pattern forces one of the two into a shape it does not fit.
+    rejected:
+      - option: all-attribute, generate files for everything
+        because: the generated files have no consumer except the applier, so they are make-believe artifacts, and it revives config-file-as-API
+    source: adr/0001-cd-primitives-attributes-vs-tasks.md
+
+  - id: release-branch-model
+    adr: "0001"
+    status: accepted
+    date: 2026-05-29
+    area: [release, branching, ci]
+    applies: now
+    decision: >
+      Release branches with tag-triggered multi-channel CD. Tags publish; branch
+      pushes do not.
+    why: >
+      Publishing from main could not express a hotfix to an older line.
+    rejected:
+      - option: keep main-triggered publishing, cut noise with path filters
+        because: does not solve the hotfix problem at all
+    relations:
+      amended_by: [calendar-versioning#versioning, cut-release-branch-on-demand#branching]
+    source: adr/0001-release-branch-model.md
+
+  - id: cross-provider-auth-and-secret-conventions
+    adr: "0002"
+    status: proposed
+    date: 2026-05-29
+    area: [secrets, api-design]
+    applies: north-star
+    decision: >
+      A secret is declared once as a `[Parameter, Secret]` field. The C# field
+      name is canonical; env-var names and per-provider lookups derive from it.
+    why: >
+      One secret commonly serves several providers, so the declaration cannot be
+      owned by any one of them.
+    rejected:
+      - option: provider-namespaced attributes such as `[GitHubSecret]`
+        because: the same secret is often a GitHub secret, an Octopus value and a local env var at once, so namespacing forces duplicate declarations
+    source: adr/0002-cross-provider-auth-and-secret-conventions.md
+
+  - id: nuget-org-opt-in
+    adr: "0002"
+    status: accepted
+    date: 2026-05-29
+    area: [release, packaging]
+    applies: now
+    decision: >
+      Publishing to nuget.org is opt-in via a `publish-to-nugetorg` dispatch
+      input, default false. GitHub Packages is the default target.
+    why: >
+      A wrong push to nuget.org is permanent, and it fans out to every
+      consumer's Dependabot.
+    rejected:
+      - option: hard-code branch-to-feed routing in the workflow
+        because: every new release or maintenance branch would need a YAML edit to register its routing
+    source: adr/0002-v11-off-nuget-by-default.md
+
+  - id: variables-and-substitution
+    adr: "0003"
+    status: proposed
+    date: 2026-05-29
+    area: [api-design]
+    applies: north-star
+    decision: >
+      One substitution syntax framework-wide, `${Name}`, escaped as `$${literal}`
+      with no recursion.
+    why: >
+      Consumers already know this form from Bash and Docker Compose.
+    rejected:
+      - option: Mustache-style `{{name}}`
+        because: less familiar to the target audience than `${name}`, same reasoning that picked the secret-naming form
+    source: adr/0003-variables-and-substitution.md
+
+  - id: calendar-versioning
+    adr: "0004"
+    status: accepted
+    date: 2026-05-29
+    area: [release, versioning]
+    applies: north-star
+    decision: >
+      Version as `YYYY.MINOR.PATCH`, where the major is the calendar year, and
+      batch breaking changes to the yearly major cut.
+    why: >
+      A year of non-breaking releases gives deliberate contributors a stable API
+      target, and keeps a major bump honest by tying it to real breakage.
+    rejected:
+      - option: a date-shaped core such as `2026.05.29`
+        because: it parses as a stable MAJOR.MINOR.PATCH, not a nightly, and leaves no room for minor or patch inside a year
+      - option: a separate long-lived `experimental` branch
+        because: rejected, then adopted in the 2026-05-30 amendment, then retired again by collapse-experimental-into-main
+    relations:
+      deferred_by: [current-state-semver-north-star-calver-gitflow]
+      superseded: ["release-branch-model#versioning"]
+    note: >
+      Decided 2026-05-29, amended 2026-05-30, channel ladder superseded 2026-06-18,
+      CalVer itself deferred 2026-08-16. Never implemented; no `2026.x` tag exists.
+    source: adr/0004-calendar-versioning-and-dual-pace-channels.md
+
+  - id: cut-release-branch-on-demand
+    adr: "0007"
+    status: accepted
+    date: 2026-06-08
+    area: [release, branching]
+    applies: now
+    decision: >
+      Cut the production branch on demand at the first release of the line, not
+      preemptively. Until then the most stable consumable line is the preview lane.
+      Branches with no unique history are deletable; tags are the durable markers.
+    why: >
+      A production branch cut at year start sits empty and drifts.
+    rejected:
+      - option: pure trunk-tag, never cut a release branch
+        because: forces the integration trunk to absorb the rigorous production review gate, inverting the review model
+    relations:
+      amends: ["calendar-versioning#3", "release-branch-model#branching"]
+    source: adr/0007-cut-release-branch-on-demand.md
+
+  - id: collapse-experimental-into-main
+    adr: "0008"
+    status: accepted
+    date: 2026-06-18
+    area: [release, branching]
+    applies: now
+    decision: >
+      `main` is both the integration trunk and the sole prerelease lane. The
+      `experimental` branch and its `-alpha` channel are retired. Steady-state
+      long-lived branches are `main` plus `support/*`.
+    why: >
+      The second lane ran about 17 commits behind `main`, carried no unique work,
+      and the forward-port discipline it depended on never happened. Per-API
+      gating with `[Experimental]` was doing the isolation work all along.
+    rejected:
+      - option: keep `experimental` and enforce forward-port hygiene
+        because: spends tooling and process to preserve a lane that carried no unique value
+    relations:
+      supersedes: ["calendar-versioning#2"]
+      conflicts_with: ["current-state-semver-north-star-calver-gitflow#north-star-gitflow"]
+    source: adr/0008-collapse-experimental-into-main.md
+
+  - id: no-telemetry
+    adr: "0010"
+    status: accepted
+    date: 2026-07-24
+    area: [privacy, dependencies]
+    applies: now
+    decision: >
+      Fallout collects no telemetry, and the inherited subsystem is removed in
+      full rather than left dormant.
+    why: >
+      For a hard fork rebuilding trust, "we collect nothing" is a stronger promise
+      than "anonymized data you can opt out of".
+    rejected:
+      - option: keep the scaffolding dormant and wire up an endpoint later
+        because: the "later" had no owner or timeline
+      - option: ship opt-in telemetry now
+        because: no compelling need for a build framework; not foreclosed for the future
+      - option: local-only stats, never transmitted
+        because: scope creep, and consumers can build it on the public build-event hooks
+    source: adr/0010-no-telemetry-collection.md
+
+  - id: current-state-semver-north-star-calver-gitflow
+    adr: "0012"
+    status: accepted
+    date: 2026-08-16
+    area: [release, versioning, branching, docs]
+    applies: now
+    decision: >
+      Current state is semver on the `10.x` line with `release/vMAJOR.MINOR`
+      production branches. CalVer and full GitFlow are the North Star and are not
+      implemented. Every process document carries a Current state section and a
+      North Star section and never blends them.
+    why: >
+      ADR-0004 described a calendar-versioned repository that never existed, and
+      the docs carried aspiration and fact in the same voice, so a reader could
+      not tell which statements were load-bearing.
+    rejected:
+      - option: adopt CalVer now
+        because: buys doc accuracy at the price of a migration nobody had scheduled
+      - option: abandon CalVer and delete ADR-0004
+        because: the rationale still holds; only the timing was wrong
+    relations:
+      amends: ["calendar-versioning#1"]
+    source: adr/0012-current-state-semver-10x-north-star-calver-gitflow.md
