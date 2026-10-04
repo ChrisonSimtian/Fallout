@@ -44,6 +44,66 @@ public class BuildContextSpecs
     }
 
     [Fact]
+    public void Parameter_service_facade_resolves_the_current_contexts_instance()
+    {
+        // Arrange
+        using var context = BuildContext.Activate();
+
+        // Act
+        var instance = ParameterService.Instance;
+
+        // Assert
+        instance.Should().BeSameAs(context.Parameters);
+    }
+
+    [Fact]
+    public void Parameter_service_facade_falls_back_to_a_shared_instance_outside_a_run()
+    {
+        // Arrange
+        BuildContext.Current.Should().BeNull();
+
+        // Act
+        var first = ParameterService.Instance;
+        var second = ParameterService.Instance;
+
+        // Assert
+        first.Should().NotBeNull();
+        first.Should().BeSameAs(second);
+    }
+
+    [Fact]
+    public void Each_run_gets_its_own_parameter_service()
+    {
+        // Arrange
+        ParameterService first;
+        ParameterService second;
+
+        // Act
+        using (var context = BuildContext.Activate())
+            first = context.Parameters;
+        using (var context = BuildContext.Activate())
+            second = context.Parameters;
+
+        // Assert
+        second.Should().NotBeSameAs(first);
+    }
+
+    [Fact]
+    public void Parameter_service_state_does_not_leak_into_the_next_run()
+    {
+        // Arrange
+        using (BuildContext.Activate())
+            ParameterService.Instance.ArgumentsFromCommitMessageService = new ArgumentParser(["-arg", "value"]);
+
+        // Act
+        using var next = BuildContext.Activate();
+
+        // Assert
+        // The first run set the commit-message arguments. The new run must not see them.
+        ParameterService.Instance.ArgumentsFromCommitMessageService.Should().BeNull();
+    }
+
+    [Fact]
     public void Disposing_a_superseded_context_leaves_the_newer_one_current()
     {
         var first = BuildContext.Activate();

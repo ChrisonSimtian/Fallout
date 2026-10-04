@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using Fallout.Common.Execution;
 using Fallout.Common.Utilities;
 
 namespace Fallout.Common;
 
 internal partial class ParameterService
 {
-    internal static ParameterService Instance = new(
-        () => EnvironmentInfo.ArgumentParser,
-        () => EnvironmentInfo.Variables);
+    /// <summary>Creates a service that reads the process command-line arguments and environment variables.</summary>
+    internal static ParameterService CreateDefault()
+        => new(() => EnvironmentInfo.ArgumentParser, () => EnvironmentInfo.Variables);
+
+    // Used when no build run is active. Every caller outside a run shares this one service.
+    private static readonly Lazy<ParameterService> ambientInstance = new(CreateDefault);
+
+    /// <summary>
+    /// The service for the current build run (<see cref="BuildContext.Parameters"/>). Outside a run,
+    /// the shared service that <see cref="ambientInstance"/> holds.
+    /// </summary>
+    internal static ParameterService Instance => BuildContext.Current?.Parameters ?? ambientInstance.Value;
 
     public static T GetParameter<T>(string name, char? separator = null)
     {

@@ -20,8 +20,9 @@ namespace Fallout.Common.Execution;
 /// </summary>
 /// <remarks>
 /// FT-2 / <see href="https://github.com/Fallout-build/Fallout/issues/307">#307</see>. Intentionally
-/// <c>internal</c> — not a public contract until the SDK lands (milestone #7). Subsequent steps move
-/// the per-run services (parameters, logging scope, tool-path config) onto this context.
+/// <c>internal</c> — not a public contract until the SDK lands (milestone #7). Later steps move the
+/// remaining per-run services (logging scope, tool-path config) onto this context. The parameter
+/// service is already here (<see href="https://github.com/Fallout-build/Fallout/issues/309">#309</see>).
 /// </remarks>
 internal sealed class BuildContext : IDisposable
 {
@@ -33,6 +34,13 @@ internal sealed class BuildContext : IDisposable
     private readonly LinkedList<Action> cancellationHandlers = new();
     private readonly ConsoleCancelEventHandler onCancelKeyPress;
     private readonly EventHandler onToolOptionsCreated;
+
+    /// <summary>
+    /// The parameter service for this run. During a run, <see cref="ParameterService.Instance"/> returns
+    /// this object. Its mutable fields (arguments from files, arguments from the commit message) are
+    /// discarded with the run, so the next run starts empty.
+    /// </summary>
+    public ParameterService Parameters { get; } = ParameterService.CreateDefault();
 
     private BuildContext()
     {
