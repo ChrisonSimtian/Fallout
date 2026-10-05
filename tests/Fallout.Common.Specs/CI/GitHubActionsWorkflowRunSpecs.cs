@@ -67,7 +67,37 @@ public class GitHubActionsWorkflowRunSpecs
             a.OnWorkflowRunRequireSuccess = true;
         });
 
-        configuration.Jobs.Should().OnlyContain(x => x.Condition == "github.event.workflow_run.conclusion == 'success'");
+        configuration.Jobs.Should().OnlyContain(x => x.Condition == "github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'");
+    }
+
+    [Fact]
+    public void Require_success_condition_does_not_skip_other_event_types()
+    {
+        var configuration = GetConfiguration(a =>
+        {
+            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            a.OnCronSchedule = "0 0 * * *";
+            a.OnWorkflowRunRequireSuccess = true;
+        });
+
+        configuration.Jobs.Should().OnlyContain(x => x.Condition.StartsWith("github.event_name != 'workflow_run' ||"));
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Null_types_or_branches_throws(bool nullTypes)
+    {
+        var act = () => GetConfiguration(a =>
+        {
+            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            if (nullTypes)
+                a.OnWorkflowRunTypes = null;
+            else
+                a.OnWorkflowRunBranches = null;
+        });
+
+        act.Should().Throw<Exception>().WithMessage("*must not be null*");
     }
 
     [Fact]

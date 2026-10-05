@@ -80,7 +80,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
     /// <summary>
     /// <c>workflow_run</c> also fires for failed or cancelled upstream runs. When set, jobs only run if the upstream
-    /// run succeeded (<c>if: github.event.workflow_run.conclusion == 'success'</c>).
+    /// run succeeded (<c>if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'</c>, so runs from other triggers are unaffected).
     /// </summary>
     public bool OnWorkflowRunRequireSuccess { get; set; }
 
@@ -296,7 +296,9 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                    TimeoutMinutes = TimeoutMinutes,
                    ConcurrencyGroup = JobConcurrencyGroup,
                    ConcurrencyCancelInProgress = JobConcurrencyCancelInProgress,
-                   Condition = OnWorkflowRunRequireSuccess ? "github.event.workflow_run.conclusion == 'success'" : null
+                   Condition = OnWorkflowRunRequireSuccess
+                       ? "github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'"
+                       : null
                };
     }
 
@@ -490,6 +492,8 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
         {
             Assert.True(OnWorkflowRunWorkflows.All(x => !x.IsNullOrWhiteSpace()),
                 $"'{nameof(OnWorkflowRunWorkflows)}' entries must not be null, empty, or whitespace");
+            Assert.True(OnWorkflowRunTypes != null && OnWorkflowRunBranches != null,
+                $"'{nameof(OnWorkflowRunTypes)}' and '{nameof(OnWorkflowRunBranches)}' must not be null");
             yield return new GitHubActionsWorkflowRunTrigger
                          {
                              Workflows = OnWorkflowRunWorkflows,
