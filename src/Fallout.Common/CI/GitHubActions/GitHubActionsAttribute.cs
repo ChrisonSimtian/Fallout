@@ -111,6 +111,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     /// across both properties.
     /// </summary>
     public string[] ImportSecretsAs { get; set; } = new string[0];
+
     public bool EnableGitHubToken { get; set; }
 
     public GitHubActionsPermissions[] WritePermissions { get; set; } = new GitHubActionsPermissions[0];
