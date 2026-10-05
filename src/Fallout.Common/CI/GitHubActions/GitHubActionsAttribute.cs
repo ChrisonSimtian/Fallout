@@ -101,6 +101,16 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
     public string[] ImportSecrets { get; set; } = new string[0];
 
+    /// <summary>
+    /// Secrets imported under an explicit environment variable name, each entry in
+    /// <c>ENV_NAME: SECRET_NAME</c> form. Emitted as <c>ENV_NAME: ${{ secrets.SECRET_NAME }}</c> on the run
+    /// step's <c>env:</c> block, after <see cref="ImportSecrets"/>. Unlike <see cref="ImportSecrets"/>, the
+    /// secret name is used as written instead of being derived from the environment variable name, so it
+    /// reaches secrets that derivation cannot name, and the variable can be any name, such as the
+    /// <c>Section__Key</c> form of a .NET configuration key. Environment variable names must be unique
+    /// across both properties.
+    /// </summary>
+    public string[] ImportSecretsAs { get; set; } = new string[0];
     public bool EnableGitHubToken { get; set; }
 
     public GitHubActionsPermissions[] WritePermissions { get; set; } = new GitHubActionsPermissions[0];
@@ -279,6 +289,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                 $"'{nameof(Env)}' entry '{variable}' must have a space after the key's colon; expected 'KEY: value'");
         }
 
+        ValidateImportSecretsAs();
         ValidateWorkflowDispatchInputs();
         ValidateActionReferences();
 
@@ -484,10 +495,48 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             yield return (secret, GetSecretValue(secret));
         }
 
+        foreach (var (variable, secret) in GetImportSecretsAs())
+            yield return (variable, $"${{{{ secrets.{secret} }}}}");
+
         if (EnableGitHubToken)
         {
             yield return ("GITHUB_TOKEN", GetSecretValue("GITHUB_TOKEN"));
         }
+    }
+
+    private IEnumerable<(string Variable, string Secret)> GetImportSecretsAs()
+    {
+        foreach (var entry in ImportSecretsAs)
+        {
+            Assert.True(entry != null, $"'{nameof(ImportSecretsAs)}' entries must not be null; expected 'ENV_NAME: SECRET_NAME'");
+
+            var separatorIndex = entry.IndexOf(':');
+            Assert.True(separatorIndex > 0,
+                $"'{nameof(ImportSecretsAs)}' entry '{entry}' must be in 'ENV_NAME: SECRET_NAME' form with a non-empty env name");
+
+            var variable = entry.Substring(startIndex: 0, separatorIndex);
+            var secret = entry.Substring(separatorIndex + 1);
+            Assert.True(!variable.Any(char.IsWhiteSpace),
+                $"'{nameof(ImportSecretsAs)}' entry '{entry}' has whitespace in its env name; expected 'ENV_NAME: SECRET_NAME'");
+            Assert.True(secret.Length == 0 || char.IsWhiteSpace(secret[0]),
+                $"'{nameof(ImportSecretsAs)}' entry '{entry}' must have a space after the env name's colon; expected 'ENV_NAME: SECRET_NAME'");
+
+            secret = secret.Trim();
+            Assert.True(secret.Length > 0,
+                $"'{nameof(ImportSecretsAs)}' entry '{entry}' has an empty secret name; expected 'ENV_NAME: SECRET_NAME'");
+            Assert.True(!secret.Any(char.IsWhiteSpace),
+                $"'{nameof(ImportSecretsAs)}' entry '{entry}' has whitespace in its secret name; expected 'ENV_NAME: SECRET_NAME'");
+
+            yield return (variable, secret);
+        }
+    }
+
+    private void ValidateImportSecretsAs()
+    {
+        var variables = ImportSecrets.Concat(GetImportSecretsAs().Select(x => x.Variable)).ToList();
+        var duplicates = variables.GroupBy(x => x).Where(x => x.Count() > 1).Select(x => x.Key).ToList();
+        Assert.True(duplicates.Count == 0,
+            $"Duplicate env names across '{nameof(ImportSecrets)}' and '{nameof(ImportSecretsAs)}' in workflow '{name}': {duplicates.JoinCommaSpace()}");
     }
 
     protected virtual IEnumerable<GitHubActionsDetailedTrigger> GetTriggers()

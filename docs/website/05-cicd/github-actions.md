@@ -167,6 +167,30 @@ class Build : FalloutBuild
 If you're facing any issues, make sure that the name in the GitHub settings is the same as generated into the workflow file. 
 :::
 
+#### Importing a secret under an explicit name
+
+`ImportSecrets` derives the secret name from the parameter name. Use `ImportSecretsAs` when the secret already exists under a name that derivation cannot produce, or when the environment variable needs a name no parameter can have, such as a .NET configuration key. Each entry is `ENV_NAME: SECRET_NAME`:
+
+```csharp title="Build.cs"
+[GitHubActions(
+    // ...
+    ImportSecretsAs = new[] { "Apis__NzPost__FunctionKey: OPS_API_TESTS_NZPOST_KEY" })]
+```
+
+<details>
+<summary>Generated output</summary>
+
+```yaml title=".github/workflows/continuous.yml"
+- name: 'Run: Test'
+  run: dotnet fallout Test
+  env:
+    Apis__NzPost__FunctionKey: ${{ secrets.OPS_API_TESTS_NZPOST_KEY }}
+```
+
+</details>
+
+Neither name may contain whitespace. An environment variable name used twice across `ImportSecrets` and `ImportSecretsAs` fails generation.
+
 ### Using the GitHub Token
 
 For every workflow run, GitHub generates a [one-time token](https://docs.github.com/en/actions/security-guides/automatic-token-authentication) with [adequate permissions](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token) that you can use to authenticate with the GitHub API. You can enable the GitHub token in your attribute as follows:

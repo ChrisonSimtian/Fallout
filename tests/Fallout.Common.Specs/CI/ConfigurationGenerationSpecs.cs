@@ -363,6 +363,36 @@ public class ConfigurationGenerationSpecs
                 }
             );
 
+            // Baseline: ImportSecrets alone maps each parameter name to its derived secret name.
+            yield return
+            (
+                "import-secrets",
+                new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                {
+                    On = new[] { GitHubActionsTrigger.Push },
+                    InvokedTargets = new[] { nameof(Test) },
+                    ImportSecrets = new[] { nameof(ApiKey) }
+                }
+            );
+
+            // ImportSecretsAs emits after ImportSecrets, with the secret name used as written and the
+            // env name taken verbatim (here a .NET configuration key and a secret the derivation can't name).
+            yield return
+            (
+                "import-secrets-as",
+                new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                {
+                    On = new[] { GitHubActionsTrigger.Push },
+                    InvokedTargets = new[] { nameof(Test) },
+                    ImportSecrets = new[] { nameof(ApiKey) },
+                    ImportSecretsAs = new[]
+                                      {
+                                          "Apis__NzPost__FunctionKey: OPS_API_TESTS_NZPOST_KEY",
+                                          "ServiceBus__ConnectionString: SERVICE_BUS_CONNECTION_STRING"
+                                      }
+                }
+            );
+
             // Ordering guard: extra CheckoutWith inputs emit verbatim inside the with: block, after
             // every typed key (here fetch-depth) and in the order supplied.
             yield return
