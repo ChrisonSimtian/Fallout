@@ -251,17 +251,6 @@ A value containing an `@` is a complete reference and is emitted as-is; anything
 class Build : FalloutBuild { /* ... */ }
 ```
 
-### Pinning the .NET SDK
-
-By default the setup step reads the SDK from `global.json` at the repo root (`global-json-file: global.json`). Set `SetupDotNetVersions` to emit `dotnet-version` instead. That covers a `global.json` kept in a subfolder, and pinning an exact SDK stops self-hosted runners that share one dotnet directory from all installing each new patch at the same time. One value is written inline, several as a `|` block; `global-json-file` is dropped. Left empty, the output is unchanged.
-
-```csharp title="Build.cs"
-[GitHubActions(
-    // ...
-    SetupDotNetVersions = new[] { "8.0.x", "10.0.103" })]
-class Build : FalloutBuild { /* ... */ }
-```
-
 Both forms take a trailing `# comment`, which is what makes the [SHA-pinning](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#using-third-party-actions) idiom above readable. The comment is split off before the value is classified, so a slash or an `@` inside it changes nothing.
 
 A ref that itself contains a `/` — a branch like `releases/v1` — reads exactly like an `owner/repo`, so it needs a leading `@` to disambiguate:
@@ -274,3 +263,14 @@ CheckoutAction = "releases/v1"      // error: ambiguous, names neither form
 :::note
 `actions/cache@v5` and later run on the node24 runtime and require a self-hosted runner of at least `2.327.1`. Set `CacheAction = "v4"` if your runners are older.
 :::
+
+### Pinning the .NET SDK
+
+By default the setup step reads the SDK from `global.json` at the repo root (`global-json-file: global.json`). Set `SetupDotNetVersions` to emit `dotnet-version` instead. That covers a `global.json` kept in a subfolder, and pinning an exact SDK stops self-hosted runners that share one dotnet directory from all installing each new patch at the same time. One value is written inline, several as a `|` block; `global-json-file` is dropped. Left empty, the output is unchanged.
+
+```csharp title="Build.cs"
+[GitHubActions(
+    // ...
+    SetupDotNetVersions = new[] { "8.0.x", "10.0.103" })]
+class Build : FalloutBuild { /* ... */ }
+```
