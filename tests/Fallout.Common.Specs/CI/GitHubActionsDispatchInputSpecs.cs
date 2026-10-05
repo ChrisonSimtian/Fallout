@@ -65,7 +65,7 @@ public class GitHubActionsDispatchInputSpecs
         var explicitOptions = RenderChoice(new GitHubActionsInputAttribute("Category")
                                            {
                                                Type = GitHubActionsInputType.Choice,
-                                               Options = new[] { "All", "ReadOnly", "Write" },
+                                               Options = new[] { "Write", "All", "ReadOnly" },
                                                Default = "ReadOnly"
                                            });
         var fromEnum = RenderChoice(new GitHubActionsInputAttribute("Category")
@@ -78,7 +78,7 @@ public class GitHubActionsDispatchInputSpecs
         fromEnum.Should().Be(explicitOptions);
     }
 
-    private enum Category { All, ReadOnly, Write }
+    private enum Category { Write = 2, All = 0, ReadOnly = 1 }
 
     // Regression guard: a workflow name with spaces is normalized to underscores; an input scoped to the
     // same spelled name must still resolve (not silently drop, not throw "unknown workflow").

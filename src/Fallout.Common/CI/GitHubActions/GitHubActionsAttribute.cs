@@ -513,7 +513,8 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             $"'{input.Name}' '{nameof(GitHubActionsInputAttribute.OptionsFrom)}' must be an enum, but '{input.OptionsFrom.Name}' is not");
         Assert.True(input.Type == GitHubActionsInputType.Choice,
             $"'{input.Name}' sets '{nameof(GitHubActionsInputAttribute.OptionsFrom)}' but its type is not '{nameof(GitHubActionsInputType.Choice)}'");
-        return Enum.GetNames(input.OptionsFrom);
+        // Enum.GetNames sorts by value; field order follows the source declaration order.
+        return input.OptionsFrom.GetFields(BindingFlags.Public | BindingFlags.Static).Select(x => x.Name).ToArray();
     }
 
     private void ValidateWorkflowDispatchInputs()
