@@ -612,6 +612,29 @@ public class ConfigurationGenerationSpecs
                 }
             );
 
+            // Pinned SDK versions replace global-json-file; one is written inline, several as a block.
+            yield return
+            (
+                "setup-dotnet-version",
+                new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                {
+                    On = new[] { GitHubActionsTrigger.Push },
+                    InvokedTargets = new[] { nameof(Test) },
+                    SetupDotNetVersions = new[] { "10.0.103" }
+                }
+            );
+
+            yield return
+            (
+                "setup-dotnet-versions",
+                new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                {
+                    On = new[] { GitHubActionsTrigger.Push },
+                    InvokedTargets = new[] { nameof(Test) },
+                    SetupDotNetVersions = new[] { "8.0.x", "10.0.103" }
+                }
+            );
+
             // Every emitted action is overridable, in each accepted form: a bare ref appended to the default
             // action name, a complete reference, a SHA pin carrying its version as a trailing comment, and a
             // fork. Pack is invoked because it produces artifacts, so the upload step actually renders.

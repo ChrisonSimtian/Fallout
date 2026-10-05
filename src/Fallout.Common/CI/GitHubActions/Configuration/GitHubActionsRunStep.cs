@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 
@@ -19,6 +20,13 @@ public class GitHubActionsRunStep : GitHubActionsStep
             GitHubActionsDefaults.SetupDotNetAction, value, $"{nameof(GitHubActionsRunStep)}.{nameof(SetupDotNetAction)}");
     } = GitHubActionsDefaults.SetupDotNetAction;
 
+    /// <summary>
+    /// SDK versions to install, emitted as <c>dotnet-version</c> in place of <c>global-json-file</c>. One value
+    /// is written inline, several as a <c>|</c> block. Null, empty, or only blank entries keep
+    /// <c>global-json-file: global.json</c>.
+    /// </summary>
+    public string[] SetupDotNetVersions { get; set; }
+
     public string[] InvokedTargets { get; set; }
 
     public Dictionary<string, string> Imports { get; set; }
@@ -32,7 +40,21 @@ public class GitHubActionsRunStep : GitHubActionsStep
             writer.WriteLine("with:");
             using (writer.Indent())
             {
-                writer.WriteLine("global-json-file: global.json");
+                var versions = (SetupDotNetVersions ?? [])
+                    .Where(x => !string.IsNullOrWhiteSpace(x))
+                    .Select(x => x.Trim())
+                    .ToArray();
+
+                if (versions.Length == 0)
+                    writer.WriteLine("global-json-file: global.json");
+                else if (versions.Length == 1)
+                    writer.WriteLine($"dotnet-version: {versions[0]}");
+                else
+                {
+                    writer.WriteLine("dotnet-version: |");
+                    using (writer.Indent())
+                        versions.ForEach(x => writer.WriteLine(x));
+                }
             }
         }
 

@@ -252,6 +252,14 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public string SetupDotNetAction { get; set; } = GitHubActionsDefaults.SetupDotNetAction;
 
     /// <summary>
+    /// SDK versions the generated <c>actions/setup-dotnet</c> step installs, emitted as <c>dotnet-version</c>
+    /// (one value inline, several as a <c>|</c> block). Use it when <c>global.json</c> isn't at the repo root,
+    /// or to pin an exact SDK so runners sharing one dotnet directory don't all install each new patch at once.
+    /// Empty (the default) keeps <c>global-json-file: global.json</c>.
+    /// </summary>
+    public string[] SetupDotNetVersions { get; set; } = [];
+
+    /// <summary>
     /// The <c>actions/upload-artifact</c> reference the generated workflow uses; same forms as
     /// <see cref="CheckoutAction"/>.
     /// </summary>
@@ -354,6 +362,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
         var run = new GitHubActionsRunStep
         {
             SetupDotNetAction = SetupDotNetAction,
+            SetupDotNetVersions = SetupDotNetVersions,
             InvokedTargets = InvokedTargets,
             Imports = GetImports().ToDictionary(x => x.Key, x => x.Value)
         };
