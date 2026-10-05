@@ -8,6 +8,8 @@ public class GitHubActionsJob : ConfigurationEntity
 {
     public string Name { get; set; }
 
+    public string Condition { get; set; }
+
     public GitHubActionsImage Image { get; set; }
 
     public string[] RunsOnLabels { get; set; } = new string[0];
@@ -31,6 +33,11 @@ public class GitHubActionsJob : ConfigurationEntity
         using (writer.Indent())
         {
             writer.WriteLine($"name: {Name}");
+            if (!Condition.IsNullOrWhiteSpace())
+            {
+                writer.WriteLine($"if: {Condition}");
+            }
+
             if (RunsOnLabels.Length > 0)
             {
                 writer.WriteLine($"runs-on: [{RunsOnLabels.JoinCommaSpace()}]");

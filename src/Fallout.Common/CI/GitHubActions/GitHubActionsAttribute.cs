@@ -90,6 +90,24 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public string OnCronSchedule { get; set; }
 
     /// <summary>
+    /// Names of the upstream workflows (their <c>name:</c>, not the file name) whose runs start this workflow
+    /// via <c>workflow_run</c>. Setting this enables the trigger and cannot be combined with shorthand <see cref="On"/> triggers.
+    /// </summary>
+    public string[] OnWorkflowRunWorkflows { get; set; } = new string[0];
+
+    /// <summary>Activity types of the upstream run to react to. Defaults to <c>completed</c>.</summary>
+    public string[] OnWorkflowRunTypes { get; set; } = { "completed" };
+
+    /// <summary>Branches the upstream run must have happened on.</summary>
+    public string[] OnWorkflowRunBranches { get; set; } = new string[0];
+
+    /// <summary>
+    /// <c>workflow_run</c> also fires for failed or cancelled upstream runs. When set, jobs only run if the upstream
+    /// run succeeded (<c>if: github.event.workflow_run.conclusion == 'success'</c>).
+    /// </summary>
+    public bool OnWorkflowRunRequireSuccess { get; set; }
+
+    /// <summary>
     /// Workflow-level environment variables, each entry in <c>KEY: value</c> form. Emitted once as a
     /// top-level <c>env:</c> block (after <c>on:</c>) and inherited by every job and step — including
     /// non-run steps such as checkout, cache, and artifact upload, which per-step env can't reach.
@@ -323,7 +341,8 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             Image = image,
             TimeoutMinutes = TimeoutMinutes,
             ConcurrencyGroup = JobConcurrencyGroup,
-            ConcurrencyCancelInProgress = JobConcurrencyCancelInProgress
+            ConcurrencyCancelInProgress = JobConcurrencyCancelInProgress,
+            Condition = OnWorkflowRunRequireSuccess ? "github.event.workflow_run.conclusion == 'success'" : null
         };
     }
 
@@ -547,6 +566,20 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             yield return new GitHubActionsScheduledTrigger
             {
                 Cron = OnCronSchedule
+            };
+        }
+
+        Assert.True(OnWorkflowRunWorkflows.Length > 0 || OnWorkflowRunBranches.Length == 0 && !OnWorkflowRunRequireSuccess,
+            $"'{nameof(OnWorkflowRunBranches)}' and '{nameof(OnWorkflowRunRequireSuccess)}' require '{nameof(OnWorkflowRunWorkflows)}'");
+        if (OnWorkflowRunWorkflows.Length > 0)
+        {
+            Assert.True(OnWorkflowRunWorkflows.All(x => !x.IsNullOrWhiteSpace()),
+                $"'{nameof(OnWorkflowRunWorkflows)}' entries must not be null, empty, or whitespace");
+            yield return new GitHubActionsWorkflowRunTrigger
+            {
+                Workflows = OnWorkflowRunWorkflows,
+                Types = OnWorkflowRunTypes,
+                Branches = OnWorkflowRunBranches
             };
         }
     }
