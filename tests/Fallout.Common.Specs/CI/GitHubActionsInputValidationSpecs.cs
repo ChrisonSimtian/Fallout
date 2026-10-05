@@ -38,6 +38,59 @@ public class GitHubActionsInputValidationSpecs
     }
 
     [Fact]
+    public void Options_from_a_non_enum_type_throws()
+    {
+        var act = () => GetConfiguration(
+            new GitHubActionsInputAttribute("Input") { Type = GitHubActionsInputType.Choice, OptionsFrom = typeof(string) });
+
+        act.Should().Throw<ArgumentException>().WithMessage("*must be an enum*");
+    }
+
+    [Fact]
+    public void Options_and_options_from_together_throw()
+    {
+        var act = () => GetConfiguration(
+            new GitHubActionsInputAttribute("Input")
+            {
+                Type = GitHubActionsInputType.Choice, Options = new[] { "A" }, OptionsFrom = typeof(Category)
+            });
+
+        act.Should().Throw<ArgumentException>().WithMessage("*both*");
+    }
+
+    [Fact]
+    public void Options_from_without_choice_type_throws()
+    {
+        var act = () => GetConfiguration(new GitHubActionsInputAttribute("Input") { OptionsFrom = typeof(Category) });
+
+        act.Should().Throw<ArgumentException>().WithMessage("*not 'Choice'*");
+    }
+
+    [Fact]
+    public void Default_outside_the_options_from_enum_throws()
+    {
+        var act = () => GetConfiguration(
+            new GitHubActionsInputAttribute("Input")
+            {
+                Type = GitHubActionsInputType.Choice, OptionsFrom = typeof(Category), Default = "Missing"
+            });
+
+        act.Should().Throw<ArgumentException>().WithMessage("*not one of its options*");
+    }
+
+    [Fact]
+    public void Default_inside_the_options_from_enum_does_not_throw()
+    {
+        var act = () => GetConfiguration(
+            new GitHubActionsInputAttribute("Input")
+            {
+                Type = GitHubActionsInputType.Choice, OptionsFrom = typeof(Category), Default = nameof(Category.ReadOnly)
+            });
+
+        act.Should().NotThrow();
+    }
+
+    [Fact]
     public void Unknown_workflow_name_throws()
     {
         var act = () => GetConfiguration(
@@ -65,6 +118,8 @@ public class GitHubActionsInputValidationSpecs
 
         act.Should().Throw<ArgumentException>();
     }
+
+    private enum Category { All, ReadOnly, Write }
 
     private static void GetConfiguration(params GitHubActionsInputAttribute[] inputs)
     {

@@ -52,6 +52,34 @@ public class GitHubActionsDispatchInputSpecs
         typed.Should().Be(legacy);
     }
 
+    // Options taken from an enum emit the same YAML as the same names typed out, in declaration order.
+    [Fact]
+    public void Options_from_an_enum_emit_the_same_yaml_as_explicit_options()
+    {
+        string RenderChoice(GitHubActionsInputAttribute input) => Render(new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                                                                          {
+                                                                              InvokedTargets = new[] { nameof(ConfigurationGenerationSpecs.TestBuild.Test) },
+                                                                              Inputs = new[] { input }
+                                                                          });
+
+        var explicitOptions = RenderChoice(new GitHubActionsInputAttribute("Category")
+                                           {
+                                               Type = GitHubActionsInputType.Choice,
+                                               Options = new[] { "All", "ReadOnly", "Write" },
+                                               Default = "ReadOnly"
+                                           });
+        var fromEnum = RenderChoice(new GitHubActionsInputAttribute("Category")
+                                    {
+                                        Type = GitHubActionsInputType.Choice,
+                                        OptionsFrom = typeof(Category),
+                                        Default = "ReadOnly"
+                                    });
+
+        fromEnum.Should().Be(explicitOptions);
+    }
+
+    private enum Category { All, ReadOnly, Write }
+
     // Regression guard: a workflow name with spaces is normalized to underscores; an input scoped to the
     // same spelled name must still resolve (not silently drop, not throw "unknown workflow").
     [Fact]

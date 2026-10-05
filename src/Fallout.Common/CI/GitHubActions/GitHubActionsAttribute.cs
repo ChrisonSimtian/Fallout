@@ -496,9 +496,24 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
                              Type = input.Type,
                              Required = input.Required,
                              Default = input.Default,
-                             Options = input.Options,
+                             Options = ResolveOptions(input),
                              Description = input.Description
                          };
+    }
+
+    // The one place options are resolved: the explicit list, or the names of the OptionsFrom enum in declaration order.
+    private static string[] ResolveOptions(GitHubActionsInputAttribute input)
+    {
+        if (input.OptionsFrom == null)
+            return input.Options;
+
+        Assert.True(input.Options.Length == 0,
+            $"'{input.Name}' sets both '{nameof(GitHubActionsInputAttribute.Options)}' and '{nameof(GitHubActionsInputAttribute.OptionsFrom)}'; use one");
+        Assert.True(input.OptionsFrom.IsEnum,
+            $"'{input.Name}' '{nameof(GitHubActionsInputAttribute.OptionsFrom)}' must be an enum, but '{input.OptionsFrom.Name}' is not");
+        Assert.True(input.Type == GitHubActionsInputType.Choice,
+            $"'{input.Name}' sets '{nameof(GitHubActionsInputAttribute.OptionsFrom)}' but its type is not '{nameof(GitHubActionsInputType.Choice)}'");
+        return Enum.GetNames(input.OptionsFrom);
     }
 
     private void ValidateWorkflowDispatchInputs()
@@ -507,17 +522,18 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
         foreach (var input in DeclaredInputs)
         {
+            var options = ResolveOptions(input);
             if (input.Type == GitHubActionsInputType.Choice)
-                Assert.True(input.Options.Length > 0,
-                    $"'{input.Name}' is a choice input and requires non-empty '{nameof(GitHubActionsInputAttribute.Options)}'");
+                Assert.True(options.Length > 0,
+                    $"'{input.Name}' is a choice input and requires non-empty '{nameof(GitHubActionsInputAttribute.Options)}' or '{nameof(GitHubActionsInputAttribute.OptionsFrom)}'");
             else
-                Assert.True(input.Options.Length == 0,
+                Assert.True(options.Length == 0,
                     $"'{input.Name}' sets '{nameof(GitHubActionsInputAttribute.Options)}' but its type is not '{nameof(GitHubActionsInputType.Choice)}'");
 
             if (input.Default != null)
             {
                 if (input.Type == GitHubActionsInputType.Choice)
-                    Assert.True(input.Options.Contains(input.Default),
+                    Assert.True(options.Contains(input.Default),
                         $"'{input.Name}' default '{input.Default}' is not one of its options");
                 if (input.Type == GitHubActionsInputType.Number)
                     Assert.True(double.TryParse(input.Default, NumberStyles.Any, CultureInfo.InvariantCulture, out _),

@@ -29,6 +29,12 @@ public class GitHubActionsInputAttribute : Attribute
     public bool Required { get; set; }
     public string Default { get; set; }
     public string[] Options { get; set; } = new string[0];
+
+    /// <summary>
+    /// Takes the choice options from the names of this enum, in declaration order, so the list is declared once.
+    /// Requires <see cref="Type"/> = <see cref="GitHubActionsInputType.Choice"/>. Cannot be combined with <see cref="Options"/>.
+    /// </summary>
+    public Type OptionsFrom { get; set; }
     public string Description { get; set; }
     public string[] Workflows { get; set; } = new string[0];
 }
