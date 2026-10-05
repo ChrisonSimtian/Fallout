@@ -161,6 +161,16 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     /// </summary>
     public string[] RunsOnLabels { get; set; } = new string[0];
 
+    /// <summary>
+    /// Overrides the generated job's id and <c>name:</c>, which otherwise default to the runner image
+    /// (e.g. <c>windows-latest</c>). Useful with <see cref="RunsOnLabels"/>, where the image is only a
+    /// placeholder, since the job name is what shows in the PR checks list and what branch protection matches.
+    /// <para/>
+    /// Must be a valid job id (letters, digits, <c>-</c> and <c>_</c>, starting with a letter or <c>_</c>)
+    /// and requires exactly one image, as a matrix would produce duplicate ids. Unset keeps the default.
+    /// </summary>
+    public string JobName { get; set; }
+
     public GitHubActionsSubmodules Submodules
     {
         set => submodules = value;
@@ -307,6 +317,10 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
         Assert.True(RunsOnLabels.All(x => !x.IsNullOrWhiteSpace()),
             $"'{nameof(RunsOnLabels)}' entries must not be null, empty, or whitespace");
+        Assert.True(JobName == null || images.Length == 1,
+            $"Cannot use '{nameof(JobName)}' with multiple images; each job in the matrix would get the same id");
+        Assert.True(JobName == null || System.Text.RegularExpressions.Regex.IsMatch(JobName, "^[A-Za-z_][A-Za-z0-9_-]*$"),
+            $"'{nameof(JobName)}' must be a valid job id: letters, digits, '-' and '_', starting with a letter or '_'");
 
         return configuration;
     }
@@ -315,7 +329,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     {
         return new GitHubActionsJob
         {
-            Name = image.GetValue().Replace(".", "_"),
+            Name = JobName ?? image.GetValue().Replace(".", "_"),
             RunsOnLabels = RunsOnLabels,
             EnvironmentName = EnvironmentName,
             EnvironmentUrl = EnvironmentUrl,
