@@ -189,7 +189,7 @@ If you're facing any issues, make sure that the name in the GitHub settings is t
 
 </details>
 
-Neither name may contain whitespace. An environment variable name used twice across `ImportSecrets` and `ImportSecretsAs` fails generation.
+Neither name may contain whitespace. An environment variable name used twice across `ImportSecrets`, `ImportSecretsAs` and `EnableGitHubToken` (`GITHUB_TOKEN`) fails generation.
 
 ### Using the GitHub Token
 

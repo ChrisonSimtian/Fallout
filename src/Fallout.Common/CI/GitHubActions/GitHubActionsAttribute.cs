@@ -533,10 +533,11 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
     private void ValidateImportSecretsAs()
     {
-        var variables = ImportSecrets.Concat(GetImportSecretsAs().Select(x => x.Variable)).ToList();
+        var variables = ImportSecrets.Concat(GetImportSecretsAs().Select(x => x.Variable))
+            .Concat(EnableGitHubToken ? new[] { "GITHUB_TOKEN" } : new string[0]).ToList();
         var duplicates = variables.GroupBy(x => x).Where(x => x.Count() > 1).Select(x => x.Key).ToList();
         Assert.True(duplicates.Count == 0,
-            $"Duplicate env names across '{nameof(ImportSecrets)}' and '{nameof(ImportSecretsAs)}' in workflow '{name}': {duplicates.JoinCommaSpace()}");
+            $"Duplicate env names across '{nameof(ImportSecrets)}', '{nameof(ImportSecretsAs)}' and '{nameof(EnableGitHubToken)}' in workflow '{name}': {duplicates.JoinCommaSpace()}");
     }
 
     protected virtual IEnumerable<GitHubActionsDetailedTrigger> GetTriggers()

@@ -56,6 +56,22 @@ public class GitHubActionsImportSecretsAsSpecs
     }
 
     [Fact]
+    public void Env_name_that_repeats_the_enabled_github_token_throws()
+    {
+        var act = () => GetConfiguration(importSecretsAs: new[] { "GITHUB_TOKEN: MY_PAT" }, enableGitHubToken: true);
+
+        act.Should().Throw<ArgumentException>().WithMessage("*Duplicate env names*GITHUB_TOKEN*");
+    }
+
+    [Fact]
+    public void Github_token_env_name_without_enabling_the_token_does_not_throw()
+    {
+        var act = () => GetConfiguration(importSecretsAs: new[] { "GITHUB_TOKEN: MY_PAT" });
+
+        act.Should().NotThrow();
+    }
+
+    [Fact]
     public void Same_secret_under_different_env_names_does_not_throw()
     {
         var act = () => GetConfiguration(importSecretsAs: new[] { "ONE: SHARED_SECRET", "TWO: SHARED_SECRET" });
@@ -63,7 +79,7 @@ public class GitHubActionsImportSecretsAsSpecs
         act.Should().NotThrow();
     }
 
-    private static void GetConfiguration(string[] importSecrets = null, string[] importSecretsAs = null)
+    private static void GetConfiguration(string[] importSecrets = null, string[] importSecretsAs = null, bool enableGitHubToken = false)
     {
         var build = new ConfigurationGenerationSpecs.TestBuild();
         var relevantTargets = ExecutableTargetFactory.CreateAll(build, x => x.Compile);
@@ -73,7 +89,8 @@ public class GitHubActionsImportSecretsAsSpecs
                             On = new[] { GitHubActionsTrigger.Push },
                             InvokedTargets = new[] { nameof(ConfigurationGenerationSpecs.TestBuild.Test) },
                             ImportSecrets = importSecrets ?? new string[0],
-                            ImportSecretsAs = importSecretsAs ?? new string[0]
+                            ImportSecretsAs = importSecretsAs ?? new string[0],
+                            EnableGitHubToken = enableGitHubToken
                         };
         ((ConfigurationAttributeBase)attribute).Build = build;
 
