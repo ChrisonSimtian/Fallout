@@ -2,7 +2,7 @@
 
 Fallout marks not-yet-stable public APIs with [`System.Diagnostics.CodeAnalysis.ExperimentalAttribute`](https://learn.microsoft.com/dotnet/api/system.diagnostics.codeanalysis.experimentalattribute) so consumers opt into instability deliberately. This page is the **canonical registry of allocated `FALLOUT0xx` diagnostic IDs**.
 
-See [ADR-0004 §5](adr/0004-calendar-versioning-and-dual-pace-channels.md#5-experimental-for-opt-in-unstable-apis) (carried forward unchanged by [ADR-0009](adr/0009-gitflow-and-semver-reversion.md)) for the decision and the `marking-experimental-apis` skill (`.agents/skills/marking-experimental-apis/SKILL.md`) for the contributor rules.
+See [ADR-0004 §5](adr/0004-calendar-versioning-and-dual-pace-channels.md#5-experimental-for-opt-in-unstable-apis) (carried forward unchanged by [ADR-0009](adr/0009-gitflow-and-semver-reversion.md)) for the decision and the [`marking-experimental-apis` skill](https://github.com/Fallout-build/Fallout.Workbench/blob/main/plugins/fallout-core/skills/marking-experimental-apis/SKILL.md) from Fallout.Workbench for the contributor rules.
 
 ## How it works
 

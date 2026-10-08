@@ -6,7 +6,6 @@ Canonical reference for how the Fallout repo is laid out, what each project does
 
 ```
 .
-├── .agents/, .claude/        Skills and settings for AI coding tools
 ├── .assets/                  Logos and social-preview images (PNG + SVG)
 ├── .config/                  dotnet-tools.json (pins the `fallout` global tool used by CI)
 ├── .fallout/                 Build orchestrator runtime state (committed: schema, parameters)

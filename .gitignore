@@ -59,8 +59,8 @@ _dotTrace*
 
 # Local-only, by convention: anything named *.local.* is this-machine state and never
 # committed. Covers CLAUDE.local.md (personal agent directives), .claude/settings.local.json,
-# and .*crunch*.local.xml above. The shared sibling — settings.json, AGENTS.md, CLAUDE.md —
-# IS committed.
+# and .*crunch*.local.xml above. The shared siblings — AGENTS.md and CLAUDE.md —
+# ARE committed.
 *.local.*
 
 # Claude Code — local state the pattern above doesn't catch. Credentials especially:

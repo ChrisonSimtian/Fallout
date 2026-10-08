@@ -4,7 +4,7 @@ Fallout deprecates public APIs with [`System.ObsoleteAttribute`](https://learn.m
 
 This is the counterpart to the [`[Experimental]` registry](experimental-apis.md): `[Experimental]` gates *not-yet-stable* surface you opt into (error-by-default); `[Obsolete]` marks *on-the-way-out* surface that still works (warning-by-default). The two use **separate ID sequences** — `FALLOUTOBS0xx` here, `FALLOUT0xx` there — so a suppression can never cross the two.
 
-See the `marking-experimental-apis` skill (`.agents/skills/marking-experimental-apis/SKILL.md`) for the contributor rules.
+See the [`marking-experimental-apis` skill](https://github.com/Fallout-build/Fallout.Workbench/blob/main/plugins/fallout-core/skills/marking-experimental-apis/SKILL.md) (in Fallout.Workbench) for the contributor rules.
 
 ## How it works
 

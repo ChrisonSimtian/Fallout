@@ -2,7 +2,7 @@
 
 Maintainer reference for branching, releasing, hotfixing, and the GitHub Environments that gate publishes. The model is [ADR-0009](adr/0009-gitflow-and-semver-reversion.md) (classic GitFlow, staying on semver `10.x`), which replaces [ADR-0004](adr/0004-calendar-versioning-and-dual-pace-channels.md) and changes part of [ADR-0001](adr/0001-release-branch-model.md) ([milestone #13](https://github.com/Fallout-build/Fallout/milestone/13), [RFC #267](https://github.com/Fallout-build/Fallout/issues/267)). It keeps [ADR-0007](adr/0007-cut-release-branch-on-demand.md)'s on-demand cut and [ADR-0008](adr/0008-collapse-experimental-into-main.md)'s decision against a separate `experimental` branch.
 
-> **Audience.** Maintainers cutting releases or hotfixing older lines. Contributors filing PRs against `develop` don't need this — see [CONTRIBUTING.md](https://github.com/Fallout-build/Fallout/blob/main/CONTRIBUTING.md). An AI tool asked to cut a release should use the `cutting-a-release` skill (`.agents/skills/cutting-a-release/SKILL.md`), which follows this doc.
+> **Audience.** Maintainers cutting releases or hotfixing older lines. Contributors filing PRs against `develop` don't need this — see [CONTRIBUTING.md](https://github.com/Fallout-build/Fallout/blob/main/CONTRIBUTING.md). An AI tool asked to cut a release should use the [`cutting-a-release` skill](https://github.com/Fallout-build/Fallout.Workbench/blob/main/plugins/fallout-core/skills/cutting-a-release/SKILL.md) from Fallout.Workbench, which follows this doc.
 
 ## Branches
 
@@ -152,4 +152,4 @@ nuget.org's `Fallout.*` prefix reservation is per-ID, not per-prefix-wildcard: C
 - [milestone #13](https://github.com/Fallout-build/Fallout/milestone/13) — the original work-breakdown.
 - [RFC #267](https://github.com/Fallout-build/Fallout/issues/267) — original design discussion.
 - [CONTRIBUTING.md](https://github.com/Fallout-build/Fallout/blob/main/CONTRIBUTING.md) — contributor-facing flow.
-- `.agents/skills/cutting-a-release/SKILL.md` — the on-demand agent procedure that follows this doc.
+- [`cutting-a-release` skill](https://github.com/Fallout-build/Fallout.Workbench/blob/main/plugins/fallout-core/skills/cutting-a-release/SKILL.md) (in Fallout.Workbench) — the agent procedure that follows this doc.
