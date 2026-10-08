@@ -54,9 +54,16 @@ This applies to a new public type or member, not a small additive overload or a 
 - Branch from `develop` (the base for all PRs). Name your branch `feature/<slug>`, `bugfix/<slug>`, or `chore/<slug>`.
 - **Open it as a draft** (`gh pr create --draft`, or the draft option in the GitHub UI). Mark it ready for review only once it's done — this keeps incomplete work out of the review queue.
 - Make sure your employer allows the contribution.
-- Read [AGENTS.md](AGENTS.md) for the codebase conventions — package versions go in `Directory.Packages.props`, tests live next to code, no per-file license headers (the `LICENSE` file at the root is the single source of truth). (AGENTS.md is the canonical brief for both human contributors and AI tools; GitHub Copilot reads it natively and `CLAUDE.md` points to it.)
+- Read the rules below. Package versions go in `Directory.Packages.props`, and tests live next to code.
 - The bootstrappers are now thin: `./build.ps1` / `./build.sh` provision .NET if needed, then run `dotnet tool restore` + `dotnet fallout "$@"`. The `Fallout.GlobalTool` version is pinned in `.config/dotnet-tools.json`.
 - Run `./build.ps1 Test` (or `./build.sh Test`, or directly `dotnet fallout Test` once your tools are restored) locally first.
+
+### Rules for every contribution
+
+- **Default to backwards compatibility.** Prefer an additive change over a breaking one. Before you change a public signature, remove an API, rename a package, or change an on-disk format, ask: can this be additive instead? Prefer `[Obsolete]`, transition shims (`src/Shims/` + `Fallout.SourceGenerators.TransitionShimGenerator`), `[Experimental("FALLOUT0xx")]`, feature flags, and extra overloads over a hard break. When a break cannot be avoided, label it `breaking-change` and follow the steps under "When writing the PR". See [#262](https://github.com/Fallout-build/Fallout/issues/262) for the wider discussion.
+- **No per-file license headers.** The MIT notice lives in [`LICENSE`](LICENSE) at the repo root. Do not add header preambles to new files. Vendored third-party code under `src/Persistence/Fallout.Persistence.Solution/` keeps its own upstream Microsoft headers. Leave those alone.
+- **Write terse, plain English** in commit messages, PR and issue descriptions, and code comments. Many contributors read English as a second language. Lead with the point, use one idea per sentence, avoid idioms, and prefer short common words. The `plain-english` skill in [Fallout.Workbench](https://github.com/Fallout-build/Fallout.Workbench/blob/main/skills/plain-english/SKILL.md) has the full rules and examples.
+- **Do not mention the former NUKE maintainer, Matthias Koch (GitHub handle `matkoch`).** He no longer maintains Fallout and does not want the notifications. Never write `@` before his handle. Do not add him as a reviewer or assignee, request his review, tag him in issue, PR or commit text, or add him as a `Co-authored-by:` trailer. Credit NUKE's origin by name or a plain profile link, without a leading `@`.
 
 ### When writing the PR
 
@@ -69,11 +76,11 @@ This applies to a new public type or member, not a small additive overload or a 
   - **AAA structure with Pascal-case comments** — `// Arrange`, `// Act`, `// Assert`. Omit a section's comment when there's nothing to arrange (e.g. constructor fixtures already cover it).
   - **Disk-based fixtures use a constructor + `IDisposable.Dispose()`**, not per-test `try/finally` — xUnit creates a fresh instance per `[Fact]`, so the constructor is Arrange and `Dispose()` is teardown. Use `AbsolutePath.Temp(prefix)` for the scratch directory. See `MigrationIntegrationSpecs.cs` and `BumpDotNetVersionStepSpecs.cs` for the pattern.
 - Commit the regenerated `.cs` output alongside the `.json` spec — `VerifyGeneratedTools` fails CI if they drift.
-- **Label the PR `target/vCurrent`** for the current release line (use `target/vNext` for work held for the next major). **Breaking changes wait for the next major.** They land on `develop`, behind `[Experimental("FALLOUT0xx")]` (or, if that doesn't fit, on a short-lived branch off `develop`) — never on a `release/vX.Y` or `main` production branch. They also get a `breaking-change` label plus a `⚠️ Breaking change` callout in the PR description that names the migration path. Surface that isn't ready to commit to yet can ship behind `[Experimental("FALLOUT0xx")]` instead of being held back. See the `creating-a-pr` skill (`.agents/skills/creating-a-pr/SKILL.md`) for the full procedure.
+- **Label the PR `target/vCurrent`** for the current release line (use `target/vNext` for work held for the next major). **Breaking changes wait for the next major.** They land on `develop`, behind `[Experimental("FALLOUT0xx")]` (or, if that doesn't fit, on a short-lived branch off `develop`) — never on a `release/vX.Y` or `main` production branch. They also get a `breaking-change` label plus a `⚠️ Breaking change` callout in the PR description that names the migration path. Surface that isn't ready to commit to yet can ship behind `[Experimental("FALLOUT0xx")]` instead of being held back. AI tools: use the [`creating-a-pr` skill](https://github.com/Fallout-build/Fallout.Workbench/blob/main/plugins/fallout-core/skills/creating-a-pr/SKILL.md) for the full procedure.
 
 ### Tool wrappers
 
-Tool wrapper JSON lives under `src/Fallout.Common/Tools/<Tool>/<Tool>.json`. See the `adding-a-tool-wrapper` skill (`.agents/skills/adding-a-tool-wrapper/SKILL.md`) for the recipe: copy a neighbour's shape, cover a full command with all its arguments, regenerate with `./build.ps1 GenerateTools`, and commit the regenerated `.cs` alongside the `.json` spec.
+Tool wrapper JSON lives under `src/Fallout.Common/Tools/<Tool>/<Tool>.json`. Copy a neighbour's shape, cover a full command with all its arguments, regenerate with `./build.ps1 GenerateTools`, and commit the regenerated `.cs` alongside the `.json` spec. AI tools: use the `adding-a-tool-wrapper` skill from the `fallout-core` plugin (see [AGENTS.md](AGENTS.md)).
 
 ### After opening a PR
 
