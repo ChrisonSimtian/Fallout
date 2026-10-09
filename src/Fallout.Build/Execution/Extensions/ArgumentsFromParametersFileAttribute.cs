@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using Fallout.Build.Execution;
 using Fallout.Common.CI;
 using Fallout.Common.IO;
+using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
 using Fallout.Common.ValueInjection;
@@ -14,10 +17,15 @@ namespace Fallout.Common.Execution;
 
 public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase, IOnBuildCreated
 {
+    private static readonly JsonSerializerOptions serializerOptions = new()
+    {
+        Converters = { new ParameterJsonConverterFactory() }
+    };
+
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
     {
         // TODO: probably remove
-        if (!Constants.GetFalloutDirectory(FalloutBuild.RootDirectory).DirectoryExists())
+        if (!Constants.GetFalloutDirectory(Build.RootDirectory).DirectoryExists())
         {
             return;
         }
@@ -48,11 +56,11 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
         var parameterMembers = ValueInjectionUtility.GetParameterMembers(Build.GetType(), includeUnlisted: true);
         var parameterObjectsAndProfiles = new[]
             {
-                (File: Constants.GetDefaultParametersFile(FalloutBuild.RootDirectory), Profile: Constants.DefaultProfileName)
+                (File: Constants.GetDefaultParametersFile(Build.RootDirectory), Profile: Constants.DefaultProfileName)
             }
             .Where(x => File.Exists(x.File))
-            .Concat(FalloutBuild.LoadedLocalProfiles.Select(x =>
-                (File: Constants.GetParametersProfileFile(FalloutBuild.RootDirectory, x), Profile: x)))
+            .Concat(Build.LoadedLocalProfiles.Select(x =>
+                (File: Constants.GetParametersProfileFile(Build.RootDirectory, x), Profile: x)))
             .ForEachLazy(x => Assert.FileExists(x.File))
             .Select(x => (JsonObject: JsonNode.Parse(File.ReadAllText(x.File)).NotNull().AsObject(), x.Profile))
             .Reverse();
@@ -84,7 +92,7 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
             if (typeof(IAbsolutePathHolder).IsAssignableFrom(scalarType))
             {
                 return value.GetValue<string>().Apply(x =>
-                    !PathConstruction.HasPathRoot(x) ? FalloutBuild.RootDirectory / x : (AbsolutePath)x);
+                    !PathConstruction.HasPathRoot(x) ? Build.RootDirectory / x : (AbsolutePath)x);
             }
 
             if ((member?.HasCustomAttribute<SecretAttribute>() ?? false) &&
@@ -93,7 +101,26 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
                 return DecryptValue(profile, parameter, value.GetValue<string>());
             }
 
-            return value.Deserialize(destinationType);
+            return value.Deserialize(destinationType, serializerOptions);
         };
+    }
+
+    private sealed class ParameterJsonConverterFactory : JsonConverterFactory
+    {
+        private readonly EnumerationJsonConverterFactory enumerationConverter = new();
+        private readonly JsonStringEnumConverter enumConverter = new();
+
+        public override bool CanConvert(Type typeToConvert)
+        {
+            return !Attribute.IsDefined(typeToConvert, typeof(JsonConverterAttribute), inherit: false) &&
+                   (enumerationConverter.CanConvert(typeToConvert) || enumConverter.CanConvert(typeToConvert));
+        }
+
+        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        {
+            return enumerationConverter.CanConvert(typeToConvert)
+                ? enumerationConverter.CreateConverter(typeToConvert, options)
+                : enumConverter.CreateConverter(typeToConvert, options);
+        }
     }
 }

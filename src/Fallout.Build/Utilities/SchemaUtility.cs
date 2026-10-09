@@ -28,6 +28,7 @@ public static class SchemaUtility
     private static readonly JsonSerializerOptions writeOptions = new()
     {
         WriteIndented = true,
+        NewLine = "\n",
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
@@ -289,6 +290,11 @@ public static class SchemaUtility
         if (nullableUnderlying != null)
         {
             return SchemaForType(nullableUnderlying, ctx);
+        }
+
+        if (type == typeof(Guid))
+        {
+            return new JsonObject { ["type"] = "string", ["format"] = "guid" };
         }
 
         if (type == typeof(bool))
