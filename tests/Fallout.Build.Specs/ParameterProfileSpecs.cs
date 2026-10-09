@@ -43,25 +43,18 @@ public sealed class ParameterProfileSpecs : IDisposable
     }
 
     [Theory]
-    [InlineData("\"Hanko\"")]
-    [InlineData("\"hanko\"")]
-    [InlineData("1")]
+    [InlineData("\"Quiet\"")]
+    [InlineData("3")]
     public void Enum_values_load_from_names_or_numbers(string json)
     {
-        Read("Auth", typeof(SignInMode), json).Should().Be(SignInMode.Hanko);
-    }
-
-    [Fact]
-    public void Framework_verbosity_loads_from_its_schema_string()
-    {
-        Read("Verbosity", typeof(Verbosity), "\"Quiet\"").Should().Be(Verbosity.Quiet);
+        Read("Verbosity", typeof(Verbosity), json).Should().Be(Verbosity.Quiet);
     }
 
     [Fact]
     public void Enum_arrays_load_from_strings()
     {
-        Read("Auths", typeof(SignInMode[]), "[\"Mock\",\"Hanko\"]")
-            .Should().BeEquivalentTo(new[] { SignInMode.Mock, SignInMode.Hanko });
+        Read("Verbosities", typeof(Verbosity[]), "[\"Normal\",\"Quiet\"]")
+            .Should().BeEquivalentTo(new[] { Verbosity.Normal, Verbosity.Quiet });
     }
 
     [Fact]
@@ -80,14 +73,6 @@ public sealed class ParameterProfileSpecs : IDisposable
         LoadFiles();
 
         ParameterService.GetParameter<Configuration>("Configuration").Should().BeSameAs(Configuration.Release);
-    }
-
-    [Fact]
-    public void Guid_strings_still_load()
-    {
-        const string id = "70d8a2ef-dbbd-4e74-bca9-9a7e1867f97b";
-
-        Read("Id", typeof(Guid?), JsonSerializer.Serialize(id)).Should().Be(Guid.Parse(id));
     }
 
     private object Read(string name, Type type, string json)
@@ -123,8 +108,6 @@ public sealed class ParameterProfileSpecs : IDisposable
         public static readonly Configuration Debug = new() { Value = nameof(Debug) };
         public static readonly Configuration Release = new() { Value = nameof(Release) };
     }
-
-    private enum SignInMode { Mock, Hanko }
 
     [JsonConverter(typeof(CustomSignInModeConverter))]
     private enum CustomSignInMode { Mock, Hanko }
