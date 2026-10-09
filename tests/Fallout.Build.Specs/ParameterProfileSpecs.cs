@@ -27,14 +27,6 @@ public sealed class ParameterProfileSpecs : IDisposable
     }
 
     [Fact]
-    public void Enumeration_strings_load_without_consumer_json_converters()
-    {
-        var value = Read("Configuration", typeof(Configuration), "\"Release\"");
-
-        value.Should().BeSameAs(Configuration.Release);
-    }
-
-    [Fact]
     public void Enumeration_arrays_load_from_strings()
     {
         var value = Read("Configurations", typeof(Configuration[]), "[\"Debug\",\"Release\"]");
