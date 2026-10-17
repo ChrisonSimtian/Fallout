@@ -5,13 +5,15 @@ Brief for AI coding tools working in this repo. Human contributors: see [CONTRIB
 ## Before you change anything
 
 - Read [CONTRIBUTING.md](CONTRIBUTING.md). It holds the rules for every contribution: backwards compatibility, package versions, tests, commit and PR style, labels, and plain English.
-- Skills for this repo live in [Fallout.Workbench](https://github.com/Fallout-build/Fallout.Workbench), not here. In Claude Code:
-  ```
-  /plugin marketplace add Fallout-build/Fallout.Workbench
-  /plugin install fallout-workbench@fallout-workbench
-  /plugin install fallout-core@fallout-workbench
-  ```
-  Other tools can read the `skills/` and `plugins/fallout-core/skills/` folders in that repo directly.
+- Skills for this repo live in [Fallout.Workbench](https://github.com/Fallout-build/Fallout.Workbench), not here. Install them once per clone:
+  - **Any tool that reads `.agents/skills/`** (Cursor, Codex, GitHub Copilot, and others): run `./build.ps1 InstallAgentSkills` (or `./build.sh InstallAgentSkills`). It copies the skills into `.agents/skills/`, which is git-ignored. Run it again after the pinned Workbench commit changes in `build/Build.AgentSkills.cs`.
+  - **Claude Code**: use the plugins instead.
+    ```
+    /plugin marketplace add Fallout-build/Fallout.Workbench
+    /plugin install fallout-workbench@fallout-workbench
+    /plugin install fallout-core@fallout-workbench
+    ```
+  - **Tools with no skill support**: read the `skills/` and `plugins/fallout-core/skills/` folders in Workbench directly.
 - Opening a PR? Use the `creating-a-pr` skill from `fallout-core`. Review blocks a PR that skips it.
 
 ## What this project is

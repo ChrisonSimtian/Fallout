@@ -34,6 +34,7 @@
         "GeneratePublicApi",
         "GenerateTools",
         "Install",
+        "InstallAgentSkills",
         "Pack",
         "PackageGuard",
         "Publish",
@@ -173,6 +174,10 @@
         },
         "UseHttps": {
           "type": "boolean"
+        },
+        "WorkbenchCommit": {
+          "type": "string",
+          "description": "Fallout.Workbench commit to install the agent skills from"
         }
       }
     },

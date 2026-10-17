@@ -69,6 +69,9 @@ _dotTrace*
 .claude/scheduled_tasks.lock
 .claude/worktrees/
 
+# Agent skills are installed from Fallout.Workbench by `./build.ps1 InstallAgentSkills`.
+/.agents/skills/
+
 # JetBrains
 .junie/memory
 
