@@ -7,6 +7,7 @@ using Fallout.Build.Execution;
 using Fallout.Common.Tooling;
 using Fallout.Common.Utilities;
 using Fallout.Common.Utilities.Collections;
+using Fallout.Solutions;
 using Microsoft.Extensions.DependencyModel;
 using Serilog;
 
@@ -39,6 +40,12 @@ internal static class BuildManager
     {
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.UTF8;
+
+        // Microsoft.Build is not copied to the output. The runtime loads it from the SDK through
+        // MSBuildLocator, so the locator must be registered before any target code is compiled.
+        // A target that calls GetMSBuildProject() loads Microsoft.Build when its lambda is compiled,
+        // which is before the ProjectExtensions static constructor can run (#745).
+        ProjectModelTasks.Initialize();
 
         // The per-run scope owns the global subscriptions + teardown (FT-2 / #307). Disposed at
         // method exit, so re-invocation in the same process starts clean even if `new T()` throws.
