@@ -22,6 +22,16 @@ public interface ITest : ICompile, IHasArtifacts
 
     int TestDegreeOfParallelism => 1;
 
+    /// <summary>
+    ///     Run the test projects on Microsoft.Testing.Platform (<c>dotnet test --project</c>) instead of VSTest.
+    ///     Required for test frameworks that no longer support VSTest on the .NET 10 SDK, such as xunit.v3.
+    ///     Test projects need the <c>Microsoft.Testing.Extensions.TrxReport</c> package, and the
+    ///     <c>coverlet.MTP</c> package for coverage. The repository's
+    ///     <c>global.json</c> must opt in to the platform (<c>"test": { "runner": "Microsoft.Testing.Platform" }</c>).
+    ///     Off by default, so existing builds keep using VSTest.
+    /// </summary>
+    bool UseTestingPlatform => false;
+
     Target Test => _ => _
         .DependsOn(Compile)
         .Produces(TestResultDirectory / "*.trx")
@@ -30,14 +40,14 @@ public interface ITest : ICompile, IHasArtifacts
         {
             try
             {
-                DotNetTest(_ => _
-                        .Apply(TestSettingsBase)
-                        .Apply(TestSettings)
-                        .CombineWith(TestProjects, (_, v) => _
-                            .Apply(TestProjectSettingsBase, v)
-                            .Apply(TestProjectSettings, v)),
-                    completeOnFailure: true,
-                    degreeOfParallelism: TestDegreeOfParallelism);
+                if (UseTestingPlatform)
+                {
+                    RunTestingPlatform();
+                }
+                else
+                {
+                    RunVsTest();
+                }
             }
             finally
             {
@@ -45,6 +55,49 @@ public interface ITest : ICompile, IHasArtifacts
                 ReportTestCount();
             }
         });
+
+    private void RunVsTest()
+    {
+        DotNetTest(_ => _
+                .Apply(TestSettingsBase)
+                .Apply(TestSettings)
+                .CombineWith(TestProjects, (_, v) => _
+                    .Apply(TestProjectSettingsBase, v)
+                    .Apply(TestProjectSettings, v)),
+            completeOnFailure: true,
+            degreeOfParallelism: TestDegreeOfParallelism);
+    }
+
+    private void RunTestingPlatform()
+    {
+        // coverlet.MTP writes timestamped files, so remove the ones from earlier runs.
+        TestResultDirectory.GlobFiles("coverage.cobertura.*.xml").DeleteFiles();
+
+        List<string> failedProjects = new();
+
+        foreach (Project project in TestProjects)
+        {
+            try
+            {
+                DotNet(TestingPlatformArguments.Create(
+                    project.Path,
+                    project.Name,
+                    Configuration,
+                    TestResultDirectory,
+                    SucceededTargets.Contains(Compile),
+                    CollectCoverage));
+            }
+            catch (ProcessException)
+            {
+                failedProjects.Add(project.Name);
+            }
+        }
+
+        Assert.True(failedProjects.Count == 0, $"Tests failed in: {string.Join(", ", failedProjects)}");
+    }
+
+    private bool CollectCoverage =>
+        InvokedTargets.Contains((this as IReportCoverage)?.ReportCoverage) || IsServerBuild;
 
     void ReportTestResults()
     {
@@ -85,7 +138,7 @@ public interface ITest : ICompile, IHasArtifacts
         .SetNoBuild(SucceededTargets.Contains(Compile))
         .ResetVerbosity()
         .SetResultsDirectory(TestResultDirectory)
-        .When(InvokedTargets.Contains((this as IReportCoverage)?.ReportCoverage) || IsServerBuild, _ => _
+        .When(CollectCoverage, _ => _
             .EnableCollectCoverage()
             .SetCoverletOutputFormat(CoverletOutputFormat.cobertura)
             .SetExcludeByFile("*.Generated.cs")
@@ -105,7 +158,7 @@ public interface ITest : ICompile, IHasArtifacts
             // https://github.com/xunit/visualstudio.xunit/pull/108
             .AddRunSetting("RunConfiguration.NoAutoReporters", bool.TrueString))
         .AddLoggers($"trx;LogFileName={v.Name}.trx")
-        .When(InvokedTargets.Contains((this as IReportCoverage)?.ReportCoverage) || IsServerBuild, _ => _
+        .When(CollectCoverage, _ => _
             .SetCoverletOutput(TestResultDirectory / $"{v.Name}.xml"));
 
     Configure<DotNetTestSettings> TestSettings => _ => _;

@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Fallout.Build")]
 [assembly: InternalsVisibleTo("Fallout.Build.Shared")]
 [assembly: InternalsVisibleTo("Fallout.Build.Specs")]
+[assembly: InternalsVisibleTo("Fallout.Components.Specs")]
 [assembly: InternalsVisibleTo("Fallout.Common")]
 [assembly: InternalsVisibleTo("Fallout.Common.Specs")]
 [assembly: InternalsVisibleTo("Fallout.Cli")]

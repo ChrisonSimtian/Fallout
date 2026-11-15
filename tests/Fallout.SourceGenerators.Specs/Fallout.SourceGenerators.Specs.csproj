@@ -16,6 +16,9 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
     <PackageReference Include="Verify.SourceGenerators" />
     <PackageReference Include="Basic.Reference.Assemblies.NetStandard20" />
+    <!-- xunit.v3 test projects are executables and only load assemblies listed in deps.json, so the
+         generator's private Scriban copy must be declared here too. -->
+    <PackageReference Include="Scriban" />
   </ItemGroup>
 
 </Project>

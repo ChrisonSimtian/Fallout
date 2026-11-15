@@ -2,7 +2,6 @@ using System.IO;
 using Fallout.Common.IO;
 using FluentAssertions;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Fallout.Common.Specs;
 

@@ -166,6 +166,9 @@ partial class Build
     [Parameter]
     public int TestDegreeOfParallelism { get; } = 1;
 
+    // The test projects use xunit v3, which only runs on Microsoft.Testing.Platform.
+    bool ITest.UseTestingPlatform => true;
+
     Target ITest.Test => _ => _
         .Inherit<ITest>()
         .Partition(2);
