@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    A build project that calls GetMSBuildProject() inside a target (#745).
+    Run as a separate process by MSBuildLocatorSpecs. It is not in fallout.slnx,
+    because the test host registers MSBuild early and would hide the failure.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fallout.Build\Fallout.Build.csproj" />
+    <ProjectReference Include="..\..\..\src\Persistence\Fallout.Solution\Fallout.Solution.csproj" />
+  </ItemGroup>
+
+</Project>
