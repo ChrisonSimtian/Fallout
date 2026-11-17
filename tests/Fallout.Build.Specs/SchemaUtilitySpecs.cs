@@ -1,8 +1,10 @@
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Fallout.Common.Execution;
 using Fallout.Common.IO;
 using Fallout.Common.Tooling;
+using FluentAssertions;
 using VerifyXunit;
 using Xunit;
 
@@ -38,6 +40,19 @@ public class SchemaUtilitySpecs
     {
         var jsonSchema = SchemaUtility.GetJsonString(new CustomParameterAttributeBuild());
         return Verifier.Verify(jsonSchema, "json");
+    }
+
+    [Fact]
+    public Task TestGuidBuild()
+    {
+        var jsonSchema = SchemaUtility.GetJsonString(new GuidBuild());
+        return Verifier.Verify(jsonSchema, "json");
+    }
+
+    [Fact]
+    public void Schema_line_endings_are_stable_across_operating_systems()
+    {
+        SchemaUtility.GetJsonString(new GuidBuild()).Should().NotContain("\r\n");
     }
 
     // ReSharper disable All
@@ -145,6 +160,26 @@ public class SchemaUtilitySpecs
     }
 
     private class CustomParameterAttribute : ParameterAttribute;
+
+    private class GuidBuild : FalloutBuild
+    {
+        [Parameter]
+        readonly Guid GuidParam;
+
+        [Parameter]
+        readonly Guid? NullableGuidParam;
+
+        [Parameter]
+        readonly Guid[] GuidArrayParam;
+
+        [Parameter]
+        readonly GuidHolder ComplexTypeParam;
+    }
+
+    private class GuidHolder
+    {
+        public Guid Id;
+    }
 
 #pragma warning restore CS0649 // Field is never assigned to, and will always have its default value
 #pragma warning restore CS0414 // Field is assigned but its value is never used

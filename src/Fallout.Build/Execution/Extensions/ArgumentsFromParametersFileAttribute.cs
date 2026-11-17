@@ -112,6 +112,7 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
 
         public override bool CanConvert(Type typeToConvert)
         {
+            // Skip types with their own [JsonConverter]; converters in the options would otherwise win over the attribute.
             return !Attribute.IsDefined(typeToConvert, typeof(JsonConverterAttribute), inherit: false) &&
                    (enumerationConverter.CanConvert(typeToConvert) || enumConverter.CanConvert(typeToConvert));
         }

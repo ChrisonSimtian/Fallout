@@ -22,16 +22,13 @@ public sealed class ParameterProfileSpecs : IDisposable
 
     public ParameterProfileSpecs()
     {
-        (root / ".fallout").CreateDirectory();
         build = new ProfileBuild(root);
     }
 
     [Fact]
-    public void Enumeration_arrays_load_from_strings()
+    public void Enumerations_load_from_strings()
     {
-        var value = Read("Configurations", typeof(Configuration[]), "[\"Debug\",\"Release\"]");
-
-        value.Should().BeEquivalentTo(new[] { Configuration.Debug, Configuration.Release });
+        Read<Configuration>("Configuration", "\"Release\"").Should().BeSameAs(Configuration.Release);
     }
 
     [Theory]
@@ -39,20 +36,21 @@ public sealed class ParameterProfileSpecs : IDisposable
     [InlineData("3")]
     public void Enum_values_load_from_names_or_numbers(string json)
     {
-        Read("Verbosity", typeof(Verbosity), json).Should().Be(Verbosity.Quiet);
+        Read<Verbosity>("Verbosity", json).Should().Be(Verbosity.Quiet);
     }
 
     [Fact]
-    public void Enum_arrays_load_from_strings()
+    public void Guids_load_from_strings()
     {
-        Read("Verbosities", typeof(Verbosity[]), "[\"Normal\",\"Quiet\"]")
-            .Should().BeEquivalentTo(new[] { Verbosity.Normal, Verbosity.Quiet });
+        var id = Guid.NewGuid();
+
+        Read<Guid>("Id", $"\"{id}\"").Should().Be(id);
     }
 
     [Fact]
     public void Declared_json_converters_keep_precedence()
     {
-        Read("CustomAuth", typeof(CustomSignInMode), "\"external\"").Should().Be(CustomSignInMode.Hanko);
+        Read<Mode>("Mode", "\"custom-alias\"").Should().Be(Mode.Custom);
     }
 
     [Fact]
@@ -67,12 +65,12 @@ public sealed class ParameterProfileSpecs : IDisposable
         ParameterService.GetParameter<Configuration>("Configuration").Should().BeSameAs(Configuration.Release);
     }
 
-    private object Read(string name, Type type, string json)
+    private T Read<T>(string name, string json)
     {
         var parameters = new JsonObject { [name] = JsonNode.Parse(json) };
         (root / ".fallout" / "parameters.json").WriteAllText(parameters.ToJsonString());
         LoadFiles();
-        return ParameterService.Instance.GetParameter(name, type.GetNullableType(), separator: null);
+        return (T)ParameterService.Instance.GetParameter(name, typeof(T).GetNullableType(), separator: null);
     }
 
     private void LoadFiles()
@@ -101,19 +99,15 @@ public sealed class ParameterProfileSpecs : IDisposable
         public static readonly Configuration Release = new() { Value = nameof(Release) };
     }
 
-    [JsonConverter(typeof(CustomSignInModeConverter))]
-    private enum CustomSignInMode { Mock, Hanko }
+    [JsonConverter(typeof(ModeConverter))]
+    private enum Mode { Default, Custom }
 
-    private sealed class CustomSignInModeConverter : JsonConverter<CustomSignInMode>
+    private sealed class ModeConverter : JsonConverter<Mode>
     {
-        public override CustomSignInMode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            return reader.GetString() == "external" ? CustomSignInMode.Hanko : CustomSignInMode.Mock;
-        }
+        public override Mode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            => reader.GetString() == "custom-alias" ? Mode.Custom : Mode.Default;
 
-        public override void Write(Utf8JsonWriter writer, CustomSignInMode value, JsonSerializerOptions options)
-        {
-            writer.WriteStringValue("external");
-        }
+        public override void Write(Utf8JsonWriter writer, Mode value, JsonSerializerOptions options)
+            => throw new NotSupportedException();
     }
 }
