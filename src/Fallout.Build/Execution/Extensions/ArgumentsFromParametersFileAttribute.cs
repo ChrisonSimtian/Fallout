@@ -24,7 +24,6 @@ public class ArgumentsFromParametersFileAttribute : BuildExtensionAttributeBase,
 
     public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
     {
-        // TODO: probably remove
         if (!Constants.GetFalloutDirectory(Build.RootDirectory).DirectoryExists())
         {
             return;
