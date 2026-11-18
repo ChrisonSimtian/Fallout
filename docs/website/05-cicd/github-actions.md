@@ -263,3 +263,28 @@ CheckoutAction = "releases/v1"      // error: ambiguous, names neither form
 :::note
 `actions/cache@v5` and later run on the node24 runtime and require a self-hosted runner of at least `2.327.1`. Set `CacheAction = "v4"` if your runners are older.
 :::
+
+### Workflow Dispatch Inputs
+
+Declare a typed `workflow_dispatch` input with `[GitHubActionsInput]` on the build class. The attribute can repeat. Each input is written into the `workflow_dispatch:` trigger of the matching workflows.
+
+A `Choice` input needs a list of options. Give it as strings with `Options`, or take it from an enum with `OptionsFrom`:
+
+```csharp title="Build.cs"
+enum Category { All, ReadOnly, Write }
+
+[GitHubActionsInput("Category",
+    Type = GitHubActionsInputType.Choice,
+    OptionsFrom = typeof(Category),
+    Default = nameof(Category.ReadOnly))]
+class Build : FalloutBuild { /* ... */ }
+```
+
+The options are the enum names, in the order they are declared in the source. The enum values do not change the order.
+
+Generation fails when:
+
+- `OptionsFrom` is not an enum, or the enum has no members.
+- `OptionsFrom` and `Options` are both set.
+- `Type` is not `Choice`.
+- `Default` is not one of the enum names. The match is case-sensitive.
