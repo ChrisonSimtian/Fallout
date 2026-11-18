@@ -58,6 +58,10 @@ class Build : FalloutBuild, ICompile, IPack, ITest
 }
 ```
 
+:::tip
+You don't have to write these components yourself. Fallout ships ready-made `IRestore`, `ICompile`, `ITest`, `IPack`, `IPublish` and other components in the `Fallout.Components` package. See [Built-in Components](03-built-in-components.md).
+:::
+
 ## Parameters
 
 In build components, you can use [parameters](../02-fundamentals/06-parameters.md) and other auto-injection attributes, like [`GitRepositoryAttribute`](../03-common/05-repository.md) or [`SolutionAttribute`](../03-common/07-solution-project-model.md), similar as in regular build classes. Though, since interfaces can't define instance fields or properties, the `IFalloutBuild` base interface provides a helper method that caches and returns resolved values for you:
