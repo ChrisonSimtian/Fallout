@@ -28,7 +28,8 @@ function FirstJsonValue {
 
 # If dotnet CLI is installed globally, use it; otherwise provision a local copy under .fallout/temp.
 if [ -x "$(command -v dotnet)" ] && dotnet --version &>/dev/null; then
-    export DOTNET_EXE="$(command -v dotnet)"
+    DOTNET_EXE="$(command -v dotnet)"
+    export DOTNET_EXE
 else
     DOTNET_INSTALL_FILE="$TEMP_DIRECTORY/dotnet-install.sh"
     mkdir -p "$TEMP_DIRECTORY"
