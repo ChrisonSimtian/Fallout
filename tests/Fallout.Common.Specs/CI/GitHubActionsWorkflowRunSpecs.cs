@@ -30,7 +30,10 @@ public class GitHubActionsWorkflowRunSpecs
     public void A_workflow_run_trigger_needs_no_other_trigger()
     {
         // Act
-        var configuration = GetConfiguration(a => a.OnWorkflowRunWorkflows = new[] { "Deploy" });
+        var configuration = GetConfiguration(a => a.WorkflowRunTriggers = new[]
+        {
+            new GitHubActionsWorkflowRunAttribute("Deploy")
+        });
 
         // Assert
         var trigger = configuration.DetailedTriggers.Should().ContainSingle().Which
@@ -41,12 +44,27 @@ public class GitHubActionsWorkflowRunSpecs
     }
 
     [Fact]
+    public void Several_upstream_workflows_go_into_one_trigger()
+    {
+        // Act
+        var configuration = GetConfiguration(a => a.WorkflowRunTriggers = new[]
+        {
+            new GitHubActionsWorkflowRunAttribute("Build", "Deploy")
+        });
+
+        // Assert
+        configuration.DetailedTriggers.Should().ContainSingle().Which
+            .Should().BeOfType<GitHubActionsWorkflowRunTrigger>().Which
+            .Workflows.Should().Equal("Build", "Deploy");
+    }
+
+    [Fact]
     public void Workflow_run_combines_with_other_detailed_triggers()
     {
         // Act
         var configuration = GetConfiguration(a =>
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            a.WorkflowRunTriggers = new[] { new GitHubActionsWorkflowRunAttribute("Deploy") };
             a.OnCronSchedule = "0 0 * * *";
         });
 
@@ -60,7 +78,7 @@ public class GitHubActionsWorkflowRunSpecs
         // Act
         var act = () => GetConfiguration(a =>
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            a.WorkflowRunTriggers = new[] { new GitHubActionsWorkflowRunAttribute("Deploy") };
             a.On = new[] { GitHubActionsTrigger.Push };
         });
 
@@ -72,10 +90,9 @@ public class GitHubActionsWorkflowRunSpecs
     public void Require_success_adds_job_condition()
     {
         // Act
-        var configuration = GetConfiguration(a =>
+        var configuration = GetConfiguration(a => a.WorkflowRunTriggers = new[]
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
-            a.OnWorkflowRunRequireSuccess = true;
+            new GitHubActionsWorkflowRunAttribute("Deploy") { RequireSuccess = true }
         });
 
         // Assert
@@ -88,9 +105,8 @@ public class GitHubActionsWorkflowRunSpecs
         // Act
         var configuration = GetConfiguration(a =>
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            a.WorkflowRunTriggers = new[] { new GitHubActionsWorkflowRunAttribute("Deploy") { RequireSuccess = true } };
             a.OnCronSchedule = "0 0 * * *";
-            a.OnWorkflowRunRequireSuccess = true;
         });
 
         // Assert
@@ -101,11 +117,13 @@ public class GitHubActionsWorkflowRunSpecs
     public void Require_success_without_the_completed_type_throws()
     {
         // Act
-        var act = () => GetConfiguration(a =>
+        var act = () => GetConfiguration(a => a.WorkflowRunTriggers = new[]
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
-            a.OnWorkflowRunTypes = new[] { "requested" };
-            a.OnWorkflowRunRequireSuccess = true;
+            new GitHubActionsWorkflowRunAttribute("Deploy")
+            {
+                Types = new[] { "requested" },
+                RequireSuccess = true
+            }
         });
 
         // Assert
@@ -116,10 +134,9 @@ public class GitHubActionsWorkflowRunSpecs
     public void Null_types_throws()
     {
         // Act
-        var act = () => GetConfiguration(a =>
+        var act = () => GetConfiguration(a => a.WorkflowRunTriggers = new[]
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
-            a.OnWorkflowRunTypes = null;
+            new GitHubActionsWorkflowRunAttribute("Deploy") { Types = null }
         });
 
         // Assert
@@ -130,42 +147,13 @@ public class GitHubActionsWorkflowRunSpecs
     public void Null_branches_throws()
     {
         // Act
-        var act = () => GetConfiguration(a =>
+        var act = () => GetConfiguration(a => a.WorkflowRunTriggers = new[]
         {
-            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
-            a.OnWorkflowRunBranches = null;
+            new GitHubActionsWorkflowRunAttribute("Deploy") { Branches = null }
         });
 
         // Assert
         act.Should().Throw<Exception>().WithMessage("*must not be null*");
-    }
-
-    [Fact]
-    public void Branches_without_workflows_throws()
-    {
-        // Act
-        var act = () => GetConfiguration(a =>
-        {
-            a.On = new[] { GitHubActionsTrigger.Push };
-            a.OnWorkflowRunBranches = new[] { "master" };
-        });
-
-        // Assert
-        act.Should().Throw<Exception>().WithMessage("*OnWorkflowRunWorkflows*");
-    }
-
-    [Fact]
-    public void Require_success_without_workflows_throws()
-    {
-        // Act
-        var act = () => GetConfiguration(a =>
-        {
-            a.On = new[] { GitHubActionsTrigger.Push };
-            a.OnWorkflowRunRequireSuccess = true;
-        });
-
-        // Assert
-        act.Should().Throw<Exception>().WithMessage("*OnWorkflowRunWorkflows*");
     }
 
     [Theory]
@@ -175,10 +163,72 @@ public class GitHubActionsWorkflowRunSpecs
     public void Blank_workflow_name_throws(string bad)
     {
         // Act
-        var act = () => GetConfiguration(a => a.OnWorkflowRunWorkflows = new[] { "Deploy", bad });
+        var act = () => GetConfiguration(a => a.WorkflowRunTriggers = new[]
+        {
+            new GitHubActionsWorkflowRunAttribute("Deploy", bad)
+        });
 
         // Assert
-        act.Should().Throw<Exception>().WithMessage("*OnWorkflowRunWorkflows*");
+        act.Should().Throw<Exception>().WithMessage("*Workflows*");
+    }
+
+    [Fact]
+    public void A_trigger_for_another_workflow_does_not_apply_here()
+    {
+        // Act
+        var configuration = GetConfiguration(a =>
+        {
+            a.WorkflowNames = new[] { "test", "other" };
+            a.WorkflowRunTriggers = new[]
+            {
+                new GitHubActionsWorkflowRunAttribute("Deploy") { ForWorkflows = new[] { "other" } }
+            };
+            a.OnCronSchedule = "0 0 * * *";
+        });
+
+        // Assert
+        configuration.DetailedTriggers.OfType<GitHubActionsWorkflowRunTrigger>().Should().BeEmpty();
+    }
+
+    [Fact]
+    public void A_trigger_without_a_scope_needs_a_single_workflow()
+    {
+        // Act
+        var act = () => GetConfiguration(a =>
+        {
+            a.WorkflowNames = new[] { "test", "other" };
+            a.WorkflowRunTriggers = new[] { new GitHubActionsWorkflowRunAttribute("Deploy") };
+        });
+
+        // Assert
+        act.Should().Throw<Exception>().WithMessage("*ForWorkflows*");
+    }
+
+    [Fact]
+    public void A_trigger_for_an_unknown_workflow_throws()
+    {
+        // Act
+        var act = () => GetConfiguration(a => a.WorkflowRunTriggers = new[]
+        {
+            new GitHubActionsWorkflowRunAttribute("Deploy") { ForWorkflows = new[] { "missing" } }
+        });
+
+        // Assert
+        act.Should().Throw<Exception>().WithMessage("*unknown workflow 'missing'*");
+    }
+
+    [Fact]
+    public void Two_triggers_for_one_workflow_throw()
+    {
+        // Act
+        var act = () => GetConfiguration(a => a.WorkflowRunTriggers = new[]
+        {
+            new GitHubActionsWorkflowRunAttribute("Build"),
+            new GitHubActionsWorkflowRunAttribute("Deploy")
+        });
+
+        // Assert
+        act.Should().Throw<Exception>().WithMessage("*more than one*");
     }
 
     [Fact]

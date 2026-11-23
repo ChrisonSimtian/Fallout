@@ -573,9 +573,14 @@ public class ConfigurationGenerationSpecs
                 new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
                 {
                     InvokedTargets = new[] { nameof(Test) },
-                    OnWorkflowRunWorkflows = new[] { "Build and Deploy" },
-                    OnWorkflowRunBranches = new[] { "master" },
-                    OnWorkflowRunRequireSuccess = true
+                    WorkflowRunTriggers = new[]
+                    {
+                        new GitHubActionsWorkflowRunAttribute("Build and Deploy")
+                        {
+                            Branches = new[] { "master" },
+                            RequireSuccess = true
+                        }
+                    }
                 }
             );
 

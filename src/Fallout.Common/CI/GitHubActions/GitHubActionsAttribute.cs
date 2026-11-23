@@ -90,39 +90,6 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
     public string OnCronSchedule { get; set; }
 
     /// <summary>
-    /// Names of the upstream workflows (their <c>name:</c>, not the file name) whose runs start this workflow
-    /// via <c>workflow_run</c>. Setting this enables the trigger and cannot be combined with shorthand
-    /// <see cref="On"/> triggers.
-    /// </summary>
-    /// <remarks>
-    /// A <c>workflow_run</c> workflow runs on the latest commit of the default branch, not on the commit
-    /// that triggered the upstream run. To work on the upstream commit, check out
-    /// <c>github.event.workflow_run.head_sha</c>.
-    /// </remarks>
-    public string[] OnWorkflowRunWorkflows { get; set; } = new string[0];
-
-    /// <summary>
-    /// Activity types of the upstream run to react to. Defaults to <c>completed</c>.
-    /// </summary>
-    public string[] OnWorkflowRunTypes { get; set; } = { "completed" };
-
-    /// <summary>
-    /// Branches the upstream run must have happened on.
-    /// </summary>
-    public string[] OnWorkflowRunBranches { get; set; } = new string[0];
-
-    /// <summary>
-    /// <c>workflow_run</c> also fires for failed or cancelled upstream runs. When set, jobs only run if the
-    /// upstream run succeeded. Runs from other triggers are unaffected. The generated condition is
-    /// <c>github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'</c>.
-    /// </summary>
-    /// <remarks>
-    /// The conclusion only exists once the upstream run has completed, so this needs <c>completed</c> in
-    /// <see cref="OnWorkflowRunTypes"/>.
-    /// </remarks>
-    public bool OnWorkflowRunRequireSuccess { get; set; }
-
-    /// <summary>
     /// Workflow-level environment variables, each entry in <c>KEY: value</c> form. Emitted once as a
     /// top-level <c>env:</c> block (after <c>on:</c>) and inherited by every job and step — including
     /// non-run steps such as checkout, cache, and artifact upload, which per-step env can't reach.
@@ -313,6 +280,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
         }
 
         ValidateWorkflowDispatchInputs();
+        ValidateWorkflowRuns();
         ValidateActionReferences();
 
         var configuration = new GitHubActionsConfiguration
@@ -357,7 +325,7 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             TimeoutMinutes = TimeoutMinutes,
             ConcurrencyGroup = JobConcurrencyGroup,
             ConcurrencyCancelInProgress = JobConcurrencyCancelInProgress,
-            Condition = OnWorkflowRunRequireSuccess
+            Condition = WorkflowRuns.Any(x => x.RequireSuccess)
                 ? "github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'"
                 : null
         };
@@ -586,33 +554,68 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             };
         }
 
-        Assert.True(
-            OnWorkflowRunWorkflows.Length > 0 || (OnWorkflowRunBranches.Length == 0 && !OnWorkflowRunRequireSuccess),
-            $"'{nameof(OnWorkflowRunBranches)}' and '{nameof(OnWorkflowRunRequireSuccess)}' " +
-            $"require '{nameof(OnWorkflowRunWorkflows)}'");
-
-        if (OnWorkflowRunWorkflows.Length > 0)
+        foreach (var run in WorkflowRuns)
         {
-            Assert.True(
-                OnWorkflowRunWorkflows.All(x => !x.IsNullOrWhiteSpace()),
-                $"'{nameof(OnWorkflowRunWorkflows)}' entries must not be null, empty, or whitespace");
-
-            Assert.True(
-                OnWorkflowRunTypes != null && OnWorkflowRunBranches != null,
-                $"'{nameof(OnWorkflowRunTypes)}' and '{nameof(OnWorkflowRunBranches)}' must not be null");
-
-            Assert.True(
-                !OnWorkflowRunRequireSuccess || OnWorkflowRunTypes.Contains("completed"),
-                $"'{nameof(OnWorkflowRunRequireSuccess)}' needs 'completed' in '{nameof(OnWorkflowRunTypes)}', " +
-                "because the conclusion is only set on completed runs");
-
             yield return new GitHubActionsWorkflowRunTrigger
             {
-                Workflows = OnWorkflowRunWorkflows,
-                Types = OnWorkflowRunTypes,
-                Branches = OnWorkflowRunBranches
+                Workflows = run.Workflows,
+                Types = run.Types,
+                Branches = run.Branches
             };
         }
+    }
+
+    // Overridable so tests can inject workflow_run triggers without declaring static class-level attributes.
+    protected virtual IEnumerable<GitHubActionsWorkflowRunAttribute> DeclaredWorkflowRuns
+        => Build.GetType().GetCustomAttributes<GitHubActionsWorkflowRunAttribute>();
+
+    // The workflow_run declarations that start this workflow. An empty ForWorkflows scope means "this workflow"
+    // only when the build class declares a single workflow; ValidateWorkflowRuns rejects the ambiguous case.
+    private GitHubActionsWorkflowRunAttribute[] WorkflowRuns
+        => DeclaredWorkflowRuns
+            .Where(x => x.ForWorkflows.Length == 0
+                ? DeclaredWorkflowNames.Count == 1
+                : x.ForWorkflows.Select(NormalizeWorkflowName).Contains(name))
+            .ToArray();
+
+    private void ValidateWorkflowRuns()
+    {
+        var declaredWorkflows = DeclaredWorkflowNames.Select(NormalizeWorkflowName).ToHashSet();
+
+        foreach (var run in DeclaredWorkflowRuns)
+        {
+            Assert.True(
+                run.Workflows.All(x => !x.IsNullOrWhiteSpace()),
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.Workflows)}' entries must not be null, empty, or whitespace");
+
+            Assert.True(
+                run.Types != null && run.Branches != null && run.ForWorkflows != null,
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.Types)}', " +
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.Branches)}' and " +
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.ForWorkflows)}' must not be null");
+
+            Assert.True(
+                !run.RequireSuccess || run.Types.Contains("completed"),
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.RequireSuccess)}' needs 'completed' in " +
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.Types)}', because the conclusion is only set on completed runs");
+
+            Assert.True(
+                run.ForWorkflows.Length > 0 || declaredWorkflows.Count == 1,
+                $"'{nameof(GitHubActionsWorkflowRunAttribute.ForWorkflows)}' is required when the build declares " +
+                "more than one workflow");
+
+            foreach (var workflow in run.ForWorkflows)
+            {
+                Assert.True(
+                    declaredWorkflows.Contains(NormalizeWorkflowName(workflow)),
+                    $"'{nameof(GitHubActionsWorkflowRunAttribute)}' targets unknown workflow '{workflow}'");
+            }
+        }
+
+        Assert.True(
+            WorkflowRuns.Length <= 1,
+            $"Workflow '{name}' has more than one '{nameof(GitHubActionsWorkflowRunAttribute)}'; " +
+            "list all upstream workflows in a single attribute");
     }
 
     // Workflow names are spaces-to-underscores normalized (see the ctor), so an input's Workflows scope

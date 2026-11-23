@@ -22,10 +22,15 @@ public class TestGitHubActionsAttribute : GitHubActionsAttribute, ITestConfigura
     // Injects typed inputs without static class-level attributes, so each test case can vary them.
     public GitHubActionsInputAttribute[] Inputs { get; set; } = new GitHubActionsInputAttribute[0];
 
-    // The workflow names an input may scope to; defaults to just this workflow when unset.
+    // Injects workflow_run declarations without static class-level attributes, so each test case can vary them.
+    public GitHubActionsWorkflowRunAttribute[] WorkflowRunTriggers { get; set; } = new GitHubActionsWorkflowRunAttribute[0];
+
+    // The workflow names an input or workflow_run may scope to; defaults to just this workflow when unset.
     public string[] WorkflowNames { get; set; }
 
     protected override IEnumerable<GitHubActionsInputAttribute> DeclaredInputs => Inputs;
+
+    protected override IEnumerable<GitHubActionsWorkflowRunAttribute> DeclaredWorkflowRuns => WorkflowRunTriggers;
 
     protected override ISet<string> DeclaredWorkflowNames => (WorkflowNames ?? new[]
     {
