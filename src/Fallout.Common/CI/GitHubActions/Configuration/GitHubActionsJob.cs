@@ -8,6 +8,9 @@ public class GitHubActionsJob : ConfigurationEntity
 {
     public string Name { get; set; }
 
+    /// <summary>
+    /// Expression for the job-level <c>if:</c> key. The key is only written when this is set.
+    /// </summary>
     public string Condition { get; set; }
 
     public GitHubActionsImage Image { get; set; }

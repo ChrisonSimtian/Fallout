@@ -1,11 +1,10 @@
 using System;
-using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Fallout.Common.CI;
 using Fallout.Common.CI.GitHubActions;
 using Fallout.Common.CI.GitHubActions.Configuration;
 using Fallout.Common.Execution;
-using Fallout.Common.Utilities;
 using FluentAssertions;
 using Xunit;
 
@@ -13,20 +12,27 @@ namespace Fallout.Common.Specs.CI;
 
 public class GitHubActionsWorkflowRunSpecs
 {
+    private const string RequireSuccessCondition =
+        "github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'";
+
     [Fact]
     public void Unset_adds_no_workflow_run_trigger_and_no_job_condition()
     {
+        // Act
         var configuration = GetConfiguration(a => a.OnPushBranches = new[] { "master" });
 
+        // Assert
         configuration.DetailedTriggers.OfType<GitHubActionsWorkflowRunTrigger>().Should().BeEmpty();
         configuration.Jobs.Should().OnlyContain(x => x.Condition == null);
     }
 
     [Fact]
-    public void Workflow_run_alone_satisfies_the_trigger_requirement()
+    public void A_workflow_run_trigger_needs_no_other_trigger()
     {
+        // Act
         var configuration = GetConfiguration(a => a.OnWorkflowRunWorkflows = new[] { "Deploy" });
 
+        // Assert
         var trigger = configuration.DetailedTriggers.Should().ContainSingle().Which
             .Should().BeOfType<GitHubActionsWorkflowRunTrigger>().Subject;
         trigger.Workflows.Should().Equal("Deploy");
@@ -37,42 +43,49 @@ public class GitHubActionsWorkflowRunSpecs
     [Fact]
     public void Workflow_run_combines_with_other_detailed_triggers()
     {
+        // Act
         var configuration = GetConfiguration(a =>
         {
             a.OnWorkflowRunWorkflows = new[] { "Deploy" };
             a.OnCronSchedule = "0 0 * * *";
         });
 
+        // Assert
         configuration.DetailedTriggers.Should().HaveCount(2);
     }
 
     [Fact]
     public void Workflow_run_with_shorthand_triggers_throws()
     {
+        // Act
         var act = () => GetConfiguration(a =>
         {
             a.OnWorkflowRunWorkflows = new[] { "Deploy" };
             a.On = new[] { GitHubActionsTrigger.Push };
         });
 
+        // Assert
         act.Should().Throw<Exception>().WithMessage("*shorthand*");
     }
 
     [Fact]
     public void Require_success_adds_job_condition()
     {
+        // Act
         var configuration = GetConfiguration(a =>
         {
             a.OnWorkflowRunWorkflows = new[] { "Deploy" };
             a.OnWorkflowRunRequireSuccess = true;
         });
 
-        configuration.Jobs.Should().OnlyContain(x => x.Condition == "github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'");
+        // Assert
+        configuration.Jobs.Should().OnlyContain(x => x.Condition == RequireSuccessCondition);
     }
 
     [Fact]
     public void Require_success_condition_does_not_skip_other_event_types()
     {
+        // Act
         var configuration = GetConfiguration(a =>
         {
             a.OnWorkflowRunWorkflows = new[] { "Deploy" };
@@ -80,47 +93,78 @@ public class GitHubActionsWorkflowRunSpecs
             a.OnWorkflowRunRequireSuccess = true;
         });
 
+        // Assert
         configuration.Jobs.Should().OnlyContain(x => x.Condition.StartsWith("github.event_name != 'workflow_run' ||"));
     }
 
-    [Theory]
-    [InlineData(true)]
-    [InlineData(false)]
-    public void Null_types_or_branches_throws(bool nullTypes)
+    [Fact]
+    public void Require_success_without_the_completed_type_throws()
     {
+        // Act
         var act = () => GetConfiguration(a =>
         {
             a.OnWorkflowRunWorkflows = new[] { "Deploy" };
-            if (nullTypes)
-                a.OnWorkflowRunTypes = null;
-            else
-                a.OnWorkflowRunBranches = null;
+            a.OnWorkflowRunTypes = new[] { "requested" };
+            a.OnWorkflowRunRequireSuccess = true;
         });
 
+        // Assert
+        act.Should().Throw<Exception>().WithMessage("*completed*");
+    }
+
+    [Fact]
+    public void Null_types_throws()
+    {
+        // Act
+        var act = () => GetConfiguration(a =>
+        {
+            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            a.OnWorkflowRunTypes = null;
+        });
+
+        // Assert
+        act.Should().Throw<Exception>().WithMessage("*must not be null*");
+    }
+
+    [Fact]
+    public void Null_branches_throws()
+    {
+        // Act
+        var act = () => GetConfiguration(a =>
+        {
+            a.OnWorkflowRunWorkflows = new[] { "Deploy" };
+            a.OnWorkflowRunBranches = null;
+        });
+
+        // Assert
         act.Should().Throw<Exception>().WithMessage("*must not be null*");
     }
 
     [Fact]
     public void Branches_without_workflows_throws()
     {
+        // Act
         var act = () => GetConfiguration(a =>
         {
             a.On = new[] { GitHubActionsTrigger.Push };
             a.OnWorkflowRunBranches = new[] { "master" };
         });
 
+        // Assert
         act.Should().Throw<Exception>().WithMessage("*OnWorkflowRunWorkflows*");
     }
 
     [Fact]
     public void Require_success_without_workflows_throws()
     {
+        // Act
         var act = () => GetConfiguration(a =>
         {
             a.On = new[] { GitHubActionsTrigger.Push };
             a.OnWorkflowRunRequireSuccess = true;
         });
 
+        // Assert
         act.Should().Throw<Exception>().WithMessage("*OnWorkflowRunWorkflows*");
     }
 
@@ -130,49 +174,28 @@ public class GitHubActionsWorkflowRunSpecs
     [InlineData("   ")]
     public void Blank_workflow_name_throws(string bad)
     {
+        // Act
         var act = () => GetConfiguration(a => a.OnWorkflowRunWorkflows = new[] { "Deploy", bad });
 
+        // Assert
         act.Should().Throw<Exception>().WithMessage("*OnWorkflowRunWorkflows*");
     }
 
     [Fact]
-    public void Trigger_renders_workflows_types_and_branches()
-    {
-        var trigger = new GitHubActionsWorkflowRunTrigger
-                      {
-                          Workflows = new[] { "Build: Deploy" },
-                          Types = new[] { "completed" },
-                          Branches = new[] { "master" }
-                      };
-
-        var yaml = Render(trigger);
-
-        yaml.Should().Be(string.Join(Environment.NewLine,
-            "workflow_run:",
-            "  workflows:",
-            "    - 'Build: Deploy'",
-            "  types:",
-            "    - completed",
-            "  branches:",
-            "    - master",
-            string.Empty));
-    }
-
-    private static string Render(GitHubActionsDetailedTrigger trigger)
-    {
-        var stream = new MemoryStream();
-        using (var writer = new StreamWriter(stream, leaveOpen: true))
+    public Task Trigger_renders_workflows_types_and_branches()
+        => ConfigurationEntityVerifier.Verify(new GitHubActionsWorkflowRunTrigger
         {
-            trigger.Write(new CustomFileWriter(writer, indentationFactor: 2, commentPrefix: "#"));
-        }
-
-        stream.Seek(offset: 0, SeekOrigin.Begin);
-        return new StreamReader(stream).ReadToEnd();
-    }
+            Workflows = new[] { "Build: Deploy" },
+            Types = new[] { "completed" },
+            Branches = new[] { "master" }
+        });
 
     private static GitHubActionsConfiguration GetConfiguration(Action<TestGitHubActionsAttribute> configure)
     {
-        var attribute = new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest) { InvokedTargets = new[] { "Compile" } };
+        var attribute = new TestGitHubActionsAttribute(GitHubActionsImage.UbuntuLatest)
+                        {
+                            InvokedTargets = new[] { "Compile" }
+                        };
         configure(attribute);
         var build = new ConfigurationGenerationSpecs.TestBuild();
         ((ConfigurationAttributeBase)attribute).Build = build;

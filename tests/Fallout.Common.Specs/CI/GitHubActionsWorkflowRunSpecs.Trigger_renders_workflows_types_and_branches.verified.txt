@@ -1,0 +1,7 @@
+﻿workflow_run:
+  workflows:
+    - 'Build: Deploy'
+  types:
+    - completed
+  branches:
+    - master

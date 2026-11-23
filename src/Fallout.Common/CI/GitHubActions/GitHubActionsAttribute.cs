@@ -91,20 +91,35 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
 
     /// <summary>
     /// Names of the upstream workflows (their <c>name:</c>, not the file name) whose runs start this workflow
-    /// via <c>workflow_run</c>. Setting this enables the trigger and cannot be combined with shorthand <see cref="On"/> triggers.
+    /// via <c>workflow_run</c>. Setting this enables the trigger and cannot be combined with shorthand
+    /// <see cref="On"/> triggers.
     /// </summary>
+    /// <remarks>
+    /// A <c>workflow_run</c> workflow runs on the latest commit of the default branch, not on the commit
+    /// that triggered the upstream run. To work on the upstream commit, check out
+    /// <c>github.event.workflow_run.head_sha</c>.
+    /// </remarks>
     public string[] OnWorkflowRunWorkflows { get; set; } = new string[0];
 
-    /// <summary>Activity types of the upstream run to react to. Defaults to <c>completed</c>.</summary>
+    /// <summary>
+    /// Activity types of the upstream run to react to. Defaults to <c>completed</c>.
+    /// </summary>
     public string[] OnWorkflowRunTypes { get; set; } = { "completed" };
 
-    /// <summary>Branches the upstream run must have happened on.</summary>
+    /// <summary>
+    /// Branches the upstream run must have happened on.
+    /// </summary>
     public string[] OnWorkflowRunBranches { get; set; } = new string[0];
 
     /// <summary>
-    /// <c>workflow_run</c> also fires for failed or cancelled upstream runs. When set, jobs only run if the upstream
-    /// run succeeded (<c>if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'</c>, so runs from other triggers are unaffected).
+    /// <c>workflow_run</c> also fires for failed or cancelled upstream runs. When set, jobs only run if the
+    /// upstream run succeeded. Runs from other triggers are unaffected. The generated condition is
+    /// <c>github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'</c>.
     /// </summary>
+    /// <remarks>
+    /// The conclusion only exists once the upstream run has completed, so this needs <c>completed</c> in
+    /// <see cref="OnWorkflowRunTypes"/>.
+    /// </remarks>
     public bool OnWorkflowRunRequireSuccess { get; set; }
 
     /// <summary>
@@ -571,14 +586,26 @@ public class GitHubActionsAttribute : ConfigurationAttributeBase
             };
         }
 
-        Assert.True(OnWorkflowRunWorkflows.Length > 0 || OnWorkflowRunBranches.Length == 0 && !OnWorkflowRunRequireSuccess,
-            $"'{nameof(OnWorkflowRunBranches)}' and '{nameof(OnWorkflowRunRequireSuccess)}' require '{nameof(OnWorkflowRunWorkflows)}'");
+        Assert.True(
+            OnWorkflowRunWorkflows.Length > 0 || (OnWorkflowRunBranches.Length == 0 && !OnWorkflowRunRequireSuccess),
+            $"'{nameof(OnWorkflowRunBranches)}' and '{nameof(OnWorkflowRunRequireSuccess)}' " +
+            $"require '{nameof(OnWorkflowRunWorkflows)}'");
+
         if (OnWorkflowRunWorkflows.Length > 0)
         {
-            Assert.True(OnWorkflowRunWorkflows.All(x => !x.IsNullOrWhiteSpace()),
+            Assert.True(
+                OnWorkflowRunWorkflows.All(x => !x.IsNullOrWhiteSpace()),
                 $"'{nameof(OnWorkflowRunWorkflows)}' entries must not be null, empty, or whitespace");
-            Assert.True(OnWorkflowRunTypes != null && OnWorkflowRunBranches != null,
+
+            Assert.True(
+                OnWorkflowRunTypes != null && OnWorkflowRunBranches != null,
                 $"'{nameof(OnWorkflowRunTypes)}' and '{nameof(OnWorkflowRunBranches)}' must not be null");
+
+            Assert.True(
+                !OnWorkflowRunRequireSuccess || OnWorkflowRunTypes.Contains("completed"),
+                $"'{nameof(OnWorkflowRunRequireSuccess)}' needs 'completed' in '{nameof(OnWorkflowRunTypes)}', " +
+                "because the conclusion is only set on completed runs");
+
             yield return new GitHubActionsWorkflowRunTrigger
             {
                 Workflows = OnWorkflowRunWorkflows,
